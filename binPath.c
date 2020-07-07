@@ -50,7 +50,7 @@ int main() {
                  
                  
                  
-                 // 4 bytes
+                 // 12 bytes
                  bytesInt[0] = 0;
                  bytesInt[1] = 0x80000000;
                  for (iterator=2; iterator < 3; iterator++) {
