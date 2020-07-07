@@ -76,18 +76,23 @@ int main() {
                   unsigned char *fourthHalfA = 0;
                   unsigned char *fourthHalfB = secondHalf;
                   
-                  unsigned char threeBytes[3] = { firstHalf[0],firstHalf[0],firstHalf[0]};
                   
                   
-                  unsigned char one[4] = {firstHalf[0],firstHalf[1],firstHalf[2],firstHalf[3]};
-                  unsigned char zero[4] = {secondHalf[0],secondHalf[1],secondHalf[2],secondHalf[3]};
                   
-                  // its on {0,0,0};
+                  unsigned char zero[4] = {firstHalf[0],firstHalf[1],firstHalf[2],firstHalf[3]};
+                  unsigned char one[4] = {secondHalf[0],secondHalf[1],secondHalf[2],secondHalf[3]};
+                  
+                  unsigned char temp_threeBytes[3] = { firstHalf[0],firstHalf[0],firstHalf[0]};;
+                  unsigned char aux[3];
+                                                 
+                  
                   int pos=0;
-                  for (iterator=1; iterator < 8; iterator++) {
-                        
-                            threeBytes[iterator] = secondHalf[pos];
-                            pos++;
+                  for (iterator=1; iterator < 4; iterator++) {
+                            temp_threeBytes =
+                            temp_threeBytes[iterator] = temp_threeBytes[iterator-1];
+                            
+                            
+                            
                   }
                       
                   
