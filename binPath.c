@@ -1,54 +1,61 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 // this defines the number of bytes processed each one time
-#define numBytes 10
+#define maxNumBytes 10
 
  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc);
 // Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
-
-// function taken from https://stackoverflow.com/questions/6373093/how-to-print-binary-number-via-printf
 void printBin(int n) {
     
-    while (n) {
-    if (n & 1)
-        printf("0");
-    else
+    if(n&1) 
         printf("1");
-
-    n >>= 1;
-}
-printf("\n");
-}
-
+    else 
+        printf("0");
+    n =>> 1;
+}    
 
 int main() {
                  
                  
                  
-				 unsigned char bytes[20];
-                 bytes[0] = { 0b00000000 } ;
+				 unsigned char bytes[8]
+                 unsigned int bytesInt[3];
+                 unsigned  char otherBytes[] = new char[20];
+                 
                                      
                  
-                 unsigned char index = {0b10000000 };
+                 // cycle iterator
+                 int iterator;
+                
+                 // both must be 0 to use the algorithm (start with 00000 flip one at a tiem, set 1111, flip one at a time
+                 otherBytes[0] = 1;
+                 bytes[0] = 0;
+                 bytesInt[0] = 0;
+				
+                 
+                 // 1fst byte
+                 for (iterator=1 ; iterator < (sizeof(bytes)-1) ; iterator++) {
+					bytes[iterator] = bytes[iterator-1] >> 1;
+					otherBytes[iterator] = otherBytes[iterator-1] >> 1;
+				 }
+
                  
                  
                  
-                // do not use shift because its expensive, prefer using assignment operator (asssign bytes to the array of bytes, like
-                 //bytesRearrange[0] = bytes[0]
-                 // bytesRearrange[1]  = bytes[0];
-                 // use bits as streams like (0b000 , 0b001 , 0b010 , keep changing
+                 for (int numBytes = 1 ; numBytes < maxNumBytes ; numBytes++) {
+                     
+                     
+                 }
                  
                  // thing is, use the algorithm on a binary string like 0b1010101111100 (always bit shift 1)
                  
                  // multiple bytes
-                int bytesInt[3];
-                bytesInt[0] = 0;
-				 
-                int iterator;
+               
                  
                  for (iterator=1 ; iterator < 3; iterator++) {
                      bytesInt[iterator] = bytesInt[iterator-1] >> 1;
                  }
+                 
                  
                  printf("\n1st integer -> ");
                  printBin(bytesInt[0]);
@@ -59,8 +66,9 @@ int main() {
                  
                  
                  
+                 
                 /* 
-                // single bytes
+                 single bytes
 				 for (iterator=1 ; iterator < (sizeof(bytes)-1) ; iterator++) {
 					bytes[iterator] = bytes[iterator-1] >> 1;
                     
@@ -74,7 +82,7 @@ int main() {
 					}
 
                 
-                
+                */
                 
 					
 					
