@@ -1,12 +1,21 @@
-/* I decided to end this project in c , and coded it in java, because there was no why to handle multiple bytes (that is there is no datatype in c that has like 3 bytes for example*/
 
 #include <stdio.h>
 #include <stdlib.h>
-// this defines the number of bytes processed each one time
 
 
- // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc);
+//  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc) compared to the base;
 // Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
+// this can be used in arrays
+// if you have three bytes {0,0,0} (this 0 can be anything),like {"str","str2","str3"}
+// then start by {str, str ,str}
+// and keep changing {str,str,str2}
+// {str,str2,str} , etcetcetc 
+// 
+
+
+
+if you want to get all combinarions, just use 000 and then 001, and 010, and 100
+
 void printBin(unsigned int n) {
     
     int it = 0;
@@ -67,15 +76,14 @@ int main() {
                   unsigned char *fourthHalfA = 0;
                   unsigned char *fourthHalfB = secondHalf;
                   
-                  unsigned char 3Bytes[21] = { firstHalf,firstHalf,firstHalf }
+                  unsigned char threeBytes[21] = { firstHalf,firstHalf,firstHalf }
+                  
+                  // its on {0,0,0};
                   
                   for (iterator=1 ; iterator < 8; iterator++) {
-                      3Bytes[iterator-1] = secondHalf;
-                      
+                        
                   }
                       
-                    
-                  }
                   
                   
                   
