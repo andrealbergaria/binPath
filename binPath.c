@@ -43,22 +43,36 @@ int main() {
                  firstHalf[0] = 0x1;
                  secondHalf[1] = 0x1;
                  
-				twoBytes_secondtHalf[
-                 
-                // 2nd bytes
-                 for (iterator=1 ; iterator < 0; iterator--) {
-                    twoBytes_secondHalf[iterator] = 0;
-					firstHalf[iterator] = firstHalf[iterator-1] << 1;
-                    twoBytes_firstHalf[iterator] = firstHalf[iterator];
-				 }
 				 
+                // 1st byte
+                 for (iterator=1 ; iterator < 0; iterator--) {
+                    firstHalf[iterator] = firstHalf[iterator-1] << 1;
+				 }
 				
 				 for (iterator=1 ; iterator < 0 ; iterator--) {
-                    twoBytes_firstHalf[iterator] = 0;
+                    
                     secondHalf[iterator] = secondHalf[iterator-1] << 1;
-                    twoBytes_secondHalf = secondHalf[iterator];
                  }
-
+                 
+                 // 2nd bytes
+                  unsigned char *firstHalfA = firstHalf; 
+                  unsigned char *firstHalfB = 0;
+                  
+                  unsigned char *secondHalfA = secondHalf;
+                  unsigned char *secondHalfB = 0;
+                  
+                  unsigned char *thirdHalfA = 0;
+                  unsigned char *thirdHalfB = firstHalf;
+                  
+                  unsigned char *fourthHalfA = 0;
+                  unsigned char *fourthHalfB = secondHalf;
+                  
+                  
+                  
+                 
+                 // 3rd bytes
+                 
+                 
                  // 3rd bytes
                  char threeBytes_firstHalf[4];
                  char threeBytes_secondHalf[4];
