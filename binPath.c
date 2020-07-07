@@ -34,21 +34,27 @@ int main() {
                  int iterator;
                 
                  // both must be 0 to use the algorithm (start with 00000 flip one at a tiem, set 1111, flip one at a time
-                 bytes[0] = 0;
-                 bytes[1] = 0b1;
+                 bytes[0] = 0xF0;
                  otherBytes[0] = 1;
                  otherBytes[1] = 0xF0;
                  
 				
                  
                  // 1fst byte
-                 for (iterator=1 ; iterator < (sizeof(bytes)-1) ; iterator++) {
-					bytes[iterator] = bytes[iterator-1] >> 1;
-					otherBytes[iterator] = otherBytes[iterator-1] >> 1;
+                 for (iterator=4 ; iterator > 0; iterator--) {
+					bytes[iterator] = bytes[iterator-1] << 1;
+					otherBytes[iterator] = otherBytes[iterator-1] << 1;
 				 }
 
                  
-                 
+                 // 2nd byte
+                 unsigned char twoBytes[2];
+                 twoBytes[0] = 0x80;
+                 twoBytes[1] = 0;
+                 for (iterator = 1 ; iterator < 2;iterator++) {
+                    twoBytes[iterator] = twoBytes[iterator-1] >> 1;
+                 }
+                  
                  
                  // 12 bytes
                  bytesInt[0] = 0;
