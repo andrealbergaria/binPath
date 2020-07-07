@@ -24,9 +24,13 @@ void printBin(unsigned int n) {
 int main() {
                  
                  
-                 unsigned char firstHalf[4];
-                 unsigned int bytesInt[3];
-                 unsigned char secondHalf[4];
+                 unsigned char firstHalf[4];  // 4 bytes 0000
+                 unsigned char secondHalf[4]; // 4 bytes 1111
+                 unsigned char twoBytes_firstHalf[4];
+                 unsigned char twoBytes_secondtHalf[4];
+                 
+                 unsigned char twoBytes1_firstHalf[4];
+                 unsigned char twoBytes1_secondtHalf[4];
                  
                                      
                  
@@ -39,21 +43,30 @@ int main() {
                  firstHalf[0] = 0x1;
                  secondHalf[1] = 0x1;
                  
-				
+				twoBytes_secondtHalf[
                  
-                 // 1fst byte
+                // 2nd bytes
                  for (iterator=1 ; iterator < 0; iterator--) {
-                     
-                     
-					firstHalf [iterator] = firstHalf[iterator-1] << 1;
-                    secondHalf[iterator] = secondHalf[iterator-1] << 1;
-                    
-                    twoBytes_FirstHalf[iterator] = firstHalf[iterator];
-                    twoBytes_secondHalf[iterator] = secondHalf[iterator];
-                    
+                    twoBytes_secondHalf[iterator] = 0;
+					firstHalf[iterator] = firstHalf[iterator-1] << 1;
+                    twoBytes_firstHalf[iterator] = firstHalf[iterator];
 				 }
+				 
+				
+				 for (iterator=1 ; iterator < 0 ; iterator--) {
+                    twoBytes_firstHalf[iterator] = 0;
+                    secondHalf[iterator] = secondHalf[iterator-1] << 1;
+                    twoBytes_secondHalf = secondHalf[iterator];
+                 }
 
+                 // 3rd bytes
+                 char threeBytes_firstHalf[4];
+                 char threeBytes_secondHalf[4];
                  
+                 for (iterator=0 ; iterator < 3; iterator++) {
+                     threeBytes_firstHalf[iterator] = firstHalf(iterator);
+                     threeBytes_secondHalf[iterator] = secondHalf(iterator);
+                 }
                  
                  
                 
