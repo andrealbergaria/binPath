@@ -6,7 +6,7 @@
  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc);
 // Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
 void printBin(int n) {
-    
+    printf("\n%i",n);
     if(n&1) 
         printf("1");
     else 
@@ -28,8 +28,9 @@ int main() {
                 
                  // both must be 0 to use the algorithm (start with 00000 flip one at a tiem, set 1111, flip one at a time
                  bytes[0] = 0;
+                 bytes[1] = 0b1;
                  otherBytes[0] = 1;
-                 
+                 otherBytse[1] = 0b1;
                  
 				
                  
@@ -42,23 +43,13 @@ int main() {
                  
                  // multiple bytes
                  bytesInt[0] = 0;
-                 
-                 
-                 for (int numBytes = 1 ; numBytes < maxNumBytes ; numBytes++) {
-                     
-                     
+                 bytesInt[1] = 0b100000000000000000000;
+                 for (iterator=2; iterator < 3; iterator++) {
+                     bytesInt[iterator] = bytesInt[iterator-1] >> 1; 
                  }
                  
-                 // thing is, use the algorithm on a binary string like 0b1010101111100 (always bit shift 1)
-                 
-                 // multiple bytes
                
-                 
-                 for (iterator=1 ; iterator < 3; iterator++) {
-                     bytesInt[iterator] = bytesInt[iterator-1] >> 1;
-                 }
-                 
-                 
+               // thing is, use the algorithm on a binary string like 0b1010101111100 (always bit shift 1)
                  printf("\n1st integer -> ");
                  printBin(bytesInt[0]);
                  printf("\n2st integer -> ");
@@ -66,26 +57,4 @@ int main() {
                  printf("\n3st integer -> ");
                  printBin(bytesInt[2]);
                  
-                 
-                 
-                 
-                /* 
-                 single bytes
-				 for (iterator=1 ; iterator < (sizeof(bytes)-1) ; iterator++) {
-					bytes[iterator] = bytes[iterator-1] >> 1;
-                    
-				}
-				 unsigned  char otherBytes[] = new char[20];
-                 otherBytes[0] = { 0b11111111 };
-                 
-
-				 for (iterator=1 ; iterator < (sizeof(otherBytes)-1); iterator++) {
-						otherBytes[iterator] = otherBytes[iterator-1] >> 1;
-					}
-
-                
-                */
-                
-					
-					
 }
