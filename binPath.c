@@ -6,6 +6,21 @@
  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc);
 // Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
 
+// function taken from https://stackoverflow.com/questions/6373093/how-to-print-binary-number-via-printf
+void printBin(int n) {
+    
+    while (n) {
+    if (n & 1)
+        printf("0");
+    else
+        printf("1");
+
+    n >>= 1;
+}
+printf("\n");
+}
+
+
 int main() {
                  
                  
@@ -35,9 +50,16 @@ int main() {
                      bytesInt[iterator] = bytesInt[iterator-1] >> 1;
                  }
                  
+                 printf("\n1st integer -> ");
+                 printBin(bytesInt[0]);
+                 printf("\n2st integer -> ");
+                 printBin(bytesInt[1]);
+                 printf("\n3st integer -> ");
+                 printBin(bytesInt[2]);
                  
                  
                  
+                /* 
                 // single bytes
 				 for (iterator=1 ; iterator < (sizeof(bytes)-1) ; iterator++) {
 					bytes[iterator] = bytes[iterator-1] >> 1;
