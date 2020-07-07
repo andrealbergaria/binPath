@@ -1,7 +1,9 @@
+/* I decided to end this project in c , and coded it in java, because there was no why to handle multiple bytes (that is there is no datatype in c that has like 3 bytes for example*/
+
 #include <stdio.h>
 #include <stdlib.h>
 // this defines the number of bytes processed each one time
-#define maxNumBytes 10
+
 
  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc);
 // Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
@@ -46,7 +48,9 @@ int main() {
 				 }
 
                  
-                 // multiple bytes
+                 
+                 
+                 // 4 bytes
                  bytesInt[0] = 0;
                  bytesInt[1] = 0x80000000;
                  for (iterator=2; iterator < 3; iterator++) {
@@ -55,11 +59,5 @@ int main() {
                  
                
                // thing is, use the algorithm on a binary string like 0b1010101111100 (always bit shift 1)
-                 printf("\n1st integer -> ");
-                 printBin(bytesInt[0]);
-                 printf("\n2st integer -> ");
-                 printBin(bytesInt[1]);
-                 printf("\n3st integer -> ");
-                 printBin(bytesInt[2]);
-                 
+                
 }
