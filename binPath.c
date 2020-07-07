@@ -24,9 +24,9 @@ void printBin(unsigned int n) {
 int main() {
                  
                  
-                 unsigned char bytes[4];
+                 unsigned char firstHalf[4];
                  unsigned int bytesInt[3];
-                 unsigned  char otherBytes[4];
+                 unsigned char secondHalf[4];
                  
                                      
                  
@@ -34,36 +34,29 @@ int main() {
                  int iterator;
                 
                  // both must be 0 to use the algorithm (start with 00000 flip one at a tiem, set 1111, flip one at a time
-                 bytes[0] = 0xF0;
-                 otherBytes[0] = 1;
-                 otherBytes[1] = 0xF0;
+                 // getting rid of 00000 and 111111 bytes (they can be assigned convenetly
+                 //firstHalf[0]  = 0;
+                 firstHalf[0] = 0x1;
+                 secondHalf[1] = 0x1;
                  
 				
                  
                  // 1fst byte
-                 for (iterator=4 ; iterator > 0; iterator--) {
-					bytes[iterator] = bytes[iterator-1] << 1;
-					otherBytes[iterator] = otherBytes[iterator-1] << 1;
+                 for (iterator=1 ; iterator < 0; iterator--) {
+                     
+                     
+					firstHalf [iterator] = firstHalf[iterator-1] << 1;
+                    secondHalf[iterator] = secondHalf[iterator-1] << 1;
+                    
+                    twoBytes_FirstHalf[iterator] = firstHalf[iterator];
+                    twoBytes_secondHalf[iterator] = secondHalf[iterator];
+                    
 				 }
 
                  
-                 // 2nd byte
-                 unsigned char twoBytes[2];
-                 twoBytes[0] = 0x80;
-                 twoBytes[1] = 0;
-                 for (iterator = 1 ; iterator < 2;iterator++) {
-                    twoBytes[iterator] = twoBytes[iterator-1] >> 1;
-                 }
-                  
                  
-                 // 12 bytes
-                 bytesInt[0] = 0;
-                 bytesInt[1] = 0x80000000;
-                 for (iterator=2; iterator < 3; iterator++) {
-                     bytesInt[iterator] = bytesInt[iterator-1] >> 1; 
-                 }
                  
-               
+                
                // thing is, use the algorithm on a binary string like 0b1010101111100 (always bit shift 1)
                 
 }
