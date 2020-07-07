@@ -11,16 +11,15 @@ void printBin(int n) {
         printf("1");
     else 
         printf("0");
-    n =>> 1;
+    n >>= 1;
 }    
 
 int main() {
                  
                  
-                 
-				 unsigned char bytes[8]
+                 unsigned char bytes[4];
                  unsigned int bytesInt[3];
-                 unsigned  char otherBytes[] = new char[20];
+                 unsigned  char otherBytes[4];
                  
                                      
                  
@@ -28,9 +27,10 @@ int main() {
                  int iterator;
                 
                  // both must be 0 to use the algorithm (start with 00000 flip one at a tiem, set 1111, flip one at a time
-                 otherBytes[0] = 1;
                  bytes[0] = 0;
-                 bytesInt[0] = 0;
+                 otherBytes[0] = 1;
+                 
+                 
 				
                  
                  // 1fst byte
@@ -40,6 +40,8 @@ int main() {
 				 }
 
                  
+                 // multiple bytes
+                 bytesInt[0] = 0;
                  
                  
                  for (int numBytes = 1 ; numBytes < maxNumBytes ; numBytes++) {
