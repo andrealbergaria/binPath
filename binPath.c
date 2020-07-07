@@ -67,6 +67,16 @@ int main() {
                   unsigned char *fourthHalfA = 0;
                   unsigned char *fourthHalfB = secondHalf;
                   
+                  unsigned char 3Bytes[21] = { firstHalf,firstHalf,firstHalf }
+                  
+                  for (iterator=1 ; iterator < 8; iterator++) {
+                      3Bytes[iterator-1] = secondHalf;
+                      
+                  }
+                      
+                    
+                  }
+                  
                   
                   
                  
