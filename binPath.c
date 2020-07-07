@@ -5,13 +5,18 @@
 
  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc);
 // Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
-void printBin(int n) {
-    printf("\n%i",n);
+void printBin(unsigned int n) {
+    
+    int it = 0;
+    while (it < 32) {
+        
     if(n&1) 
         printf("1");
     else 
         printf("0");
-    n >>= 1;
+    n = n >> 1;
+    it++;
+    }
 }    
 
 int main() {
@@ -30,7 +35,7 @@ int main() {
                  bytes[0] = 0;
                  bytes[1] = 0b1;
                  otherBytes[0] = 1;
-                 otherBytse[1] = 0b1;
+                 otherBytes[1] = 0xF0;
                  
 				
                  
@@ -43,7 +48,7 @@ int main() {
                  
                  // multiple bytes
                  bytesInt[0] = 0;
-                 bytesInt[1] = 0b100000000000000000000;
+                 bytesInt[1] = 0x80000000;
                  for (iterator=2; iterator < 3; iterator++) {
                      bytesInt[iterator] = bytesInt[iterator-1] >> 1; 
                  }
