@@ -33,15 +33,20 @@ void printBin(unsigned int n) {
 int main() {
                  
                  
-                 unsigned char firstHalf[4];  // 4 bytes 0000
-                 unsigned char secondHalf[4]; // 4 bytes 1111
-                 unsigned char twoBytes_firstHalf[4];
-                 unsigned char twoBytes_secondtHalf[4];
-                 
-                 unsigned char twoBytes1_firstHalf[4];
-                 unsigned char twoBytes1_secondtHalf[4];
+                 unsigned char firstHalf[4];  
+                 unsigned char secondHalf[4]; 
                  
                                      
+                 firstHalf[0] =  0;
+                 firstHalf[1] = 0x1;
+                 firstHalf[2] = 0x2;
+                 firstHalf[3] = 0x4;
+                 
+                 secondHalf[0] = 1;
+                 secondHalf[1] = 0xFE;
+                 secondHalf[2] = 0xFD;
+                 secondHalf[3] = 0xFC;
+                 
                  
                  // cycle iterator
                  int iterator;
@@ -49,19 +54,6 @@ int main() {
                  // both must be 0 to use the algorithm (start with 00000 flip one at a tiem, set 1111, flip one at a time
                  // getting rid of 00000 and 111111 bytes (they can be assigned convenetly
                  //firstHalf[0]  = 0;
-                 firstHalf[0] = 0x1;
-                 secondHalf[1] = 0x1;
-                 
-				 
-                // 1st byte
-                 for (iterator=1 ; iterator < 0; iterator--) {
-                    firstHalf[iterator] = firstHalf[iterator-1] << 1;
-				 }
-				
-				 for (iterator=1 ; iterator < 0 ; iterator--) {
-                    
-                    secondHalf[iterator] = secondHalf[iterator-1] << 1;
-                 }
                  
                  // 2nd bytes
                   unsigned char *firstHalfA = firstHalf; 
@@ -78,23 +70,37 @@ int main() {
                   
                   
                   
+                 // igualar variavel a 
+                  // [half1 ,half0,half0
+                  // half0,halff1, half0
+                  // half0,half0,half1
                   
-                  unsigned char zero[4] = {firstHalf[0],firstHalf[1],firstHalf[2],firstHalf[3]};
-                  unsigned char one[4] = {secondHalf[0],secondHalf[1],secondHalf[2],secondHalf[3]};
                   
-                  unsigned char temp_threeBytes[3] = { firstHalf[0],firstHalf[0],firstHalf[0]};;
-                  unsigned char aux[3];
-                                                 
+                  // remains here because its a possibly solution
+                  //unsigned char zero[4] = {firstHalf[0],firstHalf[1],firstHalf[2],firstHalf[3]};
+                  //unsigned char one[4] = {secondHalf[0],secondHalf[1],secondHalf[2],secondHalf[3]};
+                    //one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
                   
-                  int pos=0;
-                  for (iterator=1; iterator < 4; iterator++) {
-                            temp_threeBytes =
-                            temp_threeBytes[iterator] = temp_threeBytes[iterator-1];
-                            
-                            
-                            
-                  }
+                 unsigned char ar[4];
+                 ar[0] = firstHalf[0];
+                 ar[1] = firstHalf[1];
+                 ar[2] = firstHalf[2];
+                 ar[3] = firstHalf[3];
+                 
+                 unsigned char *ptr = &ar[0];
+                 
+                 
+                 
+                for (iterator = 0 ; iterator < 2; iterator++) {
+                    
+                }
                       
+                      
+                      
+                      
+                      
+                        
+                  }
                   
                   
                   
