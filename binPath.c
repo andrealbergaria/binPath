@@ -1,6 +1,5 @@
 
 #include <stdio.h>
-#include <stdlib.h>
 
 
 //  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc) compared to the base;
@@ -14,7 +13,7 @@
 
 
 
-if you want to get all combinarions, just use 000 and then 001, and 010, and 100
+//if you want to get all combinarions, just use 000 and then 001, and 010, and 100
 
 void printBin(unsigned int n) {
     
@@ -77,18 +76,38 @@ int main() {
                   
                   
                   // remains here because its a possibly solution
-                  //unsigned char zero[4] = {firstHalf[0],firstHalf[1],firstHalf[2],firstHalf[3]};
+                  unsigned char zero[3] = {firstHalf[0],firstHalf[0],firstHalf[0]}
+                                            pos 0           pos 1       pos 2
+                                            
+                                            iterator 0
+                                            pos[iterator] = 1
+                                            
+                                            iterator 1
+                                            pos[iterator-1] = 0 
+                                            
+                                            
+                                            pos[0] = pos[1];
+                                            pos[1] = pos[2];
+                  
                   //unsigned char one[4] = {secondHalf[0],secondHalf[1],secondHalf[2],secondHalf[3]};
                     //one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
-                  
-                 unsigned char ar[4];
-                 ar[0] = firstHalf[0];
-                 ar[1] = firstHalf[1];
-                 ar[2] = firstHalf[2];
-                 ar[3] = firstHalf[3];
+                                            
+               // another possibily it to use the operator ++ or bit shift, so
+                                            //{ 00000000,00000001}
+                                            // { 00000000,0000001}  ++ or <<
+                                            
+                                            
+                                            
+                 //unsigned char *one = firstHalf;
+                 //unsigned char *zero = secondHalf;
+                                            int numBytes=3;
                  
-                 unsigned char *ptr = &ar[0];
                  
+                for (iterator = 1 ; iterator < 2; iterator++ ) {
+                       zero[iterator-1] = 0;
+                       zero[iterator] = 
+                 
+                 }
                  
                  
                 for (iterator = 0 ; iterator < 2; iterator++) {
