@@ -109,6 +109,11 @@ int main() {
                  
                  }
                  
+                 // O algoritmo para 3 bytes é
+                 //assign 00000000 = [1,2,3]
+                 // assign 00000001 = {1,3,2]
+                 // assign 00000010 = {2,1,3] mudanca relativa a [1,2,3] ou seja 00000000
+                 // assign 00000100 = [
                  
                 for (iterator = 0 ; iterator < 2; iterator++) {
                     
