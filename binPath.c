@@ -78,11 +78,20 @@ int main() {
                  // After , do the same for byte[] = {11111111,111111}. Hence we get all bytes.
                  
                  // 3rd solution, assign the number 0 or 1 a set...like for example 0=[1,2,3];
-                 // in the case of 11111 works ok, but if 0000, tends to a bit of changes
+                 // in the case of 11111 works ok, but if 0000, tends to a bit of changes, suggest inverse all bits,
+                 // but in this case,  (from 11111 to 00000), how can one invert a set?
                  
                  //4rd solution 
                  //Each shift represents a changing position
                  // So 
+                 
+                 //5 solution
+                 // derefenrece 
+                 
+                 char byte1['a','b','c'];
+                 
+                 
+                 
                  
                 for (iterator = 1 ; iterator < 2; iterator++ ) {
                        zero[iterator-1] = 0;
