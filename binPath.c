@@ -86,10 +86,57 @@ int main() {
                  // So 
                  
                  //5 solution
-                 // derefenrece 
+                 // each bit indicates if the character is present on the number
+                 // so for instance (abc = 111
+                 //a=1
+                 //b=1
+                 //c=1
+                 // for b=0 , 101
                  
-                 char byte1['a','b','c'];
+                    
+                    aaa
+                    pos(0) revert at pos((0)
+                    baa
+                    caa
+                    pos(1) revert at pos(1)
+                    aba
+                    aca
+                    pos(2) revert at pos(2)
+                    aab
+                    aac
+                    
+                    
+                    bbb
+                    pos(0) (revert at pos(0)
+                    cbb
+                    abb
+                    pos(1) (revert at pos(1)
+                    bcb
+                    bab
+                    pos(2) (revert at pos(2)
+                    bbc
+                    bba
+                    
+                    ccc
+                    pos(0) revert at pos(0)
+                    bcc
+                    acc
+                    pos(1)  revert at pos(1)
+                    cac
+                    cbc
+                    pos(2) revert at pos(2)
+                    cca
+                    ccb
+                    
+                    
+                    
+                    
+                 for 0='b' and 1='a' ==> 3 ops
+                 for 0='b' and 1='c' ==> 3 pos
                  
+                 for 0='c' and 1='a' ==> 3 pos 
+                 for 0='c' and 1='b' ==> 3 pos 
+                     
                  
                  
                  
