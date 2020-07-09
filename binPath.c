@@ -9,11 +9,17 @@
 // then start by {str, str ,str}
 // and keep changing {str,str,str2}
 // {str,str2,str} , etcetcetc 
-// 
+// 0 = str
+ //  0 = str2
+  // 0 =str3
+   
+//1=str
+//1=str2
+// 1=str3
+
+// another view of it, is that 0= 0 and 1=[1,2,3] for example...in this case the 111111 cases needs to invert the zero and the set ([1,2,3]
 
 
-
-//if you want to get all combinarions, just use 000 and then 001, and 010, and 100
 
 void printBin(unsigned int n) {
     
@@ -50,46 +56,13 @@ int main() {
                  // cycle iterator
                  int iterator;
                 
-                 // both must be 0 to use the algorithm (start with 00000 flip one at a tiem, set 1111, flip one at a time
-                 // getting rid of 00000 and 111111 bytes (they can be assigned convenetly
-                 //firstHalf[0]  = 0;
-                 
-                 // 2nd bytes
-                  unsigned char *firstHalfA = firstHalf; 
-                  unsigned char *firstHalfB = 0;
-                  
-                  unsigned char *secondHalfA = secondHalf;
-                  unsigned char *secondHalfB = 0;
-                  
-                  unsigned char *thirdHalfA = 0;
-                  unsigned char *thirdHalfB = firstHalf;
-                  
-                  unsigned char *fourthHalfA = 0;
-                  unsigned char *fourthHalfB = secondHalf;
-                  
-                  
-                  
-                 // igualar variavel a 
-                  // [half1 ,half0,half0
-                  // half0,halff1, half0
-                  // half0,half0,half1
-                  
                   
                   // remains here because its a possibly solution
-                  unsigned char zero[3] = {firstHalf[0],firstHalf[0],firstHalf[0]}
-                                            pos 0           pos 1       pos 2
+                  // unsigned char zero[3] = {firstHalf[0],firstHalf[0],firstHalf[0]}
+                    
                                             
-                                            iterator 0
-                                            pos[iterator] = 1
-                                            
-                                            iterator 1
-                                            pos[iterator-1] = 0 
-                                            
-                                            
-                                            pos[0] = pos[1];
-                                            pos[1] = pos[2];
+                                       
                   
-                  //unsigned char one[4] = {secondHalf[0],secondHalf[1],secondHalf[2],secondHalf[3]};
                     //one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
                                             
                // another possibily it to use the operator ++ or bit shift, so
@@ -97,11 +70,19 @@ int main() {
                                             // { 00000000,0000001}  ++ or <<
                                             
                                             
-                                            
-                 //unsigned char *one = firstHalf;
-                 //unsigned char *zero = secondHalf;
-                                            int numBytes=3;
+                 // 1st solution : assign to ,for example 0, 0= a;0 = b, 0=c , where a,b,c are bytes
+                 // Then, use the 00000001. In this case, the zero must substitute the bytes.
                  
+                 // 2nd solultion : etither add or bit shift, the entire stream of bytes
+                 // In this case , i have byte[] = {00000000,00000001} , and then bit shift one possition (or add a bit)
+                 // After , do the same for byte[] = {11111111,111111}. Hence we get all bytes.
+                 
+                 // 3rd solution, assign the number 0 or 1 a set...like for example 0=[1,2,3];
+                 // in the case of 11111 works ok, but if 0000, tends to a bit of changes
+                 
+                 //4rd solution 
+                 //Each shift represents a changing position
+                 // So 
                  
                 for (iterator = 1 ; iterator < 2; iterator++ ) {
                        zero[iterator-1] = 0;
@@ -118,7 +99,14 @@ int main() {
                  
                  8 shifts, 8 positions, 
                  8 shifts , 8 positions (comecando no 11111111)
-                 
+                 1 shifts = troca o ordem (posicaoo) entre 000000001 = 1  
+                                                           000000010 = 2
+
+                2nd shift = 00000010    =2 
+                            00000100    =4
+                            
+                            // um shift aumenta a posicao por 1
+                            shift = posicao+1;
                 // trying three bytes
                 [1,1,1]  
                 // What changes in between [], is the position

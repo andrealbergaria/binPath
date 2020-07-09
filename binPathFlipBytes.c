@@ -6,6 +6,29 @@
  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc);
 // Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
 
+
+// 
+char carray[4];
+int it=0
+int pos=0;
+
+pos= 0
+array[pos] = 1;
+pos=1
+array[pos] = array[pos-1];
+pos=2
+array[pos] = 1;
+
+
+
+
+pos[1] = 1;
+pos[2] = 1;
+
+for (
+    carray[pos] = 0b100;
+    pos++;
+    
 int main() {
                  
                  
@@ -35,6 +58,7 @@ int main() {
                      bytesInt[iterator] = bytesInt[iterator-1] >> 1;
                  }
                  
+                 bytesInt[iterator] = bytesInt[iterator-1];
                  
                  
                  
