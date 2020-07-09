@@ -85,6 +85,41 @@ int main() {
                  //Each shift represents a changing position
                  // So 
                  
+                 
+                 
+                0 0 0 0 0 1     1       [a,b,c] , pos(0) = [a,b,c]
+                                                  pos++ // after shifitng,
+                                                  pos(1) 
+                                                  
+                                                  
+                                                  
+                                                  baa , b=1,a=0
+                                                  aba
+                                                  aab
+                                                  
+                                                        a=1 b=0
+                                                    
+                                                  abb
+                                                  bab
+                                                  bba
+                                                        a=1 c=0
+                                                  caa
+                                                  aca
+                                                  aac
+                                                        a=1 c=1
+                                                  cbb       
+                                                  bcb   b=1 c=0
+                                                  bbc
+                                                    
+                                                  bcc
+                                                  cbc   b=0 a=1
+                                                  ccb
+                                                  
+                                                  pos(2) // after shifting
+                                                  
+                  0 0 0 0 1 0   2
+                  0 0 0 1 0 0   4
+                  
                  //5 solution
                  // each bit indicates if the character is present on the number
                  // so for instance (abc = 111
