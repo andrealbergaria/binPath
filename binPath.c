@@ -112,20 +112,86 @@ int main() {
                  // [0,0,1] => [0,1,1]
                  // [0,0,1] => [0,1,0]
                  
-                    [0,1,0] => [0,0,2]
-                    [0,1,0] =>[0,1,2]
-                    [0,1,0] => [0,2,2]
-                    
-                    
-                    [1,0,0] => [1,1,2]
+                 /*   [1,0,0] => [1,1,2]
                     [1,0,0] => [2,1,2]
                     [1,0,0] => [0,1,2]
                     
+                 
+                    [0,1,0] => [0,0,2]
+                    [0,1,0] =>[0,1,2]
+                    [0,1,0] => [0,2,2]
                     [0,0,1] => [0,0,1]
                     [0,0,1] => [0,0,2]
-                    [0,0,1] => [0,0,0]
+                    [0,0,1] => [0,0,0] */
                  
-                 
+                    
+                   // 9th solution Assign a=01 b=10 e c=11  each variable is equal to the before plus 1 
+                            zero
+                            one
+                            a=1 a++    a++
+                             
+                            11111111
+                            aaaaaaaa 
+                    
+                    
+                        acc    011111 
+                        cac    110111 
+                        cca    111101 
+                        
+                        bcc     101111
+                        cbc     110111
+                        ccb     111110
+                        
+                        cbb     111010
+                        bcb     101110
+                        bbc     101011
+                        
+                        abb     011010
+                        bab     100110
+                        bba     101001
+                        
+                        baa     100101
+                        aba     011001
+                        aab     010110
+                        
+                        caa     110101
+                        aca     011101
+                        aac     010111
+                        
+                        
+                        aaa 01 01 01 
+                        aab 01 01 10        ++
+                        aac 01 01 11        ++
+                        
+                        bba 10 10 01
+                        bbb 10 10 10
+                        bbc 10 10 11
+                        
+                        ccc 11 11 11     --
+                        ccb 11 11 10      --
+                        cca 11 11 01
+                        
+                        aba 01 10 01 ++
+                        abb 01 10 10
+                        abc 01 10 11
+                        
+                        
+                        
+                        
+                        
+                        
+                        acc 01 
+                        11 11 (+1, means a+1,pos 0)
+                        cac 01 10 11 // use rotate right?
+                        cca 11 11 01  
+                        
+                        
+                        
+                        //cac 11 01 11 
+                        bac 10 01 11 (-1 means b)
+                        aac 01 01 11 (-1 means a)
+                        
+                        
                  
                         (baa == caa) // change in one pos (not from base)
                         (aba == abb)
@@ -135,29 +201,7 @@ int main() {
                         = cac (reverse) = cab (shift) = aab (shfit) = acb (shift) = ccb (shift) = cca(shift)
                         = bca(shift) = bcc(shift)
                         
-                        acc
-                        cac
-                        cca
-                        
-                        bcc
-                        cbc
-                        ccb
-                        
-                        cbb
-                        bcb
-                        bbc
-                        
-                        abb
-                        bab
-                        bba
-                        
-                        baa
-                        aba
-                        aab
-                        
-                        caa
-                        aca
-                        aac
+                      
                         
                         
                                 
