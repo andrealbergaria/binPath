@@ -131,11 +131,34 @@ int main() {
                         (aba == abb)
                         (aab == bab)
                        
-                        bab = aba (inverse) = bba (shift) = baa (shift) = caa (shift) = acc(inverse) = 
+                        bab = aba (inverse) = bba (shift) = baa (shift) = caa (shift) = acc(inverse) = aca (shift)
+                        = cac (reverse) = cab (shift) = aab (shfit) = acb (shift) = ccb (shift) = cca(shift)
+                        = bca(shift) = bcc(shift)
                         
+                        acc
+                        cac
+                        cca
                         
-                        (
-                            
+                        bcc
+                        cbc
+                        ccb
+                        
+                        cbb
+                        bcb
+                        bbc
+                        
+                        abb
+                        bab
+                        bba
+                        
+                        baa
+                        aba
+                        aab
+                        
+                        caa
+                        aca
+                        aac
+                        
                         
                                 
                                 shift (da base bbb)  shift  shift
