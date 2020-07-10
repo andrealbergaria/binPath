@@ -170,14 +170,31 @@ int main() {
                 z = 00;
                 
                 z = 0
-                a = z + 1;
-                b = z + 2 and b= a+1
-                c = z + 3 and c= b+1
+                a = z + 1 = 01;
+                b = z + 2 = 10 and b= a+1 
+                c = z + 3 = 11 and c= b+1
+                o = c = 1
+                
+                inverse
+                z = 1
+                a = b
+                c = z
+                o = 00
                 o = c
                 
                 
+                [a,b,c,d]
                 
+                O = 1
+                Z = 0
                 
+                a=z+1 ==> 01
+                b=a+1 ==> 10
+                c=b+1 ==> 11
+                d=c+1 ==> 100
+               
+                
+                abc 01 10 11
                 
                     // finished inverse trying
                        zzz 00 00 00
