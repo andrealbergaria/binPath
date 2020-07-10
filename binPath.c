@@ -127,20 +127,15 @@ int main() {
                  
                  
                  
-                0 0 0 0 0 1     1       [a,b,c] , pos(0) = [a,b,c]
-                                                  pos++ // after shifitng,
-                                                  pos(1) 
-                                                  
-
-
-
                         (baa == caa) // change in one pos (not from base)
                         (aba == abb)
                         (aab == bab)
                        
+                        bab = aba (inverse) = bba (shift) = baa (shift) = caa (shift) = acc(inverse) = 
+                        
+                        
                         (
                             
-                        
                         
                                 
                                 shift (da base bbb)  shift  shift
