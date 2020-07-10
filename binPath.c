@@ -63,7 +63,7 @@ int main() {
                                             
                                        
                   
-                    //one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
+                  
                                             
                // another possibily it to use the operator ++ or bit shift, so
                                             //{ 00000000,00000001}
@@ -84,10 +84,47 @@ int main() {
                  //4rd solution 
                  //Each shift represents a changing position
                  // So 
-                 
+                  
+                    
                  
                  // 5th solution
                  //  Assign binary digits (0 or 1) to all variables (like a=0 , b =1 , and a=1 and c=0), and 
+                 
+                 // perhaps instead of 1 shift do 8 buits shift or 16
+                 
+                 
+                   // 6st solution one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
+                 
+                 
+                 //7 solution
+                 // each bit indicates if the character is present on the number
+                 // so for instance (abc = 111
+                 //a=1
+                 //b=1
+                 //c=1
+                 // for b=0 , 101
+                 
+                 //8 solution
+                 // for each bit , there is a change in the set. position or substituing
+                 
+                 // [0,1,2]
+                 // [0,0,1] => [0,1,2]
+                 // [0,0,1] => [0,1,1]
+                 // [0,0,1] => [0,1,0]
+                 
+                    [0,1,0] => [0,0,2]
+                    [0,1,0] =>[0,1,2]
+                    [0,1,0] => [0,2,2]
+                    
+                    
+                    [1,0,0] => [1,1,2]
+                    [1,0,0] => [2,1,2]
+                    [1,0,0] => [0,1,2]
+                    
+                    [0,0,1] => [0,0,1]
+                    [0,0,1] => [0,0,2]
+                    [0,0,1] => [0,0,0]
+                 
                  
                  
                 0 0 0 0 0 1     1       [a,b,c] , pos(0) = [a,b,c]
@@ -95,96 +132,38 @@ int main() {
                                                   pos(1) 
                                                   
 
-       
-       aaa
-       bbb
-       ccc
-            1)                                      
-                                                 1) baa  (b=1 ou a=0 )
-                                                 2) aba
-                                                3)  aab
-                                                  
-                                                 4) abb (revert of 1)) = a=1 , b=0)
-                                                 5) bab
-                                                 6) bba
-                                                  
-                                                  0) baa
-                                                  1) reverse pos(1) a ==> b  , aba
-                                                  2) reverse pos(2) a ==> b,   aab
-                                                  
-                                                  (c=0 ou a=1)
-                                                7
-aaa                                                
-baa (aaa shift pos)
-abb (invert)
-
-aba (aaa shift pos
-bab (invert)
 
 
-aab (aaa shift pos)
-bba (invert)
-
-
-for a = 1 , b= 0
-    ou
-    a=0 b= 1
-    
-    aa
-    ab
-    ba
-    bb
-    
-    11 => a=1 b=1
-    00 => a=0 ,b =0
-    
-    posso meter o mesmo byte em diferentes posicoes
-    11
-        11
-            11
-    byte temp = 0b10
-    
-    10 
-        10
-            10
-    
-    11             quero obter o byte inteiro
-        10
-           10
-    shift 8
-    10
-        11 
-            10
-    shift(8)
-
-
-byte[] = {a,b,c}
-
- a=0b101
- b=0b001
-c=0b110
-                        (baa == caa) // change in one pos
-                       (aba == aca)
-                        (aab == aac)
+                        (baa == caa) // change in one pos (not from base)
+                        (aba == abb)
+                        (aab == bab)
+                       
+                        (
+                            
                         
                         
-                        (bab == aab)
-                        (abb == aab == aac
-                        
-                                
                                 
                                 shift (da base bbb)  shift  shift
-                        (abb ==     bab         == bba == 
+                    1)    (abb ==     bab         == bba == 
                         
                                 shift (da base aaa)
-                        (baa == aba == aab)
+                   2)     (baa == aba == aab)
                         
                                 shift (da base ccc)
-                        (acc = cac == cca )
+                   3)     (acc = cac == cca )
                         
                                 shift(base aaa)
-                        caa = aca = aac 
-                    
+                   4)     caa = aca = aac 
+                        
+                        
+                                shift(base bbb)
+                   5)   cbb => bcb => bbc
+                        
+                                shift(base ccc)
+                   6)     bcc => cbc => ccb
+                        
+                        
+                        using two bases, we can invert the result(for example  reverte the results in 1) to 2)"
                         
                     
                     // base(aaa)
@@ -216,57 +195,6 @@ c=0b110
                     cbb // base bbb inverse of 4)
                     bcb
                     bbc
-abb !
-bab !
-bba !
-
-baa !
-aba !
-aab !
-
-acc !
-cac !
-cca !
-
-bcc !
-cbc !
-ccb !
-
-
-        
-
-        shift 1, then shift 8)
-        
-        b 
-            a
-    a
-        a
-            shift(16)    (shift a+b)
-
-           
-            
-            
-        inverse of anterior (baa, aba,aab) 
-        aab
-        aba
-        aab
-    
-    c
-        a
-            a
-   a
-        c           => inverse of first
-            a
-    a
-        a
-            c
-
-            inverse of anterior (caa,aca,aac)
-                                aac, cac,cca)
-            
-   10
-        10 (da base)
-            11 (mudou de pos[1] para pos[2], sendo um shift de 8 bits)
 
   
 
@@ -292,12 +220,9 @@ ccb !
     a=cccccc
     a=cccccb
     
-    
+      
     a=100100
     a=bccbcc
-    
-    a = cccb
-    a = ccbc
     
     1 bit = 1 byte?
     
@@ -317,10 +242,6 @@ ccb !
     
     
     
-    
-    shift a to the right (000,001)
-    pos A = 0
-    pos A = 1
     
     [ ] [ ] [ ]
      a   b   b
@@ -351,14 +272,6 @@ ccb !
     [ ]  [ ]   [ ]
      b   b      0b100
      
-     1    2   3             00000
-                            00001
-                            00010
-                            00100
-                            01000
-                            10000
-                            
-                            [ ] [ ] [ ] [ ] [ ] [ ]
      [ ] [ ] [ ]            
      10   0    0
     shift pos(1)  para pos(2)
@@ -382,13 +295,6 @@ use 1 bit b, shift it 3 times , cbb,bcb,bbc
                                 bcc,cbc,ccb
 
 
-                                for a= 1,b=0
-                                   1bb
-                                    b1b
-                                    bb1
-                                
-                                for a=0 , b=1 (revert)
-                                    
                                 
 abb -
 bab -
@@ -415,109 +321,10 @@ aba -
 aab
 
 
-
-aab (change bit 1)
-
-8) cca 
-                                                9)cac 
-                                                  
-
-                                                inversos(2) é igual original(1) mudado
-                                                
-original(1) = baa                                                
-inverse (1) = abb
-
-original(2) = aba
-inverse(2) = bab                                13)  cbb
-                                                14)  ccb
-original(3) = aab                               15)  cbc
-inverse(3) =  bba
-
-
-
-
-
-
-original(4) = caa
-inverse(4) = acc
-
-original(5) = aca
-inverse(5) = cac            inveser tb é igual a tipo inv4 = acc , inv4=
-
-original(6)= cac
-inverse(6) = aca
-
-
-                                                  
-                                                16)  bcc
-                                                17)  bbc
-                                                18)  bcb
-                                                  
-                                                  
-aaa
-
-
-baa
-aba
-aab
-
-caa
-aca
-aac
-
-                                           
-                                           
-                                                  
-                                                  
-                  0 0 0 0 1 0   2
-                  0 0 0 1 0 0   4
                   
-                 //5 solution
-                 // each bit indicates if the character is present on the number
-                 // so for instance (abc = 111
-                 //a=1
-                 //b=1
-                 //c=1
-                 // for b=0 , 101
                  
-                    
-                    aaa
-                    pos(0) revert at pos((0)
-                    baa
-                    caa
-                    pos(1) revert at pos(1)
-                    aba
-                    aca
-                    pos(2) revert at pos(2)
-                    aab
-                    aac
-                    
-                    
-                    bbb
-                    pos(0) (revert at pos(0)
-                    cbb
-                    abb
-                    pos(1) (revert at pos(1)
-                    bcb
-                    bab
-                    pos(2) (revert at pos(2)
-                    bbc
-                    bba
-                    
-                    ccc
-                    pos(0) revert at pos(0)
-                    bcc
-                    acc
-                    pos(1)  revert at pos(1)
-                    cac
-                    cbc
-                    pos(2) revert at pos(2)
-                    cca
-                    ccb
-                    
-                    
-                    
-                    
+                 
+                  
                  for 0='b' and 1='a' ==> 3 ops
                  for 0='b' and 1='c' ==> 3 pos
                  
