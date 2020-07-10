@@ -134,32 +134,84 @@ int main() {
                             aaaaaaaa 
                     
                     
-                        acc    011111 
-                        cac    110111 
-                        cca    111101 
+                        acc    011111 1 
+                        cac    110111 2
+                        cca    111101 3
                         
-                        bcc     101111
-                        cbc     110111
-                        ccb     111110
+                        bcc     101111 4
+                        cbc     110111 5
+                        ccb     111110 6
                         
-                        cbb     111010
-                        bcb     101110
-                        bbc     101011
+                        cbb     111010 7
+                        bcb     101110 8
+                        bbc     101011 9
                         
-                        abb     011010
-                        bab     100110
-                        bba     101001
+                        abb     011010 10
+                        bab     100110 11
+                        bba     101001 12
                         
-                        baa     100101
-                        aba     011001
-                        aab     010110
+                        baa     100101 13
+                        aba     011001 14
+                        aab     010110 15
                         
-                        caa     110101
-                        aca     011101
-                        aac     010111
+                        caa     110101 16
+                        aca     011101 17
+                        aac     010111 18
+                        
+                        z= 0
+                        
+                        aaz  01 01 00
+                        aaa  01 01 01 ++
+                        aab  01 01 10 ++
+                        aac  01 01 11 ++
+                       
+                // trying inverse for aaz
+                        bbc = 10 10 11
+                                
+                // trying inverse for aaa
+                       
+                        bbb= 10 10 10
+                       
+                    
+                    // finished inverse trying
+                    caz 11 11 00
+                       caa 11 01 01  ++
+                       cab 11 01 10  ++
+                       cac 11 01 11  ++
                         
                         
-                        aaa 01 01 01 
+                        bbz 10 10 00 
+                        bba 10 10 01 ++
+                        bbb 10 10 10 ++
+                        bbc 10 10 11 ++
+                        
+                        ccz 11 11 00
+                        cca 11 11 01 ++
+                        ccb 11 11 10 ++
+                        ccc 11 11 11 ++
+                       
+                      
+                       
+                       baz 10 01 00
+                       baa 10 01 01 ++ 
+                       bab 10 01 10 ++
+                       bac 10 10 11 ++
+                       
+                       cbz 11 10 00 
+                       cba 11 10 01 ++
+                       cbb 11 10 10 ++
+                       cbc 11 10 11 ++
+                       
+                        
+                        
+                        
+                        
+                        
+                        bbz  10 10 00 (xor 1)
+                        bba  10 10 01 (xor 1)
+                            
+                        
+                        
                         aab 01 01 10        ++
                         aac 01 01 11        ++
                         
@@ -175,7 +227,9 @@ int main() {
                         abb 01 10 10
                         abc 01 10 11
                         
-                        
+                        baa 10 01 01
+                        bab 10 01 10  ++
+                        bac 10 01 11  ++
                         
                         
                         
