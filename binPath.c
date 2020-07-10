@@ -158,20 +158,45 @@ int main() {
                         aca     011101 17
                         aac     010111 18
                         
-                        z= 0
-                        
-                        aaz  01 01 00
-                        aaa  01 01 01 ++
-                        aab  01 01 10 ++
-                        aac  01 01 11 ++
-                       
+ 
+                        aac  01 01 11 
+                        aab  01 01 10 --
+                        aaa  01 01 01 --
+                        aaz  01 01 00 --
+ 
+ 
+                
+ 
+                // invesrions
+                a = b (b=a also works)
+                c = z (z=c works)
+                
+                
+                // trying inverse for aac
+                inverseOf(a) = b
+                inverseOf(c) = z
+                
+                bbz = 10 10 00
+                
+               // trying inverse for aab
+                    inverse(a) = b
+                    inverse(b) = a
+                      bba=    10 10 01 
+
+                
+                // trying inverse for aaa
+                       inverse of (a) =b
+                       inverse of (b) = a
+                        bbb=  10 10 10
+
+                
                 // trying inverse for aaz
                         bbc = 10 10 11
                                 
-                // trying inverse for aaa
-                       
-                        bbb= 10 10 10
-                       
+                
+                            
+                    
+                
                     
                     // finished inverse trying
                     caz 11 11 00
