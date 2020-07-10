@@ -159,53 +159,35 @@ int main() {
                         aac     010111 18
                         
  
-                        aac  01 01 11 
-                        aab  01 01 10 --
-                        aaa  01 01 01 --
-                        aaz  01 01 00 --
- 
- 
-                
- 
+                  
                 // invesrions
-                a = b (b=a also works)
-                c = z (z=c works)
+                inverseOf(a) = b (b=a also works)  add value 1 to a , or substact value 1 to b
+                inverseOf(c) = z (z=c works)
+                
+                One
+                o = 11 = c;
+                Zero
+                z = 00;
+                
+                z = 0
+                a = z + 1;
+                b = z + 2 and b= a+1
+                c = z + 3 and c= b+1
+                o = c
                 
                 
-                // trying inverse for aac
-                inverseOf(a) = b
-                inverseOf(c) = z
                 
-                bbz = 10 10 00
                 
-               // trying inverse for aab
-                    inverse(a) = b
-                    inverse(b) = a
-                      bba=    10 10 01 
-
                 
-                // trying inverse for aaa
-                       inverse of (a) =b
-                       inverse of (b) = a
-                        bbb=  10 10 10
-
-                
-                // trying inverse for aaz
-                        bbc = 10 10 11
-                                
-                
-                            
-                    
-                
-                    
                     // finished inverse trying
-                    caz 11 11 00
+                       zzz 00 00 00
+                       zz
+                            
                        caa 11 01 01  ++
                        cab 11 01 10  ++
-                       cac 11 01 11  ++
-                        
-                        
-                        bbz 10 10 00 
+                       cac 11 01 11  ++ => (equal to cao)
+                       
+                       bbz 10 10 00 
                         bba 10 10 01 ++
                         bbb 10 10 10 ++
                         bbc 10 10 11 ++
