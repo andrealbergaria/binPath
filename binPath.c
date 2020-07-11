@@ -64,28 +64,85 @@ int main() {
                                        
                   
                   
-                                            
-                 // 1st solultion : etither add or bit shift, the entire stream of bytes
+                // other solution
+                 // set the binary number as one sequence
+                 
+                 // for example 110 = [b,a,b]
+                 // for example 111 = [c,a,c]
+                 
+                 // other solultion : etither add or bit shift, the entire stream of bytes
                  // In this case , i have byte[] = {00000000,00000001} , and then bit shift one possition (or add a bit)
                  // After , do the same for byte[] = {11111111,111111}. Hence we get all bytes.
                  
-                 // 3rd solution, assign the number 0 or 1 a set...like for example 0=[1,2,3];
-                 // in the case of 11111 works ok, but if 0000, tends to a bit of changes, suggest inverse all bits,
-                 // but in this case,  (from 11111 to 00000), how can one invert a set?
+                 // other solution, assign the number 0 or 1 a set...like for example 0=[1,2,3];
+                 /*
+                 1=shift [1,2,3];
+                         01 10 11
+                         
+                 0=shift 1
+                        00 01 10
+                        
+                 1=shift 2
+                         00 00 01
+                         
+                0 = shift 3
+                        00 00 00
+                        
+                        
+                trying to invert
+                100100
+                111001
+                111110
+                111111
+                //how can one invert a set?
                  
-                 //4rd solution 
+                 // solution 
                  //Each shift represents a changing position
                  // So 
-                  
+                 
+                 00 = [1,2,3] 01 10 11
+                 
+                 01  = shift 1 bit right
+                 01  = 001101
+                     [zero,3,1]
+                 
                     
                  
-                 // 5th solution
-                 //  Assign binary digits (0 or 1) to all variables (like a=0 , b =1 , and a=1 and c=0), and 
-                 
-                 // perhaps instead of 1 shift do 8 buits shift or 16
                  
                  
-                   // 6st solution one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
+                 // solution perhaps instead of 1 shift do 8 buits shift or 16
+                 
+                 
+                   //  solution one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
+                 // char *f1 = secondHalf
+                 
+                 // char half[4] = { 0001,0010,0100,1000 }
+                 
+                 char *h1 = half[0]
+                 char *h2 = half[1]
+                 char *h3 = half[2]
+                 char *h4 = half[3]
+                 
+                a // {*h1,*h1,*h1 }
+                b // {*h1,*h2,*h1 } 
+                c // {*h1,*h1,*h2} 
+                d // {*h2,*h1,*h2} 
+                e // {*h2,*g2,*h1} 
+                 ... and so one
+                 it = 0
+                 a[0] = *h1
+                 a[1] = *h1
+                 a[2] = *h1
+                 
+                 a[1] = *h2; ( h1 h2 h1
+                 a[1] = *h3  ( h1 h3 h1)
+                 a[1] = *h4  (h1 h4 h1)
+                 
+                 a[1] = *h1;
+                 
+                 a[2] = *h2; ( h1 h2 h1
+                 a[2] = *h3  ( h1 h3 h1)
+                 a[2] = *h4  (h1 h4 h1)
                  
                  
                  //7 solution
@@ -96,19 +153,15 @@ int main() {
                  //c=1
                  // for b=0 , 101
                  
-                 //8 solution
+                 // solution ( i think already tried)
                  // for each bit , there is a change in the set. position or substituing
-                 
-                 // [0,1,2]
-                 // [0,0,1] => [0,1,2]
-                 // [0,0,1] => [0,1,1]
-                 // [0,0,1] => [0,1,0]
-                 
-                 /*   [1,0,0] => [1,1,2]
+                 /* [0,1,2]
+                    [0,0,1] => [0,1,2]
+                    [0,0,1] => [0,1,1]
+                    [0,0,1] => [0,1,0]
+                    [1,0,0] => [1,1,2]
                     [1,0,0] => [2,1,2]
                     [1,0,0] => [0,1,2]
-                    
-                 
                     [0,1,0] => [0,0,2]
                     [0,1,0] =>[0,1,2]
                     [0,1,0] => [0,2,2]
@@ -117,15 +170,8 @@ int main() {
                     [0,0,1] => [0,0,0] */
                  
                     
-                   // 9th solution Assign a=01 b=10 e c=11  each variable is equal to the before plus 1 
-                            zero
-                            one
-                            a=1 a++    a++
-                             
-                            11111111
-                            aaaaaaaa 
-                    
-                    
+                   // solution Assign a=01 b=10 e c=11  each variable is equal to the before plus 1 
+                      
                         acc    011111 1 
                         cac    110111 2
                         cca    111101 3
@@ -191,8 +237,26 @@ int main() {
         // finished inverse trying
                             
                         
+                        10 01 01 
+                        //one bit to change the abb (shift,reverse,
+                        11 01 01 (
+                            
+                            
+                      xor 10 01 01      (baa  => 1+4+32
+                          11 01 01      (caa)  => 32+16+4+1 (+16)
+                          ---------
+                          01 00 00          +16 (01 00 00)
+                            // xor use to add
+                            
+                     xor 11 01 01           (caa)
+                         10 01  01          (baa)
+                         01 00  00   // +16 
+                                    //xor use to subtract
                         
-                 
+                    xor bba = 10 10 01
+                        bbc  = 10 10 11
+                        -----------------
+                                000010 // +2
                         (baa == caa) // change in one pos (not from base)
                         (aba == abb)
                         (aab == bab)
