@@ -256,7 +256,36 @@ int main() {
                     xor bba = 10 10 01
                         bbc  = 10 10 11
                         -----------------
-                                000010 // +2  (flip de quantos ? 000000 >> 6
+                        
+                        000010 // +2  (flip de quantos ? 000000 >> 6
+                        
+                        10 10 10 bbb
+                        10 10 11 bbc
+                        
+                        000001 +1 (xor)
+                        
+                        10 10 01 (bba)
+                        00 00 10 +2 (xor)
+                        
+                        several adds, will result in the binary number
+                        
+                        
+                        01 01 01 aaa
+                        01 10 01 aab 
+                        
+                        
+                        00 11 00 +4+8 = 12 (xor) (
+                        
+                        01 01 10 aab
+                        
+                        
+                        
+                        10 10 01 bba
+                        
+                        
+                        
+                        
+                        
                                 
                         aaa = 01 01 01 (a)
                         aab = 01 01 10 (b)
