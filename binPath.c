@@ -62,7 +62,7 @@ int main() {
                     
                                             
                                        
-                  
+                  // use xhg (asm) to a=b b=a
                   
                 // other solution
                  // set the binary number as one sequence
@@ -197,7 +197,8 @@ int main() {
                         aac     010111 18
                         
  
-                  
+                 
+          
                 // invesrions
                 inverseOf(a) = b (b=a also works)  add value 1 to a , or substact value 1 to b
                 inverseOf(c) = z (z=c works)
@@ -264,23 +265,116 @@ int main() {
                         
                         000001 +1 (xor)
                         
+                                  (bbb)
                         10 10 01 (bba)
+                        
                         00 00 10 +2 (xor)
                         
-                        several adds, will result in the binary number
+                       // several adds, will result in the binary number
+                        
+                       /*  11 11 11 ccc  
+                         11 11 10 ccb
+                         --------
+                         00 00 01 (zza) +1
+                         
+                         11 11 11 ccc
+                         11 11 01 cca
+                         --------
+                        00 00 10 +2 (zzb)
+                        
+                        11 11 11 ccc
+                        11 11 11 ccc
+                        --------
+                        00 00 00  +(zzz) +0
+                        */
+                        
+                         11 11 11 ccc  
+                         11 11 10 ccb
+                         --------
+                         00 00 01 (zza) +1
+                         
+                        
+                        
+                        10 10 10 bbb
+                        10 10 11 bbc
+                        --------
+                        00 00 01 (zza) +1
+                        
+                        
+                        a->b  +3 (aaa,aab) last pos
+                        c->a +2 (ccc,cca) last pos
+                        c->z +1 (ccc,ccz) last pos
+                        
+                        01 01 01 (aaa,aba)
+                        01 11 01
+                        ---------
+                        00 10 11 = 3+8
+                        
+                        
+                        01 01 01
+                        01 10 01
+                        00 11 00
                         
                         
                         01 01 01 aaa
-                        01 10 01 aab 
-                        
-                        
-                        00 11 00 +4+8 = 12 (xor) (
-                        
                         01 01 10 aab
+                        ----------
+                       00 00 11 (zzc) +3
+                        
+                        11 11 11 ccc
+                        11 11 01 cca
+                        
+                        
+                        00 00 10  +2
+                        
+                        
+                        last characters is the adding number
                         
                         
                         
-                        10 10 01 bba
+                        
+                       10 10 10 bbb
+                       10 11 10 bcb
+                       ---------
+                       00 01 00 (zaz) +4
+                       
+                        11 11 11 ccc 
+                        10 01 01 bcc
+                        -------
+                        01 10 10 (abb)
+                        
+                        
+                        01 01 01 aaa
+                        01 01 10 aab  
+                        --------
+                        00 00 11 (+3)
+                       
+                        01 01 01 aaa
+                        01 01 11 aac
+                        --------
+                        00 00 10 +2
+                        
+                        01 01 01 aaa
+                        01 11 01 aca
+                        --------
+                        00 1000 +8
+                        
+                        01 01 01 aaa (aaa,caa, aca, aac todos feitos)
+                        01 10 01 aba (aaa,baa,aba,aab todos feitos)
+                        --------
+                        00 11 00 +4+8 = 12
+                        
+                        // check number of characters
+                    11 11 11 ccc (ccc | ,cca |,ccb,cac,acc
+                        01 11 11 acc
+                        -------
+                        10 00 00 +32
+                        
+                        11 11 11 ccc
+                        11 01 11 cac
+                        --------
+                        00 10 00 +8
+                        
                         
                         
                         
@@ -393,12 +487,77 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                  
                  }
                  
-                 // O algoritmo para 3 bytes é
-                 //assign 00000000 = [1,2,3]
-                 // assign 00000001 = {1,3,2]
-                 // assign 00000010 = {2,1,3] mudanca relativa a [1,2,3] ou seja 00000000
-                 // assign 00000100 = [3,2,1]
-                 // if it was binary code, then we would make a shift, in thise case we change pos
+
+                 
+                 /* para cada shift right [01,10,11]
+                  *                         a  b  c
+                                          [00,01,10]
+                                            z a b
+                                          [00,00,01]
+                                            z z a
+                                          [00,00,00]
+                                            z  z z
+                para cada shift left [01,10,11]
+                                       a  b c
+                                     [10,11,00]
+                                      b  c z
+                                     [11,00,00]
+                                     c z z
+                                     [00,00,00
+                                    z z z
+                {[1,2,3] = perumtations with repetations= 27
+               
+               [1,2,3] is used (pos(0) = 1  , pos(1)= 2 , pos(2) = 3 (because on each position , one increments the before)
+                                    
+                 
+                  assign 00000000 = [1,2,3]
+                  assign 00000001 = {1,2,3]  (var=1 1 change to set)
+                  assign 00000010 = {1,2,3]  (var=2 (correspond to 2 changes to set)
+                  assign 00000100 = [1,2,3] (var=3 (correspond to 3 changes in set)
+                  total permutations = 2+4+8+16+32+64+128+256 = 509 
+                  
+                  
+                  
+                  if it was binary code, then we would make a shift, in thise case we change pos
+                      
+                1)    100
+                2)    010
+                3)    001 pos(0) =pos(1),pos(2)=pos(1)  (2shifts, 0 -> 1 , 1->2, um shift uma posicao++)
+                      
+                     
+                      3bits=8 orders
+                      
+                      e se eu fizer o shift, com posicao fixa no bit anterior
+                      
+                      01 01   ( ==> correspond to 100 , on the last seq (1)) 
+                      01 10   ( ==! correspond to 010 , on the last seq(2) shift efectuado (01 01
+                      10 10                                                                  01 10                                                                      
+                      10 01   ( ==> correspond to 001, om the last seq(3) , shift efectuado (10 01
+                                                                                            10 (01)
+                                                                                                            
+                    
+                    num da posicao = numero binario (nao resulta)
+                      000 = position(0)
+                      001 = position(1)
+                      010 = position(2)
+                      100 = position(8)
+                      
+                      
+                      
+                     // equal one bit digit to a position, and other digit to a position  (1=1 0=2)
+                     // 1=01 0=10
+                     // so the bit 1 is equal to 1 position
+                     // so the bit 0 is equal to 2 position
+                     
+                    
+                    100 (1,2,2) 
+                    010 (2,1,2)
+                    001 (2,2,1)
+                    
+                      01 10 10         100  
+                      10 01 10         010
+                      10 10 01         001
+                      
                  
                  8 shifts, 8 positions, 
                  8 shifts , 8 positions (comecando no 11111111)
