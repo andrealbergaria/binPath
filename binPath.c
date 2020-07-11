@@ -245,7 +245,7 @@ int main() {
                       xor 10 01 01      (baa  => 1+4+32
                           11 01 01      (caa)  => 32+16+4+1 (+16)
                           ---------
-                          01 00 00          +16 (01 00 00)
+                          01 00 00          +16 (01 00 00) (flip de quantos ? 000000 >> 2
                             // xor use to add
                             
                      xor 11 01 01           (caa)
@@ -256,7 +256,18 @@ int main() {
                     xor bba = 10 10 01
                         bbc  = 10 10 11
                         -----------------
-                                000010 // +2
+                                000010 // +2  (flip de quantos ? 000000 >> 6
+                                
+                        aaa = 01 01 01 (a)
+                        aab = 01 01 10 (b)
+                        xor
+                        ------------------
+                              00 00 11 (c) set last char  
+                                
+                        aaa = 01 01 01 (a)
+                        aac = 01 01 11 (c)
+                              00 00 10 (b)
+                                
                         (baa == caa) // change in one pos (not from base)
                         (aba == abb)
                         (aab == bab)
