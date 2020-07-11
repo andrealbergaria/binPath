@@ -554,10 +554,22 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                     010 (2,1,2)
                     001 (2,2,1)
                     
-                      01 10 10         100  
-                      10 01 10         010
-                      10 10 01         001
+                    // bit 1 = 2, bit 0=1
+                    100 (2,1,1)
+                    010 (1,2,1)
+                    001 (1,1,2)
                       
+                   [2,3,4] 
+                   1000  (1pos,2pos,2pos,2pos) 
+                   0100
+                   0010
+                   
+                   increment 1pos
+                    0100 = 
+                   
+                   so if i follow the algorithm (0000 00001 0010 0100 1000, 1111 1110 1101 1011,0111)
+                   it woudl work
+                   
                  
                  8 shifts, 8 positions, 
                  8 shifts , 8 positions (comecando no 11111111)
