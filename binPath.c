@@ -65,15 +65,7 @@ int main() {
                   
                   
                                             
-               // another possibily it to use the operator ++ or bit shift, so
-                                            //{ 00000000,00000001}
-                                            // { 00000000,0000001}  ++ or <<
-                                            
-                                            
-                 // 1st solution : assign to ,for example 0, 0= a;0 = b, 0=c , where a,b,c are bytes
-                 // Then, use the 00000001. In this case, the zero must substitute the bytes.
-                 
-                 // 2nd solultion : etither add or bit shift, the entire stream of bytes
+                 // 1st solultion : etither add or bit shift, the entire stream of bytes
                  // In this case , i have byte[] = {00000000,00000001} , and then bit shift one possition (or add a bit)
                  // After , do the same for byte[] = {11111111,111111}. Hence we get all bytes.
                  
@@ -188,86 +180,16 @@ int main() {
                 O = 1
                 Z = 0
                 
+                
+        // In the case , a,b,c use the truth table
                 a=z+1 ==> 01
                 b=a+1 ==> 10
                 c=b+1 ==> 11
                 d=c+1 ==> 100
                
                 
-                abc 01 10 11
-                
-                    // finished inverse trying
-                       zzz 00 00 00
-                       zz
+        // finished inverse trying
                             
-                       caa 11 01 01  ++
-                       cab 11 01 10  ++
-                       cac 11 01 11  ++ => (equal to cao)
-                       
-                       bbz 10 10 00 
-                        bba 10 10 01 ++
-                        bbb 10 10 10 ++
-                        bbc 10 10 11 ++
-                        
-                        ccz 11 11 00
-                        cca 11 11 01 ++
-                        ccb 11 11 10 ++
-                        ccc 11 11 11 ++
-                       
-                      
-                       
-                       baz 10 01 00
-                       baa 10 01 01 ++ 
-                       bab 10 01 10 ++
-                       bac 10 10 11 ++
-                       
-                       cbz 11 10 00 
-                       cba 11 10 01 ++
-                       cbb 11 10 10 ++
-                       cbc 11 10 11 ++
-                       
-                        
-                        
-                        
-                        
-                        
-                        bbz  10 10 00 (xor 1)
-                        bba  10 10 01 (xor 1)
-                            
-                        
-                        
-                        aab 01 01 10        ++
-                        aac 01 01 11        ++
-                        
-                        bba 10 10 01
-                        bbb 10 10 10
-                        bbc 10 10 11
-                        
-                        ccc 11 11 11     --
-                        ccb 11 11 10      --
-                        cca 11 11 01
-                        
-                        aba 01 10 01 ++
-                        abb 01 10 10
-                        abc 01 10 11
-                        
-                        baa 10 01 01
-                        bab 10 01 10  ++
-                        bac 10 01 11  ++
-                        
-                        
-                        
-                        
-                        acc 01 
-                        11 11 (+1, means a+1,pos 0)
-                        cac 01 10 11 // use rotate right?
-                        cca 11 11 01  
-                        
-                        
-                        
-                        //cac 11 01 11 
-                        bac 10 01 11 (-1 means b)
-                        aac 01 01 11 (-1 means a)
                         
                         
                  
@@ -339,90 +261,6 @@ int main() {
   
 
             
-3 bits de byte temporario = 
-    
-    00
-        00         alternou byte cria o binario
-            00
-            
-    
-    
-    
-    
-    
-    
-    
-    a=111111
-    
-    bit_1 = b
-    bit_0 = c 
-    
-    a=cccccc
-    a=cccccb
-    
-      
-    a=100100
-    a=bccbcc
-    
-    1 bit = 1 byte?
-    
-    1 byte= shift binary?
-    
-    
-    
-    
-    10  => a=1 , b=0
-    
-    
-    reverse (so for calculating the reserv , just assing b=0 and a=1)
-    
-    01 => b=0 , a=1
-    
-    
-    
-    
-    
-    
-    [ ] [ ] [ ]
-     a   b   b
-    [ ] [ ] [ ]
-     b   a   b
-     
-     
-     00000
-     00001
-     
-     a = ? , 0 ?
-     a = 4, 0b100
-     
-     [ ]    [ ] [ ]
-     0b100   b   b
-    [ ]     [ ] [ ]
-     b   0b100   b
-     
-     
-     0000
-     0001 1-8 pos
-     shift 1 , pos(1)
-     
-     incremento o ultimo bit
-     reverse
-    
-    
-    [ ]  [ ]   [ ]
-     b   b      0b100
-     
-     [ ] [ ] [ ]            
-     10   0    0
-    shift pos(1)  para pos(2)
-
-     1    2   3 
-     [ ] [ ] [ ]
-      0   10  0
-    
-    [ ] [ ] [ ]
-    11   0   0
-    
     
     
 
@@ -434,45 +272,16 @@ use 1 bit b, shift it 3 times , cbb,bcb,bbc
                                 invert
                                 bcc,cbc,ccb
 
-
+use 1 bit b, shift it 3 times , acc,cac,cca
+                                caa,aca,aac
                                 
-abb -
-bab -
-bba -
 
-baa -
-aba -
-aab -
-
-cbb -
-bcb -
-bbc -
-
-bcc -
-cbc -
-ccb -
-
-bba -
-bbb
-bab -
-aab -
-abb -
-aba -
-aab
-
-
-                  
-                 
-                 
-                  
                  for 0='b' and 1='a' ==> 3 ops
                  for 0='b' and 1='c' ==> 3 pos
                  
                  for 0='c' and 1='a' ==> 3 pos 
                  for 0='c' and 1='b' ==> 3 pos 
                      
-                 
-                 
                  
                 for (iterator = 1 ; iterator < 2; iterator++ ) {
                        zero[iterator-1] = 0;
