@@ -362,8 +362,10 @@ int main() {
              // for xhanging positions of varaibles rather than zeros, one uses the xgh operator (like in asm)
                 
                 // the objective it sum the last statement with +1
+             
+             
                 // the changing in the third position is number+1
-                // the changing in the second position is number+?
+                
                 
                 01 00 00 => +1   => 01 00 01
                 a  z   z            a  z  a
@@ -384,30 +386,35 @@ int main() {
                
                
                
-               10 00 00 => -1 =>   acc
+               10 00 00 => -1 => acc
                 b  z  z 
-               01 00 00 => -1 => acc
+               01 00 00 => -1 => zcc
                 a  z   z
-               
-               
-               01 01 00 => -1 =>  bab
-                b  b z     
                 
-               
-             
-             ccz => -1 => cbc
-             
-             
-            
-                bcb => +2 => czz
+               11 00 00 (czz) => -1 => bcc
+                                 -2 => bcb
+                                 -3 => bca
+                                 -4 => bcz
+                                 -5 => bbc
+                                 
+                00 00 01 (zza) => +1 => 00 00 10 (zzb)
+                               => +2 => 00 00 11 (zzc)
+                               => +3 => 00 01 00 (zaz)
+                               => +4 => 00 01 01 (zaa)
+                               
+                               => -1 => 00 00 00 (zzz)
+                               => -2 => ???
                 
-                
-                azz => +2 => azb
-                
-                
-                bbc => +2 => aca
-                
-                
+                11 01 00 => +1 =>  caa
+                         => +2 =>  cab
+                         => +3 =>  cac
+                         => +4 =>  cbz
+                         
+                         => -1 =>  czc
+                         => -2 =>  czb
+                         => -3 =>  cza
+                         => -4 =>  czz
+                         
                 z = 0
                 a = z + 1 = 01;
                 b = z + 2 = 10 and b= a+1 
