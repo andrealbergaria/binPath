@@ -305,81 +305,154 @@ int main() {
                         c->a +2 (ccc,cca) last pos
                         c->z +1 (ccc,ccz) last pos
                         
-                        01 01 01 (aaa,aba)
-                        01 11 01
-                        ---------
-                        00 10 11 = 3+8
+                        xor must be equal to +1 (1st round)
                         
+                      a  00 00 
+                      b  00 01  a^b = 00 00 xor 00 01 = 0001 = b^a
                         
-                        01 01 01
-                        01 10 01
-                        00 11 00
-                        
-                        
-                        01 01 01 aaa
-                        01 01 10 aab
-                        ----------
-                       00 00 11 (zzc) +3
-                        
-                        11 11 11 ccc
-                        11 11 01 cca
-                        
-                        
-                        00 00 10  +2
-                        
-                        
-                        last characters is the adding number
-                        
-                        
-                        
-                        
-                       10 10 10 bbb
-                       10 11 10 bcb
-                       ---------
-                       00 01 00 (zaz) +4
-                       
-                        11 11 11 ccc 
-                        10 01 01 bcc
-                        -------
-                        01 10 10 (abb)
-                        
-                        
-                        01 01 01 aaa
-                        01 01 10 aab  
-                        --------
-                        00 00 11 (+3)
-                       
-                        01 01 01 aaa
-                        01 01 11 aac
-                        --------
-                        00 00 10 +2
-                        
-                        01 01 01 aaa
-                        01 11 01 aca
-                        --------
-                        00 1000 +8
-                        
-                        01 01 01 aaa (aaa,caa, aca, aac todos feitos)
-                        01 10 01 aba (aaa,baa,aba,aab todos feitos)
-                        --------
-                        00 11 00 +4+8 = 12
-                        
-                        // check number of characters
-                    11 11 11 ccc (ccc | ,cca |,ccb,cac,acc
-                        01 11 11 acc
-                        -------
-                        10 00 00 +32
-                        
-                        11 11 11 ccc
-                        11 01 11 cac
-                        --------
-                        00 10 00 +8
-                        
-                        
-                        
-                        
-                        
-                        
+                      ab=ba
+                      
+                     
+                      
+                                    
+                     a 00 00 
+                     b 00 01 add a+1 (ab=ba)
+                     -------
+                           1
+                           
+                    
+                    2nd round    +2
+                     
+                     a  00 00
+                     c  00 10  add a+2  a^c = 0010 = c^a
+                     
+                      
+                   3rd round
+                    
+                    b 00 01
+                    c 00 10   add a+3   b^c = 0011 = c^b
+                    
+                //its all equal from on now
+             
+             
+             from the above, 
+             z=00
+             a=01
+             b=10
+             c=11
+             
+             // to get the bytes from the variables, for instance to make a= ? to use 2 bytes, 
+             a) 2bytes-> 1 byte (shift left 2 bits)
+             
+             
+             3bytes-> a) 2bytes -> 1byte
+             
+             3) bytes shift left 2 bits + shift left 2 bits (4 bits)
+             
+             
+             // todos os shifts bits qualquer que sejam o numero de bytes, vao originar os elementos (a,b,c)
+             
+             // para numBytes = 3 , shift left 4 bits
+             // para numBytes = 4 , shift left 6 bits
+             
+             For (number = 00 00 01 => z b then shift 4 bits turns on, bz optimization!!!)
+             
+             
+             // for zeros (z) use the shift 2 bits
+             // for xhanging positions of varaibles rather than zeros, one uses the xgh operator (like in asm)
+                
+                // the objective it sum the last statement with +1
+                // the changing in the third position is number+1
+                // the changing in the second position is number+?
+                
+                01 00 00 => +1   => 01 00 01
+                a  z   z            a  z  a
+                
+                00 00 10 => +1 => 00 00 11
+                z  z   a           z  z  c 
+                
+                01 01 00 => +1 => 01 01 01
+                a  a  z             a   a  a
+                
+                11 11 00 => +1 =>  11 11 01
+                c  c  z             c c a           
+                
+                
+               01 01 00 => +1 => 01 01 01
+               b  b  z           b  b  a
+                
+                
+                
+                
+                
+                
+                // just add, different numbers to change positions
+                azz 01 00 00
+                zaz 00 10 00
+                zza 00 00 10
+                
+                
+                
+                
+                //b z (shift left 4 bits)
+                
+                
+                2nd round
+                00 00 00
+                00 00 10 add a+2  00 00 00 xor 00 00 10 = 10 (2 decimal)
+                
+                zzb
+                a b
+               
+               xhg(a,b) = ba
+               
+               
+               
+                3rd round
+                00 00 00 
+                00 00 11 add a+3  00 00 00 xor 00 00 11 = 11 (3 decimal)
+                
+                z z
+                a c
+                
+                xhg(c,a) = ca
+                
+                4rd round
+                00 00 00
+                00 01 00 add a+4 00 00 00 xor 00 01 00  = 100 (4 decimal)
+                
+                z z
+                // shift
+                //b z (already got it so 4rd round off)
+                xhg(z,b)
+             
+             5 round a+5 
+               00 00 00 
+               00 01 01
+               
+               zzz
+               zbb xhg(
+               
+            6 round a+6
+              00 00 00
+              00 01 10
+                
+            zzz
+            zab
+               
+               não é preciso o segundo elemento , base adicionar a+5
+           
+           7 round a+7
+            00 00 00
+            00 01 11
+                
+                
+                
+                
+                 {[1,2,3] = perumtations with repetations= 27
+                
+                
+                
                                 
                         aaa = 01 01 01 (a)
                         aab = 01 01 10 (b)
@@ -390,6 +463,10 @@ int main() {
                         aaa = 01 01 01 (a)
                         aac = 01 01 11 (c)
                               00 00 10 (b)
+                              
+                        c = a ^ b
+                        b = a  ^ c
+                        
                                 
                         (baa == caa) // change in one pos (not from base)
                         (aba == abb)
@@ -549,7 +626,40 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                      // so the bit 1 is equal to 1 position
                      // so the bit 0 is equal to 2 position
                      
+                    so if the elements are two, then we case use the algorithm
                     
+                    if the elements are three?
+                        if the elements are three
+                        => 000 (3bits) , 1st bit = 0 ... 2nd bit = 0 ...3rd bit = 0
+                                                   1               1            1
+                                        
+                                        1st bit 
+                                        1
+                                        0
+                                        
+                                        if elements are 2 (like [a,b]), then 1st bit must be multiplied by 2
+                                        1st bit must be 2nd bit uses 1st bit,
+                                        
+                                        2nd bit is 1bit , 1 bit
+                                        
+                                        0 0 A = (2nd bit = xor first bit ^ 0) 
+                                        0 1 B = (2nd bit = xor first bit ^ 1 )
+                                        1 0 C = (2nd bit = xor first bit ^ 1)
+                                        1 1 D=  (2nd bit = xor first bit ^0 )
+                                        
+                                        B=C, A=D
+                                        
+                                        3 bits
+                                        
+
+                    bit 0 = pos(1)
+                    bit 1 = pos(2)
+                    bit 2 = pos(3)
+                    
+                    
+                    
+                    
+                        
                     100 (1,2,2) 
                     010 (2,1,2)
                     001 (2,2,1)
@@ -560,12 +670,15 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                     001 (1,1,2)
                       
                    [2,3,4] 
-                   1000  (1pos,2pos,2pos,2pos) 
-                   0100
-                   0010
+                   1000  (1pos,2pos,2pos)
+                   0100  (2pos,1pos,2pos)
+                   0010  (2pos,2pos,1pos)
+                    
                    
-                   increment 1pos
-                    0100 = 
+                   1000 (1000,0010,0010)
+                   0100 (0010,1000,0010)
+                   
+                   
                    
                    so if i follow the algorithm (0000 00001 0010 0100 1000, 1111 1110 1101 1011,0111)
                    it woudl work
