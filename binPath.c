@@ -384,69 +384,29 @@ int main() {
                 
                 
                 
+                bcb => +2 => czz
                 
                 
-                // just add, different numbers to change positions
-                azz 01 00 00
-                zaz 00 10 00
-                zza 00 00 10
+                azz => +2 => azb
                 
                 
+                bbc => +2 => aca
                 
+                
+                z = 0
+                a = z + 1 = 01;
+                b = z + 2 = 10 and b= a+1 
+                c = z + 3 = 11 and c= b+1
+                o = c = 1
                 
                 //b z (shift left 4 bits)
                 
                 
-                2nd round
-                00 00 00
-                00 00 10 add a+2  00 00 00 xor 00 00 10 = 10 (2 decimal)
                 
-                zzb
-                a b
-               
                xhg(a,b) = ba
                
                
                
-                3rd round
-                00 00 00 
-                00 00 11 add a+3  00 00 00 xor 00 00 11 = 11 (3 decimal)
-                
-                z z
-                a c
-                
-                xhg(c,a) = ca
-                
-                4rd round
-                00 00 00
-                00 01 00 add a+4 00 00 00 xor 00 01 00  = 100 (4 decimal)
-                
-                z z
-                // shift
-                //b z (already got it so 4rd round off)
-                xhg(z,b)
-             
-             5 round a+5 
-               00 00 00 
-               00 01 01
-               
-               zzz
-               zbb xhg(
-               
-            6 round a+6
-              00 00 00
-              00 01 10
-                
-            zzz
-            zab
-               
-               não é preciso o segundo elemento , base adicionar a+5
-           
-           7 round a+7
-            00 00 00
-            00 01 11
-                
-                
                 
                 
                  {[1,2,3] = perumtations with repetations= 27
