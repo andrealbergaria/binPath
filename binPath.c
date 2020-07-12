@@ -369,7 +369,7 @@ int main() {
                 a  z   z            a  z  a
                 
                 00 00 10 => +1 => 00 00 11
-                z  z   a           z  z  c 
+                z  z  b           z  z  c 
                 
                 01 01 00 => +1 => 01 01 01
                 a  a  z             a   a  a
@@ -378,12 +378,27 @@ int main() {
                 c  c  z             c c a           
                 
                 
+             
                01 01 00 => +1 => 01 01 01
-               b  b  z           b  b  a
+               a  a  z           a  a  a
+               
+               
+               
+               10 00 00 => -1 =>   acc
+                b  z  z 
+               01 00 00 => -1 => acc
+                a  z   z
+               
+               
+               01 01 00 => -1 =>  bab
+                b  b z     
                 
-                
-                
-                
+               
+             
+             ccz => -1 => cbc
+             
+             
+            
                 bcb => +2 => czz
                 
                 
