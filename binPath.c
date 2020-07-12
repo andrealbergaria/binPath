@@ -391,30 +391,50 @@ int main() {
                01 00 00 => -1 => zcc
                 a  z   z
                 
+                String t = "not calculated, assumed"
+                
                11 00 00 (czz) => -1 => bcc
                                  -2 => bcb
                                  -3 => bca
                                  -4 => bcz
-                                 -5 => bbc
+                                 -5 => bbc (subtracts 2pos from previous and adds z to c from -1)
+                                 -6 => bbb
+                                 -7 => bba
+                                 -8 >= bbz
+                                 -9 => bac (subtracts 2nd pos and adds z to c)
+                                 -10=> bab
+                                 -11 => baa
+                                 -12 => baz
+                                 -13 => bzc (subtracts 2nd pos and adds z to c)
+                                 -14 => bzb
+                                 -15 => bza (t)
+                                 -16 => bzz (t)
+                                 -17 => acc 
+                                 -18 => acb (t)
+                                 -19 => aca (t)
+                                 -20 => acz (t)
+                                 -21 => zbz
+                                 -22 => caz
                                  
-                00 00 01 (zza) => +1 => 00 00 10 (zzb)
-                               => +2 => 00 00 11 (zzc)
-                               => +3 => 00 01 00 (zaz)
-                               => +4 => 00 01 01 (zaa)
-                               
-                               => -1 => 00 00 00 (zzz)
-                               => -2 => ???
+                                 
+                                 // base 00 00 01
+                                 +1 => 00 00 10 (zzb)
+                                 +2 => 00 00 11 (zzc)
+                                 +3 => 00 01 00 (zaz)
+                                 +4 => 00 01 01 (zaa)
+                                 -1 => 00 00 00 (zzz)
+                                 -2 => ???
                 
-                11 01 00 => +1 =>  caa
-                         => +2 =>  cab
-                         => +3 =>  cac
-                         => +4 =>  cbz
-                         
-                         => -1 =>  czc
-                         => -2 =>  czb
-                         => -3 =>  cza
-                         => -4 =>  czz
-                         
+                                // base 11 01 00
+                                    +1 =>  caa
+                                    +2 =>  cab
+                                    +3 =>  cac
+                                    +4 =>  cbz
+                                    -1 =>  czc
+                                    -2 =>  czb
+                                    -3 =>  cza
+                                    -4 =>  czz
+                
                 z = 0
                 a = z + 1 = 01;
                 b = z + 2 = 10 and b= a+1 
@@ -429,26 +449,49 @@ int main() {
                
                
                
-                
+                [z,a,b,c] 4*4*4 = 64
                 
                  {[1,2,3] = perumtations with repetations= 27
                 
                 
-                
-                                
+                    xor = equivalent to adding +2 to a number
+                            
                         aaa = 01 01 01 (a)
                         aab = 01 01 10 (b)
                         xor
                         ------------------
-                              00 00 11 (c) set last char  
+                              00 00 11 (c)  zzc
                                 
                         aaa = 01 01 01 (a)
-                        aac = 01 01 11 (c)
-                              00 00 10 (b)
+                        aac = 01 01 11 (c)  
+                        xor
+                        ----------------
+                              00 00 10  zzb
                               
-                        c = a ^ b
-                        b = a  ^ c
+
+                              
+                              
+                        a ^b = zzc  
                         
+                        a ^c = zzb
+                        
+                        b^c  = zza 
+                             
+                             
+                             00 00 11 (3) 
+                        xor  00 00 10 (2)
+                             -----------
+                             00 00 01
+                        zzc ^zzb  =  zzb
+                        
+                        a ^ b ^a ^c = a^c
+                        
+                        
+                        c = a ^ b
+                        c = zzc
+                        
+                        b = a ^ c
+                        b = zzb
                                 
                         (baa == caa) // change in one pos (not from base)
                         (aba == abb)
