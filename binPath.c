@@ -225,6 +225,16 @@ int main() {
                          01 00  00   // +16 
                                     //xor use to subtract
 
+                                    
+                                    
+                        37+55 = 92
+                        complement(37) = 10 01 01 (37
+                                         01 10 10 (28)
+                                         ---------
+                                    +    11 01 01 => 1+4+16+32 (53)
+                        55-37 = 18 
+                        37-55 = 10 01 01 - 
+                                    
                         in this case, in a ,a subtraction must be performed , because that would evenrtually be a negative number
                                     
                                     

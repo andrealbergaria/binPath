@@ -1,0 +1,46 @@
+1) a = 00 10 11 (11d)
+   b = 01 11 01 (1+4+8+16 = 29d)
+
+
+a ^ b  = 00 10 11 (11d)
+         01 11 01 =(29d)
+        ---------
+         01 01 10 (2+4+16 = 22d)
+
+a + b  = 00 10 11 (11d)
+         01 11 01 (29d)
+        ---------   
+         10 10 00 (40d)
+
+b + a = 01 11 01
+        00 10 11
+        --------
+        10 10 00 (40d)
+
+aa
+ab
+ba
+bb
+
+
+a= 01 11 10
+
+xor(reverse(a)) ^ 1= 00 10 11 (reverse of A) (11d)
+                     00 00 01 (1 to xor)
+                     --------
+                     00 10 10 (10d)
+                    
+        reverse(a) XOR 1 = subtraction by one
+        
+        
+a+b = b+a
+a-b = b-a
+
+complementOfB(b) = 10 00 10
+a - b = 00 10 11 (11d)
+        10 00 10  (33d) (two complement , just inverse the original number)
+        
+      ------------- (sum)
+        10 11 00
+        
+        
