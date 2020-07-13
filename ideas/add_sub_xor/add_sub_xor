@@ -42,20 +42,22 @@ B = 27  -> 00 01 10 11
    
 
 
-n= 0b101 
+n= 101 
+reverse(n) = 010
 complement = 111 is -1 in two complement
 
 so to get to the number n  + complement (to get the subtraction)
     
 subtract (n and complement) = reverse(n)
 
-is add , the xor of reverse(n) ?
+is add , the xor of reverse(n) ? 010 xor 0 = 010
+                                 010 xor 1 = 101
 
+add+2
 
-reverse(n) = 010
-add(n+1) = 011
-         
-         
+add+1           +1
+
+xor(rev(n))     
         
 
 
