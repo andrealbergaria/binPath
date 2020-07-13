@@ -64,53 +64,32 @@ int main() {
                                        
                   // use xhg (asm) to a=b b=a
                   
-                // other solution
-                 // set the binary number as one sequence
-                 
-                 // for example 110 = [b,a,b]
-                 // for example 111 = [c,a,c]
-                 
-                 // other solultion : etither add or bit shift, the entire stream of bytes
+                 // solultion : etither add or bit shift, the entire stream of bytes
                  // In this case , i have byte[] = {00000000,00000001} , and then bit shift one possition (or add a bit)
                  // After , do the same for byte[] = {11111111,111111}. Hence we get all bytes.
                  
-                 // other solution, assign the number 0 or 1 a set...like for example 0=[1,2,3];
+                 
                  /*
-                 1=shift [1,2,3];
-                         01 10 11
+                 
+               a)          01 10 11 xor (a,b) = > (111100 which is a xor  of c) d))
+               b) rev =    10 01 00
+                
+                c)  shift 1 (from a )
+                        00 01 10            6d
+                d) shift 1 (from b)
+                        00 10 01            9d
+
+                e) xor
+                       00 11 11             15d => c) + d)
+                        
+                        
+                   a = rev(b)     
+                        
+                 
                          
-                 0=shift 1
-                        00 01 10
+                
                         
-                 1=shift 2
-                         00 00 01
-                         
-                0 = shift 3
-                        00 00 00
-                        
-                        
-                trying to invert
-                100100
-                111001
-                111110
-                111111
                 //how can one invert a set?
-                 
-                 // solution 
-                 //Each shift represents a changing position
-                 // So 
-                 
-                 00 = [1,2,3] 01 10 11
-                 
-                 01  = shift 1 bit right
-                 01  = 001101
-                     [zero,3,1]
-                 
-                    
-                 
-                 
-                 
-                 // solution perhaps instead of 1 shift do 8 buits shift or 16
                  
                  
                    //  solution one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
@@ -127,7 +106,7 @@ int main() {
                 b // {*h1,*h2,*h1 } 
                 c // {*h1,*h1,*h2} 
                 d // {*h2,*h1,*h2} 
-                e // {*h2,*g2,*h1} 
+                e // {*h2,*h2,*h1} 
                  ... and so one
                  it = 0
                  a[0] = *h1
@@ -138,13 +117,18 @@ int main() {
                  a[1] = *h3  ( h1 h3 h1)
                  a[1] = *h4  (h1 h4 h1)
                  
-                 a[1] = *h1;
+                 a[1] = a[0]
                  
                  a[2] = *h2; ( h1 h2 h1
                  a[2] = *h3  ( h1 h3 h1)
                  a[2] = *h4  (h1 h4 h1)
                  
+                 a[2]  = a[1]
                  
+                 
+                
+                
+                
                  //7 solution
                  // each bit indicates if the character is present on the number
                  // so for instance (abc = 111
@@ -155,19 +139,6 @@ int main() {
                  
                  // solution ( i think already tried)
                  // for each bit , there is a change in the set. position or substituing
-                 /* [0,1,2]
-                    [0,0,1] => [0,1,2]
-                    [0,0,1] => [0,1,1]
-                    [0,0,1] => [0,1,0]
-                    [1,0,0] => [1,1,2]
-                    [1,0,0] => [2,1,2]
-                    [1,0,0] => [0,1,2]
-                    [0,1,0] => [0,0,2]
-                    [0,1,0] =>[0,1,2]
-                    [0,1,0] => [0,2,2]
-                    [0,0,1] => [0,0,1]
-                    [0,0,1] => [0,0,2]
-                    [0,0,1] => [0,0,0] */
                  
                     
                    // solution Assign a=01 b=10 e c=11  each variable is equal to the before plus 1 
@@ -199,34 +170,32 @@ int main() {
  
                  
           
-                // invesrions
+                // inversions
                 inverseOf(a) = b (b=a also works)  add value 1 to a , or substact value 1 to b
                 inverseOf(c) = z (z=c works)
+                
                 
                 One
                 o = 11 = c;
                 Zero
-                z = 00;
+                z =0 
                 
                 z = 0
                 a = z + 1 = 01;
-                b = z + 2 = 10 and b= a+1 
-                c = z + 3 = 11 and c= b+1
-                o = c = 1
+                b = z + 2 = 10  (b= a+1) 
+                c = z + 3 = 11  (c= b+1)
+                o = c = z+c = 11
+                
+                c=o ???? its why were using only 2 binary digits, for a total of 4 elements, so o can't appear
                 
                 inverse
                 z = 1
-                a = b
+                a = 10
+                b = 01
                 c = z
-                o = 00
-                o = c
-                
-                
-                [a,b,c,d]
-                
-                O = 1
-                Z = 0
-                
+                o = 00 = c = z
+               
+                [a,b,c]
                 
         // In the case , a,b,c use the truth table
                 a=z+1 ==> 01
@@ -391,8 +360,52 @@ int main() {
                01 00 00 => -1 => zcc
                 a  z   z
                 
-                String t = "not calculated, assumed"
+                String t2 = "not calculated, assumed"
                 
+                
+                
+                -1,-2,-3,4 = change in the third position
+                -5,-6,-7,-8 = change in the third position
+                -9,-10,-11-12 = change in the third position
+                -13,-14,-15,-16 = change in the third position
+                -8,-9 = bbz -> bac = 
+                -12,-13 = baz -> bzc = 
+                -16,-17 = bzz -> acc
+                -20,-21 = acz -> zbz = 
+                
+                
+     here)           so from baz to bzc , there are 8 positions
+                string t = counting from the original
+                    baz +1 t = baa
+                    baa +2 t = bab
+                    bac +3 t = bbb
+                    baz +4 t = bbz
+                    baz +5 t = bba
+                    bar +6 t = bbb
+                    bar +7 t = bbc
+                    bar +8 t = bcz
+                    
+                    so from acz to zbz = -20,-21
+                    acz +1 t = aca
+                    acz +2 t = acb
+                    acz +3 t = acc
+                    acz +4 t = bzz 
+                    acz +5 t = bza
+                    acz +6 t = bzb
+                    acz +7 t = bzc
+                    acz+8 t =  baz
+                    acz+9 t =  baa
+                    acz+10 t = bab
+                    acz+11 t = bac (t2)
+                    acz+12 t = bbz
+                    acz+13 t = bba
+                    acz+14 t = bbb (t2)
+                    acz+15 t = bbc (t2)
+                    acz+16 t = bcz
+                    acz+17 t = bca
+                    acz+18 t = bcb
+                    acz+19 t = bcc (t2)
+                    acz+20 t  =czz                  
                11 00 00 (czz) => -1 => bcc
                                  -2 => bcb
                                  -3 => bca
@@ -404,16 +417,30 @@ int main() {
                                  -9 => bac (subtracts 2nd pos and adds z to c)
                                  -10=> bab
                                  -11 => baa
+                                 
                                  -12 => baz
-                                 -13 => bzc (subtracts 2nd pos and adds z to c)
+                                 -13 => bzc (adds 8 positions , check here)
+                                 
                                  -14 => bzb
-                                 -15 => bza (t)
-                                 -16 => bzz (t)
+                                 -15 => bza (t2)
+                                 -16 => bzz (t2)
                                  -17 => acc 
-                                 -18 => acb (t)
-                                 -19 => aca (t)
-                                 -20 => acz (t)
-                                 -21 => zbz
+                                 -18 => acb (t2)
+                                 -19 => aca (t2)
+                                 
+                                 -20 => acz (t2)
+                                 
+                                    adds(last, and makes a carry from c-> b,
+                                        z -1  = 
+                                        ab
+                                    )
+                                 -21 => abc 
+                                 
+                                 20 em binario =  = 010100
+                                 21 em binario = 010101
+                                 11 00 00
+                                 
+                                 
                                  -22 => caz
                                  
                                  
@@ -456,43 +483,6 @@ int main() {
                 
                     xor = equivalent to adding +2 to a number
                             
-                        aaa = 01 01 01 (a)
-                        aab = 01 01 10 (b)
-                        xor
-                        ------------------
-                              00 00 11 (c)  zzc
-                                
-                        aaa = 01 01 01 (a)
-                        aac = 01 01 11 (c)  
-                        xor
-                        ----------------
-                              00 00 10  zzb
-                              
-
-                              
-                              
-                        a ^b = zzc  
-                        
-                        a ^c = zzb
-                        
-                        b^c  = zza 
-                             
-                             
-                             00 00 11 (3) 
-                        xor  00 00 10 (2)
-                             -----------
-                             00 00 01
-                        zzc ^zzb  =  zzb
-                        
-                        a ^ b ^a ^c = a^c
-                        
-                        
-                        c = a ^ b
-                        c = zzc
-                        
-                        b = a ^ c
-                        b = zzb
-                                
                         (baa == caa) // change in one pos (not from base)
                         (aba == abb)
                         (aab == bab)

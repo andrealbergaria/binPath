@@ -53,12 +53,15 @@ subtract (n and complement) = reverse(n)
 is add , the xor of reverse(n) ? 010 xor 0 = 010
                                  010 xor 1 = 101
 
-add+2
+                                yes
 
 add+1           +1
 
 xor(rev(n))     
         
 
-
-010  1
+        
+        101
+         +1
+        --
+        110

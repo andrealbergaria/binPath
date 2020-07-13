@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"80caaa83e0",applicationID:"161060835"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1169.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="tj9_rbC16lE8l_IgmmKAhIXCjBstXSHjmmvXaIrc1ww"/>
+    <meta name="referrer" content="always"/>
+    <title>Signed Binary Numbers and Two&#039;s Complement Numbers</title>
+
+    <!--[if IE]>
+    <style>
+        .footer-wrap ul li a:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .footer-wrap ul li a {
+            text-decoration: none;
+            background-color: #000000;
+        }
+
+        .footer-wrap ul li {
+            text-decoration: none;
+        }
+    </style>
+    <![endif]-->
+
+    <!-- BEGIN Krux ControlTag for "AspenCore Generic" -->
+    <script class="kxct" data-id="sbnf4txm4" data-timing="async" data-version="3.0" type="text/javascript">
+        window.Krux || ((Krux = function () {
+            Krux.q.push(arguments)
+        }).q = []);
+        (function () {
+            var k = document.createElement('script');
+            k.type = 'text/javascript';
+            k.async = true;
+            //k.src = (location.protocol === 'https:' ? 'https:' : 'http:') + '//cdn.krxd.net/controltag/sbnf4txm4.js';
+            k.src = 'https://cdn.krxd.net/controltag/sbnf4txm4.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(k, s);
+        }());
+    </script>
+    <!-- END Krux ControlTag -->
+
+    <script class="kxint" data-namespace="aspencore" type="text/javascript">
+        window.Krux || ((Krux = function () {
+            Krux.q.push(arguments);
+        }).q = []);
+        (function () {
+            function retrieve(n) {
+                var k = 'kx' + 'aspencore_' + n, ls = (function () {
+                    try {
+                        return window.localStorage;
+                    } catch (e) {
+                        return null;
+                    }
+                })();
+                if (ls) {
+                    return ls[k] || '';
+                } else if (navigator.cookieEnabled) {
+                    var m = document.cookie.match(k + '=([^;]*)');
+                    return (m && unescape(m[1])) || '';
+                } else {
+                    return '';
+                }
+            }
+
+            Krux.user = retrieve('user');
+            Krux.segments = retrieve('segs') ? retrieve('segs').split(',') : [];
+        })();
+    </script>
+    <script async src="//js-sec.indexww.com/ht/p/191067-113724631480839.js"></script>
+    <!-- Google Ads -->
+    <script type='text/javascript'>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+
+        (function () {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+
+            gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+
+            // var src = (useSSL ? 'https:' : 'http:') +
+            //     '//www.googletagservices.com/tag/js/gpt.js';
+            // document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        })();
+    </script>
+
+    
+<!-- pageUrl = {/binary/signed-binary-numbers.html} -->
+<!-- pageCategory = {binary} -->
+<!-- adCategory = {binary_numbers} -->
+<!-- placeCategoryAdTags = {1} -->
+
+        <!-- define category based ads Slot 1 -->
+        <script type='text/javascript'>
+            var google_ads = [];
+            googletag.cmd.push(function () {
+                // modify the [800, 600] to set the max screen size to display the mobile ad size
+                var billboardMapping = googletag.sizeMapping().addSize([800, 375], [970, 250]).addSize([0, 0], [320, 50]).build();
+
+                var leaderMapping = googletag.sizeMapping().addSize([800, 300], [728, 90]).addSize([0, 0], [320, 60]).build();
+
+                var filmstripMapping = googletag.sizeMapping().addSize([800, 600], [300, 600]).addSize([0, 0], [300, 300]).build();
+
+                google_ads.push(googletag.defineSlot('/74317539/ElectronicsTutorials', [[970, 250], [320, 50]], 'div-gpt-ad-billboard-smartphonebanner').defineSizeMapping(billboardMapping).setTargeting('sec', ['binary_numbers']).setTargeting('pos', ['top']).addService(googletag.pubads()));
+                googletag.defineSlot('/74317539/ElectronicsTutorials', [300, 250], 'div-gpt-ad-medium-rectangle').setTargeting('sec', ['binary_numbers']).addService(googletag.pubads());
+                google_ads.push(googletag.defineSlot('/74317539/ElectronicsTutorials', [[300, 600], [300, 300]], 'div-gpt-ad-filmstrip').defineSizeMapping(filmstripMapping).setTargeting('sec', ['binary_numbers']).addService(googletag.pubads()));
+                google_ads.push(googletag.defineSlot('/74317539/ElectronicsTutorials', [[728, 90], [320, 60]], 'div-gpt-ad-leader-smartphonebanner').defineSizeMapping(leaderMapping).setTargeting('sec', ['binary_numbers']).addService(googletag.pubads()));
+                googletag.defineSlot('/74317539/ElectronicsTutorials', [[300, 450]], 'div-gpt-ad-ti-featured-design').setTargeting('sec', ['tidesigns']).addService(googletag.pubads());
+                                googletag.defineSlot('/74317539/ElectronicsTutorials', ['fluid'], 'div-gpt-ad-fluid').setTargeting('sec', ['binary_numbers']).addService(googletag.pubads());
+                googletag.defineSlot('/74317539/ElectronicsTutorials', [4, 4], 'div-gpt-ad-inread').addService(googletag.pubads());
+                                googletag.pubads().enableSingleRequest();
+                                googletag.pubads().setTargeting('aid', '4852');
+                
+                googletag.pubads().setTargeting("ksg", Krux.segments);
+                googletag.pubads().setTargeting("kuid", Krux.user);
+                googletag.pubads().collapseEmptyDivs();
+
+                googletag.enableServices();
+            });
+        </script>
+        <!-- end block one -->
+        <!-- End Aspencore Ad code -->
+            <script>
+            dmpDataLayer = [{"title":"Signed Binary Numbers","section":["Binary Numbers"],"pageType":"Tutorial","keywords":["Tutorial","Binary Numbers","Binary Numbers"]}];
+        </script>
+        
+            <link rel="stylesheet" href="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/css/print-style.css"
+              type="text/css"
+              media="print"/>
+        
+    <style type="text/css" id="nab-alternative-loader-style"></style>
+<script type="text/javascript">/* <![CDATA[ */( function() { function hideContent() { var element = document.getElementById( 'nab-alternative-loader-style' ); if ( ! element ) { return; } var style = 'html, body, body * { display:none !important; }'; if ( element.styleSheet ) { element.styleSheet.cssText = style; } else { element.innerHTML = ''; element.appendChild( document.createTextNode( style ) ); } } hideContent(); function createReadyFunction( name, event ) { var queue = []; var hasEventBeenTriggered = false; window[ name ] = function( fn ) { if ( hasEventBeenTriggered ) { fn(); } else { queue.push( fn ); } }; function runQueue() { document.removeEventListener( event, runQueue ); hasEventBeenTriggered = true; queue.reverse(); while ( queue.length ) { var fn = queue.pop(); fn(); } } document.addEventListener( event, runQueue ); } createReadyFunction( 'onNabAltLoaderInitAvailable', 'nab-alt-loader-init-available' ); createReadyFunction( 'onNabValidContent', 'nab-valid-content' ); createReadyFunction( 'onNabMainInitAvailable', 'nab-main-init-available' ); createReadyFunction( 'onNabMainReady', 'nab-main-ready' ); window.onNabValidContent( function() { var element = document.getElementById( 'nab-alternative-loader-style' ); if ( ! element ) { return; } element.parentNode && element.parentNode.removeChild( element ); try { var event = document.createEvent( 'HTMLEvents' ); event.initEvent( 'resize', true, false ); document.dispatchEvent( event ); } catch ( e ) { } } ); } )(); /* ]]> */</script>
+<script type="text/javascript" src="https://www.electronics-tutorials.ws/wp-content/plugins/nelio-ab-testing/assets/dist/js/alternative-loader.js?version=f41af00f7d4e4bb18264764fc7bb20e7"></script>
+<script type="text/javascript">/* <![CDATA[ */window.onNabAltLoaderInitAvailable( function() { nabloader.init( {"alternativeUrls":["https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html"],"currentUrl":"https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","gdprCookie":false,"hideQueryArgs":true,"isStagingSite":false,"maxCombinations":24,"participationChance":100,"referrerParam":"utm_referrer","untestedUrl":"https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html"} ); } );/* ]]> */</script>
+
+	<!-- This site is optimized with the Yoast SEO plugin v14.1 - https://yoast.com/wordpress/plugins/seo/ -->
+	<meta name="description" content="Electronics Tutorial about Signed Binary Numbers and the use of the sign-magnitude binary number with one&#039;s complement and two&#039;s complement addition" />
+	<meta name="robots" content="index, follow" />
+	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html" />
+	<meta property="og:locale" content="en_GB" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Signed Binary Numbers and Two&#039;s Complement used in Binary" />
+	<meta property="og:description" content="Electronics Tutorial about Signed Binary Numbers and the use of the sign-magnitude binary number with one&#039;s complement and two&#039;s complement addition" />
+	<meta property="og:url" content="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html" />
+	<meta property="og:site_name" content="Basic Electronics Tutorials" />
+	<meta property="article:publisher" content="https://www.facebook.com/electronicstutorials" />
+	<meta property="article:published_time" content="2014-07-10T15:14:44+00:00" />
+	<meta property="article:modified_time" content="2018-08-20T11:30:27+00:00" />
+	<meta property="og:image" content="https://www.electronics-tutorials.ws/wp-content/uploads/2014/07/bin7.gif?fit=192%2C105" />
+	<meta property="og:image:width" content="192" />
+	<meta property="og:image:height" content="105" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.electronics-tutorials.ws/#website","url":"https://www.electronics-tutorials.ws/","name":"Basic Electronics Tutorials","description":"Electronics Tutorials for Beginners and Students","potentialAction":[{"@type":"SearchAction","target":"https://www.electronics-tutorials.ws/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-GB"},{"@type":"ImageObject","@id":"https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#primaryimage","inLanguage":"en-GB","url":"https://www.electronics-tutorials.ws/wp-content/uploads/2014/07/bin7.gif?fit=192%2C105","width":192,"height":105,"caption":"signed binary numbers"},{"@type":"WebPage","@id":"https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#webpage","url":"https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html","name":"Signed Binary Numbers and Two's Complement Numbers","isPartOf":{"@id":"https://www.electronics-tutorials.ws/#website"},"primaryImageOfPage":{"@id":"https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#primaryimage"},"datePublished":"2014-07-10T15:14:44+00:00","dateModified":"2018-08-20T11:30:27+00:00","author":{"@id":"https://www.electronics-tutorials.ws/#/schema/person/b12c33e418ba206f85cf65c7cbcd9660"},"description":"Electronics Tutorial about Signed Binary Numbers and the use of the sign-magnitude binary number with one's complement and two's complement addition","inLanguage":"en-GB","potentialAction":[{"@type":"ReadAction","target":["https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html"]}]},{"@type":["Person"],"@id":"https://www.electronics-tutorials.ws/#/schema/person/b12c33e418ba206f85cf65c7cbcd9660","name":"Wayne Storr","image":{"@type":"ImageObject","@id":"https://www.electronics-tutorials.ws/#personlogo","inLanguage":"en-GB","url":"https://secure.gravatar.com/avatar/fe7c98a08a34c0d72222beb3361e7090?s=96&d=identicon&r=g","caption":"Wayne Storr"},"description":"Creator and writer of Basic Electronics Tutorials and generally a good guy."}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Basic Electronics Tutorials &raquo; Signed Binary Numbers Comments Feed" href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.electronics-tutorials.ws\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.2"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='screen-css-0' href='https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/style.css?m=1588170123g' type='text/css' media='screen' />
+<link rel='stylesheet' id='all-css-0' href='https://www.electronics-tutorials.ws/_static/??-eJyVUdtOwzAM/SG8gBhIe0B8S9q4ndvcFDsb/XvM1k4UViTe7ORc7GNzzkCx9dUhm5bZOGIxjU/tCJ6aYstkWCaPu0Bxp4AHo4w2RcEoJvvaU2TTV20bLD3kgoFqWBBwUTKWGeWqfxVbhNbWlo+kRF553SADG9H/sUkft2JzotyAdQ5ShLaypKCDpY48QsBY+ddA0JWLgNsU1KeOCgt4FMEC9mTFljsr/SRGioOFLpWwstWcs7cTpEyRdGdNuz/Kf1U6hYE9I6fw94VyyjVDsCOW7/ysp2KS+9xQYaEPKNnqIb84c71tNSfdVPJOk9J+I2+YA38Pb08vh/3z42H/evgEQST4kg==' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='popup-maker-site-inline-css'>
+/* Popup Google Fonts */
+@import url('//fonts.googleapis.com/css?family=Montserrat:100');
+
+/* Popup Theme 13349: Light Box */
+.pum-theme-13349, .pum-theme-lightbox { background-color: rgba( 0, 0, 0, 0.60 ) } 
+.pum-theme-13349 .pum-container, .pum-theme-lightbox .pum-container { padding: 18px; border-radius: 3px; border: 8px solid #000000; box-shadow: 0px 0px 30px 0px rgba( 2, 2, 2, 1.00 ); background-color: rgba( 255, 255, 255, 1.00 ) } 
+.pum-theme-13349 .pum-title, .pum-theme-lightbox .pum-title { color: #000000; text-align: left; text-shadow: 0px 0px 0px rgba( 2, 2, 2, 0.23 ); font-family: inherit; font-weight: 100; font-size: 32px; line-height: 36px } 
+.pum-theme-13349 .pum-content, .pum-theme-lightbox .pum-content { color: #000000; font-family: inherit; font-weight: 100 } 
+.pum-theme-13349 .pum-content + .pum-close, .pum-theme-lightbox .pum-content + .pum-close { position: absolute; height: 26px; width: 26px; left: auto; right: -13px; bottom: auto; top: -13px; padding: 0px; color: #ffffff; font-family: Arial; font-weight: 100; font-size: 24px; line-height: 24px; border: 2px solid #ffffff; border-radius: 26px; box-shadow: 0px 0px 15px 1px rgba( 2, 2, 2, 0.75 ); text-shadow: 0px 0px 0px rgba( 0, 0, 0, 0.23 ); background-color: rgba( 0, 0, 0, 1.00 ) } 
+
+/* Popup Theme 13350: Enterprise Blue */
+.pum-theme-13350, .pum-theme-enterprise-blue { background-color: rgba( 0, 0, 0, 0.70 ) } 
+.pum-theme-13350 .pum-container, .pum-theme-enterprise-blue .pum-container { padding: 28px; border-radius: 5px; border: 1px none #000000; box-shadow: 0px 10px 25px 4px rgba( 2, 2, 2, 0.50 ); background-color: rgba( 255, 255, 255, 1.00 ) } 
+.pum-theme-13350 .pum-title, .pum-theme-enterprise-blue .pum-title { color: #315b7c; text-align: left; text-shadow: 0px 0px 0px rgba( 2, 2, 2, 0.23 ); font-family: inherit; font-weight: 100; font-size: 34px; line-height: 36px } 
+.pum-theme-13350 .pum-content, .pum-theme-enterprise-blue .pum-content { color: #2d2d2d; font-family: inherit; font-weight: 100 } 
+.pum-theme-13350 .pum-content + .pum-close, .pum-theme-enterprise-blue .pum-content + .pum-close { position: absolute; height: 28px; width: 28px; left: auto; right: 8px; bottom: auto; top: 8px; padding: 4px; color: #ffffff; font-family: Times New Roman; font-weight: 100; font-size: 20px; line-height: 20px; border: 1px none #ffffff; border-radius: 42px; box-shadow: 0px 0px 0px 0px rgba( 2, 2, 2, 0.23 ); text-shadow: 0px 0px 0px rgba( 0, 0, 0, 0.23 ); background-color: rgba( 49, 91, 124, 1.00 ) } 
+
+/* Popup Theme 13351: Hello Box */
+.pum-theme-13351, .pum-theme-hello-box { background-color: rgba( 0, 0, 0, 0.75 ) } 
+.pum-theme-13351 .pum-container, .pum-theme-hello-box .pum-container { padding: 30px; border-radius: 80px; border: 14px solid #81d742; box-shadow: 0px 0px 0px 0px rgba( 2, 2, 2, 0.00 ); background-color: rgba( 255, 255, 255, 1.00 ) } 
+.pum-theme-13351 .pum-title, .pum-theme-hello-box .pum-title { color: #2d2d2d; text-align: left; text-shadow: 0px 0px 0px rgba( 2, 2, 2, 0.23 ); font-family: Montserrat; font-weight: 100; font-size: 32px; line-height: 36px } 
+.pum-theme-13351 .pum-content, .pum-theme-hello-box .pum-content { color: #2d2d2d; font-family: inherit; font-weight: 100 } 
+.pum-theme-13351 .pum-content + .pum-close, .pum-theme-hello-box .pum-content + .pum-close { position: absolute; height: auto; width: auto; left: auto; right: -30px; bottom: auto; top: -30px; padding: 0px; color: #2d2d2d; font-family: Times New Roman; font-weight: 100; font-size: 32px; line-height: 28px; border: 1px none #ffffff; border-radius: 28px; box-shadow: 0px 0px 0px 0px rgba( 2, 2, 2, 0.23 ); text-shadow: 0px 0px 0px rgba( 0, 0, 0, 0.23 ); background-color: rgba( 255, 255, 255, 1.00 ) } 
+
+/* Popup Theme 13352: Cutting Edge */
+.pum-theme-13352, .pum-theme-cutting-edge { background-color: rgba( 0, 0, 0, 0.50 ) } 
+.pum-theme-13352 .pum-container, .pum-theme-cutting-edge .pum-container { padding: 18px; border-radius: 0px; border: 1px none #000000; box-shadow: 0px 10px 25px 0px rgba( 2, 2, 2, 0.50 ); background-color: rgba( 30, 115, 190, 1.00 ) } 
+.pum-theme-13352 .pum-title, .pum-theme-cutting-edge .pum-title { color: #ffffff; text-align: left; text-shadow: 0px 0px 0px rgba( 2, 2, 2, 0.23 ); font-family: Sans-Serif; font-weight: 100; font-size: 26px; line-height: 28px } 
+.pum-theme-13352 .pum-content, .pum-theme-cutting-edge .pum-content { color: #ffffff; font-family: inherit; font-weight: 100 } 
+.pum-theme-13352 .pum-content + .pum-close, .pum-theme-cutting-edge .pum-content + .pum-close { position: absolute; height: 24px; width: 24px; left: auto; right: 0px; bottom: auto; top: 0px; padding: 0px; color: #1e73be; font-family: Times New Roman; font-weight: 100; font-size: 32px; line-height: 24px; border: 1px none #ffffff; border-radius: 0px; box-shadow: -1px 1px 1px 0px rgba( 2, 2, 2, 0.10 ); text-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.10 ); background-color: rgba( 238, 238, 34, 1.00 ) } 
+
+/* Popup Theme 13353: Framed Border */
+.pum-theme-13353, .pum-theme-framed-border { background-color: rgba( 255, 255, 255, 0.50 ) } 
+.pum-theme-13353 .pum-container, .pum-theme-framed-border .pum-container { padding: 18px; border-radius: 0px; border: 20px outset #dd3333; box-shadow: 1px 1px 3px 0px rgba( 2, 2, 2, 0.97 ) inset; background-color: rgba( 255, 251, 239, 1.00 ) } 
+.pum-theme-13353 .pum-title, .pum-theme-framed-border .pum-title { color: #000000; text-align: left; text-shadow: 0px 0px 0px rgba( 2, 2, 2, 0.23 ); font-family: inherit; font-weight: 100; font-size: 32px; line-height: 36px } 
+.pum-theme-13353 .pum-content, .pum-theme-framed-border .pum-content { color: #2d2d2d; font-family: inherit; font-weight: 100 } 
+.pum-theme-13353 .pum-content + .pum-close, .pum-theme-framed-border .pum-content + .pum-close { position: absolute; height: 20px; width: 20px; left: auto; right: -20px; bottom: auto; top: -20px; padding: 0px; color: #ffffff; font-family: Tahoma; font-weight: 700; font-size: 16px; line-height: 18px; border: 1px none #ffffff; border-radius: 0px; box-shadow: 0px 0px 0px 0px rgba( 2, 2, 2, 0.23 ); text-shadow: 0px 0px 0px rgba( 0, 0, 0, 0.23 ); background-color: rgba( 0, 0, 0, 0.55 ) } 
+
+/* Popup Theme 13348: Default Theme */
+.pum-theme-13348, .pum-theme-default-theme { background-color: rgba( 255, 255, 255, 1.00 ) } 
+.pum-theme-13348 .pum-container, .pum-theme-default-theme .pum-container { padding: 18px; border-radius: px; border: 1px none #000000; box-shadow: 1px 1px 3px px rgba( 2, 2, 2, 0.23 ); background-color: rgba( 249, 249, 249, 1.00 ) } 
+.pum-theme-13348 .pum-title, .pum-theme-default-theme .pum-title { color: #000000; text-align: left; text-shadow: px px px rgba( 2, 2, 2, 0.23 ); font-family: inherit; font-weight: 400; font-size: 32px; font-style: normal; line-height: 36px } 
+.pum-theme-13348 .pum-content, .pum-theme-default-theme .pum-content { color: #8c8c8c; font-family: inherit; font-weight: 400; font-style: inherit } 
+.pum-theme-13348 .pum-content + .pum-close, .pum-theme-default-theme .pum-content + .pum-close { position: absolute; height: auto; width: auto; left: auto; right: px; bottom: auto; top: px; padding: 8px; color: #ffffff; font-family: inherit; font-weight: 400; font-size: 12px; font-style: inherit; line-height: 36px; border: 1px none #ffffff; border-radius: px; box-shadow: 1px 1px 3px px rgba( 2, 2, 2, 0.23 ); text-shadow: px px px rgba( 0, 0, 0, 0.23 ); background-color: rgba( 0, 183, 205, 1.00 ) } 
+
+#pum-13356 {z-index: 1999999999}
+
+</style>
+<script src='https://www.electronics-tutorials.ws/wp-content/plugins/nelio-ab-testing/assets/dist/js/main.js?ver=8c8c61d8a6f09c115125a51a682a335b'></script>
+<script>
+		window.onNabMainInitAvailable( function() { nab.init( {"currentPostId":4852,"experiments":[],"heatmapTracking":[],"optimizeXPath":true,"gdprCookie":false,"participationChance":100,"siteId":"cc786ce5-8f3a-446c-a58c-909156fd150c","timezone":"+00:00","trackingUrl":"https:\/\/api.nelioabtesting.com\/v1\/site\/cc786ce5-8f3a-446c-a58c-909156fd150c\/event"} ); } );
+		window.onNabMainReady( function() { nab.view( [] ); } );
+</script>
+<script>
+var nfi18n = {"ninjaForms":"Ninja Forms","changeEmailErrorMsg":"Please enter a valid email address!","changeDateErrorMsg":"Please enter a valid date!","confirmFieldErrorMsg":"These fields must match!","fieldNumberNumMinError":"Number Min Error","fieldNumberNumMaxError":"Number Max Error","fieldNumberIncrementBy":"Please increment by ","fieldTextareaRTEInsertLink":"Insert Link","fieldTextareaRTEInsertMedia":"Insert Media","fieldTextareaRTESelectAFile":"Select a file","formErrorsCorrectErrors":"Please correct errors before submitting this form.","formHoneypot":"If you are a human seeing this field, please leave it empty.","validateRequiredField":"This is a required field.","honeypotHoneypotError":"Honeypot Error","fileUploadOldCodeFileUploadInProgress":"File Upload in Progress.","fileUploadOldCodeFileUpload":"FILE UPLOAD","currencySymbol":"","fieldsMarkedRequired":"Fields marked with an <span class=\"ninja-forms-req-symbol\">*<\/span> are required","thousands_sep":",","decimal_point":".","siteLocale":"en_GB","dateFormat":"m\/d\/Y","startOfWeek":"0","of":"of","previousMonth":"Previous Month","nextMonth":"Next Month","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"weekdaysMin":["Su","Mo","Tu","We","Th","Fr","Sa"]};
+var nfFrontEnd = {"adminAjax":"https:\/\/www.electronics-tutorials.ws\/wp-admin\/admin-ajax.php","ajaxNonce":"7e2b2bb6d4","requireBaseUrl":"https:\/\/www.electronics-tutorials.ws\/wp-content\/plugins\/ninja-forms\/assets\/js\/","use_merge_tags":{"user":{"address":"address","textbox":"textbox","button":"button","checkbox":"checkbox","city":"city","confirm":"confirm","date":"date","email":"email","firstname":"firstname","html":"html","hidden":"hidden","lastname":"lastname","listcheckbox":"listcheckbox","listcountry":"listcountry","listimage":"listimage","listmultiselect":"listmultiselect","listradio":"listradio","listselect":"listselect","liststate":"liststate","note":"note","number":"number","password":"password","passwordconfirm":"passwordconfirm","product":"product","quantity":"quantity","recaptcha":"recaptcha","shipping":"shipping","spam":"spam","starrating":"starrating","submit":"submit","terms":"terms","textarea":"textarea","total":"total","unknown":"unknown","zip":"zip","hr":"hr"},"post":{"address":"address","textbox":"textbox","button":"button","checkbox":"checkbox","city":"city","confirm":"confirm","date":"date","email":"email","firstname":"firstname","html":"html","hidden":"hidden","lastname":"lastname","listcheckbox":"listcheckbox","listcountry":"listcountry","listimage":"listimage","listmultiselect":"listmultiselect","listradio":"listradio","listselect":"listselect","liststate":"liststate","note":"note","number":"number","password":"password","passwordconfirm":"passwordconfirm","product":"product","quantity":"quantity","recaptcha":"recaptcha","shipping":"shipping","spam":"spam","starrating":"starrating","submit":"submit","terms":"terms","textarea":"textarea","total":"total","unknown":"unknown","zip":"zip","hr":"hr"},"system":{"address":"address","textbox":"textbox","button":"button","checkbox":"checkbox","city":"city","confirm":"confirm","date":"date","email":"email","firstname":"firstname","html":"html","hidden":"hidden","lastname":"lastname","listcheckbox":"listcheckbox","listcountry":"listcountry","listimage":"listimage","listmultiselect":"listmultiselect","listradio":"listradio","listselect":"listselect","liststate":"liststate","note":"note","number":"number","password":"password","passwordconfirm":"passwordconfirm","product":"product","quantity":"quantity","recaptcha":"recaptcha","shipping":"shipping","spam":"spam","starrating":"starrating","submit":"submit","terms":"terms","textarea":"textarea","total":"total","unknown":"unknown","zip":"zip","hr":"hr"},"fields":{"address":"address","textbox":"textbox","button":"button","checkbox":"checkbox","city":"city","confirm":"confirm","date":"date","email":"email","firstname":"firstname","html":"html","hidden":"hidden","lastname":"lastname","listcheckbox":"listcheckbox","listcountry":"listcountry","listimage":"listimage","listmultiselect":"listmultiselect","listradio":"listradio","listselect":"listselect","liststate":"liststate","note":"note","number":"number","password":"password","passwordconfirm":"passwordconfirm","product":"product","quantity":"quantity","recaptcha":"recaptcha","shipping":"shipping","spam":"spam","starrating":"starrating","submit":"submit","terms":"terms","textarea":"textarea","total":"total","unknown":"unknown","zip":"zip","hr":"hr"},"calculations":{"html":"html","hidden":"hidden","note":"note","unknown":"unknown"}},"opinionated_styles":"light"};
+</script>
+<script type='text/javascript' src='https://www.electronics-tutorials.ws/_static/??-eJylkVFLQzEMhf+QWd2FgXsY/pTR2+bO1DapTerw39uJwh2MKfiUh5PvnEPizhWCsCGbsxcsqA4zBmvCFBSsmzTyWeF9ckld8cRQiDdJH9xAiUPucUBDS28d28f3+HVhuJyaN9ys3H6K1NxPxOrqDD5GEIbQ1aRAbbJQRijIXZ1XRftyPtc6H0Mtx0u/W9GdIzYN0q7y1huzD6+z8N0+TJw8LNLKOnwAbhn3MkCOELHqP/g/oBctkpHw+Msdn+dy2O720/S4nZ526RNxhbaM'></script>
+<link rel='https://api.w.org/' href='https://www.electronics-tutorials.ws/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.electronics-tutorials.ws/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.electronics-tutorials.ws/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.4.2" />
+<link rel='shortlink' href='https://wp.me/paqSIX-1gg' />
+<link rel="alternate" type="application/json+oembed" href="https://www.electronics-tutorials.ws/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fbinary%2Fsigned-binary-numbers.html" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.electronics-tutorials.ws/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fbinary%2Fsigned-binary-numbers.html&#038;format=xml" />
+<link rel="alternate" href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html" hreflang="en" />
+<link rel="alternate" href="https://www.electronics-tutorials.ws/de/binarzahlen/binarzahlen-mit-vorzeichen.html" hreflang="de" />
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<style type='text/css'>img#wpstats{display:none}</style>			<style type="text/css">
+				/* If html does not have either class, do not show lazy loaded images. */
+				html:not( .jetpack-lazy-images-js-enabled ):not( .js ) .jetpack-lazy-image {
+					display: none;
+				}
+			</style>
+			<script>
+				document.documentElement.classList.add(
+					'jetpack-lazy-images-js-enabled'
+				);
+			</script>
+		<link rel="icon" href="https://www.electronics-tutorials.ws/wp-content/uploads/2016/04/cropped-etuts-orb-logo.png?fit=32%2C32" sizes="32x32" />
+<link rel="icon" href="https://www.electronics-tutorials.ws/wp-content/uploads/2016/04/cropped-etuts-orb-logo.png?fit=192%2C192" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.electronics-tutorials.ws/wp-content/uploads/2016/04/cropped-etuts-orb-logo.png?fit=180%2C180" />
+<meta name="msapplication-TileImage" content="https://www.electronics-tutorials.ws/wp-content/uploads/2016/04/cropped-etuts-orb-logo.png?fit=270%2C270" />
+			<style type="text/css" id="wp-custom-css">
+				.youtube-video{position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow:hidden;}
+.youtube-video iframe, .youtube-video object, .youtube-video embed{position:absolute; top:0; left:0; width:100%; height:100%;}
+#arrowbox{max-width:92%; margin:20px 0 20px 10px;}
+#arrowbox .fieldborder{border:1px solid #ccc; background-color:#fff; padding:0px 6px 10px 6px;}
+#arrowbox .fieldtitle{margin:0 20px 10px 0; padding-left:10px; padding-right:20px; border:none; height:60px; width:auto;}
+#arrowbox .fieldtitle img{margin:0; padding:0; border:none; vertical-align:bottom;}
+#arrowbox .fieldtitle a:link{color:#404041; font-size:24px; font-weight:700; text-decoration:none; vertical-align:middle;}
+#arrowbox .fieldtext{font-size:1.0em; font-style:normal; color:#404041; text-align:left; padding-left:6px;}
+#tiad{width:100%; margin:16px 0 20px 0; padding:10px 8px 0 0; border:1px solid #a8a8a8; border-radius:5px; background-color:#fafafa;}
+#tiad .tibox{height:240px; border:1px solid #ccc; background-color:#fff; padding:10px 2px 10px 2px; margin-left:8px;}
+#tiad .tibox a:link{text-decoration:none;}
+#tiad .tiimage{width:80px; height:90px; margin-left:auto; margin-right:auto; vertical-align:midle;}
+#tiad .tiimage img{border:none; text-align:center;}
+#tiad .tititle{color:#404041; font-size:1.0em; font-weight:700; text-decoration:none; text-align:center;}
+#tiad .titext{font-size:0.9em; font-style:normal; color:#404041; text-align:center;}
+#tiad .titag{font-size:0.8em; font-style:normal; color:#666; margin-top:10px; padding-left:20px;}
+span.webtxt{display: inline-block; text-overflow: ellipsis; word-wrap: break-word; overflow: hidden; line-height:1.4em; max-height:5.6em; text-align:left;}
+h3.webh3{text-align:center;}
+span.reg-now{text-align:left;}
+span.reg-now a{font-size:1.0em; color:#5078b4;}
+hr.webhr{width:100%; height:2px; padding:0; border-color:#c0c0c0;}			</style>
+		
+    <link rel="stylesheet" href="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/css/oldstyle.css" type="text/css"/>
+
+    <style type="text/css">
+        .affix-top {
+            position: relative;
+        }
+
+        .affix {
+            top: 130px;
+        }
+
+        .affix,
+        .affix-bottom {
+            width: 350px;
+        }
+
+        .affix-bottom {
+            position: absolute;
+        }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-2394600-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-2394600-1');
+    </script>
+<!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NMNZ3NH');
+    </script>
+<!-- End Google Tag Manager -->
+
+
+                    <script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document;AKSB=w.AKSB||{},AKSB.q=AKSB.q||[],AKSB.mark=AKSB.mark||function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=AKSB.measure||function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=AKSB.done||function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"640744",ustr:"",originlat:"0",clientrtt:"16",ghostip:"195.8.22.92",ipv6:false,pct:"10",clientip:"85.241.158.27",requestid:"9d8e759",region:"24106",protocol:"h2",blver:14,akM:"a",akN:"ae",akTT:"O",akTX:"1",akTI:"9d8e759",ai:"418900",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script>
+                    <script>bazadebezolkohpepadr="866143725"</script><script type="text/javascript" src="https://www.electronics-tutorials.ws/akam/11/33a04dfa" defer></script></head>
+<body>
+
+<div id="wallpaper_image"></div>
+
+<!-- Google Tag Manager -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5LCG4G"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMNZ3NH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->    
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5LCG4G');</script>
+<!-- End Google Tag Manager -->
+
+    
+
+<!-- Overlay Menu -->
+<div class="overlay-menu hidden-xs">
+    <div class="overlay-head clearfix">
+        <a href="/"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/etuts-lg-white.png" alt=""></a>
+        <a href="#" class="close">X</a>
+    </div>
+    <div class="overlay-cont">
+        
+<div class="search-wrap">
+    <div class="search-input-wrap">
+        <form method="get" id="searchform" action="https://www.electronics-tutorials.ws/" class="clearfix">
+            <input type="text" name="s" id="s" class="search-input"
+                   value=""
+            />
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>    </div>
+</div>
+<!-- End -->
+
+<!-- Overlay Mouser panel -->
+
+<div class="overlay-mouser">
+	<div class="overlay-mouser-cont">
+		<div class="container">
+			<div class="section-a">
+				&nbsp;<a class="close-panel" href="#"><span>Close</span>&nbsp; <i class="fa fa-times-circle"></i></a>
+			</div>
+			<div class="section-b">
+				<a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com?HQS=hpa-null-null-eltutorflyaway-bs-lp-homepage-wwe&DCM=yes" target="_blank" class="mouser-site-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/ic-logo.png" alt="" class="mouser-site-click"></a> <!--<span>Browse Products</span>-->
+			</div>
+			<div class="section-c">
+				<ul class="products-list clearfix">
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/amplifiersandlinears/amplifiersandlinears.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-amplifiers-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Amplifiers</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/interface/interface.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-interface-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Interface</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/non-isolated-dc-dc-switching-regulator-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-nonisolatedDCDC-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Non-Isolated DC/DC</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/voltage-reference-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-voltageref-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Voltage References</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/audio/overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-audio-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Audio</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/linear-regulators-ldo-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-linearregulator-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Linear Regulator (LDO)</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/powermanagement/power_portal.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-pwrmgmt-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Power Management</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/webench/overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-WEBENCH-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Webench</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/battery-management-products-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-battery-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Battery Management</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/logic/home_overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-logic-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Logic</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/power-management-multi-channel-ic-pmic-solutions-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-pmic-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Power Management IC (PMIC)</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/general/docs/refdesignsearchresults.tsp?HQS=hpa-null-null-eltutorflyaway-bs-lp-TIDesigns-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">TI Designs</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/clockandtiming/clock_and_timing.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-clocks-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Clock and Timing</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/mosfet-and-igbt-gate-drivers-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-MOSFET-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">MOSFET and IGBT Gate Drivers</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/power-modules-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-powermodules-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Power Modules</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?https://store.ti.com?HQS=hpa-null-null-eltutorflyaway-bs-store-store-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">TI Store</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/dataconverters/data_converter.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-dataconverters-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Data Converters</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/motordrivers/overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-motordrivers-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Motor Drivers</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/sensors/overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-sensors-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Sensors</a></li>
+					<li><a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://my.ti.com?HQS=hpa-null-null-eltutorflyaway-bs-myti-myti-wwe&DCM=yes" target="_blank" class="mouser-product-click"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">MyTI Registration</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="visit-ti">
+			<a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com?HQS=hpa-null-null-eltutorflyaway-bs-lp-homepage-wwe&DCM=yes" target="_blank" class="mouser-product-click">visit ti.com<img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow-white.png"></a>
+		</div>
+	</div>
+</div>
+<!-- End --><div class="cookie-container"></div>
+<div id="topBar" class="top-bar-1-wrap mbile" style="position:fixed;top:0;width:100%;">
+    <div class="container">
+        <div class="row">
+            <div class="menu col-xs-3 col-sm-4 col-md-4">
+                <div id="show" class="orb"></div>
+            </div>
+            <div class="main-logo single col-xs-6 col-sm-4 col-md-4">
+                <a href="https://www.electronics-tutorials.ws/"><img
+                            src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/main-logo.png" alt=""></a>
+            </div>
+            <div class="col-xs-3 col-sm-4 col-md-4">
+                <div class="search mbile"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="top-bar-1-wrap dsktop">
+    <div class="topbar-most clearfix">
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="subscribe-login">
+                                    <a class="subscribe-button subscribe-login"
+                       href="/register">Register to download premium content!</a>
+                            </div>
+        </div>
+        <div class="main-logo col-xs-4 col-sm-4 col-md-4">
+            <a href="https://www.electronics-tutorials.ws/"><img
+                        src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/main-logo.png" alt=""></a>
+        </div>
+        <div class="for-overlay col-xs-4 col-sm-4 col-md-4" data-mode="search">
+            <div class="search"></div>
+        </div>
+    </div>
+    <div class="sub-top-bar dsk">
+        <div class="hidden-xs clearfix">
+
+            <div class="col-b">
+
+            </div>
+
+            <div class="col-a">
+                <ul id="main-menu" class="menu"><li id="menu-item-3799" class="menu-item-has-children"><a title="Electronics Tutorial Sections">Tutorials</a>
+<ul class="sub-menu">
+	<li id="menu-item-3628"><a title="Tutorials about AC Circuits" href="/accircuits/ac-waveform.html">AC Circuits</a></li>
+	<li id="menu-item-3629"><a title="Tutorials about Amplifiers" href="/amplifier/amp_1.html">Amplifiers</a></li>
+	<li id="menu-item-3630"><a title="Tutorials about Attenuators" href="/attenuators/attenuator.html">Attenuators</a></li>
+	<li id="menu-item-3631"><a title="Tutorials about Binary Logic" href="/binary/bin_1.html">Binary Numbers</a></li>
+	<li id="menu-item-3632"><a title="Tutorials about Boolean Algebra" href="/boolean/bool_1.html">Boolean Algebra</a></li>
+	<li id="menu-item-3633"><a title="Tutorials about Capacitors" href="/capacitor/cap_1.html">Capacitors</a></li>
+	<li id="menu-item-3634"><a title="Tutorials about Combinational Logic" href="/combination/comb_1.html">Combinational Logic</a></li>
+	<li id="menu-item-3635"><a title="Tutorials about Digital Counters" href="/counter/count_1.html">Counters</a></li>
+	<li id="menu-item-3636"><a title="Tutorials about DC Circuits" href="/dccircuits/dcp_1.html">DC Circuits</a></li>
+	<li id="menu-item-3637"><a title="Tutorials about Diodes" href="/diode/diode_1.html">Diodes</a></li>
+	<li id="menu-item-3638"><a title="Tutorials about Electromagnetism" href="/electromagnetism/magnetism.html">Electromagnetism</a></li>
+	<li id="menu-item-3639"><a title="Tutorials about Passive and Active Filters" href="/filter/filter_1.html">Filters</a></li>
+	<li id="menu-item-3641"><a title="Tutorials about Inductors and Inductance" href="/inductor/inductor.html">Inductors</a></li>
+	<li id="menu-item-3640"><a title="Tutorials about Input/Output Devices" href="/io/io_1.html">Input/Output Devices</a></li>
+	<li id="menu-item-3642"><a title="Tutorials about Digital Logic Gates" href="/logic/logic_1.html">Logic Gates</a></li>
+	<li id="menu-item-3643"><a title="Miscellaneous Tutorials" href="/blog/pulse-width-modulation.html">Miscellaneous Circuits</a></li>
+	<li id="menu-item-3644"><a title="Tutorials about Operational Amplifiers" href="/opamp/opamp_1.html">Operational Amplifiers</a></li>
+	<li id="menu-item-3645"><a title="Tutorials about Oscillators" href="/oscillator/oscillators.html">Oscillator</a></li>
+	<li id="menu-item-3646"><a title="Tutorials about Power Electronics" href="/power/thyristor.html">Power Electronics</a></li>
+	<li id="menu-item-9648"><a title="Tutorials about Power Supplies" href="/supplies/power-supplies-for-beginners-part-1.html">Power Supplies</a></li>
+	<li id="menu-item-3647"><a title="Tutorials about Resistor-Capacitor Circuits" href="/rc/rc_1.html">RC Networks</a></li>
+	<li id="menu-item-3648"><a title="Tutorials about Resistors" href="/resistor/res_1.html">Resistors</a></li>
+	<li id="menu-item-3649"><a title="Tutorials about Sequential Logic" href="/sequential/seq_1.html">Sequential Logic</a></li>
+	<li id="menu-item-3650"><a title="Tutorials about Electronic Systems" href="/systems/electronic-system.html">Systems</a></li>
+	<li id="menu-item-3651"><a title="Tutorials about Transformers" href="/transformer/transformer-basics.html">Transformers</a></li>
+	<li id="menu-item-3652"><a title="Tutorials about Transistors" href="/transistor/tran_1.html">Transistors</a></li>
+	<li id="menu-item-3653"><a title="Tutorials about Waveform Generators" href="/waveforms/waveforms.html">Waveform Generators</a></li>
+</ul>
+</li>
+<li id="menu-item-12406" class="highlighted-item"><a href="https://www.electronics-tutorials.ws/category/premium">Premium content</a></li>
+<li id="menu-item-10774"><a href="https://www.electronics-tutorials.ws/further-education">Further Education</a></li>
+<li id="menu-item-8514"><a href="https://ti-content-syndication.electronics-tutorials.ws">Reference Designs</a></li>
+<li id="menu-item-32"><a title="Explore our Sitemap" href="https://www.electronics-tutorials.ws/sitemap">Sitemap</a></li>
+<li id="menu-item-27"><a title="Get in Touch" href="https://www.electronics-tutorials.ws/contact">Contact Us</a></li>
+<li id="menu-item-10499" class="pll-parent-menu-item current-menu-parent menu-item-has-children"><a href="#pll_switcher"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAflJREFUeNpinDRzn5qN3uFDt16+YWBg+Pv339+KGN0rbVP+//2rW5tf0Hfy/2+mr99+yKpyOl3Ydt8njEWIn8f9zj639NC7j78eP//8739GVUUhNUNuhl8//ysKeZrJ/v7z10Zb2PTQTIY1XZO2Xmfad+f7XgkXxuUrVB6cjPVXef78JyMjA8PFuwyX7gAZj97+T2e9o3d4BWNp84K1NzubTjAB3fH0+fv6N3qP/ir9bW6ozNQCijB8/8zw/TuQ7r4/ndvN5mZgkpPXiis3Pv34+ZPh5t23//79Rwehof/9/NDEgMrOXHvJcrllgpoRN8PFOwy/fzP8+gUlgZI/f/5xcPj/69e/37//AUX+/mXRkN555gsOG2xt/5hZQMwF4r9///75++f3nz8nr75gSms82jfvQnT6zqvXPjC8e/srJQHo9P9fvwNtAHmG4f8zZ6dDc3bIyM2LTNlsbtfM9OPHH3FhtqUz3eXX9H+cOy9ZMB2o6t/Pn0DHMPz/b+2wXGTvPlPGFxdcD+mZyjP8+8MUE6sa7a/xo6Pykn1s4zdzIZ6///8zMGpKM2pKAB0jqy4UE7/msKat6Jw5mafrsxNtWZ6/fjvNLW29qv25pQd///n+5+/fxDDVbcc//P/zx/36m5Ub9zL8+7t66yEROcHK7q5bldMBAgwADcRBCuVLfoEAAAAASUVORK5CYII=" title="English" alt="English" /><span style="margin-left:0.3em;">English</span></a>
+<ul class="sub-menu">
+	<li class="lang-item lang-item-129 lang-item-en lang-item-first current-lang"><a href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html" hreflang="en-GB" lang="en-GB"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAflJREFUeNpinDRzn5qN3uFDt16+YWBg+Pv339+KGN0rbVP+//2rW5tf0Hfy/2+mr99+yKpyOl3Ydt8njEWIn8f9zj639NC7j78eP//8739GVUUhNUNuhl8//ysKeZrJ/v7z10Zb2PTQTIY1XZO2Xmfad+f7XgkXxuUrVB6cjPVXef78JyMjA8PFuwyX7gAZj97+T2e9o3d4BWNp84K1NzubTjAB3fH0+fv6N3qP/ir9bW6ozNQCijB8/8zw/TuQ7r4/ndvN5mZgkpPXiis3Pv34+ZPh5t23//79Rwehof/9/NDEgMrOXHvJcrllgpoRN8PFOwy/fzP8+gUlgZI/f/5xcPj/69e/37//AUX+/mXRkN555gsOG2xt/5hZQMwF4r9///75++f3nz8nr75gSms82jfvQnT6zqvXPjC8e/srJQHo9P9fvwNtAHmG4f8zZ6dDc3bIyM2LTNlsbtfM9OPHH3FhtqUz3eXX9H+cOy9ZMB2o6t/Pn0DHMPz/b+2wXGTvPlPGFxdcD+mZyjP8+8MUE6sa7a/xo6Pykn1s4zdzIZ6///8zMGpKM2pKAB0jqy4UE7/msKat6Jw5mafrsxNtWZ6/fjvNLW29qv25pQd///n+5+/fxDDVbcc//P/zx/36m5Ub9zL8+7t66yEROcHK7q5bldMBAgwADcRBCuVLfoEAAAAASUVORK5CYII=" title="English" alt="English" /><span style="margin-left:0.3em;">English</span></a></li>
+	<li class="lang-item lang-item-247 lang-item-de"><a href="https://www.electronics-tutorials.ws/de/binarzahlen/binarzahlen-mit-vorzeichen.html" hreflang="de-DE" lang="de-DE"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGzSURBVHjaYvTxcWb4+53h3z8GZpZff/79+v3n/7/fDAz/GHAAgABi+f37e3FxOZD1Dwz+/v3z9y+E/AMFv3//+Qumfv9et241QACxMDExAVWfOHkJJAEW/gUEP0EQDn78+AHE/gFOQJUAAcQiy8Ag8O+fLFj1n1+/QDp+/gQioK7fP378+vkDqOH39x9A/RJ/gE5lAAhAYhzcAACCQBDkgRXRjP034R0IaDTZTFZn0DItot37S94KLOINerEcI7aKHAHE8v/3r/9//zIA1f36/R+o4tevf1ANYNVA9P07RD9IJQMDQACxADHD3z8Ig4GMHz+AqqHagKp//fwLVA0U//v7LwMDQACx/LZiYFD7/5/53/+///79BqK/EMZ/UPACSYa/v/8DyX9A0oTxx2EGgABi+a/H8F/m339BoCoQ+g8kgRaCQvgPJJiBYmAuw39hxn+uDAABxMLwi+E/0PusRkwMvxhBGoDkH4b/v/+D2EDyz///QB1/QLb8+sP0lQEggFh+vGXYM2/SP6A2Zoaf30Ex/J+PgekHwz9gQDAz/P0FYrAyMfz7wcDAzPDtFwNAgAEAd3SIyRitX1gAAAAASUVORK5CYII=" title="Deutsch" alt="Deutsch" /><span style="margin-left:0.3em;">Deutsch</span></a></li>
+	<li class="lang-item lang-item-575 lang-item-pl no-translation"><a href="https://www.electronics-tutorials.ws/pl/" hreflang="pl-PL" lang="pl-PL"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEISURBVHjaYvz/8SMDDPyD43//gPQ/bAAggFhACvn4gMT///8Zwdr+/wcRjP//MzMwMP1HAV+ePQMIIBYGqKL/yIz/2AAjI+O/P38AAoiFSNUQKaCTAAKIBehWRrhqMMSjAagDIIBYGPj5Gfr6/j979v/PH4Y/f/7D0e/f/38DGb/BjN8gWWnpfwsXAgQQ2EkPH/5/8OD/718MvyHqfv3/9fv/r18gNhLJ+OkT0DkAAQR2ElgIZDyyIlTVEMv/MDAABBBIAzPYAQxwRZja/gA1/GX4+xfoHIAAAmlg+v2HQVISbMxfhj8gnYxgIxkgJBD9/QtBQMUAAcT4FRy5cMSAykWTAgKAAAMA0PVcqMe0XaEAAAAASUVORK5CYII=" title="Polski" alt="Polski" /><span style="margin-left:0.3em;">Polski</span></a></li>
+</ul>
+</li>
+<li id="menu-item-11692" class="menu-item-float-right"><a href="https://www.electronics-tutorials.ws/log-in">Log In</a></li>
+<li id="menu-item-12407" class="menu-item-float-right"><a href="https://www.electronics-tutorials.ws/register">Register</a></li>
+</ul>            </div>
+        </div>
+    </div>
+</div>
+<div id="main">
+
+        <div class="mb-feature-announcement clearfix">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <a href="/register">Register to download premium content!</a>
+        </div>
+    </div>
+<div class="body-frame">
+	<div class="side-menu mbile">
+    <div id="side-menu-head" class="side-menu-head clearfix">
+        <a href="/"><img class="logo" src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/etuts-lg-white.png"
+                         alt=""></a>
+        <a href="#" class="close">X</a>
+    </div>
+    <div class="the-list">
+
+        
+<div class="search-wrap">
+    <div class="search-input-wrap">
+        <form method="get" id="searchform" action="https://www.electronics-tutorials.ws/" class="clearfix">
+            <input type="text" name="s" id="s" class="search-input"
+                   value=""
+            />
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>        <ul class="mobile-lang">	<li class="lang-item lang-item-247 lang-item-de"><a lang="de-DE" hreflang="de-DE" href="https://www.electronics-tutorials.ws/de/binarzahlen/binarzahlen-mit-vorzeichen.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGzSURBVHjaYvTxcWb4+53h3z8GZpZff/79+v3n/7/fDAz/GHAAgABi+f37e3FxOZD1Dwz+/v3z9y+E/AMFv3//+Qumfv9et241QACxMDExAVWfOHkJJAEW/gUEP0EQDn78+AHE/gFOQJUAAcQiy8Ag8O+fLFj1n1+/QDp+/gQioK7fP378+vkDqOH39x9A/RJ/gE5lAAhAYhzcAACCQBDkgRXRjP034R0IaDTZTFZn0DItot37S94KLOINerEcI7aKHAHE8v/3r/9//zIA1f36/R+o4tevf1ANYNVA9P07RD9IJQMDQACxADHD3z8Ig4GMHz+AqqHagKp//fwLVA0U//v7LwMDQACx/LZiYFD7/5/53/+///79BqK/EMZ/UPACSYa/v/8DyX9A0oTxx2EGgABi+a/H8F/m339BoCoQ+g8kgRaCQvgPJJiBYmAuw39hxn+uDAABxMLwi+E/0PusRkwMvxhBGoDkH4b/v/+D2EDyz///QB1/QLb8+sP0lQEggFh+vGXYM2/SP6A2Zoaf30Ex/J+PgekHwz9gQDAz/P0FYrAyMfz7wcDAzPDtFwNAgAEAd3SIyRitX1gAAAAASUVORK5CYII=" title="Deutsch" alt="Deutsch" /><span style="margin-left:0.3em;">Deutsch</span></a></li>
+	<li class="lang-item lang-item-575 lang-item-pl no-translation"><a lang="pl-PL" hreflang="pl-PL" href="https://www.electronics-tutorials.ws/pl/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEISURBVHjaYvz/8SMDDPyD43//gPQ/bAAggFhACvn4gMT///8Zwdr+/wcRjP//MzMwMP1HAV+ePQMIIBYGqKL/yIz/2AAjI+O/P38AAoiFSNUQKaCTAAKIBehWRrhqMMSjAagDIIBYGPj5Gfr6/j979v/PH4Y/f/7D0e/f/38DGb/BjN8gWWnpfwsXAgQQ2EkPH/5/8OD/718MvyHqfv3/9fv/r18gNhLJ+OkT0DkAAQR2ElgIZDyyIlTVEMv/MDAABBBIAzPYAQxwRZja/gA1/GX4+xfoHIAAAmlg+v2HQVISbMxfhj8gnYxgIxkgJBD9/QtBQMUAAcT4FRy5cMSAykWTAgKAAAMA0PVcqMe0XaEAAAAASUVORK5CYII=" title="Polski" alt="Polski" /><span style="margin-left:0.3em;">Polski</span></a></li>
+</ul>
+
+        <ul id="user-menu" class="mobile-menu-links"><li id="menu-item-12408"><a href="https://www.electronics-tutorials.ws/register">Register</a></li>
+<li id="menu-item-11846"><a href="https://www.electronics-tutorials.ws/log-in">Log In</a></li>
+</ul>            <ul class="mn-sections">
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/accircuits"> AC Circuits</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/amplifier"> Amplifiers</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/attenuators"> Attenuators</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/binary"> Binary Numbers</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/boolean"> Boolean Algebra</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/capacitor"> Capacitors</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/combination"> Combinational Logic</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/connectivity"> Connectivity</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/counter"> Counters</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/dccircuits"> DC Circuits</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/diode"> Diodes</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/electromagnetism"> Electromagnetism</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/filter"> Filters</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/inductor"> Inductors</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/io"> Input/Output Devices</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/logic"> Logic Gates</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/blog"> Miscellaneous Circuits</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/opamp"> Operational Amplifiers</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/oscillator"> Oscillator</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/power"> Power Electronics</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/supplies"> Power Supplies</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/premium"> Premium</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/rc"> RC Networks</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/resistor"> Resistors</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/sequential"> Sequential Logic</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/systems"> Systems</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/transformer"> Transformers</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/transistor"> Transistors</a>
+
+                                            </li>
+                                    <li>
+                        <a href="https://www.electronics-tutorials.ws/category/waveforms"> Waveform Generators</a>
+
+                                            </li>
+                            </ul>
+        
+        <ul id="mobile-menu" class="mobile-menu-links"><li id="menu-item-12409" class="highlighted-item"><a href="https://www.electronics-tutorials.ws/category/premium">Premium Content</a></li>
+<li id="menu-item-11852"><a href="https://www.electronics-tutorials.ws/further-education">Further Education</a></li>
+<li id="menu-item-11854"><a href="https://ti-content-syndication.electronics-tutorials.ws">Reference Design</a></li>
+<li id="menu-item-11853"><a href="https://www.electronics-tutorials.ws/sitemap">Sitemap</a></li>
+<li id="menu-item-11851"><a href="https://www.electronics-tutorials.ws/contact">Contact Us</a></li>
+</ul>    </div>
+</div>	<div class="body-cont">
+		<div class="mask-cont clearfix">
+			<div class="single-page content-wrap container">
+				<div class="row-cnt row">
+
+										<div class="home-top-ads">
+						<div id="text-17" class="widgets widget_text clearfix">			<div class="textwidget"><div class="billboard-wrapper">
+<div id='div-gpt-ad-billboard-smartphonebanner' ><script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-billboard-smartphonebanner'); });
+</script>
+</div>
+</div></div>
+		</div>					</div>
+					
+					<div class="col-sm-12 col-md-12">
+						<div class="breadcrumb">
+							<!-- Breadcrumb NavXT 6.3.0 -->
+<a title="Back Home" href="https://www.electronics-tutorials.ws" class="home">Home</a><span class="separator">&nbsp;/&nbsp;</span><a title="Binary Numbers Section" href="https://www.electronics-tutorials.ws/category/binary" class="taxonomy category">Binary Numbers</a><span class="separator">&nbsp;/&nbsp;</span>Signed Binary Numbers						</div>
+					</div>
+					<div class="col-md-8 clearboth">
+											<div class="head-box clearfix">
+							<div class="col-sm-6 col-md-6 no-padd">
+								<div class="thumb-feat">
+																	<div class="preload-image"
+											data-preload="true"
+											data-dir="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2"
+											data-src="https://www.electronics-tutorials.ws/wp-content/uploads/2014/07/bin7.gif?fit=192%2C105"></div>
+																</div>
+							</div>
+							<div class="desc col-sm-6 col-md-6">
+								<h1>Signed Binary Numbers</h1>								<p>Signed Binary Numbers use the MSB as a sign bit to display a range of either positive numbers or negative numbers</p>
+							</div>
+
+							<!-- Socialbox -->
+							<div class="social_box_buttons-excerpt">
+								<!-- AddThis Button BEGIN -->
+								<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+									<a class="addthis_button_facebook">
+										<img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/fb-dark.png" width="25px" alt=""/>
+									</a>
+									<a class="addthis_button_twitter">
+										<img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/tw-dark.png" width="25px" alt=""/>
+									</a>
+									<a class="addthis_button_compact">
+										<img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/more-dark.png" width="25px" alt=""/>
+									</a>
+								</div>
+								<script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+								<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4dabe1c24a1ae8c8"></script>
+								<!-- AddThis Button END -->
+							</div>
+							<!-- End Socialbox -->
+
+						</div>
+
+						<div class="section row">
+							<div class="single-wrap col-md-12">
+								<div class="content-cont">
+									<p>In mathematics, positive numbers (including zero) are represented as unsigned numbers. That is we do not put the +ve sign in front of them to show that they are positive numbers.</p>
+<p>However, when dealing with negative numbers we do use a -ve sign in front of the number to show that the number is negative in value and different from a positive unsigned value, and the same is true with <strong>signed binary numbers</strong>.</p>
+<p>However, in digital circuits there is no provision made to put a plus or even a minus sign to a number, since digital systems operate with binary numbers that are represented in terms of &#8220;0&#8217;s&#8221; and &#8220;1&#8217;s&#8221;. When used together in microelectronics, these &#8220;1&#8217;s&#8221; and &#8220;0&#8217;s&#8221;, called a <b>bit</b> (being a contraction of <b>BI</b>nary digi<b>T</b>), fall into several range sizes of numbers which are referred to by common names, such as a <em>byte</em> or a <em>word</em>.</p>
+<p>We have also seen previously that an 8-bit binary number (a byte) can have a value ranging from 0 (00000000<sub>2</sub>) to 255 (11111111<sub>2</sub>), that is 2<sup>8</sup> = 256 different combinations of bits forming a single 8-bit byte. So for example an unsigned binary number such as: 01001101<sub>2</sub> = 64 + 8 + 4 + 1 = 77<sub>10</sub> in decimal. But Digital Systems and computers must also be able to use and to manipulate negative numbers as well as positive numbers.</p>
+<p>Mathematical numbers are generally made up of a sign and a value (magnitude) in which the sign indicates whether the number is positive, ( <span class="ntxt">+</span> ) or negative, ( <span class="ntxt">–</span> ) with the value indicating the size of the number, for example 23, +156 or -274. Presenting numbers is this fashion is called &#8220;sign-magnitude&#8221; representation since the left most digit can be used to indicate the sign and the remaining digits the magnitude or value of the number.</p>
+<p>Sign-magnitude notation is the simplest and one of the most common methods of representing positive and negative numbers either side of zero, (<span class="ntxt">0</span>). Thus negative numbers are obtained simply by changing the sign of the corresponding positive number as each positive or unsigned number will have a signed opposite, for example, +2 and -2, +10 and -10, etc.</p>
+<p>But how do we represent signed binary numbers if all we have is a bunch of one&#8217;s and zero&#8217;s. We know that binary digits, or bits only have two values, either a &#8220;1&#8221; or a &#8220;0&#8221; and conveniently for us, a sign also has only two values, being a &#8220;<b>+</b>&#8221; or a &#8220;<b>–</b>&#8220;.</p>
+<p>Then we can use a single bit to identify the sign of a <em>signed binary number</em> as being positive or negative in value. So to represent a positive binary number (<span class="ntxt">+n</span>) and a negative (<span class="ntxt">-n</span>) binary number, we can use them with the addition of a sign.</p>
+<p>For signed binary numbers the most significant bit (MSB) is used as the sign bit. If the sign bit is &#8220;0&#8221;, this means the number is positive in value. If the sign bit is &#8220;1&#8221;, then the number is negative in value. The remaining bits in the number are used to represent the magnitude of the binary number in the usual unsigned binary number format way.</p>
+<p>Then we can see that the Sign-and-Magnitude (SM) notation stores positive and negative values by dividing the &#8220;n&#8221; total bits into two parts: 1 bit for the sign and n–1 bits for the value which is a pure binary number. For example, the decimal number 53 can be expressed as an 8-bit signed binary number as follows.</p>
+<h3>Positive Signed Binary Numbers</h3>
+<p class="text-center"><img title="Positive Signed Binary Numbers" src="/wp-content/uploads/2018/05/binary-bin7.gif" alt="positive signed binary numbers" width="192" height="105" data-lazy-src="/wp-content/uploads/2018/05/binary-bin7.gif?is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class=" jetpack-lazy-image"><noscript><img title="Positive Signed Binary Numbers" src="/wp-content/uploads/2018/05/binary-bin7.gif" alt="positive signed binary numbers" width="192" height="105" /></noscript></p>
+<h3>Negative Signed Binary Numbers</h3>
+<p class="text-center"><img title="Negative Signed Binary Numbers" src="/wp-content/uploads/2018/05/binary-bin8.gif" alt="negative signed binary numbers" width="192" height="105" data-lazy-src="/wp-content/uploads/2018/05/binary-bin8.gif?is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class=" jetpack-lazy-image"><noscript><img title="Negative Signed Binary Numbers" src="/wp-content/uploads/2018/05/binary-bin8.gif" alt="negative signed binary numbers" width="192" height="105" /></noscript></p>
+<div class="bottomspace"></div>
+<p>The disadvantage here is that whereas before we had a full range <span class="ntxt">n-bit</span> unsigned binary number, we now have an <span class="ntxt">n-1 bit</span> signed binary number giving a reduced range of digits from:</p>
+<p class="text-center"><span class="mtxt">-2<sup>(n-1)</sup>  to  +2<sup>(n-1)</sup></span></p>
+<p>So for example: if we have 4 bits to represent a signed binary number, (1-bit for the <b>Sign bit</b> and 3-bits for the <b>Magnitude bits</b>), then the actual range of numbers we can represent in sign-magnitude notation would be:</p>
+<p class="text-center"><span class="mtxt">-2<sup>(4-1)</sup>&#160;&#8211;&#160;1&#160;&#160;&#160;&#160;to&#160;&#160;&#160;&#160;+2<sup>(4-1)</sup>&#160;&#8211;&#160;1</span></p>
+<p class="text-center"><span class="mtxt">-2<sup>(3)</sup>&#160;&#8211;&#160;1&#160;&#160;&#160;&#160;to&#160;&#160;&#160;&#160;+2<sup>(3)</sup>&#160;&#8211;&#160;1</span></p>
+<p class="text-center"><span class="mtxt">-7&#160;&#160;&#160;&#160;to&#160;&#160;&#160;&#160;+7</span></p>
+<p>Whereas before, the range of an unsigned 4-bit binary number would have been from <span class="ntxt">0</span> to <span class="ntxt">15</span>, or <span class="ntxt">0</span> to <span class="ntxt">F</span> in hexadecimal, we now have a reduced range of -7 to +7. Thus an unsigned binary number does not have a single sign-bit, and therefore can have a larger binary range as the most significant bit (MSB) is just an extra bit or digit rather than a used sign bit.</p>
+<p>Another disadvantage here of the sign-magnitude form is that we can have a positive result for zero, +0 or 0000<sub>2</sub>, and a negative result for zero, -0 or 1000<sub>2</sub>. Both are valid but which one is correct.</p>
+<h2>Signed Binary Numbers Example No1</h2>
+<p>Convert the following decimal values into signed binary numbers using the sign-magnitude format:</p>
+<table class="table2">
+<tr>
+<td style="width:200px; border:none; color:#414143; text-align:left;">-15<sub>10</sub>  as a 6-bit number</td>
+<td style="width:50px; border:none;"><span style="font-size:1.0em;">&#8658;</span></td>
+<td style=" border:none;letter-spacing:0.2em; text-align:left;"><span class="ntxt">1</span><span class="mtxt">01111<sub>2</sub></span></td>
+</tr>
+<tr>
+<td style="width:200px; border:none; text-align: left;">+23<sub>10</sub>  as a 6-bit number</td>
+<td style="width:50px; border:none;"><span style="font-size:1.0em;">&#8658;</span></td>
+<td style=" border:none;letter-spacing:0.2em; text-align:left;"><span class="ntxt">0</span><span class="mtxt">10111<sub>2</sub></span></td>
+</tr>
+<tr>
+<td style="width:200px; border:none; text-align: left;">-56<sub>10</sub>  as a 8-bit number</td>
+<td style="width:50px; border:none;"><span style="font-size:1.0em;">&#8658;</span></td>
+<td style=" border:none;letter-spacing:0.2em; text-align:left;"><span class="ntxt">1</span><span class="mtxt">0111000<sub>2</sub></span></td>
+</tr>
+<tr>
+<td style="width:200px; border:none; text-align: left;">+85<sub>10</sub>  as a 8-bit number</td>
+<td style="width:50px; border:none;"><span style="font-size:1.0em;">&#8658;</span></td>
+<td style=" border:none;letter-spacing:0.2em; text-align:left;"><span class="ntxt">0</span><span class="mtxt">1010101<sub>2</sub></span></td>
+</tr>
+<tr>
+<td style="width:200px; border:none; text-align: left;">-127<sub>10</sub>  as a 8-bit number</td>
+<td style="width:50px; border:none;"><span style="font-size:1.0em;">&#8658;</span></td>
+<td style=" border:none;letter-spacing:0.2em; text-align:left;"><span class="ntxt">1</span><span class="mtxt">1111111<sub>2</sub></span></td>
+</tr>
+</table>
+<div class="bottomspace"></div>
+<p>Note that for a 4-bit, 6-bit, 8-bit, 16-bit or 32-bit signed binary number all the bits MUST have a value, therefore &#8220;0&#8217;s&#8221; are used to fill the spaces between the leftmost sign bit and the first or highest value &#8220;1&#8221;.</p>
+<p>The sign-magnitude representation of a binary number is a simple method to use and understand for representing signed binary numbers, as we use this system all the time with normal decimal (base 10) numbers in mathematics. Adding a &#8220;1&#8221; to the front of it if the binary number is negative and a &#8220;0&#8221; if it is positive.</p>
+<p>However, using this sign-magnitude method can result in the possibility of two different bit patterns having the same binary value. For example, <span class="ntxt">+0</span> and <span class="ntxt">-0</span> would be <span class="ntxt">0000</span> and <span class="ntxt">1000</span> respectively as a signed 4-bit binary number. So we can see that using this method there can be two representations for zero, a positive zero ( <span class="ntxt">0</span><span class="mtxt">000<sub>2</sub></span> ) and also a negative zero ( <span class="ntxt">1</span><span class="mtxt">000<sub>2</sub></span> ) which can cause big complications for computers and digital systems.</p>
+<h2>One&#8217;s Complement of a Signed Binary Number</h2>
+<p><strong>One&#8217;s Complement</strong> or <strong>1&#8217;s Complement</strong> as it is also termed, is another method which we can use to represent negative binary numbers in a signed binary number system. In one&#8217;s complement, positive numbers (also known as non-complements) remain unchanged as before with the sign-magnitude numbers.</p>
+<p>Negative numbers however, are represented by taking the one&#8217;s complement (inversion, negation) of the unsigned positive number. Since positive numbers always start with a &#8220;0&#8221;, the complement will always start with a &#8220;1&#8221; to indicate a negative number.</p>
+<p>The one&#8217;s complement of a negative binary number is the complement of its positive counterpart, so to take the one’s complement of a binary number, all we need to do is change each bit in turn. Thus the one’s complement of &#8220;1&#8221; is &#8220;0&#8221; and vice versa, then the one’s complement of <span class="ntxt">10010100<sub>2</sub></span> is simply <span class="ntxt">01101011<sub>2</sub></span> as all the 1&#8217;s are changed to 0&#8217;s and the 0&#8217;s to 1&#8217;s.</p>
+<p>The easiest way to find the one&#8217;s complement of a signed binary number when building digital arithmetic or logic decoder circuits is to use <a class="inlink" href="/logic/logic_4.html">Inverters</a>. The inverter is naturally a complement generator and can be used in parallel to find the 1&#8217;s complement of any binary number as shown.</p>
+<h3>1&#8217;s Complement Using Inverters</h3>
+<p class="text-center"><img title="1&#039;s Complement Using Inverters" src="/wp-content/uploads/2018/05/binary-bin9.gif" alt="1&#039;s complement using inverters" width="414" height="188" data-lazy-src="/wp-content/uploads/2018/05/binary-bin9.gif?is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class=" jetpack-lazy-image"><noscript><img title="1's Complement Using Inverters" src="/wp-content/uploads/2018/05/binary-bin9.gif" alt="1's complement using inverters" width="414" height="188" /></noscript></p>
+<div class="bottomspace"></div>
+<p>Then we can see that it is very easy to find the one’s complement of a binary number <span class="ntxt">N</span> as all we need do is simply change the 1’s to 0’s and the 0’s to 1’s to give us a <span class="ntxt">-N</span> equivalent. Also just like the previous sign-magnitude representation, one&#8217;s complement can also have n-bit notation to represent numbers in the range from: <span class="ntxt">-2<sup>(n-1)</sup>  </span>and<span class="ntxt">  +2<sup>(n-1)</sup> &#8211; 1</span>. For example, a 4-bit representation in the one’s complement format can be used to represent decimal numbers in the range from -7 to +7 with two representations of zero: <span class="ntxt">0000</span> (+0) and <span class="ntxt">1111</span> (-0) the same as before.</p>
+<h2>Addition and Subtraction Using One&#8217;s Complement</h2>
+<p>One of the main advantages of <strong>One&#8217;s Complement</strong> is in the addition and subtraction of two binary numbers. In mathematics, subtraction can be implemented in a variety of different ways as <span class="ntxt">A – B</span>, is the same as saying <span class="ntxt">A + (-B)</span> or <span class="ntxt">-B + A</span> etc. Therefore, the complication of subtracting two binary numbers can be performed by simply using addition.</p>
+<p>We saw in the <a class="inlink" href="/combination/comb_7.html">Binary Adder</a> tutorial that binary addition follows the same rules as for the normal addition except that in binary there are only two bits (digits) and the largest digit is a &#8220;1&#8221;, (just as &#8220;9&#8221; is the largest decimal digit) thus the possible combinations for binary addition are as follows:</p>
+<table class="table2">
+<tr>
+<td style="width:50px; border:none; color:#414143; text-align:right;"><span class="mtxt">0</span></td>
+<td style="width:50px; border:none; text-align:right;"><span class="mtxt">0</span></td>
+<td style="width:50px; border:none; text-align:right;"><span class="mtxt">1</span></td>
+<td style="width:60px; border:none; text-align:right;"><span class="mtxt">1</span></td>
+<td style="border:none;">&#160;</td>
+</tr>
+<tr>
+<td style="border:none; text-align:right;"><span class="mtxt"><u>+ 0</u></span></td>
+<td style="border:none; text-align:right;"><span class="mtxt"><u>+ 1</u></span></td>
+<td style="border:none;text-align:right;"><span class="mtxt"><u>+ 0</u></span></td>
+<td style="border:none;text-align:right;"><span class="mtxt"><u>+ 1</u></span></td>
+<td style="border:none;">&#160;</td>
+</tr>
+<tr>
+<td style="border:none; text-align:right;"><span class="mtxt">0</span></td>
+<td style="border:none;text-align:right;"><span class="mtxt">1</span></td>
+<td style="border:none; text-align:right;"><span class="mtxt">1</span></td>
+<td style="border:none; text-align:right;"><span class="mtxt">1&#8592; 0</span></td>
+<td style="border:none;">&#160;( 0 plus a carry 1 )</td>
+</tr>
+</table>
+<div class="bottomspace"></div>
+<p>When the two numbers to be added are both positive, the sum <span class="ntxt">A + B</span>, they can be added together by means of the direct sum (including the number and bit sign), because when single bits are added together, &#8220;0 + 0&#8221;, &#8220;0 + 1&#8221;, or &#8220;1 + 0&#8221; results in a sum of &#8220;0&#8221; or &#8220;1&#8221;. This is because when the two bits we want to be added together are odd (&#8220;0&#8221; + &#8220;1&#8221; or &#8220;1 + 0&#8221;), the result is &#8220;1&#8221;. Likewise when the two bits to be added together are even (&#8220;0 + 0&#8221; or &#8220;1 + 1&#8221;) the result is &#8220;0&#8221; until you get to &#8220;1 + 1&#8221; then the sum is equal to &#8220;0&#8221; plus a carry &#8220;1&#8221;. Let&#8217;s look at a simple example.</p>
+<h2>Subtraction of Two Binary Numbers</h2>
+<p>An 8-bit digital system is required to subtract the following two numbers 115 and 27 from each other using one&#8217;s complement. So in decimal this would be: <span class="ntxt">115 &#8211; 27 = 88</span>.</p>
+<p>First we need to convert the two decimal numbers into binary and make sure that each number has the same number of bits by adding leading zero&#8217;s to produce an 8-bit number (byte). Therefore:</p>
+<p class="text-center"><span class="mtxt">115<sub>10</sub></span>  in binary is:  <span class="mtxt" style="letter-spacing: 0.2em;">01110011<sub>2</sub></span></p>
+<p class="text-center"><span class="mtxt">27<sub>10</sub></span>   in binary is:  <span class="mtxt" style="letter-spacing: 0.2em;">00011011<sub>2</sub></span></p>
+<p>Now we need to find the complement of the second binary number, (<span class="ntxt">00011011</span>) while leaving the first number (<span class="ntxt">01110011</span>) unchanged. So by changing all the 1&#8217;s to 0&#8217;s and 0&#8217;s to 1&#8217;s, the one&#8217;s complement of <span class="ntxt">00011011</span> is therefore equal to <span class="ntxt">11100100</span>.</p>
+<p>Adding the first number and the complement of the second number gives:</p>
+<table class="table2">
+<tr>
+<td style="border:none; text-align:right; color:#414143; line-height:1.6em; letter-spacing:0.2em;"><span class="mtxt">01110011</span></td>
+</tr>
+<tr>
+<td style="border:none; text-align:right; line-height:1.6em; letter-spacing:0.2em;">+ <span class="mtxt">11100100</span></td>
+</tr>
+<tr>
+<td style="border:none; text-align:right; line-height:1.6em; letter-spacing: 0.2em;">Overflow &#8594; <span class="mtxt"><b>1</b></span> <span class="mtxt" style="border-top:1px solid #000000;">01010111</span</td>
+</tr>
+</table>
+<div class="bottomspace"></div>
+<p>Since the digital system is to work with 8-bits, only the first eight digits are used to provide the answer to the sum, and we simply ignore the last bit (bit 9). This bit is call an &#8220;overflow&#8221; bit. Overflow occurs when the sum of the most significant (left-most) column produces a carry forward. This overflow or carry bit can be ignored completely or passed to the next digital section for use in its calculations. Overflow indicates that the answer is positive. If there is no overflow then the answer is negative.</p>
+<p>The 8-bit result from above is: <span class="mtxt">01010111</span> (the overflow &#8220;1&#8221; cancels out) and to convert it back from a one&#8217;s complement answer to the real answer we now have to add &#8220;1&#8221; to the one&#8217;s complement result, therefore:</p>
+<table class="table2">
+<tr>
+<td style="width:140px; border:none; text-align:right; color:#414143; line-height:1.6em; letter-spacing:0.2em;"><span class="mtxt">01010111</span></td>
+</tr>
+<tr>
+<td style="width:140px; border:none; text-align:right; line-height:1.6em; letter-spacing:0.2em;">+ <span class="mtxt">1</span></td>
+</tr>
+<tr>
+<td style="width:140px; border:none; text-align:right; line-height:1.6em; letter-spacing:0.2em;"><span class="mtxt" style="border-top: 1px solid #000000;">01011000</span></td>
+</tr>
+</table>
+<div class="bottomspace"></div>
+<p>So the result of subtracting 27 ( <span class="mtxt">00011011<sub>2</sub></span> ) from 115 ( <span class="mtxt">01110011<sub>2</sub></span> ) using 1&#8217;s complement in binary gives the answer of: <span class="mtxt">01011000<sub>2</sub></span> or (64 + 16 + 8) = 88<sub>10</sub> in decimal.</p>
+<p>Then we can see that signed or unsigned binary numbers can be subtracted from each other using <strong>One&#8217;s Complement</strong> and the process of addition. Binary adders such as the TTL 74LS83 or 74LS283 can be used to add or subtract two 4-bit signed binary numbers or cascaded together to produce 8-bit adders complete with carry-out.</p>
+<h2>Two&#8217;s Complement of a Signed Binary Number</h2>
+<p><strong>Two&#8217;s Complement</strong> or <strong>2&#8217;s Complement</strong> as it is also termed, is another method like the previous sign-magnitude and one&#8217;s complement form, which we can use to represent negative binary numbers in a signed binary number system. In two&#8217;s complement, the positive numbers are exactly the same as before for unsigned binary numbers. A negative number, however, is represented by a binary number, which when added to its corresponding positive equivalent results in zero.</p>
+<p>In two&#8217;s complement form, a negative number is the 2&#8217;s complement of its positive number with the subtraction of two numbers being <span class="ntxt">A – B = A + ( 2&#8217;s complement of B )</span> using much the same process as before as basically, two&#8217;s complement is one&#8217;s complement + 1.</p>
+<p>The main advantage of two&#8217;s complement over the previous one&#8217;s complement is that there is no double-zero problem plus it is a lot easier to generate the two’s complement of a signed binary number. Therefore, arithmetic operations are relatively easier to perform when the numbers are represented in the two’s complement format.</p>
+<p>Let&#8217;s look at the subtraction of our two 8-bit numbers 115 and 27 from above using two&#8217;s complement, and we remember from above that the binary equivalents are:</p>
+<p class="text-center"><span class="mtxt">115<sub>10</sub></span>  in binary is:  <span class="mtxt" style="letter-spacing: 0.2em;">01110011<sub>2</sub></span></p>
+<p class="text-center"><span class="mtxt">27<sub>10</sub></span>   in binary is:  <span class="mtxt" style="letter-spacing: 0.2em;">00011011<sub>2</sub></span></p>
+<p>Our numbers are 8-bits long, then there are 2<sup>8</sup> digits available to represent our values and in binary this equals: <span class="mtxt">100000000<sub>2</sub></span> or <span class="ntxt">256<sub>10</sub></span>. Then the two&#8217;s complement of 27<sub>10</sub> will be:</p>
+<p class="text-center"><span class="mtxt">(2<sup>8</sup>)<sub>2</sub> – 00011011 = 100000000 – 00011011 = 11100101<sub>2</sub></span></p>
+<p>The complementation of the second negative number means that the subtraction becomes a much easier addition of the two numbers so therefore the sum is: <span class="ntxt">115 + ( 2&#8217;s complement of 27 )</span> which is:</p>
+<p class="text-center"><span class="mtxt">01110011 + 11100101 = </span><span class="ntxt"><b>1</b></span> <span class="mtxt">01011000<sub>2</sub></span></p>
+<p>As previously, the 9th overflow bit is disregarded as we are only interested in the first 8-bits, so the result is: <span class="mtxt">01011000<sub>2</sub></span> or (64 + 16 + 8) = 88<sub>10</sub> in decimal the same as before.</p>
+<h2>Signed Binary Numbers Summary</h2>
+<p>We have seen that negative binary numbers can be represented by using the most significant bit (MSB) as a sign bit. If an <span class="ntxt">n bit</span> binary number is signed the leftmost bit is used to represent the sign leaving <span class="ntxt">n-1 bits</span> to represent the number.</p>
+<p>For example, in a 4-bit binary number, this leaves only 3 bits to hold the actual number. If however, the binary number is unsigned then all the bits can be used to represent the number.</p>
+<p>The representation of a signed binary number is commonly referred to as the <em>sign-magnitude notation</em> and if the sign bit is &#8220;0&#8221;, the number is positive. If the sign bit is &#8220;1&#8221;, then the number is negative. When dealing with binary arithmetic operations, it is more convenient to use the complement of the negative number.</p>
+<p>Complementation is an alternative way of representing negative binary numbers. This alternative coding system allows for the subtraction of negative numbers by using simple addition.</p>
+<p>Since positive sign-magnitude numbers always start with a zero (0), its complement will therefore always start with a one (1) to indicate a negative number as shown in the following table.</p>
+<h3>4-bit Signed Binary Number Comparison</h3>
+<table class="table1">
+<tr>
+<td style="width:80px;">Decimal</td>
+<td style="width:120px;">Signed Magnitude</td>
+<td style="width:120px;">Signed One&#8217;s Complement</td>
+<td style="width:120px;">Signed Two&#8217;s Complement</td>
+</tr>
+<tr>
+<td>+7</td>
+<td>0111</td>
+<td>0111</td>
+<td>0111</td>
+</tr>
+<tr>
+<td>+6</td>
+<td>0110</td>
+<td>0110</td>
+<td>0110</td>
+</tr>
+<tr>
+<td>+5</td>
+<td>0101</td>
+<td>0101</td>
+<td>0101</td>
+</tr>
+<tr>
+<td>+4</td>
+<td>0100</td>
+<td>0100</td>
+<td>0100</td>
+</tr>
+<tr>
+<td>+3</td>
+<td>0011</td>
+<td>0011</td>
+<td>0011</td>
+</tr>
+<tr>
+<td>+2</td>
+<td>0010</td>
+<td>0010</td>
+<td>0010</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>0001</td>
+<td>0001</td>
+<td>0001</td>
+</tr>
+<tr>
+<td>+0</td>
+<td>0000</td>
+<td>0000</td>
+<td>0000</td>
+</tr>
+<tr>
+<td>-0</td>
+<td>1000</td>
+<td>1111</td>
+<td>–</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>1001</td>
+<td>1110</td>
+<td>1111</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>1010</td>
+<td>1101</td>
+<td>1110</td>
+</tr>
+<tr>
+<td>-3</td>
+<td>1011</td>
+<td>1100</td>
+<td>1101</td>
+</tr>
+<tr>
+<td>-4</td>
+<td>1100</td>
+<td>1011</td>
+<td>1100</td>
+</tr>
+<tr>
+<td>-5</td>
+<td>1101</td>
+<td>1010</td>
+<td>1011</td>
+</tr>
+<tr>
+<td>-6</td>
+<td>1110</td>
+<td>1001</td>
+<td>1010</td>
+</tr>
+<tr>
+<td>-7</td>
+<td>1111</td>
+<td>1000</td>
+<td>1001</td>
+</tr>
+</table>
+<div class="bottomspace"></div>
+<p>Signed-complement forms of binary numbers can use either 1&#8217;s complement or 2&#8217;s complement. The 1&#8217;s complement and the 2&#8217;s complement of a binary number are important because they permit the representation of negative numbers.</p>
+<p>The method of 2&#8217;s complement arithmetic is commonly used in computers to handle negative numbers the only disadvantage is that if we want to represent negative binary numbers in the signed binary number format, we must give up some of the range of the positive number we had before.</p>
+																		<!-- Socialbox -->
+									<div class="social_box_buttons">
+										<!-- AddThis Button BEGIN -->
+										<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+											<a class="addthis_button_facebook">
+												<img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/fb-dark.png" width="25px" alt=""/>
+											</a>
+											<a class="addthis_button_twitter">
+												<img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/tw-dark.png" width="25px" alt=""/>
+											</a>
+											<a class="addthis_button_compact">
+												<img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/more-dark.png" width="25px" alt=""/>
+											</a>
+										</div>
+										<!-- AddThis Button END -->
+									</div>
+
+                                    <!-- Additional googletag -->
+                                    <div id='div-gpt-ad-fluid'>
+                                        <script type='text/javascript'>
+                                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-fluid'); });
+                                        </script>
+                                    </div>
+
+									<!-- End Socialbox -->
+																		<div class="clearfix content-nav">
+										<div class="prev_next clearfix">
+																					<div class="pn-holder col-md-6 col-sm-6">
+												<div class="prev"><a href="https://www.electronics-tutorials.ws/binary/bin_5.html" rel="prev"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/arrow_alt_left_inv.png" alt="previous"><div><span>Previous</span><br />Binary Numbers Tutorial</div></a></div>
+											</div>
+																					<div class="pn-holder col-md-6 col-sm-6">
+												<div class="next"><a href="https://www.electronics-tutorials.ws/binary/binary-coded-decimal.html" rel="next"><div><span>Next</span><br />Binary Coded Decimal</div><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/arrow_alt_right_inv.png" alt="next"></a></div>
+											</div>
+																				</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="single-page-content">
+							
+<div id="widgets_for_shortcodes" class="amr-widget-area"><div id="wp_simple_related_post-3" class="widgets wp_simple_related_post clearfix">            <div class="related-posts wrapper clearfix">
+                <div class="widgets">
+                    <h2 class="sidebar-title-cat">Read more Tutorials inBinary Numbers</h2>
+                    <div class="category box">
+                        <ul class="clearfix">
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_1.html">1. Binary Numbers</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_2.html">2. Binary to Decimal Conversion</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_3.html">3. Hexadecimal Numbers</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_4.html">4. Octal Number System</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_5.html">5. Binary Numbers Tutorial</a></li>
+                                                                                            <li class=active><a href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html">6. Signed Binary Numbers</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/binary-coded-decimal.html">7. Binary Coded Decimal</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/binary-fractions.html">8. Binary Fractions</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div></div>
+						</div>
+
+						
+<div id="comments" class="comments-wrap clearfix">
+	<input type="hidden" name="has_view_more" id="has_view_more" value="1">
+	<input type="hidden" name="first_comment_page" id="first_comment_page" value="">
+	<input type="hidden" name="recent_comment_page" id="recent_comment_page" value="">
+	<h2 class="comments-count">
+						112 Comments						<div class="toggle-close"></div>
+		<div class="toggle-open"></div>
+	</h2>
+	<div class="comment-content">
+		<div class="comment-form-cont">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h2>Join the conversation</h2> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/binary/signed-binary-numbers.html#respond" style="display:none;">Cancel reply</a></small><div class="notice_error">Error! Please fill all fields.</div><form action="https://www.electronics-tutorials.ws/wp-comments-post.php" method="post" id="commentform" class="comment-form"><div class="comment-form-author col-sm-6 col-md-6"><input id="author" placeholder="Your Name" name="author" type="text" value="" size="30" tabindex="1" required /></div>
+<input type="hidden" name="redirect_to" value="www.electronics-tutorials.ws/binary/signed-binary-numbers.html"/>
+<div class="comment-form-email col-sm-6 col-md-6"><input id="email" placeholder="Email Address" name="email" type="text" tabindex="2" value="" size="30" required  /></div>
+
+<div class="comment-form-comment col-md-12"><textarea id="comment" name="comment" placeholder="Write your comment here" cols="" rows="8" aria-required="true" tabindex="3"></textarea></div><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit" /> <input type='hidden' name='comment_post_ID' value='4852' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="8c9c4cac06" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="83"/></p></form>	</div><!-- #respond -->
+			</div>
+
+		<div class="comment-list-cont">
+			
+				<ul class="comment-list">
+										
+    <li class="comment even thread-even depth-1" id="li-comment-62427">
+        <div id="comment-62427" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/1ae0c4ba15cf6e1d8b7a37ab0dffaf6c?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_r.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/1ae0c4ba15cf6e1d8b7a37ab0dffaf6c?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_r.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/1ae0c4ba15cf6e1d8b7a37ab0dffaf6c?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_r.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Robert Wilson</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>It&#8217;s been years since I&#8217;ve seen this. It&#8217;s going to take a bit of time to remember this.</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-62427">September 15th 2019 | 6:37 pm</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=62427#respond' data-commentid="62427" data-postid="4852" data-belowelement="comment-62427" data-respondelement="respond" aria-label='Reply to Robert Wilson'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-62745">
+        <div id="comment-62745" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/5b83820ec113118efea519ae7c960fc1?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_m.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/5b83820ec113118efea519ae7c960fc1?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_m.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/5b83820ec113118efea519ae7c960fc1?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_m.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">muzamil</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>Consider the signed numbers M=(11110101.011) and N=101110.1, convert the numbers to decimal.<br />
+____________________________is ka answer kya ha__________________________________________</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-62745">September 26th 2019 | 7:11 pm</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=62745#respond' data-commentid="62745" data-postid="4852" data-belowelement="comment-62745" data-respondelement="respond" aria-label='Reply to muzamil'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment even thread-even depth-1" id="li-comment-62987">
+        <div id="comment-62987" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/ef034cc137c1d040174cf67692527de4?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_m.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/ef034cc137c1d040174cf67692527de4?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_m.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/ef034cc137c1d040174cf67692527de4?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_m.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Muhammad sajid</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>Good explanation.</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-62987">October 09th 2019 | 3:46 pm</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=62987#respond' data-commentid="62987" data-postid="4852" data-belowelement="comment-62987" data-respondelement="respond" aria-label='Reply to Muhammad sajid'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-63797">
+        <div id="comment-63797" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/6ee9fdaae84648c06cdea162510999c0?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_o.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/6ee9fdaae84648c06cdea162510999c0?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_o.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/6ee9fdaae84648c06cdea162510999c0?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_o.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Osa</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>How can we write 1&#8217;s and 2&#8217;s complement binary fraction number.<br />
+Ex. -10.10<br />
+       -0.11<br />
+       -0.101</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-63797">November 16th 2019 | 4:30 am</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=63797#respond' data-commentid="63797" data-postid="4852" data-belowelement="comment-63797" data-respondelement="respond" aria-label='Reply to Osa'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment even thread-even depth-1" id="li-comment-64370">
+        <div id="comment-64370" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/d17c676ad15f9efae856f2cf45ef1270?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_s.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/d17c676ad15f9efae856f2cf45ef1270?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_s.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/d17c676ad15f9efae856f2cf45ef1270?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_s.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Sushmitha</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>Nice descriptions&#8230;.</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-64370">December 06th 2019 | 10:09 am</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=64370#respond' data-commentid="64370" data-postid="4852" data-belowelement="comment-64370" data-respondelement="respond" aria-label='Reply to Sushmitha'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-64516">
+        <div id="comment-64516" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/7fd4e54dc33043d55ddc6ce597b77f53?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_t.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/7fd4e54dc33043d55ddc6ce597b77f53?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_t.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/7fd4e54dc33043d55ddc6ce597b77f53?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_t.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Tristan Hurley</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>Why dont any of these tutorials address the question like 17-35 using 1s comp method?</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-64516">December 14th 2019 | 9:33 pm</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=64516#respond' data-commentid="64516" data-postid="4852" data-belowelement="comment-64516" data-respondelement="respond" aria-label='Reply to Tristan Hurley'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment even thread-even depth-1" id="li-comment-64777">
+        <div id="comment-64777" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/8c10e8bf1fd0f29aedcd699f79951590?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_d.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/8c10e8bf1fd0f29aedcd699f79951590?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_d.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/8c10e8bf1fd0f29aedcd699f79951590?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_d.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">DIBASH GC</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>How can we perform binary multiplication in signed magnitude system</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-64777">January 02nd 2020 | 4:13 am</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=64777#respond' data-commentid="64777" data-postid="4852" data-belowelement="comment-64777" data-respondelement="respond" aria-label='Reply to DIBASH GC'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-65247">
+        <div id="comment-65247" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/081bdf61db2c155e3c26b24eee9703a7?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_d.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/081bdf61db2c155e3c26b24eee9703a7?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_d.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/081bdf61db2c155e3c26b24eee9703a7?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_d.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">D2557</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>How do I start programing using the Decimal number</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-65247">January 31st 2020 | 11:45 am</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=65247#respond' data-commentid="65247" data-postid="4852" data-belowelement="comment-65247" data-respondelement="respond" aria-label='Reply to D2557'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment even thread-even depth-1" id="li-comment-65943">
+        <div id="comment-65943" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/f5ed6fb0bc6958c774a7c67cd7cfa17b?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_a.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/f5ed6fb0bc6958c774a7c67cd7cfa17b?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_a.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/f5ed6fb0bc6958c774a7c67cd7cfa17b?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_a.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Aqib malik</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>That&#8217;s so good interpretation sir✅</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-65943">March 07th 2020 | 4:34 pm</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=65943#respond' data-commentid="65943" data-postid="4852" data-belowelement="comment-65943" data-respondelement="respond" aria-label='Reply to Aqib malik'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-66077">
+        <div id="comment-66077" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/00b193d24e1137768773a2c8cf1ee906?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_j.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/00b193d24e1137768773a2c8cf1ee906?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_j.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/00b193d24e1137768773a2c8cf1ee906?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_j.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Jean Marc</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>I have a big probleme to huderstand the fractional binary number</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-66077">March 15th 2020 | 1:50 pm</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=66077#respond' data-commentid="66077" data-postid="4852" data-belowelement="comment-66077" data-respondelement="respond" aria-label='Reply to Jean Marc'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment even thread-even depth-1" id="li-comment-66142">
+        <div id="comment-66142" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/ea267bb356db50cb6ec79152a0cc710a?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_v.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/ea267bb356db50cb6ec79152a0cc710a?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_v.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/ea267bb356db50cb6ec79152a0cc710a?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_v.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">vivek maan</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>what will be the 2s complement of 12-(-9) ?</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-66142">March 18th 2020 | 7:14 am</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=66142#respond' data-commentid="66142" data-postid="4852" data-belowelement="comment-66142" data-respondelement="respond" aria-label='Reply to vivek maan'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-67213">
+        <div id="comment-67213" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/31a6bad40eb9a8dac0b79485bcd607fe?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_d.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/31a6bad40eb9a8dac0b79485bcd607fe?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_d.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/31a6bad40eb9a8dac0b79485bcd607fe?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_d.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Dianne Marin</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>How to express -44 in BCD</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-67213">April 30th 2020 | 4:45 pm</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=67213#respond' data-commentid="67213" data-postid="4852" data-belowelement="comment-67213" data-respondelement="respond" aria-label='Reply to Dianne Marin'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment even thread-even depth-1" id="li-comment-68020">
+        <div id="comment-68020" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/48288b08f9a3fbace436e4a33d24b1c5?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_s.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/48288b08f9a3fbace436e4a33d24b1c5?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_s.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/48288b08f9a3fbace436e4a33d24b1c5?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_s.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Suleman Rasheed</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>Great tutorial. It helped a lot</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-68020">May 27th 2020 | 5:02 pm</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=68020#respond' data-commentid="68020" data-postid="4852" data-belowelement="comment-68020" data-respondelement="respond" aria-label='Reply to Suleman Rasheed'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-68091">
+        <div id="comment-68091" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/9b69202189a46aa3a459b9ed5107b6e6?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_s.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/9b69202189a46aa3a459b9ed5107b6e6?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_s.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/9b69202189a46aa3a459b9ed5107b6e6?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_s.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">Srujan</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>good article</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-68091">May 31st 2020 | 6:33 am</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=68091#respond' data-commentid="68091" data-postid="4852" data-belowelement="comment-68091" data-respondelement="respond" aria-label='Reply to Srujan'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+
+    <li class="comment even thread-even depth-1" id="li-comment-68258">
+        <div id="comment-68258" class="clearfix">
+            <div class="col-a">
+                <img alt src="https://secure.gravatar.com/avatar/83dda266ee6be773ea339c3c9808d220?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_g.png" class="avatar avatar-50 photo wpfla round-avatars  jetpack-lazy-image" width="50" height="50" data-lazy-src="https://secure.gravatar.com/avatar/83dda266ee6be773ea339c3c9808d220?s=50&amp;r=g&amp;default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_g.png&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/83dda266ee6be773ea339c3c9808d220?s=50&r=g&default=https%3A%2F%2Fwww.electronics-tutorials.ws%2Fwp-content%2Fplugins%2Fwp-first-letter-avatar%2Fimages%2Fdefault%2F96%2Flatin_g.png' class='avatar avatar-50 photo wpfla round-avatars ' width='50' height='50' /></noscript>            </div>
+            <div class="col-b">
+                <div class="comment-author vcard">
+                                        <cite class="fn">gaurav sharma</cite>                </div>
+                
+                <div class="comment-text">
+                    <p>Convert the following decimal number to binary number. The binary number is 8-bit signed, and the two&#8217;s complement is used to represent the negative number.1）45（2）34（3）100（4）82（5）-20（6）-49（7）-63（8）-110</p>
+                </div>
+
+                <div class="comment-meta commentmetadata clearfix">
+                    <div class="date-time col-sm-6 col-md-6 no-padd">
+                        Posted on <a
+                                href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html#comment-68258">June 08th 2020 | 3:32 am</a>
+                    </div>
+                    <div class="reply col-sm-6 col-md-6 no-padd">
+                        <span class="glyphicon glyphicon-share-alt"></span> <a rel='nofollow' class='comment-reply-link' href='https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html?replytocom=68258#respond' data-commentid="68258" data-postid="4852" data-belowelement="comment-68258" data-respondelement="respond" aria-label='Reply to gaurav sharma'>Reply</a>                    </div>
+                </div>
+            </div>
+                    </div>
+
+    </li><!-- #comment-## -->
+				</ul>
+
+									<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
+						<div id="view_more">
+							<a rel="nofollow" href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html/comment-page-2#comments" >View More</a>							
+						</div>
+						<div class="comment-loading"><img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/loading.gif" alt="Loading"></div>
+					</nav>
+				
+									</div>
+	</div>
+</div>
+
+										</div>
+
+					<div class="sidebar col-md-4">
+    <div id="trigger-point"></div>
+    <div id="wp_simple_related_post-2" class="widgets wp_simple_related_post clearfix">            <div class="related-posts wrapper clearfix">
+                <div class="widgets">
+                    <h2 class="sidebar-title-cat">Read more Tutorials inBinary Numbers</h2>
+                    <div class="category box">
+                        <ul class="clearfix">
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_1.html">1. Binary Numbers</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_2.html">2. Binary to Decimal Conversion</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_3.html">3. Hexadecimal Numbers</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_4.html">4. Octal Number System</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/bin_5.html">5. Binary Numbers Tutorial</a></li>
+                                                                                            <li class=active><a href="https://www.electronics-tutorials.ws/binary/signed-binary-numbers.html">6. Signed Binary Numbers</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/binary-coded-decimal.html">7. Binary Coded Decimal</a></li>
+                                                                                            <li ><a href="https://www.electronics-tutorials.ws/binary/binary-fractions.html">8. Binary Fractions</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div><div id="boombox_widget-5" class="widgets boombox clearfix clearfix"><div id='div-gpt-ad-medium-rectangle' style="margin: 0 0 10px;text-align: center;">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-medium-rectangle'); });
+</script>
+</div>
+<div id='div-gpt-ad-filmstrip' style="margin: 0 0 10px;text-align: center;">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-filmstrip'); });
+</script>
+</div></div><div id="text-23" class="widgets widget_text clearfix">			<div class="textwidget"><div class="featured-design">
+<div id='div-gpt-ad-ti-featured-design'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-ti-featured-design'); });
+</script>
+</div>
+</div></div>
+		</div><div id="etuts_featured_post_widget-2" class="widgets etuts_featured_post_widget clearfix">                <div class="related-tuts-header">Related Tutorials</div>
+        
+            <div class="post-wrap col-xs-12 col-sm-6 col-md-12">
+                <div class="box">
+                    <div class="thumb">
+                                                    <a href="https://www.electronics-tutorials.ws/binary/binary-fractions.html"><img width="234" height="203" src="https://www.electronics-tutorials.ws/wp-content/uploads/2017/06/bin13.gif?fit=234%2C203" class="attachment-full size-full wp-post-image jetpack-lazy-image" alt="Binary Fraction Conversion" data-lazy-src="https://www.electronics-tutorials.ws/wp-content/uploads/2017/06/bin13.gif?fit=234%2C203&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></a>
+                                            </div>
+                    <div class="desc">
+
+                        <h2><a href="https://www.electronics-tutorials.ws/binary/binary-fractions.html">Binary Fractions</a></h2>
+                        <p>Binary Fractions use the same weighting principle as decimal numbers except that each binary digit uses the <a href="https://www.electronics-tutorials.ws/binary/binary-fractions.html">[...]</a>                    </div>
+                </div>
+            </div>
+        
+            <div class="post-wrap col-xs-12 col-sm-6 col-md-12">
+                <div class="box">
+                    <div class="thumb">
+                                                    <a href="https://www.electronics-tutorials.ws/binary/binary-coded-decimal.html"><img width="408" height="211" src="https://www.electronics-tutorials.ws/wp-content/uploads/2016/01/bin10.gif?fit=408%2C211" class="attachment-full size-full wp-post-image jetpack-lazy-image" alt="binary coded decimal display" data-lazy-src="https://www.electronics-tutorials.ws/wp-content/uploads/2016/01/bin10.gif?fit=408%2C211&amp;is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></a>
+                                            </div>
+                    <div class="desc">
+
+                        <h2><a href="https://www.electronics-tutorials.ws/binary/binary-coded-decimal.html">Binary Coded Decimal</a></h2>
+                        <p>Binary Coded Decimal, or BCD, is another process for converting decimal numbers into their binary <a href="https://www.electronics-tutorials.ws/binary/binary-coded-decimal.html">[...]</a>                    </div>
+                </div>
+            </div>
+        </div></div>
+				</div>
+			</div>
+</div>
+</div>
+</div>
+</div>
+    <div class="footer-ad-container">
+        <div class="ads-full footer-ads">
+            <div id="text-18" class="widgets widget_text">			<div class="textwidget"><div id='div-gpt-ad-leader-smartphonebanner' ><script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-leader-smartphonebanner'); });
+</script>
+</div></div>
+		</div>        </div>
+    </div>
+<div class="footer-wrap">
+    <div class="container">
+        <div class="menu-footer-menu-container"><ul id="footer-menu" class="clearfix"><li id="menu-item-9292" class="basics col-md-2 col-sm-6 col-xs-12 menu-item-has-children"><a>The Basics</a>
+<ul class="sub-menu">
+	<li id="menu-item-9293"><a target="_blank" rel="noopener noreferrer" href="https://www.electronics-tutorials.ws/contact">Contact Us</a></li>
+	<li id="menu-item-9294"><a target="_blank" rel="noopener noreferrer" href="https://www.aspencore.com/privacy-policy">Privacy Policy</a></li>
+	<li id="menu-item-9295"><a target="_blank" rel="noopener noreferrer" href="https://www.aspencore.com/terms-of-use">Terms of Use</a></li>
+</ul>
+</li>
+<li id="menu-item-9296" class="advertisers col-md-2 col-sm-6 col-xs-12 menu-item-has-children"><a>For Advertisers</a>
+<ul class="sub-menu">
+	<li id="menu-item-9297"><a target="_blank" rel="noopener noreferrer" href="https://aspencore.com/contact-us/">Contact Sales</a></li>
+	<li id="menu-item-9298"><a target="_blank" rel="noopener noreferrer" href="https://aspencore.com/media-guide-request/">Media Guide Request</a></li>
+</ul>
+</li>
+<li id="menu-item-9299" class="aspencore-network col-md-3 col-sm-12 col-xs-12 menu-item-has-children"><a>Aspencore Network</a>
+<ul class="sub-menu">
+	<li id="menu-item-9300"><a target="_blank" rel="noopener noreferrer" href="https://www.ebnonline.com/">EBN</a></li>
+	<li id="menu-item-9301"><a target="_blank" rel="noopener noreferrer" href="https://www.edn.com/">EDN</a></li>
+	<li id="menu-item-9302"><a target="_blank" rel="noopener noreferrer" href="https://www.eetimes.com/">EE Times</a></li>
+	<li id="menu-item-9303"><a target="_blank" rel="noopener noreferrer" href="https://www.eeweb.com/">EEWeb</a></li>
+	<li id="menu-item-9305"><a target="_blank" rel="noopener noreferrer" href="https://www.electronicproducts.com/">Electronic Products</a></li>
+	<li id="menu-item-9306"><a target="_blank" rel="noopener noreferrer" href="https://www.powerelectronicsnews.com/">Power Electronics News</a></li>
+	<li id="menu-item-9307"><a target="_blank" rel="noopener noreferrer" href="https://www.embedded.com/">Embedded</a></li>
+	<li id="menu-item-9308"><a target="_blank" rel="noopener noreferrer" href="https://www.planetanalog.com/">Planet Analog</a></li>
+	<li id="menu-item-9309"><a target="_blank" rel="noopener noreferrer" href="http://www.electroschematics.com/">ElectroSchematics</a></li>
+	<li id="menu-item-9310"><a target="_blank" rel="noopener noreferrer" href="https://www.techonline.com/">TechOnline</a></li>
+	<li id="menu-item-9311"><a target="_blank" rel="noopener noreferrer" href="http://www.datasheets.com/">Datasheets.com</a></li>
+	<li id="menu-item-9318"><a target="_blank" rel="noopener noreferrer" href="http://electronics-know-how.com/">Electronics Know How</a></li>
+	<li id="menu-item-10511"><a href="https://iot.eetimes.com/">IoT Times</a></li>
+</ul>
+</li>
+<li id="menu-item-9320" class="global-network col-md-3 col-sm-12 col-xs-12 menu-item-has-children"><a>Global Network</a>
+<ul class="sub-menu">
+	<li id="menu-item-9322"><a target="_blank" rel="noopener noreferrer" href="https://www.eetasia.com/">EE Times Asia</a></li>
+	<li id="menu-item-9323"><a target="_blank" rel="noopener noreferrer" href="http://www.eet-china.com/">EE Times China</a></li>
+	<li id="menu-item-9325"><a target="_blank" rel="noopener noreferrer" href="https://www.eetindia.co.in/">EE Times India</a></li>
+	<li id="menu-item-9326"><a target="_blank" rel="noopener noreferrer" href="http://eetimes.jp/">EE Times Japan</a></li>
+	<li id="menu-item-9327"><a target="_blank" rel="noopener noreferrer" href="https://www.eettaiwan.com/">EE Times Taiwan</a></li>
+	<li id="menu-item-9328"><a target="_blank" rel="noopener noreferrer" href="https://www.ednasia.com/">EDN Asia</a></li>
+	<li id="menu-item-9329"><a href="http://www.ednchina.com/">EDN China</a></li>
+	<li id="menu-item-9331"><a target="_blank" rel="noopener noreferrer" href="https://www.edntaiwan.com/">EDN Taiwan</a></li>
+	<li id="menu-item-9332"><a target="_blank" rel="noopener noreferrer" href="http://ednjapan.com/">EDN Japan</a></li>
+	<li id="menu-item-9333"><a target="_blank" rel="noopener noreferrer" href="http://www.esmchina.com/">ESM China</a></li>
+</ul>
+</li>
+<li id="menu-item-9334" class="connect col-md-2 col-sm-12 col-xs-12 menu-item-has-children"><a>Connect with Us</a>
+<ul class="sub-menu">
+	<li id="menu-item-9335"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/electronicstutorials"><span class="symbol"></span>Facebook</a></li>
+	<li id="menu-item-9336"><a target="_blank" rel="noopener noreferrer" href="https://plus.google.com/+Electronics-tutorialsWs"><span class="symbol"></span>Google+</a></li>
+</ul>
+</li>
+</ul></div>        <div class="footer-logo">
+            <img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/AspenCore_logo_general-@2x.png">
+        </div>
+    </div>
+    <div class="bttm-most">
+        <div class="container">
+            <div class="col-a">
+                All contents are Copyright                &copy; 2020 by AspenCore, Inc. All rights reserved.            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="flyover-btm-overlay">
+    <div class="mouser-menu">
+        <div class="visible-sec">
+            <img src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/ic-logo.png" alt="" height="34">
+            <span>Looking for the latest from TI?</span>
+        </div>
+        <div class="browse-list-wrap">
+            <ul class="products-list">
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/amplifiersandlinears/amplifiersandlinears.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-amplifiers-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Amplifiers</a>
+                </li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/non-isolated-dc-dc-switching-regulator-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-nonisolatedDCDC-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Non-Isolated
+                        DC/DC</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/audio/overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-audio-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Audio</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/powermanagement/power_portal.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-pwrmgmt-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Power
+                        Management</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/battery-management-products-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-battery-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Battery
+                        Management</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/power-management-multi-channel-ic-pmic-solutions-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-pmic-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Power
+                        Management IC (PMIC)</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/clockandtiming/clock_and_timing.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-clocks-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Clock and
+                        Timing</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/power-modules-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-powermodules-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Power
+                        Modules</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/dataconverters/data_converter.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-dataconverters-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Data Converters</a>
+                </li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/sensors/overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-sensors-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Sensors</a>
+                </li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/interface/interface.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-interface-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Interface</a>
+                </li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/voltage-reference-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-voltageref-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Voltage
+                        References</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/linear-regulators-ldo-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-linearregulator-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Linear
+                        Regulator (LDO)</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/webench/overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-WEBENCH-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Webench</a>
+                </li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/logic/home_overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-logic-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Logic</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/general/docs/refdesignsearchresults.tsp?HQS=hpa-null-null-eltutorflyaway-bs-lp-TIDesigns-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">TI Designs</a>
+                </li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/power-management/mosfet-and-igbt-gate-drivers-overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-MOSFET-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">MOSFET and IGBT
+                        Gate Drivers</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?https://store.ti.com?HQS=hpa-null-null-eltutorflyaway-bs-store-store-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">TI Store</a>
+                </li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com/lsds/ti/analog/motordrivers/overview.page?HQS=hpa-null-null-eltutorflyaway-bs-lp-motordrivers-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">Motor
+                        Drivers</a></li>
+                <li>
+                    <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://my.ti.com?HQS=hpa-null-null-eltutorflyaway-bs-myti-myti-wwe&DCM=yes"
+                       target="_blank" class="mouser-product-click"><img
+                                src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow.png">MyTI
+                        Registration</a></li>
+            </ul>
+        </div>
+        <div class="visit-ti-footer">
+            <a href="https://ad.doubleclick.net/ddm/clk/310010237;137676520;p?http://www.ti.com?HQS=hpa-null-null-eltutorflyaway-bs-lp-homepage-wwe&DCM=yes"
+               target="_blank" class="mouser-product-click">visit ti.com <img
+                        src="https://www.electronics-tutorials.ws/wp-content/themes/electronics-tutorials-v2/img/right-arrow-white.png"></a>
+        </div>
+    </div>
+</div>
+
+<div id="pum-13356" class="pum pum-overlay pum-theme-13350 pum-theme-enterprise-blue popmake-overlay click_open" data-popmake="{&quot;id&quot;:13356,&quot;slug&quot;:&quot;buy-from-eetimes&quot;,&quot;theme_id&quot;:13350,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;cookie_name&quot;:&quot;&quot;,&quot;extra_selectors&quot;:&quot;.buy-from-aspencore&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" >
+
+	<div id="popmake-13356" class="pum-container popmake theme-13350 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				
+
+		
+
+				<div class="pum-content popmake-content">
+			<noscript class="ninja-forms-noscript-message">
+    Notice: JavaScript is required for this content.</noscript><div id="nf-form-2-cont" class="nf-form-cont" aria-live="polite" aria-labelledby="nf-form-title-2" aria-describedby="nf-form-errors-2" role="form">
+
+    <div class="nf-loading-spinner"></div>
+
+</div>
+        <!-- TODO: Move to Template File. -->
+        <script>var formDisplay=1;var nfForms=nfForms||[];var form=[];form.id='2';form.settings={"objectType":"Form Setting","editActive":true,"title":"COMING SOON! Buy From EETimes (notify me)","show_title":1,"allow_public_link":0,"embed_form":"","clear_complete":1,"hide_complete":1,"default_label_pos":"above","wrapper_class":"","element_class":"","key":"","add_submit":0,"changeEmailErrorMsg":"Please enter a valid email address!","changeDateErrorMsg":"Please enter a valid date!","confirmFieldErrorMsg":"These fields must match!","fieldNumberNumMinError":"Number Min Error","fieldNumberNumMaxError":"Number Max Error","fieldNumberIncrementBy":"Please increment by ","formErrorsCorrectErrors":"Please correct errors before submitting this form.","validateRequiredField":"This is a required field.","honeypotHoneypotError":"Honeypot Error","fieldsMarkedRequired":"Fields marked with an <span class=\"ninja-forms-req-symbol\">*<\/span> are required","currency":"","unique_field_error":"A form with this value has already been submitted.","logged_in":false,"not_logged_in_msg":"","sub_limit_msg":"The form has reached its submission limit.","calculations":[],"formContentData":["business_email_1585314200643","listcheckbox_1585314180540","hidden_1585671727930","submit_1585314185457"],"drawerDisabled":false,"conditions":[],"ninjaForms":"Ninja Forms","fieldTextareaRTEInsertLink":"Insert Link","fieldTextareaRTEInsertMedia":"Insert Media","fieldTextareaRTESelectAFile":"Select a file","formHoneypot":"If you are a human seeing this field, please leave it empty.","fileUploadOldCodeFileUploadInProgress":"File Upload in Progress.","fileUploadOldCodeFileUpload":"FILE UPLOAD","currencySymbol":false,"thousands_sep":",","decimal_point":".","siteLocale":"en_GB","dateFormat":"m\/d\/Y","startOfWeek":"0","of":"of","previousMonth":"Previous Month","nextMonth":"Next Month","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"weekdaysMin":["Su","Mo","Tu","We","Th","Fr","Sa"],"currency_symbol":"","beforeForm":"","beforeFields":"","afterFields":"","afterForm":""};form.fields=[{"objectType":"Field","objectDomain":"fields","editActive":false,"order":2,"label":"Business Email","type":"email","key":"business_email_1585314200643","label_pos":"above","required":1,"default":"","placeholder":"","container_class":"","element_class":"","admin_label":"","help_text":"","custom_name_attribute":"email","personally_identifiable":1,"value":"","drawerDisabled":false,"id":6,"beforeField":"","afterField":"","parentType":"email","element_templates":["email","input"],"old_classname":"","wrap_template":"wrap"},{"objectType":"Field","objectDomain":"fields","editActive":false,"order":3,"label":"","type":"listcheckbox","key":"listcheckbox_1585314180540","label_pos":"above","required":1,"options":[{"errors":[],"max_options":0,"label":"Yes, I would like to receive your free eNewsletters, designed to provide me with the most up-to date information available (I understand I can opt-out at any time)","value":"yes-i-would-like-to-receive-your-free-enewsletters-designed-to-provide-me-with-the-most-up-to-date-information-available-i-understand-i-can-opt-out-at-any-time","calc":"","selected":0,"order":0,"settingModel":{"settings":false,"hide_merge_tags":false,"error":false,"name":"options","type":"option-repeater","label":"Options <a href=\"#\" class=\"nf-add-new\">Add New<\/a> <a href=\"#\" class=\"extra nf-open-import-tooltip\"><i class=\"fa fa-sign-in\" aria-hidden=\"true\"><\/i> Import<\/a>","width":"full","group":"","value":[{"label":"One","value":"one","calc":"","selected":0,"order":0},{"label":"Two","value":"two","calc":"","selected":0,"order":1},{"label":"Three","value":"three","calc":"","selected":0,"order":2}],"columns":{"label":{"header":"Label","default":""},"value":{"header":"Value","default":""},"calc":{"header":"Calc Value","default":""},"selected":{"header":"<span class=\"dashicons dashicons-yes\"><\/span>","default":0}}}},{"errors":[],"max_options":0,"label":"Yes, I agree to the use of my personal information in accordance with the EETimes <a href=\"https:\/\/www.aspencore.com\/privacy-policy\" target=\"_blank\">Privacy Policy<\/a>, and the <a href=\"https:\/\/www.aspencore.com\/terms-of-use\" target=\"_blank\">Terms of Use<\/a>.","value":"yes-i-agree-to-the-use-of-my-personal-information-in-accordance-with-the-eetimes-less-than-a-href-https-www-aspencore-com-privacy-policy-target-_blank-greater-than-privacy-policy-less-than-a-greater-than-and-the-less-than-a-href-https-www-aspencore-com-terms-of-use-target-_blank-greater-than-terms-of-use-less-than-a-greater-than","calc":"","selected":0,"order":1,"settingModel":{"settings":false,"hide_merge_tags":false,"error":false,"name":"options","type":"option-repeater","label":"Options <a href=\"#\" class=\"nf-add-new\">Add New<\/a> <a href=\"#\" class=\"extra nf-open-import-tooltip\"><i class=\"fa fa-sign-in\" aria-hidden=\"true\"><\/i> Import<\/a>","width":"full","group":"","value":[{"label":"One","value":"one","calc":"","selected":0,"order":0},{"label":"Two","value":"two","calc":"","selected":0,"order":1},{"label":"Three","value":"three","calc":"","selected":0,"order":2}],"columns":{"label":{"header":"Label","default":""},"value":{"header":"Value","default":""},"calc":{"header":"Calc Value","default":""},"selected":{"header":"<span class=\"dashicons dashicons-yes\"><\/span>","default":0}}}},{"errors":[],"max_options":0,"label":"Yes, I agree that my information may be shared with relevant third parties, who may email me based on my interest in products or services","value":"yes-i-agree-that-my-information-may-be-shared-with-relevant-third-parties-who-may-email-me-based-on-my-interest-in-products-or-services","calc":"","selected":0,"order":2,"settingModel":{"settings":false,"hide_merge_tags":false,"error":false,"name":"options","type":"option-repeater","label":"Options <a href=\"#\" class=\"nf-add-new\">Add New<\/a> <a href=\"#\" class=\"extra nf-open-import-tooltip\"><i class=\"fa fa-sign-in\" aria-hidden=\"true\"><\/i> Import<\/a>","width":"full","group":"","value":[{"label":"One","value":"one","calc":"","selected":0,"order":0},{"label":"Two","value":"two","calc":"","selected":0,"order":1},{"label":"Three","value":"three","calc":"","selected":0,"order":2}],"columns":{"label":{"header":"Label","default":""},"value":{"header":"Value","default":""},"calc":{"header":"Calc Value","default":""},"selected":{"header":"<span class=\"dashicons dashicons-yes\"><\/span>","default":0}}}}],"container_class":"","element_class":"","admin_label":"","help_text":"","drawerDisabled":false,"id":7,"beforeField":"","afterField":"","value":"","parentType":"list","element_templates":["listcheckbox","input"],"old_classname":"list-checkbox","wrap_template":"wrap"},{"objectType":"Field","objectDomain":"fields","editActive":false,"order":4,"label":"","type":"hidden","key":"hidden_1585671727930","default":"{wp:post_url}","admin_label":"","drawerDisabled":false,"id":9,"beforeField":"","afterField":"","value":"https:\/\/www.electronics-tutorials.ws\/binary\/signed-binary-numbers.html","label_pos":"above","parentType":"hidden","element_templates":["hidden","input"],"old_classname":"","wrap_template":"wrap-no-label"},{"objectType":"Field","objectDomain":"fields","editActive":false,"order":5,"label":"Submit","type":"submit","processing_label":"Processing","container_class":"","element_class":"","key":"submit_1585314185457","id":8,"beforeField":"","afterField":"","value":"","label_pos":"above","parentType":"textbox","element_templates":["submit","button","input"],"old_classname":"","wrap_template":"wrap-no-label"}];nfForms.push(form);</script>
+        
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			×            </button>
+		
+	</div>
+
+</div>
+	<div style="display:none">
+	<div class="grofile-hash-map-1ae0c4ba15cf6e1d8b7a37ab0dffaf6c">
+	</div>
+	<div class="grofile-hash-map-5b83820ec113118efea519ae7c960fc1">
+	</div>
+	<div class="grofile-hash-map-ef034cc137c1d040174cf67692527de4">
+	</div>
+	<div class="grofile-hash-map-6ee9fdaae84648c06cdea162510999c0">
+	</div>
+	<div class="grofile-hash-map-d17c676ad15f9efae856f2cf45ef1270">
+	</div>
+	<div class="grofile-hash-map-7fd4e54dc33043d55ddc6ce597b77f53">
+	</div>
+	<div class="grofile-hash-map-8c10e8bf1fd0f29aedcd699f79951590">
+	</div>
+	<div class="grofile-hash-map-081bdf61db2c155e3c26b24eee9703a7">
+	</div>
+	<div class="grofile-hash-map-f5ed6fb0bc6958c774a7c67cd7cfa17b">
+	</div>
+	<div class="grofile-hash-map-00b193d24e1137768773a2c8cf1ee906">
+	</div>
+	<div class="grofile-hash-map-ea267bb356db50cb6ec79152a0cc710a">
+	</div>
+	<div class="grofile-hash-map-31a6bad40eb9a8dac0b79485bcd607fe">
+	</div>
+	<div class="grofile-hash-map-48288b08f9a3fbace436e4a33d24b1c5">
+	</div>
+	<div class="grofile-hash-map-9b69202189a46aa3a459b9ed5107b6e6">
+	</div>
+	<div class="grofile-hash-map-83dda266ee6be773ea339c3c9808d220">
+	</div>
+	</div>
+<script>
+var etuts_ajax_comment_params = {"ajaxurl":"https:\/\/www.electronics-tutorials.ws\/wp-admin\/admin-ajax.php","ajax_nonce":"c8db88055a","submit_text":"Submit","sending_text":"Sending"};
+</script>
+<script>
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"https:\/\/www.electronics-tutorials.ws\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+</script>
+<script type='text/javascript' src='https://www.electronics-tutorials.ws/_static/??-eJyVjkkOwjAMRS9EsMokukAcBSWplbrNpNgBjk9UURbdsbItv/dteGVlUxSMAjJiQAb0aKWkSJaVVEmFtGf1PMDEYFMIDeX9xDv4T2WKzmPWDrdyqCr76igyTChZ2xkeFC2YSn6APCZJ8Vv2geJWX11X22iwOJULBqphJZTxqWVqZhReXrGFsqw57ZSvAy4bGcnOJr1/TYPu4dad++567C6nfvoAdolyYg=='></script>
+<script src='https://secure.gravatar.com/js/gprofiles.js?ver=202029'></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script>
+var pum_vars = {"version":"1.9.1","ajaxurl":"https:\/\/www.electronics-tutorials.ws\/wp-admin\/admin-ajax.php","restapi":"https:\/\/www.electronics-tutorials.ws\/wp-json\/pum\/v1","rest_nonce":null,"default_theme":"13348","debug_mode":"","disable_tracking":"","home_url":"\/","message_position":"top","core_sub_forms_enabled":"1","popups":[]};
+var ajaxurl = "https:\/\/www.electronics-tutorials.ws\/wp-admin\/admin-ajax.php";
+var pum_sub_vars = {"ajaxurl":"https:\/\/www.electronics-tutorials.ws\/wp-admin\/admin-ajax.php","message_position":"top"};
+var pum_popups = {"pum-13356":{"disable_on_mobile":false,"disable_on_tablet":false,"custom_height_auto":false,"scrollable_content":false,"position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"close_on_form_submission":false,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"triggers":[{"type":"click_open","settings":{"cookie_name":"","extra_selectors":".buy-from-aspencore"}}],"theme_id":"13350","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height":"380px","animation_type":"fade","animation_speed":"350","animation_origin":"center top","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","zindex":"1999999999","close_button_delay":"0","close_on_form_submission_delay":"0","cookies":[],"theme_slug":"enterprise-blue","id":13356,"slug":"buy-from-eetimes"}};
+</script>
+<script type='text/javascript' src='https://www.electronics-tutorials.ws/_static/??-eJyFj9sKwjAQRH/IuhQv2AfxUyRN17ppNhtzodSvN1gKffDyOHDmMAOjr7S4hC4B58rb3JOLYDB5pQdg6bLFCKPvg9xla+IGfjeu5DS0mWwHVj2nilj1RWDiOm6Z3OIqvM3djJhHxjBBJtAS8D/lJVIicWty2bYM8+Kzr1gNGEDFiOntKL2v/hKRW+w+WVeP1UCRMc2PbxK4sBc+14emPu3q474xL8T9gRE='></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202029.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.7.0.1',blog:'154170251',post:'4852',tz:'0',srv:'www.electronics-tutorials.ws'} ]);
+	_stq.push([ 'clickTrackerInit', '154170251', '4852' ]);
+</script>
+<script id="tmpl-nf-layout" type="text/template">
+	<span id="nf-form-title-{{{ data.id }}}" class="nf-form-title">
+		{{{ ( 1 == data.settings.show_title ) ? '<h3>' + data.settings.title + '</h3>' : '' }}}
+	</span>
+	<div class="nf-form-wrap ninja-forms-form-wrap">
+		<div class="nf-response-msg"></div>
+		<div class="nf-debug-msg"></div>
+		<div class="nf-before-form"></div>
+		<div class="nf-form-layout"></div>
+		<div class="nf-after-form"></div>
+	</div>
+</script>
+
+<script id="tmpl-nf-empty" type="text/template">
+
+</script>
+<script id="tmpl-nf-before-form" type="text/template">
+	{{{ data.beforeForm }}}
+</script><script id="tmpl-nf-after-form" type="text/template">
+	{{{ data.afterForm }}}
+</script><script id="tmpl-nf-before-fields" type="text/template">
+    <div class="nf-form-fields-required">{{{ data.renderFieldsMarkedRequired() }}}</div>
+    {{{ data.beforeFields }}}
+</script><script id="tmpl-nf-after-fields" type="text/template">
+    {{{ data.afterFields }}}
+    <div id="nf-form-errors-{{{ data.id }}}" class="nf-form-errors" role="alert"></div>
+    <div class="nf-form-hp"></div>
+</script>
+<script id="tmpl-nf-before-field" type="text/template">
+    {{{ data.beforeField }}}
+</script><script id="tmpl-nf-after-field" type="text/template">
+    {{{ data.afterField }}}
+</script><script id="tmpl-nf-form-layout" type="text/template">
+	<form>
+		<div>
+			<div class="nf-before-form-content"></div>
+			<div class="nf-form-content {{{ data.element_class }}}"></div>
+			<div class="nf-after-form-content"></div>
+		</div>
+	</form>
+</script><script id="tmpl-nf-form-hp" type="text/template">
+	<label for="nf-field-hp-{{{ data.id }}}" aria-hidden="true">
+		{{{ nfi18n.formHoneypot }}}
+		<input id="nf-field-hp-{{{ data.id }}}" name="nf-field-hp" class="nf-element nf-field-hp" type="text" value=""/>
+	</label>
+</script>
+<script id="tmpl-nf-field-layout" type="text/template">
+    <div id="nf-field-{{{ data.id }}}-container" class="nf-field-container {{{ data.type }}}-container {{{ data.renderContainerClass() }}}">
+        <div class="nf-before-field"></div>
+        <div class="nf-field"></div>
+        <div class="nf-after-field"></div>
+    </div>
+</script>
+<script id="tmpl-nf-field-before" type="text/template">
+    {{{ data.beforeField }}}
+</script><script id="tmpl-nf-field-after" type="text/template">
+    <#
+    /*
+     * Render our input limit section if that setting exists.
+     */
+    #>
+    <div class="nf-input-limit"></div>
+    <#
+    /*
+     * Render our error section if we have an error.
+     */
+    #>
+    <div id="nf-error-{{{ data.id }}}" class="nf-error-wrap nf-error" role="alert"></div>
+    <#
+    /*
+     * Render any custom HTML after our field.
+     */
+    #>
+    {{{ data.afterField }}}
+</script>
+<script id="tmpl-nf-field-wrap" type="text/template">
+	<div id="nf-field-{{{ data.id }}}-wrap" class="{{{ data.renderWrapClass() }}}" data-field-id="{{{ data.id }}}">
+		<#
+		/*
+		 * This is our main field template. It's called for every field type.
+		 * Note that must have ONE top-level, wrapping element. i.e. a div/span/etc that wraps all of the template.
+		 */
+        #>
+		<#
+		/*
+		 * Render our label.
+		 */
+        #>
+		{{{ data.renderLabel() }}}
+		<#
+		/*
+		 * Render our field element. Uses the template for the field being rendered.
+		 */
+        #>
+		<div class="nf-field-element">{{{ data.renderElement() }}}</div>
+		<#
+		/*
+		 * Render our Description Text.
+		 */
+        #>
+		{{{ data.renderDescText() }}}
+	</div>
+</script>
+<script id="tmpl-nf-field-wrap-no-label" type="text/template">
+    <div id="nf-field-{{{ data.id }}}-wrap" class="{{{ data.renderWrapClass() }}}" data-field-id="{{{ data.id }}}">
+        <div class="nf-field-label"></div>
+        <div class="nf-field-element">{{{ data.renderElement() }}}</div>
+        <div class="nf-error-wrap"></div>
+    </div>
+</script>
+<script id="tmpl-nf-field-wrap-no-container" type="text/template">
+
+        {{{ data.renderElement() }}}
+
+        <div class="nf-error-wrap"></div>
+</script>
+<script id="tmpl-nf-field-label" type="text/template">
+	<div class="nf-field-label"><label for="nf-field-{{{ data.id }}}"
+	                                   id="nf-label-field-{{{ data.id }}}"
+	                                   class="{{{ data.renderLabelClasses() }}}">{{{ data.label }}} {{{ ( 'undefined' != typeof data.required && 1 == data.required ) ? '<span class="ninja-forms-req-symbol">*</span>' : '' }}} {{{ data.maybeRenderHelp() }}}</label></div>
+</script>
+<script id="tmpl-nf-field-error" type="text/template">
+	<div class="nf-error-msg nf-error-{{{ data.id }}}">{{{ data.msg }}}</div>
+</script><script id="tmpl-nf-form-error" type="text/template">
+	<div class="nf-error-msg nf-error-{{{ data.id }}}">{{{ data.msg }}}</div>
+</script><script id="tmpl-nf-field-input-limit" type="text/template">
+    {{{ data.currentCount() }}} {{{ nfi18n.of }}} {{{ data.input_limit }}} {{{ data.input_limit_msg }}}
+</script><script id="tmpl-nf-field-null" type="text/template">
+</script><script id="tmpl-nf-field-email" type="text/template">
+	<input
+			type="email"
+			value="{{{ data.value }}}"
+			class="{{{ data.renderClasses() }}} nf-element"
+
+			id="nf-field-{{{ data.id }}}"
+			<# if( ! data.disable_browser_autocompletes ){ #>
+			name="{{ data.custom_name_attribute || 'nf-field-' + data.id + '-' + data.type }}"
+			autocomplete="email"
+			<# } else { #>
+			name="{{ data.custom_name_attribute || 'nf-field-' + data.id }}"
+			{{{ data.maybeDisableAutocomplete() }}}
+			<# } #>
+			{{{ data.renderPlaceholder() }}}
+			{{{ data.maybeDisabled() }}}
+
+			aria-invalid="false"
+			aria-describedby="nf-error-{{{ data.id }}}"
+			aria-labelledby="nf-label-field-{{{ data.id }}}"
+
+			{{{ data.maybeRequired() }}}
+	>
+</script>
+<script id='tmpl-nf-field-input' type='text/template'>
+    <input id="nf-field-{{{ data.id }}}" name="nf-field-{{{ data.id }}}" aria-invalid="false" aria-describedby="nf-error-{{{ data.id }}}" class="{{{ data.renderClasses() }}} nf-element" type="text" value="{{{ data.value }}}" {{{ data.renderPlaceholder() }}} {{{ data.maybeDisabled() }}}
+           aria-labelledby="nf-label-field-{{{ data.id }}}"
+
+            {{{ data.maybeRequired() }}}
+    >
+</script>
+<script id="tmpl-nf-field-listcheckbox" type="text/template">
+    <ul aria-describedby="nf-error-{{{ data.id }}}">
+        {{{ data.renderOptions() }}}
+    </ul>
+</script>
+
+<script id='tmpl-nf-field-listcheckbox-option' type='text/template'>
+    <# if ( ! data.visible ) { return '' } #>
+    <li>
+        <input type="checkbox" id="nf-field-{{{ data.fieldID }}}-{{{ data.index }}}" name="nf-field-{{{ data.fieldID }}}" class="{{{ data.classes }}} nf-element {{{ ( data.isSelected ) ? ' nf-checked' : '' }}}" value="{{{ data.value }}}" {{{ ( data.isSelected ) ? 'checked="checked"' : '' }}}
+            aria-labelledby="nf-label-field-{{{ data.fieldID }}}-{{{ data.index }}}"
+            <# if( data.required ) { #>
+			required
+			<# } #>
+        >
+        <label for="nf-field-{{{ data.fieldID }}}-{{{ data.index }}}"
+               id="nf-label-field-{{{ data.fieldID }}}-{{{ data.index }}}"
+               class="{{{ ( data.isSelected ) ? 'nf-checked-label' : '' }}}">{{{ data.label }}}</label>
+    </li>
+</script>
+
+<script id='tmpl-nf-field-listcheckbox-other' type='text/template'>
+    <li {{{ ( ! data.visible ) ? 'style="display:none"' : '' }}}>
+        <input type="checkbox"
+               id="nf-field-{{{ data.fieldID }}}-other"
+               name="nf-field-{{{ data.fieldID }}}" class="{{{ data.classes }}} nf-element" value="nf-other" {{{ ( ! data.valueFound ) ? 'checked="checked"' : '' }}}
+            aria-labelledby="nf-label-field-{{{ data.fieldID }}}-other"
+            <# if( data.required ) { #>
+			required
+			<# } #>
+        >
+         <label id="nf-label-field-{{{ data.fieldID }}}-other">Other
+            {{{ data.renderOtherText() }}}
+        </label>
+    </li>
+</script>
+
+<script id='tmpl-nf-field-listcheckbox-other-text' type='text/template'>
+    <input type="text" name="nf-field-{{{ data.fieldID }}}" class="nf-element" value="{{{ data.currentValue }}}">
+</script>
+<script id="tmpl-nf-field-hidden" type="text/template">
+    <input type="hidden" id="nf-field-{{{ data.id }}}" name="nf-field-{{{ data.id }}}" class="{{{ data.renderClasses() }}} nf-element" type="text" value="{{{ data.value }}}" {{{ data.renderPlaceholder() }}}>
+</script>
+<script id="tmpl-nf-field-submit" type="text/template">
+	<input id="nf-field-{{{ data.id }}}" class="{{{ data.renderClasses() }}} nf-element " type="button" value="{{{ data.label }}}" {{{ ( data.disabled ) ? 'disabled' : '' }}}>
+</script><script id='tmpl-nf-field-button' type='text/template'>
+    <button id="nf-field-{{{ data.id }}}" name="nf-field-{{{ data.id }}}" class="{{{ data.classes }}} nf-element">
+        {{{ data.label }}}
+    </button>
+</script>
+<script type="text/javascript" id="cookieinfo"
+        src="https://cookieinfoscript.com/js/cookieinfo.min.js">
+</script>
+
+    <div id='div-gpt-ad-inread'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function () {
+                googletag.display('div-gpt-ad-inread');
+            });
+        </script>
+    </div>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"80caaa83e0","applicationID":"161060835","transactionName":"NgMGZREHV0JUAkEMDQ9JJVIXD1ZfGhJcCwUNAw==","queueTime":0,"applicationTime":1114,"atts":"GkQRE1kdRB0XABdfGRwb","errorBeacon":"bam.nr-data.net","agent":""}</script><noscript><img src="https://www.electronics-tutorials.ws/akam/11/pixel_33a04dfa?a=dD0wNzk3NzI4MTExMWQ1MTQzYzZhZTA4MGFiYTNhNTc4NmYyOTRhOTYyJmpzPW9mZg==" style="visibility: hidden; position: absolute; left: -999px; top: -999px;" /></noscript></body>
+</html>
