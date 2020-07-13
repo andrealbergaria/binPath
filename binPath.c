@@ -63,6 +63,10 @@ int main() {
                                             
                                        
                   // use xhg (asm) to a=b b=a
+                 //aa
+                   ab (XOR)
+                   ba (REVERSE)
+                   bb (XOR)
                   
                  // solultion : etither add or bit shift, the entire stream of bytes
                  // In this case , i have byte[] = {00000000,00000001} , and then bit shift one possition (or add a bit)

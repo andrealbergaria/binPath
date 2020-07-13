@@ -1,5 +1,5 @@
 1) a = 00 10 11 (11d)
-   b = 01 11 01 (1+4+8+16 = 29d)
+   b = 01 11 01 (29d)
 
 
 a ^ b  = 00 10 11 (11d)
@@ -12,44 +12,70 @@ a + b  = 00 10 11 (11d)
         ---------   
          10 10 00 (40d)
 
-b + a = 01 11 01
-        00 10 11
+b + a = 01 11 01 (b)
+        00 10 11 (a)
         --------
         10 10 00 (40d)
 
-aa
-ab
-ba
-bb
+b -a = 01 11 01 (29d)
+       00 10 11 (11d)
+       
+a -b = 00 10 11
+       01 11 01
 
 
-a= 01 11 10
-
-reverse(a)) XOR 1= 00 10 11 (reverse of A) (11d)
-                     00 00 01 (1 to xor)
-                     --------
-    b)            00 10 10 (10d)
-    
-
-                       
-                       
-
-
+       --testing
+       
+       1) a = 00 10 11 (11d)
+          b = 01 11 01 (29d)
+          Complement2(b) = 10 00 10 =  rev(b)
+       
+       b-a
+       
+       z=0
+       a=01
+       b=10
+       c=11
+       
+        10 00 10 (rev(b)) (34d)
+xor     00 00 01    
+        -------- 
+        10 00 11  (35)
+        b z c
         
+        
+        10 00 10 (34d)
+      + 00 10 11 (11d)
+        -----------
+        10 11 01 (45d)
+        b  c  a 
+        
+        
+        
+        
+        
+        xor(b)  ^ 1 = 10 00 10 (
+                      00 00 01
+                      --------
+                      10 00 11
+                      
+       add +1 to the number               
+-----------------
+
     problem 
     -----------------------
         Some numbers, like b) which is 00 10 10 (10d)
         when reverted and xored with 1 gives 
         rev(b) = rev(b)-1
         
-        inv_minus_one)       00 10 10 (10d)
+        b=  00 10 10 (10d)
         rev(b) = 11 01 01  XOR 1 => 110100
         
         inv(b) XOR 1 , subtracts inv(b) to inv(b)-1
         
         
         Some numbers, like(t), when reversed and xored with one, add the revert to revert+1
-        t = 00 10 11 => (11d)
+        t = 00 10 11 (11d)
  
         rev(t) = 11 01 00
         
