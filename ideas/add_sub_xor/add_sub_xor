@@ -1,0 +1,62 @@
+sign-magnitude
+
+(signed binary number)
+single bit to set positive or negative
+if 1bit = 0 the number is positive
+    else negative
+
+problem  -> +0 and -0 would be 0000 and 1000
+    
+one complements
+
+subtraction 
+A) 115(10)         01 11 00 11 
+B) 27(10) =        00 01 10 11
+                +-----------
+                
+(overflow) 1    01 01 01 11
+to subtract take one complement of 2binary number, (that means inverse it), and then sum 1
+                01 01 01 11
+                         01
+                ------------ (add)
+                01 01 10 00
+                 64   16  8     = 64+16+8 = 88
+
+positive numbers equals
+A = 115 -> 01 11 00 11
+B = 27  -> 00 01 10 11
+2complement(B) -> inverseOf(B)
+
+
+         negative number are a sum of complement of the number
+         01110011 + 11100101 = 1 010110002
+          115       2complement(B)
+          
+-1 = 2complement(1111)
+          
+      00 10 (2dec)
+ +    11 11 (15dec)
+    ------
+      11  01 (13dec)
+
+   
+
+
+n= 0b101 
+complement = 111 is -1 in two complement
+
+so to get to the number n  + complement (to get the subtraction)
+    
+subtract (n and complement) = reverse(n)
+
+is add , the xor of reverse(n) ?
+
+
+reverse(n) = 010
+add(n+1) = 011
+         
+         
+        
+
+
+010  1
