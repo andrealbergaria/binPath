@@ -204,24 +204,41 @@ int main() {
                 d=c+1 ==> 100
                
                 
-        // finished inverse trying
+        // how do you invert the elements of a set
                             
                         
                         10 01 01 
-                        //one bit to change the abb (shift,reverse,
-                        11 01 01 (
+                        11 01 01 
+                        //one bit to change the abb (either shift, or add, or subtract, or rotate)
+                        
                             
                             
-                      xor 10 01 01      (baa  => 1+4+32
-                          11 01 01      (caa)  => 32+16+4+1 (+16)
+                  a)    xor A 10 01 01      (baa)  => 1+4+32 = 37
+                          B 11 01 01      (caa) => 1+4+16+32 = 55
                           ---------
-                          01 00 00          +16 (01 00 00) (flip de quantos ? 000000 >> 2
-                            // xor use to add
+                            01 00 00          +16 (01 00 00) (left shift de quantos ? 4bits , A << 4 or B << 4)
+                                                                   
+                        in this case, in a , the addition must be performed , because that would evenrtually be a negative number
                             
-                     xor 11 01 01           (caa)
-                         10 01  01          (baa)
+                 b)    xor 11 01 01           (caa) 1+4+16+32 = 55
+                         10 01  01          (baa) 1+4+32 = 37
                          01 00  00   // +16 
                                     //xor use to subtract
+
+                        in this case, in a ,a subtraction must be performed , because that would evenrtually be a negative number
+                                    
+                                    
+                                    can a xor, give a negative value=?
+                                    
+                                    
+                    xor can be used to add and subtract
+                                    
+                        to add, A xor B, to subtract B xor A
+                        
+                        
+                        
+                        
+                        
                         
                     xor bba = 10 10 01
                         bbc  = 10 10 11
