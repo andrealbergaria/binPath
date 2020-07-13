@@ -30,67 +30,42 @@ reverse(a)) XOR 1= 00 10 11 (reverse of A) (11d)
                      --------
     b)            00 10 10 (10d)
     
-    invert(res1) = 11 01 01 = (53d)
-    
-    rev(res1) XOR 0 = 11 01 01 (53d)
-                      00 00 00
-                      11 01 01 (53d)
-    rev(res1) XOR 1 =  11 01 01 (53d)
-                       00 00 01 
-                       --------
-                       11 01 00 (4+16+32 = 52d)
+
                        
                        
-                       
- t = 00 10 11 => (3+8=11d)
- inv(t) = 11 01 00
+
+
+        
+    problem 
+    -----------------------
+        Some numbers, like b) which is 00 10 10 (10d)
+        when reverted and xored with 1 gives 
+        rev(b) = rev(b)-1
+        
+        inv_minus_one)       00 10 10 (10d)
+        rev(b) = 11 01 01  XOR 1 => 110100
+        
+        inv(b) XOR 1 , subtracts inv(b) to inv(b)-1
+        
+        
+        Some numbers, like(t), when reversed and xored with one, add the revert to revert+1
+        t = 00 10 11 => (11d)
  
- 
- 
- t XOR 1
-            00 10 11 11d
-            00 00 01
-            ---------
-            00 10 10 (9d)
- inv(t) XOR 1
+        rev(t) = 11 01 00
+        
+        rev(t) XOR 1        
             11 01 00 (53d)
             00 00 01
             11 01 01 (54d)
-            
-t2 = 00 01 11
-
-inv(t2) XOR 1
-            11 10 00 (56d)
-            00 00 01
-            11 10 01 (57d)
-                   
+               
         
-        b =  00 10 10 (10d)
-
-        inv(b) XOR 1 =  11 01 01 (53d)
-                        00 00 01 
-                        --------
-                        11 01 00 (4+16+32 = 52d)
-                       
-
         
-        VAR XOR 1 always add one 1bit
+        -------
         
-        inv(b) XOR 1 , subtracts inv(b) to inv(b)-1
-        inv(t) XOR 1 , adds inv(t) to inv(t)+1
-
         
-        rev(a) XOR 1
-                    00 10 11 (11d)
-                    00 00 01 
-                    --------
-                    00 10 10 (10d)
+       
                     
-        i wonder if rev(a) xor 0 === rev(a) xor 1
-                       a+1             a-1
-                        
-        
-        reverse(a)
+                    
         
 complementOfB(b) = 10 00 10
 a - b = 00 10 11 (11d)
