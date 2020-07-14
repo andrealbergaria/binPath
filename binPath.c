@@ -67,6 +67,22 @@ int main() {
                    ab (XOR)
                    ba (REVERSE)
                    bb (XOR)
+                   
+                           10 00 10 (rev(b)) (34d)
+xor     00 00 01    
+        -------- 
+        10 00 11  (35)
+        b z c
+        
+        
+        10 00 10 (34d)
+      + 00 10 11 (11d)
+        -----------
+        10 11 01 (45d)
+        b  c  a 
+        
+        bca - bzc = zaa
+                   
                   
                  // solultion : etither add or bit shift, the entire stream of bytes
                  // In this case , i have byte[] = {00000000,00000001} , and then bit shift one possition (or add a bit)
