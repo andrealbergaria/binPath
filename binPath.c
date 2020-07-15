@@ -52,22 +52,55 @@ int main() {
                 */
                 unsigned int baseZeros = 0;
                 unsigned int baseOnes = 0;
-                //[a,b,c,d]
+                
                  // cycle iterator
                  int it=0;
+                 
+                 
                  
                  unsigned char  *currentByte = &baseZeros
                  unsigned char  *invertedCurrentBytes = &baseOnes;
                  
-                 unsigned char auxByte = *currentByte;
-                                            
-                 unsigned char shift = 1;
+                 int itBytes=1; // iterates through bytes not counting the first
+                 // cycles through all bytes from variable (in this case ints=4 bytes) 
                  
-                 int it2=2;
-                 // cycles through all bytes from variable
-                 for ( ; it2 < 
                  
-                 for (; it < 4; it++) {
-                        shift = shift << 1;
+                 for ( ; itShift < 8 ; itShift++) {
+                        *currentByte <<= 1;
+                        
+                        for ( ; itBytes < 4 ; itBytes++) {
+                            *currentByte+itBytes = *currentByte <<= 1;
+                        }
+
+                 }
+                 
+                 
+                 curreByte[0] =  cvuren<<=?1
+                 curreBytes[1] = curr << 1
+                 
+                // they have the same numbesr, so i need to copy from byte 1 to the others bytes
+                     
+                *currentByte+1  = *currentByte;
+                *currentByte+2 = *currentByte;
+                *currentByte+3 = *currentByte;
+                *currentByte+4 = *currentByte;
+                
+                *currentByte <<= 1;
+                
+                set zero
+                *curretnByte+1 = *currentByte;
+                
+                 
+                 for (; it < 8; it++) {
+                            *currentByte+it2 = *currentByte;
+                            *currentByte 
+                            
+                            // how to shift ? 
+                          
+                            
+                 }
+                        *currentByte =0; 
+                        currentByte++; // currentByte points to the byte, that is going to be used
+                        *currentByte=1; // in this case , we always start with 00000001 (as en example)
                  }
                  
