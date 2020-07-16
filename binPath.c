@@ -39,9 +39,9 @@ int main() {
                  // file contains ABC = 24 bytes
                 // encrpyted file has = 256 bytes
                 // encrypted = 256 chars = 
-                                    4 bytes => 1 int
-                                    256     =>  X
-                                    256/4, X = 64 ints
+                                    //4 bytes => 1 int
+                                    //256     =>  X
+                                    //256/4, X = 64 ints
                                     
                 /* Tbhe algorithm is like this
                 first consider 00000
@@ -55,30 +55,34 @@ int main() {
                  *bytes that are procesed = 4
                  * *8 because each cell is 8
                  * so 4+8 = 12
-                 * */                               byteNumZeros
+                 * */                               
                 unsigned char arrayZeros[8] = {0,1,2,4,8,16,32,64}; /// 00 01 10 100 1000
-                unsigned char arrayOnes[4] ;
+                unsigned char arrayOnes[8]  = {~0,~1,~2,~4,~8,~16,~32,~64};
                 
                 
                 int num_of_bytes = 4; // so it will process 4 bytes 
                 
-                 unsigned int calculatedSoFar[4]
+                 unsigned int calculatedSoFar[4] = {0,0,0,0};
+                 
                  
 
-                 unsigned char *byteNumZeros = &arrayZeros;
+                 unsigned char *byteNumZeros = &arrayZeros[0];
                  
                  // Trying to minimize cycles,like since the characteres have alll the same value,copy the values between variables
                  
-                 unsigned int test = 0b10100001010101010100110011011101;
+                unsigned int test = 0b10100001010101010100110011011101;
                 int indexTotal  = 0; // index of bytes on the array used
-
-                for (; indexTotal  < 4;indexTotal++) {
-                    arrayOnes[indexTotal]  ~= arraysZeros[indexTotal];
-                }
-
-                // just inverse the byteNumZeros to get the ffffff
                 
-                for ( ; index < 7 ; index++) {
+                for ( ; num_of_bytes < 4 ; num_of_bytes++) {
+                    calculatedSoFar[num_of_bytes] = 0;
+                    byteNumZeros = &arrayZeros[0];
+                    for (; indexTotal < 8; indexTotal++) {
+                        calculatedSoFar[num_of_bytes] = *byteNumZeros;
+                        printBin(calculatedSoFar[num_of_bytes]);
+                        printf("\n");
+                        *byteNumZeros++;
+                }
                     
                 }
                                   
+}
