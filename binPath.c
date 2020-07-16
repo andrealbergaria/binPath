@@ -50,57 +50,37 @@ int main() {
                 keep shifting
                 all bits accounted
                 */
-                unsigned int baseZeros = 0;
-                unsigned int baseOnes = 0;
                 
-                 // cycle iterator
-                 int it=0;
-                 
-                 
-                 
-                 unsigned char  *currentByte = &baseZeros
-                 unsigned char  *invertedCurrentBytes = &baseOnes;
-                 
-                 int itBytes=1; // iterates through bytes not counting the first
-                 // cycles through all bytes from variable (in this case ints=4 bytes) 
-                 
-                 
-                 for ( ; itShift < 8 ; itShift++) {
-                        *currentByte <<= 1;
-                        
-                        for ( ; itBytes < 4 ; itBytes++) {
-                            *currentByte+itBytes = *currentByte <<= 1;
-                        }
-
-                 }
-                 
-                 
-                 curreByte[0] =  cvuren<<=?1
-                 curreBytes[1] = curr << 1
-                 
-                // they have the same numbesr, so i need to copy from byte 1 to the others bytes
-                     
-                *currentByte+1  = *currentByte;
-                *currentByte+2 = *currentByte;
-                *currentByte+3 = *currentByte;
-                *currentByte+4 = *currentByte;
-                
-                *currentByte <<= 1;
-                
-                set zero
-                *curretnByte+1 = *currentByte;
+                /*
+                 *bytes that are procesed = 4
+                 * *8 because each cell is 8
+                 * so 4+8 = 12
+                 * */
+                unsigned char totalArray[4];  // represent how many bytes we want to process (in this case a int)
                 
                  
-                 for (; it < 8; it++) {
-                            *currentByte+it2 = *currentByte;
-                            *currentByte 
-                            
-                            // how to shift ? 
-                          
-                            
-                 }
-                        *currentByte =0; 
-                        currentByte++; // currentByte points to the byte, that is going to be used
-                        *currentByte=1; // in this case , we always start with 00000001 (as en example)
-                 }
+                 // Trying to minimize cycles,like since the characteres have alll the same value,copy the values between variables
                  
+                 
+                 unsigned char occupiedCell[8]; // each cell represents a byte
+                                                // 00000000
+                                                // 00000001 (all cells)
+                                                // 00000010
+                 
+                 occupiedCell[0] = 1; // the equivalent to 000001
+                 occupiedCell[1] = 0b10;
+                 occupiedCell[2] = 0b100;
+                 occupiedCell[3] = 0b1000;
+                 occupiedCell[4] = 0b10000;
+                 occupiedCell[5] = 0b100000;
+                 occupiedCell[6] = 0b1000000;
+                 occupiedCell[7] = 0b10000000;
+                 
+                unsigned char *line = &occupiedCell;
+                
+                int index  = 0; // index of total array
+                
+                for ( ; index < 4 ; index++) {
+                    totalArray[index] = 
+                }
+                                  
