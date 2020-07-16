@@ -55,32 +55,30 @@ int main() {
                  *bytes that are procesed = 4
                  * *8 because each cell is 8
                  * so 4+8 = 12
-                 * */
-                unsigned char totalArray[4];  // represent how many bytes we want to process (in this case a int)
+                 * */                               byteNumZeros
+                unsigned char arrayZeros[8] = {0,1,2,4,8,16,32,64}; /// 00 01 10 100 1000
+                unsigned char arrayOnes[4] ;
                 
+                
+                int num_of_bytes = 4; // so it will process 4 bytes 
+                
+                 unsigned int calculatedSoFar[4]
+                 
+
+                 unsigned char *byteNumZeros = &arrayZeros;
                  
                  // Trying to minimize cycles,like since the characteres have alll the same value,copy the values between variables
                  
-                 
-                 unsigned char occupiedCell[8]; // each cell represents a byte
-                                                // 00000000
-                                                // 00000001 (all cells)
-                                                // 00000010
-                 
-                 occupiedCell[0] = 1; // the equivalent to 000001
-                 occupiedCell[1] = 0b10;
-                 occupiedCell[2] = 0b100;
-                 occupiedCell[3] = 0b1000;
-                 occupiedCell[4] = 0b10000;
-                 occupiedCell[5] = 0b100000;
-                 occupiedCell[6] = 0b1000000;
-                 occupiedCell[7] = 0b10000000;
-                 
-                unsigned char *line = &occupiedCell;
+                 unsigned int test = 0b10100001010101010100110011011101;
+                int indexTotal  = 0; // index of bytes on the array used
+
+                for (; indexTotal  < 4;indexTotal++) {
+                    arrayOnes[indexTotal]  ~= arraysZeros[indexTotal];
+                }
+
+                // just inverse the byteNumZeros to get the ffffff
                 
-                int index  = 0; // index of total array
-                
-                for ( ; index < 4 ; index++) {
-                    totalArray[index] = 
+                for ( ; index < 7 ; index++) {
+                    
                 }
                                   
