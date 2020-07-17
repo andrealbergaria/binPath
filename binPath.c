@@ -21,7 +21,7 @@
 
 
 
-void printBin(unsigned int n) {
+void printBinInt(unsigned int n) {
     
     int it = 0;
     while (it < 32) {
@@ -34,6 +34,24 @@ void printBin(unsigned int n) {
     it++;
     }
 }    
+
+void printBinShort(unsigned short n) {
+    
+    int it = 0;
+    while (it < 16) {
+        
+    if(n&1) 
+        printf("1");
+    else 
+        printf("0");
+    n = n >> 1;
+    it++;
+    }
+    printf("\n");
+}    
+
+
+
 
 int main() {
                  // file contains ABC = 24 bytes
@@ -59,12 +77,10 @@ int main() {
                 
                 
                 
-                int cellPosition = 0; // so it will process 4 bytes 
-                
                  unsigned short calculatedSoFar = 0;
                  
                  
-                 unsigned char *byteNumZeros = &arrayZeros[0];
+                 unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
                  
                  // Trying to minimize cycles,like since the characteres have alll the same value,copy the values between variables
                  // so process 1 byte, zero all, process 2 byte, etc...
@@ -77,21 +93,24 @@ int main() {
                 
                 
                 // on the end, of processing a byte (00000 000010 00001000....), sets the number to zero
-                calculatedSoFar = ones & 1; // sets zeros on all the bytes in the numebrs
+                //calculatedSoFar = ones & 1; // sets zeros on all the bytes in the numebrs
                 
                 unsigned int test = 0b10100001010101010100110011011101;
-                char idx = 0;
                 
                 int indexTotal  = 0; // index of bytes on the array used
                 
+                    printBinShort(calculatedSoFar);
+                    calculatedSoFar = 1;
                 
-                    for ( ;  idx < 8; idx++) {
-                        zeros <<= 1;
-                        ones = ~zeros;
-                        printBin(calculatedSoFar);
-                        printf("\n");
+                    for (indexTotal = 0 ;  indexTotal < 8; indexTotal++) {
+                        for (int cellPosition =0  ;cellPosition < 1; cellPosition++) {
+                            calculatedSoFar <<= 8;
+                            printBinShort(calculatedSoFar);
+                        }
+                        calculatedSoFar = positionArray[indexTotal];
+                        printf("\n%i\n",calculatedSoFar);
                     }
-                    calculatedSoFar = ones & 1;
+                    
                         
-                }
+                
 }
