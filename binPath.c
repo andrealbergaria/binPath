@@ -56,33 +56,42 @@ int main() {
                  * *8 because each cell is 8
                  * so 4+8 = 12
                  * */                               
-                unsigned char arrayZeros[8] = {0,1,2,4,8,16,32,64}; /// 00 01 10 100 1000
-                unsigned char arrayOnes[8]  = {~0,~1,~2,~4,~8,~16,~32,~64};
                 
                 
-                int num_of_bytes = 4; // so it will process 4 bytes 
                 
-                 unsigned int calculatedSoFar[4] = {0,0,0,0};
+                int cellPosition = 0; // so it will process 4 bytes 
+                
+                 unsigned short calculatedSoFar = 0;
                  
                  
-
                  unsigned char *byteNumZeros = &arrayZeros[0];
                  
                  // Trying to minimize cycles,like since the characteres have alll the same value,copy the values between variables
+                 // so process 1 byte, zero all, process 2 byte, etc...
                  
+                unsigned char zeros = 0;
+                unsigned char ones = ~zeros;
+                
+                zeros = 1;
+                ones = ~zeros;
+                
+                
+                // on the end, of processing a byte (00000 000010 00001000....), sets the number to zero
+                calculatedSoFar = ones & 1; // sets zeros on all the bytes in the numebrs
+                
                 unsigned int test = 0b10100001010101010100110011011101;
+                char idx = 0;
+                
                 int indexTotal  = 0; // index of bytes on the array used
                 
-                for ( ; num_of_bytes < 4 ; num_of_bytes++) {
-                    calculatedSoFar[num_of_bytes] = 0;
-                    byteNumZeros = &arrayZeros[0];
-                    for (; indexTotal < 8; indexTotal++) {
-                        calculatedSoFar[num_of_bytes] = *byteNumZeros;
-                        printBin(calculatedSoFar[num_of_bytes]);
+                
+                    for ( ;  idx < 8; idx++) {
+                        zeros <<= 1;
+                        ones = ~zeros;
+                        printBin(calculatedSoFar);
                         printf("\n");
-                        *byteNumZeros++;
+                    }
+                    calculatedSoFar = ones & 1;
+                        
                 }
-                    
-                }
-                                  
 }
