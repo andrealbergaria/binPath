@@ -21,6 +21,7 @@
 
 
 void printBits(unsigned char );
+void printShortBits(unsigned short s);
 
 
 //from irc
@@ -40,6 +41,25 @@ void printBits(unsigned char number) {
    printf("\n");
    
 }
+
+
+void printShortBits(unsigned short number) {
+   unsigned short mask = 0x8000;
+   int it;
+   
+   for (it=0 ;it < 16; it++) {
+       if (number & mask)
+           putchar('1');
+       else
+           putchar('0');
+      
+       mask >>= 1;
+   }
+   
+   printf("\n");
+   
+}
+
 
 
 int main() {
@@ -87,28 +107,18 @@ int main() {
                         /*
                         process zero on all cells, calculatedSoFar=0
                         */
-                
-                         unsigned short calculatedSoFar = 0;
-
-
-                    for (indexTotal = 0 ;indexTotal < 8; indexTotal++) {
-                       // calculatedSoFar = positionArray[indexTotal];
-                        printBits(positionArray[indexTotal]);
-                       // printBits(&calculatedSoFar,8);
-                        //calculatedSoFar >>=8;
-                        //printBits(&calculatedSoFar,16);
-                    }
                         
-             /*       for (indexTotal = 0 ;  indexTotal < 8; indexTotal++) {
-                        
-                        printBinShort(calculatedSoFar);
-                        for (int cellPosition =0  ;cellPosition < maxBytes; cellPosition++) {
+                         unsigned short calculatedSoFar = 1;
+                          printShortBits(calculatedSoFar);
+                       for (int cellPosition =0  ;cellPosition < 1; cellPosition++) {
                             calculatedSoFar <<= 8;
-                            printBinShort(calculatedSoFar);
+                            printShortBits(calculatedSoFar);
                         }
 
-                    }
-
-            */
+                         
+                         
+                       
+                        
+             
 
 }
