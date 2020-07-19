@@ -20,38 +20,22 @@
 // another view of it, is that 0= 0 and 1=[1,2,3] for example...in this case the 111111 cases needs to invert the zero and the set ([1,2,3]
 
 
-void printBits(unsigned char *);
+void printBits(unsigned char );
 
-void printBits2(unsigned char *n,int size) {
 
-    int it = 0;
-    while (it < size) {
-
-    char mask = 0x10000000;
-    if(*n&mask)
-        printf("1");
-    else
-        printf("0");
-    *n = *n >> 7;
-    it++;
-    }
-    printf("\n");
-}
 //from irc
-void printBits(unsigned char *n) {
-    // from irc for (int mask = 128; i > 0; i>>=1) printf("%c", *currentByte & mask ? '1' : '0')
-   unsigned char mask = 0b10000000;
+void printBits(unsigned char number) {
+   unsigned char mask = 0x80;
    int it;
    
    for (it=0 ;it < 8; it++) {
-       if (*n & mask)
+       if (number & mask)
            putchar('1');
        else
            putchar('0');
       
        mask >>= 1;
    }
-   
    
    printf("\n");
    
@@ -82,8 +66,7 @@ int main() {
 
 
 
-                 unsigned short calculatedSoFar = 0;
-
+                
 
                  unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
@@ -99,16 +82,18 @@ int main() {
                 unsigned int test = 0b10100001010101010100110011011101;
 
                 int indexTotal  = 0; // index of bytes on the array used
-                unsigned char ten = 0x10;
-                printBits(&ten);
+                // max size of bytes long double                
+                
                         /*
                         process zero on all cells, calculatedSoFar=0
                         */
                 
-                        // start iterating with 1 (so one can shift ...
+                         unsigned short calculatedSoFar = 0;
+
 
                     for (indexTotal = 0 ;indexTotal < 8; indexTotal++) {
-                        calculatedSoFar = positionArray[indexTotal];
+                       // calculatedSoFar = positionArray[indexTotal];
+                        printBits(positionArray[indexTotal]);
                        // printBits(&calculatedSoFar,8);
                         //calculatedSoFar >>=8;
                         //printBits(&calculatedSoFar,16);
