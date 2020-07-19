@@ -20,24 +20,42 @@
 // another view of it, is that 0= 0 and 1=[1,2,3] for example...in this case the 111111 cases needs to invert the zero and the set ([1,2,3]
 
 
+void printBits(unsigned char *);
 
-
-void printBinary(void *n,int size) {
+void printBits2(unsigned char *n,int size) {
 
     int it = 0;
     while (it < size) {
 
-    if(n&1)
+    char mask = 0x10000000;
+    if(*n&mask)
         printf("1");
     else
         printf("0");
-    n = n >> 1;
+    *n = *n >> 7;
     it++;
     }
     printf("\n");
 }
-
-
+//from irc
+void printBits(unsigned char *n) {
+    // from irc for (int mask = 128; i > 0; i>>=1) printf("%c", *currentByte & mask ? '1' : '0')
+   unsigned char mask = 0b10000000;
+   int it;
+   
+   for (it=0 ;it < 8; it++) {
+       if (*n & mask)
+           putchar('1');
+       else
+           putchar('0');
+      
+       mask >>= 1;
+   }
+   
+   
+   printf("\n");
+   
+}
 
 
 int main() {
@@ -75,17 +93,14 @@ int main() {
                 unsigned char zeros = 0;
                 unsigned char ones = ~zeros;
 
-                zeros = 1;
-                ones = ~zeros;
-
-
                 // on the end, of processing a byte (00000 000010 00001000....), sets the number to zero
                 //calculatedSoFar = ones & 1; // sets zeros on all the bytes in the numebrs
 
                 unsigned int test = 0b10100001010101010100110011011101;
 
                 int indexTotal  = 0; // index of bytes on the array used
-
+                unsigned char ten = 0x10;
+                printBits(&ten);
                         /*
                         process zero on all cells, calculatedSoFar=0
                         */
@@ -93,11 +108,14 @@ int main() {
                         // start iterating with 1 (so one can shift ...
 
                     for (indexTotal = 0 ;indexTotal < 8; indexTotal++) {
-                        printBits(sizeof(short),positionArray[0]);
+                        calculatedSoFar = positionArray[indexTotal];
+                       // printBits(&calculatedSoFar,8);
+                        //calculatedSoFar >>=8;
+                        //printBits(&calculatedSoFar,16);
                     }
                         
              /*       for (indexTotal = 0 ;  indexTotal < 8; indexTotal++) {
-                        calculatedSoFar = positionArray[indexTotal];
+                        
                         printBinShort(calculatedSoFar);
                         for (int cellPosition =0  ;cellPosition < maxBytes; cellPosition++) {
                             calculatedSoFar <<= 8;
