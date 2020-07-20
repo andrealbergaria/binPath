@@ -92,7 +92,6 @@ int main() {
                         */
                         
                         
-                         unsigned char zeros = 1;
                          unsigned char ones = 0xFF;
                          
                          //printShortBits(zeros);
@@ -120,16 +119,71 @@ int main() {
                            
                            ones = ~zeros;
                     }
+                        //number |= 1UL << n; (set n bit)
+                      //  number ^= 1UL << n; // toggle n bit
+                   
                      */
                    
-                   for (int indexTotal = 0 ; indexTotal < 8; indexTotal++) {
-                       zeros <<= 1;
-                       ones <<= 1;
-                       printf("\n%d",zeros);
-                       printf("\n%d",ones);
-                       
-                   }
+                    // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
+
+                            unsigned char zeros=1;
                            
+                            unsigned char mask = 0b1000000;
+                            
+                   // omiss zeros=0; trivial case
+                   //unsigned char base_3bits[8] = {000,0b001,0b010,0b011,0b100,0b101,0b110,0b111};
+                 //  for (int numOfBytes = 0 ; numOfBytes < 2; numOfBytes++) {
+                           
+                            //value = (value & ~mask) | (newvalue & mask);
+                        
+                      // zeros = zeros ^ (1 << 7) ; // 
+                       
+                            
+           //                  3bits left  3 bits right =0
+//    3bits right 3 bits left = 0
+    
+    
+ /*   111 000
+    000 111 
+    
+    111 111
+    000 000
+   */                         
+                            zeros = (zeros & mask);
+                            printBits(zeros);
+                       unsigned char shift;
+                       zeros <<= 7;
+                       for (int base =0 ; base < 7; base++) {
+                                
+                            zeros += 1;
+                            shift = zeros << 4;
+                            printBits(shift);
+                            
+                       }
+                       zeros = 0;
+                       for (int base =0 ; base < 7; base++) {
+                                
+                            zeros += 1;
+                            printBits(zeros);
+                       }
+                       
+                      
+                       //printBits(zeros);
+                       
+                       //zeros = zeros ^ (1 << 4);
+                     /*  
+                       for (int base =0 ; base < 7; base++) {
+                            
+                            zeros -= 1;
+                            printBits(zeros);
+                       }
+                       */
+                       
+                      
+                       
+                   
+                     
+                     
                            
                          
                     
