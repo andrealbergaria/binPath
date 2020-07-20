@@ -853,29 +853,29 @@ preciso de
 00011 3   (flip the bit , ignore zeros suffix)
 
 
-00010 2 (reverted => 00101 => ignoring leading 2 zeros => 5)
-00100 4 (reverted stays => 00011) (ingoring leading zeros 2) =3 
-01000 8 (revered stays > 00111 (ignoring zeros 2) , 7
-10000 16 (Reverted => 01111 => no ignoring zero => 15)
+001    1    
+010   2
+100   4   
+000   0 
+011 = 3
+101 = 5
+110 = 6
+111 = 7
 
 
-(ignoring first digit)
-0001    1    
-0010   2
-0100   4   
-1000   0 
+with 4 bits we get , 16 numbers (already got 8 from 3 bits)
 
-16-9 = 7 faltam 7 numeros (3,5,6,9,10,12)
+needed numbers
+(8,9,10,11,12,13,14,15)
 
-
-
-1011 = 3
-1101 = 5
-1110 = 6
-1111 = 7
-
-
-
+1000  
+1001  add first bit 1, to 001
+1010  add first bit to 010  
+1011  add first bit to 011
+1100 add furst bit to 100
+1101 add first bit to 101
+1110 add first bit to 110
+ 
 
 
 try to ignore leading digit, so to become 3 bits and then use the algorithm
