@@ -71,35 +71,18 @@ int main() {
                                     //256/4, X = 64 ints
 
                 /* Tbhe algorithm is like this
-                first consider 00000
-                then keep shifting one bit to the left
-                then consider instead of 00000  , 111111
-                keep shifting
-                all bits accounted
+                first consider 00001
+                then keep shifting to the left, until all 1 are accounted for
+                // Then use 111111
+                // and keep changing one bit of the base, until all bits accounted
                 */
-
-                /*
-                 *bytes that are procesed = 4
-                 * *8 because each cell is 8
-                 * so 4+8 = 12
-                 * */
-
 
 
                 
 
                  unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
-                 // Trying to minimize cycles,like since the characteres have alll the same value,copy the values between variables
-                 // so process 1 byte, zero all, process 2 byte, etc...
-
-                unsigned char zeros = 0;
-                unsigned char ones = ~zeros;
-
-                // on the end, of processing a byte (00000 000010 00001000....), sets the number to zero
-                //calculatedSoFar = ones & 1; // sets zeros on all the bytes in the numebrs
-
-                unsigned int test = 0b10100001010101010100110011011101;
+                unsigned short test = 0xFAFE;
 
                 int indexTotal  = 0; // index of bytes on the array used
                 // max size of bytes long double                
@@ -108,17 +91,47 @@ int main() {
                         process zero on all cells, calculatedSoFar=0
                         */
                         
-                         unsigned short calculatedSoFar = 1;
-                          printShortBits(calculatedSoFar);
-                       for (int cellPosition =0  ;cellPosition < 1; cellPosition++) {
-                            calculatedSoFar <<= 8;
-                            printShortBits(calculatedSoFar);
-                        }
-
-                         
-                         
-                       
                         
-             
+                         unsigned char zeros = 1;
+                         unsigned char ones = 0xFF;
+                         
+                         //printShortBits(zeros);
+                      //   printShortBits(ones);
+                         unsigned short shiftLeftBytes=1;
+                         unsigned short ones_t = ~shiftLeftBytes;
+                         
+                         
+                   /*     for (int indexTotal= 0 ; indexTotal < 8;indexTotal++) {
+                            printBits(zeros);
+                            for (int cellPosition =0  ;cellPosition < 1; cellPosition++) {
+                                shiftLeftBytes = zeros << 8;
+                                ones_t = ~shiftLeftBytes;
+                                
+                                printShortBits(shiftLeftBytes);
+                                
+                                if (ones_t == test || shiftLeftBytes == test) {
+                                    printf("\nFOUND\n");
+                                    printf("\nFOUND\n");
+                                }
+                            }
+                           printShortBits(zeros); 
+                           zeros <<= 1;
+                           
+                           
+                           ones = ~zeros;
+                    }
+                     */
+                   
+                   for (int indexTotal = 0 ; indexTotal < 8; indexTotal++) {
+                       zeros <<= 1;
+                       ones <<= 1;
+                       printf("\n%d",zeros);
+                       printf("\n%d",ones);
+                       
+                   }
+                           
+                           
+                         
+                    
 
 }

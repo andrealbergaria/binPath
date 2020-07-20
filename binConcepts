@@ -21,40 +21,6 @@
 
 
 
-void printBin(unsigned int n) {
-    
-    int it = 0;
-    while (it < 32) {
-        
-    if(n&1) 
-        printf("1");
-    else 
-        printf("0");
-    n = n >> 1;
-    it++;
-    }
-}    
-
-int main() {
-                 
-                 
-                 unsigned char firstHalf[4];  
-                 unsigned char secondHalf[4]; 
-                 
-                                     
-                 firstHalf[0] =  0;
-                 firstHalf[1] = 0x1;
-                 firstHalf[2] = 0x2;
-                 firstHalf[3] = 0x4;
-                 
-                 secondHalf[0] = 1;
-                 secondHalf[1] = 0xFE;
-                 secondHalf[2] = 0xFD;
-                 secondHalf[3] = 0xFC;
-                 
-                 
-                 // cycle iterator
-                 int iterator;
                 
                   
                   // remains here because its a possibly solution
@@ -868,3 +834,51 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                // thing is, use the algorithm on a binary string like 0b1010101111100 (always bit shift 1)
                 
 }
+
+
+
+// test 
+/sera que é shift duas ou mais vezes (mais zeros?, por exmepl 11100 , 11000)
+5 bits
+
+00001    1
+00010   2
+00100   4   
+01000   8
+10000   16
+
+preciso de 
+3,5,6,7,9,10,11,12,13,14,15
+
+00011 3   (flip the bit , ignore zeros suffix)
+
+
+00010 2 (reverted => 00101 => ignoring leading 2 zeros => 5)
+00100 4 (reverted stays => 00011) (ingoring leading zeros 2) =3 
+01000 8 (revered stays > 00111 (ignoring zeros 2) , 7
+10000 16 (Reverted => 01111 => no ignoring zero => 15)
+
+
+00101 5 
+
+
+00110 6
+00111 7
+01001 9
+01010 10
+01011 11
+01100 12
+01101 13
+01110 14
+01111 15
+
+
+
+3 bits
+001  1
+010 2
+100 4
+111 7
+110 6
+101 5
+011 3
