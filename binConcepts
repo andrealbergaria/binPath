@@ -852,30 +852,51 @@ preciso de
 
 00011 3   (flip the bit , ignore zeros suffix)
 
-
-001    1    
+000   0
+001   1    
 010   2
-100   4   
-000   0 
 011 = 3
+100   4   
 101 = 5
 110 = 6
 111 = 7
 
-
-with 4 bits we get , 16 numbers (already got 8 from 3 bits)
-
 needed numbers
 (8,9,10,11,12,13,14,15)
 
-1000  
-1001  add first bit 1, to 001
-1010  add first bit to 010  
-1011  add first bit to 011
-1100 add furst bit to 100
-1101 add first bit to 101
-1110 add first bit to 110
+1000  8
+1001  add first bit 1, to 001 9
+1010  add first bit to 010   10
+1011  add first bit to 011  11
+1100 add furst bit to 100  12
+1101 add first bit to 101  13
+1110 add first bit to 110  14
+1111 add first bit to 111 15
  
+ add 8d (the first bit), to the three bits (like for instance 000 => 1000, and 001 => 1001) to get the numbers
+ or
+ add 16 to the (binary numbers that have three bits, getting 5 bits).
+ 
+1000 inverse = 0111 = 111
+1010 inverse = 0101 = 101
+1011 inverse = 0100 = 100
+1100 inverse =0011  = 011
+1101 inverse = 0010 = 010
+1110 invesre 0001  =  001
+ 
+
+10000 16   (000 + 10)
+10001 17   (001 + 10)
+10010 18   (010 + 10)
+10011 19 
+ 
+ 
+ 
+add extra bit in beggining
+
+11000    24
+11001    25
+11010    26 
 
 
 try to ignore leading digit, so to become 3 bits and then use the algorithm
