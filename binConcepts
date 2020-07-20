@@ -841,7 +841,7 @@ use 1 bit b, shift it 3 times , acc,cac,cca
 /sera que é shift duas ou mais vezes (mais zeros?, por exmepl 11100 , 11000)
 5 bits
 
-00001    1
+00001    1    
 00010   2
 00100   4   
 01000   8
@@ -857,6 +857,32 @@ preciso de
 00100 4 (reverted stays => 00011) (ingoring leading zeros 2) =3 
 01000 8 (revered stays > 00111 (ignoring zeros 2) , 7
 10000 16 (Reverted => 01111 => no ignoring zero => 15)
+
+
+(ignoring first digit)
+0001    1    
+0010   2
+0100   4   
+1000   0 
+
+16-9 = 7 faltam 7 numeros (3,5,6,9,10,12)
+
+
+
+1011 = 3
+1101 = 5
+1110 = 6
+1111 = 7
+
+
+
+
+
+try to ignore leading digit, so to become 3 bits and then use the algorithm
+9,10
+
+(it works with base 111 (inverting, ingoring leading zeros (until it reaches the bits which are assured);
+
 
 
 00101 5 
