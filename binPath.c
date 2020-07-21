@@ -149,35 +149,48 @@ int main() {
     111 111
     000 000
    */                         
-                            zeros = (zeros & mask);
-                            printBits(zeros);
-                       unsigned char shift;
-                       zeros <<= 7;
-                       for (int base =0 ; base < 7; base++) {
-                                
-                            zeros += 1;
-                            shift = zeros << 4;
-                            printBits(shift);
+                            //zeros = (zeros & mask);
+                            //printBits(zeros);
                             
-                       }
-                       zeros = 0;
+                            // 111 000
+                         unsigned char first_config = 1;
+                         // 000 111
+                         unsigned char second_config = 1;
+                         
+                         unsigned char third_config = 1;
+                         
+                         unsigned char fourth_config = 1;
+                         
+                       
+                       zeros=0;
                        for (int base =0 ; base < 7; base++) {
                                 
                             zeros += 1;
-                            printBits(zeros);
+                            first_config  = zeros << 4;
+                           
+                            //printBits(first_config);
+                            second_config = zeros;
+                           // printBits(second_config);
+                            third_config = first_config;// 111 000  (first config)
+                                                        // 000 111  (second_config)
+                                                        // 111 111  (
+                            third_config = second_config | first_config;
+                             printBits(third_config);
+                            
+
+                            
+                            // usar first config e sceond config como mask
                        }
-                       
-                      
-                       //printBits(zeros);
                        
                        //zeros = zeros ^ (1 << 4);
-                     /*  
+                     zeros = 0;
                        for (int base =0 ; base < 7; base++) {
-                            
+                                
                             zeros -= 1;
-                            printBits(zeros);
+                        //    printf("\nSecond config\n");
+                         //   printBits(zeros);
                        }
-                       */
+                       
                        
                       
                        
