@@ -140,14 +140,15 @@ int main() {
                         fourth ) ~ second
                         */
                         
- /*   111 000 (first_config)
-    000 111    (second_config)
+ /*   111 000 (first_config) 8 bits
+   1 000 1 111    (second_config) 8 bits
     
-     000 000 (third config)
-     111 111 (fourth_config
+     000 000 (third config) 8bits 
+     111 111 (fourth_config 8bits
   
    */                         
-                        
+ 
+                           
                             
                          unsigned char first_config = 1;
                          // 000 111
@@ -156,6 +157,7 @@ int main() {
                          unsigned char third_config = 1;
                          
                          unsigned char fourth_config = 1;
+                         
                          
                        
                        
@@ -170,20 +172,34 @@ int main() {
                            
                             // 111 000  (first config)
                             // 000 111  (second_config)
-                            // 000 000 (thid_config)
+                            // 000 000 (third_config)
                             // 111 111  
                                                         
                             third_config = second_config | first_config;
-                            fourth_config = ~third_config;
-                            printBits(first_config);
-                            printBits(second_config);
-                            printBits(third_config);
-                            printBits(fourth_config); 
+                            fourth_config  = second_config ^ first_config;
+                           // printBits(first_config);
+                           // printBits(second_config);
+                            printBits(fourth_config);
+                        //    printBits(fourth_config); 
 
+                            xor nao pode,and ?
+                            
+                            010 001 (first config 17d
+                            001 010 (second_config) 10
                             
                             
-                       }
-                       
+                            
+                            
+                            001 001 
+                            
+                            010 010 
+                            --------
+                            
+                            011 011 (XOR) seems this ones 011011
+                            
+                            011 011 (OR ) 
+                                                   }
+                            
                         
                     
 
