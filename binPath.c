@@ -115,9 +115,6 @@ int main() {
                             }
                            printShortBits(zeros); 
                            zeros <<= 1;
-                           
-                           
-                           ones = ~zeros;
                     }
                         //number |= 1UL << n; (set n bit)
                       //  number ^= 1UL << n; // toggle n bit
@@ -126,33 +123,32 @@ int main() {
                    
                     // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
 
-                            unsigned char zeros=1;
+                            unsigned char zeros;
                            
-                            unsigned char mask = 0b1000000;
                             
                    // omiss zeros=0; trivial case
                    //unsigned char base_3bits[8] = {000,0b001,0b010,0b011,0b100,0b101,0b110,0b111};
-                 //  for (int numOfBytes = 0 ; numOfBytes < 2; numOfBytes++) {
-                           
-                            //value = (value & ~mask) | (newvalue & mask);
-                        
-                      // zeros = zeros ^ (1 << 7) ; // 
                        
-                            
-           //                  3bits left  3 bits right =0
-//    3bits right 3 bits left = 0
+              /*          0 | 3 | 1 | 3 bits
+                        0   3   0   3
+                        1   3   0   3
+                        1   3   1   3
+                        bits
+                        first) 0 1
+                        second ) 0 0 
+                        third ) ~first
+                        fourth ) ~ second
+                        */
+                        
+ /*   111 000 (first_config)
+    000 111    (second_config)
     
-    
- /*   111 000
-    000 111 
-    
-    111 111
-    000 000
+     000 000 (third config)
+     111 111 (fourth_config
+  
    */                         
-                            //zeros = (zeros & mask);
-                            //printBits(zeros);
+                        
                             
-                            // 111 000
                          unsigned char first_config = 1;
                          // 000 111
                          unsigned char second_config = 1;
@@ -162,43 +158,33 @@ int main() {
                          unsigned char fourth_config = 1;
                          
                        
-                       zeros=0;
+                       
                        for (int base =0 ; base < 7; base++) {
-                                
+                           // set first and third bits
+                           
                             zeros += 1;
                             first_config  = zeros << 4;
                            
                             //printBits(first_config);
                             second_config = zeros;
-                           // printBits(second_config);
-                            third_config = first_config;// 111 000  (first config)
-                                                        // 000 111  (second_config)
-                                                        // 111 111  (
+                           
+                            // 111 000  (first config)
+                            // 000 111  (second_config)
+                            // 000 000 (thid_config)
+                            // 111 111  
+                                                        
                             third_config = second_config | first_config;
-                             printBits(third_config);
-                            
+                            fourth_config = ~third_config;
+                            printBits(first_config);
+                            printBits(second_config);
+                            printBits(third_config);
+                            printBits(fourth_config); 
 
                             
-                            // usar first config e sceond config como mask
+                            
                        }
                        
-                       //zeros = zeros ^ (1 << 4);
-                     zeros = 0;
-                       for (int base =0 ; base < 7; base++) {
-                                
-                            zeros -= 1;
-                        //    printf("\nSecond config\n");
-                         //   printBits(zeros);
-                       }
-                       
-                       
-                      
-                       
-                   
-                     
-                     
-                           
-                         
+                        
                     
 
 }
