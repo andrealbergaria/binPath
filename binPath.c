@@ -167,40 +167,33 @@ int main() {
                             zeros += 1;
                             first_config  = zeros << 4;
                            
+                            
+                            
+                            
                             //printBits(first_config);
                             second_config = zeros;
                            
-                            // 111 000  (first config)
-                            // 000 111  (second_config)
-                            // 000 000 (third_config)
-                            // 111 111  
-                                                        
-                            third_config = second_config | first_config;
-                            fourth_config  = second_config ^ first_config;
+                            // 1111 0000  (first config)
+                            // 0000 1111  (second_config)
+                            // 0000 0000 (third_config)
+                            // 1111 1111  (fourth_config)
+
+                            /* 1101 0010
+                             * 
+                               0010 1101
+                               
+                               0010 0010
+                               
+                               1101 1101
+                            */
+                            third_config = second_config & first_config;
+                            
+                             fourth_config = first_config ^ second_config;
                            // printBits(first_config);
                            // printBits(second_config);
-                            printBits(fourth_config);
-                        //    printBits(fourth_config); 
-
-                            xor nao pode,and ?
-                            
-                            010 001 (first config 17d
-                            001 010 (second_config) 10
-                            
-                            
-                            
-                            
-                            001 001 
-                            
-                            010 010 
-                            --------
-                            
-                            011 011 (XOR) seems this ones 011011
-                            
-                            011 011 (OR ) 
-                                                   }
-                            
-                        
+                            printBits(third_config);
+                            printBits(fourth_config); 
+                       }
                     
 
 }
