@@ -78,7 +78,40 @@ int main() {
                 */
 
 
-                
+                  //  solution one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
+                 // char *f1 = secondHalf
+                 
+                 // char half[4] = { 0001,0010,0100,1000 }
+                 
+             /*    char *h1 = half[0]
+                 char *h2 = half[1]
+                 char *h3 = half[2]
+                 char *h4 = half[3]
+                 
+                a // {*h1,*h1,*h1 }
+                b // {*h1,*h2,*h1 } 
+                c // {*h1,*h1,*h2} 
+                d // {*h2,*h1,*h2} 
+                e // {*h2,*h2,*h1} 
+                 ... and so one
+                 it = 0
+                 a[0] = *h1
+                 a[1] = *h1
+                 a[2] = *h1
+                 
+                 a[1] = *h2; ( h1 h2 h1
+                 a[1] = *h3  ( h1 h3 h1)
+                 a[1] = *h4  (h1 h4 h1)
+                 
+                 a[1] = a[0]
+                 
+                 a[2] = *h2; ( h1 h2 h1
+                 a[2] = *h3  ( h1 h3 h1)
+                 a[2] = *h4  (h1 h4 h1)
+                 
+                 a[2]  = a[1] */
+                 
+                 
 
                  unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
