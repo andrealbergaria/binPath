@@ -21,129 +21,19 @@
 
 
 
-void printBin(unsigned int n) {
-    
-    int it = 0;
-    while (it < 32) {
-        
-    if(n&1) 
-        printf("1");
-    else 
-        printf("0");
-    n = n >> 1;
-    it++;
-    }
-}    
-
-int main() {
-                 
-                 
-                 unsigned char firstHalf[4];  
-                 unsigned char secondHalf[4]; 
-                 
-                                     
-                 firstHalf[0] =  0;
-                 firstHalf[1] = 0x1;
-                 firstHalf[2] = 0x2;
-                 firstHalf[3] = 0x4;
-                 
-                 secondHalf[0] = 1;
-                 secondHalf[1] = 0xFE;
-                 secondHalf[2] = 0xFD;
-                 secondHalf[3] = 0xFC;
-                 
-                 
-                 // cycle iterator
-                 int iterator;
                 
                   
-                  // remains here because its a possibly solution
-                  // unsigned char zero[3] = {firstHalf[0],firstHalf[0],firstHalf[0]}
-                    
-                                            
-                                       
-                  // use xhg (asm) to a=b b=a
+2bits)                  // use xhg (asm) to a=b b=a
                  //aa
                    ab (XOR)
                    ba (REVERSE)
                    bb (XOR)
                    
                            10 00 10 (rev(b)) (34d)
-xor     00 00 01    
-        -------- 
-        10 00 11  (35)
-        b z c
-        
-        
-        10 00 10 (34d)
-      + 00 10 11 (11d)
-        -----------
-        10 11 01 (45d)
-        b  c  a 
-        
-        bca - bzc = zaa
                    
                   
-                 // solultion : etither add or bit shift, the entire stream of bytes
-                 // In this case , i have byte[] = {00000000,00000001} , and then bit shift one possition (or add a bit)
-                 // After , do the same for byte[] = {11111111,111111}. Hence we get all bytes.
-                 
-                 
-                 /*
-                 
-               a)          01 10 11 xor (a,b) = > (111100 which is a xor  of c) d))
-               b) rev =    10 01 00
-                
-                c)  shift 1 (from a )
-                        00 01 10            6d
-                d) shift 1 (from b)
-                        00 10 01            9d
-
-                e) xor
-                       00 11 11             15d => c) + d)
-                        
-                        
-                   a = rev(b)     
-                        
-                 
-                         
-                
-                        
                 //how can one invert a set?
                  
-                 
-                   //  solution one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
-                 // char *f1 = secondHalf
-                 
-                 // char half[4] = { 0001,0010,0100,1000 }
-                 
-                 char *h1 = half[0]
-                 char *h2 = half[1]
-                 char *h3 = half[2]
-                 char *h4 = half[3]
-                 
-                a // {*h1,*h1,*h1 }
-                b // {*h1,*h2,*h1 } 
-                c // {*h1,*h1,*h2} 
-                d // {*h2,*h1,*h2} 
-                e // {*h2,*h2,*h1} 
-                 ... and so one
-                 it = 0
-                 a[0] = *h1
-                 a[1] = *h1
-                 a[2] = *h1
-                 
-                 a[1] = *h2; ( h1 h2 h1
-                 a[1] = *h3  ( h1 h3 h1)
-                 a[1] = *h4  (h1 h4 h1)
-                 
-                 a[1] = a[0]
-                 
-                 a[2] = *h2; ( h1 h2 h1
-                 a[2] = *h3  ( h1 h3 h1)
-                 a[2] = *h4  (h1 h4 h1)
-                 
-                 a[2]  = a[1]
                  
                  
                 
@@ -679,7 +569,7 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                       000 = position(0)
                       001 = position(1)
                       010 = position(2)
-                      100 = position(8)
+                      100 = position(4)
                       
                       
                       
@@ -835,20 +725,7 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                  [1,3,3]
                  
                  [1,3,2]
-                 [
-                 
-                for (iterator = 0 ; iterator < 2; iterator++) {
-                    
-                }
-                      
-                      
-                      
-                      
-                      
-                        
-                  }
-                  
-                  
+             
                   
                  
                  // 3rd bytes
@@ -868,3 +745,248 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                // thing is, use the algorithm on a binary string like 0b1010101111100 (always bit shift 1)
                 
 }
+
+
+
+// test 
+/sera que é shift duas ou mais vezes (mais zeros?, por exmepl 11100 , 11000)
+5 bits
+
+00001    1    
+00010   2
+00100   4   
+01000   8
+10000   16
+
+preciso de 
+3,5,6,7,9,10,11,12,13,14,15
+
+00011 3   (flip the bit , ignore zeros suffix)
+
+add 0
+
+000   0
+001   1    
+010   2
+100 = 4
+
+111   7  rev 0
+101 = 5 rev 2
+011 = 3 rev 1
+110 = 6
+
+
+
+    
+    
+4 bits)
+---vao ser invertidos (de 0000,0001,0010,00 para 0111,0110, e parra 111,1110..)
+1) 0000   0 
+ 0001   1 
+ 0010   2 
+ 0100   4 
+
+2)  0 111  7 
+    0 110  6 (changed one bit related to 111)
+    0 101  5 (changed one bit related to 111)
+    0 011  3
+ 
+ -----------------
+ para isto
+ 
+3) inverteu 1) para 3)
+ 1111   15  (inverteu 1) para 3)
+ 1110   14  (changed on bit related to 1111) 
+ 1101   13  (changed on bit related to 1111) 
+ 1011   11  
+ 
+ --------------
+
+4) (inverteu 2) para 4) 
+ 
+ 1000 8 inv 7
+ 1001 9 inv 6
+ 1010 10 inv 5
+ 1100 12 inv 3
+ 
+------------------------
+
+para 4 bits, tem-se o 1 e 2 , e inverte-se par 3 e 4, usando o algoritimo...
+ 
+ 
+ 
+ 
+ ignore 5 first bits, if they equal 0
+ 8bits)
+ 1)
+    00000000   (base 00000000)
+    00000001    1 
+    00000010    2 
+    00000100    4 
+    00001000    8 
+ 
+
+ faltam 9,10,11,12,13,14,15,17 
+    
+ 
+ 2) 00010000 (base 00000000 1) ,relation to 1) continues in 2)
+    00100000 32 
+    01000000 64 
+    10000000 128
+
+ 6)  inverted 1)
+    ----------
+    11111111 (base 11111111,inverse of 1) 255
+    11111110  254
+    11111101 253
+    11111011 251
+    11110111 247
+    
+7)   inverted 2)  (base 11111111)
+    11101111 239  6) continues in 7)
+    11011111 223
+    10111111 191
+    01111111 127
+
+    
+8)    
+      00000011 3d (base 00000011)
+      
+      
+      
+9)  111111110 (revert base 00000011)  ===>  equal to 6)
+    111111101
+    
+    
+10) 00000101 5d (base 00000101)
+    00000111 7d
+    00000100 4d
+    00000001 1d 
+    
+    
+11) reverse 10) (base 11111010)
+    11111110
+      
+      
+      
+ 10)   inverse of 8) base(11111000), so i inverse the base (00000111) and go from there
+    11111000
+    11111001
+    11111010
+    11111100
+    
+    
+      
+11) inverse of 9
+    01111000 , base (11111000) same of b) , 11) succeeds   to 10)
+    10111000
+    11011000
+    11101000
+    11110000
+    
+
+12) base = 11000111
+   11100111
+   11010111
+   11001111
+   11000011
+   
+13)   
+   10000111
+   01000111
+   11000110
+   11000101
+   
+   
+   divide 8 bytes in two groups... The two groups of bytes, have all the bits equal to the base except one bit. The inverted groups from the originals , have a inverted base, and all bits are equal except one bit to the inverted base;
+    
+    
+    inverting one group of bytes,(4 bytes) , inverts all the bits from those bytes (for example, 1100 to 0011, and inverts the base;
+    
+6)    
+    (base 11111000)
+    ------------
+    11111001   249 rev 6
+    11111010   250 rev 5
+    11111100   252 rev 3
+    
+    
+    
+    
+    ---------
+    
+   1) equals to another bytes, even if ones goes right or left)
+                                                
+    
+ 
+
+    
+ add 8d (the first bit), to the three bits (like for instance 000 => 1000, and 001 => 1001) to get the numbers
+ or
+ add 16 to the (binary numbers that have three bits, getting 5 bits).
+ 
+ set the first bit to 0,1,10,11,100
+ 
+  0 => 3 bits  (add 0)
+  1 => 4 bits (add 8)
+  10 => 5 bits (add 16)
+  11 => 5 bits (add 24)  
+  
+  
+  100 => 6 bits (add 32)
+  101 => 6 bits (40)  
+  110 => 6 bits (48) 
+  111 => 6 bits (56) 
+                    
+  4 bits .... have(1 bit  | 3 bits) add bit
+  5 bits .... have(2 bits | 3 bits) add bit
+  6 bits ,,, have (3 bits | 3 bits) add bit
+  7 bits ... have (4 bits | 3 bits) add bit
+  8 bits ... have (4 bits | 4 bits) 
+  
+  7 bits ... have (1 bit | 3 bits | 3bits)
+  8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
+                0 or 1   | base bits  | 0 or 1 | base bits
+  
+ 0000
+ 0001
+ 0010  4 bits -> 2^4 -> 16
+ 0100
+ 0011
+ 0101 
+ 0110
+ 0111
+ 
+ 
+    5 bits -> 2^5 bits
+    
+    
+    3bits left  3 bits right =0
+    3bits right 3 bits left = 0
+    
+    
+    111 000
+    000 111 
+    
+    111 111
+    000 000
+    
+
+ 
+1 000 1 000
+1 001 1 000
+1 001 1 001
+1 001 1 010 
+ 
+shift left 4
+
+1 010 0 000
+
+try to ignore leading digit, so to become 3 bits and then use the algorithm
+9,10
+
+(it works with base 111 (inverting, ingoring leading zeros (until it reaches the bits which are assured);
+
+
+
+
