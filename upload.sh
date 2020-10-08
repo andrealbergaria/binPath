@@ -9,4 +9,6 @@ git add .
 
 git commit -m $1
 
-echo "andrealbergaria" | git push https://github.com/andrealbergaria/binPath
+USER="andrealbergaria";
+git push https://github.com/andrealbergaria/binPath < andrealbergaria
+
