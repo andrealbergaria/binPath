@@ -26,9 +26,12 @@ char nextPermutation(char * ,int);
 
 /*
  * 
- * FROM https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
  * 
+ * Next lexicographical permutation algorithm (C)
+ * by Project Nayuki, 2017. Public domain.
+ * https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
  */
+
 char nextPermutation(char *array,int sizeOfArray) {
     // Find longest non-increasing suffix
     int i = sizeOfArray - 1;
@@ -128,18 +131,33 @@ int main() {
                  * 
                  * 
                  * Algorithm , only works with number of bits <= 3
-                 * 
+                 *  000
                  *  001
                  *  010
                  *  100
                  *  111
+                 *  110
+                 *  101
+                 *  011
                  *  on this phase keep changing bits (like for example 101 or 011 until all acouunted for
                  * 
                  * 
                 
+                /*
+                 * 
+                 * For 4 bits
+                 */
                 
-                */
+                0000
+                0001
+                0010
+                0100
+                1000
 
+                /*
+                 * End 4 bits
+                 * 
+                 */
                 /* assign letters to sequence of bits
                  * 
                  * a = 0001 0001 0001
