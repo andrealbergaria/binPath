@@ -56,11 +56,18 @@ XOR 2bits  010011
      XOR 1,3,7,
      
      seq 4 bits needed 3,5,6,7
-
+    seq 4 bits covered 1,2,4,8
+     
+     // Trying all masks on first number 3
     0011 3d
     0110 mask is 0110 (6d)
     0101 5d
 
+    
+    
+    3   5  6
+    
+    
     3 XOR 6 = 5d
     
     0101 5d
@@ -78,47 +85,32 @@ XOR 2bits  010011
      5 bits
      preciso de 
         3,5,6,7,9,10,11,12,13,14,15
-        
-      (XOR = ADD)
-  
-   
-    0110 6
-      01 1 XOR (add + 1)
-    0111 7
-
-    0110 6
-      11 3 XOR
-    0101 5 
-    
-    0110 6
-     111 7 XOR 
-    0001 1 (subtract - 1)
-    
-    0110 6
-    1111 15 XOR
-    1001 9 
+     
           
-        inverseOfB(b) - 1 = b
-        inverseOfB(b) = b + 1
-        
-        a = 1100
-        inv (a) = 0011
-        b = 1
-        
         inv(value) - 1 = value
-        
+        inv(value) = value + 1;
         
         /*
-        * error 
-        **/
+         * 
+         *  
+         */
+        value = 1100;
+        inv(value) = 0011
+        
+        0011 
+        0001 SUB
+        0010 2d
+        //       
+        //CORRECT 3 -1 = 2 
+        0011 - 1 = 0010
+        // Trying add
+        0011 = 1100+1
+        0011 = 1101
         
         
-        0101 = 1011 
-        /*
-        *
-        * END OF ERROR
-        */
-
+        
+        2complement(2) = 1101 
+      
         
         (a - b) = a + (-b)
         

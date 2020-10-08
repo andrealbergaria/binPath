@@ -22,7 +22,7 @@
 
 void printBits(unsigned char );
 void printShortBits(unsigned short s);
-char nextPermutation(char * ,int);
+//char nextPermutation(char * ,int);
 
 /*
  * 
@@ -32,7 +32,7 @@ char nextPermutation(char * ,int);
  * https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
  */
 
-char nextPermutation(char *array,int sizeOfArray) {
+/*char nextPermutation(char *array,int sizeOfArray) {
     // Find longest non-increasing suffix
     int i = sizeOfArray - 1;
     while (i > 0 && array[i - 1] >= array[i])
@@ -142,18 +142,50 @@ int main() {
                  *  on this phase keep changing bits (like for example 101 or 011 until all acouunted for
                  * 
                  * 
-                
+                /*
+                 * For 4 bits , needs
+                 * 3,5,6,7
+                 * 
+                 * C , CA , CC , 
+                 * 
+                 * For 5 bits, bits needed 
+                 * 3,5,6,7,9,10,11,12,13,14,15
+                   
+                   
+                   
+                For 6 bits needs
+                    
+                 3,5,6,7,9,10,11,12,13,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+
+                    
+                A = 01 1d
+                B = 10 2d 
+                C = 11 3d
+                D = 00 0d
                 /*
                  * 
                  * For 4 bits
                  */
-                
+                a)
                 0000
-                0001
-                0010
-                0100
-                1000
+                0001 // 1
+                0010 // 2
+                0100 // 4       => number = 2^x
+                1000 // 8
 
+                /*
+                 * 
+                 *  Trying to find seq of numbers not already taken
+                 */
+                
+                
+                
+                sequence of numbers not to be filled  a) 3,5,6,7
+                12,10,9 => Numbers reverse from previous sequence a)
+                
+                3d = 0011
+                inv(3) = 1100 = 12d
+                
                 /*
                  * End 4 bits
                  * 
@@ -179,28 +211,30 @@ int main() {
                  ... and so one
                  a[0] = *half1
                  */
-                //char half[8] =  { 'A','B','C','D','E','F','G','H'};
-                char half[] =  { 'A','B','C' };
+                char half[4] =  { 'A','B','C','D'};
+                
+
                                    
                 
                 // Arranjos com repetição => 3*3*3 => 27 combinações
                 // Arep(2,3) = 2*2*2 = 2^3 = 8
                 // 3 -> numero de posicoes
                 // first 3 -> numero de digitos 
-                // Arep(3,3) = 3*3*3 = 27
+                // Arep(4,8) = 4^8 = 65535
                 
-                // Get integer from string, and then increment it
+                
+                
                 char bitsToTest[3];
                 // ASCFII VALUE C => 67
                 // ASCII VALUE 0 => 48
                 // ASCII VALUE 1 => 49
-                // ASCCI VALUE OF BEFORE A  => 64 (used to get numbers from string)
+                
               
-                 //int[] array = {0, 1, 1, 1, 4};
+                
                 
                 do {  // Must start at lowest permutation
                     printf("\n%s\n",half);
-                } while (nextPermutation(half,3));
+                } while (nextPermutation(half,4));
 
                 
                 
