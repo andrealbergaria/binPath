@@ -22,7 +22,7 @@
 
 void printBits(unsigned char );
 void printShortBits(unsigned short s);
-void printLetters(char );
+void printLetters(char ,char);
 //char nextPermutation(char * ,int);
 
 /*
@@ -123,15 +123,24 @@ void printShortBits(unsigned short number) {
    
 }
 
-void printLetters(char value) {
-    char t = value & 11;
+      
+/*                A = 01 1d
+                B = 10 2d 
+                C = 11 3d
+                D = 00 0d
+ */               
+                
+
+void printLetters(char value,char mask) {
+    char t = value & mask;
+    if ( t == 01)
     printf("A");
-    t = value & 1100;
-    printf("B");
-    t = value & 110000;
-    printf("C");
-    t = value & 11000000;
-    printf("D");
+    else if(t== 10)
+        printf("B");
+    else if(t==11)
+        printf("C");
+    else
+        printf("D");
 }
 
 int main() {
@@ -177,8 +186,8 @@ int main() {
                 /*
                  * 
                  * For 4 bits
-                 */
-                a)
+                 
+               /* a)
                 0000
                 0001 // 1
                 0010 // 2
@@ -188,8 +197,7 @@ int main() {
                 /*
                  * 
                  *  Trying to find seq of numbers not already taken
-                 */
-                
+                 
                 
                 
                 sequence of numbers not to be filled  a) 3,5,6,7
@@ -198,7 +206,6 @@ int main() {
                 3d = 0011
                 inv(3) = 1100 = 12d
                 
-                /*
                  * End 4 bits
                  * 
                  */
@@ -236,7 +243,7 @@ int main() {
                 
                 
                 
-                char bitsToTest[8];
+               // char bitsToTest[8];
                 // ASCFII VALUE C => 67
                 // ASCII VALUE 0 => 48
                 // ASCII VALUE 1 => 49
@@ -285,11 +292,12 @@ int main() {
             */    
                 int idx = 0;
                 char currentValue;
-                
+                int mask = 11;
                 
                 for (idx = 0 ; idx < 256 ; idx++) {
                     currentValue = 0 + idx;
-                    printLetters(currentValue);
+                    printLetters(currentValue,00000011);
+                    
                     printf("\n");
                 }
                 
