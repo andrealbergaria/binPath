@@ -162,6 +162,8 @@ int main() {
                 B = 10 2d 
                 C = 11 3d
                 D = 00 0d
+                
+                
                 /*
                  * 
                  * For 4 bits
@@ -211,7 +213,7 @@ int main() {
                  ... and so one
                  a[0] = *half1
                  */
-                char half[4] =  { 'A','B','C','D'};
+             //   char half[4] =  { 'A','B','C','D'};
                 
 
                                    
@@ -224,35 +226,58 @@ int main() {
                 
                 
                 
-                char bitsToTest[3];
+                char bitsToTest[8];
                 // ASCFII VALUE C => 67
                 // ASCII VALUE 0 => 48
                 // ASCII VALUE 1 => 49
                 
               
                 
+                /*
+                 * 
+                 * Option, use permutation instead of arrays assignment (arrays assingnments are faster)
                 
-                do {  // Must start at lowest permutation
+               /* do {  // Must start at lowest permutation
                     printf("\n%s\n",half);
                 } while (nextPermutation(half,4));
-
+                */
+                
+               /* 
+                * End Of option
+                */
+               
+                A = 00 0d    
+                B = 01 1d
+                C = 10 2d 
+                D = 11 3d
                 
                 
+                AAAA = 00 00 00 00
+                AAAB = 00 00 00 01 (+1)
+                AAAC = 00 00 00 10 (+2)
+                AAAD = 00 00 00 11 (+3)
                 
-                /* bitsToTest[0] = half[0];
-                 bitsToTest[1] = half[0];   // A  A  A
-                 bitsToTest[2] = half[0]; // 000 000 000
+                (+4) = 00 00 00 11 
+                              1 00  ADD
+                       00 00 01 11  
+                       A  A  B   D
+                
+                /*
+                 bitsToTest[0] = 'A'
+                 bitsToTest[1] = 'A';   // A  A  A
+                 bitsToTest[2] = 'A'; // 000 000 000
+                 bitsToTest[3] = 
                                             // B A   A
-                 bitsToTest[0] = half[1]; // 001 000 000
+                 bitsToTest[0] = 'B'; // 001 000 000
                                           //  C   A   A
-                 bitsToTest[0] = half[2]; // 010 000 000
+                 bitsToTest[0] = 'C'; // 010 000 000
                  
                                           //  C   C   A
-                 bitsToTest[1] = half[3]; // 010 001 000
+                 bitsToTest[1] = 'C'; // 010 001 000
                                           //  C   C   C
-                 bitsToTest[2] = half[3]; // 001 001 001
+                 bitsToTest[2] = 'C'; // 001 001 001
                  
-                 bitsToTest[0] = half[2]; // B C C 
+                 bitsToTest[0] = 'B'; // B C C 
                  
                  
                                           // C    B    B
