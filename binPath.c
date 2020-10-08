@@ -22,7 +22,66 @@
 
 void printBits(unsigned char );
 void printShortBits(unsigned short s);
+char nextPermutation(char * ,int);
 
+/*
+ * 
+ * FROM https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
+ * 
+ */
+char nextPermutation(char *array,int sizeOfArray) {
+    // Find longest non-increasing suffix
+    int i = sizeOfArray - 1;
+    while (i > 0 && array[i - 1] >= array[i])
+        i--;
+    // Now i is the head index of the suffix
+    
+    // Are we at the last permutation already?
+    if (i <= 0)
+        return 0;
+    
+    // Let array[i - 1] be the pivot
+    // Find rightmost element that exceeds the pivot
+    int j = sizeOfArray - 1;
+    while (array[j] <= array[i - 1])
+        j--;
+    // Now the value array[j] will become the new pivot
+    // Assertion: j >= i
+    
+    // Swap the pivot with j
+    int temp = array[i - 1];
+    array[i - 1] = array[j];
+    array[j] = temp;
+    
+    // Reverse the suffix
+    j = sizeOfArray - 1;
+    while (i < j) {
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+        i++;
+        j--;
+    }
+    
+    // Successfully computed the next permutation
+    return 1;
+}
+
+/* This code can be mechanically translated to a programming language of your choice, with minimal understanding of the algorithm. (Note that in Java, arrays are indexed from 0.)
+Example usages
+
+Print all the permutations of (0, 1, 1, 1, 4):
+
+int[] array = {0, 1, 1, 1, 4};
+do {  // Must start at lowest permutation
+    System.out.println(Arrays.toString(array));
+} while (nextPermutation(array));
+
+  */
+/*
+ * CLOSE FROM
+ * 
+ */
 
 //from irc
 void printBits(unsigned char number) {
@@ -60,7 +119,7 @@ void printShortBits(unsigned short number) {
    
 }
 
-
+  
 
 int main() {
                 
@@ -102,35 +161,59 @@ int main() {
                  ... and so one
                  a[0] = *half1
                  */
-                char half[8] =  { 'A','B','C','D','E','F','G','H'};
-                char bitsToTest[3];
-                char half[8];
+                //char half[8] =  { 'A','B','C','D','E','F','G','H'};
+                char half[] =  { 'A','B','C' };
+                                   
                 
-                 bitsToTest[0] = half[0];
+                // Arranjos com repetição => 3*3*3 => 27 combinações
+                // Arep(2,3) = 2*2*2 = 2^3 = 8
+                // 3 -> numero de posicoes
+                // first 3 -> numero de digitos 
+                // Arep(3,3) = 3*3*3 = 27
+                
+                // Get integer from string, and then increment it
+                char bitsToTest[3];
+                // ASCFII VALUE C => 67
+                // ASCII VALUE 0 => 48
+                // ASCII VALUE 1 => 49
+                // ASCCI VALUE OF BEFORE A  => 64 (used to get numbers from string)
+              
+                 //int[] array = {0, 1, 1, 1, 4};
+                
+                do {  // Must start at lowest permutation
+                    printf("\n%s\n",half);
+                } while (nextPermutation(half,3));
+
+                
+                
+                
+                /* bitsToTest[0] = half[0];
                  bitsToTest[1] = half[0];   // A  A  A
                  bitsToTest[2] = half[0]; // 000 000 000
                                             // B A   A
-                 bitsToTest[0] = half[1]; // 001 000 000 
-                                          //  B   B   A
-                 bitsToTest[1] = half[1]; // 001 001 000
-                 bitsToTest[2] = half[1]; // 001 001 001
+                 bitsToTest[0] = half[1]; // 001 000 000
+                                          //  C   A   A
+                 bitsToTest[0] = half[2]; // 010 000 000
+                 
+                                          //  C   C   A
+                 bitsToTest[1] = half[3]; // 010 001 000
+                                          //  C   C   C
+                 bitsToTest[2] = half[3]; // 001 001 001
+                 
+                 bitsToTest[0] = half[2]; // B C C 
                  
                  
-                 
+                                          // C    B    B
                  bitsToTest[0] = half[2]; // 010 001 001
+                                          // C    C   B
                  bitsToTest[1] = half[2]; // 010 010 001
+                                          // C    C   C
                  bitsToTest[2] = half[2]; // 010 010 010
                  
-                 
+                 */
                  unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
-                int index = 0;
-                for (index = 0 ; index < 2^3 ;  index++) {
-                    bitsToTest[0] = half[index];
-                    bitsToTest[1] = half[index];
-                    bitsToTest[2] = half[index];
-                }
-                   
+              
                     // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
                         
  
