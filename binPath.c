@@ -22,6 +22,7 @@
 
 void printBits(unsigned char );
 void printShortBits(unsigned short s);
+void printLetters(char );
 //char nextPermutation(char * ,int);
 
 /*
@@ -122,7 +123,16 @@ void printShortBits(unsigned short number) {
    
 }
 
-  
+void printLetters(char value) {
+    char t = value & 11;
+    printf("A");
+    t = value & 1100;
+    printf("B");
+    t = value & 110000;
+    printf("C");
+    t = value & 11000000;
+    printf("D");
+}
 
 int main() {
                 
@@ -246,6 +256,7 @@ int main() {
                 * End Of option
                 */
                
+           /* 
                 A = 00 0d    
                 B = 01 1d
                 C = 10 2d 
@@ -257,12 +268,32 @@ int main() {
                 AAAC = 00 00 00 10 (+2)
                 AAAD = 00 00 00 11 (+3)
                 
-                (+4) = 00 00 00 11 
-                              1 00  ADD
-                       00 00 01 11  
-                       A  A  B   D
                 
-                /*
+                
+                (+4) = 00 00 00 00 
+                              1 00  ADD
+                       00 00 01 00  
+                       A  A  B   A
+                (+5) = 00 00 00 11
+                              1 01 ADD
+                       00 00 10 00 
+                       A  A  C  A
+                       
+                       
+                 Max value of summing on cycle    =  256
+                
+            */    
+                int idx = 0;
+                char currentValue;
+                
+                
+                for (idx = 0 ; idx < 256 ; idx++) {
+                    currentValue = 0 + idx;
+                    printLetters(currentValue);
+                    printf("\n");
+                }
+                
+                      /*
                  bitsToTest[0] = 'A'
                  bitsToTest[1] = 'A';   // A  A  A
                  bitsToTest[2] = 'A'; // 000 000 000
