@@ -46,12 +46,12 @@ class BinaryTree
             
             /* Reach the left most Node of the 
             curr Node */
-            int temporaryNumber=0;
-          //  while (height < 3|| s.size() > 0) 
-          //  { 
+            int temporaryNumber=1;
+            while (height < 5|| s.size() > 0) 
+            { 
             	/* Reach the left most Node of the 
                 curr Node */
-                while (height < 3) 
+                while (height <5) 
                 { 
                 	System.out.println("\nHeight "+height);
                 	//System.out.println("\nCurrent height :  "+height);
@@ -80,7 +80,8 @@ class BinaryTree
                     
                   //  num |= pos;
                     //temporaryNumber = setBit(0b0000,2);
-                    temporaryNumber |= height;
+                    //temporaryNumber |= height;
+                    temporaryNumber |= (int) Math.pow(2,height);
                     		
                     System.out.println("\nTemporary Number : "+Integer.toBinaryString(temporaryNumber));
 //                     temporaryNumber |= 1;
@@ -99,20 +100,27 @@ class BinaryTree
 
             /* Current must be NULL at this point */
             // s.pop goes to the left object
-          /*  curr = s.pop();
+            curr = s.pop();
             
-            height--;
-            height--;
             
             /* we have visited the node and its 
-               left subtree.  Now, it's right 
-               subtree's turn */
-            //curr.right = new Node(0);
-           // curr = curr.right;
-              
+            left subtree.  Now, it's right 
+            subtree's turn */
+            curr.right = new Node(0);
+            curr = curr.right;
+           
+            System.out.println("\nLEFT HEIGHT "+height);
+            height--;
+            
+            temporaryNumber |= (int) Math.pow(2,height);
+    		System.out.println("\nRight ");
+            
+//          
+            height--;
+            
                         
             
-       // } 
+       } 
     } 
     
     public static void main(String[] args) 
