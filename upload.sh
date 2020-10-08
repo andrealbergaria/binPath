@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [[ -z $1 ]];
 then
     echo -e "Must set commit msg on arg\n";
@@ -7,8 +8,7 @@ fi
 
 git add .
 
-git commit -m $1
-
-
-echo "andrealbergaria" | git push https://github.com/andrealbergaria/binPath
+git commit -m "$1"
+echo -e "\nCommited git repo with msg "$1
+git push https://github.com/andrealbergaria/binPath
 
