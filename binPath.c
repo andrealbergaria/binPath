@@ -63,170 +63,82 @@ void printShortBits(unsigned short number) {
 
 
 int main() {
-                 // file contains ABC = 24 bytes
-                // encrpyted file has = 256 bytes
-                // encrypted = 256 chars =
-                                    //4 bytes => 1 int
-                                    //256     =>  X
-                                    //256/4, X = 64 ints
+                
 
-                /* Tbhe algorithm is like this
-                first consider 00001
-                then keep shifting to the left, until all 1 are accounted for
-                // Then use 111111
-                // and keep changing one bit of the base, until all bits accounted
+                /*
+                 * 
+                 * 
+                 * Algorithm , only works with number of bits <= 3
+                 * 
+                 *  001
+                 *  010
+                 *  100
+                 *  111
+                 *  on this phase keep changing bits (like for example 101 or 011 until all acouunted for
+                 * 
+                 * 
+                
+                
                 */
 
-
-                  //  solution one possibility is too assign four pointers to a firstHal, and then dereference them when needed (like for instance , where 0 0 (hence derefence on the second 0)
-                 // char *f1 = secondHalf
+                /* assign letters to sequence of bits
+                 * 
+                 * a = 0001 0001 0001
+                 * b = 0001 0010 0001
+                 */
                  
-                 // char half[4] = { 0001,0010,0100,1000 }
                  
-             /*    char *h1 = half[0]
-                 char *h2 = half[1]
-                 char *h3 = half[2]
-                 char *h4 = half[3]
-                 
-                a // {*h1,*h1,*h1 }
+             /*
+              * 
+              * where are bits inverted
+              * 0001 1110
+              *                  A    B   C    D   E    F   G  H
+                char half[3] = { 000,001,010,100,111 ,110,101,011 }
+                a // {*half1,*half1,*half1 }
                 b // {*h1,*h2,*h1 } 
                 c // {*h1,*h1,*h2} 
                 d // {*h2,*h1,*h2} 
                 e // {*h2,*h2,*h1} 
                  ... and so one
-                 it = 0
-                 a[0] = *h1
-                 a[1] = *h1
-                 a[2] = *h1
-                 
-                 a[1] = *h2; ( h1 h2 h1
-                 a[1] = *h3  ( h1 h3 h1)
-                 a[1] = *h4  (h1 h4 h1)
-                 
-                 a[1] = a[0]
-                 
-                 a[2] = *h2; ( h1 h2 h1
-                 a[2] = *h3  ( h1 h3 h1)
-                 a[2] = *h4  (h1 h4 h1)
-                 
-                 a[2]  = a[1] */
+                 a[0] = *half1
+                 */
+                char half[8] =  { 'A','B','C','D','E','F','G','H'};
+                char bitsToTest[3];
+                char half[8];
+                
+                 bitsToTest[0] = half[0];
+                 bitsToTest[1] = half[0];   // A  A  A
+                 bitsToTest[2] = half[0]; // 000 000 000
+                                            // B A   A
+                 bitsToTest[0] = half[1]; // 001 000 000 
+                                          //  B   B   A
+                 bitsToTest[1] = half[1]; // 001 001 000
+                 bitsToTest[2] = half[1]; // 001 001 001
                  
                  
-
+                 
+                 bitsToTest[0] = half[2]; // 010 001 001
+                 bitsToTest[1] = half[2]; // 010 010 001
+                 bitsToTest[2] = half[2]; // 010 010 010
+                 
+                 
                  unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
-                unsigned short test = 0xFAFE;
-
-                int indexTotal  = 0; // index of bytes on the array used
-                // max size of bytes long double                
-                
-                        /*
-                        process zero on all cells, calculatedSoFar=0
-                        */
-                        
-                        
-                         unsigned char ones = 0xFF;
-                         
-                         //printShortBits(zeros);
-                      //   printShortBits(ones);
-                         unsigned short shiftLeftBytes=1;
-                         unsigned short ones_t = ~shiftLeftBytes;
-                         
-                         
-                   /*     for (int indexTotal= 0 ; indexTotal < 8;indexTotal++) {
-                            printBits(zeros);
-                            for (int cellPosition =0  ;cellPosition < 1; cellPosition++) {
-                                shiftLeftBytes = zeros << 8;
-                                ones_t = ~shiftLeftBytes;
-                                
-                                printShortBits(shiftLeftBytes);
-                                
-                                if (ones_t == test || shiftLeftBytes == test) {
-                                    printf("\nFOUND\n");
-                                    printf("\nFOUND\n");
-                                }
-                            }
-                           printShortBits(zeros); 
-                           zeros <<= 1;
-                    }
-                        //number |= 1UL << n; (set n bit)
-                      //  number ^= 1UL << n; // toggle n bit
-                   
-                     */
+                int index = 0;
+                for (index = 0 ; index < 2^3 ;  index++) {
+                    bitsToTest[0] = half[index];
+                    bitsToTest[1] = half[index];
+                    bitsToTest[2] = half[index];
+                }
                    
                     // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
-
-                            unsigned char zeros;
-                           
-                            
-                   // omiss zeros=0; trivial case
-                   //unsigned char base_3bits[8] = {000,0b001,0b010,0b011,0b100,0b101,0b110,0b111};
-                       
-              /*          0 | 3 | 1 | 3 bits
-                        0   3   0   3
-                        1   3   0   3
-                        1   3   1   3
-                        bits
-                        first) 0 1
-                        second ) 0 0 
-                        third ) ~first
-                        fourth ) ~ second
-                        */
                         
- /*   111 000 (first_config) 8 bits
-   1 000 1 111    (second_config) 8 bits
-    
-     000 000 (third config) 8bits 
-     111 111 (fourth_config 8bits
-  
-   */                         
  
                            
                             
-                         unsigned char first_config = 1;
-                         // 000 111
-                         unsigned char second_config = 1;
-                         
-                         unsigned char third_config = 1;
-                         
-                         unsigned char fourth_config = 1;
-                         
                          
                        
                        
-                       for (int base =0 ; base < 7; base++) {
-                           // set first and third bits
-                           
-                            zeros += 1;
-                            first_config  = zeros << 4;
-                           
-                            
-                            
-                            
-                            //printBits(first_config);
-                            second_config = zeros;
-                           
-                            // 1111 0000  (first config)
-                            // 0000 1111  (second_config)
-                            // 0000 0000 (third_config)
-                            // 1111 1111  (fourth_config)
-
-                            /* 1101 0010
-                             * 
-                               0010 1101
-                               
-                               0010 0010
-                               
-                               1101 1101
-                            */
-                            third_config = second_config & first_config;
-                            
-                             fourth_config = first_config ^ second_config;
-                           // printBits(first_config);
-                           // printBits(second_config);
-                            printBits(third_config);
-                            printBits(fourth_config); 
-                       }
                     
 
 }
