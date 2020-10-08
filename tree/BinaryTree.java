@@ -24,14 +24,6 @@ class Node
 /* Class to print the inorder traversal */
 class BinaryTree 
 { 
-	boolean hasLeftLeaf(Node n) {
-		if (n.left == null)
-			return false;
-		else
-			return true;
-		
-	}
-	
 	
     Node root; 
     void inorder() 
@@ -40,19 +32,21 @@ class BinaryTree
         if (root == null) 
             return; 
   
-        int height = 0;
+        int height = 1;
         Stack<Node> s = new Stack<Node>(); 
         Node curr = root; 
         // traverse the tree 
         
-            int test=0;
+            
             /* Reach the left most Node of the 
             curr Node */
-        	while (height < 3 || s.size() > 0) 
+            
+            while (height < 4|| s.size() > 0) 
             { 
+            	int temp=0;
         		/* Reach the left most Node of the 
                 curr Node */
-                while (height < 3) 
+                while (height < 4) 
                 { 
                     /* place pointer to a tree node on 
                        the stack before traversing 
@@ -60,19 +54,28 @@ class BinaryTree
                     
                     s.push(curr); 
                     curr.left = new Node(1);
-                    test |= 1 << height;
+                    
+                  //  x |= 4; // sets 3rd bit
+                    
+                    // System.out.println("\nSelected bit "+height);
+                     //System.out.println("\nHeight : "+height+"\nExample "+test);
+                      
+                     //System.out.println("\nTEST "+)
                     curr = curr.left;
+                    int mask = (int) Math.pow(2,height-1); 
+                    temp |=  mask;
+                    System.out.println("\nExample "+Integer.toBinaryString(temp));
                     height++;
+                    
                 } 
                 
+
             /* Current must be NULL at this point */
             // s.pop goes to the left object
-                System.out.println("\nTEST "+Integer.toBinaryString(test));
             curr = s.pop();
             height--;
-            test |= 0 >> height;
-            System.out.println("\nTEST2 "+Integer.toBinaryString(test));
-            
+            //System.out.println("\nHeight : "+height+"\nExample "+test);
+
             /* we have visited the node and its 
                left subtree.  Now, it's right 
                subtree's turn */
