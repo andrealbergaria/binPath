@@ -25,7 +25,13 @@ class Node
 class BinaryTree 
 { 
 	
-    Node root; 
+    Node root;
+    
+     public int setBit(int num,int pos) {
+    	 return num |= pos;
+    	 
+     }
+    
     void inorder() 
     { 
     	
@@ -40,18 +46,21 @@ class BinaryTree
             
             /* Reach the left most Node of the 
             curr Node */
-            
-            while (height < 4|| s.size() > 0) 
-            { 
-            	int temp=0;
-        		/* Reach the left most Node of the 
+            int temporaryNumber=0;
+          //  while (height < 3|| s.size() > 0) 
+          //  { 
+            	/* Reach the left most Node of the 
                 curr Node */
-                while (height < 4) 
+                while (height < 3) 
                 { 
+                	System.out.println("\nHeight "+height);
+                	//System.out.println("\nCurrent height :  "+height);
                     /* place pointer to a tree node on 
                        the stack before traversing 
                       the node's left subtree */
-                    
+                	// toggle bit
+                	//x ^= 0b1;
+                	
                     s.push(curr); 
                     curr.left = new Node(1);
                     
@@ -59,31 +68,51 @@ class BinaryTree
                     
                     // System.out.println("\nSelected bit "+height);
                      //System.out.println("\nHeight : "+height+"\nExample "+test);
-                      
-                     //System.out.println("\nTEST "+)
+                      //System.out.println("\nTEST "+)
                     curr = curr.left;
-                    int mask = (int) Math.pow(2,height-1); 
-                    temp |=  mask;
-                    System.out.println("\nExample "+Integer.toBinaryString(temp));
+                    //mask |= height; 
+                //    temporaryNumber = setBit(0b000000,4);
+                 //   int temporaryNumber2 = setBit(0b111,2);
+                    
+                 //   System.out.println("\nTEmp 1  : "+Integer.toBinaryString(temporaryNumber));
+                 //   System.out.println("\nTEmp 2  : "+temporaryNumber2);
+                    
+                    
+                  //  num |= pos;
+                    //temporaryNumber = setBit(0b0000,2);
+                    temporaryNumber |= height;
+                    		
+                    System.out.println("\nTemporary Number : "+Integer.toBinaryString(temporaryNumber));
+//                     temporaryNumber |= 1;
+                    		 //setBit(temporaryNumber,1);
+//                   System.out.println("\nTemporary Number : "+Integer.toBinaryString(temporaryNumber));
+                    
+                    //mask = (int) Math.pow(2,height-1); 
+                   // temp |=  mask;
+                    //System.out.println("\n LEFT " + curr.data);
+                    
                     height++;
                     
+                    
                 } 
-                
+                //System.out.println("\nLeft branch  : "+Integer.toBinaryString(temporaryNumber)); 
 
             /* Current must be NULL at this point */
             // s.pop goes to the left object
-            curr = s.pop();
+          /*  curr = s.pop();
+            
             height--;
-            //System.out.println("\nHeight : "+height+"\nExample "+test);
-
+            height--;
+            
             /* we have visited the node and its 
                left subtree.  Now, it's right 
                subtree's turn */
-            curr.right = new Node(0);
-            curr = curr.right;
-           height++;
+            //curr.right = new Node(0);
+           // curr = curr.right;
+              
+                        
             
-        } 
+       // } 
     } 
     
     public static void main(String[] args) 
