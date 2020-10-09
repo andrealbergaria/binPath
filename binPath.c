@@ -289,82 +289,42 @@ int main() {
                  Max value of summing on cycle    =  256
                 2^8 = 256 numbers
                 
-                A B  B A
-                1001010
                 
                 ascci value of c -> 67
                 
-                Str s = AAAA
-                s2 = AAAB
-                s3 = AAAC
-                4 letters => 8 bits
                 AR(4,3) = 4^3 = 64
                 {a,b,c,d}
                 
                 2^6 = 64
                 
-                
-                AAA 00 00 00 
-                AAB
-                AAC
-                AAD
-                
-                ABA
-                ABB
-                ABC
-                ABD
+               
                 
             */    
-                char cur[3] = { 'A','A','A'};
-                
-                      // ASCII A 65
-                 bitsToTest[0] = 'A'
-                 bitsToTest[1] = 'A';   // A  A  A
-                 bitsToTest[2] = 'A'; // 000 000 000
-                 
-                 bitsToTest[2] = 'B'; // AAB
-                 bitsTotest[1] = 'B'; // ABB
-                 bitsToTest[1] = 'C'; // ACB
-                 bitsToTest[1] = 'D'; // ADB
-                 
-                 bitsToTest[2] = 'C'; // ADC
-                 bitsToTest[1] = 'B'; // ABC
-                 bitsToTest[1] = 'D'; // ADC
-                 bitsToTest[1] = 'A'; // AAC
-                 
-
-                 bitsToTest[2] = 'D'; // AAD
-                 bitsTotest[1] = 'D'; // ADD
-                 
-                 bitsToTest[2] = 'D'; // ACD
-                 
-                 
-                 
-                 iterate through 1
-                 everything that has a 3 pos char a
-                 
-                 bitsToTest[2] = 'A';
+             /*    bitsToTest[2] = 'A';
 
                  /* bitsToTest[1] = 'A'
                  bitsToTest[1] = 'B'
                  bitsToTest[1] = 'C'
                  bitsToTest[1] = 'D'
-                 */
+               
                  bitsToTest[0] = 'A'
                  bitsToTest[0] = 'B'
                  bitsToTest[0] = 'C'
                  bitsToTest[0] = 'D'
-                 
-                  for (int timesFrst = 0; timesFirst < 3;timesFirst++) {
+                 */  
+                 char bitsToTest[3];
+                  for (int timesFirst = 0; timesFirst < 3;timesFirst++) {
                       
                     bitsToTest[2] = 65+timesFirst;
                     
                     for (int idx = 0; idx < 3; idx++) {
                         bitsToTest[0] = 65+idx;
                         bitsToTest[1] = 65+idx;
+                        bitsToTest[3] = '\0';
+                        printf("\n%s ",bitsToTest);
                  }
                  
-                 
+                  }
 
                  unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
