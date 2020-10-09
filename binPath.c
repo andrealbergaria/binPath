@@ -315,42 +315,47 @@ int main() {
                  bitsToTest[0] = 'C'
                  bitsToTest[0] = 'D'
                  */  
-                 char bitsToTest[4];
-                 int numberDigits = 4;
-                 // How many positions to test
-                 int pos = 3;
-                 int comb = numberDigits^pos;
+                 char bitsToTest[] = {'A','A','A','\0'};
                  char secondColumn= 'A';
                 
                      // Columns are equal...ses below
-                     bitsToTest[2]='A';
-                     bitsToTest[2]='B';
-                     bitsToTest[2]='C';
-                     bitsToTest[2]='D';
+             //        bitsToTest[2]='A';
+              //       bitsToTest[2]='B';
+               //      bitsToTest[2]='C';
+                //     bitsToTest[2]='D';
                      
-                     
-                     
-                for (int sumAscii = 0 ; sumAscii < 3 ; sumAscii) {
-                    bitsToTest[2] = 'A'+sumAscii;
-                }
-                 
                  char firstLetter= 'A';
-                  for (int timesFirst = 0; timesFirst < comb ;timesFirst++) {
+                     
+                for (int sumAscii = 0 ; sumAscii < 3 ; sumAscii++) {
+                    bitsToTest[2] = 'A'+sumAscii;
+                
+//                     // 16 because if bits has 64 options, we have 16 numbers with the same first letter
+                  for (int timesFirst = 1; timesFirst <= 16 ;timesFirst++) {
+                      //printf("\n%s",bitsToTest);
                       
                     bitsToTest[0] = firstLetter; // 16 times (16 A'), 4 times each letter (A,C,B,D) ,4 times (a,b,c,d)
                     bitsToTest[1] = secondColumn;
-                    if  (timesFirst / 16 == 4) {
-                        secondColumn++;
+                    // If timesFirst multiple of 16 
+                    if  (timesFirst % 4  == 0) {
+                        if (secondColumn == 'D')
+                            secondColumn = 'A';
+                        else
+                            secondColumn++;
+                      //  printf("\nChanging column");
                         //second column => A B C D
                     }
+                    if (timesFirst % 16 ==  0) {
+                        //printf("\nChanging first letter");
                         
-                    
-                    if (comb % 16 ==  0)
                         firstLetter++;
+                    }
                   }
+                }
                     
-                    16 / 4 = 4
-/*
+/*              
+ *              
+ *              
+ * 
                   (16 A's)
                  
                   AAA
