@@ -1,7 +1,7 @@
-
+#include <stdbool.h>
+#include <stddef.h>
 #include <stdio.h>
 
-#define maxBytes 2
 //  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc) compared to the base;
 // Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
 // this can be used in arrays
@@ -20,56 +20,55 @@
 // another view of it, is that 0= 0 and 1=[1,2,3] for example...in this case the 111111 cases needs to invert the zero and the set ([1,2,3]
 
 
-void printBits(unsigned char );
+void printBits(unsigned char);
 void printShortBits(unsigned short s);
-void printLetters(char ,char);
-//char nextPermutation(char * ,int);
+void printBinary(char * ,int size);
+bool next_permutation(char * ,size_t);
 
-/*
- * 
- * 
+/* 
  * Next lexicographical permutation algorithm (C)
  * by Project Nayuki, 2017. Public domain.
  * https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
  */
 
-/*char nextPermutation(char *array,int sizeOfArray) {
-    // Find longest non-increasing suffix
-    int i = sizeOfArray - 1;
-    while (i > 0 && array[i - 1] >= array[i])
-        i--;
-    // Now i is the head index of the suffix
-    
-    // Are we at the last permutation already?
-    if (i <= 0)
-        return 0;
-    
-    // Let array[i - 1] be the pivot
-    // Find rightmost element that exceeds the pivot
-    int j = sizeOfArray - 1;
-    while (array[j] <= array[i - 1])
-        j--;
-    // Now the value array[j] will become the new pivot
-    // Assertion: j >= i
-    
-    // Swap the pivot with j
-    int temp = array[i - 1];
-    array[i - 1] = array[j];
-    array[j] = temp;
-    
-    // Reverse the suffix
-    j = sizeOfArray - 1;
-    while (i < j) {
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-        i++;
-        j--;
-    }
-    
-    // Successfully computed the next permutation
-    return 1;
+
+/*
+ * https://www.nayuki.io/res/next-lexicographical-permutation-algorithm/nextperm.c
+ * 
+ * Computes the next lexicographical permutation of the specified array of integers in place,
+ * returning a Boolean to indicate whether a next permutation existed.
+ * (Returns false when the argument is already the last possible permutation.)
+ */
+bool next_permutation(char *array, size_t length) {
+	// Find non-increasing suffix
+	if (length == 0)
+		return false;
+	size_t i = length - 1;
+	while (i > 0 && array[i - 1] >= array[i])
+		i--;
+	if (i == 0)
+		return false;
+	
+	// Find successor to pivot
+	size_t j = length - 1;
+	while (array[j] <= array[i - 1])
+		j--;
+	int temp = array[i - 1];
+	array[i - 1] = array[j];
+	array[j] = temp;
+	
+	// Reverse suffix
+	j = length - 1;
+	while (i < j) {
+		temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+		i++;
+		j--;
+	}
+	return true;
 }
+
 
 /* This code can be mechanically translated to a programming language of your choice, with minimal understanding of the algorithm. (Note that in Java, arrays are indexed from 0.)
 Example usages
@@ -86,6 +85,8 @@ do {  // Must start at lowest permutation
  * CLOSE FROM
  * 
  */
+
+
 
 //from irc
 void printBits(unsigned char number) {
@@ -123,28 +124,26 @@ void printShortBits(unsigned short number) {
    
 }
 
-      
-/*                A = 01 1d
-                B = 10 2d 
-                C = 11 3d
-                D = 00 0d
- */               
-                
+          
 
-void printLetters(char value,char mask) {
-    char t = value & mask;
-    if ( t == 01)
-    printf("A");
-    else if(t== 10)
-        printf("B");
-    else if(t==11)
-        printf("C");
-    else
-        printf("D");
+void printBinary(char *array,int sizeOfArray) {
+    
+    for (int idx = 0; idx < sizeOfArray; idx++) {
+        if (array[idx] == 'A')
+            printf("00");
+        else if(array[idx] == 'B')
+            printf("01");
+        else if(array[idx] == 'C')
+            printf("10");
+        else 
+            printf("11");
+     
+    }
 }
 
 int main() {
-                
+           
+     
 
                 /*
                  * 
@@ -230,10 +229,10 @@ int main() {
                  ... and so one
                  a[0] = *half1
                  */
-             //   char half[4] =  { 'A','B','C','D'};
+             //   char half[4] =  { 'A','B','C','D'}; = 256 times (for 4 positions)
                 
 
-                                   
+                
                 
                 // Arranjos com repetição => 3*3*3 => 27 combinações
                 // Arep(2,3) = 2*2*2 = 2^3 = 8
@@ -253,12 +252,12 @@ int main() {
                 /*
                  * 
                  * Option, use permutation instead of arrays assignment (arrays assingnments are faster)
-                
-               /* do {  // Must start at lowest permutation
-                    printf("\n%s\n",half);
+               */ 
+             /*  do {  // Must start at lowest permutation
+                    printf("\n%s\n",cur);
                 } while (nextPermutation(half,4));
-                */
                 
+              */  
                /* 
                 * End Of option
                 */
@@ -288,45 +287,85 @@ int main() {
                        
                        
                  Max value of summing on cycle    =  256
+                2^8 = 256 numbers
+                
+                A B  B A
+                1001010
+                
+                ascci value of c -> 67
+                
+                Str s = AAAA
+                s2 = AAAB
+                s3 = AAAC
+                4 letters => 8 bits
+                AR(4,3) = 4^3 = 64
+                {a,b,c,d}
+                
+                2^6 = 64
+                
+                
+                AAA 00 00 00 
+                AAB
+                AAC
+                AAD
+                
+                ABA
+                ABB
+                ABC
+                ABD
                 
             */    
-                int idx = 0;
-                char currentValue;
-                int mask = 11;
+                char cur[3] = { 'A','A','A'};
                 
-                for (idx = 0 ; idx < 256 ; idx++) {
-                    currentValue = 0 + idx;
-                    printLetters(currentValue,00000011);
-                    
-                    printf("\n");
-                }
-                
-                      /*
+                      // ASCII A 65
                  bitsToTest[0] = 'A'
                  bitsToTest[1] = 'A';   // A  A  A
                  bitsToTest[2] = 'A'; // 000 000 000
-                 bitsToTest[3] = 
-                                            // B A   A
-                 bitsToTest[0] = 'B'; // 001 000 000
-                                          //  C   A   A
-                 bitsToTest[0] = 'C'; // 010 000 000
                  
-                                          //  C   C   A
-                 bitsToTest[1] = 'C'; // 010 001 000
-                                          //  C   C   C
-                 bitsToTest[2] = 'C'; // 001 001 001
+                 bitsToTest[2] = 'B'; // AAB
+                 bitsTotest[1] = 'B'; // ABB
+                 bitsToTest[1] = 'C'; // ACB
+                 bitsToTest[1] = 'D'; // ADB
                  
-                 bitsToTest[0] = 'B'; // B C C 
+                 bitsToTest[2] = 'C'; // ADC
+                 bitsToTest[1] = 'B'; // ABC
+                 bitsToTest[1] = 'D'; // ADC
+                 bitsToTest[1] = 'A'; // AAC
+                 
+
+                 bitsToTest[2] = 'D'; // AAD
+                 bitsTotest[1] = 'D'; // ADD
+                 
+                 bitsToTest[2] = 'D'; // ACD
                  
                  
-                                          // C    B    B
-                 bitsToTest[0] = half[2]; // 010 001 001
-                                          // C    C   B
-                 bitsToTest[1] = half[2]; // 010 010 001
-                                          // C    C   C
-                 bitsToTest[2] = half[2]; // 010 010 010
                  
+                 iterate through 1
+                 everything that has a 3 pos char a
+                 
+                 bitsToTest[2] = 'A';
+
+                 /* bitsToTest[1] = 'A'
+                 bitsToTest[1] = 'B'
+                 bitsToTest[1] = 'C'
+                 bitsToTest[1] = 'D'
                  */
+                 bitsToTest[0] = 'A'
+                 bitsToTest[0] = 'B'
+                 bitsToTest[0] = 'C'
+                 bitsToTest[0] = 'D'
+                 
+                  for (int timesFrst = 0; timesFirst < 3;timesFirst++) {
+                      
+                    bitsToTest[2] = 65+timesFirst;
+                    
+                    for (int idx = 0; idx < 3; idx++) {
+                        bitsToTest[0] = 65+idx;
+                        bitsToTest[1] = 65+idx;
+                 }
+                 
+                 
+
                  unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
               
