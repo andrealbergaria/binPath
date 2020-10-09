@@ -296,9 +296,12 @@ int main() {
                 {a,b,c,d}
                 
                 2^6 = 64
-                
+               combinations with 4 digits and 3 posico
+               Arep(4,3) 4*4*4 = 64
+               AAA
+               010101
                
-                
+                2 ^ 6 = 64
             */    
              /*    bitsToTest[2] = 'A';
 
@@ -312,30 +315,94 @@ int main() {
                  bitsToTest[0] = 'C'
                  bitsToTest[0] = 'D'
                  */  
-                 char bitsToTest[3];
-                  for (int timesFirst = 0; timesFirst < 3;timesFirst++) {
-                      
-                    bitsToTest[2] = 65+timesFirst;
-                    
-                    for (int idx = 0; idx < 3; idx++) {
-                        bitsToTest[0] = 65+idx;
-                        bitsToTest[1] = 65+idx;
-                        bitsToTest[3] = '\0';
-                        printf("\n%s ",bitsToTest);
+                 char bitsToTest[4];
+                 int numberLetters = 4;
+                 // How many positions to test
+                 pos = 3;
+                 
+                 
+                 for (int col=0 ; col < 3; col++) {
+                     // Columns are equal...ses below
+                     bitsToTest[2]='A';
+                     bitsToTest[2]='B';
+                     bitsToTest[2]='C';
+                     bitsToTest[2]='D';
+                     
+                     
+                     
                  }
                  
+                  for (int timesFirst = 0; timesFirst < numberLetters ^ pos ;timesFirst++) {
+                      
+                    bitsToTest[0] = 65+timesFirst; // 16 times (16 A'), 4 times each letter (A,C,B,D) ,4 times (a,b,c,d)
+                                                
+                    
+                    for (int column3 = 0 ; column < ; idx++) {
+                        bitsToTest[1] = 65+idx;
+                        for (int idx2 =0 ; idx2 < 4 ; idx2++) {
+                            bitsToTest[2] = 65+idx;
+                            bitsToTest[3] = '\0';
+                            printf("\n%s ",bitsToTest);
+                        }
+                        
+                    }
+                 
                   }
+                  
+                  
+c)                aba               on c) we have col3 we have four letters 
+                  abb
+                  abc    3 coluna a,b,c,d       2 coluna = 3 coluna na debaixo
+                  abd 
+                  
+b)                abb
+                  acb   2 coluna a,b,c,d
+                  aab
+                  adb
+                  
+                  
+                  // Third column is equal 2 col
+                 
+                            on b ) we have on col 2 tyhe four letters
+                    
+                  
+                  
+
+                  (16 A's)
+                  
+                  ACA
+                  ACB
+                  ACC
+                  ACD  / 3rd column (a,b,c,d)
+                
+                  
+                  ABA
+                  ABB   // Third columnd equals before
+                  ABC
+                  ABD
+                  
+                  AAA
+                  AAB // Third columna equals before
+                  AAC
+                  AAD
+                  
+                  ADA
+                  ADB // Third column equals before
+                  ADC
+                  ADD
+                  
+                  
+                  
+                  
+                  
+                  
 
                  unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
               
                     // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
                         
- 
-                           
-                            
-                         
-                       
+    
                        
                     
 
