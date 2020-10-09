@@ -331,7 +331,7 @@ int main() {
                 
 //                     // 16 because if bits has 64 options, we have 16 numbers with the same first letter
                   for (int timesFirst = 1; timesFirst <= 16 ;timesFirst++) {
-                      //printf("\n%s",bitsToTest);
+                      printf("\n%s",bitsToTest);
                       
                     bitsToTest[0] = firstLetter; // 16 times (16 A'), 4 times each letter (A,C,B,D) ,4 times (a,b,c,d)
                     bitsToTest[1] = secondColumn;
