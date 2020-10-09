@@ -316,12 +316,12 @@ int main() {
                  bitsToTest[0] = 'D'
                  */  
                  char bitsToTest[4];
-                 int numberLetters = 4;
+                 int numberDigits = 4;
                  // How many positions to test
-                 pos = 3;
-                 
-                 
-                 for (int col=0 ; col < 3; col++) {
+                 int pos = 3;
+                 int comb = numberDigits^pos;
+                 char secondColumn= 'A';
+                
                      // Columns are equal...ses below
                      bitsToTest[2]='A';
                      bitsToTest[2]='B';
@@ -330,64 +330,47 @@ int main() {
                      
                      
                      
-                 }
+                for (int sumAscii = 0 ; sumAscii < 3 ; sumAscii) {
+                    bitsToTest[2] = 'A'+sumAscii;
+                }
                  
-                  for (int timesFirst = 0; timesFirst < numberLetters ^ pos ;timesFirst++) {
+                 char firstLetter= 'A';
+                  for (int timesFirst = 0; timesFirst < comb ;timesFirst++) {
                       
-                    bitsToTest[0] = 65+timesFirst; // 16 times (16 A'), 4 times each letter (A,C,B,D) ,4 times (a,b,c,d)
-                                                
-                    
-                    for (int column3 = 0 ; column < ; idx++) {
-                        bitsToTest[1] = 65+idx;
-                        for (int idx2 =0 ; idx2 < 4 ; idx2++) {
-                            bitsToTest[2] = 65+idx;
-                            bitsToTest[3] = '\0';
-                            printf("\n%s ",bitsToTest);
-                        }
-                        
+                    bitsToTest[0] = firstLetter; // 16 times (16 A'), 4 times each letter (A,C,B,D) ,4 times (a,b,c,d)
+                    bitsToTest[1] = secondColumn;
+                    if  (timesFirst / 16 == 4) {
+                        secondColumn++;
+                        //second column => A B C D
                     }
-                 
-                  }
-                  
-                  
-c)                aba               on c) we have col3 we have four letters 
-                  abb
-                  abc    3 coluna a,b,c,d       2 coluna = 3 coluna na debaixo
-                  abd 
-                  
-b)                abb
-                  acb   2 coluna a,b,c,d
-                  aab
-                  adb
-                  
-                  
-                  // Third column is equal 2 col
-                 
-                            on b ) we have on col 2 tyhe four letters
+                        
                     
-                  
-                  
-
+                    if (comb % 16 ==  0)
+                        firstLetter++;
+                  }
+                    
+                    16 / 4 = 4
+/*
                   (16 A's)
-                  
-                  ACA
-                  ACB
-                  ACC
-                  ACD  / 3rd column (a,b,c,d)
-                
+                 
+                  AAA
+                  AAB // Third columna equals before
+            4     AAC
+                  AAD
                   
                   ABA
-                  ABB   // Third columnd equals before
+            8     ABB   // Third columnd equals before
                   ABC
                   ABD
                   
-                  AAA
-                  AAB // Third columna equals before
-                  AAC
-                  AAD
-                  
+                 
+                  ACA
+            12    ACB
+                  ACC
+                  ACD  / 3rd column (a,b,c,d)
+                
                   ADA
-                  ADB // Third column equals before
+            16      ADB // Third column equals before
                   ADC
                   ADD
                   
@@ -402,7 +385,7 @@ b)                abb
               
                     // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
                         
-    
+  */  
                        
                     
 
