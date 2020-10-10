@@ -1,7 +1,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
-
+#include <unistd.h>
+#include <crypt.h>
 //  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc) compared to the base;
 // Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
 // this can be used in arrays
@@ -44,10 +45,22 @@ bool next_permutation(char *array, size_t length) {
 	if (length == 0)
 		return false;
 	size_t i = length - 1;
-	while (i > 0 && array[i - 1] >= array[i])
+    
+    
+    [a,a,a]
+    i = 2 
+    
+	while (i > 0 && array[i - 1] >= array[i]) {
+        array[i-1] = array[1]
+        array[i] = array[2]
+        printf("\nARRAY[i] =>   %c ",array[i]);
+        
 		i--;
-	if (i == 0)
+    }
+	if (i == 0) {
+        printf("\n\nTEMP");
 		return false;
+    }
 	
 	// Find successor to pivot
 	size_t j = length - 1;
@@ -75,7 +88,9 @@ Example usages
 
 Print all the permutations of (0, 1, 1, 1, 4):
 
-int[] array = {0, 1, 1, 1, 4};
+int[] array = {0, 1, 1, 1, #include <stdio.h>
+#include <unistd.h>
+#include <crypt.h>4};
 do {  // Must start at lowest permutation
     System.out.println(Arrays.toString(array));
 } while (nextPermutation(array));
@@ -87,6 +102,46 @@ do {  // Must start at lowest permutation
  */
 
 
+// link with -lcrypt
+int
+encrypt (char *numToHash)
+{
+  unsigned char ubytes[16];
+  char salt[20];
+  const char *const saltchars =
+    "./0123456789ABCDEFGHIJKLMNOPQRST"
+    "UVWXYZabcdefghijklmnopqrstuvwxyz";
+  char *hash;
+  int i;
+
+  /* Retrieve 16 unpredictable bytes from the operating system. */
+  if (getentropy (ubytes, sizeof ubytes))
+    {
+      perror ("getentropy");
+      return 1;
+    }
+
+  /* Use them to fill in the salt string. */
+  salt[0] = '$';
+  salt[1] = '5'; /* SHA-256 */
+  salt[2] = '$';
+  for (i = 0; i < 16; i++)
+    salt[3+i] = saltchars[ubytes[i] & 0x3f];
+  salt[3+i] = '\0';
+
+  /* Read in the user’s passphrase and hash it. */
+  hash = crypt (numToHash, salt);
+  if (!hash || hash[0] == '*')
+    {
+      perror ("crypt");
+      return 1;
+    }
+
+  /* Print the results. */
+  
+  printf("\nHASH : %s",hash)
+  return 0;
+}
 
 //from irc
 void printBits(unsigned char number) {
@@ -140,6 +195,8 @@ void printBinary(char *array,int sizeOfArray) {
      
     }
 }
+
+
 
 int main() {
            
@@ -242,7 +299,6 @@ int main() {
                 
                 
                 
-               // char bitsToTest[8];
                 // ASCFII VALUE C => 67
                 // ASCII VALUE 0 => 48
                 // ASCII VALUE 1 => 49
@@ -253,9 +309,17 @@ int main() {
                  * 
                  * Option, use permutation instead of arrays assignment (arrays assingnments are faster)
                */ 
-             /*  do {  // Must start at lowest permutation
-                    printf("\n%s\n",cur);
-                } while (nextPermutation(half,4));
+                
+                char letters[] = {'A','A','A', \
+                                  'A','A','A', \
+                                  'A','A','A', \
+                                  'A','A','A', \
+                                  'A','A','A', \
+                                  'A'};
+                        
+            /*   do {  // Must start at lowest permutation
+                    printf("\n%s\n",bitsToTest);
+                } while (next_permutation(bitsToTest,4) ==  true);
                 
               */  
                /* 
@@ -263,122 +327,89 @@ int main() {
                 */
                
            /* 
-                A = 00 0d    
-                B = 01 1d
-                C = 10 2d 
-                D = 11 3d
+            *   Using 4 bits per letter
+                A = 0000 0d    
+                B = 0001 1d
+                C = 0010 2d
                 
+                D = 0100 4d
+                E = 1000 8d
+                F = 1001 9d
                 
-                AAAA = 00 00 00 00
-                AAAB = 00 00 00 01 (+1)
-                AAAC = 00 00 00 10 (+2)
-                AAAD = 00 00 00 11 (+3)
+                G = 1010 10d
+                H = 1011 11d
+                I = 1100 12d
                 
+                J = 1101 13d
+                K = 1110 14d
+                L = 1111 15
                 
+                AA= 00 00 00 00
+                AB = 00 00 00 01 (+1)
+                AC = 00 00 00 10 (+2)
+                AD = 00 00 00 11 (+3)
                 
-                (+4) = 00 00 00 00 
-                              1 00  ADD
-                       00 00 01 00  
-                       A  A  B   A
-                (+5) = 00 00 00 11
-                              1 01 ADD
-                       00 00 10 00 
-                       A  A  C  A
-                       
-                       
-                 Max value of summing on cycle    =  256
-                2^8 = 256 numbers
+                digits = 15
+                pos = 2
+                 
+                Ar(15,2) =  15 ^ 2 = 225
                 
-                
-                ascci value of c -> 67
-                
-                AR(4,3) = 4^3 = 64
-                {a,b,c,d}
-                
-                2^6 = 64
-               combinations with 4 digits and 3 posico
-               Arep(4,3) 4*4*4 = 64
-               AAA
-               010101
-               
-                2 ^ 6 = 64
-            */    
-             /*    bitsToTest[2] = 'A';
-
-                 /* bitsToTest[1] = 'A'
-                 bitsToTest[1] = 'B'
-                 bitsToTest[1] = 'C'
-                 bitsToTest[1] = 'D'
-               
-                 bitsToTest[0] = 'A'
-                 bitsToTest[0] = 'B'
-                 bitsToTest[0] = 'C'
-                 bitsToTest[0] = 'D'
-                 */  
-                 char bitsToTest[] = {'A','A','A','\0'};
+             /*    char bitsToTest[] = {'A','A'};
                  char secondColumn= 'A';
-                
-                     // Columns are equal...ses below
-             //        bitsToTest[2]='A';
-              //       bitsToTest[2]='B';
-               //      bitsToTest[2]='C';
-                //     bitsToTest[2]='D';
-                     
+             
                  char firstLetter= 'A';
-                     
-                for (int sumAscii = 0 ; sumAscii < 3 ; sumAscii++) {
-                    bitsToTest[2] = 'A'+sumAscii;
-                
+             */   
 //                     // 16 because if bits has 64 options, we have 16 numbers with the same first letter
-                  for (int timesFirst = 1; timesFirst <= 16 ;timesFirst++) {
-                      printf("\n%s",bitsToTest);
-                      
+                  for (int timesFirst = 1; timesFirst <= 225 ;timesFirst++) {
+                     //printf("\n t-> %i",timesFirst);
+                          
+                    printf("\n%s ",bitsToTest);
+                    
                     bitsToTest[0] = firstLetter; // 16 times (16 A'), 4 times each letter (A,C,B,D) ,4 times (a,b,c,d)
                     bitsToTest[1] = secondColumn;
+                    bitsToTest[2] = thirdColumn;
+                    
+                    if (bitsToTest[2] == 'D')
+                        bitsToTest[2] = 'A';
+                    else 
+                        bitsToTest[2] += 1;// Third col = ABCCD
+                    
+                    
+                   
                     // If timesFirst multiple of 16 
                     if  (timesFirst % 4  == 0) {
-                        if (secondColumn == 'D')
-                            secondColumn = 'A';
+                         
+                        if (thirdColumn == 'D') {
+                            thirdColumn = 'A';
+                        }
                         else
-                            secondColumn++;
-                      //  printf("\nChanging column");
+                            thirdColumn++;
+                        
+                    
                         //second column => A B C D
                     }
-                    if (timesFirst % 16 ==  0) {
-                        //printf("\nChanging first letter");
-                        
-                        firstLetter++;
+                    
+                    
+                    
+                   if (timesFirst % 64 == 0)
+                       firstLetter++;
                     }
-                  }
-                }
+                        
+                  
+                
                     
 /*              
- *              
+ *              64 por cada letra
  *              
  * 
                   (16 A's)
                  
-                  AAA
-                  AAB // Third columna equals before
-            4     AAC
-                  AAD
+                  AAAA
+                  AABA      COL 4= COL 1
+            4     AACA
+                  AADA
                   
-                  ABA
-            8     ABB   // Third columnd equals before
-                  ABC
-                  ABD
-                  
-                 
-                  ACA
-            12    ACB
-                  ACC
-                  ACD  / 3rd column (a,b,c,d)
-                
-                  ADA
-            16      ADB // Third column equals before
-                  ADC
-                  ADD
-                  
+                  */
                   
                   
                   
@@ -390,7 +421,7 @@ int main() {
               
                     // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
                         
-  */  
+    
                        
                     
 
