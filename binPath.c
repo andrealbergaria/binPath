@@ -352,71 +352,40 @@ int main() {
                 digits = 15
                 pos = 2
                  
+                 
+                 
+                 
                 Ar(15,2) =  15 ^ 2 = 225
+                each letter -> 15
                 
-             /*    char bitsToTest[] = {'A','A'};
-                 char secondColumn= 'A';
-             
-                 char firstLetter= 'A';
+                
              */   
-//                     // 16 because if bits has 64 options, we have 16 numbers with the same first letter
+                  bitsToTest[2] = '\0';
                   for (int timesFirst = 1; timesFirst <= 225 ;timesFirst++) {
                      //printf("\n t-> %i",timesFirst);
                           
                     printf("\n%s ",bitsToTest);
                     
-                    bitsToTest[0] = firstLetter; // 16 times (16 A'), 4 times each letter (A,C,B,D) ,4 times (a,b,c,d)
+                    bitsToTest[0] = firstLetter; // 16 times (16 A'), 15 times each letter (A,C,B,D)
                     bitsToTest[1] = secondColumn;
-                    bitsToTest[2] = thirdColumn;
                     
-                    if (bitsToTest[2] == 'D')
-                        bitsToTest[2] = 'A';
+                    if (bitsToTest[1] == 'L')
+                        bitsToTest[1] = 'A';
                     else 
-                        bitsToTest[2] += 1;// Third col = ABCCD
-                    
-                    
-                   
-                    // If timesFirst multiple of 16 
-                    if  (timesFirst % 4  == 0) {
-                         
-                        if (thirdColumn == 'D') {
-                            thirdColumn = 'A';
-                        }
-                        else
-                            thirdColumn++;
+                        secondColumn++;
                         
-                    
-                        //second column => A B C D
-                    }
-                    
-                    
-                    
-                   if (timesFirst % 64 == 0)
+                    if (timesFirst % 16 == 0)
                        firstLetter++;
+                   
                     }
+                    
+                    
+                    
                         
                   
                 
                     
-/*              
- *              64 por cada letra
- *              
- * 
-                  (16 A's)
-                 
-                  AAAA
-                  AABA      COL 4= COL 1
-            4     AACA
-                  AADA
-                  
-                  */
-                  
-                  
-                  
-                  
-                  
-
-                 unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
+/                unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
               
                     // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
