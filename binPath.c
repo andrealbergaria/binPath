@@ -24,102 +24,27 @@
 void printBits(unsigned char);
 void printShortBits(unsigned short s);
 void printBinary(char * ,int size);
-bool next_permutation(char * ,size_t);
-
-/* 
- * Next lexicographical permutation algorithm (C)
- * by Project Nayuki, 2017. Public domain.
- * https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
- */
-
-
-/*
- * https://www.nayuki.io/res/next-lexicographical-permutation-algorithm/nextperm.c
- * 
- * Computes the next lexicographical permutation of the specified array of integers in place,
- * returning a Boolean to indicate whether a next permutation existed.
- * (Returns false when the argument is already the last possible permutation.)
- */
-bool next_permutation(char *array, size_t length) {
-	// Find non-increasing suffix
-	if (length == 0)
-		return false;
-	size_t i = length - 1;
-    
-    
-    [a,a,a]
-    i = 2 
-    
-	while (i > 0 && array[i - 1] >= array[i]) {
-        array[i-1] = array[1]
-        array[i] = array[2]
-        printf("\nARRAY[i] =>   %c ",array[i]);
-        
-		i--;
-    }
-	if (i == 0) {
-        printf("\n\nTEMP");
-		return false;
-    }
-	
-	// Find successor to pivot
-	size_t j = length - 1;
-	while (array[j] <= array[i - 1])
-		j--;
-	int temp = array[i - 1];
-	array[i - 1] = array[j];
-	array[j] = temp;
-	
-	// Reverse suffix
-	j = length - 1;
-	while (i < j) {
-		temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
-		i++;
-		j--;
-	}
-	return true;
-}
-
-
-/* This code can be mechanically translated to a programming language of your choice, with minimal understanding of the algorithm. (Note that in Java, arrays are indexed from 0.)
-Example usages
-
-Print all the permutations of (0, 1, 1, 1, 4):
-
-int[] array = {0, 1, 1, 1, #include <stdio.h>
-#include <unistd.h>
-#include <crypt.h>4};
-do {  // Must start at lowest permutation
-    System.out.println(Arrays.toString(array));
-} while (nextPermutation(array));
-
-  */
-/*
- * CLOSE FROM
- * 
- */
-
+char *hashit(char *);
+char *getSalt(char *salt);
 
 // link with -lcrypt
-int
-encrypt (char *numToHash)
+
+
+char *getSalt(char *salt) {
+    
+    return 0;
+}
+
+char* 
+hashit (char *numToHash)
 {
   unsigned char ubytes[16];
   char salt[20];
   const char *const saltchars =
     "./0123456789ABCDEFGHIJKLMNOPQRST"
     "UVWXYZabcdefghijklmnopqrstuvwxyz";
-  char *hash;
+  static char *hash;
   int i;
-
-  /* Retrieve 16 unpredictable bytes from the operating system. */
-  if (getentropy (ubytes, sizeof ubytes))
-    {
-      perror ("getentropy");
-      return 1;
-    }
 
   /* Use them to fill in the salt string. */
   salt[0] = '$';
@@ -139,8 +64,8 @@ encrypt (char *numToHash)
 
   /* Print the results. */
   
-  printf("\nHASH : %s",hash)
-  return 0;
+  printf("\nHASH : %s",hash);
+  return hash;
 }
 
 //from irc
@@ -181,13 +106,16 @@ void printShortBits(unsigned short number) {
 
           
 
-void printBinary(char *array,int sizeOfArray) {
+/* void printBinary(int num) {
+    
+    if (num == 2)
+        printf("\nB");
     
     for (int idx = 0; idx < sizeOfArray; idx++) {
         if (array[idx] == 'A')
-            printf("00");
+            printf("00000000");
         else if(array[idx] == 'B')
-            printf("01");
+            printf("00000001");
         else if(array[idx] == 'C')
             printf("10");
         else 
@@ -195,9 +123,7 @@ void printBinary(char *array,int sizeOfArray) {
      
     }
 }
-
-
-
+*/
 int main() {
            
      
@@ -239,7 +165,7 @@ int main() {
                 D = 00 0d
                 
                 
-                /*
+                /*'A'
                  * 
                  * For 4 bits
                  
@@ -248,7 +174,7 @@ int main() {
                 0001 // 1
                 0010 // 2
                 0100 // 4       => number = 2^x
-                1000 // 8
+                1000 // 8'A'
 
                 /*
                  * 
@@ -263,7 +189,7 @@ int main() {
                 inv(3) = 1100 = 12d
                 
                  * End 4 bits
-                 * 
+                 * 'A'
                  */
                 /* assign letters to sequence of bits
                  * 
@@ -305,44 +231,46 @@ int main() {
                 
               
                 
-                /*
-                 * 
-                 * Option, use permutation instead of arrays assignment (arrays assingnments are faster)
-               */ 
-                
-                char letters[] = {'A','A','A', \
+                /*char letters[] = {'A','A','A', \
                                   'A','A','A', \
                                   'A','A','A', \
                                   'A','A','A', \
                                   'A','A','A', \
                                   'A'};
-                        
-            /*   do {  // Must start at lowest permutation
-                    printf("\n%s\n",bitsToTest);
-                } while (next_permutation(bitsToTest,4) ==  true);
+                                  */
+                // salt 20 bytes
                 
-              */  
-               /* 
-                * End Of option
-                */
-               
-           /* 
+                    
+            
+            /* 
             *   Using 4 bits per letter
-                A = 0000 0d    
-                B = 0001 1d
-                C = 0010 2d
+            * 
+            *   A A 
+            *   A B ++
+            *   A C ++
+                A = 0000 0000 0d    0000 0000 
+                B = 0000 0001 1d
+                C = 0000 0010 2d
                 
-                D = 0100 4d
-                E = 1000 8d
-                F = 1001 9d
+                D = 0000 0100 4d
+                E = 0000 1000 8d
+                F = 0000 1001 9d
                 
-                G = 1010 10d
-                H = 1011 11d
-                I = 1100 12d
+                G = 0000 1010 10d
+                H = 0000 1011 11d
+                I = 0000 1100 12d
                 
-                J = 1101 13d
-                K = 1110 14d
-                L = 1111 15
+                J = 0000 1101 13d
+                K = 0000 1110 14d
+                L = 0000 1111 15
+                M = 
+                
+                a
+                a++ => b
+                
+                255 sums
+                
+               ( ,8
                 
                 AA= 00 00 00 00
                 AB = 00 00 00 01 (+1)
@@ -352,40 +280,101 @@ int main() {
                 digits = 15
                 pos = 2
                  
+                 O = 0000 0d
+                 P = 0001 1d
+                 Q = 0010 2d
+                 R = 0100 3d
+                 
+                 int firstByte = A
+                 int seconbyte++;dByte = A
+                 
+                 
+                 firstByte; // 0000 0000
+                 secondByte = secondByte ++
+                 
+                 
                  
                  
                  
                 Ar(15,2) =  15 ^ 2 = 225
                 each letter -> 15
+                2^8 = 256
                 
+               char bitsToTest[] = { 'A','A' };
+                              // 8bits 8 bits 
+                  char salt[] = { 'A','A','\0' }; 
+                  char firstLetter = 'A';
+                  
+                  bitsToTest[0] = 'A';
+                  bitsToTest[1] = 'A';
                 
-             */   
-                  bitsToTest[2] = '\0';
-                  for (int timesFirst = 1; timesFirst <= 225 ;timesFirst++) {
-                     //printf("\n t-> %i",timesFirst);
+                 if (num == 2)
+                    printf("\nB");
+    
+                 
+                 num 2 => 0000 0001  1st byte
+                 num 3 => 0000 0010  2st byte
+                 num 4 => 0000 0100  3st byte
+                 
+             */        
+            // letters of bytes is the number they represent
+            // print number as printg letters;
+            
+       /*     1 -> 0000
+            A -> 0000
+            
+            A        A 
+        00000000  00000000
+           0         0 
+        0000000   00000000 
+        
+            A     B 
+        00000000 000000001
+            0    0+1
+        00000000 00000000
+       */
+        
+                //unsigned char bytes[3] = { 0 , 0 , '\0' };
+                int casa_1=0;
+                int casa_2=0;
+                
+                  for (int num1=0; num1 < 32 ;num1++) {
+                        
+                      
+                      for (int i = 0; i < 32; i++) {
+                          printf("\n1st Bytes: %i",casa_1);
+                          printf("\n2st Byte : %i",casa_2);
+                          casa_2 = casa_2+1;
                           
-                    printf("\n%s ",bitsToTest);
+                      }
+                casa_1++;
+                
+                  }
+                     //printf("\n t-> %i",timesFirst);
+                   /* printf("\n%i ... ",timesFirst);
                     
-                    bitsToTest[0] = firstLetter; // 16 times (16 A'), 15 times each letter (A,C,B,D)
-                    bitsToTest[1] = secondColumn;
+                    printf("\n%s ",bitsToTest);
+                    // First letter ++ 
+                    bitsToTest[1]++;  // 
+                    printLetters(bitsToTest);
                     
                     if (bitsToTest[1] == 'L')
                         bitsToTest[1] = 'A';
                     else 
-                        secondColumn++;
+                        bitsToTest[1]++;
                         
                     if (timesFirst % 16 == 0)
                        firstLetter++;
                    
                     }
                     
-                    
+                    */
                     
                         
                   
                 
                     
-/                unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
+                unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
 
               
                     // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
