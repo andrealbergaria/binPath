@@ -82,7 +82,7 @@ void printBits(unsigned char number) {
        mask >>= 1;
    }
    
-   printf("\n");
+
    
 }
 
@@ -99,7 +99,7 @@ void printShortBits(unsigned short number) {
        mask >>= 1;
    }
    
-   printf("\n");
+   //printf("\n");
    
 }
 
@@ -342,8 +342,8 @@ int main() {
                 * 
                 * 
                 */
-                int casa_2=0;
-                int casa_1=0;
+                char casa_2=0;
+                char casa_1=0;
                   for (int num1=0; num1 < 32 ;num1++) {
                         
                       
@@ -351,8 +351,10 @@ int main() {
                           //printf("\n1st Bytes: %i",casa_1);
                          // printf("\n2st Byte : %i",casa_2);
                           
-                          printShortBits(casa_1);
-                          printShortBits(casa_2);
+                          printBits(casa_1);
+                          printf("   ");
+                          printBits(casa_2);
+                          printf("\n");
                           casa_2 = casa_2+1;
                           
                       }
