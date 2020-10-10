@@ -86,7 +86,6 @@ void printBits(unsigned char number) {
    
 }
 
-
 void printShortBits(unsigned short number) {
    unsigned short mask = 0x8000;
    int it;
@@ -335,24 +334,48 @@ int main() {
        */
         
                 //unsigned char bytes[3] = { 0 , 0 , '\0' };
-                int casa_1=0;
+               /*
+                *
+                *
+                *
+                * 2 bytes scan
+                * 
+                * 
+                */
                 int casa_2=0;
-                
+                int casa_1=0;
                   for (int num1=0; num1 < 32 ;num1++) {
                         
                       
                       for (int i = 0; i < 32; i++) {
-                          printf("\n1st Bytes: %i",casa_1);
-                          printf("\n2st Byte : %i",casa_2);
+                          //printf("\n1st Bytes: %i",casa_1);
+                         // printf("\n2st Byte : %i",casa_2);
+                          
+                          printShortBits(casa_1);
+                          printShortBits(casa_2);
                           casa_2 = casa_2+1;
                           
                       }
                 casa_1++;
                 
                   }
-                     //printf("\n t-> %i",timesFirst);
-                   /* printf("\n%i ... ",timesFirst);
-                    
+                     
+                 /*
+                  *
+                  * 4 bytes scan
+                  *
+                  *    
+               /*   
+                 casa_1 = 0;
+                 casa_2 = 0;
+                 int casa_3=0;
+                 int casa_4 = 0;
+                 
+                 for (int n1 =0 ;  n1 < 
+                     for
+                         for 
+                             for
+               
                     printf("\n%s ",bitsToTest);
                     // First letter ++ 
                     bitsToTest[1]++;  // 
