@@ -26,7 +26,7 @@ void printShortBits(unsigned short s);
 void printBinary(char * ,int size);
 char *hashit(char *);
 char *getSalt(char *salt);
-void convertByteToAscii(char , char);
+void convertByteToAscii(unsigned char  , char);
 
 // link with -lcrypt
 
@@ -42,39 +42,46 @@ void convertByteToAscii(char , char);
  */
 
 
-void convertByteToAscii(char byte,char mask) {
+void convertByteToAscii(unsigned char byte,char mask) {
+    printf("\nBYTYE %c",byte);
     char bTemp = byte & mask;
+    
+    0x0f
+    
+    
     
     if (bTemp == 0b0000)
         printf("A");
-    else if(bTemp == 0b0001)
+    else if(bTemp == 0b0001 || bTemp == 0b00010000)
         printf("B");
-    else if(bTemp ==0b0010)
+    else if(bTemp == 0b0010 || bTemp == 0b00100000)
         printf("C");
-    else if(bTemp == 0b0011)
+    else if(bTemp == 0b0011 || bTemp == 0b01100000)
         printf("D");
-    else if(bTemp ==0b00100)
+    else if(bTemp ==0b00100 || bTemp == 0b00100000)
         printf("E");
-    else if(bTemp == 0b0101)
+    else if(bTemp == 0b0101 || bTemp == 0b01010000)
         printf("F");
-    else if(bTemp ==0b0110)
+    else if(bTemp == 0b0110 || bTemp == 0b01100000)
         printf("G");
-    else if(bTemp == 0b0111)
+    else if(bTemp == 0b0111 || bTemp == 0b01110000)
         printf("H");
-    else if(bTemp ==0b1000)
+    else if(bTemp == 0b1000 ||  bTemp == 0b1000000)
         printf("I");
-    else if(bTemp ==0b1001)
+    else if(bTemp == 0b1001 || bTemp == 0b10010000)
         printf("J");
-    else if(bTemp == 0b1010)
+    else if(bTemp == 0b1010 || bTemp == 0b10100000)
         printf("K");
-    else if(bTemp ==0b1011)
+    else if(bTemp == 0b1011 || bTemp == 0b10110000)
         printf("L");
-    else if(bTemp == 0b1100)
+    else if(bTemp == 0b1100 || bTemp == 0b11000000)
         printf("M");
-    else if(bTemp ==0b1101)
+    else if(bTemp == 0b1101 || bTemp == 0b11010000)
         printf("N");
-    else if(bTemp == 0b1111)
+    else if(bTemp == 0b1110 || bTemp == 0b11100000)
         printf("O");
+    else if(bTemp == 0b1111 || bTemp == 0b11110000);
+        printf("P");
     
     
     
@@ -269,16 +276,21 @@ int main() {
                 
                 
               */
-            char value = 0;
+            char value = 0b11110000;
             char value2 = 0;
-                for (int i = 0 ; i < 16 ; i++) {
-                    value++;
-                    value2 = value >> 4;
-                    convertByteToAscii(value,0x0f);
+               // for (int i = 0 ; i < 16 ; i++) {
+                    //printBits(value);
+                    //printf("\n");
+                    //printBits(value2);
+          
                     convertByteToAscii(value,0xf0);
+                //    printf("\n");
+                 //   convertByteToAscii(value2,0xf0);
+                 //   value++;
+                //   value2 = value << 4;
+                  
                     
-                    
-                }
+              //  }
                 
            /*  
                 digits = 15
@@ -298,14 +310,4 @@ int main() {
                 
                   
                 
-                    
-                unsigned char positionArray[8] = {1,2,4,8,16,32,64,128};
-
-              
-                    // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
-                        
-    
-                */       
-                    
-
-}
+           }
