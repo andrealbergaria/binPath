@@ -41,12 +41,32 @@ void convertByteToAscii(unsigned char  , char);
  * 4bits 4bits 4bits (2^4 16 possible combinations for letter) 
  */
 
+// From irc
+void printBits(unsigned char number) {
+   unsigned char mask = 0x80;
+   int it;
+   
+   for (it=0 ;it < 8; it++) {
+       if (number & mask)
+           putchar('1');
+       else
+           putchar('0');
+      
+       mask >>= 1;
+   }
+   
+
+   
+}
+
 
 void convertByteToAscii(unsigned char byte,char mask) {
-    char bTemp = byte & mask;
-    printBits(bTemp);
-    if (bTemp == 0b11110000)
-        printf("\nBAC");
+    
+    
+    unsigned int t;
+    
+    
+    unsigned char bTemp = byte & mask;
     
     if (bTemp == 0 )
         printf("A");
@@ -80,7 +100,7 @@ void convertByteToAscii(unsigned char byte,char mask) {
         printf("O");
     else if(bTemp == 0b1111 || bTemp == 0b11110000)
         printf("P");
-    printf("\nConvert");
+    
     
     
 }
@@ -124,22 +144,7 @@ hashit (char *numToHash)
 }
 
 //from irc
-void printBits(unsigned char number) {
-   unsigned char mask = 0x80;
-   int it;
-   
-   for (it=0 ;it < 8; it++) {
-       if (number & mask)
-           putchar('1');
-       else
-           putchar('0');
-      
-       mask >>= 1;
-   }
-   
 
-   
-}
 
 void printShortBits(unsigned short number) {
    unsigned short mask = 0x8000;
@@ -274,28 +279,26 @@ int main() {
                 
                 
               */
-            char value = 0b11110000;
-            char value2 = 0;
-               // for (int i = 0 ; i < 16 ; i++) {
-                    //printBits(value);
-                    //printf("\n");
-                    //printBits(value2);
-                    //printf("\nVALUE 1 ");
-                   // printBits(value & 0xf0);
-                   // printf("\nVALUE 2 ");
-                   // printBits(value & 0x0f);
-                  
-                    //printf("\nVALUE 2 %c",printBits(value & 0x0f));
-                  //  printBits(value);
-                    convertByteToAscii(value,0xf0);
-                  //  convertByteToAscii(value,0x0f);
-                //    printf("\n");
-                 //   convertByteToAscii(value2,0xf0);
-                 //   value++;
-                //   value2 = value << 4;
-                  
+            
+            
+            unsigned char v1=0 ,v2 = 243,v3 = 120,v4 = 132;
+            
+                for (int i = 0 ; i < 16 ; i++) {
+                    convertByteToAscii(v1,0xf0);
+                    convertByteToAscii(v1,0x0f);
                     
-              //  }
+                    convertByteToAscii(v2,0xf0);
+                    convertByteToAscii(v2,0x0f);
+                    
+                    convertByteToAscii(v3,0xf0);
+                    convertByteToAscii(v3,0x0f);
+                    
+                    convertByteToAscii(v4,0xf0);
+                    convertByteToAscii(v4,0x0f);
+                    v1++;v2++;v3++;v4++;
+                  
+                  printf("\n");  
+              }
                 
            /*  
                 digits = 15
