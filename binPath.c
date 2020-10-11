@@ -26,9 +26,59 @@ void printShortBits(unsigned short s);
 void printBinary(char * ,int size);
 char *hashit(char *);
 char *getSalt(char *salt);
+void convertByteToAscii(char , char);
 
 // link with -lcrypt
 
+/*
+ * 
+ * 
+ * Why assigning one byte to letter doesnt works
+ * 
+ *  Byte1  Byte2  Byte3 Byte 4  (2^256  a lot of combinations...)
+ *  256     256     256  256
+ *
+ * 4bits 4bits 4bits (2^4 16 possible combinations for letter) 
+ */
+
+
+void convertByteToAscii(char byte,char mask) {
+    char bTemp = byte & mask;
+    
+    if (bTemp == 0b0000)
+        printf("A");
+    else if(bTemp == 0b0001)
+        printf("B");
+    else if(bTemp ==0b0010)
+        printf("C");
+    else if(bTemp == 0b0011)
+        printf("D");
+    else if(bTemp ==0b00100)
+        printf("E");
+    else if(bTemp == 0b0101)
+        printf("F");
+    else if(bTemp ==0b0110)
+        printf("G");
+    else if(bTemp == 0b0111)
+        printf("H");
+    else if(bTemp ==0b1000)
+        printf("I");
+    else if(bTemp ==0b1001)
+        printf("J");
+    else if(bTemp == 0b1010)
+        printf("K");
+    else if(bTemp ==0b1011)
+        printf("L");
+    else if(bTemp == 0b1100)
+        printf("M");
+    else if(bTemp ==0b1101)
+        printf("N");
+    else if(bTemp == 0b1111)
+        printf("O");
+    
+    
+    
+}
 
 char *getSalt(char *salt) {
     
@@ -105,24 +155,8 @@ void printShortBits(unsigned short number) {
 
           
 
-/* void printBinary(int num) {
-    
-    if (num == 2)
-        printf("\nB");
-    
-    for (int idx = 0; idx < sizeOfArray; idx++) {
-        if (array[idx] == 'A')
-            printf("00000000");
-        else if(array[idx] == 'B')
-            printf("00000001");
-        else if(array[idx] == 'C')
-            printf("10");
-        else 
-            printf("11");
-     
-    }
-}
-*/
+
+
 int main() {
            
      
@@ -164,17 +198,6 @@ int main() {
                 D = 00 0d
                 
                 
-                /*'A'
-                 * 
-                 * For 4 bits
-                 
-               /* a)
-                0000
-                0001 // 1
-                0010 // 2
-                0100 // 4       => number = 2^x
-                1000 // 8'A'
-
                 /*
                  * 
                  *  Trying to find seq of numbers not already taken
@@ -188,12 +211,7 @@ int main() {
                 inv(3) = 1100 = 12d
                 
                  * End 4 bits
-                 * 'A'
-                 */
-                /* assign letters to sequence of bits
-                 * 
-                 * a = 0001 0001 0001
-                 * b = 0001 0010 0001
+                 
                  */
                  
                  
@@ -203,20 +221,9 @@ int main() {
               * 0001 1110
               *                  A    B   C    D   E    F   G  H
                 char half[3] = { 000,001,010,100,111 ,110,101,011 }
-                a // {*half1,*half1,*half1 }
-                b // {*h1,*h2,*h1 } 
-                c // {*h1,*h1,*h2} 
-                d // {*h2,*h1,*h2} 
-                e // {*h2,*h2,*h1} 
-                 ... and so one
-                 a[0] = *half1
-                 */
-             //   char half[4] =  { 'A','B','C','D'}; = 256 times (for 4 positions)
-                
-
                 
                 
-                // Arranjos com repetição => 3*3*3 => 27 combinações
+                
                 // Arep(2,3) = 2*2*2 = 2^3 = 8
                 // 3 -> numero de posicoes
                 // first 3 -> numero de digitos 
@@ -230,14 +237,6 @@ int main() {
                 
               
                 
-                /*char letters[] = {'A','A','A', \
-                                  'A','A','A', \
-                                  'A','A','A', \
-                                  'A','A','A', \
-                                  'A','A','A', \
-                                  'A'};
-                                  */
-                // salt 20 bytes
                 
                     
             
@@ -247,155 +246,56 @@ int main() {
             *   A A 
             *   A B ++
             *   A C ++
-                A = 0000 0000 0d    0000 0000 
-                B = 0000 0001 1d
-                C = 0000 0010 2d
+                A = 0000 0d    
+                B = 0001 1d
+                C = 0010 2d
                 
-                D = 0000 0100 4d
-                E = 0000 1000 8d
-                F = 0000 1001 9d
+                D = 0011 3d
+                E = 0100 4d
+                F = 0101 5d
                 
-                G = 0000 1010 10d
-                H = 0000 1011 11d
-                I = 0000 1100 12d
+                G = 0110 6d
+                H = 0111 7d
+                I = 1000 8d
                 
-                J = 0000 1101 13d
-                K = 0000 1110 14d
-                L = 0000 1111 15
-                M = 
+                J = 1001 9d
+                K = 1010 10d
+                L = 1011 11d
                 
-                a
-                a++ => b
+                M = 1100 12
+                N = 1101 13
+                O =  1110 14
+                P = 1111 15
                 
-                255 sums
                 
-               ( ,8
+              */
+            char value = 0;
+            char value2 = 0;
+                for (int i = 0 ; i < 16 ; i++) {
+                    value++;
+                    value2 = value >> 4;
+                    convertByteToAscii(value,0x0f);
+                    convertByteToAscii(value,0xf0);
+                    
+                    
+                }
                 
-                AA= 00 00 00 00
-                AB = 00 00 00 01 (+1)
-                AC = 00 00 00 10 (+2)
-                AD = 00 00 00 11 (+3)
-                
+           /*  
                 digits = 15
                 pos = 2
                  
-                 O = 0000 0d
-                 P = 0001 1d
-                 Q = 0010 2d
-                 R = 0100 3d
-                 
-                 int firstByte = A
-                 int seconbyte++;dByte = A
-                 
-                 
-                 firstByte; // 0000 0000
-                 secondByte = secondByte ++
-                 
-                 
-                 
-                 
                  
                 Ar(15,2) =  15 ^ 2 = 225
-                each letter -> 15
                 2^8 = 256
                 
-               char bitsToTest[] = { 'A','A' };
-                              // 8bits 8 bits 
-                  char salt[] = { 'A','A','\0' }; 
-                  char firstLetter = 'A';
-                  
-                  bitsToTest[0] = 'A';
-                  bitsToTest[1] = 'A';
-                
-                 if (num == 2)
-                    printf("\nB");
-    
-                 
-                 num 2 => 0000 0001  1st byte
-                 num 3 => 0000 0010  2st byte
-                 num 4 => 0000 0100  3st byte
-                 
-             */        
-            // letters of bytes is the number they represent
-            // print number as printg letters;
-            
-       /*     1 -> 0000
-            A -> 0000
-            
-            A        A 
-        00000000  00000000
-           0         0 
-        0000000   00000000 
+                       
+
         
-            A     B 
-        00000000 000000001
-            0    0+1
-        00000000 00000000
+        (8,2) = 8*8 = 64
+        
        */
         
-                //unsigned char bytes[3] = { 0 , 0 , '\0' };
-               /*
-                *
-                *
-                *
-                * 2 bytes scan
-                * 
-                * 
-                */
-                char casa_2=0;
-                char casa_1=0;
-                  for (int num1=0; num1 < 32 ;num1++) {
-                        
-                      
-                      for (int i = 0; i < 32; i++) {
-                          //printf("\n1st Bytes: %i",casa_1);
-                         // printf("\n2st Byte : %i",casa_2);
-                          
-                          printBits(casa_1);
-                          printf("   ");
-                          printBits(casa_2);
-                          printf("\n");
-                          casa_2 = casa_2+1;
-                          
-                      }
-                casa_1++;
                 
-                  }
-                     
-                 /*
-                  *
-                  * 4 bytes scan
-                  *
-                  *    
-               /*   
-                 casa_1 = 0;
-                 casa_2 = 0;
-                 int casa_3=0;
-                 int casa_4 = 0;
-                 
-                 for (int n1 =0 ;  n1 < 
-                     for
-                         for 
-                             for
-               
-                    printf("\n%s ",bitsToTest);
-                    // First letter ++ 
-                    bitsToTest[1]++;  // 
-                    printLetters(bitsToTest);
-                    
-                    if (bitsToTest[1] == 'L')
-                        bitsToTest[1] = 'A';
-                    else 
-                        bitsToTest[1]++;
-                        
-                    if (timesFirst % 16 == 0)
-                       firstLetter++;
-                   
-                    }
-                    
-                    */
-                    
-                        
                   
                 
                     
@@ -405,7 +305,7 @@ int main() {
                     // 8 bits ... have (1 bit | 3 bits | 1 bit | 3 bits)
                         
     
-                       
+                */       
                     
 
 }
