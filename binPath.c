@@ -59,6 +59,16 @@ void printBits(unsigned char number) {
    
 }
 
+/*
+ * 
+ *  prints two charactes
+ * 
+ */
+
+void printTwoChar(char arrayOfChars[]) {
+    
+}
+
 
 void convertByteToAscii(unsigned char byte,char mask) {
     
@@ -229,21 +239,18 @@ int main() {
               * 
               * where are bits inverted
               * 0001 1110
-              *                  A    B   C    D   E    F   G  H
-                char half[3] = { 000,001,010,100,111 ,110,101,011 }
+              * 
                 
                 
                 
-                // Arep(2,3) = 2*2*2 = 2^3 = 8
-                // 3 -> numero de posicoes
-                // first 3 -> numero de digitos 
+                // 8 -> numero de posicoes
+                // first 4 -> numero de digitos 
                 // Arep(4,8) = 4^8 = 65535
                 
                 
                 
-                // ASCFII VALUE C => 67
-                // ASCII VALUE 0 => 48
-                // ASCII VALUE 1 => 49
+                // Ascii vaule 'c'  => 67
+                // Ascii value '0' => 48
                 
               
                 
@@ -280,25 +287,70 @@ int main() {
                 
               */
             
+            byte1 byte1
+            byte1 byte2
+            byte2 byte1
+            byte2 byte2
             
-            unsigned char v1=0 ,v2 = 243,v3 = 120,v4 = 132;
             
-                for (int i = 0 ; i < 16 ; i++) {
-                    convertByteToAscii(v1,0xf0);
+            unsigned char byte1[256] = 0;
+            unsigned char byte2[256] = 0;
+            /// Represent byte1
+            
+            
+          
+            
+            unsigned char two_bytes[8];
+            
+            convertByteToAscii(v1,0xf0);
                     convertByteToAscii(v1,0x0f);
+                    v1++;
                     
-                    convertByteToAscii(v2,0xf0);
-                    convertByteToAscii(v2,0x0f);
+                // For one character
+                for (int i = 0 ; i < 256 ; i++) {
+                    byte1[i] = i;        
+                    byte2[i] = i;
                     
-                    convertByteToAscii(v3,0xf0);
-                    convertByteToAscii(v3,0x0f);
+                    two_bytes[i2] = byte1[i];
+                    two_bytes[i2+1] = byte1[i] ;
                     
-                    convertByteToAscii(v4,0xf0);
-                    convertByteToAscii(v4,0x0f);
-                    v1++;v2++;v3++;v4++;
-                  
-                  printf("\n");  
-              }
+                    printf("\n%c %c ",byte1[1] ,byte1[1]);
+                    
+                    two_bytes[i2+2] = byte1[i];
+                    two_bytes[i2+3] = byte2[i];
+                   
+                     printf("\n%c %c ",byte1[1] ,byte2[1]);
+                   
+                    two_bytes[i2] = byte2[i];
+                    two_bytes[i2+1] = byte2[i] ;
+                    
+                    printf("\n%c %c ",byte2[i] ,byte2[i]);
+                    
+                    two_bytes[i2+2] = byte2[i];
+                    two_bytes[i2+3] = byte1[i];
+
+                    printf("\n%c %c ",byte2[i] ,byte1[i]);
+                    
+                    
+           
+                }
+                 
+                 
+                 
+                     
+                 // For two characters
+                
+                
+                    
+                    
+                    
+                }
+                
+                }
+                
+                    
+                    
+                 
                 
            /*  
                 digits = 15
