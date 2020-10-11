@@ -39,6 +39,8 @@ void convertByteToAscii(unsigned char  , char);
  *  256     256     256  256
  *
  * 4bits 4bits 4bits (2^4 16 possible combinations for letter) 
+ * 
+ * Concat binary numbers not equal to all possible combinations 
  */
 
 // From irc
@@ -59,15 +61,6 @@ void printBits(unsigned char number) {
    
 }
 
-/*
- * 
- *  prints two charactes
- * 
- */
-
-void printTwoChar(char arrayOfChars[]) {
-    
-}
 
 
 void convertByteToAscii(unsigned char byte,char mask) {
@@ -200,49 +193,26 @@ int main() {
                  * For 4 bits , needs
                  * 3,5,6,7
                  * 
-                 * C , CA , CC , 
                  * 
                  * For 5 bits, bits needed 
                  * 3,5,6,7,9,10,11,12,13,14,15
-                   
-                   
-                   
-                For 6 bits needs
-                    
-                 3,5,6,7,9,10,11,12,13,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
-
-                    
-                A = 01 1d
-                B = 10 2d 
-                C = 11 3d
-                D = 00 0d
-                
-                
-                /*
+                 *
+                 *
+                 *  For 6 bits needs
+                 * 3,5,6,7,9,10,11,12,13,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+                 *  
                  * 
                  *  Trying to find seq of numbers not already taken
                  
-                
                 
                 sequence of numbers not to be filled  a) 3,5,6,7
                 12,10,9 => Numbers reverse from previous sequence a)
                 
                 3d = 0011
                 inv(3) = 1100 = 12d
-                
-                 * End 4 bits
+               
                  
-                 */
-                 
-                 
-             /*
-              * 
-              * where are bits inverted
-              * 0001 1110
-              * 
-                
-                
-                
+        
                 // 8 -> numero de posicoes
                 // first 4 -> numero de digitos 
                 // Arep(4,8) = 4^8 = 65535
@@ -253,10 +223,6 @@ int main() {
                 // Ascii value '0' => 48
                 
               
-                
-                
-                    
-            
             /* 
             *   Using 4 bits per letter
             * 
@@ -281,78 +247,70 @@ int main() {
                 
                 M = 1100 12
                 N = 1101 13
-                O =  1110 14
+                O = 1110 14
+                
                 P = 1111 15
                 
                 
+                0101 | 0100 | 1010 | 1010 | 1011 
+                 F      E      K      K     L    
+                 
+                 Get all combinations
+                 
+                 1111 1111  => 2 ^ 8  => 256 numbers 256 combinations
+                 
+                 0000 0000 => 1 combination
+                 0000 0001 => 2 combination 
+                 
+                  P     P           
+                 1110 1111 => PP 1 combination 
+                  O     P
+                 1101 0001   PB   1 combination 
+                  N     B 
+                  
+                  
               */
+            unsigned char firstLetter = 'A';
+            unsigned char secondLetter = 'A';
+            unsigned char thirdLetter = 'A';
+            unsigned char fourthLetter = 'A';
             
-            byte1 byte1
-            byte1 byte2
-            byte2 byte1
-            byte2 byte2
-            
-            
-            unsigned char byte1[256] = 0;
-            unsigned char byte2[256] = 0;
-            /// Represent byte1
-            
-            
+            for (int idx = 0 ; idx < 16 ; idx++) {
+                for (int idx2 = 0 ; idx2 < 16 ; idx2++) {
+                    for (int idx3 = 0  ; idx3 < 16 ; idx3++) {
+                        for (int idx4 = 0  ; idx4 < 16 ; idx4++) {
+                            printBits(firstLetter);
+                            printf(" ");
+                            printBits(secondLetter);
+                            printf(" ");
+                            printBits(thirdLetter);
+                           printf(" ");
+                           printBits(fourthLetter);
+                           printf("\n");
+                           fourthLetter++;
+                            
+                        }
+                        thirdLetter++;
+                    }
+                secondLetter++;
+                }
+                firstLetter++;
+            }
+            /* 
+                    
+            A => 3bits
           
-            
-            unsigned char two_bytes[8];
+            1 bit -> 0 1
+            2 bit -> 0 1
+            3 bit -> 0 1
+         
             
             convertByteToAscii(v1,0xf0);
                     convertByteToAscii(v1,0x0f);
                     v1++;
                     
-                // For one character
-                for (int i = 0 ; i < 256 ; i++) {
-                    byte1[i] = i;        
-                    byte2[i] = i;
-                    
-                    two_bytes[i2] = byte1[i];
-                    two_bytes[i2+1] = byte1[i] ;
-                    
-                    printf("\n%c %c ",byte1[1] ,byte1[1]);
-                    
-                    two_bytes[i2+2] = byte1[i];
-                    two_bytes[i2+3] = byte2[i];
-                   
-                     printf("\n%c %c ",byte1[1] ,byte2[1]);
-                   
-                    two_bytes[i2] = byte2[i];
-                    two_bytes[i2+1] = byte2[i] ;
-                    
-                    printf("\n%c %c ",byte2[i] ,byte2[i]);
-                    
-                    two_bytes[i2+2] = byte2[i];
-                    two_bytes[i2+3] = byte1[i];
 
-                    printf("\n%c %c ",byte2[i] ,byte1[i]);
-                    
-                    
-           
-                }
-                 
-                 
-                 
-                     
-                 // For two characters
-                
-                
-                    
-                    
-                    
-                }
-                
-                }
-                
-                    
-                    
-                 
-                
-           /*  
+        
                 digits = 15
                 pos = 2
                  
@@ -363,11 +321,10 @@ int main() {
                        
 
         
-        (8,2) = 8*8 = 64
-        
        */
         
                 
                   
                 
-           }
+}
+
