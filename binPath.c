@@ -43,19 +43,20 @@ void convertByteToAscii(unsigned char  , char);
 
 
 void convertByteToAscii(unsigned char byte,char mask) {
-    printf("\nBYTYE %c",byte);
     char bTemp = byte & mask;
+    printBits(bTemp);
+    if (bTemp == 0b11110000)
+        printf("\nBAC");
     
-    
-    if (bTemp == 0 || bTemp == 0)
+    if (bTemp == 0 )
         printf("A");
     else if(bTemp == 0b0001 || bTemp == 0b00010000)
         printf("B");
     else if(bTemp == 0b0010 || bTemp == 0b00100000)
         printf("C");
-    else if(bTemp == 0b0011 || bTemp == 0b01100000)
+    else if(bTemp == 0b0011 || bTemp == 0b00110000)
         printf("D");
-    else if(bTemp ==0b00100 || bTemp == 0b00100000)
+    else if(bTemp == 0b0100 || bTemp == 0b01000000)
         printf("E");
     else if(bTemp == 0b0101 || bTemp == 0b01010000)
         printf("F");
@@ -63,7 +64,7 @@ void convertByteToAscii(unsigned char byte,char mask) {
         printf("G");
     else if(bTemp == 0b0111 || bTemp == 0b01110000)
         printf("H");
-    else if(bTemp == 0b1000 ||  bTemp == 0b1000000)
+    else if(bTemp == 0b1000 || bTemp == 0b10000000)
         printf("I");
     else if(bTemp == 0b1001 || bTemp == 0b10010000)
         printf("J");
@@ -77,9 +78,9 @@ void convertByteToAscii(unsigned char byte,char mask) {
         printf("N");
     else if(bTemp == 0b1110 || bTemp == 0b11100000)
         printf("O");
-    else if(bTemp == 0b1111 || bTemp == 0b11110000);
+    else if(bTemp == 0b1111 || bTemp == 0b11110000)
         printf("P");
-    
+    printf("\nConvert");
     
     
 }
@@ -279,9 +280,15 @@ int main() {
                     //printBits(value);
                     //printf("\n");
                     //printBits(value2);
-          
+                    //printf("\nVALUE 1 ");
+                   // printBits(value & 0xf0);
+                   // printf("\nVALUE 2 ");
+                   // printBits(value & 0x0f);
+                  
+                    //printf("\nVALUE 2 %c",printBits(value & 0x0f));
+                  //  printBits(value);
                     convertByteToAscii(value,0xf0);
-                    convertByteToAscii(value,0x0f);
+                  //  convertByteToAscii(value,0x0f);
                 //    printf("\n");
                  //   convertByteToAscii(value2,0xf0);
                  //   value++;
