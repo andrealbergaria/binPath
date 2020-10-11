@@ -46,11 +46,8 @@ void convertByteToAscii(unsigned char byte,char mask) {
     printf("\nBYTYE %c",byte);
     char bTemp = byte & mask;
     
-    0x0f
     
-    
-    
-    if (bTemp == 0b0000)
+    if (bTemp == 0 || bTemp == 0)
         printf("A");
     else if(bTemp == 0b0001 || bTemp == 0b00010000)
         printf("B");
@@ -284,6 +281,7 @@ int main() {
                     //printBits(value2);
           
                     convertByteToAscii(value,0xf0);
+                    convertByteToAscii(value,0x0f);
                 //    printf("\n");
                  //   convertByteToAscii(value2,0xf0);
                  //   value++;
