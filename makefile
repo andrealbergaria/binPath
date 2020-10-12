@@ -1,6 +1,6 @@
 
-binPath: binPath.o util.o crypt.o
-	cc binPath.o util.o crypt.o -o b
+binPath: binPath.o util.o crypto.o
+	cc binPath.o util.o crypto.o -lcrypt -o b
 	
 binPath.o: binPath.c
 	cc -c binPath.c -g -o binPath.o

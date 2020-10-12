@@ -1,2 +1,6 @@
+#include <stdio.h>
+#include <crypt.h>
+
 char *getSalt(char *salt);
-char* hashit (char *numToHash);
+int hashit(char *numToHash,char *hash);
+

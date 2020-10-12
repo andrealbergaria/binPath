@@ -4,16 +4,14 @@ char *getSalt(char *salt) {
     
     return 0;
 }
-
-char* 
-hashit (char *numToHash)
+int hashit(char *numToHash,char *hash)
 {
   unsigned char ubytes[16];
   char salt[20];
   const char *const saltchars =
     "./0123456789ABCDEFGHIJKLMNOPQRST"
     "UVWXYZabcdefghijklmnopqrstuvwxyz";
-  static char *hash;
+  //char *hash;
   int i;
 
   /* Use them to fill in the salt string. */
@@ -31,9 +29,10 @@ hashit (char *numToHash)
       perror ("crypt");
       return 1;
     }
-
+    
   /* Print the results. */
   
-  printf("\nHASH : %s",hash);
-  return hash;
+  printf("\nHASH : %s\n",hash);
+
+  return 0;
 }

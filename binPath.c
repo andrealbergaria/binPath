@@ -2,9 +2,8 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <crypt.h>
 #include "util.h"
-
+#include "crypto.h"
 
 void print16();
 void print32();
@@ -70,7 +69,6 @@ void print32() {
                 firstLetter++;
             }
 }
-
 
 int main() {
               //  print16();
