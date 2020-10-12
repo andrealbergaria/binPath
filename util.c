@@ -40,7 +40,7 @@ void printShortBits(unsigned short number) {
 void convertByteToAscii(unsigned char byte,char mask) {
     
     
-    unsigned int t;
+  
     
     
     unsigned char bTemp = byte & mask;
