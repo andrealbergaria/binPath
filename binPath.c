@@ -10,7 +10,7 @@ void print32();
 void print64();
 
 
-void printTemplate(int fistLetterMax,int numberOfLetter) {
+/*void printTemplate(int fistLetterMax,int numberOfLetter) {
     char positions[numberOfLetters];
     // First assign 0 to letters
     for (int idx = 0 ; idx < numberOfLetters ; idx++)
@@ -26,7 +26,7 @@ void printTemplate(int fistLetterMax,int numberOfLetter) {
             ABA
     }
 }
-
+*/
 /*
  * 256 bits / 8 bits = 32 bytes
  */
@@ -83,52 +83,39 @@ void print64(int firstLetterMAX , int numberOfLetters) {
 void print16() {
     unsigned char firstLetter = 0;
             unsigned char secondLetter = 0;
-            unsigned char thirdLetter = 0;
-            unsigned char fourthLetter = 0;
             // prints until 00010000 on first letter
-            int firstLetterMAX = 480;
+            int firstLetterMAX = 256;
             for (int idx = 0 ; idx < firstLetterMAX ; idx++) {
                 for (int idx2 = 0 ; idx2 < 16 ; idx2++) {
-                    for (int idx3 = 0  ; idx3 < 16 ; idx3++) {
-                        for (int idx4 = 0  ; idx4 < 16 ; idx4++) {
-                            printBits(firstLetter);
+                         printBits(firstLetter);
                             printf(" ");
                             printBits(secondLetter);
-                            printf(" ");
-                            printBits(thirdLetter);
-                           printf(" ");
-                           printBits(fourthLetter);
+                           secondLetter++;
                            printf("\n");
-                           fourthLetter++;
                             
-                        }
-                        thirdLetter++;
-                    }
-                secondLetter++;
                 }
-                firstLetter++;
+                        firstLetter++;
             }
+                
+                
+            
 }
 
 void print32() {
-            unsigned char firstLetter = 16;
+            unsigned char firstLetter = 0;
             unsigned char secondLetter = 0;
             unsigned char thirdLetter = 0;
             unsigned char fourthLetter = 0;
             // prints until 00010000 on first letter
-            for (int idx = 0 ; idx < 32 ; idx++) {
+            for (int idx = 0 ; idx < 256 ; idx++) {
                 for (int idx2 = 0 ; idx2 < 16 ; idx2++) {
                     for (int idx3 = 0  ; idx3 < 16 ; idx3++) {
                         for (int idx4 = 0  ; idx4 < 16 ; idx4++) {
-                            printBits(firstLetter);
-                            printf(" ");
-                            printBits(secondLetter);
-                            printf(" ");
-                            printBits(thirdLetter);
-                           printf(" ");
-                           printBits(fourthLetter);
-                           printf("\n");
-                           fourthLetter++;
+                            printf("\n%i ",firstLetter);
+                            printf("%i ",secondLetter);
+                            printf("%i ",thirdLetter);
+                            printf("%i ",fourthLetter);
+                            fourthLetter++;
                             
                         }
                         thirdLetter++;
@@ -142,6 +129,6 @@ void print32() {
 int main() {
                 //print16();
               //  print32();
-                print64(600,6);
+                print32();
 }
 
