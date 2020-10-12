@@ -1,7 +1,7 @@
 
 binPath: binPath.o util.o crypto.o
 	cc binPath.o util.o crypto.o -lcrypt -o b
-	
+	cc -pg binPath.c util.c crypto.c -lcrypt -o binPathProfiler
 binPath.o: binPath.c
 	cc -c binPath.c -g -o binPath.o
 	
