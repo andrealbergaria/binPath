@@ -152,7 +152,7 @@
                         1 10
                     0   1  2        1+2 = 3d  ..possible combinations = 8 = > combinations
                     
-                    +3 +3 +3                    3d =    11 b
+                    +3 +3 +3        3d+9       3d =    11 b
                     11 100 101
                     3  4   5    3+4+5  = 12d   12d=     1100b
                     
@@ -160,8 +160,13 @@
                     12d => represents 3,4,5
                     
                     
+                    11 100 1010
+                    00 111 0000 
                     
-                    have 12 d ,get bits...pos1 = 
+                    so the algortihm is as following for 3 bits
+                    start with 3, sum 9 each iterations, get bits from number
+                    
+                    
                     
                     +3 +3 +3
                    
