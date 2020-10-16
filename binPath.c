@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include "util.h"
 int main() {
             /* algorithm       algorithm
       a)  [0] Bit bit Bit [0] bit bit bits (64 2^6); (2nd igual ao 1)
@@ -13,26 +13,25 @@ int main() {
       
       a) [0] bit bit bit [0] bit bit bit [0] bit bit bit [0] bit bit bit algortuihm funciona ..so preciso concatenar
            
+       32 bits => 2^4 = 16
+       256 bits =  128 comb of 0 and 1 (prefixes)
+       
+       0 and 1..keep summing on cycle
+            
+*/
+            
+            char prefix[128];
+            
+            for (int idx1=0;  idx1 < 64 ;  idx1++) {
+                prefix[idx1]=0;
+                printBits(prefix[idx1]);
+                 prefix[idx1]=1;
+                 printBits(prefix[idx1]);
+                     
+                 }
+                 
             
             
-      Para 32 bytes = 2^
-      1 byte -> 64
-      4bytes -> x
-      x= 256
-      
- 1 byte -> 4 combos
- 2 bytes -> X
- x=8
- 
-    two bytes
-    
-    e) a) a)
-    f) b) b)
-    g) c) c)
-    h) d) d)
- 
-      16 bytes
-      
  
     char *ptr_1_ = 
      int alg[] = {0,1,2,3,4,5,6,7};
