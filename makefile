@@ -1,11 +1,17 @@
 
 
-      
+
 
 binPath: binPath.o libbinpath.a
 	cc binPath.o -lcrypt -lbinpath -L. -o b
 	cc -Wall -pg binPath.c util.c crypto.c -lcrypt -o binPathProfiler
+	cc getBinariesFromDecimals.o -lbinpath -L. -o getValues
 
+
+getValues: getBinariesFromDecimals.o
+		
+	
+	
 binPath.o: binPath.c
 	cc -c binPath.c -g -o binPath.o
 	
@@ -21,3 +27,7 @@ clean:
 
 libbinpath.a: util.o crypto.o
 	ar -cvq libbinpath.a util.o crypto.o
+
+getBinariesFromDecimals.o: getBinariesFromDecimals.c
+	cc -c getBinariesFromDecimals.c -g -lbinpath -o getBinariesFromDecimals.o
+

@@ -1,6 +1,6 @@
 #include "util.h"
 
-int main() {$ ar -cvq libtseutil.a *.o
+int main() {
     char buffer = 0;
     char temp;
     
