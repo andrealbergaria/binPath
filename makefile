@@ -1,6 +1,7 @@
 
 
-
+binPath_16_32_64bits: binPath_16_32_64bits.o util.o libbinpath.a
+	cc binPath_16_32_64bits.o -g -lbinpath -L. -o 32bits
 
 binPath: binPath.o libbinpath.a
 	cc binPath.o -lcrypt -lbinpath -L. -o b
@@ -11,6 +12,8 @@ binPath: binPath.o libbinpath.a
 getValues: getBinariesFromDecimals.o
 		
 	
+binPath_16_32_64bits.o: binPath_16_32_64bits.c
+	cc -c binPath_16_32_64bits.c -g -o binPath_16_32_64bits.o
 	
 binPath.o: binPath.c
 	cc -c binPath.c -g -o binPath.o
