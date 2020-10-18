@@ -2,17 +2,50 @@
 #include "util.h"
 #include <math.h>
 int main() {
-            /* algorithm       algorithm
-      a)  [0] Bit bit Bit [0] bit bit bits (64 2^6); (2nd igual ao 1)
+            /* algorithm       
+      a)  [0] Bit bit Bit [0] bit bit bits 
              
-      b)  [0] bit bit bit [1] bit bit bits
+      b)  [0] bit bit bit [1] bit bit bits 
+               
+      c)  [1] bit bit bit [0] bit bit bit 
              
-      c)  [1] bit bit bit [0] bit bit bit
-             
-      d)  [1] bit bit bit [1] bit bit bit (2nd igual ao primeiro)
+      d)  [1] bit bit bit [1] bit bit bit 
       algorithm = start wth 000, and change one bit, until can't change nomre...then use 111 and change one bit of it
              A                 A                
       a) [0] bit bit bit [0] bit bit bit [0] bit bit bit [0] bit bit bit algortuihm funciona ..so preciso concatenar
+           
+           2^4 , 2^3 * 2^3 * 2^3 * 2^3 = 65536
+           
+           testing 4 bytes....
+           
+           32bytes / 4 bytes = 8
+           
+           concatenating
+                    B
+    (a)    0 0 0    0 0 0   { 000 000 , 000 001, 000 010 
+    (a+1)  0 0 1    0 0 1   o anterior (0 0 1) de B (0 1 0 ) é igual 1pos 
+    (a+2)  0 1 0    0 1 0   { A(000) B, A+1 B, A+2 B , A+3 B, A+4 B, A+5 B,A+6 B, A+7 B}
+           1 0 0    1 0 0   {B(000) A(000) , B+1 A, B+2 A , B+3 A , ...}
+           1 1 1    1 1 1   { A B+1, 
+           1 1 0    1 1 0
+           1 0 1    1 0 1    B+1 esta em que posicçoes
+           0 1 1    0 1 1   { B+1 A, B+1 A+1, B+1 A+2, B+1 A+3, B+1 A+4,B+1 A+5,B+1 A+6,B A+7
+                            { B+2 A, B+2 A+1 , ...}
+                            B+1 
+                            { A , A+1 , A+2, A+3...} positon 0 of array is always B+1
+                            B+2
+                            { A , A+1, A+2, A+3....} positiion 0 of array is always B+2
+                            B=0, A=0
+                            
+                            char temp[8][9];
+                            char temp[0][8] = B;
+                            for (int i= 1 ; i < 8; i++) {
+                                temp[i][i-1] = { A , A+1, A+2, A+3...}
+                            }
+                            
+                            
+                            
+                            
            
        32 bits => 2^4 = 16
        256 bits =  128 comb of 0 and 1 (prefixes)
