@@ -15,38 +15,30 @@ int main() {
            
        32 bits => 2^4 = 16
        256 bits =  128 comb of 0 and 1 (prefixes)
+       256 / 8 bits = 32bytes
+       1 byte -> 4 combs
+       32 bytes -> X
+       X= 128
        
-       0 and 1..keep summing on cycle
             
 */
             
-            char prefix[128];
+            char symA[] = "0 0\n0 1\n0 2\n0 3\n0 4\n0 5\n0 6\n0 7\n";
+            char symB[] = "1 0\n1 1\n1 2\n1 3\n1 4\n1 5\n1 6\n1 7\n";
+                          
+                            
             
-            for (int idx1=0;  idx1 < 64 ;  idx1++) {
-                prefix[idx1]=0;
-                printBits(prefix[idx1]);
-                 prefix[idx1]=1;
-                 printBits(prefix[idx1]);
-                     
-                 }
-                 
-            
-            
- 
-    char *ptr_1_ = 
-     int alg[] = {0,1,2,3,4,5,6,7};
-     int *alg2 = alg;
-     int *ptr = alg;
-     char prefix =0 ;
-     printf("\n");
-            for (int idx=0 ; idx < 4 ; idx++) {
-                printf("%i ",prefix);
+                            "
+            char bits[] = {'\n','0','\n','1','\n','2','\n','3','\n','4','\n','5','\n','6','\n','7','\0'};
+            printf("\n");
+            for (int idx1=0;  idx1 < 32 ;  idx1++) {
+                printf("%s %s %s %s %s %s %s %s\n",symA,symA,symA,symA,symA,symA,symA,symA);
+                
                 
             }
+                
             
-      for (int idx=0 ; idx < 4 ; idx++) {
-          three_bits[0]
-      }
-       
+                 
+        
 }
 
