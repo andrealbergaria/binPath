@@ -14,39 +14,69 @@ int main() {
              A                 A                
       a) [0] bit bit bit [0] bit bit bit [0] bit bit bit [0] bit bit bit algortuihm funciona ..so preciso concatenar
            
+           2A's * 4 = 8 A'S
+           
            2^4 , 2^3 * 2^3 * 2^3 * 2^3 = 65536
            
            testing 4 bytes....
            
            32bytes / 4 bytes = 8
-           
-           concatenating
-                    B
-    (a)    0 0 0    0 0 0   { 000 000 , 000 001, 000 010 
-    (a+1)  0 0 1    0 0 1   o anterior (0 0 1) de B (0 1 0 ) é igual 1pos 
-    (a+2)  0 1 0    0 1 0   { A(000) B, A+1 B, A+2 B , A+3 B, A+4 B, A+5 B,A+6 B, A+7 B}
-           1 0 0    1 0 0   {B(000) A(000) , B+1 A, B+2 A , B+3 A , ...}
-           1 1 1    1 1 1   { A B+1, 
-           1 1 0    1 1 0
-           1 0 1    1 0 1    B+1 esta em que posicçoes
-           0 1 1    0 1 1   { B+1 A, B+1 A+1, B+1 A+2, B+1 A+3, B+1 A+4,B+1 A+5,B+1 A+6,B A+7
-                            { B+2 A, B+2 A+1 , ...}
-                            B+1 
-                            { A , A+1 , A+2, A+3...} positon 0 of array is always B+1
-                            B+2
-                            { A , A+1, A+2, A+3....} positiion 0 of array is always B+2
-                            B=0, A=0
+                           
+                            8 strings to represent 6 bits
                             
-                            char temp[8][9];
-                            char temp[0][8] = B;
-                            for (int i= 1 ; i < 8; i++) {
-                                temp[i][i-1] = { A , A+1, A+2, A+3...}
+                            A B B+1 B+2...B+7   => {0,0,1,2,3,4,5,6,7} 
+                            A+1 B B+1 B+2....   => {1,0,1,2,3,4,5,6,7}
+                            
+                                                   {7,0,1,2,3,4,5,6,7}
+                            A B B+1 B+2...
+                            A+1 B B+1
+                            
+                            preciso 24 three bits
+                            
+                          
+                            
+                            A    B
+                            000 000
+                            000 001
+                            000 010 
+                          
+                            A=B
+                            
+                            Para 3 bits
+                            A   "A A+1 A+2 A+3 A+4 A+5 A+6 A+7"
+                            A+1 "A A+1 A+2 A+3 A+4 A+5 A+6 A+7"
+                            A+2 "A A+1 A+2 A+3 A+4 A+5 A+6 A+7"
+                            A+3 "A A+1...."
+                            A+4 "A A+1 ..."
+                            A+5 " A A+1..."
+                            A+6 "A A+1;
+                            
+                            A    B   C
+                            000 000 000 
+                              
+                            000 000 001 
+                            A B "C C+1 C+2 C+3 C+4 C+5 C+6 C+7"
+                            
+                            2^9= 512 (A*B*C)
+                            64 combinações , B X C
+                            
+                            A   "A B+1 B+2 B+3 B+4 B+5 B+6 B+7 B+8 C+1 C+2 C+3 C+4 C+5.... " (9 bits)
+                            A+1 "A A+1 A+2 A+3 A+4 A+5 A+6 A+7"
+                            A+2 "A A+1 A+2 A+3 A+4 A+5 A+6 A+7"
+                           
+                            [0] 3 bits [0] 3 bits
+                            
+                            3 bits
+                            String s = "[0] A "A A+1 A+2 A+3 A+4 A+5 A+6 A+7 "
+                                            
+                            
+                            6 bits
+                            
+                            
+                            for (int idx=0 ; idx < 10 ; idx++) {
+                                    
                             }
                             
-                            
-                            
-                            
-           
        32 bits => 2^4 = 16
        256 bits =  128 comb of 0 and 1 (prefixes)
        256 / 8 bits = 32bytes
