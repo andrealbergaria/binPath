@@ -1,16 +1,9 @@
-
-
-binPath_16_32_64bits: binPath_16_32_64bits.o util.o libbinpath.a
-	cc binPath_16_32_64bits.o -g -lbinpath -L. -o 32bits
-
 binPath: binPath.o libbinpath.a
 	cc binPath.o -lcrypt -lbinpath -L. -o b
 	cc -Wall -pg binPath.c util.c crypto.c -lcrypt -o binPathProfiler
-	cc getBinariesFromDecimals.o -lbinpath -L. -o getValues
-
 
 getValues: getBinariesFromDecimals.o
-		
+	cc getBinariesFromDecimals.o -lbinpath -L. -o getValues
 	
 binPath_16_32_64bits.o: binPath_16_32_64bits.c
 	cc -c binPath_16_32_64bits.c -g -o binPath_16_32_64bits.o
@@ -33,4 +26,3 @@ libbinpath.a: util.o crypto.o
 
 getBinariesFromDecimals.o: getBinariesFromDecimals.c
 	cc -c getBinariesFromDecimals.c -g -lbinpath -o getBinariesFromDecimals.o
-
