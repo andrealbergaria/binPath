@@ -6,46 +6,77 @@
 
 void printFullArray() {
     
-    char base[] = {0b000,0b001,0b010,0b100,0b110,0b111,0b101,0b001};
-    char temp[8]= {0b000,0b001,0b010,0b100,0b110,0b111,0b101,0b001};
-    unsigned int v[8][1];
-    char *tempVar = (char *) malloc(500);
-    tempVar = base;
+    unsigned char base[] = {0b000,0b001,0b010,0b100,0b110,0b111,0b101,0b011};
+    unsigned char firstArray[8]; // BASE | SAME NUMBER
+    unsigned char secondArray[8];
+    char res  = 0;
     
     
-    
-    
-    
-   /* v[0][0] = base[0]; // 0
-    v[0][1] = base[1]; // 2    
-    v[0][2] = base[2]; // 4
-    v[0][3] = base[3]  // 8
-    
- 
-    var = [elems] | base[]
-    
-    var = ELeems | 000
-    var = ELeems | 001
-    var = ELeems | 002
-    var = ELeems | 003
-    
-    var = 0 | 000 
-    var = 0  | 001 
-    var = 0 | 010
-       v[it] = 0,1
-    var = 1 | 00  // so precisa mudar 1 elemento da array
-    */
-   v[0][0] =  
-    for (int it=0; it < 8 ; it++) {
-        //temp[it] = temp[] base[] 
-        
-        v[it]++;
-        v[it][it]   &base;
-        /*temp[it][it]++;
-        temp[it][it] = *tempVar;
-        *tempVar++;*/
-        }
+    for (int i2 = 0 ; i2 < 8 ; i2++) {
+      //  secondArray[i2] = 0;
+        /*printf("\n");
+       printBits(base[i2]);
+       printf("\n");
+       printBits(secondArray[i2]);
+       printf("\n");
+       */
+       char t2 = i2 << 4;
+        res = t2 | base[i2];
+       //t2 &= 0b00111000;
+       printBits(res);
+       printf("\n");
+       printf("\n");
+       
+       
     }
+        
+    
+    
+    
+    // copy base to int and then do OR with first set and then increment first set
+    
+    /*000 000  
+    000 001
+    000 010
+    000 100
+    000 110
+    000 101
+    000 011
+    000 111
+    
+    100 000
+    100 001
+    100 010
+    100 100
+    100 111
+    100 101
+    100 110
+    100 011
+    
+    aceder aos 3 primeiros bits 
+    
+     for (char it=0; it < 8 ; it++) {
+         int equalNum = it << 4;
+         //resultant = equalNum | base[it];
+         resultant = 0 | base[it];
+         printBits(resultant);
+     }
+
+     
+    */
+    
+        
+    /* num     0b00011
+    num2    0b01000
+    num = > 0b01011
+  
+  
+  num   0b00011
+  num2  0b01000
+  OR
+        0b01011
+  */
+
 }
 
 void print_6_bits() {
@@ -134,6 +165,54 @@ int main() {
       c)  [1] bit bit bit [0] bit bit bit 
              
       d)  [1] bit bit bit [1] bit bit bit 
+      
+      000 000                   000 000
+      001 000    (8)            0
+      010 000    (8*2)
+      100 000    (8*3)      multiple of 2
+      111 000    (8*7)
+      011 000 
+      101 000
+      110 000
+      
+      000 001  (1)
+      001 001   (9)
+      010 001   (17)
+      011 001   (25)    
+      100 001   (33) 
+      101 001   (41)
+      110 001   (49)
+      111 001   (57)
+      
+      000 010   (2)
+      001 010   (10)
+      010 010   (18)        multiple of 2
+      100 010   (34)
+      011 010   (26)
+      101 010   42
+      110 010   50
+      111 010   58
+      
+      
+      000 100   4       
+      001 100   12
+      010 100   20
+      100 100   36          if last set first line is multiple of 2, then combinations are multiple of 2
+      110 100   52          multiple of 2, so second set is 000,001,100
+      101 100   44
+      011 100   28
+      111 100   60
+      
+      000 011   3
+      001 011   13
+      010 101   21
+      100 101
+      110 101
+      011 101
+      101 101
+      111 101
+      
+      
         usar ponteiros para ser maiis rapido adicionar a+1 a+2 b+1 b+2..
         char *a  = 0;
         a[0][0] = 0
@@ -218,7 +297,8 @@ int main() {
        
        */                   
 
-     print_6_bits();
+//     print_6_bits();
+    printFullArray();
         
 }
 

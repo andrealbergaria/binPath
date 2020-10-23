@@ -990,3 +990,28 @@ try to ignore leading digit, so to become 3 bits and then use the algorithm
 
 
 
+ //  char *tempVar = (char *) malloc(500);
+  //  tempVar = base;
+    
+    
+    
+    
+   /* v[0][0] = base[0]; // 0
+    v[0][1] = base[1]; // 2    
+    v[0][2] = base[2]; // 4
+    v[0][3] = base[3]  // 8
+    
+ 
+    var = [elems] | base[]
+    
+    var = ELeems | 000
+    var = ELeems | 001
+    var = ELeems | 002
+    var = ELeems | 003
+    
+    var = 0 | 000 
+    var = 0  | 001 
+    var = 0 | 010
+       v[it] = 0,1
+    var = 1 | 00  // so precisa mudar 1 elemento da array
+    */
