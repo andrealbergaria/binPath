@@ -1,6 +1,6 @@
 binPath: binPath.o libbinpath.a
-	cc binPath.o -lcrypt -lbinpath -L. -o b
-	cc -Wall -pg binPath.c util.c crypto.c -lcrypt -o binPathProfiler
+	cc binPath.o -lcrypt -lbinpath -lm -L. -o b
+	cc -Wall -pg binPath.c util.c crypto.c -lm -lcrypt -o binPathProfiler
 
 getValues: getBinariesFromDecimals.o
 	cc getBinariesFromDecimals.o -lbinpath -L. -o getValues

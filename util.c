@@ -1,5 +1,19 @@
 #include "util.h"
 
+void printAllCombinations(int numberOfBits) {
+    printf("\nUsing %i bits\n",numberOfBits);
+    unsigned char t = 1;
+    int s = pow(2,numberOfBits);printf("\n%i\n",s);
+    printf("{ ");
+    for (int i = 0; i< s ; i++) {
+        printf("\n%i\n",i);
+        printBits(t);
+        printf(" , ");
+        t++;
+    }
+    printf(" } \n");
+}
+
 void printBits(unsigned char number) {
    unsigned char mask = 0x80;
    int it;
@@ -34,7 +48,23 @@ void printShortBits(unsigned short number) {
    
 }
 
-    
+
+void printIntBits(unsigned int number) {
+   unsigned int mask = 0x80000000;
+   int it;
+   
+   for (it=0 ;it < 8; it++) {
+       if (number & mask)
+           putchar('1');
+       else
+           putchar('0');
+      
+       mask >>= 1;
+   }
+   
+
+   
+}
 
 
 void convertByteToAscii(unsigned char byte,char mask) {

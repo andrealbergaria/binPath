@@ -7,22 +7,15 @@
 void printFullArray() {
     
     unsigned char base[] = {0b000,0b001,0b010,0b100,0b110,0b111,0b101,0b011};
-    unsigned char firstArray[8]; // BASE | SAME NUMBER
-    unsigned char secondArray[8];
+ //   unsigned char firstArray[8]; // just here for clearing 
+ //   unsigned char secondArray[8];
     char res  = 0;
     
     
     for (int i2 = 0 ; i2 < 8 ; i2++) {
-      //  secondArray[i2] = 0;
-        /*printf("\n");
-       printBits(base[i2]);
-       printf("\n");
-       printBits(secondArray[i2]);
-       printf("\n");
-       */
+      
        char t2 = i2 << 4;
-        res = t2 | base[i2];
-       //t2 &= 0b00111000;
+        res = t2 | base[i2]; 
        printBits(res);
        printf("\n");
        printf("\n");
@@ -30,55 +23,60 @@ void printFullArray() {
        
     }
         
-    
+}   
     
     
     // copy base to int and then do OR with first set and then increment first set
     
-    /*000 000  
+   /* 000 000 000
+    000 000 001
+    000 000 010
+    000 000 100
+    000 000 110
+    000 000 101
+    000 000 011
+    000 000 111 
+    
+    total combinations = 2^9 = 512
+    
+    
+    000 000 000
+    001 001 001
+    010 010 010
+    100 100 100
+    110 110 110
+    011 011 011
+    101 101 101
+    111 111 111 
+    
+    
+    000 000
     000 001
     000 010
     000 100
-    000 110
-    000 101
-    000 011
     000 111
+    000 101
+    000 110
+    000 011
     
-    100 000
-    100 001
-    100 010
-    100 100
-    100 111
-    100 101
-    100 110
-    100 011
+    pos1 pos2 pos3
+    1     1    1 -> representa 3 numeros, um por cada bit
+                                                ----4posicioes---
+    1 at pos1 (represents 1 0 0 , 8 positions { 001,010,000,100, 011,101,110,111
     
-    aceder aos 3 primeiros bits 
+    1 at pos2 (represents 1 0 , 4positions {01,10,00,11})
     
-     for (char it=0; it < 8 ; it++) {
-         int equalNum = it << 4;
-         //resultant = equalNum | base[it];
-         resultant = 0 | base[it];
-         printBits(resultant);
-     }
-
-     
-    */
+    8 positions has 4positions plus other
     
-        
-    /* num     0b00011
-    num2    0b01000
-    num = > 0b01011
+    2bit * 2bit * 2bit => 2bit * 2bit AND adding one and zeros on the leading bits
+    
+    2bit * 2bit * 2bit * 2bit => { 0001,0010,0100,0000,1000,1100,1110,1111,0011,0111,
   
-  
-  num   0b00011
-  num2  0b01000
-  OR
-        0b01011
-  */
-
 }
+*/
 
+
+   
 void print_6_bits() {
            
      char b[8][8];
@@ -298,7 +296,8 @@ int main() {
        */                   
 
 //     print_6_bits();
-    printFullArray();
+    //printFullArray();
+    printAllCombinations(3);
         
 }
 

@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <math.h>
+void printAllCombinations(int numOfBits);
+void printIntBits(unsigned int number);
 void convertByteToAscii(unsigned char byte,char mask);
 void printBits(unsigned char number);
 void printShortBits(unsigned short number); 
