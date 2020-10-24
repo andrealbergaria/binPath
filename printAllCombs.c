@@ -17,18 +17,28 @@ int main(int argc,char *argv[]) {
     
     int s = pow(2,numberOfBits);
     
-    printf("\nNumber of elems printed %i",s);
+    printf("\nNumber of elems printed %i\n",s);
     
     if (strcmp(argv[3],"listed")==0)
         printf("\n{ ");
     
     for (int i = 0; i< s ; i++) {
         printBits(startByte);
-        if (strcmp(argv[3],"listed")==0)
+        if (strcmp(argv[3],"listed")==0) {
             printf(" , ");
-        else
+            startByte++;
+        }
+        else if(numberOfBits > 8) {
+            printf("    ");
+            startByte++;
+            printBits(startByte);
             printf("\n");
-        startByte++;
+        }
+        else {
+            printf("\n");
+            startByte++;
+        }
+        
     }
     printf(" } \n");
 }
