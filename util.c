@@ -1,15 +1,16 @@
 #include "util.h"
 
-void printAllCombinations(int numberOfBits) {
+void printAllCombinations(int numberOfBits,int onlyListNumberWithBits) {
     printf("\nUsing %i bits\n",numberOfBits);
-    unsigned char t = 1;
-    int s = pow(2,numberOfBits);printf("\n%i\n",s);
+    unsigned int startByte = pow(2,onlyListNumberWithBits-1);
+    
+    int s = pow(2,numberOfBits-1);
+    
     printf("{ ");
-    for (int i = 0; i< s ; i++) {
-        printf("\n%i\n",i);
-        printBits(t);
+    for (int i = 0; i<= s ; i++) {
+        printBits(startByte);
         printf(" , ");
-        t++;
+        startByte++;
     }
     printf(" } \n");
 }

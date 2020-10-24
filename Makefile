@@ -8,7 +8,7 @@ getValues: getBinariesFromDecimals.o
 binPath_16_32_64bits.o: binPath_16_32_64bits.c
 	cc -c binPath_16_32_64bits.c -g -o binPath_16_32_64bits.o
 	
-binPath.o: binPath.c
+binPath.o: binPath.c util.o crypto.o
 	cc -c binPath.c -g -o binPath.o
 	
 util.o: util.c
@@ -20,6 +20,7 @@ crypto.o: crypto.c
 clean:
 	rm -f binPath.o util.o b crypt.o
 	rm -f libbinpath.o
+	rm -f libbinpath.a
 
 libbinpath.a: util.o crypto.o
 	ar -cvq libbinpath.a util.o crypto.o
