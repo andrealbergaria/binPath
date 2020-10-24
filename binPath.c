@@ -2,17 +2,108 @@
 
 
 void printFullArray() {
-    
-    unsigned char base[] = {0b000,0b001,0b010,0b100,0b110,0b111,0b101,0b011};
+    // int a[3][4] = {  
+//   {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
+//   {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
+ //  {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
+// };
+
+/*
+    temp[8][8] = 
+    temp[0][8] = { b1,b2,b3,b4,b5,b6,b7 
+                                        
+    temp[1][8] = {0b0000 0b1000 0b1001 0b01010 0b
+    unsigned char base[8][8];
  //   unsigned char firstArray[8]; // just here for clearing 
- //   unsigned char secondArray[8];
-    char res  = 0;
+ //   unsigned char secondArray[8];                
+    */               16               16          16
+                            32/2          48 / 3     64/4          16            16            16                     
+             1      2              3            4          5             6            7              8                    
+     
+      { { 0b0000,   0b0001      0b0010,      0b0011,     0b0100,      0b0101,      0b0110,      0b0111
+                      16        32            48          64           80          96          112
+        { 000000,  0b00010000 , 0b00100000 , 0b00110000, 0b01000000,  0b01010000 , 0b01100000, 0b01110000 }, (shift 4 left)
+      
+        // checkando nao mulitplos de 2 3
+                8            9          10           11             12          13             14        15          
+           0b00001000, 0b00001001, 0b00001010,  0b00001011,   0b00001100,    0b00001101,  0b00001110,0b00001111} 
+              16          17          18           19           20            21           22             23                        
+           00010000,   00010001    00010010     00010011      00010100        00010101     00010110    00010111
+                 // 1linha , todas as posicções
+              24        25          26              27          28              29          30          31
+            11000       11001      11010         11011          11100          11101       11110      11111      
+              32        33          34          35              36              37          38          39
+            100000      100001      100010      100011          100100          100101     100110      100111 
+                 
+                                 pos 1 = 0,8,16 ,24,32 (todos multiplos de 2)
+                                 
+                                 pos 2 = 2,9,17,25,33   (nenhum multiplo de 2)
+                                 
+                                 pos 3 = 3,10,18,26,34 (todos multiplos de 2, sem contar com 3)
+                                 
+                                 pos 4 = 4,11,19,27,35  (so 4 multiplo de 2)
+                                   
+                                 pos 5 = 5,12,20,28,36  (multiplos de 2 sem 5)
+                                 
+                                 pos 6 = 6,13,21,29,37 (so 6 multiplo de 2)
+                                
+                                 pos 7 = 7,14,22,30,38  (todos multiplos de 2, meno 7)
+    };
+                f(0) = 
+                    char toBeAdded = pos1[0] 
+                    resultant_first_byte = ++toBeAdded;
+
+                     toBeAdded  = pos1 << 16;       
+                    
+                    (pos1 = 00000000 00001000 00010000 00011000 0001000 100000)
+                    (add =  00000001 00000001 00000001 00000001 0000001 000001)
+                           add (137977929793 to pos1 or use mask)
+                
+                      for      
+                              
+                              ADD 1 ...
+                              
+                              
+                f(pos) =  f(pos-1) + 13
     
-    
-    for (int i2 = 0 ; i2 < 8 ; i2++) {
+                                        96 / 6 = 16 (pos 6 of multiple of 2?)
+                                        80/5 = 16 (pos 5)
+                                   
+                                        
+                                        
+                                        multiple of 2 
+                               2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112
+                               
+                          can avoid those on array
+                           32 = 16+16
+                           48 = 16+16+16
+                           
+                           shifting left 4 bits, equals multiplying by 16 (16 = 2^4)
+                           00001000 8
+                           10000000 128
+                           
+                           8*16 = 128
+                           
+                         left 3 bits multiplying by 8 (2^3 = 8)
+                         00001000 8
+                         01000000 64
+                         
+                    // FALSO       com bits seguidos, nao é multiplo de 2
+                    //             com bits nao seguidos mulitple de 2
+                           
+                  add 1 bit leading 3 bits = > 4bits . How many bits 0 and 1's         
+    // Add bit in msb
+                           
+              
+              // relation betwee 10000000 256
+              //and              00000001 1
+              // relation between 0b10010000 
+              // and              0b00000010
+              
+    for (char i2 = 0 ; i2 < 8 ; i2++) {
       
        char t2 = i2 << 4;
-        res = t2 | base[i2]; 
+       char res = t2 | (int)base[i2]; 
        printBits(res);
        printf("\n");
        printf("\n");

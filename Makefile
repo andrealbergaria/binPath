@@ -1,3 +1,4 @@
+all: printAllCombs binPath 
 
 printAllCombs: printAllCombs.o
 	cc printAllCombs.o util.o -lm -g -o printAllCombs
