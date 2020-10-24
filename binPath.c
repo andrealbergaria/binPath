@@ -1,7 +1,4 @@
-#include <stdio.h>
 #include "util.h"
-#include <string.h>
-#include <stdlib.h>
 
 
 void printFullArray() {
@@ -127,31 +124,6 @@ void print_6_bits() {
 }
 
 
-void printStrings() {
-     
-                            char src[] = "[0] 0 1 2 3 4 5 6 7";
-                            char *dest = (char* ) malloc(10000);
-                            
-                            // prottpye 
-                            // prtotype (char *dest, const char *src);
-                            // char *strncat(char *dest, const char *src, size_t n);
-
-                            dest[10000] = '\0';
-                            
-                            strncat(dest,src,16);
-                            
-                            //The strcat function returns a pointer to s1 (dest) (where the resulting concatenated string resides).
-                           // 24 bits / 3 bits = 8 cycles
-                            
-                            for (int idx= 0; idx < 8; idx++) {
-                                strncat(dest,src,21);
-                                printf(" %s ",dest);
-                            }
-                        
-                        
-                            printf("\n\n\n");
-                        
-}
 
 int main() {
     //algorithm = start wth 000, and change one bit, until can't change nomre...then use 111 and change one bit of it
@@ -295,11 +267,10 @@ int main() {
        
        */                   
 
-//     print_6_bits();
     //printFullArray();
     // number of bits 1st
     // startbyte    2nd
-    printAllCombinations(8,10);
-        
+    //printAllCombinations(8,10);
+   printStrings();
 }
 

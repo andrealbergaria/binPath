@@ -1,5 +1,33 @@
 #include "util.h"
 
+void printStrings() {
+    
+     
+                            char src[] = "[0] 0 1 2 3 4 5 6 7";
+                            char *dest = (char* ) malloc(10000);
+                            
+                            // prottpye 
+                            // prtotype (char *dest, const char *src);
+                            // char *strncat(char *dest, const char *src, size_t n);
+
+                            dest[10000] = '\0';
+                            
+                            strncat(dest,src,16);
+                            
+                            //The strcat function returns a pointer to s1 (dest) (where the resulting concatenated string resides).
+                           // 24 bits / 3 bits = 8 cycles
+                            
+                            for (int idx= 0; idx < 8; idx++) {
+                                strncat(dest,src,21);
+                                printf(" %s ",dest);
+                            }
+                        
+                        
+                            printf("\n\n\n");
+                        
+}
+
+
 void printAllCombinations(int numberOfBits,int startByte) {
     printf("\nUsing %i bits\n",numberOfBits);
     //unsigned int startByte = pow(2,onlyListNumberWithBits-1);

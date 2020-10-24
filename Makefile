@@ -1,3 +1,10 @@
+
+printAllCombs: printAllCombs.o
+	cc printAllCombs.o util.o -lm -g -o printAllCombs
+
+printAllCombs.o: util.o printAllCombs.c
+	gcc printAllCombs.c -g -c -o printAllCombs.o
+
 binPath: binPath.o libbinpath.a util.h
 	cc binPath.o -lcrypt -lbinpath -lm -L. -o binPath
 # cc -Wall -pg binPath.c util.c crypto.c -lm -lcrypt -o binPathProfiler
@@ -25,7 +32,7 @@ clean:
 	rm -f binPathApp
 
 libbinpath.a: util.o crypto.o
-	ar -cvq libbinpath.a util.o crypto.o
+	ar -cvr libbinpath.a util.o crypto.o
 
 getBinariesFromDecimals.o: getBinariesFromDecimals.c
 	cc -c getBinariesFromDecimals.c -g -lbinpath -o getBinariesFromDecimals.o

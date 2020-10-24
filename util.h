@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+#include <string.h>
 void printAllCombinations(int numOfBits, int startByte);
 void printIntBits(unsigned int number);
 void convertByteToAscii(unsigned char byte,char mask);
