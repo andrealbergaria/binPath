@@ -1,5 +1,57 @@
 #include "util.h"
 
+void print_6_bits() {
+           
+     char b[8][8];
+     char c[8][8];
+     char a[8][8];
+     
+     for (int set=0 ; set < 8 ; set++) {
+        a[set][0] = set;
+        b[set][0] = set;    // fill the last element array with the algorithm
+        c[set][0] = set;
+    //    printf("a[%i] -> ",set);
+        
+     //   printBits(a[set][0]);
+     //  printf("\n");
+     //   printf("b[%i] -> ",set);
+        
+      //  printBits(b[set][0]);
+      //  printf("\n");
+      //  printf("c[%i] -> ",set);
+        
+      //  printBits(c[set][0]);
+       // printf("\n");
+     }
+     //printf("\nFilled array ...\n");
+     
+     printf("\n\nEntering cycles\n");
+     
+     for (int s= 0 ; s < 8; s++) {
+            b[s][s]++;
+            c[s][s] = b[s][s]++;
+            
+            printf("a[%i][0] -> ",s);
+            printBits(a[s][0]);
+            printf("\n");
+            printf("b[%i][0] -> ",s);
+            printBits(b[s][0]);
+            printf("\n");
+            printf("c[%i][0] -> ",s);
+            printBits(c[s][0]);
+            printf("\n");
+            a[s][0]++;
+            
+            
+            
+     }
+     
+     
+}
+
+
+
+
 void printStrings() {
     
      
@@ -26,6 +78,9 @@ void printStrings() {
                             printf("\n\n\n");
                         
 }
+
+
+
 
 
 void printAllCombinations(int numberOfBits,int startByte) {
@@ -82,7 +137,9 @@ void printIntBits(unsigned int number) {
    unsigned int mask = 0x80000000;
    int it;
    
-   for (it=0 ;it < 8; it++) {
+   for (it=0 ;it < 32; it++) {
+       if (it mod 8 == 0)
+           printf(" ");
        if (number & mask)
            putchar('1');
        else
