@@ -297,7 +297,9 @@ int main() {
 
 //     print_6_bits();
     //printFullArray();
-    printAllCombinations(5,5);
+    // number of bits 1st
+    // startbyte    2nd
+    printAllCombinations(8,10);
         
 }
 
