@@ -8,12 +8,12 @@ void printFullArray() {
  //  {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
 // };
 
-64 bits * X  = 256 .. X = 4
+//64 bits * X  = 256 .. X = 4
 
     unsigned char base[8][8];
  //   unsigned char firstArray[8]; // just here for clearing 
  //   unsigned char secondArray[8];                
-    */   
+       
     /*
      * 64 bits
      * bytes  = 64 / 8 = 8 bytes
@@ -48,7 +48,7 @@ void printFullArray() {
                      pos 6= 5,14,22
                      and so on....         
                          
-                  */  
+           
                     (pos1 = 00000000 00001000 00010000 00011000 0001000 100000)
                     (add =  00000001 00000001 00000001 00000001 0000001 000001)
                      add (137977929793 to pos1 or use or mask on 1)
@@ -189,5 +189,6 @@ int main() {
     // startbyte    2nd
     //printAllCombinations(8,10);
  //  printStrings();
+ char ret=check32Bytes();
 }
 

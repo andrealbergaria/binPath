@@ -49,10 +49,9 @@ void print_6_bits() {
      
 }
 
-
 char check32Bytes() {
     // 256 bits , em bytes são 32
-    
+   // 32 bytes / 4 bytes (size of int) = 8
      // int a[3][4] = {  
 //   {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
 //   {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
@@ -60,41 +59,100 @@ char check32Bytes() {
 // };
 
 //64 bits * X  = 256 .. X = 4
+   
+     
+     /*
+     * 64 bits
+     * bytes  = 64 / 8 = 8 bytes
+     * 
+     * Positions          1             2               3           4           5       6           7           8
+     * Values             0             1               2           3           4       5           6           7
+       bitStrings 1)   00000000      00000001       00000010    000000100    00000101 00000110  00000111     00001000 (64bits)
+       
+       2) Values         8+1           8+2             8+3          8+4         8+5     8+6    8+7         8+8
+     *                 00001001      00001010       00001011   00001100     00001101 00001101  0000111      00010000
 
-     unsigned int num[4][8];
-     numPositions = 8;
+       3) Values        8+8+1          8+8+2       8+8+3       8+8+4          8+8+5    8+8+6   8+8+7       8+8+8
+                       000100001    000010010       00010011   00010100     00010101  00010110 00010111     00011000
+              
+        Values                      8+8+8+2
+        bit String                   11010
      
-     num[0][8] = {0,1,2,3,4,5,6,7};
+     
+    
+     64*8 =>  512bits => 64 bytes 1000000
+                                      
+        11111111 - 1000000  = 191  10111111
+        
+            8 * i + pos = 191
+    
+    
+    
+     position(1,2,3,4) = 
+     first_ int = 0000000 00000001 00000010 000000100
+     position(5,6,7,8) =
+     second_int = 000000101
+                  */  
+     //int one = {0,1,2,3}
+     //int two = {4,5,6,7}
+     //int three = {8+0,8+1,8+2,8+3}
+     
+     // FROM https://stackoverflow.com/questions/7787423/c-get-nth-byte-of-integer
+    //               int x = ((unsigned char *)(&number))[n];
+     
+/*         
+  */   
+     
+     
+     //need 8 ints
+     
+    //     4 bytes   4 bytes  4bytes  4bytes 4bytes 4bytes 4bytes 4bytes       
+                
+   // {1,2,3,4}  {5,6,7,8} {9,10,11,12} {13,14,15,16} {17,18,19,20}   {21,22,23,24} {25,26,27,28} {29,30,3132}
+    //       1       2          3             4            5              6               7           8
+    
+    
+       //all posistions = {numero of pos, 8+numero of possition,8+8+numerto
+          // position 1 => 1,8+1,8+8+1,8+8+8+1
+          //   position 2 => 2,2+8,2+8+8
+          
+   //      position is 1 for the moment
+        /* for (int pos = 1 ; pos < 9; pos++) {
+            printf("\nPosition %i",pos); 
+            for (int down=0; down < 8; down++) {
+                    int a  = pos+down*8;
+                   // printIntBits(a);
+                    printf("\n%i",a);
+                    printf("\n");
+            }
+            
+            
+         } 
+         
+         */
+        int b=0;
+        
+        for (int i = 0;i < 100; i++) {
+           for (int pos= 0 ; pos < 100;pos++) {
+                b = 8*i + pos;
+                
+                if (b == 191)  {
+                    printf("\nEntered 191");
+                    printf("\n I %i , POS %i ",i,pos);
+                    
+                }
+                
+                
+            }
+            
+        }
 
-                  Por charactters no int
-                  
-                  
-     for (int i= 0 ; i < numPositions ; i++) {
-          num[1][8] = 
-     }
+        
+// end of function         
+    
+}      
      
-     int temporary = 0b00000000000010000001000000011000;
-                         //   OR 00000001 00000001 00000001 00000001 
-                            
-                    // FROM https://stackoverflow.com/questions/7787423/c-get-nth-byte-of-integer
-                    //int x = (number >> (8*n)) & 0xff;
-                    // where n is 0 for the first byte, 1 for the second byte, etc.
-
-                     // Access nth byte same site      int x = ((unsigned char *)(&number))[n];
-                     
-    int mask =   0b00000001     /
-                 00000001    /
-                 00000001     /
-                 00000001;
-                  
-                  int pos2 = pos1 | mask;
-                  printf("\n");
-                  printIntBits(pos2);
-                  printf("\n");
-               /    
-     
-     
-}
+   
 
 void printStrings() {
     
@@ -182,7 +240,7 @@ void printIntBits(unsigned int number) {
    int it;
    
    for (it=0 ;it < 32; it++) {
-       if (it mod 8 == 0)
+       if (it % 8 == 0)
            printf(" ");
        if (number & mask)
            putchar('1');
