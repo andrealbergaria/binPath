@@ -50,7 +50,51 @@ void print_6_bits() {
 }
 
 
+char check32Bytes() {
+    // 256 bits , em bytes são 32
+    
+     // int a[3][4] = {  
+//   {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
+//   {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
+ //  {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
+// };
 
+//64 bits * X  = 256 .. X = 4
+
+     unsigned int num[4][8];
+     numPositions = 8;
+     
+     num[0][8] = {0,1,2,3,4,5,6,7};
+
+                  Por charactters no int
+                  
+                  
+     for (int i= 0 ; i < numPositions ; i++) {
+          num[1][8] = 
+     }
+     
+     int temporary = 0b00000000000010000001000000011000;
+                         //   OR 00000001 00000001 00000001 00000001 
+                            
+                    // FROM https://stackoverflow.com/questions/7787423/c-get-nth-byte-of-integer
+                    //int x = (number >> (8*n)) & 0xff;
+                    // where n is 0 for the first byte, 1 for the second byte, etc.
+
+                     // Access nth byte same site      int x = ((unsigned char *)(&number))[n];
+                     
+    int mask =   0b00000001     /
+                 00000001    /
+                 00000001     /
+                 00000001;
+                  
+                  int pos2 = pos1 | mask;
+                  printf("\n");
+                  printIntBits(pos2);
+                  printf("\n");
+               /    
+     
+     
+}
 
 void printStrings() {
     

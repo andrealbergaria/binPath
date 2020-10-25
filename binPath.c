@@ -8,47 +8,52 @@ void printFullArray() {
  //  {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
 // };
 
-/*
+64 bits * X  = 256 .. X = 4
+
     unsigned char base[8][8];
  //   unsigned char firstArray[8]; // just here for clearing 
  //   unsigned char secondArray[8];                
     */   
     /*
-     * 
+     * 64 bits
+     * bytes  = 64 / 8 = 8 bytes
      * 
      * Positions          1             2               3           4           5       6           7           8
-       bitStrings 1)   00000001      00000010       00000011   00000100     00000101 00000110  00000111     00001000
-       2)                8+1            8+2             8+3          8+4         8+5     8+6    8+7         8+8
+     * Values             0             1               2           3           4       5           6           7
+       bitStrings 1)   00000000      00000001       00000010    000000100    00000101 00000110  00000111     00001000 (64bits)
+       
+       2) Values         8+1           8+2             8+3          8+4         8+5     8+6    8+7         8+8
      *                 00001001      00001010       00001011   00001100     00001101 00001101  0000111      00010000
-       3)               
-     
+
+       3) Values        8+8+1          8+8+2       8+8+3       8+8+4          8+8+5    8+8+6   8+8+7       8+8+8
+                       000100001    000100010       00010011   00010100     00010101  00010110 00010111     00011000
+                    
+    
+    We can concatenate variables,  for example
+                 0x38     0x05         
+                0111000 00000101
+                
+                011100000000101 = 0x3805
+                
+    
     
      One 2), use 8 in 1), as a mask to 2)
      
      
-     
-                                pos 1 = 0,8,16 ,24,32 (todos multiplos de 2)
-                                 
-                                 pos 2 = 2,9,17,25,33   (nenhum multiplo de 2)
-                                 
-                                 pos 3 = 3,10,18,26,34 (todos multiplos de 2, sem contar com 3)
-                                 
-                                 pos 4 = 4,11,19,27,35  (so 4 multiplo de 2)
-                                   
-                                 pos 5 = 5,12,20,28,36  (multiplos de 2 sem 5)
-                                 
-                                 pos 6 = 6,13,21,29,37 (so 6 multiplo de 2)
-                                
-                                 pos 7 = 7,14,22,30,38  (todos multiplos de 2, meno 7)
-
-
+                     pos 1 = 0,9,17
+                     pos 2 = 1,10,18
+                     pos 3 = 2,11,19
+                     pos 4 = 3,12,20
+                     pos 5= 4,13,21
+                     pos 6= 5,14,22
+                     and so on....         
                          
-                    
+                  */  
                     (pos1 = 00000000 00001000 00010000 00011000 0001000 100000)
                     (add =  00000001 00000001 00000001 00000001 0000001 000001)
                      add (137977929793 to pos1 or use or mask on 1)
                               
-                */
+                
                    // int pos1 = 00000000 00001000 00010000 00011000;
                       //      OR 00000001 00000001 00000001 00000001     
                             
