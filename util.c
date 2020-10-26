@@ -86,29 +86,25 @@ char check32Bytes() {
          
          
          //                         0       1       2        3
-        unsigned int current = 0b00000000000000010000001000000011;
+        unsigned int current = 0x00010203;
          
                                  
                         
-         int mask = 0b1000000010000000100000001000;
-        
-    
-         int res1 =current | mask;
-            printf("\nMask : ");
-            printIntBits(mask); 
-            printf("\nMask Int : %i",mask);
+         int mask_add_8 = 0x08080808;
+         
+         int res1 =current + mask_add_8;
             printf("\n");
             printIntBits(current);
-            printf("\nCurrent Int : %i",current);
+            
             printf("\n");
             printIntBits(res1);
             printf("\n");
-            printf("\nRES 1 int %i",res1);
+            
             // INT COMBS : 4294967296
 
-         int res2 = res1 | mask;
-            printf("\nres2\n2");
-            printIntBits(res1);
+            int res2 = res1+mask_add_8;
+            printf("\n");
+            printIntBits(res2);
          
             for (int down=0; down < 4; down++) {
                 
