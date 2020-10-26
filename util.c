@@ -74,17 +74,61 @@ char check32Bytes() {
 
        3) Values        8+8+1          8+8+2       8+8+3       8+8+4          8+8+5    8+8+6   8+8+7       8+8+8
                        000100001    000010010       00010011   00010100     00010101  00010110 00010111     00011000
-              
-        Values                      8+8+8+2
-        bit String                   11010
      
+       9) Values        8*8+1
+                        
+     f(pos) = 8k+pos
      
-    
+     how many to add ? 64
+                        probably +1 beacuse of positions
+                        and the other?? 8 ?
+                        
+                        
+                        adicionar 8*8 a tabela anterior
+                        
+                        65 = 8*8+1 (pos 1)
+                        
+                        66 = 8*8+2 (pos 2)
+                        
+                        67 = 8*8+3 (pos 3)
+                        
+                        68 = 8*8 +4 (pos 4)
+                        
+                        69 = 8*8 +5 (pos 5)
+                        
+                        70 = 8*8 +6 (pos 6)
+                        
+                        71 = 8*8 +7 (ops 7)
+                        
+                        72 = 8*8 +8 (pos 8)
+                        
+                        anterior mais 1
+                        
+                        73 = 8*8 + 9
+                        
+                        8+1         8+2
+                        00001001 00001010 
+                        
+                        8*8+8    8*8+9
+                        1001000 
+                        
+                { 1,8*8}  =
+     
+                2*2*2 *2*2*2 *2*2
+                  8     8     4
+     
+                      Falta o prefixo de 1          
+                        
+                       
+                    
+                    
+                    
+                    
      64*8 =>  512bits => 64 bytes 1000000
                                       
         11111111 - 1000000  = 191  10111111
         
-            8 * i + pos = 191
+            
     
     
     
@@ -117,38 +161,28 @@ char check32Bytes() {
           //   position 2 => 2,2+8,2+8+8
           
    //      position is 1 for the moment
-        /* for (int pos = 1 ; pos < 9; pos++) {
-            printf("\nPosition %i",pos); 
-            for (int down=0; down < 8; down++) {
+         printf("\n");
+         for (int pos = 1 ; pos < 9; pos++) {
+             printf("Pos %i\t",pos);
+         }
+         printf("\n");
+            for (int down=0; down < 32; down++) {
                     int a  = pos+down*8;
                    // printIntBits(a);
-                    printf("\n%i",a);
-                    printf("\n");
-            }
-            
-            
-         } 
-         
-         */
-        int b=0;
-        
-        for (int i = 0;i < 100; i++) {
-           for (int pos= 0 ; pos < 100;pos++) {
-                b = 8*i + pos;
-                
-                if (b == 191)  {
-                    printf("\nEntered 191");
-                    printf("\n I %i , POS %i ",i,pos);
+                    printf("%i\t",a);
                     
-                }
-                
-                
             }
             
-        }
-
+            
+        // } 
+         
+     //   8*8 = 64 1000000
+     //   11111111 - 01000000 = 10111111 191
         
-// end of function         
+        
+      //  191 = 
+        
+// end of function      
     
 }      
      

@@ -189,6 +189,6 @@ int main() {
     // startbyte    2nd
     //printAllCombinations(8,10);
  //  printStrings();
- char ret=check32Bytes();
+ check32Bytes();
 }
 
