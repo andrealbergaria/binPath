@@ -82,41 +82,27 @@ char check32Bytes() {
           */
           
          printf("\n");
-         // double res, %f 00000000      00000001       00000010    000000100
+         // double res, %f 
          
+        unsigned int array_base[] = {0x00010203,0x04050607,0x0708090A};
+        unsigned int mask_add_8 = 0x08080808;
          
-         //                         0       1       2        3
-        unsigned int current = 0x00010203;
+         for (int nums = 0; nums < 200 ; nums++) {
+                    printf("\n");
+                    
+                    printf(" %u ",array_base[0]);
+                    printf(" %u ",array_base[1]);
+                    array_base[0] += mask_add_8;
+                    array_base[1] += mask_add_8;
+                
+            }
+                          
+             
+    //     }
          
-                                 
-                        
-         int mask_add_8 = 0x08080808;
-         
-         int res1 =current + mask_add_8;
-            printf("\n");
-            printIntBits(current);
-            
-            printf("\n");
-            printIntBits(res1);
-            printf("\n");
-            
             // INT COMBS : 4294967296
 
-            int res2 = res1+mask_add_8;
-            printf("\n");
-            printIntBits(res2);
          
-            for (int down=0; down < 4; down++) {
-                
-                
-                   // int a  = pos+down*8;
-                   // printIntBits(a);
-                    if (down % 4 == 0)
-                        printf("\n");
-            }
-            
-            
-        // } 
          
      //   8*8 = 64 1000000
      //   11111111 - 01000000 = 10111111 191
