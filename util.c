@@ -50,6 +50,7 @@ void print_6_bits() {
 }
 
 char check32Bytes() {
+   // printUntil256();
     // 256 bits , em bytes são 32
    // 32 bytes / 4 bytes (size of int) = 8
      // int a[3][4] = {  
@@ -65,9 +66,13 @@ char check32Bytes() {
      
                     
                         
-     
-/*         
-    
+      /*                        pos 1 = 0,8,16 ,24,32 (todos multiplos de 2)
+                                 
+                                 pos 2 = 2,9,17,25,33   (nenhum multiplo de 2)
+                                 
+                                 pos 3 = 3,10,18,26,34 (todos multiplos de 2, sem contar com 3)
+                                 
+                                 pos 4 = 4,11,19,27,35  (so 4 multiplo de 2)
      
      
      //32 bytes need need 8 ints
@@ -81,19 +86,21 @@ char check32Bytes() {
                 p[1] = whatever you wanted there
           */
           
-         printf("\n");
          // double res, %f 
          
         unsigned int array_base[] = {0x00010203,0x04050607,0x0708090A};
-        unsigned int mask_add_8 = 0x08080808;
-         
-         for (int nums = 0; nums < 200 ; nums++) {
-                    printf("\n");
-                    
-                    printf(" %u ",array_base[0]);
-                    printf(" %u ",array_base[1]);
-                    array_base[0] += mask_add_8;
-                    array_base[1] += mask_add_8;
+        unsigned int mask_add_8 =    0x08080808;
+        int *ptr = array_base;
+        int *ptr2 = &array_base[1];
+        
+        array_base[0] += 0x01020304;
+        array_base[1] += 0x01020304;
+        
+        //printf("\nPos 1\n"); //\tPos 2\tPos 3\tPos 4\n");
+         for (int nums = 0; nums < 300 ; nums++) {
+             if (numx % 
+             array_base[0] += mask_add_8;
+          
                 
             }
                           
@@ -144,7 +151,16 @@ void printStrings() {
 }
 
 
-
+void printUntil256() {
+        unsigned int res =0 ;
+        for (int pos = 0 ; pos < 9 ; pos++) {
+            for (int down=0; down <10000; down++) {
+                res = pos+8*down;
+                printf("\n");
+                printIntBits(res);
+            }
+        }
+}
 
 
 void printAllCombinations(int numberOfBits,int startByte) {
