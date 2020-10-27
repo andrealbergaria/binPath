@@ -50,7 +50,7 @@ void print_6_bits() {
 }
 
 char check32Bytes() {
-   // printUntil256();
+    //printUntil256();
     // 256 bits , em bytes são 32
    // 32 bytes / 4 bytes (size of int) = 8
      // int a[3][4] = {  
@@ -96,17 +96,26 @@ char check32Bytes() {
         array_base[0] += 0x01020304;
         array_base[1] += 0x01020304;
         
-        //printf("\nPos 1\n"); //\tPos 2\tPos 3\tPos 4\n");
-         for (int nums = 0; nums < 300 ; nums++) {
-             if (nums % 10 == 0) {
-                 getchar();
-             }
+          /*                       pos 1 = 0,8,16 ,24,32 (todos multiplos de 2)
+                                 
+                                 pos 2 = 2,9,17,25,33   (nenhum multiplo de 2)
+                                 
+                                 pos 3 = 3,10,18,26,34 (todos multiplos de 2, sem contar com 3)
+                                 
+                                 pos 4 = 4,11,19,27,35  (so 4 multiplo de 2)
+     
+            */                     
+                                 
+        printf("\nPos 1\n"); //\tPos 2\tPos 3\tPos 4\n");
+        
+         for (int nums = 0; nums < 25 ; nums++) {
              array_base[0] += mask_add_8;
              array_base[1] += mask_add_8;
-            
-             printf("\n [0] %i \n[1] %i\n",array_base[0],array_base[1]);
              
-                
+              int numToPrint = array_base[0] & 0xff000000;
+              printIntBits(numToPrint);
+              printf("\n");
+
             }
                           
              
@@ -157,14 +166,19 @@ void printStrings() {
 
 
 void printUntil256() {
-        unsigned int res =0 ;
-        for (int pos = 0 ; pos < 9 ; pos++) {
-            for (int down=0; down <10000; down++) {
-                res = pos+8*down;
-                printf("\n");
-                printIntBits(res);
-            }
+    
+    // look at function .. f(pos) = 8*i + pos
+     unsigned int t=0;
+     for (int pos = 0; pos < 9;pos++) {
+        printf("\nPos %i = ",pos);
+        for (int it= 0; it < 15; it++) {
+            printf(" %u , ",t);
+            t += 8;
         }
+        t=0;
+     }
+    
+        
 }
 
 
