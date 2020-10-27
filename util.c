@@ -98,9 +98,14 @@ char check32Bytes() {
         
         //printf("\nPos 1\n"); //\tPos 2\tPos 3\tPos 4\n");
          for (int nums = 0; nums < 300 ; nums++) {
-             if (numx % 
+             if (nums % 10 == 0) {
+                 getchar();
+             }
              array_base[0] += mask_add_8;
-          
+             array_base[1] += mask_add_8;
+            
+             printf("\n [0] %i \n[1] %i\n",array_base[0],array_base[1]);
+             
                 
             }
                           
