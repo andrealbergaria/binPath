@@ -49,8 +49,10 @@ void print_6_bits() {
      
 }
 
+
+
 char check32Bytes() {
-    //printUntil256();
+    printUntil256();
     // 256 bits , em bytes são 32
    // 32 bytes / 4 bytes (size of int) = 8
      // int a[3][4] = {  
@@ -87,35 +89,59 @@ char check32Bytes() {
           */
           
          // double res, %f 
-         
-        unsigned int array_base[] = {0x00010203,0x04050607,0x0708090A};
+         // Difference between indeexes 4040404
+        unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
         unsigned int mask_add_8 =    0x08080808;
         int *ptr = array_base;
         int *ptr2 = &array_base[1];
         
-        array_base[0] += 0x01020304;
-        array_base[1] += 0x01020304;
+      //  array_base[0] += 0x01020304;
+       // array_base[1] += 0x01020304;
         
-          /*                       pos 1 = 0,8,16 ,24,32 (todos multiplos de 2)
-                                 
-                                 pos 2 = 2,9,17,25,33   (nenhum multiplo de 2)
-                                 
+                  /*  pos 2 = 2,9,17,25,33   (nenhum multiplo de 2)
+                                
                                  pos 3 = 3,10,18,26,34 (todos multiplos de 2, sem contar com 3)
                                  
                                  pos 4 = 4,11,19,27,35  (so 4 multiplo de 2)
      
             */                     
                                  
-        printf("\nPos 1\n"); //\tPos 2\tPos 3\tPos 4\n");
+             unsigned int  a = (array_base[0] & 0xff000000) >>24;
+             unsigned int b = (array_base[0] & 0x00ff0000) >>16;
+             unsigned int c = (array_base[0] & 0x0000ff00) >>8;
+             unsigned int d = (array_base[0] & 0x000000ff) ;
+             
+             
+             
+             
+             printf("\n%u %u %u %u ",a,b,c,d);
+             
+              a = (array_base[1] & 0xff000000) >>24;
+             b = (array_base[1] & 0x00ff0000) >>16;
+             c = (array_base[1] & 0x0000ff00) >>8;
+             d = (array_base[1] & 0x000000ff) ;
+             
+             printf(" %u %u %u %u ",a,b,c,d);
+            printf("\n");
         
-         for (int nums = 0; nums < 25 ; nums++) {
+         for (int nums = 0; nums < 10 ; nums++) {
+             
              array_base[0] += mask_add_8;
              array_base[1] += mask_add_8;
+            // printIntBits(array_base[0]);
+           //  printf (" --- ");
+           //  printIntBits(array_base[1]);
+              //printf("\n%u ",array_base[0]);
+            //  printf("\n");
              
-              int numToPrint = array_base[0] & 0xff000000;
-              printIntBits(numToPrint);
-              printf("\n");
-
+             a = (array_base[0] & 0xff000000) >>24;
+             b = (array_base[0] & 0x00ff0000) >>16;
+             c = (array_base[0] & 0x0000ff00) >>8;
+             d = (array_base[0] & 0x000000ff) ;
+             
+             printf("\n%u %u %u %u ",a,b,c,d);
+             
+            
             }
                           
              
@@ -172,8 +198,8 @@ void printUntil256() {
      for (int pos = 0; pos < 9;pos++) {
         printf("\nPos %i = ",pos);
         for (int it= 0; it < 15; it++) {
-            printf(" %u , ",t);
-            t += 8;
+            printf(",%u",t);
+            t=pos+8*it;
         }
         t=0;
      }
