@@ -28,7 +28,7 @@
                                  
                                  2^8 = 256
                                  
-                                 256 - 24 =  232 faltam 232 combs
+                                 256/8 = 32
                                  
                                  Pos 1 = ,0,1,9,17,25,33,41,49,57,65,73,81,89,97 (all odds, even the position umber) 
                                  

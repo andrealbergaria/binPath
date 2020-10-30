@@ -189,7 +189,7 @@ int main() {
     // startbyte    2nd
     //printAllCombinations(8,10);
  //  printStrings();
-    printUntil256();
- //check32Bytes();
+    //printUntil256();
+ check32Bytes();
 }
 

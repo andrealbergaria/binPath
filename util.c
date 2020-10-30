@@ -52,7 +52,7 @@ void print_6_bits() {
 
 
 char check32Bytes() {
-    printUntil256();
+    //printUntil256();
     // 256 bits , em bytes são 32
    // 32 bytes / 4 bytes (size of int) = 8
      // int a[3][4] = {  
@@ -68,18 +68,8 @@ char check32Bytes() {
      
                     
                         
-      /*                        pos 1 = 0,8,16 ,24,32 (todos multiplos de 2)
-                                 
-                                 pos 2 = 2,9,17,25,33   (nenhum multiplo de 2)
-                                 
-                                 pos 3 = 3,10,18,26,34 (todos multiplos de 2, sem contar com 3)
-                                 
-                                 pos 4 = 4,11,19,27,35  (so 4 multiplo de 2)
+      //32 bytes need need 8 ints
      
-     
-     //32 bytes need need 8 ints
-     
-          //all posistions = {numero of pos, 8+numero of possition,8+8+numerto
           // FROM https://stackoverflow.com/questions/34357968/how-to-set-first-three-bytes-of-integer-in-c
           /*int a = 4294967233;
                 char* p=&a;
@@ -89,48 +79,40 @@ char check32Bytes() {
           */
           
          // double res, %f 
-         // Difference between indeexes 4040404
         unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
         unsigned int mask_add_8 =    0x08080808;
         int *ptr = array_base;
         int *ptr2 = &array_base[1];
         
-      //  array_base[0] += 0x01020304;
-       // array_base[1] += 0x01020304;
-        
-                  /*  pos 2 = 2,9,17,25,33   (nenhum multiplo de 2)
-                                
-                                 pos 3 = 3,10,18,26,34 (todos multiplos de 2, sem contar com 3)
-                                 
-                                 pos 4 = 4,11,19,27,35  (so 4 multiplo de 2)
-     
-            */                     
-    double res;
+       
+      double res;
         int *currentByte = &res;
-    //currentByte[0] = something
+
+        //currentByte[0] = something
              
 
-            unsigned int  a = (array_base[1] & 0xff000000) >>24;
+           /* unsigned int  a = (array_base[1] & 0xff000000) >>24;
              unsigned int b = (array_base[1] & 0x00ff0000) >>16;
              unsigned int c = (array_base[1] & 0x0000ff00) >>8;
              unsigned int d = (array_base[1] & 0x000000ff) ;
              
              printf(" %u %u %u %u ",a,b,c,d);
-            printf("\n");
-        
-    int showInteger = 0;
-         for (int nums = 0; nums < 10 ; nums++) {
              
-          //   array_base[0] += mask_add_8;
-    //
-            // printIntBits(array_base[0]);
-           //  printf (" --- ");
-           //  printIntBits(array_base[1]);
-              //printf("\n%u ",array_base[0]);
-            //  printf("\n");
-                   
-             printIntBits(showInteger);
-             showInteger += mask_add_8;
+             // 8*32 = 256  (one byte, combinations)
+            // 8* 8192  = 65536 (two bytes,combinations)
+            // 8* 536870912  = 4294967296 (4bytes , combs)
+             
+            printf("\n");*/
+        
+         for (int nums = 0; nums <32 ; nums++) {
+             
+             printf(" Array 0 ");
+             printIntBits(array_base[0]);
+            // printf(" Array 1 ");
+            // printIntBits(array_base[1]);
+             
+             array_base[0] += mask_add_8;
+            // array_base[1] += mask_add_8;
             
             }
                           
@@ -189,11 +171,17 @@ void printUntil256() {
     // 
      unsigned int t=0;
      for (int pos = 1; pos < 9;pos++) {
-        printf("\nPos %i = ",pos);
-            
-        for (int it= 0; it <= 32; it++) {
-            printf(",%u",t);
+        //printf("\nPos %i = ",pos);
+            // 8*32 = 256  (one byte, combinations)
+            // 8* 8192  = 65536 (two bytes,combinations)
+            // 8* 536870912  = 4294967296 (4bytes , combs)
+        for (int it= 0; it <= 8192; it++) {
+            //printf(",%u",t);
             t = 8*it+pos;
+            
+            if (t % 256 == 0) 
+                printf("\n%u",t);
+           
           /*  if (t % 2 == 0)
                 printf(" even ");
             else
@@ -275,7 +263,7 @@ void printIntBits(unsigned int number) {
        mask >>= 1;
    }
    
-    printf("\t%i",number);
+    printf("\t%u\n",number);
    
 }
 
