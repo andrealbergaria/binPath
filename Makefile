@@ -7,7 +7,7 @@ printAllCombs.o: util.o printAllCombs.c
 	gcc printAllCombs.c -g -c -o printAllCombs.o
 
 binPath: binPath.o libbinpath.a util.h
-	cc binPath.o -lcrypt -lbinpath -lm -L. -o binPath
+	cc binPath.o -lcrypt -lbinpath -L. -lm -o binPath
 # cc -Wall -pg binPath.c util.c crypto.c -lm -lcrypt -o binPathProfiler
 
 binPath.o: binPath.c

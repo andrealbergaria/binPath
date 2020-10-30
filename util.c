@@ -105,42 +105,32 @@ char check32Bytes() {
                                  pos 4 = 4,11,19,27,35  (so 4 multiplo de 2)
      
             */                     
-                                 
-             unsigned int  a = (array_base[0] & 0xff000000) >>24;
-             unsigned int b = (array_base[0] & 0x00ff0000) >>16;
-             unsigned int c = (array_base[0] & 0x0000ff00) >>8;
-             unsigned int d = (array_base[0] & 0x000000ff) ;
+    double res;
+        int *currentByte = &res;
+    //currentByte[0] = something
              
-             
-             
-             
-             printf("\n%u %u %u %u ",a,b,c,d);
-             
-              a = (array_base[1] & 0xff000000) >>24;
-             b = (array_base[1] & 0x00ff0000) >>16;
-             c = (array_base[1] & 0x0000ff00) >>8;
-             d = (array_base[1] & 0x000000ff) ;
+
+            unsigned int  a = (array_base[1] & 0xff000000) >>24;
+             unsigned int b = (array_base[1] & 0x00ff0000) >>16;
+             unsigned int c = (array_base[1] & 0x0000ff00) >>8;
+             unsigned int d = (array_base[1] & 0x000000ff) ;
              
              printf(" %u %u %u %u ",a,b,c,d);
             printf("\n");
         
+    int showInteger = 0;
          for (int nums = 0; nums < 10 ; nums++) {
              
-             array_base[0] += mask_add_8;
-             array_base[1] += mask_add_8;
+          //   array_base[0] += mask_add_8;
+    //
             // printIntBits(array_base[0]);
            //  printf (" --- ");
            //  printIntBits(array_base[1]);
               //printf("\n%u ",array_base[0]);
             //  printf("\n");
-             
-             a = (array_base[0] & 0xff000000) >>24;
-             b = (array_base[0] & 0x00ff0000) >>16;
-             c = (array_base[0] & 0x0000ff00) >>8;
-             d = (array_base[0] & 0x000000ff) ;
-             
-             printf("\n%u %u %u %u ",a,b,c,d);
-             
+                   
+             printIntBits(showInteger);
+             showInteger += mask_add_8;
             
             }
                           
@@ -193,19 +183,30 @@ void printStrings() {
 
 void printUntil256() {
     
+    
     // look at function .. f(pos) = 8*i + pos
+    // int combinations 4294967296
+    // 
      unsigned int t=0;
-     for (int pos = 0; pos < 9;pos++) {
+     for (int pos = 1; pos < 9;pos++) {
         printf("\nPos %i = ",pos);
-        for (int it= 0; it < 15; it++) {
+            
+        for (int it= 0; it <= 32; it++) {
             printf(",%u",t);
-            t=pos+8*it;
-        }
+            t = 8*it+pos;
+          /*  if (t % 2 == 0)
+                printf(" even ");
+            else
+                printf(" odd ");
+            */
+            
+         }
         t=0;
      }
     
         
 }
+
 
 
 void printAllCombinations(int numberOfBits,int startByte) {
@@ -235,6 +236,7 @@ void printBits(unsigned char number) {
       
        mask >>= 1;
    }
+    printf("\t%i",number);
    
 
    
@@ -253,7 +255,7 @@ void printShortBits(unsigned short number) {
        mask >>= 1;
    }
    
-   //printf("\n");
+   printf("\t%i",number);
    
 }
 
@@ -273,7 +275,7 @@ void printIntBits(unsigned int number) {
        mask >>= 1;
    }
    
-
+    printf("\t%i",number);
    
 }
 
@@ -322,3 +324,4 @@ void convertByteToAscii(unsigned char byte,char mask) {
 
     
 }
+
