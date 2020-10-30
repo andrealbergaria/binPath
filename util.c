@@ -84,36 +84,46 @@ char check32Bytes() {
         int *ptr = array_base;
         int *ptr2 = &array_base[1];
         
-       
+       /*
       double res;
         int *currentByte = &res;
-
+*/
         //currentByte[0] = something
              
 
-           /* unsigned int  a = (array_base[1] & 0xff000000) >>24;
+            /*unsigned int  a = (array_base[1] & 0xff000000) >>24;
              unsigned int b = (array_base[1] & 0x00ff0000) >>16;
              unsigned int c = (array_base[1] & 0x0000ff00) >>8;
              unsigned int d = (array_base[1] & 0x000000ff) ;
              
              printf(" %u %u %u %u ",a,b,c,d);
-             
+             */
              // 8*32 = 256  (one byte, combinations)
             // 8* 8192  = 65536 (two bytes,combinations)
             // 8* 536870912  = 4294967296 (4bytes , combs)
              
-            printf("\n");*/
+            printf("\n");
+            char *firstNumbers = &array_base[0];
+            char *secondNumbers = &array_base[1];
         
-         for (int nums = 0; nums <32 ; nums++) {
+         for (int nums = 0; nums <3; nums++) {
              
-             printf(" Array 0 ");
-             printIntBits(array_base[0]);
-            // printf(" Array 1 ");
-            // printIntBits(array_base[1]);
-             
+            printBits(*firstNumbers);
+            
+            firstNumbers++;
+            printBits(*firstNumbers);
+            
+            firstNumbers++;
+            printBits(*firstNumbers);
+            
+            firstNumbers++;
+            printBits(*firstNumbers);
+            
+            
+            printf("\n"); 
              array_base[0] += mask_add_8;
             // array_base[1] += mask_add_8;
-            
+            firstNumbers = &array_base[0];
             }
                           
              
@@ -224,7 +234,7 @@ void printBits(unsigned char number) {
       
        mask >>= 1;
    }
-    printf("\t%i",number);
+    printf(" (%i)\t",number);
    
 
    
