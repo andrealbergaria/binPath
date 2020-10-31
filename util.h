@@ -9,5 +9,6 @@ void printBits(unsigned char number);
 void printShortBits(unsigned short number); 
 void printStrings();
 void printFullArray();
-void printUntil256();
+void printUsingFunction();
+void getAllCombs_32bits();
 char check32Bytes();

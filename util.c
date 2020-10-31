@@ -1,57 +1,39 @@
 #include "util.h"
 #include <time.h>
-void print_6_bits() {
-           
-     char b[8][8];
-     char c[8][8];
-     char a[8][8];
-     
-     for (int set=0 ; set < 8 ; set++) {
-        a[set][0] = set;
-        b[set][0] = set;    // fill the last element array with the algorithm
-        c[set][0] = set;
-    //    printf("a[%i] -> ",set);
-        
-     //   printBits(a[set][0]);
-     //  printf("\n");
-     //   printf("b[%i] -> ",set);
-        
-      //  printBits(b[set][0]);
-      //  printf("\n");
-      //  printf("c[%i] -> ",set);
-        
-      //  printBits(c[set][0]);
-       // printf("\n");
-     }
-     //printf("\nFilled array ...\n");
-     
-     printf("\n\nEntering cycles\n");
-     
-     for (int s= 0 ; s < 8; s++) {
-            b[s][s]++;
-            c[s][s] = b[s][s]++;
-            
-            printf("a[%i][0] -> ",s);
-            printBits(a[s][0]);
-            printf("\n");
-            printf("b[%i][0] -> ",s);
-            printBits(b[s][0]);
-            printf("\n");
-            printf("c[%i][0] -> ",s);
-            printBits(c[s][0]);
-            printf("\n");
-            a[s][0]++;
-            
-            
-            
-     }
-     
-     
+
+
+
+void getAllCombs_256bits() {
+    
+            unsigned char a[] = {'0','1','2','3','4','5','6','7','8','9'};
+            unsigned char b[] = {'0','1','2','3','4','5','6','7','8'};
+            unsigned char c[] = {'0','1','2','3','4','5','6','7','8'};
+            unsigned char d[] = {'0','1','2','3','4','5','6','7','8'};
+            int total_iterations= 0 ;
+            for (int pos=1 ; pos < 9*9*9*9*9; pos++) {
+                        total_iterations++;
+                        
+                        for (int i=1 ; i < 9 ; i++) {
+                            total_iterations++;
+                            for (int i2=1; i2 < 9; i2++) {
+                                total_iterations++;
+                                for (int i3=1 ; i3 < 9;i3++) {
+                                    total_iterations++;
+                                    for (int i4=1; i4 < 9 ; i4++) {
+                                        total_iterations++;
+                                        printf("(%c,%c,%c,%c)\n",a[i],b[i2],c[i3],d[i4]);
+                                    }
+                                }
+                                
+                            }
+                        }
+
+                }
+                printf("\nTotal iterations : %i",total_iterations);
 }
 
-
-
 char check32Bytes() {
+    getAllCombs_32bits();
     //printUntil256();
     // 256 bits , em bytes são 32
    // 32 bytes / 4 bytes (size of int) = 8
@@ -106,11 +88,14 @@ char check32Bytes() {
             
             // INT COMBS : 4294967296
             
+            
+             // 8 bytes -> 
+            
             //trying with 256
             //int test = 536870912;
-            unsigned int test = 4294967296;
+            unsigned int pos = 1;
             // 4294967296/8 = 536870912;
-            
+            // 
             // Number of combinations 
             
             int numberOfCombinations = 0;
@@ -118,69 +103,38 @@ char check32Bytes() {
             
             clock_t start = clock();
             
+            //unsigned long // 8 bytes  +  18,446,744,073,709,551,615] 
             
                
-            for (int nums = 0; nums < test; nums++) {
-            
-         //   printf("\nNumber of combinations : %i\n", numberOfCombinations );
+           /*
+            printf("\nNumber of combinations : %i\n", numberOfCombinations );
             array_base[0] += mask_add_8;
             array_base[1] += mask_add_8;
-            numberOfCombinations+=2;
+            array_base[2] += mask_add_8;
+            array_base[3] += mask_add_8;
+            numberOfCombinations+=4;
             if (numberOfCombinations % 10000 == 0)
                 printf("\nChecked %i",numberOfCombinations);
             
             }
             clock_t end = clock();
             clock_t total_t = (double)(end - start) / CLOCKS_PER_SEC;
-            printf("\n%f\n",total_t);
+            printf("\nTotal secs : %f\n",total_t);
              
     //     }
-         
+         */
             // INT COMBS : 4294967296
 
-         
-         
-     //   8*8 = 64 1000000
-     //   11111111 - 01000000 = 10111111 191
-        
-        
-      //  191 = 
-        
+
 // end of function      
     
 }      
      
    
 
-void printStrings() {
-    
-     
-                            char src[] = "[0] 0 1 2 3 4 5 6 7";
-                            char *dest = (char* ) malloc(10000);
-                            
-                            // prottpye 
-                            // prtotype (char *dest, const char *src);
-                            // char *strncat(char *dest, const char *src, size_t n);
-
-                            dest[10000] = '\0';
-                            
-                            strncat(dest,src,16);
-                            
-                            //The strcat function returns a pointer to s1 (dest) (where the resulting concatenated string resides).
-                           // 24 bits / 3 bits = 8 cycles
-                            
-                            for (int idx= 0; idx < 8; idx++) {
-                                strncat(dest,src,21);
-                                printf(" %s ",dest);
-                            }
-                        
-                        
-                            printf("\n\n\n");
-                        
-}
 
 
-void printUntil256() {
+void printUsingFunction() {
     
     
     // look at function .. f(pos) = 8*i + pos
