@@ -1,5 +1,5 @@
 #include "util.h"
-
+#include <time.h>
 void print_6_bits() {
            
      char b[8][8];
@@ -79,10 +79,7 @@ char check32Bytes() {
           */
           
          // double res, %f 
-        unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
-        unsigned int mask_add_8 =    0x08080808;
-        int *ptr = array_base;
-        int *ptr2 = &array_base[1];
+      
         
        /*
       double res;
@@ -101,31 +98,41 @@ char check32Bytes() {
              // 8*32 = 256  (one byte, combinations)
             // 8* 8192  = 65536 (two bytes,combinations)
             // 8* 536870912  = 4294967296 (4bytes , combs)
-             
+      
+            unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
+            unsigned int mask_add_8 =    0x08080808;
             printf("\n");
-            char *firstNumbers = &array_base[0];
-            char *secondNumbers = &array_base[1];
-        
-         for (int nums = 0; nums <3; nums++) {
-             
-            printBits(*firstNumbers);
+            char *ptr = (char *) &array_base[0];
             
-            firstNumbers++;
-            printBits(*firstNumbers);
+            // INT COMBS : 4294967296
             
-            firstNumbers++;
-            printBits(*firstNumbers);
+            //trying with 256
+            //int test = 536870912;
+            unsigned int test = 4294967296;
+            // 4294967296/8 = 536870912;
             
-            firstNumbers++;
-            printBits(*firstNumbers);
+            // Number of combinations 
+            
+            int numberOfCombinations = 0;
             
             
-            printf("\n"); 
-             array_base[0] += mask_add_8;
-            // array_base[1] += mask_add_8;
-            firstNumbers = &array_base[0];
+            clock_t start = clock();
+            
+            
+               
+            for (int nums = 0; nums < test; nums++) {
+            
+         //   printf("\nNumber of combinations : %i\n", numberOfCombinations );
+            array_base[0] += mask_add_8;
+            array_base[1] += mask_add_8;
+            numberOfCombinations+=2;
+            if (numberOfCombinations % 10000 == 0)
+                printf("\nChecked %i",numberOfCombinations);
+            
             }
-                          
+            clock_t end = clock();
+            clock_t total_t = (double)(end - start) / CLOCKS_PER_SEC;
+            printf("\n%f\n",total_t);
              
     //     }
          
