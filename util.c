@@ -34,25 +34,29 @@ void getAllCombs_256bits() {
                 printf("\nTotal iterations : %i",total_iterations);
 }
 
-
+// array has ->  posToColumn[8][8*32+1];
+    
+void assignArray(u_char positionToColumn[8][8*32*1]) {
+    int a = 0;
+        for (int pos=1 ; pos < 9 ; pos++) {
+            positionToColumn[pos][0] = a;
+            for (int i=1 ; i <= 8*32+1; i++) {
+                
+                positionToColumn[pos][i] += positionToColumn[pos][i-1];
+                printf("\nPosToColum[%i][%i] = %i ",pos,i,positionToColumn[pos][i]);
+            }
+            
+            a++;
+      }
+    
+    
+}
 
 char check32Bytes() {
     
     
-     unsigned char posToColumn[8][8*32+1];
         
-        int a = 0;
-        for (int pos=1 ; pos < 9 ; pos++) {
-            posToColumn[pos][0] = a;
-            for (int i=1 ; i < 8*32+1; i++) {
-                
-                posToColumn[pos][i] += 8;
-                printf("\nPosToColum[%i][%i] = %i ",pos,i,posToColumn[pos][i]);
-            }
-            
-            a++;
-        }
-    
+        
     
     
     //getAllCombs_256bits();
