@@ -1,16 +1,14 @@
 #include "util.h"
 #include <time.h>
 
-
-
 void getAllCombs_256bits() {
-    
-            unsigned char a[] = {'0','1','2','3','4','5','6','7','8','9'};
+    // eachs char varaible represent one byte of int
+            unsigned char a[] = {'0','1','2','3','4','5','6','7','8'};
             unsigned char b[] = {'0','1','2','3','4','5','6','7','8'};
             unsigned char c[] = {'0','1','2','3','4','5','6','7','8'};
             unsigned char d[] = {'0','1','2','3','4','5','6','7','8'};
             int total_iterations= 0 ;
-            for (int pos=1 ; pos < 9*9*9*9*9; pos++) {
+            for (int pos=1 ; pos < 9; pos++) {
                         total_iterations++;
                         
                         for (int i=1 ; i < 9 ; i++) {
@@ -21,7 +19,11 @@ void getAllCombs_256bits() {
                                     total_iterations++;
                                     for (int i4=1; i4 < 9 ; i4++) {
                                         total_iterations++;
-                                        printf("(%c,%c,%c,%c)\n",a[i],b[i2],c[i3],d[i4]);
+                                        //printf("(%c,%c,%c,%c)\n",a[i],b[i2],c[i3],d[i4]);
+                                        if (a[i] == '1') {
+                                            printf("\t\tFirst Element of array is %c",a[i]);
+                                        }
+                                        
                                     }
                                 }
                                 
@@ -32,8 +34,28 @@ void getAllCombs_256bits() {
                 printf("\nTotal iterations : %i",total_iterations);
 }
 
+
+
 char check32Bytes() {
-    getAllCombs_32bits();
+    
+    
+     unsigned char posToColumn[8][8*32+1];
+        
+        int a = 0;
+        for (int pos=1 ; pos < 9 ; pos++) {
+            posToColumn[pos][0] = a;
+            for (int i=1 ; i < 8*32+1; i++) {
+                
+                posToColumn[pos][i] += 8;
+                printf("\nPosToColum[%i][%i] = %i ",pos,i,posToColumn[pos][i]);
+            }
+            
+            a++;
+        }
+    
+    
+    
+    //getAllCombs_256bits();
     //printUntil256();
     // 256 bits , em bytes são 32
    // 32 bytes / 4 bytes (size of int) = 8
@@ -81,10 +103,10 @@ char check32Bytes() {
             // 8* 8192  = 65536 (two bytes,combinations)
             // 8* 536870912  = 4294967296 (4bytes , combs)
       
-            unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
-            unsigned int mask_add_8 =    0x08080808;
-            printf("\n");
-            char *ptr = (char *) &array_base[0];
+        //    unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
+        //    unsigned int mask_add_8 =    0x08080808;
+        //    printf("\n");
+        //    char *ptr = (char *) &array_base[0];
             
             // INT COMBS : 4294967296
             
@@ -93,7 +115,7 @@ char check32Bytes() {
             
             //trying with 256
             //int test = 536870912;
-            unsigned int pos = 1;
+          //  unsigned int pos = 1;
             // 4294967296/8 = 536870912;
             // 
             // Number of combinations 
@@ -101,7 +123,7 @@ char check32Bytes() {
             int numberOfCombinations = 0;
             
             
-            clock_t start = clock();
+            //clock_t start = clock();
             
             //unsigned long // 8 bytes  +  18,446,744,073,709,551,615] 
             
