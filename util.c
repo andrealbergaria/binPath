@@ -1,27 +1,60 @@
 #include "util.h"
 #include <time.h>
 
+void assignArray(unsigned char positionToColumn[numPositions][numOfRows]) {
+
+        for (int pos=0 ; pos < 7 ; pos++) {
+            positionToColumn[pos][0] = 0;
+            for (int i=1 ; i <= numOfRows; i++) {
+
+                positionToColumn[pos][i] += 8;
+                positionToColumn[pos][i] += pos;
+
+               // printf("\nPOsitio co colm %i",positionToColumn[pos][i]);
+           // printf("\n\t\t\t %i ",i);
+               // printf("\nPOS TO COLUM %i %i",pos,i);
+               // printf("\nPosToColum[%i][%i] = %i ",pos,i,positionToColumn[pos][i]);
+            }
+
+
+      }
+
+
+}
+// Obtain all possible indexes on a  Array of '1'
+// If (1,0,0,0) then array[0]
+/*
+ *  (0,0,0,0)
+ * 	(0,0,0,1)   base
+ * 	(0,0,1,0)	base[3] = base[0]
+ * 	(0,1,0,0)   base[4] =
+ */
 void getAllCombs_256bits() {
     // eachs char varaible represent one byte of int
             unsigned char a[] = {'0','1','2','3','4','5','6','7','8'};
             unsigned char b[] = {'0','1','2','3','4','5','6','7','8'};
             unsigned char c[] = {'0','1','2','3','4','5','6','7','8'};
             unsigned char d[] = {'0','1','2','3','4','5','6','7','8'};
+            unsigned char indx[numOfRows][4];
+
+
             int total_iterations= 0 ;
             for (int pos=1 ; pos < 9; pos++) {
                         total_iterations++;
                         
                         for (int i=1 ; i < 9 ; i++) {
                             total_iterations++;
+
                             for (int i2=1; i2 < 9; i2++) {
                                 total_iterations++;
                                 for (int i3=1 ; i3 < 9;i3++) {
                                     total_iterations++;
                                     for (int i4=1; i4 < 9 ; i4++) {
                                         total_iterations++;
-                                        //printf("(%c,%c,%c,%c)\n",a[i],b[i2],c[i3],d[i4]);
+                                        printf("\n(%c,%c,%c,%c)",a[i],b[i2],c[i3],d[i4]);
                                         if (a[i] == '1') {
-                                            printf("\t\tFirst Element of array is %c",a[i]);
+                                        	printf(" Index of 1 : %i");
+
                                         }
                                         
                                     }
@@ -34,42 +67,43 @@ void getAllCombs_256bits() {
                 printf("\nTotal iterations : %i",total_iterations);
 }
 
-// array has ->  posToColumn[8][8*32+1];
-    
-void assignArray(u_char positionToColumn[8][8*32*1]) {
-    int a = 0;
-        for (int pos=1 ; pos < 9 ; pos++) {
-            positionToColumn[pos][0] = a;
-            for (int i=1 ; i <= 8*32+1; i++) {
-                
-                positionToColumn[pos][i] += positionToColumn[pos][i-1];
-                printf("\nPosToColum[%i][%i] = %i ",pos,i,positionToColumn[pos][i]);
-            }
-            
-            a++;
-      }
-    
-    
-}
+// array has ->  posToColumn[8][8*32];
+
+
+
 
 char check32Bytes() {
     
-    
+    getAllCombs_256bits();
         
-        
+   unsigned char positionToColumn[numPositions][numOfRows];
+    assignArray(positionToColumn);
     
-    
-    //getAllCombs_256bits();
-    //printUntil256();
+    for (int pos=0 ; pos < 7 ; pos++) {
+                positionToColumn[pos][0] = 0;
+                for (int i=1 ; i <= numOfRows; i++) {
+                	if (positionToColumn[pos][i] == '1') {
+                		printf("\nArray[%i][%i] == 1",pos,i);
+                	}
+
+
+                   printf("\nPosToColum[%i][%i] = %i ",pos,i,positionToColumn[pos][i]);
+                }
+
+
+          }
+
     // 256 bits , em bytes são 32
    // 32 bytes / 4 bytes (size of int) = 8
+    //64 bits * 4  = 256 ..
+
      // int a[3][4] = {  
 //   {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
 //   {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
  //  {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
 // };
 
-//64 bits * 4  = 256 ..
+
        
     // Function for getting chars
     // f(pos) = 8k+pos
@@ -77,23 +111,26 @@ char check32Bytes() {
                     
                         
       //32 bytes need need 8 ints
-     
+
+    // 8*32 = 256  (one byte, combinations)
+   // 8* 8192  = 65536 (two bytes,combinations)
+   // 8* 536870912  = 4294967296 (4bytes , combs)
+
+
           // FROM https://stackoverflow.com/questions/34357968/how-to-set-first-three-bytes-of-integer-in-c
           /*int a = 4294967233;
                 char* p=&a;
   
                 p[0] = whatever you wanted there
                 p[1] = whatever you wanted there
-          */
+
           
-         // double res, %f 
-      
-        
-       /*
-      double res;
+
+
+      double res;  %f
         int *currentByte = &res;
 */
-        //currentByte[0] = something
+
              
 
             /*unsigned int  a = (array_base[1] & 0xff000000) >>24;
@@ -103,9 +140,6 @@ char check32Bytes() {
              
              printf(" %u %u %u %u ",a,b,c,d);
              */
-             // 8*32 = 256  (one byte, combinations)
-            // 8* 8192  = 65536 (two bytes,combinations)
-            // 8* 536870912  = 4294967296 (4bytes , combs)
       
         //    unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
         //    unsigned int mask_add_8 =    0x08080808;
