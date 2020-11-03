@@ -37,19 +37,81 @@ void assignArray(unsigned char positionToColumn[numPositions][numOfRows]) {
  */
 
 
-bool isOnePresent(char arr[4]) {
-	for (int i=0 ; i<  4; i++) {
-		if (arr[i] == '1')
-			return true;
-	}
-	return false;
-}
-
 void testingArray() {
-	unsigned char arr[] = {'0','0','0','0','\0'};
+	unsigned char *tmp =(char *)malloc(5);
+	unsigned char comb[16][4] =
+						{
+						{ '0','0','0','0' },
+						{ '0','0','0','1' } ,
+						{ '0','0','1','0' } ,  // 3
+						{ '0','1','0','0' } ,
+						{ '0','1','1','1' } ,
+						{ '0','1','1','0' } ,
+						{ '0','0','1','1' } ,
+						{ '0','1','0','1' } ,	// 8
+						{ '1','0','0','0' } ,
+						{ '1','0','0','1' } ,
+						{ '1','0','1','0' } ,
+						{ '1','1','0','0' } ,
+						{ '1','0','1','1' } ,		//13
+						{ '1','1','0','1' } ,
+						{ '1','1','1','1' }		 // 15
+						};
+		for (int i=0 ; i < 16  ; i++) {
+                memcpy(tmp,comb[i],4);
+                tmp[4] = '\0';
+            for (int idx= 0; idx < 4;idx++) {
+                if (comb[i][idx] == '1') 
+                    printf("   Array[%i][%i] ",i,idx);
+            }
+        }
 
 	}
-
+	
+void testingArray256() {
+    unsigned char *tmp =(char *)malloc(5);
+    char numOfRows = pow(8,4); 
+	unsigned char *positions[numOfRows][4]; // Need to alloc 256 per position
+	
+	
+	// Memory allocated...
+    for (int i=0 ; i< numOfRows ; i++) {
+        for (int idx =0 ; idx < 4;idx++) {
+            
+            
+            
+            positions[i][idx] = (char *) malloc(256);
+            for (int memAlloc = 0 ; memAlloc < 256; memAlloc){
+                    positions[i][idx] = memAlloc;
+                    // Obter todas posicose
+                    //obterTodasAsPosicoes(1); // Todas as rows e idxs com uma determinada posicao
+                    for (int i2= 0 ; i2 < numOfRows ; i2++) {
+                        for (
+                    }
+                    
+            }
+                    
+                        
+            // Get other positions to equal  (like, {1,0,0,0} {0,1,0,0} just need to assign
+            // Other positions
+            }
+            
+            
+            
+        }
+    }
+    
+    for (int n = 0 ; n < numOfRows ; n++) {
+        
+        
+    }
+    
+    
+    
+    // Set each position with all elements (rows)
+    
+	
+}
 
 void getAllCombs_256bits() {
     // eachs char varaible represent one byte of int
@@ -58,7 +120,7 @@ void getAllCombs_256bits() {
             unsigned char c[] = {'0','1','2','3','4','5','6','7','8'};
             unsigned char d[] = {'0','1','2','3','4','5','6','7','8'};
             unsigned char indx[numOfRows][4];
-
+            unsigned int it = 0;
 
             int total_iterations= 0 ;
             for (int pos=1 ; pos < 9; pos++) {
@@ -74,9 +136,10 @@ void getAllCombs_256bits() {
                                     for (int i4=1; i4 < 9 ; i4++) {
                                         total_iterations++;
                                         //(1,1,1,1)
-                                        //printf("\n \{ '\'%c\',\'%c\',\'%c\',\'%c\' \}",a[i],b[i2],c[i3],d[i4]);
-										//{'0','0','0','0','\0'};
-
+                                        printf("\n { '%c','%c','%c','%c' }",a[i],b[i2],c[i3],d[i4]);
+                                          if (a[i] == '1') {
+                                              it++;
+                                          }
                                         
                                     }
                                 }
@@ -86,6 +149,8 @@ void getAllCombs_256bits() {
 
                 }
                 printf("\nTotal iterations : %i",total_iterations);
+                printf("\nOneElement (first 1) iterations %i",it);
+                
 }
 
 // array has ->  posToColumn[8][8*32];
@@ -96,6 +161,7 @@ void getAllCombs_256bits() {
 char check32Bytes() {
     
     getAllCombs_256bits();
+	//testingArray();
         /*
    unsigned char positionToColumn[numPositions][numOfRows];
     assignArray(positionToColumn);

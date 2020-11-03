@@ -21,6 +21,8 @@ void printUsingFunction();
 void getAllCombs_32bits();
 char check32Bytes();
 void assignArray(unsigned char positionToColumn[numPositions][numOfRows]);
+bool isOnePresent(unsigned char arr[]);
+void testingArray();
 
 
 
