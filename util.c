@@ -25,9 +25,14 @@ void assignArray(unsigned char positionToColumn[numPositions][numOfRows]) {
 // If (1,0,0,0) then array[0]
 /*
  *  (0,0,0,0)
- * 	(0,0,0,1)   base
- * 	(0,0,1,0)	base[3] = base[0]
+ * 	(0,0,0,1)   base   (index 4) place=4
+ * 	(0,0,1,0)	base[3] = base[0] (copia 4 para index anterior , tipo array[curPlace] =array[place]
  * 	(0,1,0,0)   base[4] =
+ *
+ * 	(1,1,0,0)
+ *
+ * 	Permutations of '1' on 4 digits
+ *
  */
 void getAllCombs_256bits() {
     // eachs char varaible represent one byte of int
