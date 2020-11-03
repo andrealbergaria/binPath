@@ -26,14 +26,31 @@ void assignArray(unsigned char positionToColumn[numPositions][numOfRows]) {
 /*
  *  (0,0,0,0)
  * 	(0,0,0,1)   base   (index 4) place=4
- * 	(0,0,1,0)	base[3] = base[0] (copia 4 para index anterior , tipo array[curPlace] =array[place]
- * 	(0,1,0,0)   base[4] =
+ * 	(0,0,1,0)	base[3] checked
+ * 	(0,1,0,0)   base[4] checked (no need to iterate)
+ * 	(1,0,0,0)
  *
  * 	(1,1,0,0)
  *
  * 	Permutations of '1' on 4 digits
- *
+ *There is a need to know how the array behaves (future elems of it)
  */
+
+
+bool isOnePresent(char arr[4]) {
+	for (int i=0 ; i<  4; i++) {
+		if (arr[i] == '1')
+			return true;
+	}
+	return false;
+}
+
+void testingArray() {
+	unsigned char arr[] = {'0','0','0','0','\0'};
+
+	}
+
+
 void getAllCombs_256bits() {
     // eachs char varaible represent one byte of int
             unsigned char a[] = {'0','1','2','3','4','5','6','7','8'};
@@ -56,11 +73,10 @@ void getAllCombs_256bits() {
                                     total_iterations++;
                                     for (int i4=1; i4 < 9 ; i4++) {
                                         total_iterations++;
-                                        printf("\n(%c,%c,%c,%c)",a[i],b[i2],c[i3],d[i4]);
-                                        if (a[i] == '1') {
-                                        	printf(" Index of 1 : %i");
+                                        //(1,1,1,1)
+                                        //printf("\n \{ '\'%c\',\'%c\',\'%c\',\'%c\' \}",a[i],b[i2],c[i3],d[i4]);
+										//{'0','0','0','0','\0'};
 
-                                        }
                                         
                                     }
                                 }
@@ -80,7 +96,7 @@ void getAllCombs_256bits() {
 char check32Bytes() {
     
     getAllCombs_256bits();
-        
+        /*
    unsigned char positionToColumn[numPositions][numOfRows];
     assignArray(positionToColumn);
     
@@ -97,6 +113,7 @@ char check32Bytes() {
 
 
           }
+          */
 
     // 256 bits , em bytes são 32
    // 32 bytes / 4 bytes (size of int) = 8
