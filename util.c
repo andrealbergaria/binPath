@@ -1,117 +1,93 @@
 #include "util.h"
 #include <time.h>
 
-void assignArray(unsigned char positionToColumn[numPositions][numOfRows]) {
-
-        for (int pos=0 ; pos < 7 ; pos++) {
-            positionToColumn[pos][0] = 0;
-            for (int i=1 ; i <= numOfRows; i++) {
-
-                positionToColumn[pos][i] += 8;
-                positionToColumn[pos][i] += pos;
-
-               // printf("\nPOsitio co colm %i",positionToColumn[pos][i]);
-           // printf("\n\t\t\t %i ",i);
-               // printf("\nPOS TO COLUM %i %i",pos,i);
-               // printf("\nPosToColum[%i][%i] = %i ",pos,i,positionToColumn[pos][i]);
-            }
 
 
-      }
 
-
+// check how three positions work (using getAllCombs_256bits()
+void TestPositions() {
+    unsigned char a[] = {'0','1','2','3','4','5','6','7','8'};
+    unsigned char b[] = {'0','1','2','3','4','5','6','7','8'};
+    unsigned char c[] = {'0','1','2','3','4','5','6','7','8'};
+    
+            
 }
-// Obtain all possible indexes on a  Array of '1'
-// If (1,0,0,0) then array[0]
 /*
- *  (0,0,0,0)
- * 	(0,0,0,1)   base   (index 4) place=4
- * 	(0,0,1,0)	base[3] checked
- * 	(0,1,0,0)   base[4] checked (no need to iterate)
- * 	(1,0,0,0)
  *
- * 	(1,1,0,0)
- *
- * 	Permutations of '1' on 4 digits
- *There is a need to know how the array behaves (future elems of it)
- */
-
-
-void testingArray() {
-	unsigned char *tmp =(char *)malloc(5);
-	unsigned char comb[16][4] =
-						{
-						{ '0','0','0','0' },
-						{ '0','0','0','1' } ,
-						{ '0','0','1','0' } ,  // 3
-						{ '0','1','0','0' } ,
-						{ '0','1','1','1' } ,
-						{ '0','1','1','0' } ,
-						{ '0','0','1','1' } ,
-						{ '0','1','0','1' } ,	// 8
-						{ '1','0','0','0' } ,
-						{ '1','0','0','1' } ,
-						{ '1','0','1','0' } ,
-						{ '1','1','0','0' } ,
-						{ '1','0','1','1' } ,		//13
-						{ '1','1','0','1' } ,
-						{ '1','1','1','1' }		 // 15
-						};
-		for (int i=0 ; i < 16  ; i++) {
-                memcpy(tmp,comb[i],4);
-                tmp[4] = '\0';
-            for (int idx= 0; idx < 4;idx++) {
-                if (comb[i][idx] == '1') 
-                    printf("   Array[%i][%i] ",i,idx);
-            }
-        }
-
-	}
-	
-void testingArray256() {
-    unsigned char *tmp =(char *)malloc(5);
-    char numOfRows = pow(8,4); 
-	unsigned char *positions[numOfRows][4]; // Need to alloc 256 per position
-	
-	
-	// Memory allocated...
-    for (int i=0 ; i< numOfRows ; i++) {
-        for (int idx =0 ; idx < 4;idx++) {
-            
-            
-            
-            positions[i][idx] = (char *) malloc(256);
-            for (int memAlloc = 0 ; memAlloc < 256; memAlloc){
-                    positions[i][idx] = memAlloc;
-                    // Obter todas posicose
-                    //obterTodasAsPosicoes(1); // Todas as rows e idxs com uma determinada posicao
-                    for (int i2= 0 ; i2 < numOfRows ; i2++) {
-                        for (
-                    }
-                    
-            }
-                    
-                        
-            // Get other positions to equal  (like, {1,0,0,0} {0,1,0,0} just need to assign
-            // Other positions
-            }
-            
-            
-            
-        }
+ * table.bin
+ *   
+                                 Pos 1 = ,0,1,9,17,25,33,41,49,57,65,73,81,89,97,105
+                                 
+                                 Pos 2 = ,0,2,10,18,26,34,42,50,58,66,74,82,90,98,106 (all evens)
+                                 
+                                 Pos 3 = ,0,3,11,19,27,35,43,51,59,67,75,83,91,99,107,115,123,
+                                 
+                                 Pos 4 = ,0,4,12,20,28,36,44,52,60,68,76,84,92,100,108,116
+                                   
+                                 Pos 5 = ,0,5,13,21,29,37,45,53,61,69,77,85,93,101,109,117
+                                 
+                                 Pos 6 = ,0,6,14,22,30,38,46,54,62,70,78,86,94,102,110,118
+                                
+                                 Pos 7 = ,0,7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,
+                                 
+                                 Pos 8 = ,0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136
+*/
+void printPositions() {
+    
+    int pos1 = 1;
+    int pos2 = 2;
+    int pos3 = 3;
+    int pos4 = 4;
+    int pos5 = 5;
+    int pos6 = 6;
+    int pos7 = 7;
+    int pos8 = 8;
+    printf("\nPosition 1: ");
+    for (int i=0; i < 31; i++) {
+        pos1+=8;
+        printf(" %i,",pos1);
+    }
+    printf("\nPosition 2: ");
+    for (int i=0 ; i < 31;i++) {
+           pos2+=8;
+           printf(" %i,",pos2);
+     
+    }
+    printf("\nPosition 3: ");
+    for (int i=0 ; i < 31;i++) {
+           pos3+=8;
+           printf(" %i,",pos3);
     }
     
-    for (int n = 0 ; n < numOfRows ; n++) {
-        
-        
+    printf("\nPosition 4: ");
+    for (int i=0 ; i < 31;i++) {
+           pos4+=8;
+           printf(" %i,",pos4);
+     
+    }
+    printf("\nPosition 5: ");
+    for (int i=0 ; i < 31;i++) {
+           pos5+=8;
+           printf(" %i,",pos5);
     }
     
-    
-    
-    // Set each position with all elements (rows)
-    
-	
+    printf("\nPosition 6: ");
+    for (int i=0 ; i < 31;i++) {
+           pos6+=8;
+           printf(" %i,",pos6);
+    }
+    printf("\nPosition 7: ");
+    for (int i=0 ; i < 31;i++) {
+           pos7+=8;
+           printf(" %i,",pos7);
+    }
+    printf("\nPosition 8: ");
+    for (int i=0 ; i < 31;i++) {
+           pos8+=8;
+           printf(" %i,",pos8);
+    }
 }
+
 
 void getAllCombs_256bits() {
     // eachs char varaible represent one byte of int
@@ -155,12 +131,14 @@ void getAllCombs_256bits() {
 
 // array has ->  posToColumn[8][8*32];
 
-
+void launchProg() {
+    printPositions();
+}
 
 
 char check32Bytes() {
     
-    getAllCombs_256bits();
+   // getAllCombs_256bits();
 	//testingArray();
         /*
    unsigned char positionToColumn[numPositions][numOfRows];
@@ -257,7 +235,22 @@ char check32Bytes() {
            /*
             printf("\nNumber of combinations : %i\n", numberOfCombinations );
             array_base[0] += mask_add_8;
-            array_base[1] += mask_add_8;
+            array_base[1] += mask_add_8;  
+                                 Pos 1 = ,0,1,9,17,25,33,41,49,57,65,73,81,89,97,105
+                                 
+                                 Pos 2 = ,0,2,10,18,26,34,42,50,58,66,74,82,90,98,106 (all evens)
+                                 
+                                 Pos 3 = ,0,3,11,19,27,35,43,51,59,67,75,83,91,99,107,115,123,
+                                 
+                                 Pos 4 = ,0,4,12,20,28,36,44,52,60,68,76,84,92,100,108,116
+                                   
+                                 Pos 5 = ,0,5,13,21,29,37,45,53,61,69,77,85,93,101,109,117
+                                 
+                                 Pos 6 = ,0,6,14,22,30,38,46,54,62,70,78,86,94,102,110,118
+                                
+                                 Pos 7 = ,0,7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,
+                                 
+                                 Pos 8 = ,0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136
             array_base[2] += mask_add_8;
             array_base[3] += mask_add_8;
             numberOfCombinations+=4;

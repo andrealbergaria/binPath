@@ -190,6 +190,6 @@ int main() {
     //printAllCombinations(8,10);
  //  printStrings();
     //printUntil256();
- check32Bytes();
+    launchProg();
 }
 
