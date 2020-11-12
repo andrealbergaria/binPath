@@ -20,13 +20,13 @@ void convertByteToAscii(unsigned char byte,char mask);
 void printStrings();
 void printFullArray();
 void printUsingFunction();
-void getAllCombs_32bits();
+void getAllCombinations();
 char check32Bytes();
 void launchProg();
 void TestPositions();
-void get256Bytes(int *array,int sizeOfArr,int pos);
-void getAllCombs_2_elems();
 void printTemplate(u_char c);
+void assignArrayToPosition(int *array,int sizeOfArr,int pos);
+
 
 bool next_permutation(int array[], size_t length);
 void permute(char *a, int l, int r);
