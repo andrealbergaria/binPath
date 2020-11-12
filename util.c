@@ -160,12 +160,31 @@ void printTemplate() {
             unsigned char c[] = {'1','2','3','4','5','6','7','8'};
             unsigned char d[] = {'1','2','3','4','5','6','7','8'};
             // going for 4 bytes
+            // Portanto os templates sao todosd os posisveis dum numero
+            //o numero pnao pode estar contido noutro sitio (indicado pleos zeros)
+            
             
             
       /*      template(where is located 1 for example? perhaps use 3bit algorithm?
+
+            
+               //n -> Número de elementos do conjunto.
+    //p -> Quantidade de elementos por agrupamento
+    //Arranjos = pow(n,p);
+  //  n=8, p=4 = 4096
+            
+            number = 1 ;{1,1,1,1}
+            number = 2 {1,1,1,1}} 
+            for isntance        { 8,6,2,1}
+                                                    
+                                                    
+            // Todas as possiveis combinaçoes de 1 cobertas...as outras opdem ser {2-> 8)
+            it2 => [1,1,1,0
+                    1,1,1,0}
+            // Todas as possiveis combinaçoes de 2 cobertas...as outras opdem ser {2-> 8)
             
             [ 1,1,1,1 ]
-            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]  || equal to below
             [ 1,1,1,0 ] 
             [ 1,1,1,0 ]
             [ 1,1,1,0 ]
