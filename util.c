@@ -4,14 +4,6 @@
 
 
 
-// check how three positions work (using getAllCombs_256bits()
-void TestPositions() {
-    unsigned char a[] = {'0','1','2','3','4','5','6','7','8'};
-    unsigned char b[] = {'0','1','2','3','4','5','6','7','8'};
-    unsigned char c[] = {'0','1','2','3','4','5','6','7','8'};
-    
-            
-}
 /*
  *
  * table.bin
@@ -33,19 +25,39 @@ void TestPositions() {
                                  Pos 8 = ,0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136
 */
 
-//POS 1 POS 2 POS 3       POS 1 POS 2 POS 3
+// if postiion is 3, then get all combs from 3 and assign everywhere
+
+//we can mix like "('1','2','1','2');
+
+// { 1 , 3,  1 , 3}
 
 
-//0,1,9,17,25,33        0,1,9,17,25,33
+
+//char positions[] = { *ptr1 , *ptr2 , Ptr3 ,*ptr4
+
+// return the numbers on the specified position
+void get256Bytes(int *array,int sizeOfArr,int pos) {
+    
+    
+    for (int it= 0; it < sizeOfArr; it++) 
+        array[it] = 8*it+pos;
+    
+}
 
 void TestIteration() {
     
     // Populate array (populate 1 byte)
     u_char arr[] =  {1,2,3,4,5,6,7,8};
+    
+    u_char firstNum = 1;
 
     
-    for (int idx=0; idx < 4; idx++) {
-        for (int i = 1 ; i < 32; i++) {
+    
+    // to not scan the first byte, adssign it...must have 8 times
+    
+  //  { first bytets that repeat , all one byte}
+    
+        for (int i = 0 ; i < 32; i++) {
             arr[0] += 8;
             arr[1] += 8;
             arr[2] += 8;
@@ -54,9 +66,8 @@ void TestIteration() {
             arr[5] += 8;
             arr[6] += 8;
             arr[7] += 8;
-            printf("\n[%i] %i %i %i %i %i %i %i ",idx,arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7]);
+           
         }
-    }
 }
  
  
@@ -120,51 +131,203 @@ void printPositions() {
     }
 }
 
+void getAllCombs_2_elems() {
+    unsigned char a[] = {'0','1','2','3','4','5','6','7','8'};
+    unsigned char b[] = {'0','1','2','3','4','5','6','7','8'};
+    unsigned char c[] = {'0','1','2','3','4','5','6','7','8'};
+    // last col, always ('1' to '8')
+    // second col 
+    int total_iterations= 0 ;
+    for (int i1=1 ; i1 < 9; i1++) {
+        total_iterations++;
+        for (int i2=1 ; i2 < 9 ; i2++) {
+            total_iterations++;
+            for (int i3=1 ; i3 < 9 ; i3++) {
+                    total_iterations++;
+                    printf("\n { '%c','%c','%c' }    it (%i)",a[i1],b[i2],c[i3],total_iterations);
+            }
+        }
+    }
+     //num of elems 8 584 - 514  = 70
+     // num of elements 7 511 -441 = 70
 
-void getAllCombs_256bits() {
-    // eachs char varaible represent one byte of int
-            unsigned char a[] = {'0','1','2','3','4','5','6','7','8'};
-            unsigned char b[] = {'0','1','2','3','4','5','6','7','8'};
-            unsigned char c[] = {'0','1','2','3','4','5','6','7','8'};
-            unsigned char d[] = {'0','1','2','3','4','5','6','7','8'};
-            unsigned char indx[numOfRows][4];
-            unsigned int it = 0;
+    printf("\nTotal iterations : %i",total_iterations);
+}
 
-            int total_iterations= 0 ;
-            for (int pos=1 ; pos < 9; pos++) {
-                        total_iterations++;
+void printTemplate() {
+            unsigned char a[] = {'1','2','3','4','5','6','7','8'};
+            unsigned char b[] = {'1','2','3','4','5','6','7','8'};
+            unsigned char c[] = {'1','2','3','4','5','6','7','8'};
+            unsigned char d[] = {'1','2','3','4','5','6','7','8'};
+            // going for 4 bytes
+            
+            
+      /*      template(where is located 1 for example? perhaps use 3bit algorithm?
+            
+            [ 1,1,1,1 ]
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ] 
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]
+            [ 1,1,0,0 ]
+            [ 1,1,0,0 ]
+            [ 1,1,0,0 ]
+            [ 1,1,0,0
+        */    
+            
+            printf("\nTemplate of 1");
+                int total_iterations= 0 ;
                         
-                        for (int i=1 ; i < 9 ; i++) {
+                        for (int i=0 ; i < 8 ; i++) {
                             total_iterations++;
 
-                            for (int i2=1; i2 < 9; i2++) {
+                            for (int i2=0; i2 < 8; i2++) {
                                 total_iterations++;
-                                for (int i3=1 ; i3 < 9;i3++) {
+                                for (int i3=0 ; i3 < 8;i3++) {
                                     total_iterations++;
-                                    for (int i4=1; i4 < 9 ; i4++) {
+                                    for (int i4=0; i4 < 8 ; i4++) {
                                         total_iterations++;
                                         //(1,1,1,1)
-                                        printf("\n { '%c','%c','%c','%c' }",a[i],b[i2],c[i3],d[i4]);
-                                          if (a[i] == '1') {
-                                              it++;
-                                          }
+                                        //show all 
+                                        // printf("\n { '%c','%c','%c','%c' }",a[i],b[i2],c[i3],d[i4]);
+                                        if (a[i] == '1' || b[i2] == '1' || c[i3] == '1' || d[i4] == '1' ) {
+                                            // show only those that have '0'
+                                            printf("\n { '%c','%c','%c','%c' }",a[i],b[i2],c[i3],d[i4]);
+                                            printf("\t{ ");
+                                                
+                                                if (a[i] =='1')
+                                                    printf(" 1,");
+                                                else
+                                                    printf(" 0,");
+                                                if (b[i2] == '1')
+                                                    printf(" 1,");
+                                                else
+                                                    printf(" 0,");
+                                                
+                                                if (c[i3] == '1')
+                                                    printf(" 1,");
+                                                else
+                                                    printf(" 0,");
+                                                
+                                                if (d[i4] == '1')
+                                                    printf(" 1, ");
+                                                else
+                                                    printf(" 0,");
+                                                
+                                                printf(" }\n");
+                                                
+                                            
+                                            
+                                        }
+                                        
                                         
                                     }
                                 }
                                 
                             }
-                        }
-
                 }
                 printf("\nTotal iterations : %i",total_iterations);
-                printf("\nOneElement (first 1) iterations %i",it);
-                
+    
+    
+}
+
+
+
+
+void getAllCombs_256bits() {
+    //n -> Número de elementos do conjunto.
+    //p -> Quantidade de elementos por agrupamento
+    //Arranjos = pow(n,p);
+  //  n=8, p=4 = 4096
+    
+    // eachs char varaible represent one byte of int
+            unsigned char a[] = {'1','2','3','4','5','6','7','8'};
+            unsigned char b[] = {'1','2','3','4','5','6','7','8'};
+            unsigned char c[] = {'1','2','3','4','5','6','7','8'};
+            unsigned char d[] = {'1','2','3','4','5','6','7','8'};
+            // going for 4 bytes
+            
+            
+      /*      template(where is located 0 for example? perhaps use 3bit algorithm?
+            
+            [ 1,1,1,1 ]
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ] 
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]
+            [ 1,1,0,0 ]
+            [ 1,1,0,0 ]
+            [ 1,1,0,0 ]
+            [ 1,1,0,0
+        */    
+            
+            
+                int total_iterations= 0 ;
+                        
+                        for (int i=0 ; i < 8 ; i++) {
+                            total_iterations++;
+
+                            for (int i2=0; i2 < 8; i2++) {
+                                total_iterations++;
+                                for (int i3=0 ; i3 < 8;i3++) {
+                                    total_iterations++;
+                                    for (int i4=0; i4 < 8 ; i4++) {
+                                        total_iterations++;
+                                        //(1,1,1,1)
+                                        //show all 
+                                        // printf("\n { '%c','%c','%c','%c' }",a[i],b[i2],c[i3],d[i4]);
+                                        if (a[i] == '0' || b[i2] == '0' || c[i3] == '0' || d[i4] == '0' ) {
+                                            // show only those that have '0'
+                                            printf("\n { '%c','%c','%c','%c' }",a[i],b[i2],c[i3],d[i4]);
+                                            for (int i =0 ; i < 4; i++) {
+                                                if (a[i] =='1')
+                                                    printf("{ 1,");
+                                                else
+                                                    printf("{ 0,");
+                                                if (b[i2] == '1')
+                                                    printf("1,");
+                                                else
+                                                    printf("{ 0,");
+                                                
+                                                if (c[i3] == '1')
+                                                    printf("1,");
+                                                else
+                                                    printf("{ 0,");
+                                                
+                                                if (d[i4] == '1')
+                                                    printf("1, ");
+                                                else
+                                                    printf("{ 0,");
+                                                
+                                            }
+                                            
+                                        }
+                                        
+                                        
+                                    }
+                                }
+                                
+                            }
+                }
+                printf("\nTotal iterations : %i",total_iterations);
+ // LAst col always 1...8
+ // third  last col 8*8
+ // second colum 8*8*8
+                // fourth col 8*8*8*8
 }
 
 // array has ->  posToColumn[8][8*32];
 
 void launchProg() {
-    TestIteration();
+   // TestIteration();
+   // printAllCombinations();
+   // getAllCombs_256bits();
+    printTemplate();
+   // getAllCombs_2_elems();
 }
 
 

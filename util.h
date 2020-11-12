@@ -11,7 +11,6 @@
 
 
 void printAllCombinations(int numOfBits, int startByte);
-
 void printBits(unsigned char number);
 void printShortBits(unsigned short number); 
 void printIntBits(unsigned int number);
@@ -25,7 +24,9 @@ void getAllCombs_32bits();
 char check32Bytes();
 void launchProg();
 void TestPositions();
-
+void get256Bytes(int *array,int sizeOfArr,int pos);
+void getAllCombs_2_elems();
+void printTemplate();
 
 bool next_permutation(int array[], size_t length);
 void permute(char *a, int l, int r);
