@@ -32,6 +32,38 @@ void TestPositions() {
                                  
                                  Pos 8 = ,0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136
 */
+
+//POS 1 POS 2 POS 3       POS 1 POS 2 POS 3
+
+
+//0,1,9,17,25,33        0,1,9,17,25,33
+
+void TestIteration() {
+    
+    // Populate array (populate 1 byte)
+    u_char arr[] =  {1,2,3,4,5,6,7,8};
+
+    
+    for (int idx=0; idx < 4; idx++) {
+        for (int i = 1 ; i < 32; i++) {
+            arr[0] += 8;
+            arr[1] += 8;
+            arr[2] += 8;
+            arr[3] += 8;
+            arr[4] += 8;
+            arr[5] += 8;
+            arr[6] += 8;
+            arr[7] += 8;
+            printf("\n[%i] %i %i %i %i %i %i %i ",idx,arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7]);
+        }
+    }
+}
+ 
+ 
+    
+
+    
+// table.bin
 void printPositions() {
     
     int pos1 = 1;
@@ -132,7 +164,7 @@ void getAllCombs_256bits() {
 // array has ->  posToColumn[8][8*32];
 
 void launchProg() {
-    printPositions();
+    TestIteration();
 }
 
 
