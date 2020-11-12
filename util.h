@@ -26,7 +26,7 @@ void launchProg();
 void TestPositions();
 void get256Bytes(int *array,int sizeOfArr,int pos);
 void getAllCombs_2_elems();
-void printTemplate();
+void printTemplate(u_char c);
 
 bool next_permutation(int array[], size_t length);
 void permute(char *a, int l, int r);

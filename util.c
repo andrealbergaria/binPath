@@ -154,7 +154,8 @@ void getAllCombs_2_elems() {
     printf("\nTotal iterations : %i",total_iterations);
 }
 
-void printTemplate() {
+
+void printTemplate(u_char toTest) {
             unsigned char a[] = {'1','2','3','4','5','6','7','8'};
             unsigned char b[] = {'1','2','3','4','5','6','7','8'};
             unsigned char c[] = {'1','2','3','4','5','6','7','8'};
@@ -211,26 +212,26 @@ void printTemplate() {
                                         //(1,1,1,1)
                                         //show all 
                                         // printf("\n { '%c','%c','%c','%c' }",a[i],b[i2],c[i3],d[i4]);
-                                        if (a[i] == '1' || b[i2] == '1' || c[i3] == '1' || d[i4] == '1' ) {
+                                        if (a[i] == toTest || b[i2] == toTest || c[i3] == toTest || d[i4] == toTest ) {
                                             // show only those that have '0'
                                             printf("\n { '%c','%c','%c','%c' }",a[i],b[i2],c[i3],d[i4]);
                                             printf("\t{ ");
                                                 
-                                                if (a[i] =='1')
+                                                if (a[i] ==toTest)
                                                     printf(" 1,");
                                                 else
                                                     printf(" 0,");
-                                                if (b[i2] == '1')
-                                                    printf(" 1,");
-                                                else
-                                                    printf(" 0,");
-                                                
-                                                if (c[i3] == '1')
+                                                if (b[i2] == toTest)
                                                     printf(" 1,");
                                                 else
                                                     printf(" 0,");
                                                 
-                                                if (d[i4] == '1')
+                                                if (c[i3] == toTest)
+                                                    printf(" 1,");
+                                                else
+                                                    printf(" 0,");
+                                                
+                                                if (d[i4] == toTest)
                                                     printf(" 1, ");
                                                 else
                                                     printf(" 0,");
@@ -345,7 +346,7 @@ void launchProg() {
    // TestIteration();
    // printAllCombinations();
    // getAllCombs_256bits();
-    printTemplate();
+    printTemplate('2');
    // getAllCombs_2_elems();
 }
 
