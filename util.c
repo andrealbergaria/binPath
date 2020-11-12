@@ -49,25 +49,26 @@ void TestIteration() {
     
     // Populate array (populate 1 byte)
     u_char arr[] =  {1,2,3,4,5,6,7,8};
+    u_char arrTemp[] = {1,2,3,4,5,6,7,8};
     
-    u_char firstNum = 1;
-
-    
-    
-    // to not scan the first byte, adssign it...must have 8 times
-    
-  //  { first bytets that repeat , all one byte}
-    
-        for (int i = 0 ; i < 32; i++) {
-            arr[0] += 8;
-            arr[1] += 8;
-            arr[2] += 8;
-            arr[3] += 8;
-            arr[4] += 8;
-            arr[5] += 8;
-            arr[6] += 8;
-            arr[7] += 8;
+        //{ 1 , 2 , 3 , 4 ,5, 6, ,7,8}
+       // 1byte               2byte           3byte
+       // {1,2,3,4,5,6,7,8} {1,2,3,4,5,6,7,8} {1,2,3,4,5,6,7,8}            
+        
+        for (int pos=0; pos < 8; pos++) {
+            
+            for (int i = 0 ; i < 32; i++) {
+                arr[0] += 8;
+                arr[1] += 8;
+                arr[2] += 8;
+                arr[3] += 8;
+                arr[4] += 8;
+                arr[5] += 8;
+                arr[6] += 8;
+                arr[7] += 8;
            
+        }
+        memcpy(arr,arrTemp,8);
         }
 }
  
@@ -132,17 +133,20 @@ void printPositions() {
     }
 }
 
-void trying6Elems() {
+void trying8Elems() {
     unsigned char a[] = {'1','2','3','4','5','6','7','8'};
     unsigned char b[] = {'1','2','3','4','5','6','7','8'};
     unsigned char c[] = {'1','2','3','4','5','6','7','8'};
     unsigned char d[] = {'1','2','3','4','5','6','7','8'};
     unsigned char e[] = {'1','2','3','4','5','6','7','8'};
     unsigned char f[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char g[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char h[] = {'1','2','3','4','5','6','7','8'};
+    
     
     int numOfBytes=0;
     int total_iterations= 0 ;
-    printf("\nmTEPET\n");
+    
     for (int i1=0 ; i1 < 8; i1++) {
         total_iterations++;
         
@@ -161,9 +165,17 @@ void trying6Elems() {
                         
                         for (int i6=0 ; i6 < 8 ; i6++) {
                             total_iterations++;
-                            printf("\n { '%c','%c','%c' , '%c', '%c' ,'%c' }    it (%i)",a[i1],b[i2],c[i3],d[i4],e[i5],f[i6],total_iterations);
+                            for (int i7=0 ; i7 < 8; i7++) {
+                                total_iterations++;
+                                for (int i8=0 ; i8 < 8; i8++) {
+                                    total_iterations++;
+                                    printf("\n { '%c','%c','%c' , '%c', '%c' ,'%c' , '%c','%c' }    it (%i)",a[i1],b[i2],c[i3],d[i4],e[i5],f[i6],g[i7],h[i8],total_iterations);        
+                                }
+                                printf("\n---byte Mark");
+                            }
+                            
                         }
-                        printf("\n---byte Mark");
+                     
                     }
                 }
             }
@@ -304,6 +316,7 @@ void getAllCombinations() {
                                         }
                                         
                                         
+                                        
                                     }
                                 }
                                 
@@ -320,7 +333,7 @@ void launchProg() {
    // getAllCombs_256bits();
    // printTemplate('2');
     //getAllCombs_3_elems();
-    trying6Elems();
+    trying8Elems();
 
 }
 
@@ -479,16 +492,8 @@ void printUsingFunction() {
         for (int it= 0; it <= 8192; it++) {
             //printf(",%u",t);
             t = 8*it+pos;
-            
             if (t % 256 == 0) 
                 printf("\n%u",t);
-           
-          /*  if (t % 2 == 0)
-                printf(" even ");
-            else
-                printf(" odd ");
-            */
-            
          }
         t=0;
      }
