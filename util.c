@@ -163,6 +163,7 @@ void trying6Elems() {
                             total_iterations++;
                             printf("\n { '%c','%c','%c' , '%c', '%c' ,'%c' }    it (%i)",a[i1],b[i2],c[i3],d[i4],e[i5],f[i6],total_iterations);
                         }
+                        printf("\n---byte Mark");
                     }
                 }
             }
@@ -319,7 +320,7 @@ void launchProg() {
    // getAllCombs_256bits();
    // printTemplate('2');
     //getAllCombs_3_elems();
-    void trying6Elems();
+    trying6Elems();
 
 }
 

@@ -26,6 +26,7 @@ void launchProg();
 void TestPositions();
 void printTemplate(u_char c);
 void assignArrayToPosition(int *array,int sizeOfArr,int pos);
+void trying6Elems();
 
 
 bool next_permutation(int array[], size_t length);
