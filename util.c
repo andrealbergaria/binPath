@@ -72,7 +72,11 @@ void TestIteration() {
          //   got byte                got byte
               
         for (int numBytes=1 ; numBytes <= 32; numBytes++) {
+            
             // For each position, assign {1,2,3,4,5,6,7,8}, is this case use var1
+            for (int pos=1; pos < 9; pos++) {
+                printf("\nByte : %i",numBytes);
+                printf("Pos : %i \n",pos);
             for (int i=0 ; i < 32; i++) {
                 
                 var1[0]+=8;
@@ -83,10 +87,10 @@ void TestIteration() {
                 var1[5]+=8;
                 var1[6]+=8;
                 var1[7]+=8;
-                printArray(var1,8);
-                printf("\n");
+                printf( " { %i , %i  , %i , %i , %i, %i , %i , %i},\n",var1[0],var1[1],var1[2],var1[3],var1[4],var1[5],var1[6],var1[7]);
+                
             }
-            printf("\nByte #%i  concluded ",numBytes);
+            //printf("\nByte #%i  concluded ",numBytes);
             var1[0]  = 1;
             var1[1]  = 2;
             var1[2]  = 3;
@@ -95,7 +99,7 @@ void TestIteration() {
             var1[5] = 6;
             var1[6] = 7;
             var1[7] = 8;
-            
+            }
         }
     
 }
