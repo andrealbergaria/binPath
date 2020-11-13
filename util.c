@@ -45,77 +45,59 @@ void assignArrayToPosition(int *array,int sizeOfArr,int pos) {
     
 }
 
+void printArray(char *arr,int sizeOfArray) {
+    printf("   ");
+    for (int i=0 ; i < sizeOfArray; i++) {
+        printf("%c , ",arr[i]);
+    }
+}
+
+
 void TestIteration() {
     
     // Populate array (populate 1 byte)
-    u_char arr[] =  {1,2,3,4,5,6,7,8};
-    u_char arrTemp[] = {1,2,3,4,5,6,7,8};
-    
-    algorithm
-        for each position
-            
-            
+    u_char var1[] = {1,2,3,4,5,6,7,8};
+    u_char positions[32];
             
     ///the 32 bits scanning is equals in every positions so we can scan 1 (8,10,11,12,1\3,14,15) and put//  the value on 2 byte (8,10,11,12,13,14,15)
         //{ 1 , 2 , 3 , 4 ,5, 6, ,7,8}
        // 1byte             
        // {1,2,3,4,5,6,7,8}             || For 32     || FOR 32 
+           // +32
+           // byte
+      //      Var 1                   Var2                 Var3               VAr.....
+      //    {1,2,3,4,5,6,7,8} {1,2,3,4,5,6,7,8}      {1,2,3,4,5,6,7,8}  
+    //+32
             
-            Var 1                   Var2                 Var3               VAr.....
-          {8,10,11,12,13,14,15} {8,10,11,12,13,14,15 {8,10,11,12,13,14,15
-            32 its
-        
+         //   got byte                got byte
               
-        pos(1) = {8,10,11,12,213,14,15};
-        pos(2) = pos(1);
-        pos(3) = pos(1);
-        pos(4) = pos(1);
-        pos(5) = pos(1);
-        pos(6) = pos(1);
-        pos(7) = pos(1);
-        pos(8) = pos(1);
-        
-        // add 8 to each position (alg)
-        pos(1) = {8+8,10+8,11+8,12+8,13+8,14+8,15+8)
-        pos(2) = pos(1);
-        pos(3) = pos(1);
-        pos(4) = pos(1);
-        pos(5) = pos(1);
-        pos(6) = pos(1);
-        pos(7) = pos(1);
-        pos(8) = pos(1);
+        for (int numBytes=1 ; numBytes <= 32; numBytes++) {
+            // For each position, assign {1,2,3,4,5,6,7,8}, is this case use var1
+            for (int i=0 ; i < 32; i++) {
+                
+                var1[0]+=8;
+                var1[1]+=8;
+                var1[2]+=8;
+                var1[3]+=8;
+                var1[4]+=8;
+                var1[5]+=8;
+                var1[6]+=8;
+                var1[7]+=8;
+                printArray(var1,8);
+                printf("\n");
+            }
+            printf("\nByte #%i  concluded ",numBytes);
+            var1[0]  = 1;
+            var1[1]  = 2;
+            var1[2]  = 3;
+            var1[3]  = 4;
+            var1[4] = 5;
+            var1[5] = 6;
+            var1[6] = 7;
+            var1[7] = 8;
             
-              
-              numOfBytes=1;
-          
-          2byte
-          // {1,2,3,4,5,6,7,8}             || FOR 32
-          
-            numOfBytes=2
-            
-       //1byte
-    // {1,2,3,4,5,6,7,8}    
-    // 1byte
-    //{1,2,3,4,5,,6,7,8]}
-    // 1 byte
-    {1,2,3,4,5,6,7,8}
+        }
     
-        for (int pos=0; pos < 2; pos++) {
-            
-            for (int i = 0 ; i < 32; i++) {
-                arr[0] += 8;
-                arr[1] += 8;
-                arr[2] += 8;
-                arr[3] += 8;
-                arr[4] += 8;
-                arr[5] += 8;
-                arr[6] += 8;
-                arr[7] += 8;
-                printf("\n%i , %i , %i , %i, %i , %i, %i , %i",arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7]);
-           
-        }
-        memcpy(arr,arrTemp,8);
-        }
 }
  
  
