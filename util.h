@@ -23,7 +23,8 @@ void printUsingFunction();
 void getAllCombinations();
 char check32Bytes();
 void launchProg();
-void TestPositions();
+
+
 void printTemplate(u_char c);
 void assignArrayToPosition(int *array,int sizeOfArr,int pos);
 void trying8Elems();

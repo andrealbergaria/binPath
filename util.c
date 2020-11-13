@@ -23,15 +23,11 @@
                                  Pos 7 = ,0,7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,
                                  
                                  Pos 8 = ,0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136
+                                 
+                                 
+
+                                 
 */
-
-// if postiion is 3, then get all combs from 3 and assign everywhere
-
-//we can mix like "('1','2','1','2');
-
-// { 1 , 3,  1 , 3}
-
-
 
 //char positions[] = { *ptr1 , *ptr2 , Ptr3 ,*ptr4
 
@@ -51,62 +47,6 @@ void printArray(char *arr,int sizeOfArray) {
         printf("%c , ",arr[i]);
     }
 }
-
-
-void TestIteration() {
-    
-    // Populate array (populate 1 byte)
-    u_char var1[] = {1,2,3,4,5,6,7,8};
-    u_char positions[32];
-            
-    ///the 32 bits scanning is equals in every positions so we can scan 1 (8,10,11,12,1\3,14,15) and put//  the value on 2 byte (8,10,11,12,13,14,15)
-        //{ 1 , 2 , 3 , 4 ,5, 6, ,7,8}
-       // 1byte             
-       // {1,2,3,4,5,6,7,8}             || For 32     || FOR 32 
-           // +32
-           // byte
-      //      Var 1                   Var2                 Var3               VAr.....
-      //    {1,2,3,4,5,6,7,8} {1,2,3,4,5,6,7,8}      {1,2,3,4,5,6,7,8}  
-    //+32
-            
-         //   got byte                got byte
-              
-        for (int numBytes=1 ; numBytes <= 32; numBytes++) {
-            
-            // For each position, assign {1,2,3,4,5,6,7,8}, is this case use var1
-            for (int pos=1; pos < 9; pos++) {
-                printf("\nByte : %i",numBytes);
-                printf("Pos : %i \n",pos);
-            for (int i=0 ; i < 32; i++) {
-                
-                var1[0]+=8;
-                var1[1]+=8;
-                var1[2]+=8;
-                var1[3]+=8;
-                var1[4]+=8;
-                var1[5]+=8;
-                var1[6]+=8;
-                var1[7]+=8;
-                printf( " { %i , %i  , %i , %i , %i, %i , %i , %i},\n",var1[0],var1[1],var1[2],var1[3],var1[4],var1[5],var1[6],var1[7]);
-                
-            }
-            //printf("\nByte #%i  concluded ",numBytes);
-            var1[0]  = 1;
-            var1[1]  = 2;
-            var1[2]  = 3;
-            var1[3]  = 4;
-            var1[4] = 5;
-            var1[5] = 6;
-            var1[6] = 7;
-            var1[7] = 8;
-            }
-        }
-    
-}
- 
- 
-    
-
     
 // table.bin
 void printPositions() {
@@ -164,17 +104,35 @@ void printPositions() {
            printf(" %i,",pos8);
     }
 }
+// NEed 8 ints....32bytes 8*4 =32
 
 void trying8Elems() {
-    unsigned char a[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char a[] = {'1','2','3','4','5','6','7','8'}; // 8 bytes
     unsigned char b[] = {'1','2','3','4','5','6','7','8'};
     unsigned char c[] = {'1','2','3','4','5','6','7','8'};
     unsigned char d[] = {'1','2','3','4','5','6','7','8'};
-    unsigned char e[] = {'1','2','3','4','5','6','7','8'};
-    unsigned char f[] = {'1','2','3','4','5','6','7','8'};
-    unsigned char g[] = {'1','2','3','4','5','6','7','8'};
-    unsigned char h[] = {'1','2','3','4','5','6','7','8'};
     
+            
+    /*one char 8 slots
+                    Pos 1 is on index 1 of positions (those are 1..8)
+                    Pos 2 is on index 2 of poisitons (those are 1..8)  // tratar pos1 como pos[1...8]
+                    
+                    
+                            1 -> [1...255]
+                            2 -> [1...255]
+                            ...
+                            8->  [1...255]
+                    
+                    Se for um byte com 8 posiçoes
+                    [1..255]
+                    
+                    8 posiçoes dum byte (1 byte)= 8 bytes positions (8 bytes)
+                    
+                    8 posicoes dum byte = index of 8bytes
+            
+                
+    */
+            
     
     int numOfBytes=0;
     int total_iterations= 0 ;
@@ -187,32 +145,16 @@ void trying8Elems() {
             
             for (int i3=0 ; i3 < 8 ; i3++) {
                 total_iterations++;
-                
+                numOfBytes++;
                 for (int i4=0 ; i4 < 8; i4++) {
                     total_iterations++;
-                    
-                    for (int i5=0 ; i5 < 8 ; i5++) {
-                        total_iterations++;
-                        numOfBytes++;
-                        
-                        for (int i6=0 ; i6 < 8 ; i6++) {
-                            total_iterations++;
-                            for (int i7=0 ; i7 < 8; i7++) {
-                                total_iterations++;
-                                for (int i8=0 ; i8 < 8; i8++) {
-                                    total_iterations++;
-                                    printf("\n { '%c','%c','%c' , '%c', '%c' ,'%c' , '%c','%c' }    it (%i)",a[i1],b[i2],c[i3],d[i4],e[i5],f[i6],g[i7],h[i8],total_iterations);        
-                                }
-                                printf("\n---byte Mark");
-                            }
-                            
-                        }
-                     
+                        printf("\n { '%c','%c','%c' , '%c' }    it(%i)",a[i1],b[i2],c[i3],d[i4],total_iterations);        
                     }
+                                printf("\n---byte Mark");
                 }
             }
         }
-    }
+    
     printf("\nTotal iterations : %i",total_iterations);
     printf("\nNum of Bytes scanned : %i",numOfBytes);
 }
@@ -366,7 +308,7 @@ void launchProg() {
    // printTemplate('2');
     //getAllCombs_3_elems();
   // trying8Elems();
-    TestIteration();
+    //TestIteration();
 
 
 }
