@@ -51,11 +51,56 @@ void TestIteration() {
     u_char arr[] =  {1,2,3,4,5,6,7,8};
     u_char arrTemp[] = {1,2,3,4,5,6,7,8};
     
+    algorithm
+        for each position
+            
+            
+            
+    ///the 32 bits scanning is equals in every positions so we can scan 1 (8,10,11,12,1\3,14,15) and put//  the value on 2 byte (8,10,11,12,13,14,15)
         //{ 1 , 2 , 3 , 4 ,5, 6, ,7,8}
-       // 1byte               2byte           3byte
-       // {1,2,3,4,5,6,7,8} {1,2,3,4,5,6,7,8} {1,2,3,4,5,6,7,8}            
+       // 1byte             
+       // {1,2,3,4,5,6,7,8}             || For 32     || FOR 32 
+            
+            Var 1                   Var2                 Var3               VAr.....
+          {8,10,11,12,13,14,15} {8,10,11,12,13,14,15 {8,10,11,12,13,14,15
+            32 its
         
-        for (int pos=0; pos < 8; pos++) {
+              
+        pos(1) = {8,10,11,12,213,14,15};
+        pos(2) = pos(1);
+        pos(3) = pos(1);
+        pos(4) = pos(1);
+        pos(5) = pos(1);
+        pos(6) = pos(1);
+        pos(7) = pos(1);
+        pos(8) = pos(1);
+        
+        // add 8 to each position (alg)
+        pos(1) = {8+8,10+8,11+8,12+8,13+8,14+8,15+8)
+        pos(2) = pos(1);
+        pos(3) = pos(1);
+        pos(4) = pos(1);
+        pos(5) = pos(1);
+        pos(6) = pos(1);
+        pos(7) = pos(1);
+        pos(8) = pos(1);
+            
+              
+              numOfBytes=1;
+          
+          2byte
+          // {1,2,3,4,5,6,7,8}             || FOR 32
+          
+            numOfBytes=2
+            
+       //1byte
+    // {1,2,3,4,5,6,7,8}    
+    // 1byte
+    //{1,2,3,4,5,,6,7,8]}
+    // 1 byte
+    {1,2,3,4,5,6,7,8}
+    
+        for (int pos=0; pos < 2; pos++) {
             
             for (int i = 0 ; i < 32; i++) {
                 arr[0] += 8;
@@ -66,6 +111,7 @@ void TestIteration() {
                 arr[5] += 8;
                 arr[6] += 8;
                 arr[7] += 8;
+                printf("\n%i , %i , %i , %i, %i , %i, %i , %i",arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7]);
            
         }
         memcpy(arr,arrTemp,8);
@@ -333,7 +379,9 @@ void launchProg() {
    // getAllCombs_256bits();
    // printTemplate('2');
     //getAllCombs_3_elems();
-    trying8Elems();
+  // trying8Elems();
+    TestIteration();
+
 
 }
 
