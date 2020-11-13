@@ -130,7 +130,9 @@ void trying8Elems() {
                     
                     8 posicoes dum byte = index of 8bytes
             
+                positions 1 2 3 4 5 6 7 8 
                 
+        number of bytes   1 2 3 4 5 6 7 8 (also position)
     */
             
     
