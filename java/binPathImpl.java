@@ -1,3 +1,4 @@
+ls
 //package binPathJava;
 
 public class binPathImpl {
@@ -25,14 +26,14 @@ public class binPathImpl {
 	}
 	
 	private static void Try32BytesCombinations() {
-		char a[] = {'1','2','3','4','5','6','7','8'};
-	    char b[] = {'1','2','3','4','5','6','7','8'};
-	    char c[] = {'1','2','3','4','5','6','7','8'};
-	    char d[] = {'1','2','3','4','5','6','7','8'};
-	    char e[] = {'1','2','3','4','5','6','7','8'};
-	    char f[] = {'1','2','3','4','5','6','7','8'};
-	    char g[] = {'1','2','3','4','5','6','7','8'};
-	    char h[] = {'1','2','3','4','5','6','7','8'};
+		byte a[] = {1,2,3,4,5,6,7,8};
+	    byte b[] = {1,2,3,4,5,6,7,8};
+	    byte c[] = {1,2,3,4,5,6,7,8};
+	    byte d[] = {1,2,3,4,5,6,7,8};
+        byte e] =  {1,2,3,4,5,6,7,8};
+	    byte f[] = {1,2,3,4,5,6,7,8};
+	    byte g[] = {1,2,3,4,5,6,7,8};
+	    byte h[] = {1,2,3,4,5,6,7,8};
 	    
 	    
 	    int numOfBytes=0;
@@ -55,7 +56,18 @@ public class binPathImpl {
 	                        
 	                        for (int i6=0 ; i6 < 8 ; i6++) {
 	                            total_iterations++;
-	                            System.out.println("\n { "+a[i1]+" , "+b[i2] + " , "+ c[i3] + " , " +d[i4]+" , "+e[i5] +" , "+f[i6]);	                                    
+	                            System.out.println("\n { "+a[i1]+" , "+b[i2] + " , "+ c[i3] + " , " +d[i4]+" , "+e[i5] +" ,
+	                            "+f[i6]);	                                    
+	                            // need to get key
+	                            InputStream inputStream = new FileInputStream("out");
+	                            if (inputStream.read(AES.cipherText) != 32) {
+                                    System.err.println("\ndidnt read 32 bytse from file out\n");
+                                    exit(-1);
+	                            }
+	                            
+	                            byte secKeyBytes[32];
+	                            
+	                            AES.deci
 	                         }
 	                        numOfBytes++;
 	                        System.out.println("\n---byte Mark");
@@ -72,6 +84,7 @@ public class binPathImpl {
 	
 	public static void main(String[] args) {
 		Try32BytesCombinations();
+		
 
 	}
 

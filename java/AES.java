@@ -27,7 +27,9 @@
 
 	 public class AES {
 	 
-        public static String encrypt(String strToEncrypt, String secret) 
+	 
+         public static byte[] cipherText = new byte[32]; 
+        /*public static String encrypt(String strToEncrypt, String secret) 
 	    {
             try {
                 byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -35,9 +37,9 @@
 	    
 	          
               
-                KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-                keyGenerator.init(256);
-                SecretKey key = keyGenerator.generateKey();
+                //KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+               // keyGenerator.init(256);
+               // SecretKey key = keyGenerator.generateKey();
 
               Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 	          cipher.init(Cipher.ENCRYPT_MODE, key,ivspec);
@@ -59,21 +61,21 @@
 	    
 	        return null;
 	    }
-	 
-	    public static String decrypt(byte[] strToDecrypt, SecretKey key) {
+        */	 
+	    public static String decrypt(SecretKey key) {
 	    
 	    try {
-	    /*
-	    AES/CBC/NoPadding (128)  AES/CBC/PKCS5Padding (128) AES/ECB/NoPadding (128) AES/ECB/PKCS5Padding (128
-	    */
+	            
+	            
+	           
 	            
 	            byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
                 IvParameterSpec ivspec = new IvParameterSpec(iv);
          
 	            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
                 cipher.init(Cipher.DECRYPT_MODE, key, ivspec);
-	            byte[] decrypt =cipher.doFinal(strToDecrypt);
-	            System.out.println("\nDecrypted : "+new String(decrypt));
+	            byte[] decrypt =cipher.doFinal(cipherText);
+	            System.out.println
 	            //return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
 	        } 
 	        catch (Exception e) 
@@ -84,9 +86,7 @@
 	    }
 	    
 	    public static void main(String[] args) {
-	    String strToEnc = "abcefghijklmnopq";
-	    System.out.println("\nStr to decrypt : "+strToEnc+" length : "+strToEnc.length());
-            encrypt("abcefghijklmnopq","abcefghijklmnopq");
+	        encrypt("abcefghijklmnopq","abcefghijklmnopq");
 	    }
 }
 
