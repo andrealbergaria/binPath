@@ -11,4 +11,14 @@ git add .
 git commit -m "$1"
 echo -e "\nCommited git repo with msg "$1
 git push https://github.com/andrealbergaria/binPath
+rm -rf /mnt/pen_2G/binPath 
+rm -rf /mnt/pen_500g/binPath
+rm -rf /mnt/pen_61G/binPath
 
+mkdir -p /mnt/pen_2G/binPath
+mkdir -p /mnt/pen_500g/binPath
+mkdir -p /mnt/pen_61G/binPath
+
+cp -r /home/andrec/workspace_3_8/binPath/*  /mnt/pen_2G/binPath
+cp -r /home/andrec/workspace_3_8/binPath/*  /mnt/pen_500g/binPath
+cp -r /home/andrec/workspace_3_8/binPath/*  /mnt/pen_61G/binPath

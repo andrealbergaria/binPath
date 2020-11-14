@@ -106,61 +106,6 @@ void printPositions() {
 }
 // NEed 8 ints....32bytes 8*4 =32
 
-void trying8Elems() {
-    unsigned char a[] = {'1','2','3','4','5','6','7','8'}; // 8 bytes
-    unsigned char b[] = {'1','2','3','4','5','6','7','8'};
-    unsigned char c[] = {'1','2','3','4','5','6','7','8'};
-    unsigned char d[] = {'1','2','3','4','5','6','7','8'};
-    
-            
-    /*one char 8 slots
-                    Pos 1 is on index 1 of positions (those are 1..8)
-                    Pos 2 is on index 2 of poisitons (those are 1..8)  // tratar pos1 como pos[1...8]
-                    
-                    
-                            1 -> [1...255]
-                            2 -> [1...255]
-                            ...
-                            8->  [1...255]
-                    
-                    Se for um byte com 8 posiçoes
-                    [1..255]
-                    
-                    8 posiçoes dum byte (1 byte)= 8 bytes positions (8 bytes)
-                    
-                    8 posicoes dum byte = index of 8bytes
-            
-                positions 1 2 3 4 5 6 7 8 
-                
-        number of bytes   1 2 3 4 5 6 7 8 (also position)
-    */
-            
-    
-    int numOfBytes=0;
-    int total_iterations= 0 ;
-    
-    for (int i1=0 ; i1 < 8; i1++) {
-        total_iterations++;
-        
-        for (int i2=0 ; i2 < 8 ; i2++) {
-            total_iterations++;
-            
-            for (int i3=0 ; i3 < 8 ; i3++) {
-                total_iterations++;
-                numOfBytes++;
-                for (int i4=0 ; i4 < 8; i4++) {
-                    total_iterations++;
-                        printf("\n { '%c','%c','%c' , '%c' }    it(%i)",a[i1],b[i2],c[i3],d[i4],total_iterations);        
-                    }
-                                printf("\n---byte Mark");
-                }
-            }
-        }
-    
-    printf("\nTotal iterations : %i",total_iterations);
-    printf("\nNum of Bytes scanned : %i",numOfBytes);
-}
-
 
 void printTemplate(u_char toTest) {
             unsigned char a[] = {'1','2','3','4','5','6','7','8'};
@@ -259,6 +204,58 @@ void printTemplate(u_char toTest) {
     
 }
 
+void check32Bytes() {
+    unsigned char a[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char b[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char c[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char d[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char e[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char f[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char g[] = {'1','2','3','4','5','6','7','8'};
+    unsigned char h[] = {'1','2','3','4','5','6','7','8'};
+    
+    
+    int numOfBytes=0;
+    int total_iterations= 0 ;
+    
+    for (int i1=0 ; i1 < 8; i1++) {
+        total_iterations++;
+        
+        for (int i2=0 ; i2 < 8 ; i2++) {
+            total_iterations++;
+            
+            for (int i3=0 ; i3 < 8 ; i3++) {
+                total_iterations++;
+                
+                for (int i4=0 ; i4 < 8; i4++) {
+                    total_iterations++;
+                    
+                    for (int i5=0 ; i5 < 8 ; i5++) {
+                        total_iterations++;
+                        numOfBytes++;
+                        
+                        for (int i6=0 ; i6 < 8 ; i6++) {
+                            total_iterations++;
+                            for (int i7=0 ; i7 < 8; i7++) {
+                                total_iterations++;
+                                for (int i8=0 ; i8 < 8; i8++) {
+                                    total_iterations++;
+                                    printf("\n { '%c','%c','%c' , '%c', '%c' ,'%c' , '%c','%c' }    it (%i)",a[i1],b[i2],c[i3],d[i4],e[i5],f[i6],g[i7],h[i8],total_iterations);        
+                                }
+                                printf("\n---byte Mark");
+                            }
+                            
+                        }
+                     
+                    }
+                }
+            }
+        }
+    }
+    printf("\nTotal iterations : %i",total_iterations);
+    printf("\nNum of Bytes scanned : %i",numOfBytes);
+}
+
 
 
 
@@ -318,26 +315,6 @@ void launchProg() {
 
 char check32Bytes() {
     
-   // getAllCombs_256bits();
-	//testingArray();
-        /*
-   unsigned char positionToColumn[numPositions][numOfRows];
-    assignArray(positionToColumn);
-    
-    for (int pos=0 ; pos < 7 ; pos++) {
-                positionToColumn[pos][0] = 0;
-                for (int i=1 ; i <= numOfRows; i++) {
-                	if (positionToColumn[pos][i] == '1') {
-                		printf("\nArray[%i][%i] == 1",pos,i);
-                	}
-
-
-                   printf("\nPosToColum[%i][%i] = %i ",pos,i,positionToColumn[pos][i]);
-                }
-
-
-          }
-          */
 
     // 256 bits , em bytes são 32
    // 32 bytes / 4 bytes (size of int) = 8
