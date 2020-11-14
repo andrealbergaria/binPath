@@ -205,6 +205,115 @@ void printTemplate(u_char toTest) {
 }
 
 void check32Bytes() {
+
+	 // 256 bits , em bytes são 32
+	   // 32 bytes / 4 bytes (size of int) = 8
+	    //64 bits * 4  = 256 ..
+
+	     // int a[3][4] = {
+	//   {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
+	//   {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
+	 //  {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
+	// };
+
+
+
+	    // Function for getting chars
+	    // f(pos) = 8k+pos
+
+
+
+	      //32 bytes need need 8 ints
+
+	    // 8*32 = 256  (one byte, combinations)
+	   // 8* 8192  = 65536 (two bytes,combinations)
+	   // 8* 536870912  = 4294967296 (4bytes , combs)
+
+
+	          // FROM https://stackoverflow.com/questions/34357968/how-to-set-first-three-bytes-of-integer-in-c
+	          /*int a = 4294967233;
+	                char* p=&a;
+
+	                p[0] = whatever you wanted there
+	                p[1] = whatever you wanted there
+
+
+
+
+	      double res;  %f
+	        int *currentByte = &res;
+	*/
+
+
+
+	            /*unsigned int  a = (array_base[1] & 0xff000000) >>24;
+	             unsigned int b = (array_base[1] & 0x00ff0000) >>16;
+	             unsigned int c = (array_base[1] & 0x0000ff00) >>8;
+	             unsigned int d = (array_base[1] & 0x000000ff) ;
+
+	             printf(" %u %u %u %u ",a,b,c,d);
+	             */
+
+	        //    unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
+	        //    unsigned int mask_add_8 =    0x08080808;
+	        //    printf("\n");
+	        //    char *ptr = (char *) &array_base[0];
+
+	            // INT COMBS : 4294967296
+
+
+	             // 8 bytes ->
+
+	            //trying with 256
+	            //int test = 536870912;
+	          //  unsigned int pos = 1;
+	            // 4294967296/8 = 536870912;
+	            //
+	            // Number of combinations
+
+
+	            //clock_t start = clock();
+
+	            //unsigned long // 8 bytes  +  18,446,744,073,709,551,615]
+
+
+	           /*
+	            printf("\nNumber of combinations : %i\n", numberOfCombinations );
+	            array_base[0] += mask_add_8;
+	            array_base[1] += mask_add_8;
+	                                 Pos 1 = ,0,1,9,17,25,33,41,49,57,65,73,81,89,97,105
+
+	                                 Pos 2 = ,0,2,10,18,26,34,42,50,58,66,74,82,90,98,106 (all evens)
+
+	                                 Pos 3 = ,0,3,11,19,27,35,43,51,59,67,75,83,91,99,107,115,123,
+
+	                                 Pos 4 = ,0,4,12,20,28,36,44,52,60,68,76,84,92,100,108,116
+
+	                                 Pos 5 = ,0,5,13,21,29,37,45,53,61,69,77,85,93,101,109,117
+
+	                                 Pos 6 = ,0,6,14,22,30,38,46,54,62,70,78,86,94,102,110,118
+
+	                                 Pos 7 = ,0,7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,
+
+	                                 Pos 8 = ,0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136
+	            array_base[2] += mask_add_8;
+	            array_base[3] += mask_add_8;
+	            numberOfCombinations+=4;
+	            if (numberOfCombinations % 10000 == 0)
+	                printf("\nChecked %i",numberOfCombinations);
+
+	            }
+	            clock_t end = clock();
+	            clock_t total_t = (double)(end - start) / CLOCKS_PER_SEC;
+	            printf("\nTotal secs : %f\n",total_t);
+
+	    //     }
+	         */
+	            // INT COMBS : 4294967296
+
+
+	// end of function
+
     unsigned char a[] = {'1','2','3','4','5','6','7','8'};
     unsigned char b[] = {'1','2','3','4','5','6','7','8'};
     unsigned char c[] = {'1','2','3','4','5','6','7','8'};
@@ -301,13 +410,13 @@ void getAllCombinations() {
 
 
 void launchProg() {
-   // TestIteration();
+
    // printAllCombinations();
    // getAllCombs_256bits();
    // printTemplate('2');
     //getAllCombs_3_elems();
-  // trying8Elems();
-    //TestIteration();
+	check32Bytes();
+
 
 
 }
@@ -316,116 +425,8 @@ void launchProg() {
 char check32Bytes() {
     
 
-    // 256 bits , em bytes são 32
-   // 32 bytes / 4 bytes (size of int) = 8
-    //64 bits * 4  = 256 ..
-
-     // int a[3][4] = {  
-//   {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
-//   {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
- //  {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
-// };
-
-
-       
-    // Function for getting chars
-    // f(pos) = 8k+pos
-     
-                    
-                        
-      //32 bytes need need 8 ints
-
-    // 8*32 = 256  (one byte, combinations)
-   // 8* 8192  = 65536 (two bytes,combinations)
-   // 8* 536870912  = 4294967296 (4bytes , combs)
-
-
-          // FROM https://stackoverflow.com/questions/34357968/how-to-set-first-three-bytes-of-integer-in-c
-          /*int a = 4294967233;
-                char* p=&a;
-  
-                p[0] = whatever you wanted there
-                p[1] = whatever you wanted there
-
-          
-
-
-      double res;  %f
-        int *currentByte = &res;
-*/
-
-             
-
-            /*unsigned int  a = (array_base[1] & 0xff000000) >>24;
-             unsigned int b = (array_base[1] & 0x00ff0000) >>16;
-             unsigned int c = (array_base[1] & 0x0000ff00) >>8;
-             unsigned int d = (array_base[1] & 0x000000ff) ;
-             
-             printf(" %u %u %u %u ",a,b,c,d);
-             */
-      
-        //    unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
-        //    unsigned int mask_add_8 =    0x08080808;
-        //    printf("\n");
-        //    char *ptr = (char *) &array_base[0];
-            
-            // INT COMBS : 4294967296
-            
-            
-             // 8 bytes -> 
-            
-            //trying with 256
-            //int test = 536870912;
-          //  unsigned int pos = 1;
-            // 4294967296/8 = 536870912;
-            // 
-            // Number of combinations 
-            
-            int numberOfCombinations = 0;
-            
-            
-            //clock_t start = clock();
-            
-            //unsigned long // 8 bytes  +  18,446,744,073,709,551,615] 
-            
-               
-           /*
-            printf("\nNumber of combinations : %i\n", numberOfCombinations );
-            array_base[0] += mask_add_8;
-            array_base[1] += mask_add_8;  
-                                 Pos 1 = ,0,1,9,17,25,33,41,49,57,65,73,81,89,97,105
-                                 
-                                 Pos 2 = ,0,2,10,18,26,34,42,50,58,66,74,82,90,98,106 (all evens)
-                                 
-                                 Pos 3 = ,0,3,11,19,27,35,43,51,59,67,75,83,91,99,107,115,123,
-                                 
-                                 Pos 4 = ,0,4,12,20,28,36,44,52,60,68,76,84,92,100,108,116
-                                   
-                                 Pos 5 = ,0,5,13,21,29,37,45,53,61,69,77,85,93,101,109,117
-                                 
-                                 Pos 6 = ,0,6,14,22,30,38,46,54,62,70,78,86,94,102,110,118
-                                
-                                 Pos 7 = ,0,7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,
-                                 
-                                 Pos 8 = ,0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136
-            array_base[2] += mask_add_8;
-            array_base[3] += mask_add_8;
-            numberOfCombinations+=4;
-            if (numberOfCombinations % 10000 == 0)
-                printf("\nChecked %i",numberOfCombinations);
-            
-            }
-            clock_t end = clock();
-            clock_t total_t = (double)(end - start) / CLOCKS_PER_SEC;
-            printf("\nTotal secs : %f\n",total_t);
-             
-    //     }
-         */
-            // INT COMBS : 4294967296
-
-
-// end of function      
     
+
 }      
      
    

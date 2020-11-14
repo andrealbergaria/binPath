@@ -1,7 +1,3 @@
-
-all:
-        $(MAKE) -C /home/andrec/workspace_3_8/binPath/c all
-        
 all: printAllCombs binPath
 
 printAllCombs: printAllCombs.o
@@ -19,10 +15,6 @@ binPath.o: binPath.c
 
 getValues: getBinariesFromDecimals.o
 	cc getBinariesFromDecimals.o -lbinpath -L. -o getValues
-	
-binPath_16_32_64bits.o: binPath_16_32_64bits.c
-	cc -c binPath_16_32_64bits.c -g -o binPath_16_32_64bits.o
-	
 	
 util.o: util.c util.h
 	cc -c util.c -g -o util.o

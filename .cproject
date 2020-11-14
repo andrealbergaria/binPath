@@ -23,7 +23,13 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.exe.release.1906171034." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.exe.release.1130353579" name="Linux GCC" nonInternalBuilderId="cdt.managedbuild.target.gnu.builder.exe.release" superClass="cdt.managedbuild.toolchain.gnu.exe.release">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.exe.release.525804732" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.exe.release"/>
-							<builder autoBuildTarget="all" buildPath="${workspace_loc:/binPath}/Release" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="cdt.managedbuild.target.gnu.builder.exe.release.1160663695" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="cdt.managedbuild.target.gnu.builder.exe.release"/>
+							<builder arguments="-C c" autoBuildTarget="all" buildPath="${workspace_loc:/binPath}/Release" cleanBuildTarget="clean" command="make" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="cdt.managedbuild.target.gnu.builder.exe.release.1160663695" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="cdt.managedbuild.target.gnu.builder.exe.release">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="Release"/>
+									<entry flags="VALUE_WORKSPACE_PATH" kind="outputPath" name="c"/>
+									<entry flags="VALUE_WORKSPACE_PATH" kind="outputPath" name="java"/>
+								</outputEntries>
+							</builder>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1501033338" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release.2085656368" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.release">
 								<option id="gnu.cpp.compiler.exe.release.option.optimization.level.1623826859" name="Optimization Level" superClass="gnu.cpp.compiler.exe.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
@@ -38,6 +44,7 @@
 								<option id="gnu.c.link.option.libs.715919641" name="Libraries (-l)" superClass="gnu.c.link.option.libs" valueType="libs"/>
 								<option id="gnu.c.link.option.paths.1809281623" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="/home/andrec/workspace_3_8/binPath"/>
+									<listOptionValue builtIn="false" value="/usr/lib"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.15305560" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -51,7 +58,9 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="printAllCombs.c|getBinariesFromDecimals.c|sets|Release|profiler|permutations|ideas|errors|depth-first-tree|cryptTest|comments|auxliarInformation" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="java|c|printAllCombs.c|getBinariesFromDecimals.c|sets|Release|profiler|permutations|ideas|errors|depth-first-tree|cryptTest|comments|auxliarInformation" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="c"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="java"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -69,10 +78,10 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="Debug">
+		<configuration configurationName="Release">
 			<resource resourceType="PROJECT" workspacePath="/binPath"/>
 		</configuration>
-		<configuration configurationName="Release">
+		<configuration configurationName="Debug">
 			<resource resourceType="PROJECT" workspacePath="/binPath"/>
 		</configuration>
 	</storageModule>
