@@ -1,5 +1,5 @@
 
-package java;
+
 // taken from https://www.baeldung.com/java-array-permutations
 
 public class Permutation {
@@ -39,7 +39,7 @@ public class Permutation {
 	private static void printArray(int[] input) {
 	    System.out.print('\n');
 	    for(int i = 0; i < input.length; i++) {
-	        System.out.print(input[i]);
+	        System.out.print(" , "+input[i]);
 	    }
 	}
 	

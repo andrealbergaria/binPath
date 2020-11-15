@@ -1,4 +1,3 @@
-import com.sun.xml.internal.ws.wsdl.writer.UsingAddressing;
 
 //package binPathJava;
 
@@ -54,7 +53,7 @@ public class binPathImpl {
 	//  Falta permutar as posicose para ficar com todos os elems
 	private static void usingOnly32And9pos() {
 		int[]  key = new int[8];
-		for (int it= 0; it <= 32; it++) {
+		for (int it= 0; it < 32; it++) {
             	key[0] = pos_1[it]; 
             	key[1] = pos_2[it];
             	key[2] = pos_3[it];
