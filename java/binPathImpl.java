@@ -49,6 +49,17 @@ public class binPathImpl {
 													
 	}
 	
+	private static void prefix() {
+		byte atBit256;
+		byte atBit128;
+		byte atBit64;
+		byte[] bits = new byte[32];
+		
+		)
+				
+				/* 1111111000010
+				   100101001  */	
+	}			   0001010101	
 	// Para cada posicao, existe 32 numeros
 	//  Falta permutar as posicose para ficar com todos os elems
 	private static void usingOnly32And9pos() {
