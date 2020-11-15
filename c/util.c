@@ -148,7 +148,19 @@ void check32Bytes() {
 
 	// all values => 8^8 = 16777216
 
-	// ptr can be aranjos ?
+	// Cada caracter tem 8^8 posições
+	// N=> 1 ,
+	// percorrer a array usando arranjos....
+
+
+	/*
+	 *
+	 * 32 lines
+	 * 	[1 ,2 ,3 ,4, 5, 6, 7, 8,]
+	 * 	p=8 n=32
+	 *
+	 */
+
     unsigned char a[] = {'1','2','3','4','5','6','7','8'};
     unsigned char b[] = {'1','2','3','4','5','6','7','8'};
     unsigned char c[] = {'1','2','3','4','5','6','7','8'};
