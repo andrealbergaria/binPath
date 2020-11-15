@@ -1,3 +1,6 @@
  256 bits =  128 comb of 0 and 1 (prefixes)
        256 / 8 bits = 32bytes
+to scan all bits, for better speed, fix at least one bit
+for example
 
+for 256 bits, set the first bit (one or zero) making it to scan 128 (less the first bit , which we fixed, and can be 0 or 1)

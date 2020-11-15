@@ -21,7 +21,7 @@ void printStrings();
 void printFullArray();
 void printUsingFunction();
 void getAllCombinations();
-char check32Bytes();
+void check32Bytes();
 void launchProg();
 
 

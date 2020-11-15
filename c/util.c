@@ -1,4 +1,5 @@
 #include "util.h"
+#include "aes256.h"
 #include <time.h>
 
 
@@ -29,6 +30,9 @@
                                  
 */
 
+
+//u_char pos1[] =
+
 //char positions[] = { *ptr1 , *ptr2 , Ptr3 ,*ptr4
 
 
@@ -48,22 +52,22 @@ void printArray(char *arr,int sizeOfArray) {
     }
 }
     
-// table.bin
+	// table.bin
 void printPositions() {
     
     int pos1 = 1;
-    int pos2 = 2;
-    int pos3 = 3;
-    int pos4 = 4;
-    int pos5 = 5;
-    int pos6 = 6;
-    int pos7 = 7;
-    int pos8 = 8;
-    printf("\nPosition 1: ");
+    int temp = pos1;
+    int t
+    for (int i = 1 ; i < 9 ; i++) {
+    printf("\nu_char pos1[] = { ");
     for (int i=0; i < 31; i++) {
         pos1+=8;
         printf(" %i,",pos1);
+
     }
+    temp++;
+
+    printf(" } \n");)
     printf("\nPosition 2: ");
     for (int i=0 ; i < 31;i++) {
            pos2+=8;
@@ -198,6 +202,7 @@ void printTemplate(u_char toTest) {
                                 }
                                 
                             }
+                            }
                 }
                 printf("\nTotal iterations : %i",total_iterations);
     
@@ -323,7 +328,8 @@ void check32Bytes() {
     unsigned char g[] = {'1','2','3','4','5','6','7','8'};
     unsigned char h[] = {'1','2','3','4','5','6','7','8'};
     
-    
+    aes256_context ctx;
+
     int numOfBytes=0;
     int total_iterations= 0 ;
     
@@ -368,68 +374,24 @@ void check32Bytes() {
 
 
 
-void getAllCombinations() {
-    //n -> Número de elementos do conjunto.
-    //p -> Quantidade de elementos por agrupamento
-    //Arranjos = pow(n,p);
-  //  n=8, p=4 = 4096
-    
-            unsigned char a[] = {'1','2','3','4','5','6','7','8'};
-            unsigned char b[] = {'1','2','3','4','5','6','7','8'};
-            unsigned char c[] = {'1','2','3','4','5','6','7','8'};
-            unsigned char d[] = {'1','2','3','4','5','6','7','8'};
-            
-                int total_iterations= 0 ;
-                        
-                        for (int i=0 ; i < 8 ; i++) {
-                            total_iterations++;
 
-                            for (int i2=0; i2 < 8; i2++) {
-                                total_iterations++;
-                                for (int i3=0 ; i3 < 8;i3++) {
-                                    total_iterations++;
-                                    for (int i4=0; i4 < 8 ; i4++) {
-                                        total_iterations++;
-                                        //(1,1,1,1)
-                                        //show all 
-                                         printf("\n { '%c','%c','%c','%c' }",a[i],b[i2],c[i3],d[i4]);
-                                        
-                                            
-                                        }
-                                        
-                                        
-                                        
-                                    }
-                                }
-                                
-                            }
-                }
-                printf("\nTotal iterations : %i",total_iterations);
-
-}
 
 
 void launchProg() {
 
-   // printAllCombinations();
+
    // getAllCombs_256bits();
-   // printTemplate('2');
+
     //getAllCombs_3_elems();
-	check32Bytes();
+	//n -> Número de elementos do conjunto.
+	    //p -> Quantidade de elementos por agrupamento
+	    //Arranjos = pow(n,p);
+	  //  n=8, p=4 = 4096
+printPositions();
 
 
 
 }
-
-
-char check32Bytes() {
-    
-
-    
-
-}      
-     
-   
 
 
 
@@ -458,21 +420,6 @@ void printUsingFunction() {
 }
 
 
-
-void printAllCombinations(int numberOfBits,int startByte) {
-    printf("\nUsing %i bits\n",numberOfBits);
-    //unsigned int startByte = pow(2,onlyListNumberWithBits-1);
-    printf("\nStarted printing at %i",startByte);
-    int s = pow(2,numberOfBits);
-    printf("\nNumber of elems printed %i",s);
-    printf("\n{ ");
-    for (int i = 0; i< s ; i++) {
-        printBits(startByte);
-        printf(" , ");
-        startByte++;
-    }
-    printf(" } \n");
-}
 
 void printBits(unsigned char number) {
    unsigned char mask = 0x80;
