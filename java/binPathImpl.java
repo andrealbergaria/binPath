@@ -1,3 +1,5 @@
+import com.sun.xml.internal.ws.wsdl.writer.UsingAddressing;
+
 //package binPathJava;
 
 public class binPathImpl {
@@ -41,17 +43,17 @@ public class binPathImpl {
 		System.out.printf(" , 0x%d", key[1]);
 		System.out.printf(" , 0x%d", key[2]);
 		System.out.printf(" , 0x%d %n", key[3]);
-		//System.out.printf(" , 0x%d", key[4]);
-	//	System.out.printf(" , 0x%d", key[5]);
-	//	System.out.printf(" , 0x%d", key[6]);
-//		System.out.printf(" , 0x%d%n", key[7]);
+		System.out.printf(" , 0x%d", key[4]);
+		System.out.printf(" , 0x%d", key[5]);
+		System.out.printf(" , 0x%d", key[6]);
+		System.out.printf(" , 0x%d%n", key[7]);
 													
 	}
 	
 	// Para cada posicao, existe 32 numeros
-	
-	private void usingOnly32And9pos(int[] key) {
-		
+	//  Falta permutar as posicose para ficar com todos os elems
+	private static void usingOnly32And9pos() {
+		int[]  key = new int[8];
 		for (int it= 0; it <= 32; it++) {
             	key[0] = pos_1[it]; 
             	key[1] = pos_2[it];
@@ -62,54 +64,12 @@ public class binPathImpl {
             	key[6] = pos_7[it];
             	key[7] = pos_8[it];
             	printKey(key);
-   	}
-}
-	
-	
-	private static void test() {
+		}
 		
-	byte a[] = {1,2,3,4,5,6,7,8};
-    byte b[] = {1,2,3,4,5,6,7,8};
-    byte c[] = {1,2,3,4,5,6,7,8};
-    byte d[] = {1,2,3,4,5,6,7,8};
-    int key[] =  new int[4];
-    
-    int numOfBytes=0;
-    int total_iterations= 0 ;
-  //  	(8 ^4) * 32
-  //  4096		131072	
-    
-    for (int i1=0 ; i1 < 8; i1++) {
-        total_iterations++;
-        
-        for (int i2=0 ; i2 < 8 ; i2++) {
-            total_iterations++;
-            
-            for (int i3=0 ; i3 < 8 ; i3++) {
-                total_iterations++;
-                
-                for (int i4=0 ; i4 < 8; i4++) {
-                    total_iterations++;
-                    // the inidices are positions
-                    //byte[] key = { a[i1], b[i2], c[i3] ,d[i4] };
-                    
-                    for (int id=1 ; id < 32; id++) {
-                    	total_iterations++;
-                    	key[0] = pos_1[id];
-                    	key[1] = pos_2[id];
-                    	key[2] = pos_3[id];
-                    	key[3] = pos_4[id];
-                    	printKey(key);
-                    	System.out.println("\nTotal iterations "+total_iterations);
-                    }
-
-                    
-                }
-            }
-        }
-    }
-    
+		Permutation.permute(key);
 	}
+ 
+	
 	
 	private static void Try32BytesCombinations() {
 		byte a[] = {1,2,3,4,5,6,7,8};
@@ -169,7 +129,7 @@ public class binPathImpl {
 	
 	public static void main(String[] args) {
 		//Try32BytesCombinations();
-		test();
+		usingOnly32And9pos();
 		
 
 	}

@@ -1,0 +1,46 @@
+
+
+for each bit , there is a change in the set. position or substituing
+
+{1,1,1,1}
+
+1 shift  right
+{0,1,1,1}
+
+1 shift right
+{0,0,1,1}
+
+1 shift right
+{0,0,0,1}
+
+
+000
+001
+010
+100
+111
+
+using bijective sets
+
+B (positions n)  A (bits)
+    0           0
+
+    1           1
+    
+    2            
+    
+    3
+
+    
+codomain = {0,1}
+domain= {n}
+
+F(n) = { 0 ,1 }                         
+
+
+ 
+{ {0,1} {0,1} {0,1} }
+
+cartesian prod
+
+{0,1} x {0,1} = { (0,0) , (0,1) , (1,0) ,(1,1) }
