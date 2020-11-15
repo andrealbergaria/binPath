@@ -1015,3 +1015,76 @@ try to ignore leading digit, so to become 3 bits and then use the algorithm
        v[it] = 0,1
     var = 1 | 00  // so precisa mudar 1 elemento da array
     */
+    
+    
+     // 256 bits , em bytes são 32
+	   // 32 bytes / 4 bytes (size of int) = 8
+	    //64 bits * 4  = 256 ..
+	    // Function for getting chars
+	    // f(pos) = 8k+pos
+
+
+	      //32 bytes need need 8 ints
+	    // 8*32 = 256  (one byte, combinations)
+	   // 8* 8192  = 65536 (two bytes,combinations)
+	   // 8* 536870912  = 4294967296 (4bytes , combs)
+
+
+	          // FROM https://stackoverflow.com/questions/34357968/how-to-set-first-three-bytes-of-integer-in-c
+	          /*int a = 4294967233;
+	                char* p=&a;
+
+	                p[0] = whatever you wanted there
+	                p[1] = whatever you wanted there
+
+
+
+
+	      double res;  %f
+	        int *currentByte = &res;
+	
+
+
+	            unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
+	            unsigned int mask_add_8 =    0x08080808;
+	            printf("\n");
+	            char *ptr = (char *) &array_base[0];
+
+
+	            
+	             Number of combinations
+
+
+	            unsigned long // 8 bytes  +  18,446,744,073,709,551,615]
+
+
+	            printf("\nNumber of combinations : %i\n", numberOfCombinations );
+	            array_base[0] += mask_add_8;
+	            array_base[1] += mask_add_8;
+	            numberOfCombinations+=4;
+
+    //char positions[] = { *ptr1 , *ptr2 , Ptr3 ,*ptr4
+
+    
+     /*    // Portanto os templates sao todosd os posisveis dum numero
+            //o numero pnao pode estar contido noutro sitio (indicado pleos zeros)
+            
+            
+            
+               //n -> Número de elementos do conjunto.
+    //p -> Quantidade de elementos por agrupamento
+    //Arranjos = pow(n,p);
+  //  n=8, p=4 = 4096
+            
+            [ 1,1,1,1 ]
+            [ 1,1,1,0 ]  || equal to below
+            [ 1,1,1,0 ] 
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]
+            [ 1,1,1,0 ]
+            [ 1,1,0,0 ]
+            [ 1,1,0,0 ]
+            [ 1,1,0,0 ]
+          
+          }  

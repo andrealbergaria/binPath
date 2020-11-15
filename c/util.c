@@ -13,10 +13,34 @@ u_char pos_6[] = {  6,14, 22, 30, 38, 46, 54, 62, 70, 78, 86, 94, 102, 110, 118,
 u_char pos_7[] = {  7,15, 23, 31, 39, 47, 55, 63, 71, 79, 87, 95, 103, 111, 119, 127, 135, 143, 151, 159, 167, 175, 183, 191, 199, 207, 215, 223, 231, 239, 247, 255 };
 u_char pos_8[] = {  8,16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256 };
 
+// cipher text to translate
+u_char cipherText[32];
+
+
+void readFileToArray() {
+	File *cipherFile;
+	int retValue;
+
+	cipherFile = fopen( "out", "rb");
+
+	if (cipherFile == NULL) {
+		perror("\nCouldnt open cipher text file");
+		exit(-1);
+	}
+
+	fread(cipherText,32,1,cipherFile);
+	retValue = fclose(cipherFile);
+
+	if (retValue != 0) {
+		printf("\nDidnt close file properly");
+		exit(-1);
+	}
 
 
 
-//char positions[] = { *ptr1 , *ptr2 , Ptr3 ,*ptr4
+}
+
+
 
 // return the numbers on the specified position
 void assignArrayToPosition(int *array,int sizeOfArr,int pos) {
@@ -34,7 +58,7 @@ void printArray(char *arr,int sizeOfArray) {
     }
 }
     
-	// table.bin
+
 void printPositions() {
     
     int pos = 1;
@@ -60,43 +84,7 @@ void printTemplate(u_char toTest) {
             unsigned char b[] = {'1','2','3','4','5','6','7','8'};
             unsigned char c[] = {'1','2','3','4','5','6','7','8'};
             unsigned char d[] = {'1','2','3','4','5','6','7','8'};
-            // going for 4 bytes
-            // Portanto os templates sao todosd os posisveis dum numero
-            //o numero pnao pode estar contido noutro sitio (indicado pleos zeros)
-            
-            
-            
-      /*      template(where is located 1 for example? perhaps use 3bit algorithm?
 
-            
-               //n -> Número de elementos do conjunto.
-    //p -> Quantidade de elementos por agrupamento
-    //Arranjos = pow(n,p);
-  //  n=8, p=4 = 4096
-            
-            number = 1 ;{1,1,1,1}
-            number = 2 {1,1,1,1}} 
-            for isntance        { 8,6,2,1}
-                                                    
-                                                    
-            // Todas as possiveis combinaçoes de 1 cobertas...as outras opdem ser {2-> 8)
-            it2 => [1,1,1,0
-                    1,1,1,0}
-            // Todas as possiveis combinaçoes de 2 cobertas...as outras opdem ser {2-> 8)
-            
-            [ 1,1,1,1 ]
-            [ 1,1,1,0 ]  || equal to below
-            [ 1,1,1,0 ] 
-            [ 1,1,1,0 ]
-            [ 1,1,1,0 ]
-            [ 1,1,1,0 ]
-            [ 1,1,1,0 ]
-            [ 1,1,0,0 ]
-            [ 1,1,0,0 ]
-            [ 1,1,0,0 ]
-            [ 1,1,0,0
-        */    
-            
             printf("\nTemplate of %c",toTest);
                 int total_iterations= 0 ;
                         
@@ -155,60 +143,6 @@ void printTemplate(u_char toTest) {
 
 void check32Bytes() {
 
-	 // 256 bits , em bytes são 32
-	   // 32 bytes / 4 bytes (size of int) = 8
-	    //64 bits * 4  = 256 ..
-	    // Function for getting chars
-	    // f(pos) = 8k+pos
-
-
-	      //32 bytes need need 8 ints
-	    // 8*32 = 256  (one byte, combinations)
-	   // 8* 8192  = 65536 (two bytes,combinations)
-	   // 8* 536870912  = 4294967296 (4bytes , combs)
-
-
-	          // FROM https://stackoverflow.com/questions/34357968/how-to-set-first-three-bytes-of-integer-in-c
-	          /*int a = 4294967233;
-	                char* p=&a;
-
-	                p[0] = whatever you wanted there
-	                p[1] = whatever you wanted there
-
-
-
-
-	      double res;  %f
-	        int *currentByte = &res;
-	*/
-
-
-
-
-	        //    unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
-	        //    unsigned int mask_add_8 =    0x08080808;
-	        //    printf("\n");
-	        //    char *ptr = (char *) &array_base[0];
-
-
-	            //
-	            // Number of combinations
-
-
-	            //unsigned long // 8 bytes  +  18,446,744,073,709,551,615]
-
-
-	           /*
-	            printf("\nNumber of combinations : %i\n", numberOfCombinations );
-	            array_base[0] += mask_add_8;
-	            array_base[1] += mask_add_8;
-	            numberOfCombinations+=4;
-
-
-
-
-
-
     unsigned char a[] = {'1','2','3','4','5','6','7','8'};
     unsigned char b[] = {'1','2','3','4','5','6','7','8'};
     unsigned char c[] = {'1','2','3','4','5','6','7','8'};
@@ -218,6 +152,15 @@ void check32Bytes() {
     unsigned char g[] = {'1','2','3','4','5','6','7','8'};
     unsigned char h[] = {'1','2','3','4','5','6','7','8'};
     
+
+    unsigned char *pos1_ptr = a;
+    unsigned char *pos2_ptr = b;
+    unsigned char *pos3_ptr = c;
+    unsigned char *pos4_ptr = d;
+    unsigned char *pos5_ptr = e;
+    unsigned char *pos6_ptr = f;
+    unsigned char *pos7_ptr = g;
+    unsigned char *pos8_ptr = h;
 
 
     int numOfBytes=0;
@@ -245,7 +188,10 @@ void check32Bytes() {
                                 total_iterations++;
                                 for (int i8=0 ; i8 < 8; i8++) {
                                     total_iterations++;
-                                    printf("\n { '%c','%c','%c' , '%c', '%c' ,'%c' , '%c','%c' }    it (%i)",a[i1],b[i2],c[i3],d[i4],e[i5],f[i6],g[i7],h[i8],total_iterations);        
+                                    printf("\n { '%c','%c','%c' , '%c', '%c' ,'%c' , '%c','%c' }    it (%i)", \
+                                    		pos1_ptr[i1],pos2_ptr[i2],pos3_ptr[i3],pos4_ptr[i4], \
+                                    		pos5_ptr[i5],pos6_ptr[i6],pos7_ptr[i7],pos8_ptr[i8],\
+                                    		total_iterations);
                                 }
                                 printf("\n---byte Mark");
                             }
@@ -270,15 +216,7 @@ void check32Bytes() {
 void launchProg() {
 
 
-   // getAllCombs_256bits();
-
-    //getAllCombs_3_elems();
-	//n -> Número de elementos do conjunto.
-	    //p -> Quantidade de elementos por agrupamento
-	    //Arranjos = pow(n,p);
-	  //  n=8, p=4 = 4096
-printPositions();
-
+check32Bytes();
 
 
 }
