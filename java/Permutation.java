@@ -5,10 +5,10 @@
 public class Permutation {
 	
 	public static <T> void printAllRecursive(
-			  int n, T[] elements, char delimiter) {
+			  int n, int[] elements, char delimiter) {
 			 
 			    if(n == 1) {
-			        printArray(elements, delimiter);
+			        printArray(elements);
 			    } else {
 			        for(int i = 0; i < n-1; i++) {
 			            printAllRecursive(n - 1, elements, delimiter);
@@ -25,8 +25,9 @@ public class Permutation {
 	
 	public static void permute(int[] elems) {
 		
+	int n = elems.length;
+	
 	char delimiter = ',';
-	int n=8;
 	
 	int[] indexes = new int[n];
 	

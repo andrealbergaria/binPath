@@ -50,16 +50,39 @@ public class binPathImpl {
 	}
 	
 	private static void prefix() {
-		byte atBit256;
-		byte atBit128;
-		byte atBit64;
-		byte[] bits = new byte[32];
+		byte[] firstBit256 = new byte [256];
+		byte[] firstBit128 = new byte [256];
+		byte[] firstBit64  = new byte [256];
+		byte[] firstBit32 = new byte [256];
 		
-		)
-				
-				/* 1111111000010
-				   100101001  */	
-	}			   0001010101	
+	for (int i= 0 ; i< 256; i++) {
+		firstBit256[i] = 1;
+		if (i >= 128)			//	256 divides between 0 and 1 , when reaching 128... 
+			firstBit256[i] = 0;
+	}
+		
+	for (int i=0 ; i < 256;  i++) {
+		firstBit128[i] = 1;
+		if (i >= 64)
+			firstBit128[i]=0;
+	}
+	
+	for (int i = 0 ; i < 256 ; i++) {
+		firstBit64[i] = 1;
+			if (i >= 32)
+				firstBit64[i]=0;
+	}
+			
+	for (int i = 0 ; i < 256 ; i++) {
+		firstBit32[i] ≃ 1;
+		if (i >= 16)
+			firstBit32[i] = 0;
+	}
+	
+	
+	
+		//}
+	
 	// Para cada posicao, existe 32 numeros
 	//  Falta permutar as posicose para ficar com todos os elems
 	private static void usingOnly32And9pos() {
@@ -76,7 +99,7 @@ public class binPathImpl {
             	printKey(key);
 		}
 		
-		Permutation.permute(key);
+		//Permutation.permute(key);
 	}
  
 	
@@ -139,7 +162,11 @@ public class binPathImpl {
 	
 	public static void main(String[] args) {
 		//Try32BytesCombinations();
-		usingOnly32And9pos();
+	//	usingOnly32And9pos();
+		// N = 2
+		// R = bits length
+		// 2*2*2*2
+		
 		
 
 	}
