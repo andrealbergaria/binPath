@@ -1088,3 +1088,10 @@ try to ignore leading digit, so to become 3 bits and then use the algorithm
             [ 1,1,0,0 ]
           
           }  
+          
+          //     printf("\n { '%c','%c','%c' , '%c', '%c' ,'%c' , '%c','%c' }    it (%i)", \
+                                    		pos1_ptr[i1],pos2_ptr[i2],pos3_ptr[i3],pos4_ptr[i4], \
+                                    		pos5_ptr[i5],pos6_ptr[i6],pos7_ptr[i7],pos8_ptr[i8],\
+                                    		total_iterations);
+                                 
+                               
