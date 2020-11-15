@@ -18,7 +18,7 @@ u_char cipherText[32];
 
 
 void readFileToArray() {
-	File *cipherFile;
+	FILE *cipherFile;
 	int retValue;
 
 	cipherFile = fopen( "out", "rb");
@@ -142,7 +142,11 @@ void printTemplate(u_char toTest) {
 }
 
 void check32Bytes() {
+	  //p -> Quantidade de elementos por agrupamento
+	    //Arranjos = pow(n,p);
+	  //  n=8, p=4 = 4096
 
+	// all values => 8^8 = 16777216
     unsigned char a[] = {'1','2','3','4','5','6','7','8'};
     unsigned char b[] = {'1','2','3','4','5','6','7','8'};
     unsigned char c[] = {'1','2','3','4','5','6','7','8'};
@@ -188,6 +192,11 @@ void check32Bytes() {
                                 total_iterations++;
                                 for (int i8=0 ; i8 < 8; i8++) {
                                     total_iterations++;
+
+                                    Arranjos com repetição
+
+                                    nAp
+
                                     printf("\n { '%c','%c','%c' , '%c', '%c' ,'%c' , '%c','%c' }    it (%i)", \
                                     		pos1_ptr[i1],pos2_ptr[i2],pos3_ptr[i3],pos4_ptr[i4], \
                                     		pos5_ptr[i5],pos6_ptr[i6],pos7_ptr[i7],pos8_ptr[i8],\
