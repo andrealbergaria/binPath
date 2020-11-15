@@ -5,9 +5,11 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-
 #define numPositions 8
 #define numOfRows 32 // 8*32 => 256
+
+
+
 
 
 void printAllCombinations(int numOfBits, int startByte);

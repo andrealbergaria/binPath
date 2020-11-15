@@ -4,37 +4,19 @@
 
 
 
-
-/*
- *
- * table.bin
- *   
-                                 Pos 1 = ,0,1,9,17,25,33,41,49,57,65,73,81,89,97,105
-                                 
-                                 Pos 2 = ,0,2,10,18,26,34,42,50,58,66,74,82,90,98,106 (all evens)
-                                 
-                                 Pos 3 = ,0,3,11,19,27,35,43,51,59,67,75,83,91,99,107,115,123,
-                                 
-                                 Pos 4 = ,0,4,12,20,28,36,44,52,60,68,76,84,92,100,108,116
-                                   
-                                 Pos 5 = ,0,5,13,21,29,37,45,53,61,69,77,85,93,101,109,117
-                                 
-                                 Pos 6 = ,0,6,14,22,30,38,46,54,62,70,78,86,94,102,110,118
-                                
-                                 Pos 7 = ,0,7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,
-                                 
-                                 Pos 8 = ,0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136
-                                 
-                                 
-
-                                 
-*/
+u_char pos_1[] = {  1,9, 17, 25, 33, 41, 49, 57, 65, 73, 81, 89, 97, 105, 113, 121, 129, 137, 145, 153, 161, 169, 177, 185, 193, 201, 209, 217, 225, 233, 241, 249 };
+u_char pos_2[] = {  2,10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 170, 178, 186, 194, 202, 210, 218, 226, 234, 242, 250 };
+u_char pos_3[] = {  3,11, 19, 27, 35, 43, 51, 59, 67, 75, 83, 91, 99, 107, 115, 123, 131, 139, 147, 155, 163, 171, 179, 187, 195, 203, 211, 219, 227, 235, 243, 251 };
+u_char pos_4[] = {  4,12, 20, 28, 36, 44, 52, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 156, 164, 172, 180, 188, 196, 204, 212, 220, 228, 236, 244, 252};
+u_char pos_5[] = {  5,13, 21, 29, 37, 45, 53, 61, 69, 77, 85, 93, 101, 109, 117, 125, 133, 141, 149, 157, 165, 173, 181, 189, 197, 205, 213, 221, 229, 237, 245, 253};
+u_char pos_6[] = {  6,14, 22, 30, 38, 46, 54, 62, 70, 78, 86, 94, 102, 110, 118, 126, 134, 142, 150, 158, 166, 174, 182, 190, 198, 206, 214, 222, 230, 238, 246, 254};
+u_char pos_7[] = {  7,15, 23, 31, 39, 47, 55, 63, 71, 79, 87, 95, 103, 111, 119, 127, 135, 143, 151, 159, 167, 175, 183, 191, 199, 207, 215, 223, 231, 239, 247, 255 };
+u_char pos_8[] = {  8,16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256 };
 
 
-//u_char pos1[] =
+
 
 //char positions[] = { *ptr1 , *ptr2 , Ptr3 ,*ptr4
-
 
 // return the numbers on the specified position
 void assignArrayToPosition(int *array,int sizeOfArr,int pos) {
@@ -55,58 +37,20 @@ void printArray(char *arr,int sizeOfArray) {
 	// table.bin
 void printPositions() {
     
-    int pos1 = 1;
-    int temp = pos1;
-    int t
+    int pos = 1;
+    int temp = pos;
     for (int i = 1 ; i < 9 ; i++) {
-    printf("\nu_char pos1[] = { ");
+    pos = temp;
+    printf("\nu_char pos_%i[] = { ",pos);
     for (int i=0; i < 31; i++) {
-        pos1+=8;
-        printf(" %i,",pos1);
+        pos+=8;
+        printf(" %i,",pos);
 
     }
+    printf(" } ");
     temp++;
-
-    printf(" } \n");)
-    printf("\nPosition 2: ");
-    for (int i=0 ; i < 31;i++) {
-           pos2+=8;
-           printf(" %i,",pos2);
-     
-    }
-    printf("\nPosition 3: ");
-    for (int i=0 ; i < 31;i++) {
-           pos3+=8;
-           printf(" %i,",pos3);
     }
     
-    printf("\nPosition 4: ");
-    for (int i=0 ; i < 31;i++) {
-           pos4+=8;
-           printf(" %i,",pos4);
-     
-    }
-    printf("\nPosition 5: ");
-    for (int i=0 ; i < 31;i++) {
-           pos5+=8;
-           printf(" %i,",pos5);
-    }
-    
-    printf("\nPosition 6: ");
-    for (int i=0 ; i < 31;i++) {
-           pos6+=8;
-           printf(" %i,",pos6);
-    }
-    printf("\nPosition 7: ");
-    for (int i=0 ; i < 31;i++) {
-           pos7+=8;
-           printf(" %i,",pos7);
-    }
-    printf("\nPosition 8: ");
-    for (int i=0 ; i < 31;i++) {
-           pos8+=8;
-           printf(" %i,",pos8);
-    }
 }
 // NEed 8 ints....32bytes 8*4 =32
 
@@ -214,22 +158,11 @@ void check32Bytes() {
 	 // 256 bits , em bytes são 32
 	   // 32 bytes / 4 bytes (size of int) = 8
 	    //64 bits * 4  = 256 ..
-
-	     // int a[3][4] = {
-	//   {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
-	//   {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
-	 //  {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
-	// };
-
-
-
 	    // Function for getting chars
 	    // f(pos) = 8k+pos
 
 
-
 	      //32 bytes need need 8 ints
-
 	    // 8*32 = 256  (one byte, combinations)
 	   // 8* 8192  = 65536 (two bytes,combinations)
 	   // 8* 536870912  = 4294967296 (4bytes , combs)
@@ -251,33 +184,16 @@ void check32Bytes() {
 
 
 
-	            /*unsigned int  a = (array_base[1] & 0xff000000) >>24;
-	             unsigned int b = (array_base[1] & 0x00ff0000) >>16;
-	             unsigned int c = (array_base[1] & 0x0000ff00) >>8;
-	             unsigned int d = (array_base[1] & 0x000000ff) ;
-
-	             printf(" %u %u %u %u ",a,b,c,d);
-	             */
 
 	        //    unsigned int array_base[8] = {0x00010203,0x04050607,0x08090A0B,0xC0D0E0F};
 	        //    unsigned int mask_add_8 =    0x08080808;
 	        //    printf("\n");
 	        //    char *ptr = (char *) &array_base[0];
 
-	            // INT COMBS : 4294967296
 
-
-	             // 8 bytes ->
-
-	            //trying with 256
-	            //int test = 536870912;
-	          //  unsigned int pos = 1;
-	            // 4294967296/8 = 536870912;
 	            //
 	            // Number of combinations
 
-
-	            //clock_t start = clock();
 
 	            //unsigned long // 8 bytes  +  18,446,744,073,709,551,615]
 
@@ -286,38 +202,12 @@ void check32Bytes() {
 	            printf("\nNumber of combinations : %i\n", numberOfCombinations );
 	            array_base[0] += mask_add_8;
 	            array_base[1] += mask_add_8;
-	                                 Pos 1 = ,0,1,9,17,25,33,41,49,57,65,73,81,89,97,105
-
-	                                 Pos 2 = ,0,2,10,18,26,34,42,50,58,66,74,82,90,98,106 (all evens)
-
-	                                 Pos 3 = ,0,3,11,19,27,35,43,51,59,67,75,83,91,99,107,115,123,
-
-	                                 Pos 4 = ,0,4,12,20,28,36,44,52,60,68,76,84,92,100,108,116
-
-	                                 Pos 5 = ,0,5,13,21,29,37,45,53,61,69,77,85,93,101,109,117
-
-	                                 Pos 6 = ,0,6,14,22,30,38,46,54,62,70,78,86,94,102,110,118
-
-	                                 Pos 7 = ,0,7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,
-
-	                                 Pos 8 = ,0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136
-	            array_base[2] += mask_add_8;
-	            array_base[3] += mask_add_8;
 	            numberOfCombinations+=4;
-	            if (numberOfCombinations % 10000 == 0)
-	                printf("\nChecked %i",numberOfCombinations);
-
-	            }
-	            clock_t end = clock();
-	            clock_t total_t = (double)(end - start) / CLOCKS_PER_SEC;
-	            printf("\nTotal secs : %f\n",total_t);
-
-	    //     }
-	         */
-	            // INT COMBS : 4294967296
 
 
-	// end of function
+
+
+
 
     unsigned char a[] = {'1','2','3','4','5','6','7','8'};
     unsigned char b[] = {'1','2','3','4','5','6','7','8'};
@@ -328,7 +218,7 @@ void check32Bytes() {
     unsigned char g[] = {'1','2','3','4','5','6','7','8'};
     unsigned char h[] = {'1','2','3','4','5','6','7','8'};
     
-    aes256_context ctx;
+
 
     int numOfBytes=0;
     int total_iterations= 0 ;
