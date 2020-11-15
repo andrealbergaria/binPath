@@ -1,3 +1,4 @@
+package binPathJava;
 // FROM
 // https://howtodoinjava.com/java/java-security/java-aes-encryption-example/
 // And 

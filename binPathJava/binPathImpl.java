@@ -1,5 +1,5 @@
+package binPathJava;
 
-//package binPathJava;
 
 public class binPathImpl {
 
@@ -55,7 +55,7 @@ public class binPathImpl {
 		byte[] firstBit64  = new byte [256];
 		byte[] firstBit32  = new byte [256];
 		byte[] firstBit16 =  new byte[256];
-		byte[] buffer = new byte[256];
+		byte[] buffer = new byte[6];
 		
 	for (int i= 0 ; i< 256; i++) {
 		firstBit256[i] = 1;
@@ -63,47 +63,48 @@ public class binPathImpl {
 			firstBit256[i] = 0;
 	}
 		
-	for (int i=0 ; i < 256;  i++) {
+	for (int i=0 ; i < 128;  i++) {
 		firstBit128[i] = 1;
 		if (i >= 64)
 			firstBit128[i]=0;
 	}
 	
-	for (int i = 0 ; i < 256 ; i++) {
+	for (int i = 0 ; i < 64 ; i++) {
 		firstBit64[i] = 1;
 			if (i >= 32)
 				firstBit64[i]=0;
 	}
 			
-	for (int i = 0 ; i < 256 ; i++) {
-		firstBit32[i] ≃ 1;
+	for (int i = 0 ; i < 32; i++) {
+		firstBit32[i] = 1;
 		if (i >= 16)
 			firstBit32[i] = 0;
 	}
 	
-	for (int i=0 ; i < 256; i++) {
+	for (int i=0 ; i < 16; i++) {
 		firstBit16[i] = 1;
 		if (i >= 8)
 			firstBit16[i] =0 ;
 	}
 	
-		for (int i=0 ; i < 256; i++) {
+		for (byte i=0 ; i < 256; i++) {
 			buffer[0] = firstBit256[i];
 			buffer[1] = firstBit128[i];
 			buffer[2] = firstBit64[i];
 			buffer[3] = firstBit32[i];
-			buffer[4] = 
+			buffer[4] = firstBit16[i];
+			buffer[5] = i;
+			System.out.print("\n"+new String(buffer));
 			
 		}
 	
 	
 	}
 	
-		//}
 	
 	// Para cada posicao, existe 32 numeros
 	//  Falta permutar as posicose para ficar com todos os elems
-	private static void usingOnly32And9pos() {
+	private static void checkBytes() {
 		int[]  key = new int[8];
 		for (int it= 0; it < 32; it++) {
             	key[0] = pos_1[it]; 
@@ -117,66 +118,12 @@ public class binPathImpl {
             	printKey(key);
 		}
 		
-		//Permutation.permute(key);
+		Permutation.permute(key);
 	}
  
 	
 	
-	private static void Try32BytesCombinations() {
-		byte a[] = {1,2,3,4,5,6,7,8};
-	    byte b[] = {1,2,3,4,5,6,7,8};
-	    byte c[] = {1,2,3,4,5,6,7,8};
-	    byte d[] = {1,2,3,4,5,6,7,8};
-        byte e[] = {1,2,3,4,5,6,7,8};
-	    byte f[] = {1,2,3,4,5,6,7,8};
-	    byte g[] = {1,2,3,4,5,6,7,8};
-	    byte h[] = {1,2,3,4,5,6,7,8};
-	    
-	    
-	    int numOfBytes=0;
-	    int total_iterations= 0 ;
-	    
-	    // 8*8 64
-	    //8^6 -> 262144
-	    
-	    for (int i1=0 ; i1 < 8; i1++) {
-	        total_iterations++;
-	        
-	        for (int i2=0 ; i2 < 8 ; i2++) {
-	            total_iterations++;
-	            
-	            for (int i3=0 ; i3 < 8 ; i3++) {
-	                total_iterations++;
-	                
-	                for (int i4=0 ; i4 < 8; i4++) {
-	                    total_iterations++;
-	                    
-	                    for (int i5=0 ; i5 < 8 ; i5++) {
-	                        total_iterations++;
-	                        
-	                        for (int i6=0 ; i6 < 8 ; i6++) {
-	                            total_iterations++;
-	                           // System.out.println("\n { "+a[i1]+" , "+b[i2] + " , "+ c[i3] + " , " +d[i4]+" , "+e[i5] +" ,
-	                            //"+f[i6]);	                                    
-	                            		
-	                            int[] key = { a[i1], b[i2], c[i3] ,d[i4],e[i5],f[i6] };
-	                            // 32 lines
-	                            printKey(key);
-	                            
-	                            
-	                         }
-	                        numOfBytes++;
-	                        System.out.println("\n---byte Mark");
-	                            }
-	                            
-	                        }
-	                     
-	                    }
-	                }
-	            }
-	    System.out.println("\nTotal iterations :  "+total_iterations);
-	    System.out.println("\nNum of Bytes scanned : "+numOfBytes);
-	}
+	
 	
 	public static void main(String[] args) {
 		//Try32BytesCombinations();
@@ -185,7 +132,7 @@ public class binPathImpl {
 		// R = bits length
 		// 2*2*2*2
 		
-		
+		prefix();
 
 	}
 
