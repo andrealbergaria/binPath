@@ -7,4 +7,6 @@ for 256 bits, set the first bit (one or zero) making it to scan 128 (less the fi
 
 for catersian product
 
-{ (0,1) ,(0m1) , (0,1) } 
+{ (0,1) ,(0m1) , (0,1) }
+
+since the alrotihm is fast, there is a way to speed up multiplicaton by 2 (shifting bits) (perhaps changing positions) 

@@ -75,7 +75,6 @@
 	            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
                 cipher.init(Cipher.DECRYPT_MODE, key, ivspec);
 	            byte[] decrypt =cipher.doFinal(cipherText);
-	            System.out.println
 	            //return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
 	        } 
 	        catch (Exception e) 
@@ -86,7 +85,7 @@
 	    }
 	    
 	    public static void main(String[] args) {
-	        encrypt("abcefghijklmnopq","abcefghijklmnopq");
+	    //    encrypt("abcefghijklmnopq","abcefghijklmnopq");
 	    }
 }
 

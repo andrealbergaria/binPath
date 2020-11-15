@@ -14,20 +14,8 @@ void printFullArray() {
  //   unsigned char firstArray[8]; // just here for clearing 
  //   unsigned char secondArray[8];                
        
-    /*
-     * 64 bits
-     * bytes  = 64 / 8 = 8 bytes
-     * 
-     * Positions          1             2               3           4           5       6           7           8
-     * Values             0             1               2           3           4       5           6           7
-       bitStrings 1)   00000000      00000001       00000010    000000100    00000101 00000110  00000111     00001000 (64bits)
-       
-       2) Values         8+1           8+2             8+3          8+4         8+5     8+6    8+7         8+8
-     *                 00001001      00001010       00001011   00001100     00001101 00001101  0000111      00010000
 
-       3) Values        8+8+1          8+8+2       8+8+3       8+8+4          8+8+5    8+8+6   8+8+7       8+8+8
-                       000100001    000100010       00010011   00010100     00010101  00010110 00010111     00011000
-                    
+/*
     
     We can concatenate variables,  for example
                  0x38     0x05         
@@ -39,15 +27,6 @@ void printFullArray() {
     
      One 2), use 8 in 1), as a mask to 2)
      
-     
-                     pos 1 = 0,9,17
-                     pos 2 = 1,10,18
-                     pos 3 = 2,11,19
-                     pos 4 = 3,12,20
-                     pos 5= 4,13,21
-                     pos 6= 5,14,22
-                     and so on....         
-                         
            
                     (pos1 = 00000000 00001000 00010000 00011000 0001000 100000)
                     (add =  00000001 00000001 00000001 00000001 0000001 000001)
@@ -58,8 +37,6 @@ void printFullArray() {
                       //      OR 00000001 00000001 00000001 00000001     
                             
                             
-                    int pos1_without_spaces = 0b00000000000010000001000000011000;
-                         //   OR 00000001 00000001 00000001 00000001 
                             
                     // FROM https://stackoverflow.com/questions/7787423/c-get-nth-byte-of-integer
                     //int x = (number >> (8*n)) & 0xff;
@@ -78,9 +55,7 @@ void printFullArray() {
                   printf("\n");
                /    
                                         
-                /*                        multiple of 2 
-                               2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112
-                             
+                /*
                            
                            shifting left 4 bits, equals multiplying by 16 (16 = 2^4)
                            00001000 8
