@@ -30,7 +30,7 @@ public class binPathImpl {
 	    byte b[] = {1,2,3,4,5,6,7,8};
 	    byte c[] = {1,2,3,4,5,6,7,8};
 	    byte d[] = {1,2,3,4,5,6,7,8};
-        byte e] =  {1,2,3,4,5,6,7,8};
+        byte e[] =  {1,2,3,4,5,6,7,8};
 	    byte f[] = {1,2,3,4,5,6,7,8};
 	    byte g[] = {1,2,3,4,5,6,7,8};
 	    byte h[] = {1,2,3,4,5,6,7,8};
@@ -65,9 +65,9 @@ public class binPathImpl {
                                     exit(-1);
 	                            }
 	                            
-	                            byte secKeyBytes[32];
 	                            
-	                            AES.deci
+	                            byte[] key = { a[i], b[i2], c[i3] ,d[i4],e[i5],f[i6] };
+	                            
 	                         }
 	                        numOfBytes++;
 	                        System.out.println("\n---byte Mark");

@@ -8,7 +8,7 @@ void printFullArray() {
  //  {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
 // };
 
-//64 bits * X  = 256 .. X = 4
+
 
     unsigned char base[8][8];
  //   unsigned char firstArray[8]; // just here for clearing 
@@ -153,43 +153,17 @@ int main() {
            X       11bits
            11 / 8 = 
            
-                           
-                            char str[] = {0b000,0b001,0b010,0b100,0b101,0b110,0b011,0b111,'\0'};
-                            char *src = str;
-                            char *dest = (char* ) malloc(10000);
-                            
-                            // prottpye 
-                            // prtotype (char *dest, const char *src);
-                            // char *strncat(char *dest, const char *src, size_t n);
-
-                            dest[10000] = '\0';
-                            
-                            strncat(dest,src,9);
-                            //The strcat function returns a pointer to s1 (dest) (where the resulting concatenated string resides).
-                            24 bits / 3 bits = 8 cycles
-                            
-                            for (int idx= 0; idx < 8; idx++) {
-                                dest = strncat(dest,dest,9);
-                                printf("\n%s",dest);
-                                
-                            }
                             
                                             
                             
                          
                             
-       32 bits => 2^4 = 16
+       
        256 bits =  128 comb of 0 and 1 (prefixes)
        256 / 8 bits = 32bytes
        
        */                   
 
-    //printFullArray();
-    // number of bits 1st
-    // startbyte    2nd
-    //printAllCombinations(8,10);
- //  printStrings();
-    //printUntil256();
     launchProg();
 }
 
