@@ -53,7 +53,9 @@ public class binPathImpl {
 		byte[] firstBit256 = new byte [256];
 		byte[] firstBit128 = new byte [256];
 		byte[] firstBit64  = new byte [256];
-		byte[] firstBit32 = new byte [256];
+		byte[] firstBit32  = new byte [256];
+		byte[] firstBit16 =  new byte[256];
+		byte[] buffer = new byte[256];
 		
 	for (int i= 0 ; i< 256; i++) {
 		firstBit256[i] = 1;
@@ -79,7 +81,23 @@ public class binPathImpl {
 			firstBit32[i] = 0;
 	}
 	
+	for (int i=0 ; i < 256; i++) {
+		firstBit16[i] = 1;
+		if (i >= 8)
+			firstBit16[i] =0 ;
+	}
 	
+		for (int i=0 ; i < 256; i++) {
+			buffer[0] = firstBit256[i];
+			buffer[1] = firstBit128[i];
+			buffer[2] = firstBit64[i];
+			buffer[3] = firstBit32[i];
+			buffer[4] = 
+			
+		}
+	
+	
+	}
 	
 		//}
 	
