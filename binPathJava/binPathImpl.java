@@ -117,10 +117,17 @@ public class binPathImpl {
             	key[7] = pos_8[it];
             	printKey(key);
 		}
-		
+		/*
+		 * 
+		 * n -> num de elems 
+		 * p.-> quantidade de elemetnos por
+		 *  Arranjos => n! / (n-p)!grupo
+		 *  n -> 2
+		 *  
+		 */
 		Permutation.permute(key);
 	}
- 
+  
 	
 	
 	
@@ -131,7 +138,7 @@ public class binPathImpl {
 		// N = 2
 		// R = bits length
 		// 2*2*2*2
-		
+		// Arranjos com repetição 
 		prefix();
 
 	}

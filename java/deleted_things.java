@@ -1,4 +1,4 @@
-package binPathJava;
+package java;
 
 public class deleted_things {
 	private static void Try32BytesCombinations() {

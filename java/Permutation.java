@@ -1,4 +1,5 @@
-package binPathJava; 
+
+
 // taken from https://www.baeldung.com/java-array-permutations
 
 public class Permutation {
