@@ -110,8 +110,8 @@ public class binPathImpl {
 		
 		Integer[]  key = new Integer[8];
 		int[] ret = new int[8];
-int it=0;
-			//for (int it= 0; it < 32; it++) {
+
+			for (int it= 0; it < 32; it++) {
             	key[0] = pos_1[it];  
             	key[1] = pos_2[it];
             	key[2] = pos_3[it];
@@ -120,16 +120,19 @@ int it=0;
             	key[5] = pos_6[it];
             	key[6] = pos_7[it];
             	key[7] = pos_8[it];
-           
-          // for (int i= 0 ; i < 3; i++) {
-        	   Permutation.permute(8, key, ',');
-       //    }
-            	//printKey(key);
-				//Integer[] arr= { key[0],key[1],key[2],key[3],key[4],key[5],key[6],key[7]};
+
+            	Permutation1<Integer> perm = new Permutation1<Integer>(key);
+      	        int count = 0;
+      	        while(perm.hasNext()){
+      	            System.out.println(Arrays.toString(perm.next()));
+      	            count++;
+      	        }
+      	        System.out.println("total: " + count);
+              
+           }
             	
             	
-            	
-		//}
+
 		
 		
 		
