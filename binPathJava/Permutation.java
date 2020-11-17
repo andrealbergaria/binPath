@@ -1,44 +1,44 @@
-package binPathJava; 
-// taken from https://www.baeldung.com/java-array-permutations
 
+package binPathJava;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.lang.reflect.Array;
+
+
+// taken from https://www.baeldung.com/java-array-permutations
 public class Permutation {
-	
-	public static <T> void printAllRecursive(
-			  int n, int[] elements, char delimiter) {
-			 
-			    if(n == 1) {
-			        printArray(elements);
-			    } else {
-			        for(int i = 0; i < n-1; i++) {
-			            printAllRecursive(n - 1, elements, delimiter);
-			            if(n % 2 == 0) {
-			                swap(elements, i, n-1);
-			            } else {
-			                swap(elements, 0, n-1);
-			            }
-			        }
-			        printAllRecursive(n - 1, elements, delimiter);
-			    }
-			}
-	
-	
-	public static void permute(int[] elems) {
-		
-	int n = elems.length;
-	
-	char delimiter = ',';
-	
-	int[] indexes = new int[n];
+
+private static <T> void swap(T[] input, int a, int b) {
+    T tmp = input[a];
+    input[a] = input[b];
+    input[b] = tmp;
+}
+
+private static  <T> void printArray(T[] input,char delimeter) {
+    System.out.print('\n');
+    System.err.print("[");
+    for(int i = 0; i < input.length; i++) {
+        System.out.print(input[i]+" "+delimeter);
+    }
+    System.out.println("]");
+}
+
+
+   public static <T> void permute(int n, T[] elements, char delimiter) {
+		 
+   	int[] indexes = new int[n];
 	
 	for (int i = 0; i < n; i++) {
 	    indexes[i] = 0;
 	}
 	 
+	printArray(elements, delimiter);
+	 
 	int i = 0;
 	while (i < n) {
 	    if (indexes[i] < i) {
-	        swap(elems, i % 2 == 0 ?  0: indexes[i], i);
-	        printArray(elems);
+	        swap(elements, i % 2 == 0 ?  0: indexes[i], i);
+	        printArray(elements, delimiter);
 	        indexes[i]++;
 	        i = 0;
 	    }
@@ -47,27 +47,7 @@ public class Permutation {
 	        i++;
 	    }
 	}
-	}
+   }
 	
-	private static void swap(int[] input, int a, int b) {
-	    int tmp = input[a];
-	    input[a] = input[b];
-	    input[b] = tmp;
-	}
-
-	private static void printArray(int[] input) {
-	    System.out.print('\n');
-	    for(int i = 0; i < input.length; i++) {
-	        System.out.print(" , "+input[i]);
-	    }
-	}
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+   
 }
