@@ -32,15 +32,15 @@ private static  <T> void printArray(T[] input,char delimeter) {
 	    indexes[i] = 0;
 	}
 	 
-	//printArray(elements, delimiter);
+	printArray(elements, delimiter);
 	 int it =0 ;
 	int i = 0;
 	while (i < n) {
-		System.out.println("\nIt "+it);
+		
 		it++;
 	    if (indexes[i] < i) {
 	        swap(elements, i % 2 == 0 ?  0: indexes[i], i);
-	      //  printArray(elements, delimiter);
+	        printArray(elements, delimiter);
 	        indexes[i]++;
 	        i = 0;
 	    }

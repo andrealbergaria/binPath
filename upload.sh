@@ -19,6 +19,8 @@ sudo mkdir -p /mnt/pen_2G/binPath
 sudo mkdir -p /mnt/pen_500g/binPath
 sudo mkdir -p /mnt/pen_61G/binPath
 
-sudo cp -v -r /home/andrec/workspace_3_8/binPath/*  /mnt/pen_2G/binPath
-sudo cp -v -r /home/andrec/workspace_3_8/binPath/*  /mnt/pen_500g/binPath
-sudo cp -v -r /home/andrec/workspace_3_8/binPath/*  /mnt/pen_61G/binPath
+FILES_TO_COPY=(/home/andrec/workspace_3_8/binPath/*);
+if [[ /home/andrec/workspace_3_8/binPath
+sudo cp -v -r "$FILES_TO_COPY" /mnt/pen_2G/binPath
+sudo cp -v -r "$FILES_TO_COPY" /mnt/pen_500g/binPath
+sudo cp -v -r "$FILES_TO_COPY" /mnt/pen_61G/binPath
