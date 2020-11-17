@@ -108,7 +108,7 @@ public class binPathImpl {
 	//  Falta permutar as posicose para ficar com todos os elems
 	private static void checkBytes() {
 		
-		int[]  key = new int[8];
+		Integer[]  key = new Integer[8];
 		int[] ret = new int[8];
 int it=0;
 			//for (int it= 0; it < 32; it++) {
@@ -121,9 +121,9 @@ int it=0;
             	key[6] = pos_7[it];
             	key[7] = pos_8[it];
            
-           for (int i= 0 ; i < 3; i++) {
-        	   Permutation.permute(8, key, 'c');
-           }
+          // for (int i= 0 ; i < 3; i++) {
+        	   Permutation.permute(8, key, ',');
+       //    }
             	//printKey(key);
 				//Integer[] arr= { key[0],key[1],key[2],key[3],key[4],key[5],key[6],key[7]};
             	
