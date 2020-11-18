@@ -40,7 +40,23 @@ public class binPathImpl {
 	    
 	        
 	}
-	
+	public static void printBits(int number) {
+		   int mask = 0x80;
+		   int it;
+		   
+		   for (it=0 ;it < 8; it++) {
+		       if ( (number & mask) == 1)
+		           System.out.print('1');
+		       else
+		           System.out.print('0');
+		      
+		       mask >>= 1;
+		   }
+		   
+
+		   
+		}
+
 	//https://www.javatpoint.com/factorial-program-in-java
         public static void factorial(int n) {  
          int fact=1;  
@@ -50,64 +66,48 @@ public class binPathImpl {
          }    
          System.out.println("Factorial of "+n+" is: "+fact);    
         }  
+        
+       
       
+        // x |= 0b1; // set LSB bit
+        // x |= 0b10; // set 2nd bit from LSB
 	private static void prefix() {
-		byte[] firstBit256 = new byte [256];
-		byte[] firstBit128 = new byte [256];
-		byte[] firstBit64  = new byte [256];
-		byte[] firstBit32  = new byte [256];
-		byte[] firstBit16 =  new byte[256];
-		byte[] buffer = new byte[6];
-		// 256 bits / / 8bits => 
-		byte[] key = new byte[32];
-		int numOfKeysToTest = 2;
-	
+		// 256 bits / / 8bits =>  
+		byte[] key = new byte[16];
 		
-		for (int idx=0 ; idx < numOfKeysToTest ; idx++) {
-			
-		}
-		
+		//o toggle a bit use:
+		// x ^= (1 << y) | (1 << z); // toggle yth and zth bit
+		//	x ^= 0b1;
 		// MSB -> 256 index 0;
-	for (int i= 0 ; i< 256; i++) {
-		firstBit256[i] = 1;
-		if (i >= 128)			//	256 divides between 0 and 1 , when reaching 128... 
-			firstBit256[i] = 0;
+					  	
+		key[0] = 0b01110000;
+		key[1] = 0b01100000;
+		key[2] = 0b01010000;
+		key[3] = 0b01000000;
+		key[4] = 0b00110000;
+		key[5] = 0b00100000;
+		key[6] = 0b00010000;
+		key[7] = 0b00000000;
+		key[8] = 0b11110000;
+		key[9] = 0b11100000;
+		key[10]= 0b11010000;
+		key[11]= 0b11000000;
+		key[12]= 0b10110000;
+		key[13]= 0b10100000;
+		key[14]= 0b10010000;
+		key[15]= 0b10000000;
+				    
+				     
+		System.out.println();
+	for (byte b : key) {
+		System.out.print(" , "+Integer.valueOf(b));
 	}
+	System.out.print("\n");
 		
-	for (int i=0 ; i < 256;  i++) {
-		firstBit128[i] = 1;
-		if (i >= 64)
-			firstBit128[i]=0;
-	}
 	
-	for (int i = 0 ; i < 256 ; i++) {
-		firstBit64[i] = 1;
-			if (i >= 32)
-				firstBit64[i]=0;
-	}
-			
-	for (int i = 0 ; i < 256; i++) {
-		firstBit32[i] = 1;
-		if (i >= 16)
-			firstBit32[i] = 0;
-	}
+		// x |= (1 << y); // set the yth bit from the LSB
+		
 	
-	for (int i=0 ; i < 256; i++) {
-		firstBit16[i] = 1;
-		if (i >= 8)
-			firstBit16[i] =0 ;
-	}
-	
-		for (byte i=0 ; i < 256; i++) {
-			buffer[0] = firstBit256[i];
-			buffer[1] = firstBit128[i];
-			buffer[2] = firstBit64[i];
-			buffer[3] = firstBit32[i];
-			buffer[4] = firstBit16[i];
-			buffer[5] = i;
-			System.out.print("\n"+new String(buffer));
-			
-		}
 	
 	
 	}
@@ -123,16 +123,20 @@ public class binPathImpl {
 
 */
 	
-
+	public static void printCombinations(int numElements,int positions) {
+		for (int i=0 ; i < numElements ; i++) {
+			
+		}
+	}
   
 	
 	
 	
 	
 	public static void main(String[] args) {
-		//prefix();
+		prefix();
 		//Permutation_All.check
-		trying128();
+		
 
 	}
 
