@@ -69,3 +69,99 @@
    32/4 = 8 ints
       unsigned long // 8 bytes  +  18,446,744,073,709,551,615] 
      unsigned int 4294967296
+     
+     
+     Permutation , only two positions, what are the vlaues and positions of permutations?
+     Position1 Position2
+     1,			 1 [9]	
+     2,			 2 [10]
+     3,		     3 [11]		
+     4,			 4 [12]
+     5,			5  [13]
+     6,			6  [14]
+     7,			7  [15]
+     8			8  [16]
+     
+     
+     				cycle once to set all positions
+     				permute some positions
+     				
+     
+   Position1					Positions 2 permute 8 positions (1\n2 1\n2)
+   permutate two positions(1	 	1		1 		2 
+   						   2	    2		1 		2
+   						   					{changes on 1,2}
+   						   2		1
+   						   1		2
+   						   
+   
+   						 1			1
+   						 3	        3
+   						 
+   						 3			1
+   						 1			3
+   	procedure -> copy pos1 to all positions
+   			 ->  permute position1 and save all of permutations in aray
+   			 -> Pos2 = array
+   			 -> pos2 = pos1											From position1
+   			 -> pos3 = array (array that contains all permutations 1...8)
+   			 -> pos3 = pos1
+   			 
+   			 ....
+   			 -> Permute position2 and put it on array
+   			 -> Pos 3 = array
+   			 -> 
+   			 
+   			 Permutate 3 pos
+   		(1,1,1)
+   		(1,1,2)					(1,1,2) = (1,2,1) => line2 are permutations
+   		(1,1,3)					
+   		
+   		Para cada permutacao , igualar pos3 index => 
+   		
+   			Permutate 2 pos
+   		(1,1,1)
+   		(1,2,1)
+   		(1,3,1)
+   		
+   		
+   		PErmutate 1 pos
+   		(1,1,1)								Pos1			Pos2 		Pos3
+   		(2,1,1)						line2 => (2,1,1) 	  (1,2,1)		(1,1,2)	
+   		(3,1,1)
+   											Pos1		Pos2		Pos3 
+   									line3 => (3,1,1)	  (1,3,1)		(3,1,1)
+   		
+   		copy array a = {1,2,3,4} 1) posicao 1 ,depois posicao 2 etc...
+   		
+   		(1,1,1,1) Permutate pos1
+   		(2,1,1,1)
+   		(3,1,1,1)
+   		(4,1,1,1)
+
+				Permutate pos2
+		(1,1,1,1)
+		(1,2,1,1)
+		(1,3,1,1)
+		(1,4,1,1)
+		
+		(1,1,1,1)
+		(1,1,2,1)
+		(1,1,3,1)
+		(1,1,4,1)
+		
+		 uma permutacao em pos1 , permuta o mesmo em pos2
+		 index=0			index=1			index=2			index=3
+   Xhg(pos1(2,1,1,1) -> pso2(1,2,1,1) -> pos3 (1,1,2,1) -> pos4(1,1,1,2)
+   Xgh(pos1(3,1,1,1) -> pos2(1,3,1,1) -> pos3 (1,1,3,1) -> pos4(1,1,1,3)
+   Xhg(pos1(4,1,1,1) -> pos2(1,4,1,1) -> pos3 (1,1,4,1) -> pos4(1,1,1,4)
+   	
+   	
+   		 
+   
+   
+   8! => all permutations of pos1
+   
+   Array[8!] = { (1,1,1,1),(1,1,2,1) ,(1,2,1,1),(2,1,1,1) ....}
+   
+   

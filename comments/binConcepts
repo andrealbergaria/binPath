@@ -1094,4 +1094,36 @@ try to ignore leading digit, so to become 3 bits and then use the algorithm
                                     		pos5_ptr[i5],pos6_ptr[i6],pos7_ptr[i7],pos8_ptr[i8],\
                                     		total_iterations);
                                  
-                               
+                               		
+   							Pos 1			Pos2=pos1  		Pos3=pos1 Pos3=pos1
+   Initial		x	1 2 3 4 5 6 7 8   1 2 3 4 5 6 7 8
+   
+   Permute		y	2 1 3 4 5 6 7 8   1 2 3 4 5 6 7 8
+   
+   				z	2 1 4 3 5 6 7 8  1 2 3 4 5 6 7 8
+   
+   
+   					finished permutation position 2
+   			a		1 2 3 4 5 6 7 8   1 2 3 4 5 6 7 8 x
+   					1 2 3 4 5 6 7 8   2 1 3 4 5 6 7 8 y
+   					1 2 3 4 5 6 7 8   2 1 4 3 5 6 7 8 z
+   					
+   					copiar permutation(x,y) -> pos2(x,y)
+   					copiar pos2(x,y) -> pos3 (x,y)
+   					
+   					Pos1				Pos2			Pos3 , 
+   					1 2 3 4 5 6 7 8  1 2 3 4 5 6 7 8   2 1 3 4 5 6 7 8 y		 	
+   					1 2 3 4 5 6 7 8  1 2 3 4 5 6 7 8   2 1 4 3 5 6 7 8 z
+   					
+   					
+   					
+   					 
+   						
+   						Pos2 = pos1
+   						permute one positions
+   						xhg positions POs1=pos2, pos2=pos1
+   						
+   						
+   						 
+   						
+   
