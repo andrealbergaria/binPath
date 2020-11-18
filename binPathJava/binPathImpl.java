@@ -39,18 +39,16 @@ public class binPathImpl {
 	        
 	}
 	
-	private static void printKey(int[] key){
-		System.out.printf("%n 0x%d", key[0]);
-		System.out.printf(" , 0x%d", key[1]);
-		System.out.printf(" , 0x%d", key[2]);
-		System.out.printf(" , 0x%d ", key[3]);
-		System.out.printf(" , 0x%d", key[4]);
-		System.out.printf(" , 0x%d", key[5]);
-		System.out.printf(" , 0x%d", key[6]);
-		System.out.printf(" , 0x%d%n", key[7]);
-													
-	}
 	
+	private static void trying128() {
+		Integer[] pos_1 = {1,2,3,4,5,6,7,8};
+		Integer[] pos_2 = {9,10,11,12,13,14,15,16};
+		
+    	Permutation.permute(8, pos_1, ',');
+    	Permutation.permute(8,pos_2,',');
+
+		
+	}
 	private static void prefix() {
 		byte[] firstBit256 = new byte [256];
 		byte[] firstBit128 = new byte [256];
@@ -131,64 +129,7 @@ public class binPathImpl {
 
 */
 	
-	private static void checkBytes_permutation1() {
-		Integer[]  key = new Integer[8];
-		
-		long startTime= System.currentTimeMillis();
-		for (int it= 0; it < 32; it++) {
-        	key[0] = pos_1[it];  
-        	key[1] = pos_2[it];
-        	key[2] = pos_3[it];
-        	key[3] = pos_4[it];
-        	key[4] = pos_5[it];
-        	key[5] = pos_6[it];
-        	key[6] = pos_7[it];
-        	key[7] = pos_8[it];
-		
-        Permutation1<Integer> perm = new Permutation1<Integer>(key);
-        int count = 0;
-        while(perm.hasNext()){
-            System.out.println(Arrays.toString(perm.next()));
-        }
-		}
-        long endTime = System.currentTimeMillis();
-        long len = endTime-startTime;
-        System.out.println("\nTime elapsed "+len+"\n");
-        
-	}
-	// Para cada posicao, existe 32 numeros
-	//  Falta permutar as posicose para ficar com todos os elems
-	private static void checkBytes_permutation() {
-		
-		Integer[]  key = new Integer[8];
-		
-		long startTime = System.currentTimeMillis();
-				
-			for (int it= 0; it < 32; it++) {
-            	key[0] = pos_1[it];  
-            	key[1] = pos_2[it];
-            	key[2] = pos_3[it];
-            	key[3] = pos_4[it];
-            	key[4] = pos_5[it];
-            	key[5] = pos_6[it];
-            	key[6] = pos_7[it];
-            	key[7] = pos_8[it];
 
-            	
-            	// from permutation
-            	Permutation.permute(8, key, ',');
-              
-           }
-            	
-         long endTime = System.currentTimeMillis();   	
-         long resTime = endTime - startTime;
-         
-         System.out.println("\nTime resultant : "+resTime+"\n");
-		
-		
-		
-	
-	}
   
 	
 	
@@ -196,7 +137,7 @@ public class binPathImpl {
 	
 	public static void main(String[] args) {
 		//prefix();
-		checkBytes_permutation();
+		trying128();
 
 	}
 
