@@ -1,5 +1,6 @@
 package binPathJava;
 
+import java.io.BufferedInputStream;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -17,6 +18,7 @@ public class binPathImpl {
 	public static int[] pos_8 = {  8,16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248,256 };
 
 
+	
 	
 	private void printUsingFunction() {
 	    
@@ -39,16 +41,16 @@ public class binPathImpl {
 	        
 	}
 	
-	
-	private static void trying128() {
-		Integer[] pos_1 = {1,2,3,4,5,6,7,8};
-		Integer[] pos_2 = {9,10,11,12,13,14,15,16};
-		
-    	Permutation.permute(8, pos_1, ',');
-    	Permutation.permute(8,pos_2,',');
-
-		
-	}
+	//https://www.javatpoint.com/factorial-program-in-java
+        public static void factorial(int n) {  
+         int fact=1;  
+             
+         for(int i=1;i<=n;i++){    
+             fact=fact*i;    
+         }    
+         System.out.println("Factorial of "+n+" is: "+fact);    
+        }  
+      
 	private static void prefix() {
 		byte[] firstBit256 = new byte [256];
 		byte[] firstBit128 = new byte [256];
@@ -59,15 +61,7 @@ public class binPathImpl {
 		// 256 bits / / 8bits => 
 		byte[] key = new byte[32];
 		int numOfKeysToTest = 2;
-		
-		/* 100010101]
-		  101010100
-		  101101011
-		  11100001
-		  01111110
-		  011010101
-		  01111001
-		  011101101 */
+	
 		
 		for (int idx=0 ; idx < numOfKeysToTest ; idx++) {
 			
@@ -137,6 +131,7 @@ public class binPathImpl {
 	
 	public static void main(String[] args) {
 		//prefix();
+		//Permutation_All.check
 		trying128();
 
 	}

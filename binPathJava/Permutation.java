@@ -1,6 +1,8 @@
 
 package binPathJava;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.lang.reflect.Array;
 
@@ -16,16 +18,20 @@ private static <T> void swap(T[] input, int a, int b) {
 
 private static  <T> void printArray(T[] input,char delimeter) {
     System.out.print('\n');
-    System.err.print("[");
+    System.out.print("[");
     for(int i = 0; i < input.length; i++) {
-        System.out.print(input[i]+" "+delimeter);
+    	if (i == input.length-1)
+        System.out.print(input[i]+" ");
+    	else
+    		System.out.print(input[i]+" "+delimeter);
     }
     System.out.println("]");
 }
 
 
-   public static <T> void permute(int n, T[] elements, char delimiter) {
-		 
+   public static <T> List<T[]> permute(int n, T[] elements, char delimiter) {
+	List<T[]> li = new ArrayList<>();
+	
    	int[] indexes = new int[n];
 	
 	for (int i = 0; i < n; i++) {
@@ -40,7 +46,8 @@ private static  <T> void printArray(T[] input,char delimeter) {
 		it++;
 	    if (indexes[i] < i) {
 	        swap(elements, i % 2 == 0 ?  0: indexes[i], i);
-	        printArray(elements, delimiter);
+	        li.add(elements);
+	       // printArray(elements, delimiter);
 	        indexes[i]++;
 	        i = 0;
 	    }
@@ -49,6 +56,8 @@ private static  <T> void printArray(T[] input,char delimeter) {
 	        i++;
 	    }
 	}
+	
+	return li;
    }
 	
    

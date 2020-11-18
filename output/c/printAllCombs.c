@@ -1,5 +1,12 @@
 #include "util.h"
 
+void printCombinations(int numOfElements,int numPositions) {
+	for (int i= 0 ; i < numPositions; i++) {
+
+
+	}
+
+}
 int main(int argc,char *argv[]) {
     
     if (argc != 4) {
