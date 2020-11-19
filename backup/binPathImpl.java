@@ -57,13 +57,6 @@ public class binPathImpl {
 		   
 		}
 
-	public static void printKey(int[] key) {
-		System.out.print("\n [");
-		for (int i=0;  i< key.length ; i++)
-			System.out.print(" "+key[i]+",");
-		System.out.println(" ]");
-	}
-	
 	//https://www.javatpoint.com/factorial-program-in-java
         public static void factorial(int n) {  
          int fact=1;  
@@ -80,104 +73,42 @@ public class binPathImpl {
         // x |= 0b10; // set 2nd bit from LSB
 	private static void prefix() {
 		// 256 bits / / 8bits =>  
-		int[] key = new int[16] = { 0 };
-		int[] invertedKey = new int[16];
-		int[] another = new int[16];
+		byte[] key = new byte[16];
+		
 		//o toggle a bit use:
 		// x ^= (1 << y) | (1 << z); // toggle yth and zth bit
 		//	x ^= 0b1;
 		// MSB -> 256 index 0;
-		// Para cada it, divide-se o
-		 
-		//reverse key
-		
-		(0,0,0,0,0,0,0,1)
-		(0,0,0,0,0,0,0,1)
-		
-		(0,0,0,0,0,0,,1)
-		(0,0,0,0,0,0,0,1)
-		
-		(0,0,0,0,0,0,1,1)
-		(0,0,0,0,0,0,1,1)
-		
-			(..., 1,0)
-			( ....1,0)
-		
-		0 1 1 1 1 0 0 0
-		0 1 1 1 1 1 0 0
-			
-		0 1 1 1 1 0 0 0
-		
-		
-		key[0] = (int)0b0 1 1 1 1 000;;
-		key[1] = (int)0b0 1 1 1 0 000;//96,6
-		key[2] = (int)0b0 1 1 0 1 000; // 5
-		key[3] = (int)0b0 1 1 0 0 000; // 4
-		key[4] = (int)0b0 1 1 1 1 000; //3
-		key[5] = (int)0b0 1 1 1 0 000; 
-		key[6] = (int)0b0 1 1 0 1 000;
-		key[7] = (int)0b0 1 1 0 0 000; 
-		key[8] = (int)0b0 1 0 1 1 000; //15
-		key[9] = (int)0b0 1 0 1 0 000;
-		key[10]= (int)0b0 1 0 0 1 000;
-		key[11]= (int)0b0 1 0 0 0 000;
-		key[12]= (int)0b0 1 0 1 1 000;
-		key[13]= (int)0b0 1 0 1 0 000;
-		key[14]= (int)0b0 1 0 0 1 000;
-		key[15]= (int)0b0 1 0 0 0 000; //16 Zeros+8zeros
-		16 zeros -> 3 bits
-		8 bits -> 
-		
-		invertedKey[0] = 0b0 0 1
-		invertedKey[1] = 0b0 0 1
-		invertedKey[2] = 0b0 0 1 
-		invertedKey[3] = 0b0 0 1
-		invertedKey[4] = 0b0 0 1
-		invertedKey[5] = 0b0 0
-		invertedKey[6] = 0b0 0
-		invertedKey[7] = 0b0 0
-		invertedKey[8] = 0b1 0
-		invertedKey[9] = 0b1 0
-		invertedKey[10]= 0b1 0
-		invertedKey[11]= 0b1 0
-		invertedKey[12]= 0b1 0 
-		invertedKey[13]= 0b1 0
-		invertedKey[14]= 0b1 0
-		invertedKey[15]= 0b1 0
-		
-		another[0] = (int)0b01110000; 	// 112, 7
-		another[1] = (int)0b01100001; //96,6
-		another[2] = (int)0b01010010; // 5
-		another[3] = (int)0b01000011; // 4
-		another[4] = (int)0b00110100; //3
-		another[5] = (int)0b00100101; 
-		another[6] = (int)0b00010110;
-		another[7] = (int)0b00000111; 
-		another[8] = (int)0b11111000; //15
-		another[9] = (int)0b11101001;
-		another[10]= (int)0b11011010;
-		another[11]= (int)0b11001011;
-		another[12]= (int)0b10111100;
-		another[13]= (int)0b10101101;
-		another[14]= (int)0b10011110;
-		another[15]= (int)0b10001111;
-		
-		17d -> 10001b
-		//9d -> 1001
-		
-		printKey(key);
-	
+					  	
+		key[0] = 0b01110000;
+		key[1] = 0b01100000;
+		key[2] = 0b01010000;
+		key[3] = 0b01000000;
+		key[4] = 0b00110000;
+		key[5] = 0b00100000;
+		key[6] = 0b00010000;
+		key[7] = 0b00000000;
+		key[8] = 0b11110000;
+		key[9] = 0b11100000;
+		key[10]= 0b11010000;
+		key[11]= 0b11000000;
+		key[12]= 0b10110000;
+		key[13]= 0b10100000;
+		key[14]= 0b10010000;
+		key[15]= 0b10000000;
+				    
+				     
+		System.out.println();
+	for (byte b : key) {
+		System.out.print(" , "+Integer.valueOf(b));
+	}
 	System.out.print("\n");
-	printKey(invertedKey);
-	System.out.print("\n");
-	
-	printKey(another);
-	System.out.print("\n");
+		
 	
 		// x |= (1 << y); // set the yth bit from the LSB
 		
 	
-	*/
+	
 	
 	}
 	
@@ -191,6 +122,14 @@ public class binPathImpl {
 	 * Time elapsed 70902
 
 */
+	
+	public static void printCombinations(int numElements,int positions) {
+		for (int i=0 ; i < numElements ; i++) {
+			
+		}
+	}
+  
+	
 	
 	
 	
