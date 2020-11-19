@@ -18,8 +18,13 @@ sudo rm -rf /mnt/pen_61G/binPath
 sudo mkdir -p /mnt/pen_2G/binPath
 sudo mkdir -p /mnt/pen_500g/binPath
 sudo mkdir -p /mnt/pen_61G/binPath
+FILES_TO_COPY=();
+for file in $(find /home/andrec/workspace_3_8/binPath | tr "\n" " ")
 
-FILES_TO_COPY=(/home/andrec/workspace_3_8/binPath/*);
+do
+    FILES_TO_COPY+=($file);
+done;
+
 sudo cp -v -r "$FILES_TO_COPY" /mnt/pen_2G/binPath
 sudo cp -v -r "$FILES_TO_COPY" /mnt/pen_500g/binPath
 sudo cp -v -r "$FILES_TO_COPY" /mnt/pen_61G/binPath
