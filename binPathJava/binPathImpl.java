@@ -74,13 +74,40 @@ public class binPathImpl {
          System.out.println("Factorial of "+n+" is: "+fact);    
         }  
         
-       
-      
+        /**
+         * 
+         * 
+         * FROM Maghoumi
+         * https://stackoverflow.com/questions/5263187/print-an-integer-in-binary-format-in-java
+         * System.out.println(intToString(5463, 4));
+         * Converts an integer to a 32-bit binary string
+         * @param number
+         *      The number to convert
+         * @param groupSize
+         *      The number of bits in a group
+         * @return
+         *      The 32-bit long bit string
+         */
+        public static String intToString(int number, int groupSize) {
+            StringBuilder result = new StringBuilder();
+
+            for(int i = 31; i >= 0 ; i--) {
+                int mask = 1 << i;
+                result.append((number & mask) != 0 ? "1" : "0");
+
+                if (i % groupSize == 0)
+                    result.append(" ");
+            }
+            result.replace(result.length() - 1, result.length(), "");
+
+            return result.toString();
+        }  
         // x |= 0b1; // set LSB bit
         // x |= 0b10; // set 2nd bit from LSB
+        
 	private static void prefix() {
 		// 256 bits / / 8bits =>  
-		int[] key = new int[16] = { 0 };
+		int[] key  = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 		int[] invertedKey = new int[16];
 		int[] another = new int[16];
 		//o toggle a bit use:
@@ -91,25 +118,144 @@ public class binPathImpl {
 		 
 		//reverse key
 		
-		(0,0,0,0,0,0,0,1)
-		(0,0,0,0,0,0,0,1)
+	
+		// 2^8 => 256
 		
-		(0,0,0,0,0,0,,1)
-		(0,0,0,0,0,0,0,1)
+		// If i have 256 (8 bits)
+		// Nao chega ao byte....
 		
-		(0,0,0,0,0,0,1,1)
-		(0,0,0,0,0,0,1,1)
 		
-			(..., 1,0)
-			( ....1,0)
+	a)	0000 0111		
+		0000 0011	
+		0000 0101
+		0000 0001	
+		0000 0110	
+		0000 0010	
+		0000 0100	
+		0000 0000  
 		
-		0 1 1 1 1 0 0 0
-		0 1 1 1 1 1 0 0
+		 
+		bits iniciais 4 , maximum => 2 positions
+		bits iniciais 8 , maximum => 3 posicoes 		
+		bits iniciais 16 , maximum => 4 positions
+		bit  iniciais 32 , maximum -> 5 positions 
+		bits iniciais 256 , maximum => 8 positions 
+		bits iniciais 512 -> maximum => 9 positions (need 32 positions)
+		bytes iniciais 4294967296 -> 32 positions?
+				
+				ou seja vai diminuindo pela posicioes.....(menos 2vezes)
+		
+   4    3   2   1 (4,3,2 -> 3 bits repetindo-se por 2 vezes)				
+	1	1	1	1 
+	0	1   1	1 	(inicio 16 bits, 8 uns 8 zeros)
+	1	0	1	1  
+	0	0	1	1  
+	1	1	0	1    
+	0	1	0	1		4 coluna = 3 coluna de a)   
+	1	0	0	1		3 coluna = 2 coluna de a)
+	0	0	0   1 		2 coluna = 1 coluna de a)
+	1	1	1	0		 
+	0	1   1   0    
+	1	0	1	0
+	0	0	1	0
+	1	1	0	0		
+	0	1	0	0
+	1	0	0	0		 
+	0	0	0	0
+				
+		
+	
+	
+	111 X
+	011 X  
+	101 X
+	001 X										
+	110 X
+	010 X  4 more initial zero + 4 one's (plus 8 elemens, 2^3)
+			3 bits have 2^3 combinations  + 2^3 = 2 times 2^3
+	100 X
+	000 X	Adding 4 zeros and 4 ones, multiplies by 2
+	111 
+	011 
+	101 
+	001 
+	110
+	010
+	100
+	000
+	
+				
+		Para bits iniciais tem de ser divisivel por 2)
+		0	1	1  
+		1	0	1
+		0	0	1
+		1	1	1
+		0	1	 
+		1	0	
+		0	0	0
+		1	1	0
+		0	1	0
+		1	0	0
+		0	0	0
+						 
 			
-		0 1 1 1 1 0 0 0
 		
 		
-		key[0] = (int)0b0 1 1 1 1 000;;
+		
+		  
+		
+		
+		for (int i=0 ; i < 16; i++) {
+			if (i < 8) {
+				key[i] |= 0b00000001;
+			
+				if (i < 2)
+					key[i] |= 0b00000100;
+				else
+					key[i] |= 0b0;
+				
+				if ( i < 4) 
+					key[i] |= 0b00000010;
+				else
+					key[i] |= 0;
+				
+			}
+			else {
+					key[i] |= 0;
+					if (i < 12 )
+						key[i] = 0b00000010;
+					
+					
+			}
+			// Set 2nd bit
+			
+			//printBits(key[i]);
+			
+			
+			System.out.print("\n "+ intToString(key[i],8));
+			
+		}
+		
+		/*System.out.println("\n");
+		printBits(key[0]);
+		System.out.println("\n");
+		printBits(key[1]);
+		System.out.println("\n");
+		printBits(key[2]);
+		System.out.println("\n");
+		printBits(key[3]);*/
+		/* just do ones first
+1)		 1 1
+		 1 1
+		 0 1
+		 0 1
+		 1 0
+		 1 0
+		 0 0
+8)		 0 0
+				
+			*/	
+		/*key[0] = (int)0b0 1 1 1 1 000;;
 		key[1] = (int)0b0 1 1 1 0 000;//96,6
 		key[2] = (int)0b0 1 1 0 1 000; // 5
 		key[3] = (int)0b0 1 1 0 0 000; // 4
