@@ -40,23 +40,7 @@ public class binPathImpl {
 	    
 	        
 	}
-	public static void printBits(int number) {
-		   int mask = 0x80;
-		   int it;
-		   
-		   for (it=0 ;it < 8; it++) {
-		       if ( (number & mask) == 1)
-		           System.out.print('1');
-		       else
-		           System.out.print('0');
-		      
-		       mask >>= 1;
-		   }
-		   
-
-		   
-		}
-
+	
 	public static void printKey(int[] key) {
 		System.out.print("\n [");
 		for (int i=0;  i< key.length ; i++)
@@ -104,6 +88,7 @@ public class binPathImpl {
         }  
         // x |= 0b1; // set LSB bit
         // x |= 0b10; // set 2nd bit from LSB
+        
         
 	private static void prefix() {
 		// 256 bits / / 8bits =>  
@@ -236,90 +221,7 @@ public class binPathImpl {
 			
 		}
 		
-		/*System.out.println("\n");
-		printBits(key[0]);
-		System.out.println("\n");
-		printBits(key[1]);
-		System.out.println("\n");
-		printBits(key[2]);
-		System.out.println("\n");
-		printBits(key[3]);*/
-		/* just do ones first
-1)		 1 1
-		 1 1
-		 0 1
-		 0 1
-		 1 0
-		 1 0
-		 0 0
-8)		 0 0
-				
-			*/	
-		/*key[0] = (int)0b0 1 1 1 1 000;;
-		key[1] = (int)0b0 1 1 1 0 000;//96,6
-		key[2] = (int)0b0 1 1 0 1 000; // 5
-		key[3] = (int)0b0 1 1 0 0 000; // 4
-		key[4] = (int)0b0 1 1 1 1 000; //3
-		key[5] = (int)0b0 1 1 1 0 000; 
-		key[6] = (int)0b0 1 1 0 1 000;
-		key[7] = (int)0b0 1 1 0 0 000; 
-		key[8] = (int)0b0 1 0 1 1 000; //15
-		key[9] = (int)0b0 1 0 1 0 000;
-		key[10]= (int)0b0 1 0 0 1 000;
-		key[11]= (int)0b0 1 0 0 0 000;
-		key[12]= (int)0b0 1 0 1 1 000;
-		key[13]= (int)0b0 1 0 1 0 000;
-		key[14]= (int)0b0 1 0 0 1 000;
-		key[15]= (int)0b0 1 0 0 0 000; //16 Zeros+8zeros
-		16 zeros -> 3 bits
-		8 bits -> 
-		
-		invertedKey[0] = 0b0 0 1
-		invertedKey[1] = 0b0 0 1
-		invertedKey[2] = 0b0 0 1 
-		invertedKey[3] = 0b0 0 1
-		invertedKey[4] = 0b0 0 1
-		invertedKey[5] = 0b0 0
-		invertedKey[6] = 0b0 0
-		invertedKey[7] = 0b0 0
-		invertedKey[8] = 0b1 0
-		invertedKey[9] = 0b1 0
-		invertedKey[10]= 0b1 0
-		invertedKey[11]= 0b1 0
-		invertedKey[12]= 0b1 0 
-		invertedKey[13]= 0b1 0
-		invertedKey[14]= 0b1 0
-		invertedKey[15]= 0b1 0
-		
-		another[0] = (int)0b01110000; 	// 112, 7
-		another[1] = (int)0b01100001; //96,6
-		another[2] = (int)0b01010010; // 5
-		another[3] = (int)0b01000011; // 4
-		another[4] = (int)0b00110100; //3
-		another[5] = (int)0b00100101; 
-		another[6] = (int)0b00010110;
-		another[7] = (int)0b00000111; 
-		another[8] = (int)0b11111000; //15
-		another[9] = (int)0b11101001;
-		another[10]= (int)0b11011010;
-		another[11]= (int)0b11001011;
-		another[12]= (int)0b10111100;
-		another[13]= (int)0b10101101;
-		another[14]= (int)0b10011110;
-		another[15]= (int)0b10001111;
-		
-		17d -> 10001b
-		//9d -> 1001
-		
-		printKey(key);
-	
-	System.out.print("\n");
-	printKey(invertedKey);
-	System.out.print("\n");
-	
-	printKey(another);
-	System.out.print("\n");
-	
+
 		// x |= (1 << y); // set the yth bit from the LSB
 		
 	
@@ -337,12 +239,79 @@ public class binPathImpl {
 	 * Time elapsed 70902
 
 */
+	private static void checkBytes_permutation1() {
+		Integer[]  key = new Integer[8];
+		
+		long startTime= System.currentTimeMillis();
+		for (int it= 0; it < 32; it++) {
+        	key[0] = pos_1[it];  
+        	key[1] = pos_2[it];
+        	key[2] = pos_3[it];
+        	key[3] = pos_4[it];
+        	key[4] = pos_5[it];
+        	key[5] = pos_6[it];
+        	key[6] = pos_7[it];
+        	key[7] = pos_8[it];
+		
+        Permutation1<Integer> perm = new Permutation1<Integer>(key);
+        int count = 0;
+        while(perm.hasNext()){
+            System.out.println(Arrays.toString(perm.next()));
+        }
+		}
+        long endTime = System.currentTimeMillis();
+        long len = endTime-startTime;
+        System.out.println("\nTime elapsed "+len+"\n");
+        
+	}
+	// Para cada posicao, existe 32 numeros
+	//  Falta permutar as posicose para ficar com todos os elems
+	private static void checkBytes_permutation() {
+		
+		Integer[]  key = new Integer[8];
+		
+		long startTime = System.currentTimeMillis();
+				
+			for (int it= 0; it < 32; it++) {
+            	key[0] = pos_1[it];  
+            	key[1] = pos_2[it];
+            	key[2] = pos_3[it];
+            	key[3] = pos_4[it];
+            	key[4] = pos_5[it];
+            	key[5] = pos_6[it];
+            	key[6] = pos_7[it];
+            	key[7] = pos_8[it];
+
+            	List<T[]> l = new List()<>;
+            	
+            	// from permutation
+            	l = Permutation.permute(8, key, ',');
+            	
+              
+           }
+            	
+         long endTime = System.currentTimeMillis();   	
+         long resTime = endTime - startTime;
+         
+         System.out.println("\nTime resultant : "+resTime+"\n");
+		
+		
+		
 	
+	}
 	
-	
+	public static void permuteGeneral(int[] elements) {
+		
+    	
+    	
+	}
 	public static void main(String[] args) {
-		prefix();
-		//Permutation_All.check
+		List<T[]> l = new List()<>;
+    	
+    	// from permutation
+    	l = Permutation.permute(elements.length,elements, ',');
+		//prefix();
+		
 		
 
 	}

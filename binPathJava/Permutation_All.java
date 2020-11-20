@@ -25,63 +25,6 @@ public class Permutation_All {
 
 	
 	
-	private static void checkBytes_permutation1() {
-		Integer[]  key = new Integer[8];
-		
-		long startTime= System.currentTimeMillis();
-		for (int it= 0; it < 32; it++) {
-        	key[0] = pos_1[it];  
-        	key[1] = pos_2[it];
-        	key[2] = pos_3[it];
-        	key[3] = pos_4[it];
-        	key[4] = pos_5[it];
-        	key[5] = pos_6[it];
-        	key[6] = pos_7[it];
-        	key[7] = pos_8[it];
-		
-        Permutation1<Integer> perm = new Permutation1<Integer>(key);
-        int count = 0;
-        while(perm.hasNext()){
-            System.out.println(Arrays.toString(perm.next()));
-        }
-		}
-        long endTime = System.currentTimeMillis();
-        long len = endTime-startTime;
-        System.out.println("\nTime elapsed "+len+"\n");
-        
-	}
-	// Para cada posicao, existe 32 numeros
-	//  Falta permutar as posicose para ficar com todos os elems
-	private static void checkBytes_permutation() {
-		
-		Integer[]  key = new Integer[8];
-		
-		long startTime = System.currentTimeMillis();
-				
-			for (int it= 0; it < 32; it++) {
-            	key[0] = pos_1[it];  
-            	key[1] = pos_2[it];
-            	key[2] = pos_3[it];
-            	key[3] = pos_4[it];
-            	key[4] = pos_5[it];
-            	key[5] = pos_6[it];
-            	key[6] = pos_7[it];
-            	key[7] = pos_8[it];
-
-            	
-            	// from permutation
-            	Permutation.permute(8, key, ',');
-              
-           }
-            	
-         long endTime = System.currentTimeMillis();   	
-         long resTime = endTime - startTime;
-         
-         System.out.println("\nTime resultant : "+resTime+"\n");
-		
-		
-		
 	
-	}
 
 }

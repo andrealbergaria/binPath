@@ -47,7 +47,7 @@ private static  <T> void printArray(T[] input,char delimeter) {
 	    if (indexes[i] < i) {
 	        swap(elements, i % 2 == 0 ?  0: indexes[i], i);
 	        li.add(elements);
-	       // printArray(elements, delimiter);
+	        printArray(elements, delimiter);
 	        indexes[i]++;
 	        i = 0;
 	    }
