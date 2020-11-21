@@ -11,4 +11,5 @@ for catersian product
 
 since the alrotihm is fast, there is a way to speed up multiplicaton by 2 (shifting bits) (perhaps changing positions)
 
-we could use permutation on bits..for xample permute( {0,0,1} {1,0,1}) this we get us all values 
+we could use permutation on bits..for xample permute( {0,0,1} {1,0,1}) this we get us all values
+
