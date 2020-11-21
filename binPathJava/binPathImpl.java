@@ -4,21 +4,44 @@ import java.io.BufferedInputStream;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.ArrayList;
 
 public class binPathImpl {
 
-	public static int[] pos_1 = {  1,9, 17, 25, 33, 41, 49, 57, 65, 73, 81, 89, 97, 105, 113, 121, 129, 137, 145, 153, 161, 169, 177, 185, 193, 201, 209, 217, 225, 233, 241, 249 };
-	public static int[] pos_2 = {  2,10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 170, 178, 186, 194, 202, 210, 218, 226, 234, 242, 250 };
-	public static int[] pos_3 = {  3,11, 19, 27, 35, 43, 51, 59, 67, 75, 83, 91, 99, 107, 115, 123, 131, 139, 147, 155, 163, 171, 179, 187, 195, 203, 211, 219, 227, 235, 243, 251 };
-	public static int[] pos_4 = {  4,12, 20, 28, 36, 44, 52, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 156, 164, 172, 180, 188, 196, 204, 212, 220, 228, 236, 244, 252};
-	public static int[] pos_5 = {  5,13, 21, 29, 37, 45, 53, 61, 69, 77, 85, 93, 101, 109, 117, 125, 133, 141, 149, 157, 165, 173, 181, 189, 197, 205, 213, 221, 229, 237, 245, 253};
-	public static int[] pos_6 = {  6,14, 22, 30, 38, 46, 54, 62, 70, 78, 86, 94, 102, 110, 118, 126, 134, 142, 150, 158, 166, 174, 182, 190, 198, 206, 214, 222, 230, 238, 246, 254};
-	public static int[] pos_7 = {  7,15, 23, 31, 39, 47, 55, 63, 71, 79, 87, 95, 103, 111, 119, 127, 135, 143, 151, 159, 167, 175, 183, 191, 199, 207, 215, 223, 231, 239, 247, 255 };
-	public static int[] pos_8 = {  8,16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248,256 };
+	public static byte[] pos_1 = { 1 , 9 , 17 , 25 , 33 , 41 , 49 , 57 , 65 , 73 , 81 , 89 , 97 , 105 , 113 , 121 ,  (byte) 129 ,  (byte) 137 ,  (byte) 145 ,  (byte) 153 ,  (byte) 161 ,  (byte) 169 ,  (byte) 177 ,  (byte) 185 ,  (byte) 193 ,  (byte) 201 ,  (byte) 209 ,  (byte) 217 ,  (byte) 225 ,  (byte) 233 ,  (byte) 241 ,  (byte) 249 }; 
+	public static byte[] pos_2 = { 2 , 10 , 18 , 26 , 34 , 42 , 50 , 58 , 66 , 74 , 82 , 90 , 98 , 106 , 114 , 122 ,  (byte) 130 ,  (byte) 138 ,  (byte) 146 ,  (byte) 154 ,  (byte) 162 ,  (byte) 170 ,  (byte) 178 ,  (byte) 186 ,  (byte) 194 ,  (byte) 202 ,  (byte) 210 ,  (byte) 218 ,  (byte) 226 ,  (byte) 234 ,  (byte) 242 ,  (byte) 250 }; 
+	public static byte[] pos_3 = { 3 , 11 , 19 , 27 , 35 , 43 , 51 , 59 , 67 , 75 , 83 , 91 , 99 , 107 , 115 , 123 ,  (byte) 131 ,  (byte) 139 ,  (byte) 147 ,  (byte) 155 ,  (byte) 163 ,  (byte) 171 ,  (byte) 179 ,  (byte) 187 ,  (byte) 195 ,  (byte) 203 ,  (byte) 211 ,  (byte) 219 ,  (byte) 227 ,  (byte) 235 ,  (byte) 243 ,  (byte) 251 };
+	public static byte[] pos_4 = { 4 , 12 , 20 , 28 , 36 , 44 , 52 , 60 , 68 , 76 , 84 , 92 , 100 , 108 , 116 , 124 ,  (byte) 132 ,  (byte) 140 ,  (byte) 148 ,  (byte) 156 ,  (byte) 164 ,  (byte) 172 ,  (byte) 180 ,  (byte) 188 ,  (byte) 196 ,  (byte) 204 ,  (byte) 212 ,  (byte) 220 ,  (byte) 228 ,  (byte) 236 ,  (byte) 244 ,  (byte) 252 }; 
+	public static byte[] pos_5 = { 5 , 13 , 21 , 29 , 37 , 45 , 53 , 61 , 69 , 77 , 85 , 93 , 101 , 109 , 117 , 125 ,  (byte) 133 ,  (byte) 141 ,  (byte) 149 ,  (byte) 157 ,  (byte) 165 ,  (byte) 173 ,  (byte) 181 ,  (byte) 189 ,  (byte) 197 ,  (byte) 205 ,  (byte) 213 ,  (byte) 221 ,  (byte) 229 ,  (byte) 237 ,  (byte) 245 ,  (byte) 253 }; 
+	public static byte[] pos_6 = { 6 , 14 , 22 , 30 , 38 , 46 , 54 , 62 , 70 , 78 , 86 , 94 , 102 , 110 , 118 , 126 ,  (byte) 134 ,  (byte) 142 ,  (byte) 150 ,  (byte) 158 ,  (byte) 166 ,  (byte) 174 ,  (byte) 182 ,  (byte) 190 ,  (byte) 198 ,  (byte) 206 ,  (byte) 214 ,  (byte) 222 ,  (byte) 230 ,  (byte) 238 ,  (byte) 246 ,  (byte) 254 };   
+	public static byte[] pos_7 = { 7 , 15 , 23 , 31 , 39 , 47 , 55 , 63 , 71 , 79 , 87 , 95 , 103 , 111 , 119 , 127 ,  (byte) 135 ,  (byte) 143 ,  (byte) 151 ,  (byte) 159 ,  (byte) 167 ,  (byte) 175 ,  (byte) 183 ,  (byte) 191 ,  (byte) 199 ,  (byte) 207 ,  (byte) 215 ,  (byte) 223 ,  (byte) 231 ,  (byte) 239 ,  (byte) 247 ,  (byte) 255 };  
+	public static byte[] pos_8 = { 8 , 16 , 24 , 32 , 40 , 48 , 56 , 64 , 72 , 80 , 88 , 96 , 104 , 112 , 120 , (byte) 128 ,  (byte) 136 ,  (byte) 144 ,  (byte) 152 ,  (byte) 160 ,  (byte) 168 ,  (byte) 176 ,  (byte) 184 ,  (byte) 192 ,  (byte) 200 ,  (byte) 208 ,  (byte) 216 ,  (byte) 224 ,  (byte) 232 ,  (byte) 240 ,  (byte) 248 ,  (byte) 256 };
+	
 
 
 	
+	public static void printPositions() {
+	    
+	    int pos = 1;
+	    int temp = pos;
+	    for (int i = 1 ; i < 9 ; i++) {
+	    pos = temp;
+	    System.out.print("\n public static byte[] pos_"+pos+" = { "+pos+" , ");
+	    for (int i2=0; i2 < 31; i2++) {
+	        pos+=8;
+	        if (pos > 128 )
+	        	System.out.print(" (byte) ");
+	        else if (pos < -127)
+	        	System.out.print(" (byte) ");
+	        System.out.print(pos+" , ");
+
+	    }
+	    System.out.print(" } ");
+	    temp++;
+	    }
+	    
+	}
+
 	
 	private void printUsingFunction() {
 	    
@@ -41,24 +64,8 @@ public class binPathImpl {
 	        
 	}
 	
-	public static void printKey(int[] key) {
-		System.out.print("\n [");
-		for (int i=0;  i< key.length ; i++)
-			System.out.print(" "+key[i]+",");
-		System.out.println(" ]");
-	}
 	
-	//https://www.javatpoint.com/factorial-program-in-java
-        public static void factorial(int n) {  
-         int fact=1;  
-             
-         for(int i=1;i<=n;i++){    
-             fact=fact*i;    
-         }    
-         System.out.println("Factorial of "+n+" is: "+fact);    
-        }  
-        
-        /**
+	    /**
          * 
          * 
          * FROM Maghoumi
@@ -89,40 +96,89 @@ public class binPathImpl {
         // x |= 0b1; // set LSB bit
         // x |= 0b10; // set 2nd bit from LSB
         
-        
+      //o toggle a bit use:
+      //x ^= (1 << y) | (1 << z); // toggle yth and zth bit
 	private static void prefix() {
 		// 256 bits / / 8bits =>  
 		int[] key  = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 		int[] invertedKey = new int[16];
 		int[] another = new int[16];
-		//o toggle a bit use:
-		// x ^= (1 << y) | (1 << z); // toggle yth and zth bit
+		
 		//	x ^= 0b1;
 		// MSB -> 256 index 0;
-		// Para cada it, divide-se o
-		 
-		//reverse key
 		
+	set 2    set 1	
+	m)	0000 0111	7		
+		0000 0011	3
+		0000 0101   5
+		0000 0001	1
+		0000 0110	6
+		0000 0010	2
+		0000 0100	4
+		0000 1000  8
+		
+	n)	0111 0111 119 
+		0011 0011 51
+		0101 0101 85
+		0001 0001 17
+		0110 0110 102
+		0010 0010 34 
+		0100 0100 68
+		0000 0000 0						
+		
+o)		0111 0000 112					set 1 = tem de ser igual a (1,2,3,4,5,6,7,8)  ou tudo a zeros
+										set 2=   (1,2,3,45,5,6,7,8) ou zeros
+		0011 0000 48
+		0101 0000 80
+		0001 0000 16
+		0110 0000 96					
+		0010 0000 32					(1,1) (0,1) (1,0) (0 , 0)
+		0100 0000 64				
+		0000 0000 0						n) both 4 bits are occupied ( 1 , 1)
+		
+		
+												0,17,34,51,68,85,102,119
+		
+									minus -     0  1  2  3  4  5  6  7  m)  ( 0, 1)
 	
-		// 2^8 => 256
+											    0,16,32,48,64,80,96,112 o) (1,0)
 		
-		// If i have 256 (8 bits)
-		// Nao chega ao byte....
+								divide_by_16 
+								
+												0,1,2,3,4,5,6,7					
+										
+												
+												
+												para 3 sets usa-se os 3 bits
+												
+												
+												
+												(1,1,1)(1,1,0)(1,0,1)(0,1,1)		
+												
+					
+											8,9,10,11,12,13,14,15  
+											
+													last bits are 3 bits
+											1000 , 1001, 1010,1011,1100,1101,1110,1111
+											
+											
+											16,17,18,19,20,21,22,23
+											
+													last bits are 3 bits
+											10000,10001,10010,10011,10100,10101,10110,10111
+											
+											
+											
+											
+											24,25,26,27,28,29,30
+											31,33,35,36,37,38,39
+											40,41,42,43,44,45,46
 		
-		
-	a)	0000 0111		
-		0000 0011	
-		0000 0101
-		0000 0001	
-		0000 0110	
-		0000 0010	
-		0000 0100	
-		0000 0000  
 		
 		 
 		bits iniciais 4 , maximum => 2 positions
-		bits iniciais 8 , maximum => 3 posicoes 		
-		bits iniciais 16 , maximum => 4 positions
+		bits iniciais 8 , maximum => (2^3) 3 posicoes 		
+		bits iniciais 16 , maximum => (2^4) 4 positions
 		bit  iniciais 32 , maximum -> 5 positions 
 		bits iniciais 256 , maximum => 8 positions 
 		bits iniciais 512 -> maximum => 9 positions (need 32 positions)
@@ -130,9 +186,9 @@ public class binPathImpl {
 				
 				ou seja vai diminuindo pela posicioes.....(menos 2vezes)
 		
-   4    3   2   1 (4,3,2 -> 3 bits repetindo-se por 2 vezes)				
-	1	1	1	1 
-	0	1   1	1 	(inicio 16 bits, 8 uns 8 zeros)
+   4    3   2   1 				
+b)	1	1	1	1 
+	0	1   1	1 
 	1	0	1	1  
 	0	0	1	1  
 	1	1	0	1    
@@ -147,85 +203,16 @@ public class binPathImpl {
 	0	1	0	0
 	1	0	0	0		 
 	0	0	0	0
-				
 		
-	
-	
-	111 X
-	011 X  
-	101 X
-	001 X										
-	110 X
-	010 X  4 more initial zero + 4 one's (plus 8 elemens, 2^3)
-			3 bits have 2^3 combinations  + 2^3 = 2 times 2^3
-	100 X
-	000 X	Adding 4 zeros and 4 ones, multiplies by 2
-	111 
-	011 
-	101 
-	001 
-	110
-	010
-	100
-	000
-	
-				
-		Para bits iniciais tem de ser divisivel por 2)
-		0	1	1  
-		1	0	1
-		0	0	1
-		1	1	1
-		0	1	 
-		1	0	
-		0	0	0
-		1	1	0
-		0	1	0
-		1	0	0
-		0	0	0
-						 
-			
+	4 bits -> 2 * threeBits
+	5 bits -> 4 * threeBits
 		
-		
-		
-		  
-		
-		
-		for (int i=0 ; i < 16; i++) {
-			if (i < 8) {
-				key[i] |= 0b00000001;
-			
-				if (i < 2)
-					key[i] |= 0b00000100;
-				else
-					key[i] |= 0b0;
-				
-				if ( i < 4) 
-					key[i] |= 0b00000010;
-				else
-					key[i] |= 0;
-				
-			}
-			else {
-					key[i] |= 0;
-					if (i < 12 )
-						key[i] = 0b00000010;
-					
-					
-			}
-			// Set 2nd bit
-			
-			//printBits(key[i]);
-			
-			
-			System.out.print("\n "+ intToString(key[i],8));
-			
-		}
 		
 
 		// x |= (1 << y); // set the yth bit from the LSB
 		
 	
-	*/
+	
 	
 	}
 	
@@ -239,8 +226,10 @@ public class binPathImpl {
 	 * Time elapsed 70902
 
 */
+	
+	
 	private static void checkBytes_permutation1() {
-		Integer[]  key = new Integer[8];
+		Byte[]  key = new Byte[8];
 		
 		long startTime= System.currentTimeMillis();
 		for (int it= 0; it < 32; it++) {
@@ -253,7 +242,7 @@ public class binPathImpl {
         	key[6] = pos_7[it];
         	key[7] = pos_8[it];
 		
-        Permutation1<Integer> perm = new Permutation1<Integer>(key);
+        Permutation1<Byte> perm = new Permutation1<Byte>(key);
         int count = 0;
         while(perm.hasNext()){
             System.out.println(Arrays.toString(perm.next()));
@@ -268,7 +257,7 @@ public class binPathImpl {
 	//  Falta permutar as posicose para ficar com todos os elems
 	private static void checkBytes_permutation() {
 		
-		Integer[]  key = new Integer[8];
+		Byte[]  key = new Byte[8];
 		
 		long startTime = System.currentTimeMillis();
 				
@@ -282,10 +271,10 @@ public class binPathImpl {
             	key[6] = pos_7[it];
             	key[7] = pos_8[it];
 
-            	List<T[]> l = new List()<>;
+            	
             	
             	// from permutation
-            	l = Permutation.permute(8, key, ',');
+            	Permutation.permute(8, key, ',');
             	
               
            }
@@ -300,21 +289,70 @@ public class binPathImpl {
 	
 	}
 	
-	public static void permuteGeneral(int[] elements) {
-		
-    	
-    	
-	}
+	
 	public static void main(String[] args) {
-		List<T[]> l = new List()<>;
-    	
+		
+		Byte[]  key = new Byte[8];
+
+		
+		long startTime = System.currentTimeMillis();
+		long endTime,resTime;
+		
+		List<Byte[]> lArr = new ArrayList<Byte[] >();
+		 
+			//for (int it= 0; it < 32; it++) {
+		for (int it=0 ; it < 1 ; it++) {
+            	key[0] = pos_1[it];  
+            	key[1] = pos_2[it];
+            	key[2] = pos_3[it];
+            	key[3] = pos_4[it];
+            	key[4] = pos_5[it];
+            	key[5] = pos_6[it];
+            	key[6] = pos_7[it];
+            	key[7] = pos_8[it];
+            	lArr = Permutation.permute(8, key, ',');
+            	int i=0;
+            	
+            	
+            	Iterator<Byte[]> ite = (Iterator<Byte[]>) lArr.iterator();
+            	
+            		while (ite.hasNext()) {
+            			i++;
+            			Byte[] byteArr = (Byte[])ite.next();
+            			
+            			for (Byte print : byteArr)
+            					System.out.print(" , "+String.valueOf(print));
+            			System.out.println();
+         
+            		}
+         }
+			
+			
+	   endTime = System.currentTimeMillis();   	
+	   resTime = endTime - startTime;
+		         
+		System.out.println("\nTime resultant : "+resTime+"\n");
+				
+		Byte[] elements = new Byte[4];
+		
+		
+		
     	// from permutation
-    	l = Permutation.permute(elements.length,elements, ',');
-		//prefix();
-		
-		
-
+    /*	lArr = Permutation.permute(elements.length,elements, ',');
+    	Iterator<Byte[]> it = lArr.iterator();
+    	while (it.hasNext()) {
+    		elements = it.next();
+    		for (int i=0 ; i < 4; i++) {
+    			System.out.print(intToString(elements[i],8));
+    			
+    		}
+    	
+    	}
+    	*/
 	}
+		
+		
 
+	
 }
 

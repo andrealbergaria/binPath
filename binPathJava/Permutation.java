@@ -30,7 +30,7 @@ private static  <T> void printArray(T[] input,char delimeter) {
 
 
    public static <T> List<T[]> permute(int n, T[] elements, char delimiter) {
-	List<T[]> li = new ArrayList<>();
+	List<T[]> li = new ArrayList<T[]>();
 	
    	int[] indexes = new int[n];
 	
@@ -38,7 +38,7 @@ private static  <T> void printArray(T[] input,char delimeter) {
 	    indexes[i] = 0;
 	}
 	 
-	printArray(elements, delimiter);
+	//printArray(elements, delimiter);
 	 int it =0 ;
 	int i = 0;
 	while (i < n) {
@@ -47,7 +47,9 @@ private static  <T> void printArray(T[] input,char delimeter) {
 	    if (indexes[i] < i) {
 	        swap(elements, i % 2 == 0 ?  0: indexes[i], i);
 	        li.add(elements);
-	        printArray(elements, delimiter);
+	        for (T[] obj : li)
+	        	System.out.println("\n"+obj[0]+" , "+obj[1]);
+	     //   printArray(elements, delimiter);
 	        indexes[i]++;
 	        i = 0;
 	    }
