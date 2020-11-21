@@ -104,17 +104,34 @@ public class binPathImpl {
 
         	//o) = m) + 1111
         	//n) = o) + m)
-
+        	//o= n+m
         	
-        	int[] m = {1,2,3,4,5,6,7,8};
+        	int[] a = {1,2,3,4,5,6,7,8};
+        	ArrayList al = new ArrayList();
         	
         	System.out.println();
         	for (int itM=0; i < m.length; i++) {
-        		System.out.print("0000 "+m[itM]+" );
-        		System.out.println(m[itM] + 0b1111+" 0000");
-        		System.outl.println(m[itM] + 0b1111+ " "+m[itM] + 0b1111);
-        	}
+        		int m = m[itM];
+        		al.add(new Integer(m));
+        		
+        		System.out.print("0000 "+m[itM]+"("+m+")");
+        		
+        		int n = m[itM]+0b1111;
+        		
+        		al.add(new Integer(n));
+        		System.out.println(x+" 0000 ("+n+")");
+        		
+        		int o = n+m 
+        		al.add(new Integer(o));
+        		System.outl.println(m[itM] + " "+m[itM]+ " ("+o+")");        
+        		}
+        		System.out.println();
+        		for (int i=0 ; i < 24; i++) {
+        			if (!al.contains(new Integer(i))
+        					System.out.print(" "+i+" , ");
         }
+        
+}
         
         
         
@@ -165,7 +182,9 @@ o)		0111 0000 112					set 1 = tem de ser igual a (1,2,3,4,5,6,7,8)  ou tudo a ze
 		o) = m) + 1111
 		n) = o) + m)
 									minus -     0  1  2  3  4  5  6  7  m)  ( 0, 1)
-	
+	o) = m) + 1111
+     n) = o) + m)
+     o= n+m
 											    0,16,32,48,64,80,96,112 o) (1,0)
 		
 								divide_by_16 
@@ -235,7 +254,11 @@ i)
 												
 								
 						
-						
+								(0,1,0) (0,1,1
+										
+										(1,0,0) (1,0,1) (1,0,0,0) (1,0,0,1) ( 1,0,0,0,0) (1,0,0,0,1)
+										Ha subconjuntos que estao repetidos..nao necessario mulitplicat
+										
 						
 		
 		 
@@ -269,7 +292,7 @@ b)	1	1	1	1
 		
 	4 bits -> 2 * threeBits
 	5 bits -> 4 * threeBits
-		
+	6 bits -> 8 * threeBits
 		
 
 		// x |= (1 << y); // set the yth bit from the LSB

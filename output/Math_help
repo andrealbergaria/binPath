@@ -11,3 +11,36 @@
 		            	// Permutation = > factorial de elemeentos
 				// n elementos => n! combinações permutate
 				 // int combinations 4294967296
+				 
+				 um byte tem 2^8 combinacoes
+				 
+				 0 1 , 1 0 
+				 e		w
+				 
+				 2^2 ccombinações 
+				 (0,0)   (1,0)  (0,1)   (1,1)
+				 a   a    b  a   a b    b  b (2 elems of object)
+				  q  	 	w	 e		 r	
+	
+	positions      0th 		1th    2th     3th    4th     5h   6th  7th
+				  (0,0)		(1,0) (0,1)    (0,0)  (1,1)  (1,0) (0,1)(1,1)
+				  
+				  Para otbter todas sas outras posicoes mulitplicar por 2
+				(0,0) X 2   (1,0) X 2 (0,1) X 2 (1,1) X 2  
+				 (0,0)		(1,0)	  (0,1) 	(1,1)
+				
+				para obter 6 bits
+				(0,0) X 2 X   2   X  2  X  2 X 2 X 2 X 2 (128)
+					 3bits 	4 bits 5 bits 6 bits
+				(0,1) X 2 X   2   X  2  X  2 X 2 X 2 X 2
+					 3bits 	4 bits 5 bits 6 					 
+				(1,0) X 2 X   2   X  2  X  2 X 2 X 2 X 2
+					 3bits 	4 bits 5 bits 6 bits
+				(1,1) X 2 X   2   X  2  X  2 X 2 X 2 X 2
+					 3bits 	4 bits 5 bits 6   bits 7 bits 7					 
+					 
+					
+				(0,0,0) (0,0,1)
+				(0,1,0) (0,1,
+				
+					
