@@ -312,25 +312,49 @@ b)	1	1	1	1
 	0	0	0	0
 		
 	
+	isto obtem todas as combinações possiveis...contar
 	
+											4 bits 2 possiveis
+											Combinações = 2^4 
+										
+										Combinaçõse = 2^16
+
+	8 bits-> 32
+	9 bits-> 64
+	10 bits ->128
+	11 bits -> 256
+	12 bits -> 512
+	13 bits -> 1024
+	14 bits -> 2048
+    15 bits -> 4096										
+	16 bits -> (anterior ) * 2  
+			-> 8192 * (1.....8192 of three bits)
+					
+					7 * 8192
+					57344
+					
+					
 	4 bits -> 2 * threeBits (7,15)
 	5 bits -> 4 * threeBits (7,15,23,31)
 	6 bits -> 8 * threeBits (7,15,23,31,39,47,55,63)
+
 	
 	threebits = 2 ^ 3 (number of bits in three bits)
 	8 * 2^3(number of three (7,15,23,31...) = 64 combinations
 	4 * 2^3 = 32 combinações
-	
-	x= ? 
-			
-	f(x) = number of three bits (like 7,15,23,31 => number 4
-	* 2 ^ 3 = 
-		// x |= (1 << y); // set the yth bit from the LSB
+
+	For 4 bits)
+		number Of three bits = 2
+		therefore Multiply by 2
+	For 5 bits)
+		number of three bits = 4
+		therefore mulitply by 4
+	For 6 bits)
+		number of three bits = 8, so mulitply by 8
 		
-	
-	
-	
-	}
+		
+		// x |= (1 << y); // set the yth bit from the LSB
+
 	
 	/* For Permutation , 32 times 8 positions , and permute -> time 370528=> 
 	 * 370,528 sec

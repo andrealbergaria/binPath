@@ -21,7 +21,7 @@ int main(int argc,char *argv[]) {
     printf("\nNumber of elems printed %i\n",s);
     int t=7;
 
-
+    int threeSize=0;
 
     if (strcmp(argv[3],"listed")==0)
         printf("\n{ ");
@@ -35,6 +35,7 @@ int main(int argc,char *argv[]) {
     	if (startByte == t) {
     	    		printf("   (3bits : %i )",startByte);
     	    		t+=8;
+    	    		threeSize++;
     	}
 
         if (strcmp(argv[3],"listed")==0) {
@@ -59,4 +60,5 @@ int main(int argc,char *argv[]) {
 
     }
     printf(" } \n");
+    printf("\n Number of three bits : %i",threeSize);
 }
