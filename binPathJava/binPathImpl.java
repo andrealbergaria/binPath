@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class binPathImpl {
 
@@ -134,47 +135,32 @@ public class binPathImpl {
 }
         */
         
+        
+        
+        
         private static void printThreeBits(int num_three_bits) {
-        	// All cycles are equal so one onyl gets 3 bits 
-        	// 0-7 , 7-15 , 15-23 , 23-31
-        	// 5 bits -> threeBits (7,15,23,31) // 4*8
-        	// adicionar um a primeiro 3 bits
-        	System.out.println("using bits : "+num_three_bits);
-        	int i=0;
-        	int limit = 7;
-        	int it = 0;
-        	pos[0] = 15;
-        	pos[1] = 23;
-        	pos[2] = 31;
-        	pos[3] = 39;
-        	pos[4] = 47;
-        	pos[5] = 55;
-        	pos[6] = 63;
-        	pos[7] = 71;
-        	pos[8] = 79;
         	
+        	Vector<E> Vpositions = new Vector();
+        	
+        	
+        	
+        	int num =7;
+        	
+        	// populate array
+        	for (int i=0; i < 32; i++) {
+        		Vpositions.add(num);
+        		num+=8;
+        	}
+        	int [] pos; 
+        	Vpositions.copyInto(pos);
+        	 
         	for (int i = 0 ; i < 7; i++) {
-        		pos[0]++;
-        		pos[1]++;
-        		pos[2]++;
-        		pos[3]++;
+        		for (int i2 = 0 ; i2 < 32;i2++) {
+        			pos[i]++;
+        		}
         	}
         	
-        	for (int i2 =0 ; i2 < num_three_bits ; i2++) {
-        		
-        		
-        		for (int i = 0 ; i <= 7 ;i++) {
-        			pos[posIt] =  
-        			it++;
-        		}
-        		posIt++;
-        		System.out.println();
-        		i = limit;
-        		limit += 8;
-        		
-        		
-        	}
-        	System.out.println("\nIT "+it);
+        
         }
 	private static void prefix() {
 		// 256 bits / / 8bits =>  
@@ -198,11 +184,11 @@ public class binPathImpl {
 		  1		0	0	
 		  	
 		  Todas as combinações sao feitas de 3bits ou seja usar prefixo de 3 bits
-				  
-				 
-					
+				*/  
+				 for (int i : another)
+				System.out.println	(" , "+i);
 
-			
+			/*
 			 
 		skip counting zeros, and known combinations , on brute forcing
 	set 2    set 1	
@@ -387,11 +373,16 @@ b)	1	1	1	1
 	
 	6 bits -> threeBits (7,15,23,31,39,47,55,63) //8 * 8 
 
-	8 bitsa -> threeBits (7,15,23,31,39,47,55,63,63+8,71+8,79+8
 	
+	
+	
+	5 bits- > (4bits,23,31)
+	6 bits-> (5bits,39,47,55,63)
+	7 bits-> (6bits,71,79,87,95,103,111,119,127)
 	
 	256 bits have 3 bits initials 
 	
+	256 bits -> anterior divide by 2 
 	
 	/*Percorrer o mesmo ciclo e adicioainar 7
 	
@@ -543,8 +534,8 @@ b)	1	1	1	1
     	
     	}
     	*/
-	//	prefix();
-       printThreeBits(5);
+		//prefix();
+       printThreeBits(8);
 
 	}
 		
