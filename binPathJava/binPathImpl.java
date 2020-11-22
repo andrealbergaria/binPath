@@ -311,16 +311,20 @@ b)	1	1	1	1
 	1	0	0	0		 
 	0	0	0	0
 		
-	4 bits -> 16 initis bits	2^4
-	5 bits- > 32 initial bits 2^5
-	32*8bits ->     2^256 (impossible) 
-	(256bits)
 	
-	4 bits -> 2 * threeBits
-	5 bits -> 4 * threeBits
-	6 bits -> 8 * threeBits
-		
-
+	
+	4 bits -> 2 * threeBits (7,15)
+	5 bits -> 4 * threeBits (7,15,23,31)
+	6 bits -> 8 * threeBits (7,15,23,31,39,47,55,63)
+	
+	threebits = 2 ^ 3 (number of bits in three bits)
+	8 * 2^3(number of three (7,15,23,31...) = 64 combinations
+	4 * 2^3 = 32 combinações
+	
+	x= ? 
+			
+	f(x) = number of three bits (like 7,15,23,31 => number 4
+	* 2 ^ 3 = 
 		// x |= (1 << y); // set the yth bit from the LSB
 		
 	
