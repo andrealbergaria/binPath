@@ -333,25 +333,39 @@ b)	1	1	1	1
 					7 * 8192
 					57344
 					
-					
-	4 bits -> 2 * threeBits (7,15)
-	5 bits -> 4 * threeBits (7,15,23,31)
-	6 bits -> 8 * threeBits (7,15,23,31,39,47,55,63)
-
-	
-	threebits = 2 ^ 3 (number of bits in three bits)
-	8 * 2^3(number of three (7,15,23,31...) = 64 combinations
-	4 * 2^3 = 32 combinações
-
-	For 4 bits)
-		number Of three bits = 2
-		therefore Multiply by 2
-	For 5 bits)
-		number of three bits = 4
-		therefore mulitply by 4
-	For 6 bits)
-		number of three bits = 8, so mulitply by 8
+		3bits ->8 combinações
 		
+		threeBits(7) = 8
+		threeBits(15) = 8
+	
+	
+		threeBits = 16 elemets
+	3 bits -> 1 * threeBits(7); => 8
+	
+	4 bits -> threeBits (7,15)  => 2*8 // 2*8
+	
+	5 bits -> threeBits (7,15,23,31) // 4*8
+	
+	6 bits -> threeBits (7,15,23,31,39,47,55,63) //8 * 8 
+
+	7 = 0b0111
+	8 => 0b1000
+	9 => 0b1001
+	10 =>0b1010
+	11 => 0b1011;
+	
+	
+	15    = 0b1111
+	23    = 0b10111 (15+7)
+	31    = 0b11111 (23+7)
+	
+	
+		
+	}
+	
+)
+	
+	
 		
 		// x |= (1 << y); // set the yth bit from the LSB
 
