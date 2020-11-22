@@ -140,7 +140,7 @@ public class binPathImpl {
         
         private static void printThreeBits(int num_three_bits) {
         	
-        	Vector<E> Vpositions = new Vector();
+        	Vector<Integer> Vpositions = new Vector<>();
         	
         	
         	
@@ -148,10 +148,13 @@ public class binPathImpl {
         	
         	// populate array
         	for (int i=0; i < 32; i++) {
-        		Vpositions.add(num);
+        		Vpositions.add(new Integer(num));
         		num+=8;
         	}
-        	int [] pos; 
+        	int size = Vpositions.size();
+        	
+        	Integer[] pos = new Integer[size];
+        	
         	Vpositions.copyInto(pos);
         	 
         	for (int i = 0 ; i < 7; i++) {
