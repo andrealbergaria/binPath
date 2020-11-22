@@ -99,7 +99,7 @@ public class binPathImpl {
       //o toggle a bit use:
       //x ^= (1 << y) | (1 << z); // toggle yth and zth bit
         
-        private static void printMissingElems() {
+     /*   private static void printMissingElems() {
         	
 
         	//o) = m) + 1111
@@ -121,27 +121,68 @@ public class binPathImpl {
         		al.add(new Integer(n));
         		System.out.println(x+" 0000 ("+n+")");
         		
-        		int o = n+m 
+        		int o = n+m ;
         		al.add(new Integer(o));
         		System.outl.println(m[itM] + " "+m[itM]+ " ("+o+")");        
         		}
         		System.out.println();
         		for (int i=0 ; i < 24; i++) {
-        			if (!al.contains(new Integer(i))
+        			if (!al.contains(new Integer(i)))
         					System.out.print(" "+i+" , ");
         }
         
 }
+        */
         
-        
-        
+        private static void printThreeBits(int num_three_bits) {
+        	// All cycles are equal so one onyl gets 3 bits 
+        	// 0-7 , 7-15 , 15-23 , 23-31
+        	// 5 bits -> threeBits (7,15,23,31) // 4*8
+        	// adicionar um a primeiro 3 bits
+        	System.out.println("using bits : "+num_three_bits);
+        	int i=0;
+        	int limit = 7;
+        	int it = 0;
+        	pos[0] = 15;
+        	pos[1] = 23;
+        	pos[2] = 31;
+        	pos[3] = 39;
+        	pos[4] = 47;
+        	pos[5] = 55;
+        	pos[6] = 63;
+        	pos[7] = 71;
+        	pos[8] = 79;
+        	
+        	for (int i = 0 ; i < 7; i++) {
+        		pos[0]++;
+        		pos[1]++;
+        		pos[2]++;
+        		pos[3]++;
+        	}
+        	
+        	for (int i2 =0 ; i2 < num_three_bits ; i2++) {
+        		
+        		
+        		for (int i = 0 ; i <= 7 ;i++) {
+        			pos[posIt] =  
+        			it++;
+        		}
+        		posIt++;
+        		System.out.println();
+        		i = limit;
+        		limit += 8;
+        		
+        		
+        	}
+        	System.out.println("\nIT "+it);
+        }
 	private static void prefix() {
 		// 256 bits / / 8bits =>  
 		int[] key  = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 		int[] invertedKey = new int[16];
 		int[] another = new int[16];
 		
-		
+		/*
 		
 		discover which bits combinations are present to prefix it
 		  
@@ -300,7 +341,7 @@ b)	1	1	1	1
 	0	0	1	1  
 	1	1	0	1    
 	0	1	0	1		4 coluna = 3 coluna de a)   
-	1	0	0	1		3 coluna = 2 coluna de a)
+7	1	0	0	1		3 coluna = 2 coluna de a)
 	0	0	0   1 		2 coluna = 1 coluna de a)
 	1	1	1	0		 
 	0	1   1   0    
@@ -308,17 +349,13 @@ b)	1	1	1	1
 	0	0	1	0
 	1	1	0	0		
 	0	1	0	0
-	1	0	0	0		 
+15	1	0	0	0		 
 	0	0	0	0
 		
 	
-	isto obtem todas as combinações possiveis...contar
-	
-											4 bits 2 possiveis
-											Combinações = 2^4 
-										
-										Combinaçõse = 2^16
-
+	(4,3,2) ->  2threebits
+	(1,2,3) -> nada
+	 
 	8 bits-> 32
 	9 bits-> 64
 	10 bits ->128
@@ -339,6 +376,8 @@ b)	1	1	1	1
 		threeBits(15) = 8
 	
 	
+	poupar 3 bits pois ao sempre igaugis em todas as posicoes
+	
 		threeBits = 16 elemets
 	3 bits -> 1 * threeBits(7); => 8
 	
@@ -348,22 +387,23 @@ b)	1	1	1	1
 	
 	6 bits -> threeBits (7,15,23,31,39,47,55,63) //8 * 8 
 
-	7 = 0b0111
-	8 => 0b1000
-	9 => 0b1001
-	10 =>0b1010
-	11 => 0b1011;
+	8 bitsa -> threeBits (7,15,23,31,39,47,55,63,63+8,71+8,79+8
 	
+	
+	256 bits have 3 bits initials 
+	
+	
+	/*Percorrer o mesmo ciclo e adicioainar 7
 	
 	15    = 0b1111
 	23    = 0b10111 (15+7)
 	31    = 0b11111 (23+7)
 	
 	
-		
+		*/
 	}
 	
-)
+
 	
 	
 		
@@ -446,7 +486,7 @@ b)	1	1	1	1
 	
 	public static void main(String[] args) {
 		
-		Byte[]  key = new Byte[8];
+		/*Byte[]  key = new Byte[8];
 
 		
 		long startTime = System.currentTimeMillis();
@@ -503,6 +543,9 @@ b)	1	1	1	1
     	
     	}
     	*/
+	//	prefix();
+       printThreeBits(5);
+
 	}
 		
 		
