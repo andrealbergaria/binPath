@@ -13,3 +13,9 @@ since the alrotihm is fast, there is a way to speed up multiplicaton by 2 (shift
 
 we could use permutation on bits..for xample permute( {0,0,1} {1,0,1}) this we get us all values
 
+on  1 byte  first bits must be = 255  2^8
+on  2 bytes first bits must be = 65535 2^16
+on  3 bytes first bits = 16777216 2^24
+  32 bytes frist bits = 2^(32*8)
+  
+  

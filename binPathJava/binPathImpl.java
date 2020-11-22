@@ -141,9 +141,29 @@ public class binPathImpl {
 		int[] invertedKey = new int[16];
 		int[] another = new int[16];
 		
-		//	x ^= 0b1;
-		// MSB -> 256 index 0;
 		
+		
+		discover which bits combinations are present to prefix it
+		  
+		  Pos1 Pos2 Po3
+		  
+		  0		1	1	  		
+		  1		1	1	 
+		  0		0	1	 
+		  1		0	1	 
+		  0		1	0		
+		  1		1	0		
+		  0		0	0		
+		  1		0	0	
+		  	
+		  Todas as combinações sao feitas de 3bits ou seja usar prefixo de 3 bits
+				  
+				 
+					
+
+			
+			 
+		skip counting zeros, and known combinations , on brute forcing
 	set 2    set 1	
 	m)	0000 0111	7		
 		0000 0011	3
@@ -154,10 +174,12 @@ public class binPathImpl {
 		0000 0100	4
 		0000 1000  8
 		
-		0001
-							what about 2set ? 
+		 
 		112   7				119-112 = 7d 
-	n)	0111 0111 119 		n) is equivalent to m , se we subtract the number from the 1set of binaries to the number (119d-0111b,51d-011)
+	n)	0111 0111 119 		we subtract the number 
+							from the 1set of binaries to
+							the number (119d-0111b (7d) on 7 on m)
+							and another example 51d-011 on 3 on  m) 
 		0011 0011 51
 		0101 0101 85
 		0001 0001 17
@@ -250,14 +272,13 @@ i)
 												
 					(1,1,1)(1,1,0)(1,0,1)(0,1,1)(0,0,1)(0,1,0)(0,1,0)(000)		
 													
-						0 = zeros?	1= (1,2,3,4,5,6,7) ?			
+						0 = zeros?	1= (1,2,3,4,5,6,7) or 1 = (1,2,3)			
 												
 								
 						
-								(0,1,0) (0,1,1
-										
-										(1,0,0) (1,0,1) (1,0,0,0) (1,0,0,1) ( 1,0,0,0,0) (1,0,0,0,1)
-										Ha subconjuntos que estao repetidos..nao necessario mulitplicat
+					
+						(1,0,0) (1,0,1) (1,0,0,0) (1,0,0,1) ( 1,0,0,0,0) (1,0,0,0,1)
+ subconjuntos que estao repetidos..nao necessario mulitplicat
 										
 						
 		
@@ -290,6 +311,11 @@ b)	1	1	1	1
 	1	0	0	0		 
 	0	0	0	0
 		
+	4 bits -> 16 initis bits	2^4
+	5 bits- > 32 initial bits 2^5
+	32*8bits ->     2^256 (impossible) 
+	(256bits)
+	
 	4 bits -> 2 * threeBits
 	5 bits -> 4 * threeBits
 	6 bits -> 8 * threeBits

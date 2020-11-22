@@ -19,12 +19,24 @@ int main(int argc,char *argv[]) {
     int s = pow(2,numberOfBits);
     
     printf("\nNumber of elems printed %i\n",s);
-    
+    int t=7;
+
+
+
     if (strcmp(argv[3],"listed")==0)
         printf("\n{ ");
     
     for (int i = 0; i< s ; i++) {
-        printBits(startByte);
+
+
+
+    	printBits(startByte);
+
+    	if (startByte == t) {
+    	    		printf("   (3bits : %i )",startByte);
+    	    		t+=8;
+    	}
+
         if (strcmp(argv[3],"listed")==0) {
             printf(" , ");
             startByte++;
@@ -33,13 +45,18 @@ int main(int argc,char *argv[]) {
             printf("    ");
             startByte++;
             printBits(startByte);
+            if (startByte == t)
+                	    		printf("   (3bits : %i )",startByte);
+
             printf("\n");
         }
         else {
             printf("\n");
             startByte++;
         }
+
         
+
     }
     printf(" } \n");
 }
