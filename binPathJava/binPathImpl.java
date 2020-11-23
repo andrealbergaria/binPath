@@ -135,35 +135,52 @@ public class binPathImpl {
 }
         */
         
-        
+        private static <T> void printArray(T[] arr) {
+        	System.out.println();
+        	 for (T element : arr) {
+        	        System.out.print(element+" , ");
+        	    }
+        	
+        	 System.out.println();
+        }
         
         
         private static void printThreeBits(int num_three_bits) {
         	
-        	Vector<Integer> Vpositions = new Vector<>();
+        	Vector<Integer> threeBitsMarker= new Vector<>();
         	
+        	int num = 0;
         	
+        	double limit_1 = Math.pow(2,num_three_bits)  / 1024;
         	
-        	int num =7;
-        	
+        	 
+        	threeBitsMarker.add(new Integer(7));
+        	num+=8;
         	// populate array
-        	for (int i=0; i < 32; i++) {
-        		Vpositions.add(new Integer(num));
+        	for (int i=0; i < limit_1; i++) {
+        		threeBitsMarker.add(new Integer(num));
         		num+=8;
         	}
-        	int size = Vpositions.size();
         	
-        	Integer[] pos = new Integer[size];
         	
-        	Vpositions.copyInto(pos);
-        	 
-        	for (int i = 0 ; i < 7; i++) {
-        		for (int i2 = 0 ; i2 < 32;i2++) {
-        			pos[i]++;
-        		}
-        	}
+        	for (int i=0;   )
         	
-        
+        	int sizeA = threeBitsMarker.size();
+        	
+        	Integer[] pos = new Integer[sizeA];
+        	
+        	threeBitsMarker.copyInto(pos);
+        	
+        			for (int sizeOfMarker =0 ;  sizeOfMarker <= 7 ; sizeOfMarker++) {
+        				printArray(pos);
+        				for (int i = 0 ; i < limit; i++) {
+        					pos[i]++;
+        					
+        				}
+        			}	
+        		
+        	
+        	
         }
 	private static void prefix() {
 		// 256 bits / / 8bits =>  
@@ -538,7 +555,7 @@ b)	1	1	1	1
     	}
     	*/
 		//prefix();
-       printThreeBits(8);
+       printThreeBits(32);
 
 	}
 		
