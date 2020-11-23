@@ -135,6 +135,37 @@ public class binPathImpl {
 }
         */
         
+        private static <T> Vector<T> getThreeBitsMarkerM(int num_three_bits) {
+        	Vector<Integer> threeBitsMarker= new Vector<>();
+
+
+        	int num = 0;
+        	// int 4294967296
+        	
+ 
+        	// etapa = 66536
+        	double etapa = Math.pow(2,num_three_bits)  / 65536;
+        	
+        	 num = 7;
+        	threeBitsMarker.add(new Integer(num));
+        	num+=8;
+        	
+        	int it = 0;
+        	int it2 =1;
+        	int total=0;
+        	for (int i=it*etapa ; i < etapa*it2; i++) {
+        		threeBitsMarker.add(new Integer(num));
+        		num+=8;
+        		it++;
+        		it2++;
+        		total++;
+        	}
+        
+        	System.err.println("\nTotal markers : "+total);
+        	return threeBitsMarker;
+        	
+        }
+        
         private static <T> void printArray(T[] arr) {
         	System.out.println();
         	 for (T element : arr) {
@@ -149,22 +180,11 @@ public class binPathImpl {
         	
         	Vector<Integer> threeBitsMarker= new Vector<>();
         	
-        	int num = 0;
-        	
-        	double limit_1 = Math.pow(2,num_three_bits)  / 1024;
-        	
-        	 
-        	threeBitsMarker.add(new Integer(7));
-        	num+=8;
-        	// populate array
-        	for (int i=0; i < limit_1; i++) {
-        		threeBitsMarker.add(new Integer(num));
-        		num+=8;
-        	}
-        	
-        	
-        	for (int i=0;   )
-        	
+        	threeBitsMarker = getThreeBitsMarkerM(num_three_bits);
+        			
+        	//[65536,131072,262144]
+        		
+        			
         	int sizeA = threeBitsMarker.size();
         	
         	Integer[] pos = new Integer[sizeA];
@@ -173,7 +193,7 @@ public class binPathImpl {
         	
         			for (int sizeOfMarker =0 ;  sizeOfMarker <= 7 ; sizeOfMarker++) {
         				printArray(pos);
-        				for (int i = 0 ; i < limit; i++) {
+        				for (int i = 0 ; i < arr.length; i++) {
         					pos[i]++;
         					
         				}
