@@ -6,8 +6,45 @@
 		 *  Arranjos => n! / (n-p)!grupo
 		 *  n -> 2
 		 *  
+		 
+		 	4C2
+		 
 		 */
+		 
+		 		// 256 bits / / 8bits =>  32bits
+		 
 		
 		            	// Permutation = > factorial de elemeentos
 				// n elementos => n! combinações permutate
 				 // int combinations 4294967296
+				 
+				 // x |= 0b1; // set LSB bit
+        
+        // x |= 0b10; // set 2nd bit from LSB
+        
+      //o toggle a bit use:
+      //x ^= (1 << y) | (1 << z); // toggle yth and zth bit
+      
+      // x |= (1 << y); // set the yth bit from the LSB
+      
+      /* For Permutation , 32 times 8 positions , and permute -> time 370528=> 
+	 * 370,528 sec
+	 *  6.175466667 minutes
+	 * 
+
+	 * 
+	 * For Permutation1 , 32 times 8 positions, 
+	 * Time elapsed 70902
+
+ aes 128, 192 e 256 bits (chave)
+   256 -> 32 bytes
+   32/4 = 8 ints
+      unsigned long // 8 bytes  +  18,446,744,073,709,551,615] 
+     unsigned int 4294967296
+
+
+4C2 => 4! / (2!.(4-2)!
+
+4A2 => 2^4 (arranjos com repetição )
+4A2 => 4! / (4-2)!
+*/

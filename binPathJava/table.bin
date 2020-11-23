@@ -64,22 +64,9 @@
                                  
                                  
                                  visto que alguns valores sao repetidos tomar partido disso
-    aes 128, 192 e 256 bits (chave)
-   256 -> 32 bytes
-   32/4 = 8 ints
-      unsigned long // 8 bytes  +  18,446,744,073,709,551,615] 
-     unsigned int 4294967296
-     
-     
-     
-   1 		6
    
    
    
-     
-     				cycle once to set all positions
-     				permute some positions
-     				
-   						 1			3
-   	
+   
+   
    

@@ -66,7 +66,6 @@ public class binPathImpl {
 	}
 	
 	
-	    /**
          * 
          * 
          * FROM Maghoumi
@@ -94,11 +93,7 @@ public class binPathImpl {
 
             return result.toString();
         }  
-        // x |= 0b1; // set LSB bit
-        // x |= 0b10; // set 2nd bit from LSB
         
-      //o toggle a bit use:
-      //x ^= (1 << y) | (1 << z); // toggle yth and zth bit
         
      /*   private static void printMissingElems() {
         	
@@ -140,7 +135,6 @@ public class binPathImpl {
 
 
         	int num = 0;
-        	// int 4294967296
         	
  
         	// etapa = 66536
@@ -178,7 +172,12 @@ public class binPathImpl {
         	 System.out.println();
         }
         
-        
+        private static void printMathCombinations() {
+        //	4A2 => 2^4 (arranjos com repetição )
+        	
+        	6A4 = 
+
+        }
         private static void printThreeBits(int num_three_bits) {
         	
         	Vector<Integer> threeBitsMarker= new Vector<>();
@@ -206,40 +205,24 @@ public class binPathImpl {
         	
         }
 	private static void prefix() {
-		// 256 bits / / 8bits =>  
 		int[] key  = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 		int[] invertedKey = new int[16];
 		int[] another = new int[16];
 		
-		/*
 		
-		discover which bits combinations are present to prefix it
-		  
-		  Pos1 Pos2 Po3
-		  
-		  0		1	1	  		
-		  1		1	1	 
-		  0		0	1	 
-		  1		0	1	 
-		  0		1	0		
-		  1		1	0		
-		  0		0	0		
-		  1		0	0	
-		  	
-		  Todas as combinações sao feitas de 3bits ou seja usar prefixo de 3 bits
-				*/  
-				 for (int i : another)
-				System.out.println	(" , "+i);
-
-			/*
-			 
-		skip counting zeros, and known combinations , on brute forcing
+		// skip counting zeros, just assign arrays to 1..the others are 0
+		
+		
+		n) = m) + 1111 + m)		
+			
+			 0000 0111 + 0000 1111  + 0000 0111
+		
 	set 2    set 1	
 	m)	0000 0111	7		
 		0000 0011	3
 		0000 0101   5
-		0000 0001	1		 
-		0000 0110	6			
+		0000 0001	1		 (1,2,3,4,5,6,7,8)
+		0000 0110	6		+1111 +1111 +1111  	
 		0000 0010	2			
 		0000 0100	4
 		0000 1000  8
@@ -267,23 +250,24 @@ o)		0111 0000 112					set 1 = tem de ser igual a (1,2,3,4,5,6,7,8)  ou tudo a ze
 		0110 0000 96					
 		0010 0000 32					(1,1) (0,1) (1,0) (0 , 0) => Todas as ordens possiveis
 		0100 0000 64				
-		1000 0000 128						n) both 4 bits are occupied ( 1 , 1)
+		1000 0000 128						
 		
 		
 												0,17,34,51,68,85,102,119
 		o) = m) + 1111
 		n) = o) + m)
-									minus -     0  1  2  3  4  5  6  7  m)  ( 0, 1)
-	o) = m) + 1111
-     n) = o) + m)
-     o= n+m
+								minus -     0  1  2  3  4  5  6  7  m)  ( 0, 1)
+	
+	
+    
+    
 											    0,16,32,48,64,80,96,112 o) (1,0)
 		
 								divide_by_16 
 								
 												0,1,2,3,4,5,6,7					
-				 
-				
+			
+				shift esquerdo = dividir por 16
 				k= h)#1 / g)#1 = 16  
 				k= h)#2 / g)#2 =  16
 				k= h)#3 / g)#3  =  16
@@ -295,7 +279,7 @@ o)		0111 0000 112					set 1 = tem de ser igual a (1,2,3,4,5,6,7,8)  ou tudo a ze
 					f(g) = (i#1-g#1) / k
 								
 
-				(0,1) (1,0) trying i)
+				
 				a constante é 16 neste caso (para outros bits serao o mesmo)
 				
 				
@@ -344,21 +328,13 @@ i)
 													
 						0 = zeros?	1= (1,2,3,4,5,6,7) or 1 = (1,2,3)			
 												
-								
-						
-					
-						(1,0,0) (1,0,1) (1,0,0,0) (1,0,0,1) ( 1,0,0,0,0) (1,0,0,0,1)
- subconjuntos que estao repetidos..nao necessario mulitplicat
-										
-						
-		
-		 
+
 		bits iniciais 4 , maximum => 2 positions
 		bits iniciais 8 , maximum => (2^3) 3 posicoes 		
 		bits iniciais 16 , maximum => (2^4) 4 positions
 		bit  iniciais 32 , maximum -> 5 positions 
 		bits iniciais 256 , maximum => 8 positions 
-		bits iniciais 512 -> maximum => 9 positions (need 32 positions)
+		bits iniciais 512 -> maximum => 9 positions 
 		bytes iniciais 4294967296 -> 32 positions?
 				
 				ou seja vai diminuindo pela posicioes.....(menos 2vezes)
@@ -401,8 +377,8 @@ b)	1	1	1	1
 					
 		3bits ->8 combinações
 		
-		threeBits(7) = 8
-		threeBits(15) = 8
+		threeBits(7) = #8
+		threeBits(15) = #8
 	
 	
 	poupar 3 bits pois ao sempre igaugis em todas as posicoes
@@ -417,15 +393,13 @@ b)	1	1	1	1
 	6 bits -> threeBits (7,15,23,31,39,47,55,63) //8 * 8 
 
 	
-	
+	//-- three marker bits
 	
 	5 bits- > (4bits,23,31)
 	6 bits-> (5bits,39,47,55,63)
 	7 bits-> (6bits,71,79,87,95,103,111,119,127)
 	
 	256 bits have 3 bits initials 
-	
-	256 bits -> anterior divide by 2 
 	
 	/*Percorrer o mesmo ciclo e adicioainar 7
 	
@@ -441,19 +415,9 @@ b)	1	1	1	1
 	
 	
 		
-		// x |= (1 << y); // set the yth bit from the LSB
-
+		
 	
-	/* For Permutation , 32 times 8 positions , and permute -> time 370528=> 
-	 * 370,528 sec
-	 *  6.175466667 minutes
-	 * 
-
-	 * 
-	 * For Permutation1 , 32 times 8 positions, 
-	 * Time elapsed 70902
-
-*/
+	
 	
 	
 	private static void checkBytes_permutation1() {
@@ -481,8 +445,6 @@ b)	1	1	1	1
         System.out.println("\nTime elapsed "+len+"\n");
         
 	}
-	// Para cada posicao, existe 32 numeros
-	//  Falta permutar as posicose para ficar com todos os elems
 	private static void checkBytes_permutation() {
 		
 		Byte[]  key = new Byte[8];
