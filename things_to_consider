@@ -17,4 +17,15 @@ on  2 bytes first bits must be = 65535 2^16
 on  3 bytes first bits = 16777216 2^24
   32 bytes frist bits = 2^(32*8)
   
-  
+   binPath also solves traveling salesman problem
+   biPath also crack bitcoin private key
+   
+   what is the plaintext?
+   
+    The most straightforward way is to obtain a
+     few corresponding plaintext and ciphertext pairs, 
+     that is, a known-plaintext attack. Alternatively, 
+     a ciphertext-only attack is possible by decrypting 
+     ciphertext using each candidate key, and testing the
+      result for similarity to plaintext language — for example,
+       English encoded in ASCII.
