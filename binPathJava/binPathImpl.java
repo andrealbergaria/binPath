@@ -135,7 +135,7 @@ public class binPathImpl {
 }
         */
         
-        private static <T> Vector<T> getThreeBitsMarkerM(int num_three_bits) {
+        private static <T> Vector<Integer> getThreeBitsMarkerM(int num_three_bits) {
         	Vector<Integer> threeBitsMarker= new Vector<>();
 
 
@@ -153,12 +153,15 @@ public class binPathImpl {
         	int it = 0;
         	int it2 =1;
         	int total=0;
-        	for (int i=it*etapa ; i < etapa*it2; i++) {
+        	
+        	
+        	for (double i=0 ; i < etapa; i++) {
         		threeBitsMarker.add(new Integer(num));
         		num+=8;
         		it++;
         		it2++;
         		total++;
+        		System.out.println(i);
         	}
         
         	System.err.println("\nTotal markers : "+total);
@@ -193,7 +196,7 @@ public class binPathImpl {
         	
         			for (int sizeOfMarker =0 ;  sizeOfMarker <= 7 ; sizeOfMarker++) {
         				printArray(pos);
-        				for (int i = 0 ; i < arr.length; i++) {
+        				for (int i = 0 ; i < pos.length; i++) {
         					pos[i]++;
         					
         				}
@@ -575,7 +578,10 @@ b)	1	1	1	1
     	}
     	*/
 		//prefix();
-       printThreeBits(32);
+		
+		Vector<Integer> v =  getThreeBitsMarkerM(32);
+		
+       //printThreeBits(32);
 
 	}
 		

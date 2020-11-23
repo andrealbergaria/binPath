@@ -34,4 +34,5 @@
         			 		+1 +1 +1 +1 +1
         			 		etc...
        Assim por exemplo com valores grandes, faco o o preenchimento da array do markers , em varias etapas 
-        			
+        	
+        Codifiquei o metodo getThreeBitsMarkerM , de modo que para cada etapa (por exemplo 65535) , faz-se a pesquisa de 1 a 65535 e depois 65535*2 ,e por ai		
