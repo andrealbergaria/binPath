@@ -172,12 +172,37 @@ public class binPathImpl {
         	 System.out.println();
         }
         
-        private static void printMathCombinations() {
-        //	4A2 => 2^4 (arranjos com repetição )
-        	
-        	6A4 = 
+        private static void printMissingElements(Vector<Byte> arr) {
+        	System.out.println();
+        	for (byte i=-128; i <= 128 ; i++) {
+        		if (!arr.contains(new Byte(i))) {
+        			System.out.print(" , ");
+        			printBits(i);
+        		
+        		}
+        	}
 
         }
+        
+        private static void printBits(byte b) {
+        	   byte mask = 0x80;
+        	   int it;
+        	   
+        	   for (it=0 ;it < 8; it++) {
+        	       if (b & mask)
+        	           System.out.print('1');
+        	       else
+        	           System.out.print('0');
+        	      
+        	       mask >>= 1;
+        	   }
+        	    System.out.println(" (%i)    ",new Integer(b));
+        	   
+
+        	   
+        	}
+
+        
         private static void printThreeBits(int num_three_bits) {
         	
         	Vector<Integer> threeBitsMarker= new Vector<>();
@@ -211,7 +236,7 @@ public class binPathImpl {
 		
 		
 		// skip counting zeros, just assign arrays to 1..the others are 0
-		
+	/*	
 		
 		n) = m) + 1111 + m)		
 			
@@ -321,7 +346,8 @@ i)
 	
 												
 					
-												
+		linha=8 bytes
+		col = 2
 												
 												
 					(1,1,1)(1,1,0)(1,0,1)(0,1,1)(0,0,1)(0,1,0)(0,1,0)(000)		
@@ -541,9 +567,33 @@ b)	1	1	1	1
     	*/
 		//prefix();
 		
-		Vector<Integer> v =  getThreeBitsMarkerM(32);
+	//	Vector<Integer> v =  getThreeBitsMarkerM(32);
 		
        //printThreeBits(32);
+		
+		/*
+		 * 
+		 * g,h,i
+		 * 
+		 */
+		
+		
+		
+		Byte[] g = {00001000,00001001,00001010,00001011,00001100,00001101,00001110,00001111};
+		Byte[7] h = new Byte[7];
+		Byte[7] j = new Byte[7];
+		
+		 
+		for (int i =0 ; i<  7;i++) {
+			h[i] = g[i] << 4;
+			i[i] = h[i]+g[i];
+		}
+		
+		Vector<Byte> v  = new Vector<Byte>;
+		v.add(g);
+		v.add(h);
+		v.add(j);
+		printMissingElements(v)
 
 	}
 		
