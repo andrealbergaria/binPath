@@ -172,7 +172,7 @@ public class binPathImpl {
         	 System.out.println();
         }
         
-        private static void printMissingElements(Vector<Byte> arr) {
+        private static void printMissingElements(Vector<Byte[]> arr) {
         	System.out.println();
         	for (byte i=-128; i <= 128 ; i++) {
         		if (!arr.contains(new Byte(i))) {
@@ -185,18 +185,19 @@ public class binPathImpl {
         }
         
         private static void printBits(byte b) {
-        	   byte mask = 0x80;
+        	   byte mask = (byte) 0b10000000;
         	   int it;
         	   
         	   for (it=0 ;it < 8; it++) {
-        	       if (b & mask)
+        	       if ( (b & mask) == 1)
         	           System.out.print('1');
         	       else
         	           System.out.print('0');
         	      
         	       mask >>= 1;
         	   }
-        	    System.out.println(" (%i)    ",new Integer(b));
+        	   
+        	    System.out.println("  (d) "+(int) b);
         	   
 
         	   
@@ -579,17 +580,17 @@ b)	1	1	1	1
 		
 		
 		
-		Byte[] g = {00001000,00001001,00001010,00001011,00001100,00001101,00001110,00001111};
+		Byte[] g = {0b00001000,0b00001001,0b00001010,0b00001011,0b00001100,0b00001101,0b00001110,0b00001111};
 		Byte[] h = new Byte[7];
 		Byte[] j = new Byte[7];
 		
 		 
 		for (int i =0 ; i<  7;i++) {
-			h[i] = g[i] << 4;
-			j[i] = h[i]+g[i];
+			h[i] = (byte)  (g[i] << 4);
+			j[i] = (byte) (h[i]+g[i]);
 		}
 		
-		Vector<Byte> v  = new Vector<>();
+		Vector<Byte[]> v  = new Vector<>();
 		v.add(g);
 		v.add(h);
 		v.add(j);
