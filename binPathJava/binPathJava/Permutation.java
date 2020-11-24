@@ -37,7 +37,7 @@ private static  <T> void printArray(T[] input,char delimeter) {
 	}
 	 
 	//printArray(elements, delimiter);
-//	 int it =0 ;
+    int it=0;
 	int i = 0;
 	while (i < n) {
 		

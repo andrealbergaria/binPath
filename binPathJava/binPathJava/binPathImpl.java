@@ -150,7 +150,7 @@ public class binPathImpl {
         	for (double i=0 ; i < etapa; i++) {
         		threeBitsMarker.add(new Integer(num));
         		num+=8;
-        		it++;
+        		
         		it2++;
         		total++;
         		System.out.println(i);
@@ -181,21 +181,11 @@ public class binPathImpl {
         	}
 
         }
-        
+        // FROM https://mkyong.com/java/java-how-to-convert-a-byte-to-a-binary-string/
         private static void printBits(byte b) {
-        	   byte mask = (byte) 0b10000000;
-        	   int it;
-        	   
-        	   for (it=0 ;it < 8; it++) {
-        	       if ( (b & mask) == 1)
-        	           System.out.print('1');
-        	       else
-        	           System.out.print('0');
-        	      
-        	       mask >>= 1;
-        	   }
-        	   
-        	    System.out.println("  (d) "+(int) b);
+        	String resultWithPadZero = String.format("%8s", Integer.toBinaryString(b))
+                    .replace(" ", "0");
+        	    System.out.println(resultWithPadZero+"  (d) "+(int) b);
         	   
 
         	   
@@ -582,7 +572,7 @@ b)	1	1	1	1
 		Byte[] h = new Byte[7];
 		Byte[] j = new Byte[7];
 		
-		 
+		 printBits(g[0]);
 		for (int i =0 ; i<  7;i++) {
 			h[i] = (byte)  (g[i] << 4);
 			j[i] = (byte) (h[i]+g[i]);
@@ -592,7 +582,7 @@ b)	1	1	1	1
 		v.add(g);
 		v.add(h);
 		v.add(j);
-		printMissingElements(v);
+	//	printMissingElements(v);
 
 	}
 		

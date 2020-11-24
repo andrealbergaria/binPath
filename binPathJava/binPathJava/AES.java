@@ -8,7 +8,7 @@ package binPathJava;
 
     
     import javax.crypto.SecretKey;
-	import javax.crypto.Cipher;
+	
 	 
 
 	 public class AES {
