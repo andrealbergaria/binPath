@@ -1,0 +1,11 @@
+
+xor the key with iv
+encrypt(PlainText XOR IV) -> C
+encrypt( Key XOR IV , plaintext);
+
+
+key XOR IV = plaintext
+key = plaintext XOR IV
+
+
+Key XOR IV (with counter)

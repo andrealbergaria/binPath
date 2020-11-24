@@ -29,3 +29,5 @@ o)		0111 0000 112
 		0100 0000 64				
 		1000 0000 128						
 b) Get combinations
+
+c) Wonder if we can get iv from 1 block size
