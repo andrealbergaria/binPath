@@ -170,17 +170,6 @@ public class binPathImpl {
         	 System.out.println();
         }
         
-        private static void printMissingElements(Vector<Byte[]> arr) {
-        	System.out.println();
-        	for (byte i=-128; i <= 128 ; i++) {
-        		if (!arr.contains(new Byte(i))) {
-        			System.out.print(" , ");
-        			printBits(i);
-        		
-        		}
-        	}
-
-        }
         // FROM https://mkyong.com/java/java-how-to-convert-a-byte-to-a-binary-string/
         private static void printBits(byte b) {
         	String resultWithPadZero = String.format("%8s", Integer.toBinaryString(b))
@@ -435,6 +424,34 @@ b)	1	1	1	1
 	
 	
 	
+	private static void printMissingElements(Vector<int[]> arr) {
+		System.out.println();
+		
+		Vector<Integer> bytesTaken = new Vector<>();
+		
+		for (int[] bArr : arr) {
+			for (int bElem : bArr) {
+				bytesTaken.add(bElem);
+				System.out.println("bElem : "+bElem);
+				
+			}
+		}
+		
+		//System.out.println(bytesTaken);
+		System.out.println();
+		for (int i =0 ; i < 256 ; i++) {
+			
+			if (bytesTaken.contains(i) == false)
+				System.out.print(" , "+i);
+			   if (i % 10  == 0)
+				System.out.println();
+				
+		}
+	
+		
+	}
+
+
 	private static void checkBytes_permutation1() {
 		Byte[]  key = new Byte[8];
 		
@@ -568,21 +585,20 @@ b)	1	1	1	1
 		
 		
 		
-		Byte[] g = {0b00001000,0b00001001,0b00001010,0b00001011,0b00001100,0b00001101,0b00001110,0b00001111};
-		Byte[] h = new Byte[7];
-		Byte[] j = new Byte[7];
+		int[] g = {0b00001000,0b00001001,0b00001010,0b00001011,0b00001100,0b00001101,0b00001110,0b00001111};
+		int[] h = new int[8];
+		int[] j = new int[8];
 		
-		 printBits(g[0]);
-		for (int i =0 ; i<  7;i++) {
-			h[i] = (byte)  (g[i] << 4);
-			j[i] = (byte) (h[i]+g[i]);
+		for (int i =0 ; i< 8;i++) {
+			h[i] = (g[i] << 4);
+			j[i] = (h[i]+g[i]);
 		}
 		
-		Vector<Byte[]> v  = new Vector<>();
+		Vector<int[]> v  = new Vector<>();
 		v.add(g);
 		v.add(h);
 		v.add(j);
-	//	printMissingElements(v);
+		printMissingElements(v);
 
 	}
 		

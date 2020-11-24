@@ -29,3 +29,6 @@ on  3 bytes first bits = 16777216 2^24
      ciphertext using each candidate key, and testing the
       result for similarity to plaintext language — for example,
        English encoded in ASCII.
+       
+    to arranje several sublists, just join them on one list, and go for there   
+       
