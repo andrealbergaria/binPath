@@ -38,7 +38,7 @@
                   
                   
                  //aa
-                   ab (XOR)
+                   ab (XOR) (XOR) ?  
                    ba (REVERSE)
                    bb (XOR)
                    

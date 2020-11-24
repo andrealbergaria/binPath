@@ -12,17 +12,13 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Byte[] byteArray = new Byte[8];
+	/*	Byte[] byteArray = new Byte[8];
 		Byte[] key = new Byte[8];
 		Byte[] temp1  = {1,2,3,4,5,6,7,8};
 		Byte[] temp2  = {10,11,12,13,14,15,16,17};
 		Byte[] temp3  = {11,123,12,123,1,45,23,21};
 		
-		List<Byte[]> lArr = new ArrayList<Byte[]>() {{
-					add(temp1);
-					add(temp2);
-					add(temp3);
-		}};
+		
 		
 		Iterator<Byte[]> ite = lArr.iterator();
 		System.out.println();
