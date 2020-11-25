@@ -20,19 +20,12 @@ if(str2 ==0 ) str2 not set
 								
 if (str2 == 1) str2 set
 				
+				Each number represents the string enabled 
+				num 4 = "str"
+				num 6 = str2,str
+				num7 = str str2 str3
 								
 																		
-// then start by {str, str ,str}
-// and keep changing {str,str,str2}
-// {str,str2,str} , etcetcetc 
-// 0 = str
- //  0 = str2
-  // 0 =str3
-   
-//1=str
-//1=str2
-// 1=str3
-
 // another view of it, is that 0= 0 and 1=[1,2,3] for example...in this case the 111111 cases needs to invert the zero and the set ([1,2,3]
 
 
@@ -40,27 +33,13 @@ if (str2 == 1) str2 set
                 
                   
                   
-                 //aa
-                   ab (XOR)
-                   ba (REVERSE)
-                   bb (XOR)
-                   
-                           10 00 10 (rev(b)) (34d)
-                   
-                  
-                //how can one invert a set?
-                 
-                 
-                 
-                
-                
                 
                  //7 solution
                  // each bit indicates if the character is present on the number
-                 // so for instance (abc = 111
-                 //a=1
-                 //b=1
-                 //c=1
+                 // so for instance (abc = 111)
+                 //a=1 pos(0)
+                 //b=1 pos(1)
+                 //c=1 pos(2)
                  // for b=0 , 101
                  
                  // solution ( i think already tried)

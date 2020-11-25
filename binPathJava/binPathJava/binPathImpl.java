@@ -643,26 +643,80 @@ b)	1	1	1	1
 					
 					4 bits iniciais = 4 bits finais
 					
-		00000   	000	 a		00000 011	 i
-		00000	    001	 b		00000 101	 j
-		00000		010	 c		00000 110 	 k
-		00000		100	 d		00000 111	 l
-		00000	    111	 e		00000 100	 m
-		00000		110	 f		00000 010	 n 
-		00000		101	 g		00000 001	 o
-		00000		011	 h		00000 000 	p	same numbers only order of three bits changed
-					
-		b =  o
-		a = p				P = {0,1}
-		n=2
-							
-
-									b
-
-								-	-	 -	 -	 	- 	
-													o
+			1		001  b  1   111 a1	 	1 	011	 i 3
+			2		010	 c	2	001 a2		2	    101	 j 5
+			3		100	 d	4	101 a3     	3	110  k 6
+			4		111	 e	7	110 a4		4	111	 l 7
+			5		110	 f	6	011 a5		5	100	 m 4
+			6		101	 g	5	010 a6		6	010	 n 2
+			7		011	 h  3   100 a7 		7	001	 o 1
+			
 		
-								-	- 	-   - 		-
+					
+1		010 2 p		 				
+2		111 7 q		 
+3		001 1 r  	 
+4		100 4 s     
+5		110 6 t
+6		101 5 w
+7		011 3 x
+						b=001
+						Proximo na iteracao , tem de ter posicao 2, proximo 3, etc (pos[2] = a2 ; pos[3] = 001 (a2))
+						
+						I can just assign one pos, the other are equal
+					 b 		  o			r	
+					Pos 1 -> Pos 7 -> Pos 3 (same bits)
+						
+					
+					c  		  n 		p
+					Pos 2 -> Pos6 -> Pos 1 
+						
+					ou seja comecar por b e no ciclo igualar as posicoes que tem b
+					pos[0] = pos[6] = pos[8]
+							
+				    pos[0] = b ; pos[0] = o ; pos[0] =r;
+										Pos 7		Pos 3
+					
+					pos = 1; (futuros ciclos nao usam pos1 ,pos1 taken)
+					
+					pos[1]  = pos[0];
+					pos[2] =  pos[0];
+						
+					byte[] pos2 = { 0b000,0b001,0b010,0b100,0b111,0b101,0b110,0b011};  
+					byte[] arr2,arr3,arr4,arr5,arr6,arr7;
+					// iniciais, usados para atribuir valor
+					
+					int pos_init = 0;
+					int pos_init2 = 1;
+					
+					for (int i= 1 ; i < 8; i++) {
+						pos[i] =  0b000;
+						arr2[i] = 0b010
+						arr3[i] = 0b011;
+						arr4[i] = 0b100;
+						arr5[i] = 0b101;
+						arr6[i] = 0b111;
+						
+						// Todas as possiveis lugares de 001 (n lugares)
+						// Todas as possiveis lugares de 010 (n lugares)
+						
+					}
+								
+								
+					
+					
+						
+						
+					
+					P = {a,b,c,d};
+					n=4
+					p=2
+
+					4A2 -> n^p
+					
+				Ou seja os numeros acontecem em posicoes diferentes
+				com o mesmo valor (só possivel se houver permutação de elementos)
+								
 		b=o 
 		
 		d=m					P1 = {a,b,c,d,e,f,g,h}
