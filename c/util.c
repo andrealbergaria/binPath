@@ -271,13 +271,15 @@ void printUsingFunction() {
 void printBits(unsigned char number) {
    unsigned char mask = 0x80;
    int it;
-   
+   u_char zero='0',one='1';
    for (it=0 ;it < 8; it++) {
+	   if  (it % 2 == 0)
+	       	  putchar(' ');
        if (number & mask)
-           putchar('1');
+           putchar(one);
        else
-           putchar('0');
-      
+           putchar(zero);
+
        mask >>= 1;
    }
     printf(" (%i)\t",number);

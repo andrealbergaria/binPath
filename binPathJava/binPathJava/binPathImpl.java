@@ -600,10 +600,125 @@ b)	1	1	1	1
 		v.add(j);
 		printMissingElements(v);
 
-	}
+		// ones and ones after 3 bits
+		
+		// 4bits-> so three bits use 
+		// 4 Bits  (2threebtes markers) 8 ones 8 zeros
+		// 4 bits below
 		
 		
-
+	base three bits- > 8 , add  10000 (8) to three bits
+	base three bits -> 8 , add  11000 (16)  
+	base_three_Bits -> 8,  add  11100 (24)
 	
-}
+		   first 5 bits , needs to be added to bthree bits
+	
+			add number to three bits, constante? 
+			
+					
+			00000 000
+			00000 001
+			00000 010
+			00000 100
+			00000 111
+			00000 101
+			00000 011
+			00000 110
+			
+			a      b		
+			00001 000
+			00001 001 c)
+			00001 010
+			00001 100  
+			00001 111
+			00001 101  PErcorreu 8 bbytes
+			00001 110
+			00001 011
+			
+			
+			so marker (001) appears on 5 msb in [8..16 bytes]
+			so marker2 (010) appears on 5 msb in [16...24]
+			so marker3 (011) appears on 5 msb in [24..32]
 
+					
+					4 bits iniciais = 4 bits finais
+					
+		00000   	000	 a		00000 011	 i
+		00000	    001	 b		00000 101	 j
+		00000		010	 c		00000 110 	 k
+		00000		100	 d		00000 111	 l
+		00000	    111	 e		00000 100	 m
+		00000		110	 f		00000 010	 n 
+		00000		101	 g		00000 001	 o
+		00000		011	 h		00000 000 	p	same numbers only order of three bits changed
+					
+		b =  o
+		a = p				P = {0,1}
+		n=2
+							
+
+									b
+
+								-	-	 -	 -	 	- 	
+													o
+		
+								-	- 	-   - 		-
+		b=o 
+		
+		d=m					P1 = {a,b,c,d,e,f,g,h}
+		e=l					P2 = {i,j,k,l,n,n,o,p}
+		f = k				nP1 = 8
+		g = j				nP2 = 8
+							p= 3
+		h = i			
+					Pos b = Pos o?
+				Arrrajos = {b,c,a},{d,e,f}
+			
+							{o,n,p} {m,l,k
+		ordem diferente mesmos numeros
+					
+		Arranjos 
+		ou seja ao adiconar um zero anterior ao numero, = 8C8
+		
+			5 bits
+			 00000 000 (0)				1
+			 00000 001 (1)	*marker
+			 00000 010 (2)	*marker 2 
+			 00000 011 (3)	*marker 3
+			 00000 100 (4)	
+			 00000 101 (5)	
+			 00000 110 (6)	
+			 00000 111 (7)	  	8
+			 00001 000 (8)	
+			 00001 001 (9)	
+			 00001 010 (10)	
+			 00001 011 (11)	
+			 00001 100 (12)	
+			 00001 101 (13)	
+			 00001 110 (14)	
+			 00001 111 (15)	
+			 00010 000 (16)				16
+			 00010 001 (17)	
+			 00010 010 (18)	
+			 00010 011 (19)	
+			 00010 100 (20)	
+			 00010 101 (21)	
+			 00010 110 (22)	
+			 00010 111 (23)	  
+			 00011 000 (24)			24
+			 00011 001 (25)	
+			 00011 010 (26)	
+			 00011 011 (27)	
+			 00011 100 (28)	
+			 00011 101 (29)	
+			 00011 110 (30)	
+			 00011 111 (31)	   32 
+			
+			
+			
+			 } 
+
+			
+			
+			
+			

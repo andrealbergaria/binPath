@@ -30,5 +30,17 @@ on  3 bytes first bits = 16777216 2^24
       result for similarity to plaintext language — for example,
        English encoded in ASCII.
        
-    to arranje several sublists, just join them on one list, and go for there   
+    to arranje several sublists, just join them on one list, and go for there
+    
+    		instead of going to 256 ,start on 256 and go (divide)
        
+       4 bits, se 4 bit é igual a 1 é maior ten que (1,2,3,4,5,6,7,8) caso contrario  
+			 
+			00101010
+			
+			6 bit iset > 2^5
+			numero maior que 2^5
+			
+			
+			
+			
