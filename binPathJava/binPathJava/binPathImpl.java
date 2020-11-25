@@ -661,8 +661,77 @@ b)	1	1	1	1
 6		101 5 w
 7		011 3 x
 						b=001
-						Proximo na iteracao , tem de ter posicao 2, proximo 3, etc (pos[2] = a2 ; pos[3] = 001 (a2))
 						
+relação entre valor e posição
+			Pos1 () => 001,111,011,010,101
+			
+			Pos2 =>   010,001,101,111
+				
+			pos1[0] = pos2[0] ?
+			
+			
+			
+			Se tiver desordnado (ou seja nao sequencialmente (3,4,1) (snaõ as posicoes sao iguais)
+			
+			Pos 1 = 2,5,3,6,7
+			Pos 2 = 3,2,5,7,6							Quero permutar Pos1 
+			
+			For Pos1(2) ={3,2,5,7,6}	// Pos1(1idx) = everything from Pos2 
+			For Pos1(5) = {3,2,5,7,6}  // Pos1(2idx) = Everything from Pos 2
+			
+			
+			
+			
+			For pos1(2) = {2,3,5,6,7} 
+			from unorder to order...
+			For Pos2(2) = {2,5,3,6,7}
+			
+			
+			indices are 1,2,3,4,5
+			            2 3 1 5 4
+			            
+			            1->2 , 2->3 , 3-> 1,4-5 , 5-4
+			            
+			            1-> 3 ? 
+			            		
+			            			P1(1idx) => 1-> 2
+			            			P1(idx) => 2
+			            			
+			            			p1(2idx) => 
+			            		
+			            so we equal indices on Pos1 and get the value of Pos2 on that index
+			
+		sequence(5idx) 
+			
+			P1(1idx) => P2(2idx) --> 1->2
+					
+			P1(2idx) => P2(3idx) 2-> 3
+			
+			
+			P1(3idx) => P2(1idx) 3 -> 1
+			
+			troca de indexes.
+			
+			P1(4idx) => P2(5idx) 4 -> 5
+			
+			P1(5idx) => P2(idx4) 5 -> 4
+			
+			
+			
+			}
+			
+			Pos1[0] (001)  => Pos2[0]   (001)
+			
+			se pos1[0] (111) => Pos2[4]  (111)
+			
+			
+			
+			
+			Pos1(111) => Pos2(X)
+			
+			
+			dont cycle every value (some are repeated (010,111,001))
+			
 						I can just assign one pos, the other are equal
 					 b 		  o			r	
 					Pos 1 -> Pos 7 -> Pos 3 (same bits)
@@ -670,35 +739,37 @@ b)	1	1	1	1
 					
 					c  		  n 		p
 					Pos 2 -> Pos6 -> Pos 1 
-						
-					ou seja comecar por b e no ciclo igualar as posicoes que tem b
-					pos[0] = pos[6] = pos[8]
+					010		 010 		010
+					
+					Pos 2 = { 010,101,111}
+							 Pos2 Pos6 Pos 1
 							
 				    pos[0] = b ; pos[0] = o ; pos[0] =r;
-										Pos 7		Pos 3
-					
-					pos = 1; (futuros ciclos nao usam pos1 ,pos1 taken)
-					
-					pos[1]  = pos[0];
-					pos[2] =  pos[0];
-						
-					byte[] pos2 = { 0b000,0b001,0b010,0b100,0b111,0b101,0b110,0b011};  
-					byte[] arr2,arr3,arr4,arr5,arr6,arr7;
+					 Pos 1		=		Pos 7	= 	Pos 3
+	
+							 
+					byte[] arr2 = new byte[8];
+					byte[] arr3 = new byte[8];
+					byte[] arr4 = new byte[8];
+					byte[] arr5 = new byte[8];
+					byte[] arr6 = new byte[8];
+					byte[] arr7 = new byte[8];
 					// iniciais, usados para atribuir valor
 					
-					int pos_init = 0;
-					int pos_init2 = 1;
 					
-					for (int i= 1 ; i < 8; i++) {
+					for (int i= 0 ; i < 8; i++) {
 						pos[i] =  0b000;
+						arr7[i] = 0b001;
 						arr2[i] = 0b010
 						arr3[i] = 0b011;
 						arr4[i] = 0b100;
 						arr5[i] = 0b101;
 						arr6[i] = 0b111;
 						
-						// Todas as possiveis lugares de 001 (n lugares)
-						// Todas as possiveis lugares de 010 (n lugares)
+						
+						
+						// Todas as possiveis lugares de 001 (i lugares)
+ 
 						
 					}
 								
