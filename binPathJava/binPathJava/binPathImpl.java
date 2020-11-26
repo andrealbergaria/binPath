@@ -690,29 +690,38 @@ relação entre valor e posição
 			indices are 1,2,3,4,5
 			            2 3 1 5 4
 			            
-			            1->2 , 2->3 , 3-> 1,4-5 , 5-4
+			            		having 2 -> 1 , having 3->1 , having 1 -> 3,
+			            			P1(1idx) => 1-> 2, => P2(1idx) = 2 
+			            			P1(2idx) => 2 -> 3 => P2(2idx) =1 
+			          
+			            1,2,3,4,5
 			            
-			            1-> 3 ? 
-			            		
-			            			P1(1idx) => 1-> 2
-			            			P1(idx) => 2
-			            			
-			            			p1(2idx) => 
+			            1,3,2,4,5		1->1 ; 2-> 3 ; 3-> 2 ; 4->4 ; 5->5 (se num iguais-> num iguais nao fazer nada)
+			      		
+			          					 
+			           
+			           1,3,4,2,5
+			           
+			           1,5,4,2,3
+			           
+			           
+			           
+			           
 			            		
 			            so we equal indices on Pos1 and get the value of Pos2 on that index
 			
 		sequence(5idx) 
 			
-			P1(1idx) => P2(2idx) --> 1->2
+			P1(1idx) => P2(2idx) --> 1idx->2idx
 					
-			P1(2idx) => P2(3idx) 2-> 3
+			P1(2idx) => P2(3idx) 2idx-> 3idx
 			
 			
-			P1(3idx) => P2(1idx) 3 -> 1
+			P1(3idx) => P2(1idx) 3idx -> 1idx
 			
 			troca de indexes.
 			
-			P1(4idx) => P2(5idx) 4 -> 5
+			P1(4idx) => P2(5idx) 4idx -> 5idx
 			
 			P1(5idx) => P2(idx4) 5 -> 4
 			
