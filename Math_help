@@ -47,22 +47,17 @@
 
 4A2 => 2^4 (arranjos com repetição )
 
-P = {a,b,c,d};
-n=4
-p=2
-
-4A2 -> n^p
-
-para binarios
-P = {0,1}
-n=2
-p = 10
-
-2^10
+{1,2,3} = arranjos simples (sem repetição) = 312, 321, 132, 123, 213, 231 = n! / (n-p)! =  3! / (3-3)! = 3*2 = 6
 
 
-4A2 => 4! / (4-2)!
-*/
+1 0
+0 1
+1 1
+0 0 
+
+
+	 	n=2, p =2 => An,p => n! / (n-p)! =?> 2 / (2-2)! => 2 ..neste caso existe repetição então n^p = 4
+
 
 
 x |= 0b1; // set LSB bit

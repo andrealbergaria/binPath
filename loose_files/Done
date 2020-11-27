@@ -35,4 +35,24 @@
         			 		etc...
        Assim por exemplo com valores grandes, faco o o preenchimento da array do markers , em varias etapas 
         	
-        Codifiquei o metodo getThreeBitsMarkerM , de modo que para cada etapa (por exemplo 65535) , faz-se a pesquisa de 1 a 65535 e depois 65535*2 ,e por ai		
+        Codifiquei o metodo getThreeBitsMarkerM , de modo que para cada etapa (por exemplo 65535) , faz-se a pesquisa de 1 a 65535 e depois 65535*2 ,e por ai
+        
+        
+        	 every byte ,if we consider all the combinations, the bits that commpose it have the same number of zeros and ones to each other  
+			so it only differs in sequece
+		
+		
+		(00,01,10,11) => 2 ^2 = 4  => 00011011 => 27
+		(01,00,11,10) => 2^2 = 4  => 01001110 => 78
+		
+		
+		To optimize the brute force, one can not assing the zeros, since java sets zeros to non initializate variable.
+		Also, some combinations are repeated on all numbers, (three bits), so dont need to cycle all		
+		
+		3bits , All combinations = 2^3 = 8 bits
+	4bits , All combinations = 2^4 = 16bits
+	5bits , All combinations = 2^5 = 4 bytes
+	6bits , All combinations = 2^6 = 8 bytes
+	7bits , All combinations = 2^7 = 16bytes
+
+	

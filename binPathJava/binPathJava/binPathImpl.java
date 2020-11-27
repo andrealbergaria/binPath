@@ -420,7 +420,7 @@ b)	1	1	1	1
 	0b1 0 1		
 	0b1 1 0		
 	0b1 1 1		
-					2 ^ 8 256bits 256/8 = 32bytes 
+				
 					
 	byte2
 	0b0 0 0
@@ -434,17 +434,27 @@ b)	1	1	1	1
 	
 	since they are equal to the first byte, one can assign without cycle
 	
-	2^4  = 16bits
-	4bits -> 2bytes para representar todas as combinações 
-	3bits -> 1 byte 
-	2^3 = 8bits
+	3bits , All combinations = 2^3 = 8 bits
+	4bits , All combinations = 2^4 = 16bits
+	5bits , All combinations = 2^5 = 4 bytes
+	6bits , All combinations = 2^6 = 8 bytes
+	7bits , All combinations = 2^7 = 16bytes
+	8bits , All combinations = 2^8 =  32bytes
 	
-	5bits -> 4 bytes
-	6bits- > 8 bytes
+		00 00 00 00 (0) assigning 8bits to number        
+ 		00 00 00 01 (1)        
+ 		00 00 00 10 (2) 
+		11 11 11 10 (254)	
+ 		11 11 11 11 (255)	   
+ 		
+ 		309d = ? 
+		11 11 11 10 -> 254
+			X		->  309d ( 100110101 b )
+			
+			
+			
+			
 	
-
-	 Se tem o mesmo numeros de uns, 
-		 
 		distancia entre pares-> 1
 		pairs first bit  -> 8 de zeros , 8 pares de uns (numero de zeros e uns é sempre igual para todas as iterações)
 		4 pairs distancia -> 2 (snd bit)
