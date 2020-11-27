@@ -63,3 +63,19 @@ p = 10
 
 4A2 => 4! / (4-2)!
 */
+
+
+x |= 0b1; // set LSB bit
+x |= 0b10; // set 2nd bit from LSB
+
+to erase a bit use:
+
+x &= ~0b1; // unset LSB bit (if set)
+x &= ~0b10; // unset 2nd bit from LSB
+
+to toggle a bit use:
+
+x ^= 0b1;
+To dynamically set at bit, use:
+
+x |= (1 << y); // set the yth bit from the LSB

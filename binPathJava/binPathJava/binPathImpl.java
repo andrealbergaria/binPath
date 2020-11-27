@@ -208,8 +208,8 @@ public class binPathImpl {
         	
         }
 	private static void prefix() {
-		//int[] key  = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
-	//	int[] invertedKey = new int[16];
+		
+		
 	//	int[] another = new int[16];
 		
 		
@@ -411,8 +411,93 @@ b)	1	1	1	1
 	23    = 0b10111 (15+7)
 	31    = 0b11111 (23+7)
 	
+	byte1
+	0b0 0 0 0			first bit
+	0b0 0 0 1			2 (byte 1)-> 10 (byte 2) ,4-> 12,6 -> 14 ,8-> 16
+	0b0 0 1 0			+8
+	0b0 0 1	1		3,4-> 11,12   7,8 -> 15,16 2nd bit
+	0b0 1 0 0			+8
+	0b0 1 0 1			1,2,3,4 -> 5,6,7,8  9,10,11,12->13,14,15,16
+	0b0 1 1 0			+4 (8/2) for third bit
+	0b0 1 1 1
 	
+	byte2
+	0b0 0 0
+	0b0 0 1
+	0b0 1 0
+	0b0 1 1
+	0b1 0 0
+	0b1 0 1
+	0b1 1 0
+	0b1 1 1 skince they are equal to the first byte, one can assign without cycle
+	
+	
+	consedirenado bits superiores a 3 , mulitplica-se o numero de bytes para se obter o maximo
+	4bits -> 2bytes para representar todas as combinações 
+	3bits -> 1 byte 
+	5bits -> 
+		/*for it <= 8 its,
+		 * for it > 8 , == first 8
+		 */
+		
+		/* 	First bit
+		 * idx 1,3,5,7,9,11 = 0
+		 * idx 2,4,6,8,10,12 = 1
+		 * 	+1
+		 
+		 *  second bit
+		 * idx 1,2,5,6,9,10 = 0
+		 * idx 3,4,7,8,11,12 = 1
+		 * 
+		 *    +2
+		 *    Third bit
+		 * idx 1,2,3,4,9,10,11,12 = 0
+		 * idx 5,6,7,8 = 1
+		 * 
+		 *  +4
+		 */
+		
+		/* Second bit = firstbit(0,1) *2
+				 * => firstbit(0,1) *2  
+				 *
+		relationship betwen first bit and second bit 
+		trying only with ones (use cycle to iterate index and assign ones
+		zeros are already taken by java
+		
+		first bit
+		2,4,6,8		10,12,15,16
+		
+		second bit
+		3,4,7,8,	11,12,15,16
+	
+		third bit
+		5,6,7,8,	13,14,15,16		
+  	 
+		 
+		 
+		  
+		  
 		*/
+		int[] key = new int[16]; 
+ 
+		for (int idx=1 ; idx <=16  ; idx++) {
+			if (idx % 2 != 0) {
+				key[] |= 0b1;
+			}
+		}
+		for (int idx=1 ; idx <= 16;idx++) {
+			if (idx )
+		}
+		
+			// Set first bit to 1
+			// set second bit to 1
+			// set third bit to 1
+		
+			
+		
+			
+		}			
+		
 	}
 	
 
