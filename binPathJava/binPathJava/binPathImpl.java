@@ -438,21 +438,16 @@ b)	1	1	1	1
 	4bits , All combinations = 2^4 = 16bits
 	5bits , All combinations = 2^5 = 4 bytes
 	6bits , All combinations = 2^6 = 8 bytes
-	7bits , All combinations = 2^7 = 16bytes
-	8bits , All combinations = 2^8 =  32bytes
+	7bits , All combinations = 2^7 = 128combs
+	8bits , All combinations = 2^8 =  256 combs
+	256bits , All combinations = 2^256
 	
-		00 00 00 00 (0) assigning 8bits to number        
- 		00 00 00 01 (1)        
- 		00 00 00 10 (2) 
-		11 11 11 10 (254)	
- 		11 11 11 11 (255)	   
- 		
- 		Se cada bit, represetnar um numero,
- 		entao 2 ^8 * 
- 		
+	1)00 10 01 11 2^8 = 256 combs 2) 11 01 10 01 = 256comb 2^8
+	 
+		se 2^8 entao todas as combinações de 1) são iguais ao 2)
 			
-			
-			
+	
+	1) igual a 2) igual a todas
 	
 		distancia entre pares-> 1
 		pairs first bit  -> 8 de zeros , 8 pares de uns (numero de zeros e uns é sempre igual para todas as iterações)
@@ -502,11 +497,12 @@ b)	1	1	1	1
 		  
 		  
 		*/
-		int[] key = new int[16]; 
- 
-		for (int idx=1 ; idx <=16  ; idx++) {
-			if (idx % 2 != 0) {
-				key[] |= 0b1;
+		int[] key = new int[32]; 
+	
+		int firstByte;
+		for (int idx= 0; idx 0<256  ; idx++) {
+				firstByte++;
+				
 			}
 		}
 		for (int idx=1 ; idx <= 16;idx++) {
