@@ -412,15 +412,16 @@ b)	1	1	1	1
 	31    = 0b11111 (23+7)
 	
 	byte1
-	0b0 0 0 0			first bit
-	0b0 0 0 1			2 (byte 1)-> 10 (byte 2) ,4-> 12,6 -> 14 ,8-> 16
-	0b0 0 1 0			+8
-	0b0 0 1	1		3,4-> 11,12   7,8 -> 15,16 2nd bit
-	0b0 1 0 0			+8
-	0b0 1 0 1			1,2,3,4 -> 5,6,7,8  9,10,11,12->13,14,15,16
-	0b0 1 1 0			+4 (8/2) for third bit
-	0b0 1 1 1
-	
+	0b0 0 0		
+	0b0 0 1			
+	0b0 1 0		
+	0b0 1 1		
+	0b1 0 0		
+	0b1 0 1		
+	0b1 1 0		
+	0b1 1 1		
+					2 ^ 8 256bits 256/8 = 32bytes 
+					
 	byte2
 	0b0 0 0
 	0b0 0 1
@@ -429,25 +430,39 @@ b)	1	1	1	1
 	0b1 0 0
 	0b1 0 1
 	0b1 1 0
-	0b1 1 1 skince they are equal to the first byte, one can assign without cycle
+	0b1 1 1 	 
 	
+	since they are equal to the first byte, one can assign without cycle
 	
-	consedirenado bits superiores a 3 , mulitplica-se o numero de bytes para se obter o maximo
+	2^4  = 16bits
 	4bits -> 2bytes para representar todas as combinações 
 	3bits -> 1 byte 
-	5bits -> 
-		/*for it <= 8 its,
-		 * for it > 8 , == first 8
-		 */
+	2^3 = 8bits
+	
+	5bits -> 4 bytes
+	6bits- > 8 bytes
+	
+
+	 Se tem o mesmo numeros de uns, 
+		 
+		distancia entre pares-> 1
+		pairs first bit  -> 8 de zeros , 8 pares de uns (numero de zeros e uns é sempre igual para todas as iterações)
+		4 pairs distancia -> 2 (snd bit)
+		2 paires -> distancia 4;
+
+		fifth bit? aumentei o numero de bits, oo 4 bit foi alterado (passou a ser  2pair, cada par 8 , o first bit passou a ter 16pares)
+		
+		fifth bit -> 1 pair intervalo 0
+		 
 		
 		/* 	First bit
 		 * idx 1,3,5,7,9,11 = 0
-		 * idx 2,4,6,8,10,12 = 1
+		 * idx 2,4,6,8,10,12 = 1,  (separated by 2)
 		 * 	+1
 		 
 		 *  second bit
 		 * idx 1,2,5,6,9,10 = 0
-		 * idx 3,4,7,8,11,12 = 1
+		 * idx 3,4,7,8,11,12,15,16 = 1
 		 * 
 		 *    +2
 		 *    Third bit
