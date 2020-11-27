@@ -55,4 +55,4 @@
 	6bits , All combinations = 2^6 = 8 bytes
 	7bits , All combinations = 2^7 = 16bytes
 
-	
+	if each bit represnt one number, then 2^8 bits represent 16 bytes
