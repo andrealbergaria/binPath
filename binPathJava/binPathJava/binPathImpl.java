@@ -447,7 +447,8 @@ b)	1	1	1	1
 		11 11 11 10 (254)	
  		11 11 11 11 (255)	   
  		
- 		
+ 		Se cada bit, represetnar um numero,
+ 		entao 2 ^8 * 
  		
 			
 			
