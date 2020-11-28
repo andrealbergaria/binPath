@@ -579,34 +579,57 @@ b)	1	1	1	1
 	
 		
 		
-	int[][] res = new int[16][16];
+	int[][] res = new int[32][32];
 	
-	for (int i=0; i < 16;i+=4) {
-		for (int i2=0; i2 < 16; i2++)
-			printSixTeen(res,i,i+4);
+	int it=0;
+	
+	for (int startByte=0; startByte < 32; startByte+=4) {
+		for (int endByte=4 ; endByte <= 32 ; endByte+=4) {
+			it+=printSixTeen(res,startByte,endByte);
+		}
 	}
+	System.out.println("\nIT "+it);
+	/*printSixTeen(res,4,8,32);
+	printSixTeen(res,8,12,32);
+	printSixTeen(res,12,16,32);
+	printSixTeen(res,16,20,32);
+	printSixTeen(res,20,24,32);
+	printSixTeen(res,24,28,32);
+	printSixTeen(res,24,28,32);
+	*/
 	
 	
+	
+
+ 
+
+	     
 	
 	
 		//printArray(arr);
 		//printMultipleArray(res);
 	}
 	
-	
-	private static void printSixTeen(int[][] res,int startingByte,int numOfBytes) {
+	// Return iterations
+	private static int printSixTeen(int[][] res,int startingByte,int endByte) {
 		
 		int it=1;
-	 for (int i =startingByte; i < numOfBytes; i++) {
-	 	for (int i2 = 0 ; i2 < numOfBytes; i2++) {
-	 	 for (int i3 = 0 ; i3 < 256; i3++) {
-	 	 		res[i2][i] = i3;
+		
+		System.out.println();
+	 for (int i =startingByte; i < endByte; i++) {
+		 	 for (int i3 = 0 ; i3 < 256; i3++) {
+	 	 		res[i][i] = i3;
 	 	 		it++;
-	 	 }
+			 }
+		 }
 	 	}
 	 }
-	 System.out.println("\nStarting byte : "+startingByte);
-	 System.out.println("\nIterations : "+it);
+	 
+	 System.out.println("\nStarting byte : "+startingByte+"\n End byte "+endByte);
+	 
+	 return it;
+	 //System.out.println("\n"+printMultipleArray(res)+" ");
+	 
 	}
 	private static <T> void printArray(T[] arr) {
     	System.out.println();
@@ -617,20 +640,26 @@ b)	1	1	1	1
     	 System.out.println();
     }
 	
-	private static void printMultipleArray(int[][] arr) {
+	private static String printMultipleArray(int[][] arr) {
 		// 	int[][] res = new int[2][4];
 
 		System.out.println();
-		
+		String s="";
+		s+="[ ";
 		for (int idx2 = 0 ; idx2 <  arr.length ; idx2++) {
 			for (int idx =0 ; idx < arr[idx2].length;idx++) {
+				if ( (idx % 10) == 0)
+					s+="\n";
+				s+=" "+arr[idx2][idx]+" , ";
 				
-					System.out.print(arr[idx2][idx]+" , ");
 		}
 				
 			
 			
+		
 		}
+		s+=" ]";
+		return s;
 	}
 	
 	
