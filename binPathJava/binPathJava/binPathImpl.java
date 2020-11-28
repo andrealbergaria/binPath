@@ -444,10 +444,100 @@ b)	1	1	1	1
 	
 	1)00 10 01 11 2^8 = 256 combs 2) 11 01 10 01 = 256comb 2^8
 	 
-		se 2^8 entao todas as combinações de 1) são iguais ao 2)
+		se 2^8 entao todas as combinações no primeiro byte
+		de 1) são iguais ao 2)
 			
+			
+			 o prmeiro byte vai ser semptre [1...256]
+			 o segundo byte vai ser sempre [1..256]
+	 para 2 bytes
+	 primeiroByte[1...256]	primeirobyte[1...256]
+	 segundo byte[1...256] primeirobytye[1...256]
+	 segundobyte[1...256] segundobyte[1...256]
+	primeriobytye[1..256] segundo[1...256]
+	thirdb_byte[1.256] 
 	
-	1) igual a 2) igual a todas
+	256 *8 = 2048
+	
+	Para 2 bytes, apenas uma posicao é precisa
+	primeiroByte[1.256] & primeiroByte[1.256]
+	
+	numero total de mudanças de ordem
+	4
+	
+	para arranjos 2 ^ 2 = 4  ( se o segundo byte for igual ao 1)
+	 					=  
+	if same element , 
+	(1,1)
+	(0,1)
+	(0,0)
+	(1,0)
+	
+	(3,2,2)		
+	(1,2,3)  => 3*256 (todas as possiveis combinações)
+	(1,1,3)
+	
+	
+	Se 3 belongs to i, and 2 belongs to i , 1 belongs to 1 (always)
+	or 3 = 2 = 1
+	
+	obter todas as combinações , do conjunto em que tenha 3
+	quais os limites?
+	1 <= 3 <= 8 ?
+
+	
+	
+	thirdByte[1..3] oneByte[1..3] oneByte[1..3]
+	everything equal
+	
+	i = {1,2,3} (equals the elements of set)
+	
+	thirByte = oneByte = secondByte
+
+	so one assignment
+	
+	1,1,1	 
+	2,2,2
+	3,3,3
+	
+	1,2,1 (pos1=pos3 ) , mais rapido que arranjos
+	2,1,1
+	1,1,2
+	
+	1,1,1
+	1,2,1
+	2,1,1
+	1,1,2
+	posicoes (1,3),  (2,3) (1,2)
+	não é preciso fazer assignments 
+	 
+	 o que muda ? pos2, pos1, pos3
+	 
+	 conjunto = 3 change time
+	 
+	 2A3 = 2*2*2 = 8 times
+	 
+			
+	byte[][] arr = new byte[][numBytes];
+	
+	byte[] firstByte = new byte[256];
+	
+	int numOfBytes = 32;
+	for (int i=0 ; i < numOfBytes ; i++) {
+			for (int i2=0; i2 < 256 ; i2++)
+			 	arr[i2][numOfBytes] = i2;
+	}
+	 
+	
+	
+	
+	
+	
+	 
+	
+	
+	
+	
 	
 		distancia entre pares-> 1
 		pairs first bit  -> 8 de zeros , 8 pares de uns (numero de zeros e uns é sempre igual para todas as iterações)
@@ -499,14 +589,15 @@ b)	1	1	1	1
 		*/
 		int[] key = new int[32]; 
 	
-		int firstByte;
+		byte firstByte;
 		for (int idx= 0; idx 0<256  ; idx++) {
-				firstByte++;
+				key[idx]++;
 				
 			}
 		}
-		for (int idx=1 ; idx <= 16;idx++) {
-			if (idx )
+		for (int idx=0 ; idx <= 31;idx++) {
+				for (int i=0 ; i < 256; i++)
+					key[idx]++;
 		}
 		
 			// Set first bit to 1
