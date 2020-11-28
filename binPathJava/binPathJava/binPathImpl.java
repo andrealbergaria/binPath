@@ -448,19 +448,36 @@ b)	1	1	1	1
 	 segundo byte[1...256] primeirobytye[1...256]
 	 segundobyte[1...256] segundobyte[1...256]
 	primeriobytye[1..256] segundo[1...256]
-	thirdb_byte[1.256] 
+	 
 	
 	Para 1 byte
 	[1....256]
-	Para 2 bytes
+	Para 2 bytes 
 	[1...256] [1...256] = 65535
-	Para 3 bytes
-	[1...256] [1...256][1...256] =  16777216
+	
+	Para 2 bytes , sem multiplicar
+	[1...256] 
+	int numBytes=2;
+	*/
+	int[][] res = new int[2][4];
+	
+	
+	 for (int i =0; i < 4; i++) {
+	 	for (int i2 = 0 ; i2 < 2; i2++) {
+	 	 for (int i3 = 0 ; i3 < 256; i3++) {
+	 	 		res[i][i2] = i3;
+	 	 }
+	 	}
+	 	
+	 	
+	 } 
 	
 	
 	
 	
 	
+	
+	/*
 	256 *8 = 2048
 	
 	Para 2 bytes, apenas uma posicao é precisa
@@ -571,24 +588,8 @@ b)	1	1	1	1
 		  
 		  
 		*/
-		 
-		int numOfBytes = 32;
-		
-		byte[][] arr = new byte[numOfBytes][256];
-		
-		int its=0;
-		for (int i=0 ; i < numOfBytes ; i++) { 
-				for (int i2=0; i2 < 256 ; i2++) {
-				 	arr[i][i2] = (byte) i2;
-				 	its++;
-				}
-		
-			
-		}
-		System.out.println("\n IT "+its);
-		
 		//printArray(arr);
-		printMultipleArray(arr);
+		printMultipleArray(res);
 	}
 	
 	private static <T> void printArray(T[] arr) {
@@ -600,7 +601,7 @@ b)	1	1	1	1
     	 System.out.println();
     }
 	
-	private static void printMultipleArray(byte[][] arr) {
+	private static void printMultipleArray(int[][] arr) {
 		System.out.println();
 	
 		for (int idx =0 ; idx < arr[idx].length;idx++) {
