@@ -161,14 +161,7 @@ public class binPathImpl {
         	
         }
         
-        private static <T> void printArray(T[] arr) {
-        	System.out.println();
-        	 for (T element : arr) {
-        	        System.out.print(element+" , ");
-        	    }
-        	
-        	 System.out.println();
-        }
+        
         
         // FROM https://mkyong.com/java/java-how-to-convert-a-byte-to-a-binary-string/
         private static void printBits(byte b) {
@@ -457,6 +450,17 @@ b)	1	1	1	1
 	primeriobytye[1..256] segundo[1...256]
 	thirdb_byte[1.256] 
 	
+	Para 1 byte
+	[1....256]
+	Para 2 bytes
+	[1...256] [1...256] = 65535
+	Para 3 bytes
+	[1...256] [1...256][1...256] =  16777216
+	
+	
+	
+	
+	
 	256 *8 = 2048
 	
 	Para 2 bytes, apenas uma posicao é precisa
@@ -494,38 +498,12 @@ b)	1	1	1	1
 	
 	thirByte = oneByte = secondByte
 
-	so one assignment
 	
-	1,1,1	 
-	2,2,2
-	3,3,3
+	 
 	
-	1,2,1 (pos1=pos3 ) , mais rapido que arranjos
-	2,1,1
-	1,1,2
-	
-	1,1,1
-	1,2,1
-	2,1,1
-	1,1,2
-	posicoes (1,3),  (2,3) (1,2)
-	não é preciso fazer assignments 
-	 
-	 o que muda ? pos2, pos1, pos3
-	 
-	 conjunto = 3 change time
-	 
-	 2A3 = 2*2*2 = 8 times
 	 
 			
-	byte[][] arr = new byte[][numBytes];
 	
-	byte[] firstByte = new byte[256];
-	
-	int numOfBytes = 32;
-	for (int i=0 ; i < numOfBytes ; i++) {
-			for (int i2=0; i2 < 256 ; i2++)
-			 	arr[i2][numOfBytes] = i2;
 	}
 	 
 	
@@ -576,7 +554,13 @@ b)	1	1	1	1
 		first bit
 		2,4,6,8		10,12,15,16
 		
-		second bit
+	
+		
+			// Set first bit to 1
+			// set second bit to 1
+			// set third bit to 1
+		
+			
 		3,4,7,8,	11,12,15,16
 	
 		third bit
@@ -587,31 +571,49 @@ b)	1	1	1	1
 		  
 		  
 		*/
-		int[] key = new int[32]; 
-	
-		byte firstByte;
-		for (int idx= 0; idx 0<256  ; idx++) {
-				key[idx]++;
-				
-			}
-		}
-		for (int idx=0 ; idx <= 31;idx++) {
-				for (int i=0 ; i < 256; i++)
-					key[idx]++;
-		}
+		 
+		int numOfBytes = 32;
 		
-			// Set first bit to 1
-			// set second bit to 1
-			// set third bit to 1
+		byte[][] arr = new byte[numOfBytes][256];
+		
+		int its=0;
+		for (int i=0 ; i < numOfBytes ; i++) { 
+				for (int i2=0; i2 < 256 ; i2++) {
+				 	arr[i][i2] = (byte) i2;
+				 	its++;
+				}
 		
 			
+		}
+		System.out.println("\n IT "+its);
 		
-			
-		}			
-		
+		//printArray(arr);
+		printMultipleArray(arr);
 	}
 	
-
+	private static <T> void printArray(T[] arr) {
+    	System.out.println();
+    	 for (T element : arr) {
+    	        System.out.print(element+" , ");
+    	    }
+    	
+    	 System.out.println();
+    }
+	
+	private static void printMultipleArray(byte[][] arr) {
+		System.out.println();
+	
+		for (int idx =0 ; idx < arr[idx].length;idx++) {
+			for (int idx2 = 0 ; idx2 <  arr.length ; idx2++)
+					System.out.print(arr[idx][idx2]+" , ");
+					if (idx % 10 == 0) {
+						System.out.println();
+					}
+				
+			
+			
+		}
+	}
 	
 	
 		
@@ -709,7 +711,7 @@ b)	1	1	1	1
 	
 	
 	public static void main(String[] args) {
-		
+		prefix();
 		/*Byte[]  key = new Byte[8];
 
 		
@@ -781,21 +783,7 @@ b)	1	1	1	1
 		
 		
 		
-		int[] g = {0b00001000,0b00001001,0b00001010,0b00001011,0b00001100,0b00001101,0b00001110,0b00001111};
-		int[] h = new int[8];
-		int[] j = new int[8];
-		
-		for (int i =0 ; i< 8;i++) {
-			h[i] = (g[i] << 4);
-			j[i] = (h[i]+g[i]);
-		}
-		
-		Vector<int[]> v  = new Vector<>();
-		v.add(g);
-		v.add(h);
-		v.add(j);
-		printMissingElements(v);
-
+	
 		// ones and ones after 3 bits
 		
 		// 4bits-> so three bits use 
@@ -803,7 +791,7 @@ b)	1	1	1	1
 		// 4 bits below
 		
 		
-	base three bits- > 8 , add  10000 (8) to three bits
+	/*base three bits- > 8 , add  10000 (8) to three bits
 	base three bits -> 8 , add  11000 (16)  
 	base_three_Bits -> 8,  add  11100 (24)
 	
@@ -1049,6 +1037,7 @@ relação entre valor e posição
 			 } 
 
 			
-			
-			
+			*/
+	}
+}
 			

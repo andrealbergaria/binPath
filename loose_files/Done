@@ -56,3 +56,16 @@
 	7bits , All combinations = 2^7 = 16bytes
 
 	if each bit represnt one number, then 2^8 bits represent 16 bytes
+	
+	
+	1,1,1
+	1,2,1
+	2,1,1
+	1,1,2
+	2,2,2
+	 
+	 o que mudana posicao de 2)  ? pos2, pos1, pos3
+	 
+	 conjunto = 3 mudanças
+	 
+	 2A3 = 2*2*2 = 8 mudanças

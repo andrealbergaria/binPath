@@ -55,6 +55,7 @@
 1 1
 0 0 
 
+representado o número de arranjos com repetição de n elementos p a p ? nAp
 
 	 	n=2, p =2 => An,p => n! / (n-p)! =?> 2 / (2-2)! => 2 ..neste caso existe repetição então n^p = 4
 
