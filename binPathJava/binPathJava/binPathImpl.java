@@ -201,7 +201,117 @@ public class binPathImpl {
         	
         }
 	private static void prefix() {
+		/*
+		256 *8 = 2048
 		
+		Para 2 bytes, apenas uma posicao é precisa
+		primeiroByte[1.256] & primeiroByte[1.256]
+		
+		numero total de mudanças de ordem
+		4
+		
+		para arranjos 2 ^ 2 = 4  ( se o segundo byte for igual ao 1)
+		 					=  
+		if same element , 
+		(1,1)
+		(0,1)
+		(0,0)
+		(1,0)
+		
+		(3,2,2)		
+		(1,2,3)  => 3*256 (todas as possiveis combinações)
+		(1,1,3)
+		
+		
+		Se 3 belongs to i, and 2 belongs to i , 1 belongs to 1 (always)
+		or 3 = 2 = 1
+		
+		obter todas as combinações , do conjunto em que tenha 3
+		quais os limites?
+		1 <= 3 <= 8 ?
+
+		
+		
+		thirdByte[1..3] oneByte[1..3] oneByte[1..3]
+		everything equal
+		
+		i = {1,2,3} (equals the elements of set)
+		
+		thirByte = oneByte = secondByte
+
+		
+		 
+		
+		 
+				
+		
+		}
+		 
+		
+		
+		
+		
+		
+		 
+		
+		
+		
+		
+		
+			distancia entre pares-> 1
+			pairs first bit  -> 8 de zeros , 8 pares de uns (numero de zeros e uns é sempre igual para todas as iterações)
+			4 pairs distancia -> 2 (snd bit)
+			2 paires -> distancia 4;
+
+			fifth bit? aumentei o numero de bits, oo 4 bit foi alterado (passou a ser  2pair, cada par 8 , o first bit passou a ter 16pares)
+			
+			fifth bit -> 1 pair intervalo 0
+			 
+			
+			/* 	First bit
+			 * idx 1,3,5,7,9,11 = 0
+			 * idx 2,4,6,8,10,12 = 1,  (separated by 2)
+			 * 	+1
+			 
+			 *  second bit
+			 * idx 1,2,5,6,9,10 = 0
+			 * idx 3,4,7,8,11,12,15,16 = 1
+			 * 
+			 *    +2
+			 *    Third bit
+			 * idx 1,2,3,4,9,10,11,12 = 0
+			 * idx 5,6,7,8 = 1
+			 * 
+			 *  +4
+			 */
+			
+			/* Second bit = firstbit(0,1) *2
+					 * => firstbit(0,1) *2  
+					 *
+			relationship betwen first bit and second bit 
+			trying only with ones (use cycle to iterate index and assign ones
+			zeros are already taken by java
+			
+			first bit
+			2,4,6,8		10,12,15,16
+			
+		
+			
+				// Set first bit to 1
+				// set second bit to 1
+				// set third bit to 1
+			
+				
+			3,4,7,8,	11,12,15,16
+		
+			third bit
+			5,6,7,8,	13,14,15,16		
+	  	 
+			 
+			 
+			  
+			  
+			*/
 		
 	//	int[] another = new int[16];
 		
@@ -448,7 +558,15 @@ b)	1	1	1	1
 	 segundo byte[1...256] primeirobytye[1...256]
 	 segundobyte[1...256] segundobyte[1...256]
 	primeriobytye[1..256] segundo[1...256]
+	
+	n=2 , p =2
+	
+	{p,s} => {ps,sp,ss,pp}
 	 
+	n={1,2,3,4}
+	p= {4}
+	
+	
 	
 	Para 1 byte
 	[1....256]
@@ -456,142 +574,40 @@ b)	1	1	1	1
 	[1...256] [1...256] = 65535
 	
 	Para 2 bytes , sem multiplicar
-	[1...256] 
-	int numBytes=2;
-	*/
-	int[][] res = new int[2][4];
+	[1...256] */ 
 	
 	
-	 for (int i =0; i < 4; i++) {
-	 	for (int i2 = 0 ; i2 < 2; i2++) {
+		
+		
+	int[][] res = new int[16][16];
+	
+	for (int i=0; i < 16;i+=4) {
+		for (int i2=0; i2 < 16; i2++)
+			printSixTeen(res,i,i+4);
+	}
+	
+	
+	
+	
+		//printArray(arr);
+		//printMultipleArray(res);
+	}
+	
+	
+	private static void printSixTeen(int[][] res,int startingByte,int numOfBytes) {
+		
+		int it=1;
+	 for (int i =startingByte; i < numOfBytes; i++) {
+	 	for (int i2 = 0 ; i2 < numOfBytes; i2++) {
 	 	 for (int i3 = 0 ; i3 < 256; i3++) {
-	 	 		res[i][i2] = i3;
+	 	 		res[i2][i] = i3;
+	 	 		it++;
 	 	 }
 	 	}
-	 	
-	 	
-	 } 
-	
-	
-	
-	
-	
-	
-	/*
-	256 *8 = 2048
-	
-	Para 2 bytes, apenas uma posicao é precisa
-	primeiroByte[1.256] & primeiroByte[1.256]
-	
-	numero total de mudanças de ordem
-	4
-	
-	para arranjos 2 ^ 2 = 4  ( se o segundo byte for igual ao 1)
-	 					=  
-	if same element , 
-	(1,1)
-	(0,1)
-	(0,0)
-	(1,0)
-	
-	(3,2,2)		
-	(1,2,3)  => 3*256 (todas as possiveis combinações)
-	(1,1,3)
-	
-	
-	Se 3 belongs to i, and 2 belongs to i , 1 belongs to 1 (always)
-	or 3 = 2 = 1
-	
-	obter todas as combinações , do conjunto em que tenha 3
-	quais os limites?
-	1 <= 3 <= 8 ?
-
-	
-	
-	thirdByte[1..3] oneByte[1..3] oneByte[1..3]
-	everything equal
-	
-	i = {1,2,3} (equals the elements of set)
-	
-	thirByte = oneByte = secondByte
-
-	
-	 
-	
-	 
-			
-	
+	 }
+	 System.out.println("\nStarting byte : "+startingByte);
+	 System.out.println("\nIterations : "+it);
 	}
-	 
-	
-	
-	
-	
-	
-	 
-	
-	
-	
-	
-	
-		distancia entre pares-> 1
-		pairs first bit  -> 8 de zeros , 8 pares de uns (numero de zeros e uns é sempre igual para todas as iterações)
-		4 pairs distancia -> 2 (snd bit)
-		2 paires -> distancia 4;
-
-		fifth bit? aumentei o numero de bits, oo 4 bit foi alterado (passou a ser  2pair, cada par 8 , o first bit passou a ter 16pares)
-		
-		fifth bit -> 1 pair intervalo 0
-		 
-		
-		/* 	First bit
-		 * idx 1,3,5,7,9,11 = 0
-		 * idx 2,4,6,8,10,12 = 1,  (separated by 2)
-		 * 	+1
-		 
-		 *  second bit
-		 * idx 1,2,5,6,9,10 = 0
-		 * idx 3,4,7,8,11,12,15,16 = 1
-		 * 
-		 *    +2
-		 *    Third bit
-		 * idx 1,2,3,4,9,10,11,12 = 0
-		 * idx 5,6,7,8 = 1
-		 * 
-		 *  +4
-		 */
-		
-		/* Second bit = firstbit(0,1) *2
-				 * => firstbit(0,1) *2  
-				 *
-		relationship betwen first bit and second bit 
-		trying only with ones (use cycle to iterate index and assign ones
-		zeros are already taken by java
-		
-		first bit
-		2,4,6,8		10,12,15,16
-		
-	
-		
-			// Set first bit to 1
-			// set second bit to 1
-			// set third bit to 1
-		
-			
-		3,4,7,8,	11,12,15,16
-	
-		third bit
-		5,6,7,8,	13,14,15,16		
-  	 
-		 
-		 
-		  
-		  
-		*/
-		//printArray(arr);
-		printMultipleArray(res);
-	}
-	
 	private static <T> void printArray(T[] arr) {
     	System.out.println();
     	 for (T element : arr) {
@@ -602,14 +618,15 @@ b)	1	1	1	1
     }
 	
 	private static void printMultipleArray(int[][] arr) {
+		// 	int[][] res = new int[2][4];
+
 		System.out.println();
-	
-		for (int idx =0 ; idx < arr[idx].length;idx++) {
-			for (int idx2 = 0 ; idx2 <  arr.length ; idx2++)
-					System.out.print(arr[idx][idx2]+" , ");
-					if (idx % 10 == 0) {
-						System.out.println();
-					}
+		
+		for (int idx2 = 0 ; idx2 <  arr.length ; idx2++) {
+			for (int idx =0 ; idx < arr[idx2].length;idx++) {
+				
+					System.out.print(arr[idx2][idx]+" , ");
+		}
 				
 			
 			
