@@ -1,9 +1,0 @@
-i wonder wtf am i going to do with this shit
-
-
-a=0 b=1
-000   -> for each bit there is a change [a,a,a]
-                  001   -> for each bit (3rd pos = b)   [a,a,b]
-                  010   -< (2nd pos = b)    [a,b,a]
-                  100 ->                    [b,a,a]
-                  

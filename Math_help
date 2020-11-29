@@ -75,3 +75,17 @@ x ^= 0b1;
 To dynamically set at bit, use:
 
 x |= (1 << y); // set the yth bit from the LSB
+
+
+/*
+		 * 
+		 * n -> num de elems 
+		 * p.-> quantidade de elemetnos por
+		 *  Arranjos => n! / (n-p)!grupo
+		 *  n -> 2
+		 *  
+		 */
+		
+		            	// Permutation = > factorial de elemeentos
+				// n elementos => n! combinações permutate
+				 // int

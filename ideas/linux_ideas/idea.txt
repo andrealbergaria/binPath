@@ -1,4 +1,0 @@
-mudar as funções (por exemplo strcpy()) , por o código dentro da lib strcpy() no source file.
-Assim, bufferoverflows, nao sao possiveis
-tambem é muito mais rapido
-e nao precisa de nenhuma lib
