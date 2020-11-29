@@ -151,39 +151,50 @@ public class binPathImpl {
        
        
         private static void prefix() {
-        	int[][] res = new int[256][256];
+        	int[] firstByte;
+        	int[][] secondByte;
+        	int[][] thirdByte;
+        	int[][] fourthByte;
         	int[] cByte = setOneToAll();
         	
-        	int it=0;
-        		for (int i =0 ; i < 8; i++)  {
-        			
-        				res[i] = cByte;
-        				printAhrray(res[i]);
-        				it++;
-        				
         	
-        		}
-        		for (int i=8 ; i < 16; i++) {
-        			res[i] = cByte;
-        			printArray(res[i]);
-        			it++;
-        			
-        		}
+        		  
+        		firstByte = cByte;
+       		
         		
-        		for (int i=16; i < 32 ; i++) {
-        			res[i] = cByte;
-        			printArray(res[i]);
-        			it++;
-        		}
-        	System.out.println();
-        	for (int i=0 ; i < 32; i++) {
-        		for (int i2=0 ; i2 < 32; i2++) {
-        			System.out.print(" "+res[i][i2]);
-        		}
-        		System.out.println();
-        	}
+        		int begin = 0;
+        		int finalB = (int) Math.pow(2,8);
         	
-        	System.out.println("\nITS : "+it);
+        		int intervalSize = finalB -begin;
+        		
+        		
+        		System.out.println("\nBegin : "+begin);
+        		System.out.println("\nFinalB  : "+finalB);
+        		System.out.println("\nintervalSize  : "+intervalSize);
+        		
+        		// from byte1 to byte2 
+        		// from byte2 to byte3, etcc...the interval is always the same, and the elements in the interval are also all equal
+        		// 256 -> is the number of elems in each iteration (each interval has 256*intervalSize
+        		// the intervals are all equals 255*intervalsize
+        		// 
+        		int[][] interval = new int[intervalSize][256];
+        		
+        		// Number of interval which is equal number of bytes  (1----8 ----16---24) = 4
+        		int numIntervals = 32 / intervalSize;
+        		for (int i=0; i < intervalSize; i++) {
+        			interval[i] = cByte;
+        		}
+        		// copy interval to other array
+        		secondByte = interval;
+        		thirdByte = interval;
+        		fourthByte = interval;
+        		
+        			
+        		//	printArray(cByte);
+        		
+        		
+        			
+        		
         }
         
         private static void printArray(int[] arr) {
