@@ -189,8 +189,14 @@ public class binPathImpl {
         		thirdByte = interval;
         		fourthByte = interval;
         		
+        		
+        		System.out.print("Byte num 2");
+        		for (int i2= 0 ; i2 < intervalSize ; i2++) {
+        				for (int i3=0;  i3 < 256 ;i3++) {
+        					System.out.print(" ,  " +i3);
+        			}
         			
-        		//	printArray(cByte);
+        		}
         		
         		
         			
