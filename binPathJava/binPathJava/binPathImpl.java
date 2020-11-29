@@ -1,16 +1,30 @@
 package binPathJava;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Vector;
 
 import binPathJava.Permutation;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 public class binPathImpl {
 
 	
-//java.util.Arrays
-//System.arraycopy(copyFrom, 2, copyTo, 0, 7);
-	
+
 	public static int[] setOneToAll() {
 		int[] ret = new int[256];
 		for (int i=0; i < 256 ; i++) {
@@ -150,14 +164,14 @@ public class binPathImpl {
        
        
        
-        private static void prefix() {
+        private static void prefix(int numberOfBytes) {
         	int[] firstByte;
-        	int[][] secondByte;
-        	int[][] thirdByte;
-        	int[][] fourthByte;
+        	int[][][] bytesArray;
+        	
+        	//int[][] fourthByte;
         	int[] cByte = setOneToAll();
         	
-        	
+        		
         		  
         		firstByte = cByte;
        		
@@ -166,11 +180,8 @@ public class binPathImpl {
         		int finalB = (int) Math.pow(2,8);
         	
         		int intervalSize = finalB -begin;
-        		
-        		
-        		System.out.println("\nBegin : "+begin);
-        		System.out.println("\nFinalB  : "+finalB);
-        		System.out.println("\nintervalSize  : "+intervalSize);
+ 
+        		bytesArray = new int[intervalSize][256][numberOfBytes];
         		
         		// from byte1 to byte2 
         		// from byte2 to byte3, etcc...the interval is always the same, and the elements in the interval are also all equal
@@ -179,27 +190,19 @@ public class binPathImpl {
         		// 
         		int[][] interval = new int[intervalSize][256];
         		
-        		// Number of interval which is equal number of bytes  (1----8 ----16---24) = 4
         		int numIntervals = 32 / intervalSize;
         		for (int i=0; i < intervalSize; i++) {
         			interval[i] = cByte;
         		}
-        		// copy interval to other array
-        		secondByte = interval;
-        		thirdByte = interval;
-        		fourthByte = interval;
         		
-        		
-        		System.out.print("Byte num 2");
-        		for (int i2= 0 ; i2 < intervalSize ; i2++) {
-        				for (int i3=0;  i3 < 256 ;i3++) {
-        					System.out.print(" ,  " +i3);
-        			}
-        			
+        		for (int i=0 ; i < numberOfBytes; i++) {
+        			bytesArray[i] = interval;
         		}
         		
+        		// Number of interval which is equal number of bytes  (1----8 ----16---24) = 4
         		
-        			
+        		// copy interval to other array
+        		
         		
         }
         
@@ -208,6 +211,106 @@ public class binPathImpl {
         	for (int elem = 0 ; elem < arr.length; elem++)
         		System.out.print(" , "+String.valueOf(elem));
         	System.out.println();
+        	
+        }
+        private static void printArray(byte[] arr) {
+        	System.out.println();
+        	for (int elem = 0 ; elem < arr.length; elem++)
+        		System.out.print(" , "+String.valueOf(elem));
+        	System.out.println();
+        
+        }
+        /*
+         * openssl enc -aes-256-cbc -in plaintext.txt -base64 -md sha1
+         * openssl enc AES256 -out cipherText -e -iv 0x0 -K abcabcab -nosalt -p
+-p, -P
+    Additionally to any encryption tasks, this prints the key, initialization vector and salt value (if used). If -P is used just these values are printed, no encryption will take place.
+    -K key
+    -e or -d encrypto r decryt
+
+         */
+        private static void createPlainText(File f) {
+        	try {
+        	FileOutputStream fos = new FileOutputStream(f);
+        	byte[] toWrite;
+        	
+        	String t = "";
+        	for (int i=0 ; i < 32 ; i++)
+        		t+="a";
+        		
+        	toWrite  = t.getBytes();
+        	System.out.println("\n toWrite " +t);
+        	fos.write(toWrite);
+        	}
+        	catch(IOException e) {
+        		e.printStackTrace();
+        	}
+        	
+        }
+        private static void AESPower(byte[] key) {
+        	try  {
+        		
+        		if (key.length != 32) {
+        			System.err.println("\nKey is not in a block size");
+        			System.exit(-1);
+        		}
+        	
+        	 
+        	 
+        	 byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+             IvParameterSpec ivspec = new IvParameterSpec(iv);
+             File f  = new File("files/ciphertext");
+             FileInputStream fis = new FileInputStream(f);
+             int fileSize = (int) f.length();
+             byte[] cipherText = new byte[fileSize];
+             
+             int numBytesRead = 0;
+             numBytesRead = fis.read(cipherText);
+             if (numBytesRead  <= 0) {
+            	 System.err.println("Read returned error or zero");
+            	 System.exit(-1);
+             }
+             
+             else
+            	 System.out.println("Read "+numBytesRead);
+             
+             SecretKeySpec sks = new SecretKeySpec(key,"AES");
+             
+             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+	         cipher.init(Cipher.DECRYPT_MODE, sks,ivspec);
+	         
+	         // Read cipherText
+	         
+	         byte[] decrypted =cipher.doFinal(cipherText);
+	          printArray(decrypted);
+	         
+        	}
+        	catch(InvalidAlgorithmParameterException e) {
+        		e.printStackTrace();
+        	} catch (InvalidKeyException e) {
+				 
+				e.printStackTrace();
+			} catch (NoSuchAlgorithmException e) {
+				 
+				e.printStackTrace();
+			} catch (NoSuchPaddingException e) {
+				 
+				e.printStackTrace();
+			} catch (IllegalBlockSizeException e) {
+				 
+				e.printStackTrace();
+			} catch (BadPaddingException e) {
+				 
+				e.printStackTrace();
+			} catch (FileNotFoundException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+				 
+				e.printStackTrace();
+			}
+	          
+             
         	
         }
         private static void printThreeBits(int num_three_bits) {
@@ -237,7 +340,9 @@ public class binPathImpl {
         	
         }
         public static void main(String[] args) {
-    		prefix();
+    		//prefix(32);
+        	System.err.println("\nASJASKFJ");
+    		 createPlainText(new File("files/plaintext"));
         }	
 }
 			

@@ -7,15 +7,16 @@ package binPathJava;
    
 
     
-    import javax.crypto.SecretKey;
+
 	
 	 
 
 	 public class AES {
 	 
-	 
+	 /*
          public static byte[] cipherText = new byte[32]; 
-        /*public static String encrypt(String strToEncrypt, String secret) 
+       
+         public static String encrypt(String strToEncrypt, String secret) 
 	    {
             try {
                 byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -23,9 +24,9 @@ package binPathJava;
 	    
 	          
               
-                //KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-               // keyGenerator.init(256);
-               // SecretKey key = keyGenerator.generateKey();
+                KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+                keyGenerator.init(256);
+                SecretKey key = keyGenerator.generateKey();
 
               Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 	          cipher.init(Cipher.ENCRYPT_MODE, key,ivspec);
@@ -47,7 +48,7 @@ package binPathJava;
 	    
 	        return null;
 	    }
-        */	 
+         
 	    public static String decrypt(SecretKey key) {
 	    
 	    try {
@@ -69,7 +70,7 @@ package binPathJava;
 	        }
 	        return null;
 	    }
-	    
+	    */	
 	    public static void main(String[] args) {
 	    //    encrypt("abcefghijklmnopq","abcefghijklmnopq");
 	    }
