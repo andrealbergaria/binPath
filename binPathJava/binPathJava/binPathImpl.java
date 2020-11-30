@@ -235,7 +235,7 @@ public class binPathImpl {
         	
         		
         		  
-        		firstByte = cByte;
+        		
        		
         		
         		int begin = 0;
@@ -244,6 +244,26 @@ public class binPathImpl {
         		int intervalSize = finalB -begin;
  
         		bytesArray = new int[intervalSize][256][numberOfBytes];
+        		bytesArray[0][0] = cByte;
+        		
+        		
+        		// to get the next byte, we duplicate or divide the first byte 
+        		
+        		byte table;
+        		
+        		
+        		------| ------|-----|
+        		1		1			1		
+        		2		2			2
+        		3		3			3
+        		
+        		1		4			4
+        		2		5			5
+        		3		6			6
+        		
+        		1		1			7
+        		2		2			8
+        		3		3			9
         		
         		// from byte1 to byte2 
         		// from byte2 to byte3, etcc...the interval is always the same, and the elements in the interval are also all equal
@@ -257,7 +277,7 @@ public class binPathImpl {
         			interval[i] = cByte;
         		}
         		
-        		for (int i=0 ; i < numberOfBytes; i++) {
+        		for (int i=1 ; i < numberOfBytes; i++) {
         			bytesArray[i] = interval;
         		}
         		return bytesArray;
