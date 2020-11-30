@@ -159,12 +159,74 @@ public class binPathImpl {
 	 segundo byte[1...256] primeirobytye[1...256]
 	 segundobyte[1...256] segundobyte[1...256]
 	primeriobytye[1..256] segundo[1...256]
+	
+	(1,2,3,4,5,6,7,8)
+	
+	Pos1 = 1;
+	(1,2,3)(3,2,1)(2,1,3)						(2,3,2)(3,2,1)(3,1,2)
+	pos1  = 1
+	pos2  = 2
+	pos3 = 3
+	
+	 posicao (1,2,3) pos1
+	 posicao (3,1,2) pos2
+	 posicao (3,2,1) pos3
+	 
+	 todos os elems = {pos1,pos2,pos3.pos4.pos5.pos6.pos7,pos8}
+	 
+	 todos os numeros = 255 (pode estar em 8 posições) * 8 = 2048
+	 					230 * 8 = 1084
+	 					
+	 				(255,255,230,23,233)		
+	 				(255,1,2,3,4)				255*8
+	 				(255,255,255,1,3,2)
+	 
+	|*****|**|***|
+	http://mathforum.org/library/drmath/view/56197.html
+	chidlren = 2, orange =10 ...tusing duplicates, we need to sbutract vlaues from it
+	
+	is position equals to index
+	Pos1 = 1;
+	Pos2 = 2;
+	Pos3 = 3;
+	
+	
+	Pos1 = 2
+	Pos2 = 3
+	Pos3 = 1
+	
+	posso trocar as posições...atribuir cada posição a um elemento 
+		Pos+1 (2) Pos+2 (1) Pos+3 (1)
+	 	 
+	 	 
+	 	 (1,3,3)
+	 	 (2,1,1)
+	 	 
+	cada num representa um byte
+	
+	8! -> todas as permutações de 8 bytes
+		for (int idx=0 ; idx < 8; idx++) {
+	 		for (int i=0; i < 256; i++) {
+	 			firstByte = i;
+	 		}
+	 	}	
+	 	 
+	 
+	 
+	 
+	
+	
+	3! = 6
+	(1,2,3)(3,2,1)(2,1,3)(2,3,2)(3,2,1)(3,1,2)
+	 
+	 
+
  */
 //     /  2^8 * 2^8   * 2^8 * 2^8
        
        
        
-        private static void prefix(int numberOfBytes) {
+        private static int[][][] prefix(int numberOfBytes) {
         	int[] firstByte;
         	int[][][] bytesArray;
         	
@@ -198,7 +260,7 @@ public class binPathImpl {
         		for (int i=0 ; i < numberOfBytes; i++) {
         			bytesArray[i] = interval;
         		}
-        		
+        		return bytesArray;
         		// Number of interval which is equal number of bytes  (1----8 ----16---24) = 4
         		
         		// copy interval to other array
@@ -231,6 +293,7 @@ public class binPathImpl {
          */
         private static void createPlainText(File f) {
         	try {
+        		
         	FileOutputStream fos = new FileOutputStream(f);
         	byte[] toWrite;
         	
@@ -239,15 +302,52 @@ public class binPathImpl {
         		t+="a";
         		
         	toWrite  = t.getBytes();
-        	System.out.println("\n toWrite " +t);
-        	fos.write(toWrite);
+        	System.out.println("\n wrote "+t.length()+" to "+f.getName());
         	}
         	catch(IOException e) {
         		e.printStackTrace();
         	}
         	
         }
-        private static void AESPower(byte[] key) {
+        
+        private static void AEShelp(File f) {
+        	try {
+       	 byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+       	 IvParameterSpec ivspec = new IvParameterSpec(iv);
+         
+         FileInputStream fis = new FileInputStream(f);
+         int fileSize = (int) f.length();
+         byte[] cipherText = new byte[fileSize];
+         
+         int numBytesRead = 0;
+         numBytesRead = fis.read(cipherText);
+         if (numBytesRead  <= 0) {
+        	 System.err.println("Read returned error or zero");
+        	 System.exit(-1);
+         }
+         
+         else
+        	 System.out.println("Read "+numBytesRead);
+         		if (cipherText.length != 32) {
+         			System.err.println("\n Ciphertext not size of block");
+         			System.exit(-1);
+         		}
+         		if(numBytesRead != 32 ) {
+         			System.err.println("\n Didnt read the correct bytes from ciphertext");
+         			System.exit(-1);
+         		}
+         		
+         		
+         }
+         catch(FileNotFoundException e) {
+         		e.printStackTrace();
+        }
+        	catch(IOException e) {
+        		e.printStackTrace();
+        	}
+        }
+        
+        private static void AESPower(SecretKeySpec s, IvParameterSpec iv) {
         	try  {
         		
         		if (key.length != 32) {
@@ -257,24 +357,8 @@ public class binPathImpl {
         	
         	 
         	 
-        	 byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-             IvParameterSpec ivspec = new IvParameterSpec(iv);
-             File f  = new File("files/ciphertext");
-             FileInputStream fis = new FileInputStream(f);
-             int fileSize = (int) f.length();
-             byte[] cipherText = new byte[fileSize];
+            
              
-             int numBytesRead = 0;
-             numBytesRead = fis.read(cipherText);
-             if (numBytesRead  <= 0) {
-            	 System.err.println("Read returned error or zero");
-            	 System.exit(-1);
-             }
-             
-             else
-            	 System.out.println("Read "+numBytesRead);
-             
-             SecretKeySpec sks = new SecretKeySpec(key,"AES");
              
              Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 	         cipher.init(Cipher.DECRYPT_MODE, sks,ivspec);
@@ -339,10 +423,31 @@ public class binPathImpl {
         	
         	
         }
+        
+        public static void calculateDuplicateCombs() {
+        	
+      // Caculate the number of repeaeted elements and then subtract  	arranjos
+        	
+        	// num of 255 = 2   
+        	int[] arr = {255,255,232,12,13};
+        	
+        	//Arranjos sem repetição 4A4 => 4! (4-4)! = 4*3*2 = 24  + 5  (positions of 255) 
+        	// {255,1,2,3,4} => {1,255,3,4} Arranjos 4A4 + positions of 255 {1,2,3,4,5} => {255,2,3,4,5}
+        	// For three elemeted repeated , count the positions of [255,255,255}
+        	
+        	// count of positions that same number can give
+        	
+        }
         public static void main(String[] args) {
-    		//prefix(32);
-        	System.err.println("\nASJASKFJ");
-    		 createPlainText(new File("files/plaintext"));
+    		
+    	/*	int[][][] bytes =  prefix(32);
+        	for (int i=0 ; i < 4; i++ ) {
+        		byte[] key = bytes [0][0][0]
+        	}
+    		// createPlainText(new File("files/plaintext"));
+        	SecretKeySpec sks = new SecretKeySpec(,"AES");
+        	AESPower(s, iv)*/
+        	calculateDuplicateCombs();
         }	
 }
 			
