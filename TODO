@@ -35,3 +35,5 @@ c) Wonder if we can get iv from 1 block size
 d) Check why does array index equal the value set to array
 
 e) why does 3 bits are base?
+
+f) check XOR

@@ -23,8 +23,10 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 public class binPathImpl {
 
-	
+	public static byte[] pos_1 = { 1 , 9 , 17 , 25 , 33 , 41 , 49 , 57 , 65 , 73 , 81 , 89 , 97 , 105 , 113 , 121 ,  (byte) 129 ,  (byte) 137 ,  (byte) 145 ,  (byte) 153 ,  (byte) 161 ,  (byte) 169 ,  (byte) 177 ,  (byte) 185 ,  (byte) 193 ,  (byte) 201 ,  (byte) 209 ,  (byte) 217 ,  (byte) 225 ,  (byte) 233 ,  (byte) 241 ,  (byte) 249 ,  };
+	 public static byte[] pos_8 = { 8 , 16 , 24 , 32 , 40 , 48 , 56 , 64 , 72 , 80 , 88 , 96 , 104 , 112 , 120 , 128 ,  (byte) 136 ,  (byte) 144 ,  (byte) 152 ,  (byte) 160 ,  (byte) 168 ,  (byte) 176 ,  (byte) 184 ,  (byte) 192 ,  (byte) 200 ,  (byte) 208 ,  (byte) 216 ,  (byte) 224 ,  (byte) 232 ,  (byte) 240 ,  (byte) 248 ,  (byte) 256 ,  }; 
 
+// NEEDS 8 ints (32bytes/4bytes)
 	public static int[] setOneToAll() {
 		int[] ret = new int[256];
 		for (int i=0; i < 256 ; i++) {
@@ -78,34 +80,6 @@ public class binPathImpl {
 	}
 	
 	
-        /* 
-         * 
-         * FROM Maghoumi
-         * https://stackoverflow.com/questions/5263187/print-an-integer-in-binary-format-in-java
-         * System.out.println(intToString(5463, 4));
-         * Converts an integer to a 32-bit binary string
-         * @param number
-         *      The number to convert
-         * @param groupSize
-         *      The number of bits in a group
-         * @return
-         *      The 32-bit long bit string
-         */
-        public static String intToString(int number, int groupSize) {
-            StringBuilder result = new StringBuilder();
-
-            for(int i = 31; i >= 0 ; i--) {
-                int mask = 1 << i;
-                result.append((number & mask) != 0 ? "1" : "0");
-
-                if (i % groupSize == 0)
-                    result.append(" ");
-            }
-            result.replace(result.length() - 1, result.length(), "");
-
-            return result.toString();
-        } 
-        
         
        
         
@@ -142,7 +116,22 @@ public class binPathImpl {
         	
         }
         
-        
+        private static void printShortBits(short number) {
+    		String resultWithPadZero = String.format("%8s",Integer.toBinaryString(number).replace(" ", "0"));
+        	    System.out.println(resultWithPadZero+"  (d) "+number);
+        	   
+    	   
+    	}
+
+
+
+        private static void printIntBits(int number) {
+        		String resultWithPadZero = String.format("%8s",Integer.toBinaryString(number).replace(" ", "0"));
+            	    System.out.println(resultWithPadZero+"  (d) "+number);
+            	   
+        	   
+        	}
+
         
         // FROM https://mkyong.com/java/java-how-to-convert-a-byte-to-a-binary-string/
         private static void printBits(byte b) {
@@ -252,7 +241,7 @@ public class binPathImpl {
         		byte table;
         		
         		
-        		------| ------|-----|
+        	/*	------| ------|-----|
         		1		1			1		
         		2		2			2
         		3		3			3
@@ -264,6 +253,17 @@ public class binPathImpl {
         		1		1			7
         		2		2			8
         		3		3			9
+        		
+        		po1 = always 2^8 * 3
+        		
+        		2nd byte different , 2bytes first is firstbyte
+        		
+        										
+        		
+        		1 btyte sempre igual => 2^8
+        		2 byte=  => 257 -->265
+        		 
+        		*/
         		
         		// from byte1 to byte2 
         		// from byte2 to byte3, etcc...the interval is always the same, and the elements in the interval are also all equal
@@ -368,9 +368,9 @@ public class binPathImpl {
         }
         
         private static void AESPower(SecretKeySpec s, IvParameterSpec iv) {
-        	try  {
+        	//try  {
         		
-        		if (key.length != 32) {
+        		/*if (key.length != 32) {
         			System.err.println("\nKey is not in a block size");
         			System.exit(-1);
         		}
@@ -387,6 +387,7 @@ public class binPathImpl {
 	         
 	         byte[] decrypted =cipher.doFinal(cipherText);
 	          printArray(decrypted);
+	          
 	         
         	}
         	catch(InvalidAlgorithmParameterException e) {
@@ -413,10 +414,11 @@ public class binPathImpl {
 				 
 				e.printStackTrace();
 			}
+			*/
 	          
              
         	
-        }
+        } 
         private static void printThreeBits(int num_three_bits) {
         	
         	Vector<Integer> threeBitsMarker= new Vector<>();
@@ -459,7 +461,7 @@ public class binPathImpl {
         	
         }
         public static void main(String[] args) {
-    		
+    		printPositions();
     	/*	int[][][] bytes =  prefix(32);
         	for (int i=0 ; i < 4; i++ ) {
         		byte[] key = bytes [0][0][0]
@@ -467,7 +469,7 @@ public class binPathImpl {
     		// createPlainText(new File("files/plaintext"));
         	SecretKeySpec sks = new SecretKeySpec(,"AES");
         	AESPower(s, iv)*/
-        	calculateDuplicateCombs();
+        	
         }	
 }
 			
