@@ -23,8 +23,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 public class binPathImpl {
 
-	public static byte[] pos_1 = { 1 , 9 , 17 , 25 , 33 , 41 , 49 , 57 , 65 , 73 , 81 , 89 , 97 , 105 , 113 , 121 ,  (byte) 129 ,  (byte) 137 ,  (byte) 145 ,  (byte) 153 ,  (byte) 161 ,  (byte) 169 ,  (byte) 177 ,  (byte) 185 ,  (byte) 193 ,  (byte) 201 ,  (byte) 209 ,  (byte) 217 ,  (byte) 225 ,  (byte) 233 ,  (byte) 241 ,  (byte) 249 ,  };
-	 public static byte[] pos_8 = { 8 , 16 , 24 , 32 , 40 , 48 , 56 , 64 , 72 , 80 , 88 , 96 , 104 , 112 , 120 , 128 ,  (byte) 136 ,  (byte) 144 ,  (byte) 152 ,  (byte) 160 ,  (byte) 168 ,  (byte) 176 ,  (byte) 184 ,  (byte) 192 ,  (byte) 200 ,  (byte) 208 ,  (byte) 216 ,  (byte) 224 ,  (byte) 232 ,  (byte) 240 ,  (byte) 248 ,  (byte) 256 ,  }; 
+	 
 
 // NEEDS 8 ints (32bytes/4bytes)
 	public static int[] setOneToAll() {
@@ -34,16 +33,18 @@ public class binPathImpl {
 		}
 		return ret;
 	}
-		
-	public static void printPositions() {
+		// it is 32,64,128....
+	public static void printPositions(int it) {
 	    
 	    int pos = 1;
 	    int temp = pos;
+	    int number = 1;
 	    for (int i = 1 ; i < 9 ; i++) {
 	    pos = temp;
 	    System.out.print("\n public static byte[] pos_"+pos+" = { "+pos+" , ");
-	    for (int i2=0; i2 < 31; i2++) {
+	    for (int i2=1; i2 <= it; i2++) {
 	        pos+=8;
+	        number++;
 	        if (pos > 128 )
 	        	System.out.print(" (byte) ");
 	        else if (pos < -127)
@@ -51,7 +52,7 @@ public class binPathImpl {
 	        System.out.print(pos+" , ");
 
 	    }
-	    System.out.print(" } ");
+	    System.out.print(" } Total Len  "+number);
 	    temp++;
 	    }
 	    
@@ -461,7 +462,8 @@ public class binPathImpl {
         	
         }
         public static void main(String[] args) {
-    		printPositions();
+        	// 2^6 = 64
+    		printPositions(64);
     	/*	int[][][] bytes =  prefix(32);
         	for (int i=0 ; i < 4; i++ ) {
         		byte[] key = bytes [0][0][0]

@@ -70,4 +70,16 @@
 	 
 	 2A3 = 2*2*2 = 8 mudanças
 	 
-	 
+	Pos1#1 = Pos9  (pos1 equals pos9, pos2 equals pos10...check table.bin)
+   Pos2#2 = Pos10
+   Pos1#2 = Pos17
+   
+     Pos 1 = {1,9,17,25}
+   Pos 9 = {9,17..}
+ 
+ three bits the base (1,2,3,4,5,6,7,8)+8 all equal like (9,10,11,12,13,14,15,16)
+					(1,2,3,4,5,6,7,8)+16 -> {17,18,19,20,21,22,23,24}
+					
+difference between positions and bits
+pode ser 1 ou nao (bit) possiveis combs 2^8 (8*32) = 256
+para ser posicao, permutacao 8! = 40320

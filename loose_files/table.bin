@@ -66,22 +66,78 @@
                                  visto que alguns valores sao repetidos tomar partido disso
    
    pos(1...8) = 
-     * Positions          1             2               3           4           5       6           7           8		9
+     * Positions          1             2               3           4           5       6           7           8		9			17
      * Values             0             1               2           3           4       5           6           7
-       bitStrings 1)   00000000      00000001       00000010    000000100    00000101 00000110  00000111     00001000 00001001 
+       bitStrings 1)   00000000      00000001       00000010    000000100    00000101 00000110  00000111     00001000 00001001 	00010001
        
-        2) Values         8+1           8+2             8+3          8+4         8+5     8+6    8+7         8+8
+        2) Values         8+1           8+2             8+3          8+4         8+5     8+6    8+7         8+8			9+8
      *                 00001001      00001010       00001011   00001100     00001101 00001101  0000111      00010000 
 
        3) Values        8+8+1          8+8+2       8+8+3       8+8+4          8+8+5    8+8+6   8+8+7       8+8+8
                        00010001      00010010       00010011   00010100     00010101  00010110 00010111     00011000
-  positions , byte or bit   
-      
-   bit indicating num byte
+     
+  					
+  						
+		1byte, logo positions are bits (8bits)*32
+		2byte , 16 bits ... 16 pos (8bits pos + 8bits pos)=> (1byte + 1byte
+		 
+ 
    
    
-   bit 2 -> position 2
-   bit 2  -> bit 2 + 8-> bit 2+ 8 +8 ;
+   1byte = 8 bits
+   2byte = pos 9 -> pos 16
+   
+   
+pode ser 1 ou nao (bit) possiveis combs 2^8 (8*32)
+para ser posicao, permutacao 8! = 40320
+   
+   
+   8positions = 8 bytes!
+   cada position 1 byte =  1bit?
+   
+   1bit 2 values
+   1byte-> 255
+   
+   1bit = pos1
+   1byte = pos1 on eight positions (bytes or bits)
+   
+   1bit = position 1 of 1 byte
+   2bit = postiion 2 of 1 byte
+   8bit = position 8 of 1 byte
+  
+   
+   
+   9bit = positions 9 of 2bytes
+   
+   10bit -> pos10 2 bytes
+
+quero representar tudo (1byte,2byte, 1byte 2 bytes, 2bytes 1 bytes)
+
+Para 2 bytes 
+	1 bit = pos1 
+	8bits-> pos8
+	9 bits -> (8+1) -> pos9 -> bit set on pos 9
+	10bits -> (pos9+1) -> pos 10
+	 					
+   2byte -> 0b00000001 00000001
+   2byte -> 0b00000010 00000000
+   
+   
+   
+   1byte		1bit
+   0			0
+   1			1
+   2
+   3
+   4
+   5
+   6
+   ...
+   255
+   
+   
+   
+    
    
    positions 2-> positios 2 + 8
    
