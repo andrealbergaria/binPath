@@ -969,4 +969,25 @@ relação entre valor e posição
 	 		
 	 
 	 
+	x^3 + 2x +1 = 0 (eq. polinomial)  {x,1} x cardinality 4 {x,x,x,x,x,1} cardianlyu 6, degree =6 ? 
+	
+	x*x*x 
+	
+	Para x=2 2^3
+	cardinalyt = sum of X and numbers
+
+cardinality = size of multipset
+
+asserts that the complex solutions of a polynomial equation of degree d always form a multiset of cardinality d.
+
+x^3 + 2x +1 =0 
+
+degree =3
+cardinality = 4 {x,x,x,x (one x from 2x),} or {x,x,x,x,x}
+
+
+
+	
+	More generally, the fundamental theorem of algebra asserts that 
+	the complex solutions of a polynomial equation of degree d always form a multiset of cardinality d. 
 	

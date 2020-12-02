@@ -552,7 +552,18 @@ public class binPathImpl {
         	
         	
         }
-        
+       
+       private static void fillArray() {
+    	   int[] defaultByte = new int[256];
+    		   
+    	   for (int i=0; i < defaultByte.length;i++) {
+    		   defaultByte[i] = i;
+    	   }
+    	   
+    	   {0,0,0,0,00,0,0,B°
+    	   
+    	   
+       }
       
         public static void main(String[] args) {
         	// 2^6 = 64
