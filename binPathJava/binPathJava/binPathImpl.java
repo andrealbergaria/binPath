@@ -187,7 +187,7 @@ public class binPathImpl {
 
  */
      
-       
+      
        
        
         private static int[][][] prefix(int numberOfBytes) {
@@ -247,18 +247,101 @@ public class binPathImpl {
         													 7b 7A8
         													 8b 8A8
         													 
-        	{0,0,0,0,0,0,b}
+        	
+        	
+        	
+        		 
+        		 starting position -> end position
+        		 
+        		 --Para 1 b----
+        		  1-> 8 (comeca na posicao 1 ate ao fim)
+        		  
+        		 -Para 2b's-----
+        		
+        		 2 -> 8-2 (comeca no posicao 2 ate ao fim) Combs = 8-2 ..changed 6 times one b (ending positions - starting positions)
+        		 3 -> 8-3 (comeca na posicao 3 ate ao fim Combs = 5 combs
+        		 4-> 8-4 (comeca na poscaio 4 ate ao fim) Combs 4 
+        		 5-> 8-5 
+        		 6-> 8-6
+        		 7-> 8-7
+        		 ---------------------------
+        		 
+        		 
+        		 ....Para 3 b's.....  Por 2 b's first
+        		 3->8-3 			=> 5combs
+        		 4->8-4 			=> 4combs
+        		 5->8-5				=> 3combs 
+        		 6->8-6				=> 2combs
+        		 7->8-7				=> 1comb
+        		 ---------Para 4 b's--------
+        		 4->8-4 			=> 4combs
+        		 5 -> 8-5 			=>3 combs
+        		 6-> 8-6			=> 2 combs
+        		 7-> 8-7 			=Z 1 combs
+        		 
+        		 ----Para 5 bs------------------
+        		 5->8-5			3combs
+        		 6->8-6			2combs
+        		 7->8-7			1combs
+        		 
+        		 ---PAra 6 bs
+        		 6->8		2combs
+        		 7->8		1comb
+        		 
+        		 Para 7 bs
+        		 7->8 		1comb
+        		 done.
+        		 
+        		 1b-> 7
+        		 2b -> 6,5,4,3,2,1
+        		 3b-> 5,4,3,2,1
+        		 4b -> 4,3,2,1
+        		 5b -> 3,2,1
+        		 6b -> 2,1
+        		 7b -> 1
+        		 
+        		 
+        		 n=2 elems (2 b's)
+        		 
+        		 2 Comb 7 => (7-i)! , where i starts with 0 , and incrementing it one unhtil reaches 7
+        		  			 (7-1) + (7-2) + (7-3)+(7-4)
+        		 
+        		 n=3
+        		 3 Comb 7 => 
+        		 
+        		 
+        		f(ate ao fim) = Maximum Position - StartingPosition 
+        		 
+        		 countar unmero de zeros *7
+        	
+        	{0,0,0,0,0,0,b}	7*7
         	{0,0,0,0,0,b,0)
         	
-        	{b,b,0,0,0,0,0}  ={1b} 
-        	{b,0,b,0,0,0,0)
+        	{b,b,0,0,0,0,0,0} 6 (numZeros) Times 7
+        	{b,0,b,0,0,0,0)      
         	{b,0,0,b,0,0,0}
+        	b,0,0,0,b,0,0,
+        	b,0,0,0,0,b,0
+        	b,0,0,0,0,0,b)	 
         	
-        	1 b
-        	8 combs
-        	
-        	2 b's
-        	
+        	b,b,b,0,0,0,0,0 5 zeros (numSzeros ) T
+        		 
+        		 
+        		 Para um b 
+        		 	7 zeros = 7 combs
+        		 Para dois b's
+        		 	6zeros = 6 combs
+        		 Para tres b's
+        		 	5 zeros = 5 combs 
+        		 Para quarto b
+        		 	4 zeros= 4	combs
+        		 para 5 b
+        		 	3 zero = 3 combs
+        		 para 6 bs
+        		 	2*7 = 2 combs
+        		 para 7 bs
+        		 	1*7
+        		 
         	
         	 		/*
         		*
