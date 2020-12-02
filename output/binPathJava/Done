@@ -83,3 +83,11 @@
 difference between positions and bits
 pode ser 1 ou nao (bit) possiveis combs 2^8 (8*32) = 256
 para ser posicao, permutacao 8! = 40320
+
+
+
+{1,2,255,255} => {1,2,255}  + positions of 255
+{255,1,1,1}
+{1,255,1,1}
+{1,1,255,1}  
+{1,1,1,255}

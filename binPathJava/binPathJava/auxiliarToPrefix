@@ -955,12 +955,18 @@ relação entre valor e posição
             	
         	}
         	
-	is this equal to 3 bits?
+        	 
+	1 = 01
+	2= 10
+	3= 11
 	 posicao (1,2,3) pos1
+	 		  01 10 11 	
 	 posicao (3,1,2) pos2
+	 		 11 1 10
 	 posicao (3,2,1) pos3
 	 
+	 posicao (1,2,3,4)
+	 		
 	 
-	 what if we have {255,255,2,1} arranjos com repetição ou nao? arranjos apenas exitem em conjuntos com elemetnos distiints
 	 
 	

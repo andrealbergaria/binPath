@@ -78,79 +78,26 @@
      
   					
   						
-		1byte, logo positions are bits (8bits)*32
-		2byte , 16 bits ... 16 pos (8bits pos + 8bits pos)=> (1byte + 1byte
-		 
- 
+					256					257											263						264
+
+					256+1
+					
+					256+256+1 or 256+8+1
+					
+
+					
+
    
-   
-   1byte = 8 bits
-   2byte = pos 9 -> pos 16
-   
-   
-pode ser 1 ou nao (bit) possiveis combs 2^8 (8*32)
+pode ser 1 ou nao (bit) possiveis combs 2^8 (8*32) = 256
 para ser posicao, permutacao 8! = 40320
    
    
-   8positions = 8 bytes!
-   cada position 1 byte =  1bit?
-   
-   1bit 2 values
-   1byte-> 255
-   
-   1bit = pos1
-   1byte = pos1 on eight positions (bytes or bits)
-   
-   1bit = position 1 of 1 byte
-   2bit = postiion 2 of 1 byte
-   8bit = position 8 of 1 byte
   
-   
-   
-   9bit = positions 9 of 2bytes
-   
-   10bit -> pos10 2 bytes
 
 quero representar tudo (1byte,2byte, 1byte 2 bytes, 2bytes 1 bytes)
 
-Para 2 bytes 
-	1 bit = pos1 
-	8bits-> pos8
-	9 bits -> (8+1) -> pos9 -> bit set on pos 9
-	10bits -> (pos9+1) -> pos 10
-	 					
-   2byte -> 0b00000001 00000001
-   2byte -> 0b00000010 00000000
-   
-   
-   
-   1byte		1bit
-   0			0
-   1			1
-   2
-   3
-   4
-   5
-   6
-   ...
-   255
-   
-   
-   
-    
-   
-   positions 2-> positios 2 + 8
+
    
    basta aumentar 32 por 64 e obtemos todas as posicoes de 2 bytes? 
    
    len pos1 = 32
-   public static byte[] pos_1 = { 1 , 9 , 17 , 25 , 33 , 41 , 49 , 57 , 65 , 73 , 81 , 89 , 97 , 105 , 113 , 121 ,  (byte) 129 ,  (byte) 137 ,  (byte) 145 ,  (byte) 153 ,  (byte) 161 ,  (byte) 169 ,  (byte) 177 ,  (byte) 185 ,  (byte) 193 ,  (byte) 201 ,  (byte) 209 ,  (byte) 217 ,  (byte) 225 ,  (byte) 233 ,  (byte) 241 ,  (byte) 249 ,  } 
- public static byte[] pos_2 = { 2 , 10 , 18 , 26 , 34 , 42 , 50 , 58 , 66 , 74 , 82 , 90 , 98 , 106 , 114 , 122 ,  (byte) 130 ,  (byte) 138 ,  (byte) 146 ,  (byte) 154 ,  (byte) 162 ,  (byte) 170 ,  (byte) 178 ,  (byte) 186 ,  (byte) 194 ,  (byte) 202 ,  (byte) 210 ,  (byte) 218 ,  (byte) 226 ,  (byte) 234 ,  (byte) 242 ,  (byte) 250 ,  } 
- public static byte[] pos_3 = { 3 , 11 , 19 , 27 , 35 , 43 , 51 , 59 , 67 , 75 , 83 , 91 , 99 , 107 , 115 , 123 ,  (byte) 131 ,  (byte) 139 ,  (byte) 147 ,  (byte) 155 ,  (byte) 163 ,  (byte) 171 ,  (byte) 179 ,  (byte) 187 ,  (byte) 195 ,  (byte) 203 ,  (byte) 211 ,  (byte) 219 ,  (byte) 227 ,  (byte) 235 ,  (byte) 243 ,  (byte) 251 ,  } 
- public static byte[] pos_4 = { 4 , 12 , 20 , 28 , 36 , 44 , 52 , 60 , 68 , 76 , 84 , 92 , 100 , 108 , 116 , 124 ,  (byte) 132 ,  (byte) 140 ,  (byte) 148 ,  (byte) 156 ,  (byte) 164 ,  (byte) 172 ,  (byte) 180 ,  (byte) 188 ,  (byte) 196 ,  (byte) 204 ,  (byte) 212 ,  (byte) 220 ,  (byte) 228 ,  (byte) 236 ,  (byte) 244 ,  (byte) 252 ,  } 
- public static byte[] pos_5 = { 5 , 13 , 21 , 29 , 37 , 45 , 53 , 61 , 69 , 77 , 85 , 93 , 101 , 109 , 117 , 125 ,  (byte) 133 ,  (byte) 141 ,  (byte) 149 ,  (byte) 157 ,  (byte) 165 ,  (byte) 173 ,  (byte) 181 ,  (byte) 189 ,  (byte) 197 ,  (byte) 205 ,  (byte) 213 ,  (byte) 221 ,  (byte) 229 ,  (byte) 237 ,  (byte) 245 ,  (byte) 253 ,  } 
- public static byte[] pos_6 = { 6 , 14 , 22 , 30 , 38 , 46 , 54 , 62 , 70 , 78 , 86 , 94 , 102 , 110 , 118 , 126 ,  (byte) 134 ,  (byte) 142 ,  (byte) 150 ,  (byte) 158 ,  (byte) 166 ,  (byte) 174 ,  (byte) 182 ,  (byte) 190 ,  (byte) 198 ,  (byte) 206 ,  (byte) 214 ,  (byte) 222 ,  (byte) 230 ,  (byte) 238 ,  (byte) 246 ,  (byte) 254 ,  } 
- public static byte[] pos_7 = { 7 , 15 , 23 , 31 , 39 , 47 , 55 , 63 , 71 , 79 , 87 , 95 , 103 , 111 , 119 , 127 ,  (byte) 135 ,  (byte) 143 ,  (byte) 151 ,  (byte) 159 ,  (byte) 167 ,  (byte) 175 ,  (byte) 183 ,  (byte) 191 ,  (byte) 199 ,  (byte) 207 ,  (byte) 215 ,  (byte) 223 ,  (byte) 231 ,  (byte) 239 ,  (byte) 247 ,  (byte) 255 ,  } 
- public static byte[] pos_8 = { 8 , 16 , 24 , 32 , 40 , 48 , 56 , 64 , 72 , 80 , 88 , 96 , 104 , 112 , 120 , 128 ,  (byte) 136 ,  (byte) 144 ,  (byte) 152 ,  (byte) 160 ,  (byte) 168 ,  (byte) 176 ,  (byte) 184 ,  (byte) 192 ,  (byte) 200 ,  (byte) 208 ,  (byte) 216 ,  (byte) 224 ,  (byte) 232 ,  (byte) 240 ,  (byte) 248 ,  (byte) 256 ,  } 
-   
-   

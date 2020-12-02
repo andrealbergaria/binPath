@@ -171,19 +171,7 @@ public class binPathImpl {
 	 				(255,1,2,3,4)				255*8
 	 				(255,255,255,1,3,2)
 	 
-	|*****|**|***|
-	http://mathforum.org/library/drmath/view/56197.html
-	chidlren = 2, orange =10 ...tusing duplicates, we need to sbutract vlaues from it
 	
-	is position equals to index
-	Pos1 = 1;
-	Pos2 = 2;
-	Pos3 = 3;
-	
-	
-	Pos1 = 2
-	Pos2 = 3
-	Pos3 = 1
 	
 	posso trocar as posições...atribuir cada posição a um elemento 
 		Pos+1 (2) Pos+2 (1) Pos+3 (1)
@@ -192,27 +180,13 @@ public class binPathImpl {
 	 	 (1,3,3)
 	 	 (2,1,1)
 	 	 
-	cada num representa um byte
 	
-	8! -> todas as permutações de 8 bytes
-		for (int idx=0 ; idx < 8; idx++) {
-	 		for (int i=0; i < 256; i++) {
-	 			firstByte = i;
-	 		}
-	 	}	
-	 	 
-	 
-	 
-	 
-	
-	
-	3! = 6
 	(1,2,3)(3,2,1)(2,1,3)(2,3,2)(3,2,1)(3,1,2)
 	 
 	 
 
  */
-//     /  2^8 * 2^8   * 2^8 * 2^8
+     
        
        
        
@@ -241,8 +215,34 @@ public class binPathImpl {
         		
         		byte table;
         		
-        		
-        	/*	------| ------|-----|
+        		// 1 byte tem 256 combs (2^8)
+        		// 2 bytes tem 2^16 vombs (65535) (2^8 * 2^8)
+        	/*								1byte * 1 byte
+        	  							8				8
+        	 		B = base byte
+        													
+        													24 combs -> 8*3
+        													0 B 
+        													B 0
+        													B B
+        													
+        													4 bits   cobms-> 8*4
+        													2^4 = 16 
+        													
+        													
+        													faz os arranjos com repetição 2^4, e vai substituindo B pelo byte
+        													0 0 0 B
+        	
+        							
+        											para 8 ints => 2^8 = 255
+        											{0,0,0,0,0,0,B}		
+        	
+        	 		/*
+        		*
+        		*()								
+        	/*	------| ------|-----|			
+        	 * 
+        	 
         		1		1			1		
         		2		2			2
         		3		3			3
@@ -447,20 +447,7 @@ public class binPathImpl {
         	
         }
         
-        public static void calculateDuplicateCombs() {
-        	
-      // Caculate the number of repeaeted elements and then subtract  	arranjos
-        	
-        	// num of 255 = 2   
-        	int[] arr = {255,255,232,12,13};
-        	
-        	//Arranjos sem repetição 4A4 => 4! (4-4)! = 4*3*2 = 24  + 5  (positions of 255) 
-        	// {255,1,2,3,4} => {1,255,3,4} Arranjos 4A4 + positions of 255 {1,2,3,4,5} => {255,2,3,4,5}
-        	// For three elemeted repeated , count the positions of [255,255,255}
-        	
-        	// count of positions that same number can give
-        	
-        }
+      
         public static void main(String[] args) {
         	// 2^6 = 64
     		printPositions(64);
