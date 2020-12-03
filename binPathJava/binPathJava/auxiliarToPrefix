@@ -985,9 +985,16 @@ x^3 + 2x +1 =0
 degree =3
 cardinality = 4 {x,x,x,x (one x from 2x),} or {x,x,x,x,x}
 
-
-
+problem x ^3 + 2x^1 +1  =0 
+solutions of a polynomial equation of degree d always form a multiset of cardinality d. 
 	
-	More generally, the fundamental theorem of algebra asserts that 
-	the complex solutions of a polynomial equation of degree d always form a multiset of cardinality d. 
+	expoenent equal = mulitplicty
+	proble x^4 + x^3 +1 = 0
+	
+	
+	Solution degree = 4 , 
+	
+Fundamental theorem of algebra thnik is wrong
+
+
 	

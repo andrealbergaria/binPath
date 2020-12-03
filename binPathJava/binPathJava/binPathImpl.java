@@ -292,13 +292,107 @@ public class binPathImpl {
         		 7->8 		1comb
         		 done.
         		 
-        		 1b-> 7
-        		 2b -> 6,5,4,3,2,1
-        		 3b-> 5,4,3,2,1
-        		 4b -> 4,3,2,1
-        		 5b -> 3,2,1
-        		 6b -> 2,1
-        		 7b -> 1
+        		 7+6+5+4+3+2+1
+        		 
+        		 f(how many combs does number of b have ) = (sizeOfPositions (in this case 8) - i)!  
+        		 
+        		 
+        		  Para 2bs , usa-se o tres bits
+        		  
+        		 b, b,0,0, d
+        		 b, 0,b,0, c	
+        		 b, 0,0,b, b		
+        		 
+        		 
+        		 0, 0,b,b h
+        		 0,,b,b,0 g
+        		 0, b 0 b f
+        		 
+        		 PAra 3bs ?
+        		 
+        		 b (2bs all combinations from 2bis)
+        		 0 (2bs) all combinations from 2bits)
+        		 
+        		
+        		  1b-> 8
+        		 2b -> 16 
+        	1	 3b-> 32
+        		 4b -> 64
+        		
+        		 {0,b,b,b}
+        		 [b,b,b,0}
+        		 {b,b,0,b}
+        		 {b,0,b,b}
+        		 
+        		 {b |,b,0,0 100
+        		 [b |,0,b,0	010
+        		 {b |,0,0,b	001
+        		 (0,|b,b,0	110
+        		 ,0,|b,0,b	101
+        		 0, |0,b,b,	011
+        		 
+        		 
+        		 3 b's 
+       	0 ou 1 b 	| B=0 | b 0 0  X   
+        	0	 B | B=0 | 0 b 0  X	(nao tem bs suficientes)
+        	0	 B | B=0 | 0 0 b  X
+  			0	 B | B=0 | b b 0  X	 
+     		0     B | B=0 | b o b  X
+     		0 	 B | B=0 | 0 b b  X
+        	0		 B=1 | b 0  0 X
+        	0	 	b=1  | 0 b  0 X
+        	0	 	b=1  | 0 0  b X
+        	0	 	b=1  | b b 0 V
+        	0	 	b=1  | b 0 b V
+        	0	 	b=1  | 0 b b V
+        	1		b=1  | b 0 0 V
+        	1		1 	   0 b 0 V
+        	1 		1      0 0 b V
+        	1      	1      b b 0 X /demasiados b's)
+        	1 		1 	   0 b b X
+        	1		1      b 0 b X
+        	1       0      b 0 0 X pocuos b's
+        	1 		0 	   0 b 0
+        	1 		0      0 0 b
+        	1 		0      b b 0 V
+        	1 		0 	   0 b b  V 
+        	1 		0 	   b 0 b V
+        		 	
+        		 	3bits ( 001,010,100,101,110,011)
+        		 	number of one B in number = 3 bs
+        		 	number of two bt's in number = 6bs
+        		 								
+        		 	4bits ( 0001 , 0010,0011, 0100, 0101,0110,  0111,1000,1001,1010,1011,1100,1101,1110,1111) 3 b's,6b's ,
+        		 	 		1 		2   3		4	  5		6     7   8		9   10	11 	 12		13 14	15	
+        		 	
+        		 	num of one bs = 3
+        		 	onde dois b's = 3,5,6,9,10,12
+        		 	
+        		 	number of three b's in number = 7,11,13,14
+        		 	number of four b's = 1
+        		 	
+        		 	5bits
+        		 	
+
+        		 	 
+        		 Para X b's :
+        		 cotnagem 
+        		 1C4 = (base 3 bits / 2 ,visto que dois que depois do meio existe 2b's)
+        		 2C4 => 1CA4 * 2
+        		 3C4 => 2C4  2 
+        		 apenas conta os elemetnos nao diz subconjuntos
+        		 
+        		  
+        		 255 = (2-8)!
+        		 Arranjos com repetição n num de elems = X
+        		 						posicioes 8
+        		 						
+        		 if arranjos com repetição (x^8) is corretc, we can get the number hwich has expoenent
+        		 else expoenent is incorect 
+        		 
+        		 
+        		 
+        		 {0,0,0,b,b,b,b,b
         		 
         		 
         		 n=2 elems (2 b's)
@@ -314,17 +408,6 @@ public class binPathImpl {
         		 
         		 countar unmero de zeros *7
         	
-        	{0,0,0,0,0,0,b}	7*7
-        	{0,0,0,0,0,b,0)
-        	
-        	{b,b,0,0,0,0,0,0} 6 (numZeros) Times 7
-        	{b,0,b,0,0,0,0)      
-        	{b,0,0,b,0,0,0}
-        	b,0,0,0,b,0,0,
-        	b,0,0,0,0,b,0
-        	b,0,0,0,0,0,b)	 
-        	
-        	b,b,b,0,0,0,0,0 5 zeros (numSzeros ) T
         		 
         		 
         		 Para um b 
@@ -560,7 +643,7 @@ public class binPathImpl {
     		   defaultByte[i] = i;
     	   }
     	   
-    	   {0,0,0,0,00,0,0,B°
+    	   
     	   
     	   
        }

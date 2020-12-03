@@ -44,6 +44,6 @@ on  3 bytes first bits = 16777216 2^24
 			
 			 comment function after using plus signal to hide it
 			 
-			asserts that the complex solutions of a polynomial equation of degree d always form a multiset of cardinality d.
+			using positions with solutions of polynomial
 			
 			 
