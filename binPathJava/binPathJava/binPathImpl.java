@@ -264,19 +264,99 @@ public class binPathImpl {
         		  
         		  ------------------
         		  
-        		  [b,0,b,0] +[b,0,0,0] = [b,0,0,b,0] causa carry flag
-        		  [b,0,0,b]	 [b,0,0,0] = b[0,0,0,b]		
+        		  [b,0,b,0] +[b,0,0,0] = [b,0,0,b,0] causa carry flag (aumenta os bits)
+        		  [b,0,0,b]	 [b,0,0,0] = b[1,0,0,0,1]	
         		  [b,b,0,0]  [b,0,0,0] = b[0,b,0,0]
+        		 
+        		 inverso do anterior com zero comecados ([0,b,0,b]
+        		 
+        		  [0,b,0,b] + [b,0,0,0] = {b,b,0,b] Se comecar por zero , faz 3 bs 
+        		 
+        		  se primeiro casa 0, e [b,0,0,0] -> adiciona b (1)			se primeira e segunda casa 0 entao b,0,0,0 + 0,b,0,0
+        		  se segundo casa 0 , e [0,b,0,0] -> adiciona b (2) 
+        		  se terceira casa 0, e [0,0,b,0] -> adiciona b (4)
+        		  se quarta casa 0 ,  e[0,0,0,b] = adiciona 8 
         		  
-        		   
+        		  primeiro so pode ser um pois 2zero é considerado depois
+        		  Se primeiro zero, entao se segundo zero ,primeiro (0,x,x,x] tem de ser [0,b,x,x]
         		  
-        		  em vez de b, o zero nao funciona adicionando
-        		  por exemplo, so posso adicionar b's senao fica na mesma
-        		  [b,0,b,0] [0,0,0,0] + b[0,0,b,0]
+        		    1 1 1
+        		 [0,x,x,x] = [b,0,0,0]
+        		 	  1 1	 
+        		 [0,0,x,x]
+        		 		1	
+        		 [0,0,0,x]
+        		 		0
+        		 [0,0,0,0]
+        		 
+        		 x= 0, ou x = 1
+        		 
+        		
+        		 a) [0,x,x,x] = b) [0,0,x,x]
+        		 
+        		 Sse segunda posicao em b) igual a 0, entao temos, se a) tiver 0 na pos 2 1combs...se a) tiver 1 1 na 2egunda posicao temos 2 combs
+        		 
+        		 	 0 ,1 
+        		 a) [0,x,x,x] 8d
+        		 b) [0,0,x,x] 4d 
+        		 c) {0,0,0,x] 2d
+        		 
+        		 O que podemos assumir se pusermos 3 zeros
+        		 [0,0,0,x]
+        		 
+        		 
+        		 [0,x,0,x]  marker only last x count assuming [0,0,0,x]
+        		 [0,0,x,x]  marker  
+        		 [0,x,x,0] 
+        		 [x,0,0,x] marker
+        		 [x,x,0,0] 
+        		 [x,0,x,0] 
+        		 
+        		 
+        		 ok so, use the masks ( 0,0,0, 0,0 e 0 ) to stop searching (compare mask to the other numbers)
+        		 tres markers ( 3 sets)
+        		 
+        		 [0,0,x,x] only last two count
+        		 
+        		 [0,x,0,x]   
+        		 [0,0,x,x]  marker  
+        		 [0,x,x,0] makrker
+        		 [x,0,0,x] marker
+        		 [x,x,0,0] 
+        		 [x,0,x,0] 
+        		 
+        		 
+        		  	Todas as combinações = 8d + 4d +2d
+        		  		
+        		
+        		 adicionar um zero significa dividir por 2
+        		 
+        		 descompor binario (na funcao adicionar um 0 ao seguinte
+        		 f(0) = 2^3;
+        		 f(x) =	f(x-1) / 2 
         		  
-        		  
-        		  Nao vale a pena usar 0 pois adiiocnado ou fica 0 ou b
-        		  
+        		 f(0) = 2
+        		 f(x = f(x-1) * 2
+        		
+        		
+        		 a) [1,x,x,x]	8
+        		 	[1,1,x,x]	12
+        		 	{1,1,1,x]  14
+        		 	
+        		 	
+        		
+        		 
+        		
+        		 
+        		 	c) inclui b) que inclui a)
+        		
+        		
+        			conjunto de c) = conjunto de b) 
+        			
+        		
+        		can 0 , be 0,0
+        		 
+        		 
         		  segundo b, causa 3 bvits
         		  
         		  [b,0,b,0] + [0,b,0,0] = [b,b,b,0]	 three b's
