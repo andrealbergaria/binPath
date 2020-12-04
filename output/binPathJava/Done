@@ -106,5 +106,14 @@ para ser posicao, permutacao 8! = 40320
         		 	
         		 	[0,0,x,x}
         		 
+        		 a= [0,0-1,0-1,0-1]
+        		 b= [0,0,0-1,0-1]
+        		 c= [0,0,0,0-1]
         		 
-        		 carry flag multiplies the number
+        		 Possveis combinaçõa de 1 ..same thing
+        		Possiveis combinações 2 zeros [0,0,0-1,0-1] = { (0,0,0,0),(0,0,1,0),(0,0,1,1),(0,0,0,1) }
+        		Possiveis combinações 3 zero [,0,0,0,0-1] =  { {0,0,0,0) (0,0,0,1)
+        		 
+        		 c = subconjunto de b
+        		 b = subconjunto de a
+        		 

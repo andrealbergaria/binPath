@@ -238,101 +238,22 @@ public class binPathImpl {
         		
         		  
 
-        		 a) [0,x,x,x]  
-        		 	[x,0,x,x] 4combs 
-        		 	
-        		 	Possible two zeros => 
-        		 	[0,x,x,x][x,0,x,x] 
-        		 	[0,x,x,x][x,x,0,x] 
-        		 	
-        		 	[0,0,x,x}
-        		 AND
         		 
-        		 	(0,0,x,x)
-        		 	(0,x,0,x)
-        		 	(0,x,x,0)
-        		 	(x,0,0,x)
-        		 	(x,x,0,0)
-        		 	(x,0,x,0)
-        		 	
-        		 	
-        		 f( tuple) = multiplication 
-        		 	
+
         		 
-        		 		1	
-        		 [0,0,0,x]
-        		 		0
-        		 [0,0,0,0]
-        		 
-        		 x= 0, ou x = 1
-        		 
-        		
-        		zero a esquerda, 
-        		
-        		 a) [0,x,x,x] = b) [0,0,x,x]
-        		 
-        		 Sse segunda posicao em b) igual a 0, entao temos, se a) tiver 0 na pos 2 1combs...se a) tiver 1 1 na 2egunda posicao temos 2 combs
-        		 
-        		 	 0 ,1 
-        		 a) [0,x,x,x] 8d
-        		 b) [0,0,x,x] 4d 
-        		 c) {0,0,0,x] 2d
-        		 
-        		 O que podemos assumir se pusermos 3 zeros
-        		 [0,0,0,x]
+        		 	  
         		 
         		 
-        		 [0,x,0,x]  marker only last x count assuming [0,0,0,x]
-        		 [0,0,x,x]  marker  
-        		 [0,x,x,0] 
-        		 [x,0,0,x] marker
-        		 [x,x,0,0] 
-        		 [x,0,x,0] 
         		 
-        		 
-        		 ok so, use the masks ( 0,0,0, 0,0 e 0 ) to stop searching (compare mask to the other numbers)
-        		 tres markers ( 3 sets)
-        		 
-        		 [0,0,x,x] only last two count
-        		 
-        		 [0,x,0,x]   
-        		 [0,0,x,x]  marker  
-        		 [0,x,x,0] makrker
-        		 [x,0,0,x] marker
-        		 [x,x,0,0] 
-        		 [x,0,x,0] 
-        		 
-        		 
-        		  	Todas as combinações = 8d + 4d +2d
-        		  		
-        		
-        		 adicionar um zero significa dividir por 2
-        		 
-        		 descompor binario (na funcao adicionar um 0 ao seguinte
-        		 f(0) = 2^3;
-        		 f(x) =	f(x-1) / 2 
-        		  
-        		 f(0) = 2
-        		 f(x = f(x-1) * 2
-        		
         		
         		 a) [1,x,x,x]	8
         		 	[1,1,x,x]	12
         		 	{1,1,1,x]  14
         		 	
         		 	
-        		
-        		 
-        		
-        		 
-        		 	c) inclui b) que inclui a)
-        		
-        		
-        			conjunto de c) = conjunto de b) 
-        			
-        		
-        		can 0 , be 0,0
-        		 
+        		 [0,x,x,x]
+        		 {0,0,x,x,]
+        		 [0,0,0,x] 
         		 
         		  segundo b, causa 3 bvits
         		  
