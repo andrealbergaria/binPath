@@ -256,6 +256,43 @@ public class binPathImpl {
         		 --Para 1 b----
         		  1-> 8 (comeca na posicao 1 ate ao fim)
         		  
+        		  [b,0,0,0}
+        		  [0,b,0,0]
+        		  [0,0,b,0] 4combs		para 1 b, 4 combs
+        		  [0,0,0,b]
+        		  
+        		  
+        		  ------------------
+        		  
+        		  [b,0,b,0] +[b,0,0,0] = [b,0,0,b,0] causa carry flag
+        		  [b,0,0,b]	 [b,0,0,0] = b[0,0,0,b]		
+        		  [b,b,0,0]  [b,0,0,0] = b[0,b,0,0]
+        		  
+        		   
+        		  
+        		  em vez de b, o zero nao funciona adicionando
+        		  por exemplo, so posso adicionar b's senao fica na mesma
+        		  [b,0,b,0] [0,0,0,0] + b[0,0,b,0]
+        		  
+        		  
+        		  Nao vale a pena usar 0 pois adiiocnado ou fica 0 ou b
+        		  
+        		  segundo b, causa 3 bvits
+        		  
+        		  [b,0,b,0] + [0,b,0,0] = [b,b,b,0]	 three b's
+        		  [b,0,0,b] + [0,b,0,0] = [b,b,0,b] 2 bbs + 1 b = 3b
+        		  [0,0,b,b] + [0,b,0,0] = [0,b,b,b]
+        		   
+        		  
+        		  [0,b,b,0} + [0,0,b,0] = b[b,b,b,0] 2b's +1 b = 3b
+        		  [0,b,0,b] + [0,0,b,0] = b[0,b,b,b] 2 b mais 1 = 3bits   
+        		  
+        		  [b,0,0,b] + [0,0,0,b] = [b,0,0,b NAO 
+        		  [0,b,b,0] + [0,0,0,b] = {0,b,b,b} tree
+        		  [0,b,0,b] + [0,0,0,b] = nao
+        		    
+        		  
+        		  
         		 -Para 2b's-----
         		
         		 2 -> 8-2 (comeca no posicao 2 ate ao fim) Combs = 8-2 ..changed 6 times one b (ending positions - starting positions)
@@ -330,6 +367,11 @@ public class binPathImpl {
         		 (0,|b,b,0	110
         		 ,0,|b,0,b	101
         		 0, |0,b,b,	011
+        		 
+        		 position equal value on position
+        		 pos 2 = 2
+        		 pox 3 = 3;
+        		 pos 2525525=2525525
         		 
         		 
         		 3 b's 
