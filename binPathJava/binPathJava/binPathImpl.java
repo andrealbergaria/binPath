@@ -215,42 +215,13 @@ public class binPathImpl {
         		
         		byte table;
         		
+        		// Para cada um no inicio, adiciona-se o numero na posicao
+        		
+        		
         		// 1 byte tem 256 combs (2^8)
         		// 2 bytes tem 2^16 vombs (65535) (2^8 * 2^8)
-        	/*								1byte * 1 byte
-        	  							8				8
-        	 		B = base byte
-        													
-        													24 combs -> 8*3
-        													0 B 
-        													B 0
-        													B B
-        													
-        													4 bits   cobms-> 8*4
-        													2^4 = 16 
-        													
-        													
-        													faz os arranjos com repetição 2^4, e vai substituindo B pelo byte
-        													0 0 0 B
-        	
-        							
-        											para 8 ints => 2^8 = 255
-        											{0,0,0,0,0,0,B}		2^8 = 255
-        													
-        													
-        													 1b 1A8 = 8
-        													 2b 2A8 = 
-        													 3b 3A8
-        													 4b 4A8
-        													 5b 5A8
-        													 6b 6A8
-        													 7b 7A8
-        													 8b 8A8
-        													 
-        	
-        	
-        	
-        		 
+        		
+        			/*
         		 starting position -> end position
         		 
         		 --Para 1 b----
@@ -264,26 +235,30 @@ public class binPathImpl {
         		  
         		  ------------------
         		  
-        		  [b,0,b,0] +[b,0,0,0] = [b,0,0,b,0] causa carry flag (aumenta os bits)
-        		  [b,0,0,b]	 [b,0,0,0] = b[1,0,0,0,1]	
-        		  [b,b,0,0]  [b,0,0,0] = b[0,b,0,0]
-        		 
-        		 inverso do anterior com zero comecados ([0,b,0,b]
-        		 
-        		  [0,b,0,b] + [b,0,0,0] = {b,b,0,b] Se comecar por zero , faz 3 bs 
-        		 
-        		  se primeiro casa 0, e [b,0,0,0] -> adiciona b (1)			se primeira e segunda casa 0 entao b,0,0,0 + 0,b,0,0
-        		  se segundo casa 0 , e [0,b,0,0] -> adiciona b (2) 
-        		  se terceira casa 0, e [0,0,b,0] -> adiciona b (4)
-        		  se quarta casa 0 ,  e[0,0,0,b] = adiciona 8 
+        		
         		  
-        		  primeiro so pode ser um pois 2zero é considerado depois
-        		  Se primeiro zero, entao se segundo zero ,primeiro (0,x,x,x] tem de ser [0,b,x,x]
-        		  
-        		    1 1 1
-        		 [0,x,x,x] = [b,0,0,0]
-        		 	  1 1	 
-        		 [0,0,x,x]
+
+        		 a) [0,x,x,x]  
+        		 	[x,0,x,x] 4combs 
+        		 	
+        		 	Possible two zeros => 
+        		 	[0,x,x,x][x,0,x,x] 
+        		 	[0,x,x,x][x,x,0,x] 
+        		 	
+        		 	[0,0,x,x}
+        		 AND
+        		 
+        		 	(0,0,x,x)
+        		 	(0,x,0,x)
+        		 	(0,x,x,0)
+        		 	(x,0,0,x)
+        		 	(x,x,0,0)
+        		 	(x,0,x,0)
+        		 	
+        		 	
+        		 f( tuple) = multiplication 
+        		 	
+        		 
         		 		1	
         		 [0,0,0,x]
         		 		0
@@ -291,6 +266,8 @@ public class binPathImpl {
         		 
         		 x= 0, ou x = 1
         		 
+        		
+        		zero a esquerda, 
         		
         		 a) [0,x,x,x] = b) [0,0,x,x]
         		 

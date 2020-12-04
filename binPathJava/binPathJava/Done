@@ -91,3 +91,20 @@ para ser posicao, permutacao 8! = 40320
 {1,255,1,1}
 {1,1,255,1}  
 {1,1,1,255}
+
+
+	Se adicionar par a um numero par, continua par 
+        		Se adiiconar impar a um numero impar , é par
+        		Se adicionar par a impar , impar
+        		Se adicionar impar a par, impar
+        	 	
+        	 	
+        	 	 a) [0,x,x,x]  
+        		 	[x,0,x,x]
+        		 	 
+        		 	AND (multiplication) to get two zeros , use 2 zeros of n
+        		 	
+        		 	[0,0,x,x}
+        		 
+        		 
+        		 carry flag multiplies the number
