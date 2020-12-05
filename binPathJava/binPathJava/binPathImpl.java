@@ -239,6 +239,8 @@ public class binPathImpl {
         		Combinações precisas = Começa no primeiro bit e depois percorre ate ao final da lista
         		depois considera-se o segundo bit e faz-se a mesma coisa ate ao final...depois soma-se
 
+
+			Combinações  2C 4 =  number of 2bs
         		1+2 = 3 2b
         		1+4 =5 2b
         		1+8 = 9 2b
@@ -246,10 +248,14 @@ public class binPathImpl {
         		2+8 =10	2b
         		4+8 =12	2b
         		
+        		3 C 4 = number of 3bs
+        											
+        		
         		 1+2+4 = 7 3b
-        		 +1+2+8 = 11 3b 
-        		 2+4+8 = 14 3b
+        		 1+2+8 = 11 3b
         		 1+4+8 = 13
+        		 2+4+8 = 14 3b
+        		 
         		 
         		 -Para 2b's-----
         		 	 5			3		6				
