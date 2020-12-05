@@ -225,8 +225,8 @@ public class binPathImpl {
         		 starting position -> end position
         		 
         		 --Para 1 b----
-        		  1-> 8 (comeca na posicao 1 ate ao fim)
-        		  
+        		 
+        		  1	2	4	8
         		  [b,0,0,0}
         		  [0,b,0,0]
         		  [0,0,b,0] 4combs		para 1 b, 4 combs
@@ -236,245 +236,49 @@ public class binPathImpl {
         		  ------------------
         		  
         		
-        		  
+        		Combinações precisas = Começa no primeiro bit e depois percorre ate ao final da lista
+        		depois considera-se o segundo bit e faz-se a mesma coisa ate ao final...depois soma-se
 
-        		 
-
-        		 
-        		 	  
-        		 
-        		 
-        		 
+        		1+2 = 3 2b
+        		1+4 =5 2b
+        		1+8 = 9 2b
+        		2+4 = 6 2b
+        		2+8 =10	2b
+        		4+8 =12	2b
         		
-        		  [1,x,x,x]	
-        		 	[1,1,x,x]	
-        		 	{1,1,1,x]  
-        		 				base copmlete
-        		 	
-        		 		   								
-        		 	
-        		 a)	[1,1,0,0]	12
-        		 	[1,1,0,1]	13
-        		 	{1,1,1,0]	14
-        		 	
-        		 	reverse
-        		 	[0,0,1,1] 3
-        		b) 	[0,0,1,0] 2 revert full a)
-        		 	[0,0,0,1] 1
-        		 	
-        		 			three bits taken on a) and base (1,0,0) and (0,1,1) and 1,0,1 ,010 combinations possibles
-        		 			 
-        		 	baseA = [1,0-1,1-0,1-0], combinações possiveis completas (a) e b))
-        		 	
-        		 	 considerar baseA = [1,0,1-0,1-0] ( 2 posicao = 0 , para depois metermos 1 na baseB
-        		 	
-        		 	
-        		 	baseB = reveter linhas de BaseA 
-        		 	
-        		 	Assumindo na pos baseA#pos2 = 1 (baseB) Na posicao 3 e 4 , se invertermos baseA, temos as combinaoes preenchidas...apenas temos de considerar 2 pos evisto que
-        		 	baseB#pos2 = 1 ,entao baseA tem de ser 0 
-        		 	
-        		 	
-        		 	[1,1,1,1]		15				
-       baseA	 	[1,0,1,1]		11							
-        		 	[1,0,0,1]		9							
-        		 	[1,1,0,1]		13		 			
-        			[1,0,1,0]
-        			[1,1,1,0]
-        			[1,1,0,0]
-        			{1,0,0,1]     
-      
-      BaseB	(11 primeiro)
-       			[1,1,1,0]
-       			[1,1,0,1]
-       			[1,1,1,1]
-      BaseC (111 primeiro)
-      			[1,1,1,0]
-      			{1,1,1,1]
-        	
-        	baseB subconjunto de baseA, e baseC subconjunto de baseA
-       
-       The algortihm changed, so (if just calculate first three bits, then invert each line
-	The 2nd algorithm also works but only for 4 bits .(take 111 , and make three changesm, and 000 and make three changes)
-
-       reverseOfBAseA
-       			{0,0,0,0
-       			0,1,0,0
-       			0,1,1,0		reverse comeca com bit igual 0 (deve inclluir os outros reverses)
-       			0,0,1,0
-       			0,1,0,1
-       			0,0,0,1
-       			0,0,1,1
-       			0,1,1,1
-       			
-       4			2			8			1 	
-1 b = (0,1,0,0),(0,0,1,0),,(1,0,0,0)	(0,0,0,1)
-
-    5				3		9				12	  10		6
-2b = (0,1,0,1)(0,0,1,1)   (1,0,0,1)     (1,1,0,0)(1,0,1,0)(0,1,1,0)
-
-		11			13   14			7
-3b	  (1,0,1,1)(1,1,0,1)(1,1,1,0)(0,1,1,1) (reverse of 1)  3b -> 1b
-
-
-4b  = (1,1,1,1)
-
-    						8		 9		12		13			14
-    		(1,x,x,x) => (1,0,0,0)(1,0,0,1)(1,1,0,0)(1,1,0,1)(1,1,1,0),(1,0,1,1)
-    		
-    		subconjunto (1,1)
-    		
-    		 (1,1,x,x) => (12,13,14
-    		 
-    		 (1,1,1,x) => 14
-    		 						11		12		9
-    		 C por exemplo = { (1,0,1,1) (1,1,0,0)(1,0,0,1) }Todos os elementos comecados por 1 pertence ao conjunto
-        		 
-        		 (1,1,x,x) = subconjunto de (1,x,x,x)
-        		 
-        		 
-        		 C = (
-        		 
-        		 
-        		  segundo b, causa 3 bvits
-        		  
-        		  [b,0,b,0] + [0,b,0,0] = [b,b,b,0]	 three b's
-        		  [b,0,0,b] + [0,b,0,0] = [b,b,0,b] 2 bbs + 1 b = 3b
-        		  [0,0,b,b] + [0,b,0,0] = [0,b,b,b]
-        		   
-        		  
-        		  [0,b,b,0} + [0,0,b,0] = b[b,b,b,0] 2b's +1 b = 3b
-        		  [0,b,0,b] + [0,0,b,0] = b[0,b,b,b] 2 b mais 1 = 3bits   
-        		  
-        		  [b,0,0,b] + [0,0,0,b] = [b,0,0,b NAO 
-        		  [0,b,b,0] + [0,0,0,b] = {0,b,b,b} tree
-        		  [0,b,0,b] + [0,0,0,b] = nao
-        		    
-        		  
         		  
         		 -Para 2b's-----
+        		 	 5			3		6				
+        		2b = (0,1,0,1)(0,0,1,1)(0,1,1,0)  
+        			10			12		9			Para obter os 2b, basta fazer o revert dos numeros que comecam com 0 ou 1
+        			(1,0,1,0)(1,1,0,0)(1,0,0,1)		
+
         		
-        		 2 -> 8-2 (comeca no posicao 2 ate ao fim) Combs = 8-2 ..changed 6 times one b (ending positions - starting positions)
-        		 3 -> 8-3 (comeca na posicao 3 ate ao fim Combs = 5 combs
-        		 4-> 8-4 (comeca na poscaio 4 ate ao fim) Combs 4 
-        		 5-> 8-5 
-        		 6-> 8-6
-        		 7-> 8-7
         		 ---------------------------
         		 
-        		 
-        		 ....Para 3 b's.....  Por 2 b's first
-        		 3->8-3 			=> 5combs
-        		 4->8-4 			=> 4combs
-        		 5->8-5				=> 3combs 
-        		 6->8-6				=> 2combs
-        		 7->8-7				=> 1comb
-        		 ---------Para 4 b's--------
-        		 4->8-4 			=> 4combs
-        		 5 -> 8-5 			=>3 combs
-        		 6-> 8-6			=> 2 combs
-        		 7-> 8-7 			=Z 1 combs
-        		 
-        		 ----Para 5 bs------------------
-        		 5->8-5			3combs
-        		 6->8-6			2combs
-        		 7->8-7			1combs
-        		 
-        		 ---PAra 6 bs
-        		 6->8		2combs
-        		 7->8		1comb
-        		 
-        		 Para 7 bs
-        		 7->8 		1comb
-        		 done.
-        		 
-        		 7+6+5+4+3+2+1
-        		 
-        		 f(how many combs does number of b have ) = (sizeOfPositions (in this case 8) - i)!  
-        		 
-        		 
-        		  Para 2bs , usa-se o tres bits
-        		  
-        		 b, b,0,0, d
-        		 b, 0,b,0, c	
-        		 b, 0,0,b, b		
-        		 
-        		 
-        		 0, 0,b,b h
-        		 0,,b,b,0 g
-        		 0, b 0 b f
-        		 
-        		 PAra 3bs ?
-        		 
-        		 b (2bs all combinations from 2bis)
-        		 0 (2bs) all combinations from 2bits)
-        		 
-        		
-        		  1b-> 8
-        		 2b -> 16 
-        	1	 3b-> 32
-        		 4b -> 64
-        		
-        		 {0,b,b,b}
-        		 [b,b,b,0}
-        		 {b,b,0,b}
-        		 {b,0,b,b}
-        		 
-        		 {b |,b,0,0 100
-        		 [b |,0,b,0	010
-        		 {b |,0,0,b	001
-        		 (0,|b,b,0	110
-        		 ,0,|b,0,b	101
-        		 0, |0,b,b,	011
-        		 
-        		 position equal value on position
-        		 pos 2 = 2
-        		 pox 3 = 3;
-        		 pos 2525525=2525525
-        		 
-        		 
-        		 3 b's 
-       	0 ou 1 b 	| B=0 | b 0 0  X   
-        	0	 B | B=0 | 0 b 0  X	(nao tem bs suficientes)
-        	0	 B | B=0 | 0 0 b  X
-  			0	 B | B=0 | b b 0  X	 
-     		0     B | B=0 | b o b  X
-     		0 	 B | B=0 | 0 b b  X
-        	0		 B=1 | b 0  0 X
-        	0	 	b=1  | 0 b  0 X
-        	0	 	b=1  | 0 0  b X
-        	0	 	b=1  | b b 0 V
-        	0	 	b=1  | b 0 b V
-        	0	 	b=1  | 0 b b V
-        	1		b=1  | b 0 0 V
-        	1		1 	   0 b 0 V
-        	1 		1      0 0 b V
-        	1      	1      b b 0 X /demasiados b's)
-        	1 		1 	   0 b b X
-        	1		1      b 0 b X
-        	1       0      b 0 0 X pocuos b's
-        	1 		0 	   0 b 0
-        	1 		0      0 0 b
-        	1 		0      b b 0 V
-        	1 		0 	   0 b b  V 
-        	1 		0 	   b 0 b V
-        		 	
-        		 	3bits ( 001,010,100,101,110,011)
-        		 	number of one B in number = 3 bs
-        		 	number of two bt's in number = 6bs
-        		 								
-        		 	4bits ( 0001 , 0010,0011, 0100, 0101,0110,  0111,1000,1001,1010,1011,1100,1101,1110,1111) 3 b's,6b's ,
-        		 	 		1 		2   3		4	  5		6     7   8		9   10	11 	 12		13 14	15	
-        		 	
-        		 	num of one bs = 3
-        		 	onde dois b's = 3,5,6,9,10,12
-        		 	
-        		 	number of three b's in number = 7,11,13,14
-        		 	number of four b's = 1
-        		 	
-        		 	5bits
-        		 	
+        		 ....Para 3 b's.....
+        		 11			 13		 14		  7 
+        		 (1,0,1,1)(1,1,0,1)(1,1,1,0)(0,1,1,1) reverse de 1b
 
+
+
+        		 1b -> normal
+        		 2b -> outra combinacao
+        		 3b -> reverse of 1b)
+        		 
+        		 
+        		 
+        		formula para acahars o numero de b's
+        		if (zeros == 3)
+        			1 b
+        		if (zeros==2)
+        			2b
+        		if (zeros==1)
+        			3b
+        		 Para n =4 posicoes
+        		 
+        		 
+        		 	 
         		 	 
         		 Para X b's :
         		 cotnagem 
