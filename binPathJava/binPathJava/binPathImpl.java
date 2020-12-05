@@ -246,13 +246,53 @@ public class binPathImpl {
         		 
         		 
         		
-        		 a) [1,x,x,x]	8
-        		 	[1,1,x,x]	12
-        		 	{1,1,1,x]  14
+        		  [1,x,x,x]	
+        		 	[1,1,x,x]	
+        		 	{1,1,1,x]  
+        		 				base copmlete
+        		 	
+        		 		   								
+        		 	
+        		 a)	[1,1,0,0]	12
+        		 	[1,1,0,1]	13
+        		 	{1,1,1,0]	14
+        		 	
+        		 	reverse
+        		 	[0,0,1,1] 3
+        		b) 	[0,0,1,0] 2 revert full a)
+        		 	[0,0,0,1] 1
+        		 	
+        		 			three bits taken on a) and base (1,0,0) and (0,1,1) and 1,0,1 ,010 combinations possibles
+        		 			 
+        		 	baseA = [1,0-1,1-0,1-0], combinações possiveis completas (a) e b))
+        		 	
+        		 	baseB = [1,1,1-0,1-0) , (1,1,1,1) (1,1,0,1)(1,1,1,0)(1,1,1
+        		 	
+        		 	positions 3 e 4 are taken, se considerarmos a baseA primeiro,
+        		 	se pos2 = 0 entao baseB diferente de baseA , se pos2=1 entao base A = base B
+        		 	
+        		 	baseC = 1,1,1,1-0 => taken se baseA#pos4 = 0 entao baseB#pos4 = 1
+        		 							   se baseA#pos4=1 entao baseB#pos4 = 0 ..baseC nao precisa de existir
+         		 	
+        		 	
+        		 	base , invert 3pos and 4 pos =
+        		 	
+        		 	
+        		 	
+        		 	assibn pos2 of base 2to base pos 2
+        		 	
+        		 	base2 tem subconjunto base
+        		 	
+        		 	reverse only 3 bits b)
+        		 	[0,1,0,0]	4
+        		 	[0,1,0,1]	5  reverse full s)    
+        		 	[0,1,1,0]	6
+        		 	
+        		 	
         		 	
         		 	
         		 [0,x,x,x]
-        		 {0,0,x,x,]
+        		 {0,0,x,x,]		= n combs (zeros at first dont count) => 64
         		 [0,0,0,x] 
         		 
         		  segundo b, causa 3 bvits
