@@ -266,20 +266,42 @@ public class binPathImpl {
         		 			 
         		 	baseA = [1,0-1,1-0,1-0], combinações possiveis completas (a) e b))
         		 	
-        		 	baseB = [1,1,1-0,1-0) , (1,1,1,1) (1,1,0,1)(1,1,1,0)(1,1,1
+        		 	 considerar baseA = [1,0,1-0,1-0] ( 2 posicao = 0 , para depois metermos 1 na baseB
         		 	
-        		 	positions 3 e 4 are taken, se considerarmos a baseA primeiro,
-        		 	se pos2 = 0 entao baseB diferente de baseA , se pos2=1 entao base A = base B
         		 	
-        		 	baseC = 1,1,1,1-0 => taken se baseA#pos4 = 0 entao baseB#pos4 = 1
-        		 							   se baseA#pos4=1 entao baseB#pos4 = 0 ..baseC nao precisa de existir
+        		 	baseB = reveter linhas de BaseA 
+        		 	
+        		 	Assumindo na pos baseA#pos2 = 1 (baseB) Na posicao 3 e 4 , se invertermos baseA, temos as combinaoes preenchidas...apenas temos de considerar 2 pos evisto que
+        		 	baseB#pos2 = 1 ,entao baseA tem de ser 0 
+        		 	
+        		 	
+        		 	[1,1,1,1]		15				
+       baseA	 	[1,0,1,1]		11						
+        		 	[1,0,0,1]		9							
+        		 	[1,1,0,1]		13  (inverted what number?) => 2 			
+        	
+        			[0,0,1,0]     
+        	
+        	
+       Baseb =  [1,1,0,0] inverse 2 linha					
+       			{1,1,0,0] inverse 3 linha		
+       			{1,1,1,0] invese 4 linha
+       			[1,0,1,0)						
+       			
+        		 	
+        		 	
+        		 	baseC = 1,1,1,1-0 => nao precisa existir 
          		 	
         		 	
         		 	base , invert 3pos and 4 pos =
         		 	
+        		 	[1-0,1-0]  {1,1] , (0,1)	(1,0)  (0,0)
+        		 	{1-0,1-0]  (0,0)(  (1,0)	(0,1) (1,1)
         		 	
+        		 	[1,0] [
+        		 	[1,1]
         		 	
-        		 	assibn pos2 of base 2to base pos 2
+        		 	a
         		 	
         		 	base2 tem subconjunto base
         		 	
