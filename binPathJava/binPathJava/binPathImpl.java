@@ -276,17 +276,50 @@ public class binPathImpl {
         		 	
         		 	
         		 	[1,1,1,1]		15				
-       baseA	 	[1,0,1,1]		11						
+       baseA	 	[1,0,1,1]		11							
         		 	[1,0,0,1]		9							
-        		 	[1,1,0,1]		13  (inverted what number?) => 2 			
+        		 	[1,1,0,1]		13		 			
+        			[1,0,1,0]
+        			[1,1,1,0]
+        			[1,1,0,0]
+        			{1,0,0,1]     
+      
+      BaseB	(11 primeiro)
+       			[1,1,1,0]
+       			[1,1,0,1]
+       			[1,1,1,1]
+      BaseC (111 primeiro)
+      			[1,1,1,0]
+      			{1,1,1,1]
         	
-        			[0,0,1,0]     
+        	baseB subconjunto de baseA, e baseC subconjunto de baseA
+       
+       The algortihm changed, so (if just calculate first three bits, then invert each line
+	The 2nd algorithm also works but only for 4 bits .(take 111 , and make three changesm, and 000 and make three changes)
+
+       reverseOfBAseA
+       			{0,0,0,0
+       			0,1,0,0
+       			0,1,1,0		reverse comeca com bit igual 0 (deve inclluir os outros reverses)
+       			0,0,1,0
+       			0,1,0,1
+       			0,0,0,1
+       			0,0,1,1
+       			0,1,1,1
+       			
         	
+        				Para inverted base subittuir a prmieira posicao na base A por 0
         	
-       Baseb =  [1,1,0,0] inverse 2 linha					
-       			{1,1,0,0] inverse 3 linha		
-       			{1,1,1,0] invese 4 linha
-       			[1,0,1,0)						
+        	to get Baseb (2bits non inicio)  = > (1,1,1,1)(1,1,0,1)(1,1,1,0)(1,1,0,0)
+        	
+      		
+       			to get all combs, do base, then invert it
+       			
+       			
+       			
+       					eliminar baseB de BaseA
+       					
+       					Base C = (1,1,1,0)(1,1,1,1)				
        			
         		 	
         		 	
