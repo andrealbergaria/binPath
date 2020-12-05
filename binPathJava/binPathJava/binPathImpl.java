@@ -307,48 +307,34 @@ public class binPathImpl {
        			0,0,1,1
        			0,1,1,1
        			
-        	
-        				Para inverted base subittuir a prmieira posicao na base A por 0
-        	
-        	to get Baseb (2bits non inicio)  = > (1,1,1,1)(1,1,0,1)(1,1,1,0)(1,1,0,0)
-        	
-      		
-       			to get all combs, do base, then invert it
-       			
-       			
-       			
-       					eliminar baseB de BaseA
-       					
-       					Base C = (1,1,1,0)(1,1,1,1)				
-       			
-        		 	
-        		 	
-        		 	baseC = 1,1,1,1-0 => nao precisa existir 
-         		 	
-        		 	
-        		 	base , invert 3pos and 4 pos =
-        		 	
-        		 	[1-0,1-0]  {1,1] , (0,1)	(1,0)  (0,0)
-        		 	{1-0,1-0]  (0,0)(  (1,0)	(0,1) (1,1)
-        		 	
-        		 	[1,0] [
-        		 	[1,1]
-        		 	
-        		 	a
-        		 	
-        		 	base2 tem subconjunto base
-        		 	
-        		 	reverse only 3 bits b)
-        		 	[0,1,0,0]	4
-        		 	[0,1,0,1]	5  reverse full s)    
-        		 	[0,1,1,0]	6
-        		 	
-        		 	
-        		 	
-        		 	
-        		 [0,x,x,x]
-        		 {0,0,x,x,]		= n combs (zeros at first dont count) => 64
-        		 [0,0,0,x] 
+       4			2			8			1 	
+1 b = (0,1,0,0),(0,0,1,0),,(1,0,0,0)	(0,0,0,1)
+
+    5				3		9				12	  10		6
+2b = (0,1,0,1)(0,0,1,1)   (1,0,0,1)     (1,1,0,0)(1,0,1,0)(0,1,1,0)
+
+		11			13   14			7
+3b	  (1,0,1,1)(1,1,0,1)(1,1,1,0)(0,1,1,1) (reverse of 1)  3b -> 1b
+
+
+4b  = (1,1,1,1)
+
+    						8		 9		12		13			14
+    		(1,x,x,x) => (1,0,0,0)(1,0,0,1)(1,1,0,0)(1,1,0,1)(1,1,1,0),(1,0,1,1)
+    		
+    		subconjunto (1,1)
+    		
+    		 (1,1,x,x) => (12,13,14
+    		 
+    		 (1,1,1,x) => 14
+    		 						11		12		9
+    		 C por exemplo = { (1,0,1,1) (1,1,0,0)(1,0,0,1) }Todos os elementos comecados por 1 pertence ao conjunto
+        		 
+        		 (1,1,x,x) = subconjunto de (1,x,x,x)
+        		 
+        		 
+        		 C = (
+        		 
         		 
         		  segundo b, causa 3 bvits
         		  
