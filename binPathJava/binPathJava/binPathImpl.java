@@ -135,14 +135,64 @@ public class binPathImpl {
 
         
         // FROM https://mkyong.com/java/java-how-to-convert-a-byte-to-a-binary-string/
-        private static void printBits(byte b) {
+        public static void printBits(byte b,String modeOfPrint) {
         	String resultWithPadZero = String.format("%8s", Integer.toBinaryString(b))
                     .replace(" ", "0");
-        	    System.out.println(resultWithPadZero+"  (d) "+(int) b);
-        	   
+        	if (modeOfPrint.equals("new"))
+        	    System.out.print(resultWithPadZero+"  (d) "+(int) b);
+        	else if(modeOfPrint.equals("listed"))
+        		System.out.print(resultWithPadZero);
 
         	   
         	}
+        
+        public static List reverse(List l) {
+        	
+        }
+        public static void printTuples(int numOfBits) {
+        	
+        	System.out.print("(");
+        	int combs = (int) Math.pow()
+        			
+        	for (int i=; i <= max; i++) 
+        		System.out.print(i+",");
+        	
+        	System.out.print(")");
+        	
+      /*  	
+        	Trocar para 4 numeros, usa o anterior mais umas quantas
+	 		3bits = 1bit = 1
+        			2bit = 2
+        			3bit= 3
+        			
+        			(0,0,0)	REV
+        			(1,1,1)
+        			
+        			 4       2       1
+        			(1,0,0)(0,1,0)(0,0,1), para obter a proxima combinação reverse os numeros
+        			   3       5     6
+        			(0,1,1)(1,0,1)(1,1,0)
+        			
+        			 12			10		 9
+        			(1,1,0,0) (1,0,1,0) (1,0,0,1)
+        			11			13			14
+        			(1,0,1,1) (1,1,0,1) (1,1,1,0)
+        			
+        			
+        			        			faltam 9 e 10
+        			        			(1001 e 1010
+        	(2,3,1)
+        	
+        	(3,1,2)
+        	(
+        	
+        	
+        	
+        	3^3 combs
+        	
+        	
+        	*/
+        }
 /*
  * 2elems -> 2 posicoes 2^2 3
  *  primeiroByte[1...256]	primeirobyte[1...256]
