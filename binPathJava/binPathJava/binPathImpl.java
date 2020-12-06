@@ -234,19 +234,68 @@ public class binPathImpl {
         		  
         		  
         		  ------------------
-        		  
-        		
+        		  combinações de
+        		  kinteraessa a ordem
+        		  arran
+        		  1b = 4C1 = 4 
+        		  2b = 1+2 (Combinações 4C2 = 6   2C1 = 2  So 2C1 pode ser 2
+        		  						
+        		   4 = 6-2 ou 6 = 4+2 4  
+        		   4     6    2
+        		  4C1 = 4C2 -2C1
+        		  ou
+        		   6     4     2
+        		  4C2 = 4C1 + 2C1 
+        		   		
+        		    			6	  2	
+        		   4C1 = 4C3 = 4C2 - 2C1  (nao esta no triangulod de pascal
+        		   
+        		  SC4 = 5C1 =  4C1 + 1 
+        		   
+        		   
+        		   
+        		   
+        		   
+        		   nCk = n! / k! (n-k)!
+        		   
+        		   4	 2	
+        		   4C1	2C1
+        		      4C2
+        		   
+        		   
+        		   Posicções 1 e 2 (0,0,b,b)   -> Somas-pos 2
+        		   Posicoes 1 e 5 (0,b,0,b)  -> somass pos 3
+        		   
+        		   
+        		   
+        		  2b = 1+5
+        		  2b = 2+4
+        		  2b = 4+8
+        		  2b = 1+4
+        		  2b = 1+8	
+        		 
+        		 4C1 + 
+        		 
         		Combinações precisas = Começa no primeiro bit e depois percorre ate ao final da lista
         		depois considera-se o segundo bit e faz-se a mesma coisa ate ao final...depois soma-se
-
-
-			Combinações  2C 4 =  number of 2bs
+						Posicoes dos b
+			[0,0,b,b]	3d (1 e 2)
+			[0,b,0,b}  5d (1,4)
+			{b,0,0,b]  9d (1,8)
+			[0,b,b,0]  6 d (2,4)	
+			{b,0,b,0]	10d (2,8)
+			[b,b,0,0] 	12 d(4+8)
+			
+			Combinações  2C 4 =  subconjunto de [b,0,0,0]
         		1+2 = 3 2b
         		1+4 =5 2b
         		1+8 = 9 2b
         		2+4 = 6 2b Tomar 
         		2+8 =10	2b
         		4+8 =12	2b
+        		
+        		(3,5,9,6,10,12) => 
+        		
         		
         		3 C 4 = number of 3bs
         											
