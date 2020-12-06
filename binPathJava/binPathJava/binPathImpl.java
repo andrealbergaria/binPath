@@ -243,16 +243,32 @@ public class binPathImpl {
         		   4 = 6-2 ou 6 = 4+2 4  
         		   4     6    2
         		  4C1 = 4C2 -2C1
+        		  
         		  ou
+        		  
         		   6     4     2
         		  4C2 = 4C1 + 2C1 
-        		   		
-        		    			6	  2	
-        		   4C1 = 4C3 = 4C2 - 2C1  (nao esta no triangulod de pascal
+        		   	
+        		   	3    3     
+        		   3C1 = 3C2 = 2C1 + 1C1
+        		   			   1C1 + 1C1 + 1C1
+        		   				
+        		  Partations of combinations
+        		  (for example partations of 5
+        		  4= 
+        		  5 =4+1,
+        		   3+2
+        		  ,1+1+1+1+1
+        		  1+1+2+1+1,
+        		   	 
+        		   	  	getting origin of combiatnions
+        		   	  	
+        		  SC4 = 5C1 =  4C1 + 1C1
+        		   			   4C3 + 1C1
+        		   			   
         		   
-        		  SC4 = 5C1 =  4C1 + 1 
-        		   
-        		   
+        		   unma combinaçoã é separadaa (4C1 + 1C1 , 4C3 + 1C1)
+        		   								4   +  1 , 4+1
         		   
         		   
         		   
