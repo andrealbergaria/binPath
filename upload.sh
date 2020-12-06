@@ -15,16 +15,7 @@ sudo rm -rf /mnt/pen_2G/binPath
 sudo rm -rf /mnt/pen_500g/binPath
 sudo rm -rf /mnt/pen_61G/binPath
 
-sudo mkdir -p /mnt/pen_2G/binPath
-sudo mkdir -p /mnt/pen_500g/binPath
-sudo mkdir -p /mnt/pen_61G/binPath
-FILES_TO_COPY=();
-for file in $(find /home/andrec/workspace_3_8/binPath | tr "\n" " ")
-
-do
-    FILES_TO_COPY+=($file);
-done;
-
-sudo cp -v -r "$FILES_TO_COPY" /mnt/pen_2G/binPath
-sudo cp -v -r "$FILES_TO_COPY" /mnt/pen_500g/binPath
-sudo cp -v -r "$FILES_TO_COPY" /mnt/pen_61G/binPath
+HOME_PATH="/home/andrec/workspace_3_8/binPath";
+sudo cp -v -r "$HOME_PATH" /mnt/pen_2G
+sudo cp -v -r "$HOME_PATH" /mnt/pen_500g
+sudo cp -v -r "$HOME_PATH" /mnt/pen_61G
