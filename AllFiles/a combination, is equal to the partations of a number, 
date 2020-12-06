@@ -1,6 +1,7 @@
  
  5Comb1
- unma combinaçoã é separada
+ unma combinaçoã é uma partição de n (neste caso 5)
   (4C1 + 1C1 , 4C3 + 1C1 , )
  	4   +  1 , 4+1)
-        		   
+  
+  4C2 = 6 = 5+1,4+2,3+3     		   
