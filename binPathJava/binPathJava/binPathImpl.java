@@ -239,65 +239,53 @@ public class binPathImpl {
         		 
         	2bits
         	[b,0]
-        	[0,b]
+        	[0,b] 1bit
+        		 
+        	2combs 
         		 
         	3bits
         	
-        	[b,0,0]
+        	[b,0,0]	USED
         	[0,b,0] 2bits
-        	[0,0,b] 2bits
-        	[b,b,b]
+        	[0,0,b] 1bits
+        	[b,b,b]USED
         	[0,b,b] 2bits 
-        	[b,b,0]
-        	[b,0,b]
+        	[b,b,0]USED 
+        	[b,0,b]USED
         	
-        	4 combs on 3bits (3 taken)
+        	4 combs
         	
-        		  4combs
+        		  1combs
         		  
         	[b,0,0,0}		USED
         	[0,b,0,0]	 3 bits -> zero em primeiro 
-        	[0,0,b,0]	 3 bits
-        	[0,0,0,b]    3bits
+        	[0,0,b,0]	 2 bits
+        	[0,0,0,b]    1bits
         		 
         		
-				
-			[0,0,b,b]	3 bits
+				3combs
+			[0,0,b,b]	2 bits
 			[0,b,0,b}   3bits
 			{b,0,0,b]   USED
 			[0,b,b,0]    3 bits
 			{b,0,b,0]	USED
 			[b,b,0,0] 	USED
 			
+				3combs
 			(0,b,b,b)	3bits
 			(b,b,b,0)  USED
 			(b,0,b,b)  USED
 			(b,b,0,b) USED
 
-			7 combs
-			7combs+4combs +2 comb = 13 combs (4bits) ( 2^4 = 16
+			3+3+4+2+1 = 13 combs
 			
-			Combinações  2C 4 =  subconjunto de [b,0,0,0]
-        		1+2 = 3 2b
-        		1+4 =5 2b
-        		1+8 = 9 2b
-        		2+4 = 6 2b Tomar 
-        		2+8 =10	2b
-        		4+8 =12	2b
-        		
-        		(3,5,9,6,10,12) => 
-        		
-        		
-        		3 C 4 = number of 3bs
-        											
-        		
-        		 1+2+4 = 7 3b
-        		 1+2+8 = 11 3b
-        		 1+4+8 = 13
-        		 2+4+8 = 14 3b
-        		 
-        		 
-        		 -Para 2b's-----
+			
+			---1b----
+			 (1,0,0,0)(0,1,0,0)(0,0,1,0)(0,0,0,1)
+			 
+			
+			
+				 -Para 2b's-----
         		 	 5			3		6				
         		2b = (0,1,0,1)(0,0,1,1)(0,1,1,0)  
         			10			12		9			Para obter os 2b, basta fazer o revert dos numeros que comecam com 0 ou 1
@@ -312,10 +300,6 @@ public class binPathImpl {
 
 
 
-        		 1b -> normal
-        		 2b -> outra combinacao
-        		 3b -> reverse of 1b)
-        		 
         		 
         		 
         	
@@ -323,7 +307,7 @@ public class binPathImpl {
         		 	 
         		 	 
         		 
-        		f(ate ao fim) = Maximum Position - StartingPosition 
+        		 
         		 
         		
         	/*	------| ------|-----|			

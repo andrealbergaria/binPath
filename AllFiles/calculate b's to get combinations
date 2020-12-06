@@ -34,5 +34,29 @@
         		if (zeros==1)
         			3b
         		
+        		 Combinações  2C 4 =  subconjunto de [b,0,0,0]
+        		1+2 = 3 2b
+        		1+4 =5 2b
+        		1+8 = 9 2b
+        		2+4 = 6 2b  
+        		2+8 =10	2b
+        		4+8 =12	2b
+        		
+        		
+        		if the number is 3,5,9,6,10,12 has 2b
+        		if the number is 7,11,13,14 is 3b
+        		
+        		(3,5,9,6,10,12) => 
+        		
+        		3bits
+        		 1+2+4 = 7 3b
+        		 1+2+8 = 11 3b
+        		 1+4+8 = 13
+        		 2+4+8 = 14 3b
+        		 
         		 
         		 	
+        		 1b -> normal
+        		 2b -> outra combinacao
+        		 3b -> reverse of 1b)
+        		 

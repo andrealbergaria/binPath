@@ -99,94 +99,10 @@ para ser posicao, permutacao 8! = 40320
         		Se adicionar impar a par, impar
         	 	
         	 	
-        	 	 a) [0,x,x,x]  
-        		 	[x,0,x,x]
-        		 	 
-        		 	AND (multiplication) to get two zeros , use 2 zeros of n
-        		 	
-        		 	[0,0,x,x}
-        		 
-        		 a= [0,0-1,0-1,0-1]
-        		 b= [0,0,0-1,0-1]
-        		 c= [0,0,0,0-1]
-        		 
-        		 Possveis combinaçõa de 1 ..same thing
-        		Possiveis combinações 2 zeros [0,0,0-1,0-1] = { (0,0,0,0),(0,0,1,0),(0,0,1,1),(0,0,0,1) }
-        		Possiveis combinações 3 zero [,0,0,0,0-1] =  { {0,0,0,0) (0,0,0,1)
-        		 
-        		 c = subconjunto de b
-        		 b = subconjunto de a
-        		 
-        		 
-        		        			
-       4			2			8			1 	
-1 b = (0,1,0,0),(0,0,1,0),,(1,0,0,0)	(0,0,0,1)
-
-    5				3		9				12	  10		6
-2b = (0,1,0,1)(0,0,1,1)   (1,0,0,1)     (1,1,0,0)(1,0,1,0)(0,1,1,0)
-
-		11			13   14			7
-3b	  (1,0,1,1)(1,1,0,1)(1,1,1,0)(0,1,1,1) (reverse of 1)  3b -> 1b
-
-
-4b  = (1,1,1,1)
-
-    						8		 9		12		13			14
-    		(1,x,x,x) => (1,0,0,0)(1,0,0,1)(1,1,0,0)(1,1,0,1)(1,1,1,0),(1,0,1,1)
-    		
-    	
-    		subconjunto (1,1)
-    		 (1,1,x,x) => (12,13,14
-    		 
-    		 (1,0,x,x) => 8,9
-    		 subconjunto (1,1,1)
-    		 (1,1,1,x) => 14
-    		 
-    		 todos os conjuntos , considreando binarios mas podem ser deicmais, comecados por 1 (ou por 8 decimal); pertecem ao mesmo conjunto
-    		 
-    		 
-    		     		 	
-        		 	[1,1,1,1]		15				
-       baseA	 	[1,0,1,1]		11							
-        		 	[1,0,0,1]		9							
-        		 	[1,1,0,1]		13		 			
-        			[1,0,1,0]
-        			[1,1,1,0]
-        			[1,1,0,0]
-        			{1,0,0,1]     
-      
-      BaseB	(11 primeiro)
-       			[1,1,1,0]
-       			[1,1,0,1]
-       			[1,1,1,1]
-      BaseC (111 primeiro)
-      			[1,1,1,0]
-      			{1,1,1,1]
-        	
-        	baseB subconjunto de baseA, e baseC subconjunto de baseA
-    
-    
-    reverseOfBAseA
-       			{0,0,0,0
-       			0,1,0,0
-       			0,1,1,0		reverse comeca com bit igual 0 (deve inclluir os outros reverses)
-       			0,0,1,0
-       			0,1,0,1
-       			0,0,0,1
-       			0,0,1,1
-       			0,1,1,1 (ou seja reverseOfBasea e baseA take all combinatons)
+        	 	 
+   
        			
        			// Algorithm    calculate first three bits, then invert each line
        			
-       			  1	2	4	8
-        		  [b,0,0,0}
-        		  [0,b,0,0]
-        		  [0,0,b,0] 4combs		para 1 b, 4 combs
-        		  [0,0,0,b]
-        		  
-        		  
-        		  ------------------
-        		  
+       			 
         		
-        		Combinações precisas = Começa no primeiro bit e depois percorre ate ao final da lista
-        		depois considera-se o segundo bit e faz-se a mesma coisa ate ao final...depois soma-se
