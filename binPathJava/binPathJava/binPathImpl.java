@@ -183,7 +183,16 @@ public class binPathImpl {
 	
 	(1,2,3)(3,2,1)(2,1,3)(2,3,2)(3,2,1)(3,1,2)
 	 
+	 1st byte		2sst byte
+	 (1,2,3)		 (2,3,1)        
 	 
+	 (1,2) (1,3)(1,1)
+	 
+	 (2,2),(2,3)(3,1)
+	 
+	 (3,2)(3,3,)(3,1)
+	 
+	 numero 3-> (1,3)(2,3)(3,1)(3,3)(3,1) => 3A2 -> 6
 
  */
      
@@ -191,6 +200,7 @@ public class binPathImpl {
        
        
         private static int[][][] prefix(int numberOfBytes) {
+        	
         	int[] firstByte;
         	int[][][] bytesArray;
         	
@@ -225,82 +235,47 @@ public class binPathImpl {
         		 starting position -> end position
         		 
         		 --Para 1 b----
+
         		 
-        		  1	2	4	8
-        		  [b,0,0,0}
-        		  [0,b,0,0]
-        		  [0,0,b,0] 4combs		para 1 b, 4 combs
-        		  [0,0,0,b]
-        		  
-        		  
-        		  ------------------
-        		  combinações de
-        		  kinteraessa a ordem
-        		  arran
-        		  1b = 4C1 = 4 
-        		  2b = 1+2 (Combinações 4C2 = 6   2C1 = 2  So 2C1 pode ser 2
-        		  						
-        		   4 = 6-2 ou 6 = 4+2 4  
-        		   4     6    2
-        		  4C1 = 4C2 -2C1
-        		  
-        		  ou
-        		  
-        		   6     4     2
-        		  4C2 = 4C1 + 2C1 
-        		   	
-        		   	3    3     
-        		   3C1 = 3C2 = 2C1 + 1C1
-        		   			   1C1 + 1C1 + 1C1
-        		   				
-        		  Partations of combinations
-        		  (for example partations of 5
-        		  4= 
-        		  5 =4+1,
-        		   3+2
-        		  ,1+1+1+1+1
-        		  1+1+2+1+1,
-        		   	 
-        		   	  	getting origin of combiatnions
-        		   	  	
-        		  SC4 = 5C1 =  4C1 + 1C1
-        		   			   4C3 + 1C1
-        		   			   
-        		   
-        		   unma combinaçoã é separadaa (4C1 + 1C1 , 4C3 + 1C1)
-        		   								4   +  1 , 4+1
-        		   
-        		   
-        		   
-        		   nCk = n! / k! (n-k)!
-        		   
-        		   4	 2	
-        		   4C1	2C1
-        		      4C2
-        		   
-        		   
-        		   Posicções 1 e 2 (0,0,b,b)   -> Somas-pos 2
-        		   Posicoes 1 e 5 (0,b,0,b)  -> somass pos 3
-        		   
-        		   
-        		   
-        		  2b = 1+5
-        		  2b = 2+4
-        		  2b = 4+8
-        		  2b = 1+4
-        		  2b = 1+8	
+        	2bits
+        	[b,0]
+        	[0,b]
         		 
-        		 4C1 + 
+        	3bits
+        	
+        	[b,0,0]
+        	[0,b,0] 2bits
+        	[0,0,b] 2bits
+        	[b,b,b]
+        	[0,b,b] 2bits 
+        	[b,b,0]
+        	[b,0,b]
+        	
+        	4 combs on 3bits (3 taken)
+        	
+        		  4combs
+        		  
+        	[b,0,0,0}		USED
+        	[0,b,0,0]	 3 bits -> zero em primeiro 
+        	[0,0,b,0]	 3 bits
+        	[0,0,0,b]    3bits
         		 
-        		Combinações precisas = Começa no primeiro bit e depois percorre ate ao final da lista
-        		depois considera-se o segundo bit e faz-se a mesma coisa ate ao final...depois soma-se
-						Posicoes dos b
-			[0,0,b,b]	3d (1 e 2)
-			[0,b,0,b}  5d (1,4)
-			{b,0,0,b]  9d (1,8)
-			[0,b,b,0]  6 d (2,4)	
-			{b,0,b,0]	10d (2,8)
-			[b,b,0,0] 	12 d(4+8)
+        		
+				
+			[0,0,b,b]	3 bits
+			[0,b,0,b}   3bits
+			{b,0,0,b]   USED
+			[0,b,b,0]    3 bits
+			{b,0,b,0]	USED
+			[b,b,0,0] 	USED
+			
+			(0,b,b,b)	3bits
+			(b,b,b,0)  USED
+			(b,0,b,b)  USED
+			(b,b,0,b) USED
+
+			7 combs
+			7combs+4combs +2 comb = 13 combs (4bits) ( 2^4 = 16
 			
 			Combinações  2C 4 =  subconjunto de [b,0,0,0]
         		1+2 = 3 2b
@@ -343,72 +318,14 @@ public class binPathImpl {
         		 
         		 
         		 
-        		formula para acahars o numero de b's
-        		if (zeros == 3)
-        			1 b
-        		if (zeros==2)
-        			2b
-        		if (zeros==1)
-        			3b
-        		 Para n =4 posicoes
-        		 
+        	
         		 
         		 	 
         		 	 
-        		 Para X b's :
-        		 cotnagem 
-        		 1C4 = (base 3 bits / 2 ,visto que dois que depois do meio existe 2b's)
-        		 2C4 => 1CA4 * 2
-        		 3C4 => 2C4  2 
-        		 apenas conta os elemetnos nao diz subconjuntos
-        		 
-        		  
-        		 255 = (2-8)!
-        		 Arranjos com repetição n num de elems = X
-        		 						posicioes 8
-        		 						
-        		 if arranjos com repetição (x^8) is corretc, we can get the number hwich has expoenent
-        		 else expoenent is incorect 
-        		 
-        		 
-        		 
-        		 {0,0,0,b,b,b,b,b
-        		 
-        		 
-        		 n=2 elems (2 b's)
-        		 
-        		 2 Comb 7 => (7-i)! , where i starts with 0 , and incrementing it one unhtil reaches 7
-        		  			 (7-1) + (7-2) + (7-3)+(7-4)
-        		 
-        		 n=3
-        		 3 Comb 7 => 
-        		 
         		 
         		f(ate ao fim) = Maximum Position - StartingPosition 
         		 
-        		 countar unmero de zeros *7
-        	
-        		 
-        		 
-        		 Para um b 
-        		 	7 zeros = 7 combs
-        		 Para dois b's
-        		 	6zeros = 6 combs
-        		 Para tres b's
-        		 	5 zeros = 5 combs 
-        		 Para quarto b
-        		 	4 zeros= 4	combs
-        		 para 5 b
-        		 	3 zero = 3 combs
-        		 para 6 bs
-        		 	2*7 = 2 combs
-        		 para 7 bs
-        		 	1*7
-        		 
-        	
-        	 		/*
-        		*
-        		*()								
+        		
         	/*	------| ------|-----|			
         	 * 
         	 
@@ -492,10 +409,15 @@ public class binPathImpl {
         		t+="a";
         		
         	toWrite  = t.getBytes();
-        	System.out.println("\n wrote "+t.length()+" to "+f.getName());
+        	
+        	
+        	fos.write(toWrite);
+        	System.out.println("\n wrote "+toWrite.length+" to "+f.getName());
+        	
         	}
         	catch(IOException e) {
         		e.printStackTrace();
+        		System.out.println("\nCOUDLNT CREATE PLAIN TEXT");
         	}
         	
         }
@@ -506,11 +428,19 @@ public class binPathImpl {
        	 IvParameterSpec ivspec = new IvParameterSpec(iv);
          
          FileInputStream fis = new FileInputStream(f);
+         
          int fileSize = (int) f.length();
+         
+         if (fileSize % 32 != 0) {
+        	System.err.println("\n File size is not a mulitple of 32");
+         	System.exit(-1);
+         }
          byte[] cipherText = new byte[fileSize];
          
          int numBytesRead = 0;
+         
          numBytesRead = fis.read(cipherText);
+         
          if (numBytesRead  <= 0) {
         	 System.err.println("Read returned error or zero");
         	 System.exit(-1);
@@ -523,7 +453,7 @@ public class binPathImpl {
          			System.exit(-1);
          		}
          		if(numBytesRead != 32 ) {
-         			System.err.println("\n Didnt read the correct bytes from ciphertext");
+         			System.err.println("\n Didnt read the number of bytes from ciphertext");
          			System.exit(-1);
          		}
          		
@@ -537,10 +467,10 @@ public class binPathImpl {
         	}
         }
         
-        private static void AESPower(SecretKeySpec s, IvParameterSpec iv) {
-        	//try  {
+        private static void AESDecrypt(byte[] cipherText,SecretKeySpec s, IvParameterSpec iv) {
+        	try  {
         		
-        		/*if (key.length != 32) {
+        		if (key.length != 32) {
         			System.err.println("\nKey is not in a block size");
         			System.exit(-1);
         		}
@@ -551,14 +481,13 @@ public class binPathImpl {
              
              
              Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-	         cipher.init(Cipher.DECRYPT_MODE, sks,ivspec);
+	         cipher.init(Cipher.DECRYPT_MODE, s,iv);
 	         
-	         // Read cipherText
 	         
 	         byte[] decrypted =cipher.doFinal(cipherText);
 	          printArray(decrypted);
 	          
-	         
+	         cipher.
         	}
         	catch(InvalidAlgorithmParameterException e) {
         		e.printStackTrace();
@@ -584,7 +513,7 @@ public class binPathImpl {
 				 
 				e.printStackTrace();
 			}
-			*/
+			
 	          
              
         	
@@ -595,7 +524,7 @@ public class binPathImpl {
         	
         	threeBitsMarker = getThreeBitsMarkerM(num_three_bits);
         			
-        	//[65536,131072,262144]
+
         		
         			
         	int sizeA = threeBitsMarker.size();
@@ -630,14 +559,15 @@ public class binPathImpl {
       
         public static void main(String[] args) {
         	// 2^6 = 64
-    		printPositions(64);
-    	/*	int[][][] bytes =  prefix(32);
-        	for (int i=0 ; i < 4; i++ ) {
-        		byte[] key = bytes [0][0][0]
-        	}
-    		// createPlainText(new File("files/plaintext"));
-        	SecretKeySpec sks = new SecretKeySpec(,"AES");
-        	AESPower(s, iv)*/
+    		
+    		int[][][] bytes =  prefix(32);
+        	
+    		byte[] key = new byte[32];
+    		createPlainText(new File("files/plaintext"));
+    		 SecretKeySpec s = new SecretKeySpec(key, "AES");
+    		 
+        //	SecretKeySpec sks = new SecretKeySpec(,"AES");
+        	//AESPower(sks, iv);
         	
         }	
 }
