@@ -1124,9 +1124,22 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 		if pos1 = 1, entao em todas as posicoes na msema coluna estão set
 		no casa da pos2 entao todas as posicao es de pos2 estao set
    								
-   								
-
-							Para linha1,
+   							vector = posicao	
+							
+							
+							
+						que vector representa a posicção
+						
+						posicao(3,1) = 5
+						x=3 , y=1   = 
+ 						
+ 						(3,1) (0,0) =  
+ 						
+ 						sqr(x^2 + y^2) = 5
+						
+						
+						
+							
 								pos(1,2) = pos(1,1) + pos(1,1) = 2
 									
 									sqr(5) = sqr(2) + sqr(2) = 
