@@ -1063,6 +1063,9 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 			      1	1 0
 		          1 1 1
 		
+		a) forward substituion
+		
+		
 		B) = A)tranpose
 		
 		a) and b) are not diagonal matrices
@@ -1072,6 +1075,34 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 		A = At
 		é simetrica
 		
+		algoritmo de solução (forward solution) de x's a) (Lower triangle)
+		{x1 ... ...} = 1
+		{x1 + x2...} = 2
+		{x1+x2+x3..] = 3
+		
+		AB=BA = In , então A é invertivel
+		então factorizacao possivel,
+		
+		a) * b) = c)
+		
+		a = bt
+		at = b 
+		
+		visto ser invertivel
+		he LU decomposition factorizes a matrix 
+		into a lower triangular matrix L and an upper triangular matrix
+		
+		
+		so we have lower, upper triangle (a), b)) 
+		and want to find thte (origianl matrix)
+
+		X = LowerTraingle*UpperTriangule
+		X = a) * b)
+		
+		
+
+
+
 		tranopse of a) = b)
 		transpose of b) = a)
 		
