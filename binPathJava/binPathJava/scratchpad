@@ -1055,21 +1055,37 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
    					100		
    			a)		110	Matriz trianguklar inferior
    					111			
-
+		Transpose of b) = 
+		
+		Tranpose first line and fisrt column
+		
+				[ 1 0 0 ]  
+			      1	1 0
+		          1 1 1
+		
+		B) = A)tranpose
+		
+		
+		A igual a transposta de B
+		Bt = A
+		A = At
+		é simetrica
+		
 		tranopse of a) = b)
 		transpose of b) = a)
 		
 		inverse fof a) = b)
 		
+		
+		
+		
 		so the bytes (byte1,byte2)
 					 (byte1,byte1)
 					 (byte2,byte2)
 					 (byte2,byte1)
-			010
-			101 
-			000
+		byte2 = Transposta de (byte1) 
 			
-			(001,010,001,110,101,011,000,111)
+			
 
 
 		if pos1 = 1, entao em todas as posicoes na msema coluna estão set
