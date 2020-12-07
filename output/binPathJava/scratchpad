@@ -1050,12 +1050,21 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 				    
 			Matriz =111
 				    011	Matriz triangular superior
-				    001
+			b)	    001
    					
    					100		
-   					110	Matriz trianguklar inferior
+   			a)		110	Matriz trianguklar inferior
    					111			
 
+		tranopse of a) = b)
+		transpose of b) = a)
+		
+		inverse fof a) = b)
+		
+		so the bytes (byte1,byte2)
+					 (byte1,byte1)
+					 (byte2,byte2)
+					 (byte2,byte1)
 			010
 			101 
 			000
