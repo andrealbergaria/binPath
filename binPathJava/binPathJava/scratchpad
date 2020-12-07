@@ -1042,46 +1042,30 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 	a) linha 4,  pos 4         posicao(1,1) = num linhas (neste caso 1)
 							   posicao(1,2) = num linhas 1 , pos 2
    lin1 {2,x,x,x)   		
-   lin2 (x,2,x,x)   
-   lin3 (x,x,2,x)
-   lin4 (x,x,x,2)
+   lin2 (x,2,x,x)   		
+   lin3 (x,x,2,x)			pos(1,2) = pos(1,1) + pos(1,1) = 1.4 + 1.4 = 2.8
+   lin4 (x,x,x,2)			pos(1,2) = soma dos valores = 2
    
 				
-   
+   							
    								
 
-
+		if pos1 = 1, entao em todas as posicoes na msema coluna estão set
+		no casa da pos2 entao todas as posicao es de pos2 estao set
    								
-   								(3,4)	sqqr(1+4)
-   								+
-   								(6,8) sqr(sqr(32) = 
    								
-   								(3,4) = (a,pos1) + b) pos1)
-   								
-   								pos 1    pos 2  pos 3  pos4
-								1 			1	   2 	2
-								1			1      2	1
-								1			2	   1    1
-								1			2 	   1  	2
-								
-								
-								pos1+pos2 = 1+1 =  	
-
-
-								linha1,pos2 = line2 pos2
-								
-								visto  ue é um template
-
 
 							Para linha1,
 								pos(1,2) = pos(1,1) + pos(1,1) = 2
-																		
+									
+									sqr(5) = sqr(2) + sqr(2) = 
+																	
 								posicao(1,1) = 1 (ou 2)
 								posicao(1,1) + pos(1,1) = 1+1 = 2 = pos(2,2)
 								(1,1) = 1
 								(1+1,1) = (2,1) = 1
 								
-								posicao(1,1) + pos(1,1) = 2+2 = 4 
+								 
 								 
 								 
 								posicao(2,1) = posicao(1,1) + pos(1,1) = 1+1 = 2
@@ -1145,10 +1129,39 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
       					 	x1 = pos3 a) pos3 b)  	
 							same line
 							
-							
+						[1,1,1]
+						[0,1,1]
+						[0,0,1]
+						[0,0,0]
+						
+						[0,0,0]
+						[1,0,0]
+						[1,1,0]
+						[1,1,1]
+						
+						matriz A = At (transpose) , equal to triangular matrices 	
 							 
 							  
 b)
+[b,0,0,0}		USED	diagonal matrix
+        	[0,b,0,0]	 3 bits -> zero em primeiro 
+        	[0,0,b,0]	 2 bits
+        	[0,0,0,b]    1bits
+        		 
+        		
+				3combs
+			[0,0,b,b]	2 bits
+			[0,b,0,b}   3bits
+			{b,0,0,b]   USED
+			[0,b,b,0]    3 bits
+			{b,0,b,0]	USED
+			[b,b,0,0] 	USED
+			
+				3combs
+			(0,b,b,b)	3bits
+			(b,b,b,0)  USED
+			(b,0,b,b)  USED
+			(b,b,0,b) USED
 
 				
 	 		  
