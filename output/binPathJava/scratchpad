@@ -1046,9 +1046,22 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
    lin3 (x,x,2,x)			pos(1,2) = pos(1,1) + pos(1,1) = 1.4 + 1.4 = 2.8
    lin4 (x,x,x,2)			pos(1,2) = soma dos valores = 2
    
-				
-   							
-   								
+				    
+				    
+			Matriz =111
+				    011	Matriz triangular superior
+				    001
+   					
+   					100		
+   					110	Matriz trianguklar inferior
+   					111			
+
+			010
+			101 
+			000
+			
+			(001,010,001,110,101,011,000,111)
+
 
 		if pos1 = 1, entao em todas as posicoes na msema coluna estão set
 		no casa da pos2 entao todas as posicao es de pos2 estao set
