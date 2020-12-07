@@ -1065,6 +1065,7 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 		
 		B) = A)tranpose
 		
+		a) and b) are not diagonal matrices
 		
 		A igual a transposta de B
 		Bt = A
@@ -1076,7 +1077,8 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 		
 		inverse fof a) = b)
 		
-		
+	y the LU decomposition algorithm, an invertible matrix
+	 may be written as the product of a lower triangular matrix L and an upper triangular matrix U if
 		
 		
 		so the bytes (byte1,byte2)
