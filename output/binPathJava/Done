@@ -87,10 +87,41 @@ para ser posicao, permutacao 8! = 40320
 
 
 {1,2,255,255} => {1,2,255}  + positions of 255
-{255,1,1,1}
-{1,255,1,1}
-{1,1,255,1}  
-{1,1,1,255}
+
+{255,255,x,x)}
+{x,255,255,x}
+{x,x,255,255}  
+{x,255,x,255}
+
+	
+	
+	
+	
+	x = {1,2}
+	
+a)    {1,x,x,x}		 
+ lin2 [x,1,x,x)
+      (x,x,1,x)			   
+      (x,x,x,1)			 	
+      					 	
+      					 	
+      					 	(Pos1,linha1)
+      					 	x  = pos2 a) pos2 b)
+      					 	x1 = pos3 a) pos3 b) ? certo 	
+							difere a linha 
+							   
+							 
+							 
+							
+							
+							  
+b) lin1 {2,x,x,x)   		
+   lin2 (x,2,x,x)   
+   lin3 (x,x,2,x)
+   lin4 (x,x,x,2)
+
+
+					
 
 
 	Se adicionar par a um numero par, continua par 
