@@ -1041,10 +1041,10 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 	a) linha 3,  pos 3
 	a) linha 4,  pos 4         posicao(1,1) = num linhas (neste caso 1)
 							   posicao(1,2) = num linhas 1 , pos 2
-   lin1 {2,x,x,x)   		
-   lin2 (x,2,x,x)   		
-   lin3 (x,x,2,x)			pos(1,2) = pos(1,1) + pos(1,1) = 1.4 + 1.4 = 2.8
-   lin4 (x,x,x,2)			pos(1,2) = soma dos valores = 2
+   lin1 {2,x,x,x)  pos1 = linha 1 [2,0,0,0][ 		
+   lin2 (x,2,x,x)  pos2 = linha 2
+   lin3 (x,x,2,x)  pos3	= linha 3	
+   lin4 (x,x,x,2)  pos4 = linha 4	
    
 				    
 				    
@@ -1055,11 +1055,19 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
    					100		
    			a)		110	Matriz trianguklar inferior
    					111			
+		
 		Transpose of b) = 
 		
 		
 		
 		a) forward substituion
+		
+		a11 x1 + a12 x2 + a1n xn = b1
+		a21 x1 + a22 x2 + a2n xm = b2 
+		
+		a11      a12
+		[0,1,0][1,0,1] = 
+		
 		
 		
 		B) = A)tranpose
@@ -1282,8 +1290,45 @@ b)
 			(b,0,b,b)  USED
 			(b,b,0,b) USED
 
-				 a matrix decomposition or matrix factorization is a factorization of a matrix into a product of matrices
+				 
+	 		    
+	 		  linear equations
+	 		 
+	 		 x axis  = linha
+	 		 y axis = coluna
+	 		 
+	 		 l11_x1 = linha 1 
+	 		 
+	 		 mesma linha difernte coluna
+	 		 l12_x2 = linha 2
+	 		 
+	 		  pos1 linha 1 + l12x2 linha 1 pos 2
+	 		 
+	 		 
+	 		 [ 2 4 5 ] [1 6 1]   [x y z]
+	 		 [ 1 3 4 ] {2 3 6] > [
+	 		 [ 3 2 6 ] [5 6 3]	 [
+	 		 
+	 		 	  
+	 		    Matrix A=LU (lower and upper triangle)
+	 		    
+	 		    
+	 		    [2 4 5] [ 1 6 1] =  2,24,5 
+	 		    	
+	 		   l11 = [ 2 0 0][1 6 1]
+	 		      =  2 , 0 , 0
+	 		   
+	 		   l1,pos2 = l2 = [0,4,0][2 3 6]
+	 		   				  [},12,0]
+	 		    	 
+	 		   l11 => (2,0,0)
+	 		   l12 => (0,12,0) 	 
+	 		   
+	 		    
+	 		    
+	 		   
+	 		  l1,1 * X1  = b
+	 		  l2,1 + l2,2 *x2 = b2
 	 		  
-	 		  
-	 		  
-	 
+	 		  A transposta = B
+			  B transporta = A

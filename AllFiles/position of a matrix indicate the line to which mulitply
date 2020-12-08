@@ -9,9 +9,8 @@
 Positions indicate the lines to multiply  (pos1 = line1 , pos2 = line 2...)
 If it has zeros in the position  all the line is 0 (since it multiplies with 0)
 
- [1,0,1	 0,0,1			[
+ [1,0,1	 0,1,1			[
   0,1,1	 1,0,1
   1,1,0  1,1,0]
 
-try to solve [0,1,0][1,0,1] decomposta da matriz 
-				
+
