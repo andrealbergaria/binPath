@@ -1057,11 +1057,7 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
    					111			
 		Transpose of b) = 
 		
-		Tranpose first line and fisrt column
 		
-				[ 1 0 0 ]  
-			      1	1 0
-		          1 1 1
 		
 		a) forward substituion
 		
@@ -1080,8 +1076,47 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 		{x1 + x2...} = 2
 		{x1+x2+x3..] = 3
 		
-		AB=BA = In , então A é invertivel
+		
+		
+		Matriz A,
+		AB=BA = In , então A é invertivel , sendo A Lower triangular matrix e B upper triangular matrix
 		então factorizacao possivel,
+		
+		a)			b)						Pos1 = linha 1
+		[1,0,0]	[0,0,1]						[1,0,0] [0,0,1] 
+		[1,1,0] [1,0,0]   multiplcation ->  
+		[1,1,1} (1,1,0]
+		
+		
+		
+	A)	A pos2 = B pos2, visto que são quadradas e 
+	
+	quais os elementos que usam a a) pos2 linha 1 = b)  inha 2 pos 2,  
+		A pos2 = 0 
+	
+	 a)linha 1 pos2 b) linha 2, pos1 
+	 a)linha 1 pos2 b) linha 2 pos 2   =a) linha1 b) linha2 ,pos mesma
+	 a) linha 1 pos2 b) linha 2 pos 3  			
+				
+		(0,1 (0,0) (0,
+		
+		getting pos2 , 
+		escolhi pos2 (a), linha 1), logo obtem-se linha 2
+        escolhi pos1 (a) , linha1  ), linha 1		 
+		combinar 1linha [1,0,0] 2linha [1,0,0]
+				[
+	 	pos2 linha 1 = linha 2 pos 1   +  pos2 linha 1 = 
+		[ 
+	
+	row{1][1][1] * col[ = num
+	    
+	dot product
+		
+	a)	linha1,pos2,pos3 , linha 2 pos3,
+	b)  linha 1 pos1,pos2,pos3 , linha 2 pos 2,3,linha 3 pos 3
+		
+		 a matrix decomposition or matrix factorization is a factorization of a matrix into a product of matrices
+		
 		
 		a) * b) = c)
 		
@@ -1247,7 +1282,7 @@ b)
 			(b,0,b,b)  USED
 			(b,b,0,b) USED
 
-				
+				 a matrix decomposition or matrix factorization is a factorization of a matrix into a product of matrices
 	 		  
 	 		  
 	 		  

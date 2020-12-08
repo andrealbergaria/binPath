@@ -149,7 +149,14 @@ public class binPathImpl {
         public static List reverse(List l) {
         	
         }
-        public static void printTuples(int numOfBits) {
+        
+        public static boolean isBitSet(byte b, int bit) {
+        	if (b & bit)
+        		return true
+        	else
+        		return false;
+        }
+        public static void printTuples(int min,int max) {
         	
         	System.out.print("(");
         	int combs = (int) Math.pow()
@@ -168,14 +175,14 @@ public class binPathImpl {
         			(0,0,0)	REV
         			(1,1,1)
         			
-        			 4       2       1
-        			(1,0,0)(0,1,0)(0,0,1), para obter a proxima combinação reverse os numeros
+        			 	0		4       2       1
+        			(0,0,0) (1,0,0)(0,1,0)(0,0,1), para obter a proxima combinação reverse os numeros
         			   3       5     6
         			(0,1,1)(1,0,1)(1,1,0)
         			
-        			 12			10		 9
+        			 4+8		2+8		  1+8					 
         			(1,1,0,0) (1,0,1,0) (1,0,0,1)
-        			11			13			14
+        			3+8			5+8			6+8
         			(1,0,1,1) (1,1,0,1) (1,1,1,0)
         			
         			
