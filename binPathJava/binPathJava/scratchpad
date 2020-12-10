@@ -1051,60 +1051,49 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 			Matriz =111
 					  111
 				  3d  011	Matriz triangular superior
-			b)	  1d  001
+			B	  1d  001
    					
    				  4d  100		
-   			a)	  6d  110	Matriz trianguklar inferior
+   			A	  6d  110	Matriz trianguklar inferior   Btranposta = A
    				  7d  111			
 		
 		faltam 2,5
-				  111	
-			c)    010 2d
-				  101 5d
+				  111
+				  010 2d
+				  101 5d	 Nao  é simetrica
+			c)     	 
+				  
 					
-		Transpose of b) = 
+		
+					B * A = [ 3 2 1  ]  = A* B = [ 1 1  1 ] 
+							[ 2 2 1 ]			 [1  2  2 ]
+							[ 1 1  1 ]			 [1  2  3 ]
+							
+					what's the relation between B*A and A*B ?		
+						B * A = inverse of A*B 	
+			check if simetric aji =aij j = row 
+					i = col		
+		row=1 col=1 1
+		row=1 col=2 1
+		row=1 col=3 1
+		row=2 col=1 0
+		row=2 col 2 1
+		row=2 col 3 0
+		row=3 col 1 1
+		row 3 col2  0
+		row 3 col3  1
+		 
 		
 		
-		
-		a) forward substituion
-		
-		a11 x1 + a12 x2 + a1n xn = b1
-		a21 x1 + a22 x2 + a2n xm = b2 
-		
-		a11      a12
-		[0,1,0][1,0,1] = 
-		
-		
-		
-		B) = A)tranpose
-		
-		a) and b) are not diagonal matrices
+		A and B are not diagonal matrices (diagonal must be 0)
 		
 		A igual a transposta de B
 		Bt = A
 		A = At
 		é simetrica
 		
-		algoritmo de solução (forward solution) de x's a) (Lower triangle)
-		{x1 ... ...} = 1
-		{x1 + x2...} = 2
-		{x1+x2+x3..] = 3
 		
-		x 	+ 	y 	+ 	z 	= 	6
-  	  	2y 	+ 	5z 	= 			−4
-		2x 	+ 	5y 	− 	z 	= 	27
-
-inverse of		
-		[1 	1  	1] [x]	= [ 6  ]
- 	  	[2 	0  	5] [y]	= [ −4 ]
- 	  	[2 	5  −1] [z]  = [27  ]
-		
-		
-		[25/3	-2	-5/3] [6] = [x] => [(25/3) - 4 (-10/3)]  
-		[-4		1	  1 ] [-4]  [y] => [8.3-	4	-3.3
-		[-10/3	1	2/3 ] {27]  [z}	
-
-
+	
 		 		
 		
 		
@@ -1115,18 +1104,15 @@ inverse of
 		então factorizacao possivel,
 		
 		a)			b)						Pos1 = linha 1
-		[1,0,0]	[0,0,1]						[1,0,0] [0,0,1] = [ 1 , 0, ,0]
-		[1,1,0] [1,0,0]   multiplcation ->  [0,0,0]
-											[0,0,0]				
+		[1,0,0]	[0,0,1]		
+		[1,1,0] [1,0,0]   					
 		[1,1,1} (1,1,0]						
 		
 		
+		if element of matrix is zero, no need to calculate multiplication
 		
-											1 * x1 + 0 *x 2 + 0*x3 = b
-											0 * x1 + 0 * x2 +1*x3=b2
-											
-											x1=b 	
-											x2=b2
+		
+									
 											
 		Lower triangle = {1, 0 0]	Lower e upper  								
 						  0  1 0 
