@@ -1,0 +1,86 @@
+pos 1 (5) -> [5 ]			line 1 ==>[ -4 5 8 ]
+  C1  C2 C3		D1  D2 D3
+1 [5 -3  1]		[-4 5 8 ]
+2 [6  1  2] 	[-3 2 6 ]  
+3 [7  3  3]		[2,4,5  ]
+
+
+result
+	C1	C2	C3
+1	-9	23	27
+2	-23	40	64
+3	-31	53	89
+
+ 
+
+ C11 = C11 * D11 + C21 * D21 + C31 * D31
+ 
+ C21 = C11 * D21 + C21 * D22 + C31 * D23
+ 
+ C31 = C11 * D31 + C21 * D32  + C31 * D33 
+
+
+[5][-4]		+ [-3][-3]  + [1][2
+[5][5]		  [-3][2] 	  [1][4
+[5][8]		  [-3][6]	  [1][5
+	
+
+C11		  C21				C31
+[-20 25 40]+ [9 -6 -18 ] +  [2 4 5]
+
+
+[-9, 23 ,27]
+
+C11 +  C21	+	C31
+first letter = col
+secondletter = row
+
+
+[3 2 5] [3] = [x]
+{1 4 2] [2]   [y]
+{3 1 4] [4]   [z]
+
+from wikipedia
+3x + 2y -z  = 1
+2x - 2y + 4z = -2
+-x+1/2y -z = 0
+
+solution
+x=1,y=-2,z=-2
+
+[ a1 ]
+[ a2 ]
+[ am ]
+
+or
+(a1,a2,am)
+				total area of rectangle		another area of triangle
+(a1,...,am) -> a1v1 							+ a2v2 + a3v3
+			a1v1 + a2
+			
+			
+
+distributive a* (b+c) = (a.b)+ (a.c) 
+
+
+
+
+			|---|	|------|
+	(2)	a	|	| a |	   |
+			|---|	|------|
+			  b 		c
+		(3)				(4)	
+
+		trying to get v1
+		a*b = a1v1
+		a*c = a2v2
+		
+		
+		a* b + a*c =a*(b+c)
+		
+		a1v1 + a1v2 = a1 (v1+v2)
+		
+		
+		
+		
+		 

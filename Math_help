@@ -43,7 +43,12 @@
      unsigned int 4294967296
 
 
+associativety -> a + (b + c) = (a + b) + c, and a · (b · c) = (a · b) · c.
+comutative = a+b = b+a
+additive and multiplicative a + 0 = a and a · 1 = a.
+additive inverses a + (−a) = 0.
 
+multiplicative inverses a -1 = 1/a . a* a-1 = 1
 ----Arranjos
 n -> num de elems 
 p-> quantidade de elemetnos por grupo
@@ -78,4 +83,9 @@ allows for writing the multiset {a, a, b} as ({a, b}, {(a, 2), (b, 1)})
 like [1,1,1,2,3] [1,1,3,2,1]
 
 
+associativety -> a + (b + c) = (a + b) + c, and a · (b · c) = (a · b) · c.
+comutative = a+b = b+a
+additive and multiplicative a + 0 = a and a · 1 = a.
+additive inverses a + (−a) = 0.
 
+multiplicative inverses a -1 = 1/a . a* a-1 = 1

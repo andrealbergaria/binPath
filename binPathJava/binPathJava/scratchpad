@@ -1049,13 +1049,19 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 				    
 				    
 			Matriz =111
-				    011	Matriz triangular superior
-			b)	    001
+					  111
+				  3d  011	Matriz triangular superior
+			b)	  1d  001
    					
-   					100		
-   			a)		110	Matriz trianguklar inferior
-   					111			
+   				  4d  100		
+   			a)	  6d  110	Matriz trianguklar inferior
+   				  7d  111			
 		
+		faltam 2,5
+				  111	
+			c)    010 2d
+				  101 5d
+					
 		Transpose of b) = 
 		
 		
@@ -1084,6 +1090,24 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 		{x1 + x2...} = 2
 		{x1+x2+x3..] = 3
 		
+		x 	+ 	y 	+ 	z 	= 	6
+  	  	2y 	+ 	5z 	= 			−4
+		2x 	+ 	5y 	− 	z 	= 	27
+
+inverse of		
+		[1 	1  	1] [x]	= [ 6  ]
+ 	  	[2 	0  	5] [y]	= [ −4 ]
+ 	  	[2 	5  −1] [z]  = [27  ]
+		
+		
+		[25/3	-2	-5/3] [6] = [x] => [(25/3) - 4 (-10/3)]  
+		[-4		1	  1 ] [-4]  [y] => [8.3-	4	-3.3
+		[-10/3	1	2/3 ] {27]  [z}	
+
+
+		 		
+		
+		
 		
 		
 		Matriz A,
@@ -1091,12 +1115,23 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 		então factorizacao possivel,
 		
 		a)			b)						Pos1 = linha 1
-		[1,0,0]	[0,0,1]						[1,0,0] [0,0,1] 
-		[1,1,0] [1,0,0]   multiplcation ->  
-		[1,1,1} (1,1,0]
+		[1,0,0]	[0,0,1]						[1,0,0] [0,0,1] = [ 1 , 0, ,0]
+		[1,1,0] [1,0,0]   multiplcation ->  [0,0,0]
+											[0,0,0]				
+		[1,1,1} (1,1,0]						
 		
 		
 		
+											1 * x1 + 0 *x 2 + 0*x3 = b
+											0 * x1 + 0 * x2 +1*x3=b2
+											
+											x1=b 	
+											x2=b2
+											
+		Lower triangle = {1, 0 0]	Lower e upper  								
+						  0  1 0 
+						  0  0 1
+		 						
 	A)	A pos2 = B pos2, visto que são quadradas e 
 	
 	quais os elementos que usam a a) pos2 linha 1 = b)  inha 2 pos 2,  
@@ -1304,6 +1339,10 @@ b)
 	 		 
 	 		  pos1 linha 1 + l12x2 linha 1 pos 2
 	 		 
+	 		 // FROM SITE 
+	 		 https://en.wikipedia.org/wiki/Triangular_matrix
+	 		 l1,1 X(1) = b1
+	 		 l1,1 X(1) + l1,2 (X2) = b2
 	 		 
 	 		 [ 2 4 5 ] [1 6 1]   [x y z]
 	 		 [ 1 3 4 ] {2 3 6] > [
