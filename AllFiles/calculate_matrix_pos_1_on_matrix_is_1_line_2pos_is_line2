@@ -55,21 +55,18 @@ x=1,y=-2,z=-2
 or
 (a1,a2,am)
 				total area of rectangle		another area of triangle
-(a1,...,am) -> a1v1 							+ a2v2 + a3v3
-			a1v1 + a2
+(a1,...,am) -> a1v1 							+ a2v2 + a3v3        Sum of area of rectangles
 			
-			
+			a1v1 = Area of the rectangle
 
 distributive a* (b+c) = (a.b)+ (a.c) 
 
 
+			|---|	   |----------|
+		a1	| 	|	a2 |          |
+			|---|	   |----------|
+			 v1				v2
 
-
-			|---|	|------|
-	(2)	a	|	| a |	   |
-			|---|	|------|
-			  b 		c
-		(3)				(4)	
 
 		trying to get v1
 		a*b = a1v1
