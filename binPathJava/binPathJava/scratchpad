@@ -1061,20 +1061,67 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 				  111
 				  010 2d
 				  101 5d	 Nao  é simetrica
+				  
+				  10111010
+				  10101011
+				  
+A				  row1 11 11 11 11
+				  row2 11 11 11 10
+				  row3 111111
+				  row4 11111
+				  row5 1111
+				  row6 111
+				  row7 11
+				  row8 1
+				  
+B				  row 1 = 0000001
+				  row 2 = 0000011
+				  row 3 = 0000111
+				  
+				  
+				  
+				  
+				  00100110 row 2 = {bit1 = 0 ; bit2 =1 ; bit3 = 1; bit4 = 0 , bit5 = 0;bit6 = 1 ; bit7 =0 bit8=0
+				  
+				  AND with C) (2,4,32) => row 2,row3,row 6 
+				  
+				  Nestes bits, quais sao os tres bits nas 3 matrizes
+				  
+				  
+			row1)   00000001 
+			row2)   00000010
+				    00000100
+C				    00001000
+				    00010000
+				    00100000
+				    01000000
+				    10000000
+				  
+				  
+				  
+				  row 1 = 10100001
+				  row2 = 11 000100 11
+				  row 1 col 7?
+				  
+				  
 			c)     	 
 				  
 					
 		
 					B * A = [ 3 2 1  ]  = A* B = [ 1 1  1 ] 
-							[ 2 2 1 ]			 [1  2  2 ]
+							[ 2 2 1  ]			 [1  2  2 ]
 							[ 1 1  1 ]			 [1  2  3 ]
 							
+							
+							
 					what's the relation between B*A and A*B ?		
+						
+						
 						B * A = inverse of A*B 	
 			check if simetric aji =aij j = row 
 					i = col		
-		row=1 col=1 1
-		row=1 col=2 1
+		row=1 col=1  => row3 col1
+		row=1 col=2  
 		row=1 col=3 1
 		row=2 col=1 0
 		row=2 col 2 1
