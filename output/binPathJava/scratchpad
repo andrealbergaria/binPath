@@ -48,15 +48,27 @@ how many zeros are there ? a) 2 b) 2  c)3
 001110	14d					7,6, 5, 4 = 1d
 							
 							
-							7 = num of bits pode ser com 3 bits    
-							8d thruogh 14d = tem de ser com 4 bits 
-							
-001111
+							0..8 = 3 bits    
+							8...16 = 4 bits  (ignorar)
+							16....24 = 	5bits						
+							24...32 = 6 bits (ignorar)
+							32....40 = 7 bits
 									f(
 									
-									num_of_bits (like 4 BITS or 5 bits ..not add bits) , which number
-									f(X) = 
-
+									num_of_bits (like number of 4 BITS or 5 bits) , which number
+									i=1
+									f(X) = 8*i (16,24)
+									i++ 
+			
+							0...8 = 3bits
+							16...24 = 5bits
+							32...40 = 7bits
+							
+							
+							
+							
+							
+			
 							 
 Para valores menores que (8,16 (0b1111),31 0b11111,63) 
 	
