@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Vector;
 
 import binPathJava.Permutation;
@@ -126,9 +128,9 @@ public class binPathImpl {
 
 
 
-        private static void printIntBits(int number) {
+        private static String printIntBits(int number) {
         		String resultWithPadZero = String.format("%8s",Integer.toBinaryString(number).replace(" ", "0"));
-            	    System.out.println(resultWithPadZero+"  (d) "+number);
+            	    return (resultWithPadZero+"  (d) "+number);
             	   
         	   
         	}
@@ -146,11 +148,21 @@ public class binPathImpl {
         	   
         	}
         
-        public static List reverse(List l) {
+        public static void printMissingElems(int min,int max,List Elems) {
+        	Integer it;
+        	System.out.println(" [ ");
+        	for (int i = min ; i < max ; i++) {
+        		it = new Integer(i);
+        		if (!Elems.contains(it)) {
+        			System.out.print(it+",");
+        		}
+        				
+        	}
+        	System.out.println(" ] ");
         	
         }
         
-        public static boolean isBitSet(byte b, int bit) {
+        /*public static boolean isBitSet(byte b, int bit) {
         	if (b & bit)
         		return true
         	else
@@ -198,8 +210,8 @@ public class binPathImpl {
         	3^3 combs
         	
         	
-        	*/
-        }
+        	
+        }*/
 /*
  * 2elems -> 2 posicoes 2^2 3
  *  primeiroByte[1...256]	primeirobyte[1...256]
@@ -508,7 +520,7 @@ public class binPathImpl {
         	}
         }
         
-        private static void AESDecrypt(byte[] cipherText,SecretKeySpec s, IvParameterSpec iv) {
+      /*  private static void AESDecrypt(byte[] cipherText,SecretKeySpec s, IvParameterSpec iv) {
         	try  {
         		
         		if (key.length != 32) {
@@ -558,7 +570,7 @@ public class binPathImpl {
 	          
              
         	
-        } 
+        } */
         private static void printThreeBits(int num_three_bits) {
         	
         	Vector<Integer> threeBitsMarker= new Vector<>();
@@ -605,15 +617,76 @@ public class binPathImpl {
         	
     		byte[] key = new byte[32];
     		createPlainText(new File("files/plaintext"));
-    		 SecretKeySpec s = new SecretKeySpec(key, "AES");
+    		 SecretKeySpec sk = new SecretKeySpec(key, "AES");
+    		 List<Integer> elements = new ArrayList<>();
+    		 
+    		 /*ow1 11 11 11 11  255
+			  row2 11 11 11 10  254 
+			  row3 11 11 11 00  252
+			  row4 11 11 10 00 248
+			  row5 11 11 00 00 240
+			  row6 11 10 00 00 224
+			  row7 11 00 00 00 192
+			  row8 10 00 00 00 128		
+			  
+MATRIX B		  row 1 = 00000000 0
+			  row 2 = 00000001 1
+			  row 3 = 00000011 3
+					  00000111 7
+					  00001111 15
+					  00011111 31
+					  00111111 63
+					  01111111 254
+					  
+			  
+			    00000001 	1
+MATRIX C  		00000010	2
+			    00000100	4
+			    00001000	8
+			    00010000	16
+			    00100000	32
+			    01000000	64
+			    10000000	128
+    		 */
+    		 int binT = 0b11111111;
+    		 int binReversed= 0b0000000;
+    		 
+    		 for (int x=0; x < 8; x++) {
+    			 elements.add(binT);
+    			 elements.add(binReversed);
+    			 binT <<= 1;
+    			 binReversed = revertNum(binT);
+    			 
+    		 }
+    		 binT = 0b1;
+    		 for (int s = 0 ; s < 8 ; s++) {
+    			 elements.add(binT);
+    			 binReversed = revertNum(binT);
+    			 elements.add(binReversed);
+    			 binT *= 2 ;
+    		 }
+    		 
+    		 printMissingElems(0, 256, elements);
     		 
         //	SecretKeySpec sks = new SecretKeySpec(,"AES");
         	//AESPower(sks, iv);
         	
         }	
         
-        private void revertNum() {
-        /*
+        private static int  revertNum(int num) {
+        	int reversed;
+        	int temp = num;
+        	while (num!=0){
+        		  reversed<<=1;
+        		  reversed|=( num &1);
+        		  num>>=1;
+        		}
+        	String s = printIntBits(reversed);
+        	System.out.print("\nNum : "+temp + " REVERSE "+s);
+        	return reversed;
+        }
+        	
+        	/*
         	(0,0,0 )	(0,0,1),(0,1,0)(1,0,0)
        
         rev  (1,1,1)    (1,1,0) (1,0,1)(0,1,1)

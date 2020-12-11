@@ -69,3 +69,15 @@ invert bits on binary number, what happens do decimal?
    1 1  1 
    
    minimo mmultiplo comum = 2*2*2*3*7 
+   
+   
+   B * A = [ 3 2 1  ]  = A* B = [ 1 1  1 ] 
+							[ 2 2 1  ]			 [1  2  2 ]
+							[ 1 1  1 ]			 [1  2  3 ]
+							
+							
+							MATRIX A AND B ARE BINARY MATRCES
+					what's the relation between B*A and A*B ?		
+						
+						
+						B * A = inverse of A*B 	

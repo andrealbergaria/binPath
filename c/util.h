@@ -4,6 +4,9 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
+
 
 #define numPositions 8
 #define numOfRows 32 // 8*32 => 256
@@ -13,7 +16,7 @@
 
 
 void printAllCombinations(int numOfBits, int startByte);
-void printBits(unsigned char number);
+void printBits(unsigned char number,u_char printDecimals);
 void printShortBits(unsigned short number); 
 void printIntBits(unsigned int number);
 

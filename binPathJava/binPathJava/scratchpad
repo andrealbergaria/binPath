@@ -1,134 +1,94 @@
- private static void printMissingElems() {
-        	
-
-        	//o) = m) + 1111
-        	//n) = o) + m)
-        	//o= n+m
-        	
-        	int[] a = {1,2,3,4,5,6,7,8};
-        	ArrayList al = new ArrayList();
-        	
-        	System.out.println();
-        	for (int itM=0; i < m.length; i++) {
-        		int m = m[itM];
-        		al.add(new Integer(m));
-        		
-        		System.out.print("0000 "+m[itM]+"("+m+")");
-        		
-        		int n = m[itM]+0b1111;
-        		
-        		al.add(new Integer(n));
-        		System.out.println(x+" 0000 ("+n+")");
-        		
-        		int o = n+m ;
-        		al.add(new Integer(o));
-        		System.outl.println(m[itM] + " "+m[itM]+ " ("+o+")");        
-        		}
-        		System.out.println();
-        		for (int i=0 ; i < 24; i++) {
-        			if (!al.contains(new Integer(i)))
-        					System.out.print(" "+i+" , ");
-        }
-        
-}
-        */
-
-/*
-		256 *8 = 2048
-		
-		Para 2 bytes, apenas uma posicao é precisa
-		primeiroByte[1.256] & primeiroByte[1.256]
-		
+ /*
+		(b1,b2)
+		(b1,b1)
+		(b2,b2)
+		(b2,b1)		
 		numero total de mudanças de ordem
 		4
 		
-		para arranjos 2 ^ 2 = 4  ( se o segundo byte for igual ao 1)
-		 					=  
-		if same element , 
-		(1,1)
-		(0,1)
-		(0,0)
-		(1,0)
-		
-		(3,2,2)		
-		(1,2,3)  => 3*256 (todas as possiveis combinações)
-		(1,1,3)
 		
 		
-		Se 3 belongs to i, and 2 belongs to i , 1 belongs to 1 (always)
-		or 3 = 2 = 1
+		Se 3 belongs to i, and 2 belongs to i then both belong to i
 		
-		obter todas as combinações , do conjunto em que tenha 3
+		or 3 = 2 = i
+		
+		obter todas as combinações , do conjunto em que tenha 3 bits
 		quais os limites?
 		1 <= 3 <= 8 ?
 
 		
-		
-		thirdByte[1..3] oneByte[1..3] oneByte[1..3]
-		everything equal
-		
-		i = {1,2,3} (equals the elements of set)
-		
-		thirByte = oneByte = secondByte
+		  				
+	
+1	1	1	1   1
+AGRUPAMENTO A
 
-		
+	0	1   1	1 
+	1	0	1	1  => one zero per linhe      Numeros binarios em decimal neste agrupamento (7,11,13,14)
+	1	1	0	1
+	1	1	1	0
+	
+AGRUPAMENTO B   TRANPOSTA DE A?
+ 
+	0	0	1	1
+	0	1	0	1
+	1	0	0	1  
+	1	1	0	0 => dois zeros per line  (3,5,9,12,6,10)
+	0	1   1   0    
+	1	0	1	0
+	
+AGRUPAMENTO C
+	0	0	0   1 		
+	0	0	1	0 => tres zeros per line (1,2,4,8)
+	0	1	0	0
+	1	0	0	0
 		 
-		
-		 
+	0	0	0	0
+-----------------------		
+	Ao adicionar um , apenas de adiciona um. Se se adicionar um zero, se o anterior ou o posterior for zero, nada se aumenta nada
+	
+	Para cada agrupamento , o NUMERO de uns e zeros é igual em cada linha. 	
+	
+	Agrupar 4bits, por numero de zeros (ou por uns). assim contar as combinações de uns (java igual zeros as variaveis por default)  
+	
+	4 * 1zero (7,11,13,14)			Number of zeros no agrupamento A = 4 zeros
+	6 * 2zeros (3,5,9,12,6,10)		numero de zeros no agrupamento B = 12 zeros
+	4 * 3zeros (1,2,4,8)			Numero de zeros no agrupamento C = 12 zeros
+	
+	4 bits começando por zero (0111, 0101,0110,0011,0001,0010,0100,0000) são iguais a 3 bits, então para obtermos todos os 4 bits,
+	basta adicionar 1 no inicio		
 				
-		
-		}
-		 
-		
-		
-		
-		
-		
-		 
-		
-		
-		
-		
-			public static byte[] pos_1 = { 1 , 9 , 17 , 25 , 33 , 41 , 49 , 57 , 65 , 73 , 81 , 89 , 97 , 105 , 113 , 121 ,  (byte) 129 ,  (byte) 137 ,  (byte) 145 ,  (byte) 153 ,  (byte) 161 ,  (byte) 169 ,  (byte) 177 ,  (byte) 185 ,  (byte) 193 ,  (byte) 201 ,  (byte) 209 ,  (byte) 217 ,  (byte) 225 ,  (byte) 233 ,  (byte) 241 ,  (byte) 249 }; 
-	public static byte[] pos_2 = { 2 , 10 , 18 , 26 , 34 , 42 , 50 , 58 , 66 , 74 , 82 , 90 , 98 , 106 , 114 , 122 ,  (byte) 130 ,  (byte) 138 ,  (byte) 146 ,  (byte) 154 ,  (byte) 162 ,  (byte) 170 ,  (byte) 178 ,  (byte) 186 ,  (byte) 194 ,  (byte) 202 ,  (byte) 210 ,  (byte) 218 ,  (byte) 226 ,  (byte) 234 ,  (byte) 242 ,  (byte) 250 }; 
-	public static byte[] pos_3 = { 3 , 11 , 19 , 27 , 35 , 43 , 51 , 59 , 67 , 75 , 83 , 91 , 99 , 107 , 115 , 123 ,  (byte) 131 ,  (byte) 139 ,  (byte) 147 ,  (byte) 155 ,  (byte) 163 ,  (byte) 171 ,  (byte) 179 ,  (byte) 187 ,  (byte) 195 ,  (byte) 203 ,  (byte) 211 ,  (byte) 219 ,  (byte) 227 ,  (byte) 235 ,  (byte) 243 ,  (byte) 251 };
-	public static byte[] pos_4 = { 4 , 12 , 20 , 28 , 36 , 44 , 52 , 60 , 68 , 76 , 84 , 92 , 100 , 108 , 116 , 124 ,  (byte) 132 ,  (byte) 140 ,  (byte) 148 ,  (byte) 156 ,  (byte) 164 ,  (byte) 172 ,  (byte) 180 ,  (byte) 188 ,  (byte) 196 ,  (byte) 204 ,  (byte) 212 ,  (byte) 220 ,  (byte) 228 ,  (byte) 236 ,  (byte) 244 ,  (byte) 252 }; 
-	public static byte[] pos_5 = { 5 , 13 , 21 , 29 , 37 , 45 , 53 , 61 , 69 , 77 , 85 , 93 , 101 , 109 , 117 , 125 ,  (byte) 133 ,  (byte) 141 ,  (byte) 149 ,  (byte) 157 ,  (byte) 165 ,  (byte) 173 ,  (byte) 181 ,  (byte) 189 ,  (byte) 197 ,  (byte) 205 ,  (byte) 213 ,  (byte) 221 ,  (byte) 229 ,  (byte) 237 ,  (byte) 245 ,  (byte) 253 }; 
-	public static byte[] pos_6 = { 6 , 14 , 22 , 30 , 38 , 46 , 54 , 62 , 70 , 78 , 86 , 94 , 102 , 110 , 118 , 126 ,  (byte) 134 ,  (byte) 142 ,  (byte) 150 ,  (byte) 158 ,  (byte) 166 ,  (byte) 174 ,  (byte) 182 ,  (byte) 190 ,  (byte) 198 ,  (byte) 206 ,  (byte) 214 ,  (byte) 222 ,  (byte) 230 ,  (byte) 238 ,  (byte) 246 ,  (byte) 254 };   
-	public static byte[] pos_7 = { 7 , 15 , 23 , 31 , 39 , 47 , 55 , 63 , 71 , 79 , 87 , 95 , 103 , 111 , 119 , 127 ,  (byte) 135 ,  (byte) 143 ,  (byte) 151 ,  (byte) 159 ,  (byte) 167 ,  (byte) 175 ,  (byte) 183 ,  (byte) 191 ,  (byte) 199 ,  (byte) 207 ,  (byte) 215 ,  (byte) 223 ,  (byte) 231 ,  (byte) 239 ,  (byte) 247 ,  (byte) 255 };  
-	public static byte[] pos_8 = { 8 , 16 , 24 , 32 , 40 , 48 , 56 , 64 , 72 , 80 , 88 , 96 , 104 , 112 , 120 , (byte) 128 ,  (byte) 136 ,  (byte) 144 ,  (byte) 152 ,  (byte) 160 ,  (byte) 168 ,  (byte) 176 ,  (byte) 184 ,  (byte) 192 ,  (byte) 200 ,  (byte) 208 ,  (byte) 216 ,  (byte) 224 ,  (byte) 232 ,  (byte) 240 ,  (byte) 248 ,  (byte) 256 };
-		
-			distancia entre pares-> 1
-			pairs first bit  -> 8 de zeros , 8 pares de uns (numero de zeros e uns é sempre igual para todas as iterações)
-			4 pairs distancia -> 2 (snd bit)
-			2 paires -> distancia 4;
 
-			fifth bit? aumentei o numero de bits, oo 4 bit foi alterado (passou a ser  2pair, cada par 8 , o first bit passou a ter 16pares)
-			
-			fifth bit -> 1 pair intervalo 0
-			 
-			
-			/* 	First bit
-			 * idx 1,3,5,7,9,11 = 0
-			 * idx 2,4,6,8,10,12 = 1,  (separated by 2)
-			 * 	+1
-			 
-			 *  second bit
-			 * idx 1,2,5,6,9,10 = 0
-			 * idx 3,4,7,8,11,12,15,16 = 1
-			 * 
-			 *    +2
-			 *    Third bit
-			 * idx 1,2,3,4,9,10,11,12 = 0
-			 * idx 5,6,7,8 = 1
-			 * 
-			 *  +4
-			 */
-			
-			/* Second bit = firstbit(0,1) *2
-					 * => firstbit(0,1) *2  
-					 *
-			relationship betwen first bit and second bit 
+1	1	1	1   1
+AGRUPAMENTO A
+
+	0	1   1	1 
+	1	0	1	1  => one zero per linhe      Numeros binarios em decimal neste agrupamento (7,11,13,14)
+	1	1	0	1
+	1	1	1	0
+	
+AGRUPAMENTO B   TRANPOSTA DE A?
+ 
+	0	0	1	1
+	0	1	0	1
+	1	0	0	1  
+	1	1	0	0 => dois zeros per line  (3,5,9,12,6,10)
+	0	1   1   0    
+	1	0	1	0
+	
+AGRUPAMENTO C
+	0	0	0   1 		
+	0	0	1	0 => tres zeros per line (1,2,4,8)
+	0	1	0	0
+	1	0	0	0
+		 
+	0	0	0	0
+-----------------------	
+
+
+relationsship between 4 bits and 3 bits
+	
+	 
+				relationship betwen first bit and second bit 
 			trying only with ones (use cycle to iterate index and assign ones
 			zeros are already taken by java
 			
@@ -1062,63 +1022,56 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 				  010 2d
 				  101 5d	 Nao  é simetrica
 				  
-				  10111010
-				  10101011
+				  1Symmetric matrix is a square matrix which is equal to its transpose
+			
+				   
+				    				  
+	MATRIX A	  row1 11 11 11 11  255
+				  row2 11 11 11 10  254 
+				  row3 11 11 11 00  252
+			MSB	  row4 11 11 10 00 248
+				  row5 11 11 00 00 240			MATRIX A INVERTIBLE	
+				  row6 11 10 00 00 224			A triangular matrix is invertible if its diagonal entries are non-zero
+				  row7 11 00 00 00 192			3. A triangular matrix is invertible if and only if all diagonal entries are nonzero.
+				  row8 10 00 00 00 128		
 				  
-A				  row1 11 11 11 11
-				  row2 11 11 11 10
-				  row3 111111
-				  row4 11111
-				  row5 1111
-				  row6 111
-				  row7 11
-				  row8 1
+  MATRIX B		  row 1 = 00000000 0
+				  row 2 = 00000001 1			MATRIX A E B ARE _UNITRIANGULAR
+				  row 3 = 00000011 3			MATRIX A REVERSE OF MATRIX B
+						  00000111 7		    MATRIX Atransposed = B
+		LSB				  00001111 15			MATRIX Btranposed = A
+						  00011111 31			transposed it the reverse for row 1 col1 (on matrix a) = reverse value on matrix b
+						  00111111 63
+						  01111111 254			MATRIX B NOT NIVERTIBLE
+						  
 				  
-B				  row 1 = 0000001
-				  row 2 = 0000011
-				  row 3 = 0000111
+				    00000001 	1
+  MATRIX C  		00000010	2			MATRIX C invertible
+				    00000100	4		
+				    00001000	8
+				    00010000	16
+				    00100000	32
+				    01000000	64
+				    10000000	128			matrix C) simetrica (c= ctransosta)  
+				    						MATRIX C não é transposta de MATRIX D
+				    
+MATIX D
+					1111110  254
+					1111101  125			matrix D) simetrica (D = Dtransposta), não transposta de MATRIX C
+					1111011	 123
+					1110111	 119 
+					1101111  111
+					1011111 not used
+					0111111127
+solutions)				  
+				  Assign zeros from MATRIX C to MATRIX AND B
 				  
-				  
-				  
-				  
-				  00100110 row 2 = {bit1 = 0 ; bit2 =1 ; bit3 = 1; bit4 = 0 , bit5 = 0;bit6 = 1 ; bit7 =0 bit8=0
-				  
-				  AND with C) (2,4,32) => row 2,row3,row 6 
-				  
-				  Nestes bits, quais sao os tres bits nas 3 matrizes
-				  
-				  
-			row1)   00000001 
-			row2)   00000010
-				    00000100
-C				    00001000
-				    00010000
-				    00100000
-				    01000000
-				    10000000
-				  
-				  
-				  
-				  row 1 = 10100001
-				  row2 = 11 000100 11
-				  row 1 col 7?
-				  
-				  
-			c)     	 
-				  
-					
+				  00100110 AND with C) (2,4,32) => row 2,row3,row 6 
+				  		  
+					REVERSE MATRIX C TO GET ZEROS ON A AND B 
 		
-					B * A = [ 3 2 1  ]  = A* B = [ 1 1  1 ] 
-							[ 2 2 1  ]			 [1  2  2 ]
-							[ 1 1  1 ]			 [1  2  3 ]
-							
-							
-							
-					what's the relation between B*A and A*B ?		
-						
-						
-						B * A = inverse of A*B 	
-			check if simetric aji =aij j = row 
+					
+					j = row 
 					i = col		
 		row=1 col=1  => row3 col1
 		row=1 col=2  
@@ -1139,10 +1092,98 @@ C				    00001000
 		A = At
 		é simetrica
 		
+		an A  matrix é simetrica  se A=Atrans o que significa aij=aji
 		
-	
-		 		
+		E = [1 0 0 ]   F = [1 1 1]  E F  = [ 1 1 1 ]			
+		    [1 1 0 ]       [0 1 1]         [ 1 2 2 ]
+		    [1 1 1 ]       [0 0 1]         [ 1 2 3 ]
 		
+	F E =  [ 3 2 1]
+		   [ 2 2 1]			EF  is symetric = EF = (EF)T 
+		   [ 1 1 1]         FE  = symetric = (FE)T = FE
+		   					E not symetric
+		   					F not symetric
+		   					EF+FE 
+		   					
+		   [3 2 1]	[1 1 1]				[ d  a12  a22 ]
+		   [2 2 1] +[1 2 2] =>  		[a12 d1   a21 ]    
+		   [1 1 1]	[1 2 3 				[a22 a21  d2  ]
+		   
+		   d = 3+1
+		   d1 = 2+2
+		   d2 = 4
+		   
+		   a12 = 3					
+		   a22=1+1 					
+		   a21= 1+2					
+		   
+		   Sum = equals multiplication
+		   
+		   2x = x+x
+		   
+		   consigo converter matrix para mais simples (sendo simetrica)
+		   
+		   a12 + a12  =  2 * (a12) duas casas =  
+		   
+		   X = a12= 3   Y = a22 = 2   a21 = W = 3
+		   
+		   a12 = a21 
+		   
+		   
+		   [ d X Y ]  [ d d1 d2 ] [X Y] [1]
+		   [ X d1 X]  				
+		   { Y X d2]
+		   
+		   X- > (1,2) (2,1) (2,3) (3,2)
+		   Y -> (1,3) (3,1)
+		   
+		  
+		  [d1    ]
+		  [	d2   ]							
+		  [	  d3 ] equals in linear to ? 
+		   
+		   [ 1   ]
+		   [  2  ]		(1,1) = 1   (2,2) = 2 (3,3) = 8 ,,transformar uma matriz simetrica num matriz 1x3 		
+		   [   8 ]
+		   
+		   a22 = a12 =>     a12 + (1,0) 
+		   a33 = a13 => 	a33 -(2,0) 
+		   
+		   [ 1 0 0 ]	
+		   [ 0 2 0 ] + 	POS 22 = POS 12
+		   { 0 0 8]
+		   
+		   Object temp = array[a][b + 1];
+		   array[a][b + 1] = array[a + 1][b];
+			array[a + 1][b] = temp; 
+		   
+		   (2,1) swamp (1,2)				   
+		   (3,3) swamp (1,3)
+		   
+		   
+		   a=2 b=1
+		   
+		   swamp row 2 with row1 with 
+		   one matrix?
+		   [ 1 0 0 ]
+		   [ 0 2 0 ]
+		   
+		   
+		   
+		   
+		   
+		   				   	
+		 The sum and difference of two symmetric matrices is again symmetric
+		 
+		 
+		  		(A + B)T = AT + BT:    
+				(1,2) = ( (1,2) + (		  		
+		  		    arr[i] = (arr[i] + arr[j]) - (arr[j] = arr[i]); 
+		  		    // FROM https://stackoverflow.com/questions/13766209/effective-swapping-of-elements-of-an-array-in-java
+		  		    
+		  		                            
+		The product of two triangular matrices is triangular
+		A triangular matrix is invertible if its diagonal entries are non-zero
 		
 		
 		
@@ -1223,122 +1264,49 @@ C				    00001000
 	 may be written as the product of a lower triangular matrix L and an upper triangular matrix U if
 		
 		
-		so the bytes (byte1,byte2)
-					 (byte1,byte1)
-					 (byte2,byte2)
-					 (byte2,byte1)
+		(byte1,byte2)
+		(byte1,byte1)
+		(byte2,byte2)
+		(byte2,byte1)
+		
 		byte2 = Transposta de (byte1) 
 			
 			
 
 
-		if pos1 = 1, entao em todas as posicoes na msema coluna estão set
-		no casa da pos2 entao todas as posicao es de pos2 estao set
-   								
-   							vector = posicao	
 							
 							
 							
-						que vector representa a posicção
-						
-						posicao(3,1) = 5
-						x=3 , y=1   = 
- 						
- 						(3,1) (0,0) =  
- 						
- 						sqr(x^2 + y^2) = 5
-						
-						
-						
 							
-								pos(1,2) = pos(1,1) + pos(1,1) = 2
+						
+						
+						igualando a posicao a 5 (arbitrario) a (3,1, arbitrario), quere-se as coordenadas dos vectores
+						posicao(3,1) = 5 (magnitude)
+						x=3 y=1
+						sqr(x^2 + y^2) = 5 (5 sendo magnitude, calcular as coordenadas dos vectors 
+						
+						
+						
+						
 									
-									sqr(5) = sqr(2) + sqr(2) = 
 																	
-								posicao(1,1) = 1 (ou 2)
-								posicao(1,1) + pos(1,1) = 1+1 = 2 = pos(2,2)
-								(1,1) = 1
-								(1+1,1) = (2,1) = 1
 								
 								 
 								 
-								 
+								Change tuples by matrices 
 								posicao(2,1) = posicao(1,1) + pos(1,1) = 1+1 = 2
-								
-								Para ser dois na posicao(2,1) entao
-										posicao(2,1) = 1 + 1 = 2
-									
-								
-								pos(1,1) = 1
-								
 								posicao(3,1) = posicao(2,2) + pos(1,1) = (3,3)
 								posicao(4,1) = posicao(3,3) + pos(1,1) =(4,4)
 								
-								Para pos(1,1) = 1 entao
-								
-								pos(2,1) = 1 ou 2
-								
-								se estao na mesma linha, entao qual o valor?
-								
-								pos1,pos2,pos3,pos4 (X,y=1)
-								
-								
-								
-								
-								visto que estao na mesma linha, nao se pode adicionar
-								
-								pos(2,1) = 1+1  
-								Para pos(1,1) = 2 entao
-								pos(2,1) = 2+2
-								
-								pos(2,1) = pos(1,1) + pos(1,1)
-								pos(2,1) = 1 +1
-								 		 =  2 
-								
-								 
-								pos(
-								
-								pos1 pos2 pos3
-					pos1		(1,2,3)
-					pos2		(4,5,6)
-							
-					posicao(1,1) = 1
-					posicao(1,1) + pos(1,1) = 2 = pos(2,1)			 
-								
-								
-								
-								
-								x=horizontal 	
-								
-								
-								
-											   posicao(2,2) =posicao(1,2)   
-								
-								(0,1) = linha 2? 
-	
-	b) linha 1 , pos1
-	b) linha 2, pos2
-	
-      					 	
-      					 	x  = pos2 a) pos2 b)
-      					 	x1 = pos3 a) pos3 b)  	
-							same line
-							
-						[1,1,1]
-						[0,1,1]
-						[0,0,1]
-						[0,0,0]
-						
-						[0,0,0]
-						[1,0,0]
-						[1,1,0]
-						[1,1,1]
-						
-						matriz A = At (transpose) , equal to triangular matrices 	
+							 	(1,1) = [1 1 ]
+									pos (1,1) + pos(1,1) = [1 1] + [1 1] = [2 2]; 					
+	 							(2,1) => [ 2 1 ]	
 							 
+(a+b) trans = atrans + btrans
 							  
 b)
-[b,0,0,0}		USED	diagonal matrix
+			
+			[b,0,0,0}		USED	diagonal matrix
         	[0,b,0,0]	 3 bits -> zero em primeiro 
         	[0,0,b,0]	 2 bits
         	[0,0,0,b]    1bits
@@ -1360,47 +1328,4 @@ b)
 
 				 
 	 		    
-	 		  linear equations
-	 		 
-	 		 x axis  = linha
-	 		 y axis = coluna
-	 		 
-	 		 l11_x1 = linha 1 
-	 		 
-	 		 mesma linha difernte coluna
-	 		 l12_x2 = linha 2
-	 		 
-	 		  pos1 linha 1 + l12x2 linha 1 pos 2
-	 		 
-	 		 // FROM SITE 
-	 		 https://en.wikipedia.org/wiki/Triangular_matrix
-	 		 l1,1 X(1) = b1
-	 		 l1,1 X(1) + l1,2 (X2) = b2
-	 		 
-	 		 [ 2 4 5 ] [1 6 1]   [x y z]
-	 		 [ 1 3 4 ] {2 3 6] > [
-	 		 [ 3 2 6 ] [5 6 3]	 [
-	 		 
-	 		 	  
-	 		    Matrix A=LU (lower and upper triangle)
-	 		    
-	 		    
-	 		    [2 4 5] [ 1 6 1] =  2,24,5 
-	 		    	
-	 		   l11 = [ 2 0 0][1 6 1]
-	 		      =  2 , 0 , 0
-	 		   
-	 		   l1,pos2 = l2 = [0,4,0][2 3 6]
-	 		   				  [},12,0]
-	 		    	 
-	 		   l11 => (2,0,0)
-	 		   l12 => (0,12,0) 	 
-	 		   
-	 		    
-	 		    
-	 		   
-	 		  l1,1 * X1  = b
-	 		  l2,1 + l2,2 *x2 = b2
 	 		  
-	 		  A transposta = B
-			  B transporta = A

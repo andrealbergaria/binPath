@@ -19,23 +19,31 @@ int main(int argc,char *argv[]) {
     u_int s = pow(2,numberOfBits);
     
     printf("\nNumber of elems printed %i\n",s);
-    int t=7;
-    int it=0;
 
+    int it=0;
+    int t=0;
     int threeBitsSize=0;
 
     if (strcmp(argv[3],"listed")==0)
-        printf("\n{ ");
-
+        printf("{ ");
+    // get console width
+    struct winsize w;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    printf ("lines %d\n", w.ws_row);
+    printf ("columns %d\n", w.ws_col);
+    // ---end console width
+    int maxColumns = 10;
     for (int i = 0; i< s ; i++) {
 
 
+    	if (strcmp(argv[3],"new") == 0)
+    		printBits(startByte,1);
+    	else
+    		printBits(startByte,0);
 
-    	printBits(startByte);
-
-    	if (startByte == t) {
+    	if (startByte == 7 && strcmp(argv[3],"new")==0) {
     	    		printf("   (3bits : %i )",startByte);
-    	    		t+=8;
+    	    		t+=7;
     	    		threeBitsSize++;
     	    		threeBits[it] = startByte;
     	    		it++;
@@ -43,7 +51,19 @@ int main(int argc,char *argv[]) {
     	}
 
         if (strcmp(argv[3],"listed")==0) {
-            printf(" , ");
+
+        	/*multiple k_maxCols = ws_col
+        	se for multiplo, entao a divisão tem de ser
+        	maior que 0
+        	ws_col / maxcols > 0 ? correcto
+
+        		k_maxCols / maxCols = K
+        		*/
+        	if (w.ws_col / maxColumns > 0) {
+        		printf("ANBC");
+        		printf("\n");
+        	}
+        	printf(",");
             startByte++;
         }
         else if (strcmp(argv[3],"new")==0) {
@@ -57,7 +77,7 @@ int main(int argc,char *argv[]) {
         
 
     }
-    printf(" } \n");
+    printf("}");
     printf("\n Number of three bits : %i\n",threeBitsSize);
     printf("\n");
     while (it > 0) {
