@@ -52,15 +52,10 @@ int main(int argc,char *argv[]) {
 
         if (strcmp(argv[3],"listed")==0) {
 
-        	/*multiple k_maxCols = ws_col
-        	se for multiplo, entao a divisão tem de ser
-        	maior que 0
-        	ws_col / maxcols > 0 ? correcto
 
-        		k_maxCols / maxCols = K
-        		*/
-        	if (w.ws_col / maxColumns > 0) {
-        		printf("ANBC");
+
+        	if (w.ws_col % maxColumns == 0) {
+
         		printf("\n");
         	}
         	printf(",");

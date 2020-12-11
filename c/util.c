@@ -268,7 +268,7 @@ void printUsingFunction() {
 
 
 
-void printBits(unsigned char number,u_char printDecimals) {
+void printBits(unsigned char number,u_char printDecimals,u_char noLeadingZeros) {
    unsigned char mask = 0x80;
    int it;
    u_char zero='0',one='1';

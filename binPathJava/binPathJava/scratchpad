@@ -1,4 +1,99 @@
  /*
+ 
+
+
+a) 0110
+b) 0011
+c) 0100
+
+how many zeros are there ? a) 2 b) 2  c)3 
+
+
+
+4 bits
+
+4 BIT DIVISION (only zero first numbers)
+0000  (0d)
+0001 (1d)
+0110 (6d) 						order of leading zeros and their number
+0010 (2)  -> AGRUPAMENTO Q   => (0,0,0,0)   
+0011 (3)					    (0,0,0) 		1d
+								(0,0) 			2d
+								(0,0) 			3d
+								(0) 			4d
+								(0) 			5d
+0100 (4)						(0) 			6d
+0101 (5)						 
+0111 (7) 						
+								
+
+								(0) 			7d
+																	4 BIT DIVISION	
+											(0,0,0,0,0,0) 0d  			(0,0,0,0) 0d
+5 BIT DIVISION (only zeros)					(0,0,0,0,0) 1d				(0,0,0)   1d
+000001										(0,0,0,0)  3d	   			(0,0)  2d
+											(0,0,0) 4d					(0,0)  3d	
+000010										(0,0,0)  5d					(0)    6d
+000011										(0,0,0 ) 6d					(0) 4d
+000100										(0,0,0,) 7d					(0) 5d
+000101										(0,0,) 8d					(0) 6d
+000110 
+000111
+001000	8d				
+001001 9d
+001010 10d
+001011	11d					
+001100 12d
+001101	13d					8,9,10,11,12,13,14 = 2 , 3
+001110	14d					7,6, 5, 4 = 1d
+							
+							
+							7 = num of bits pode ser com 3 bits    
+							8d thruogh 14d = tem de ser com 4 bits 
+							
+001111
+									f(
+									
+									num_of_bits (like 4 BITS or 5 bits ..not add bits) , which number
+									f(X) = 
+
+							 
+Para valores menores que (8,16 (0b1111),31 0b11111,63) 
+	
+	
+	0 <=  agrupamento_Q < 8
+	8 <=   agrupamento_w < 16  (comeca por 1 ignorar)
+	16 <=  agrupamento_j < 24 
+	24 <= agrupma.....< 32  (comeca por 1 ignorar)
+	32 <= ar.....   < 40
+	40<= .... < 48 comeca por 1 ignorar
+	48 <= .... < 56
+	56<= .... < 64 1 ignorar 
+	64<=   ... < 72
+	
+	
+	0,16,32,48,64
+						num de bits estao relacionado ?
+	quanto zeros 0 ? => 4+3+2+3+2+3+2+1 = 20 zeros 
+	quantos zeros 16?
+	
+
+
+								
+1000 8
+1001 9
+1010 10		-> AAGRUPAMENTO W
+1011 11					  	
+1100 (12
+1010 13
+1001 14
+1111 15
+
+obter numero de zeros a esquerda (4bits) , metade dos valores tem 0 no inicio
+		if (firstBit == 0 )
+		
+
+ 
 		(b1,b2)
 		(b1,b1)
 		(b2,b2)
@@ -58,31 +153,6 @@ AGRUPAMENTO C
 	basta adicionar 1 no inicio		
 				
 
-1	1	1	1   1
-AGRUPAMENTO A
-
-	0	1   1	1 
-	1	0	1	1  => one zero per linhe      Numeros binarios em decimal neste agrupamento (7,11,13,14)
-	1	1	0	1
-	1	1	1	0
-	
-AGRUPAMENTO B   TRANPOSTA DE A?
- 
-	0	0	1	1
-	0	1	0	1
-	1	0	0	1  
-	1	1	0	0 => dois zeros per line  (3,5,9,12,6,10)
-	0	1   1   0    
-	1	0	1	0
-	
-AGRUPAMENTO C
-	0	0	0   1 		
-	0	0	1	0 => tres zeros per line (1,2,4,8)
-	0	1	0	0
-	1	0	0	0
-		 
-	0	0	0	0
------------------------	
 
 
 relationsship between 4 bits and 3 bits
