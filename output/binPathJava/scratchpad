@@ -19,30 +19,6 @@ how many zeros are there ? a) 2 b) 2  c)3
 
 
 
-5 BIT DIVISION (only zeros)		
-00 000 (3bits)+2 (5 zeros)
-00 001 4 zeros 							
-									
-00 010	3 zeros
-
-00 100 2 zeros
-
-00 101 2zeros
- 										
-00 110 2 zeros Pos 6)
-
-00 011 3zeros
-  
-00 111 2 zeros
-
-
-01 000	8d
-01 001 9d
-01 010 10d
-01 011	11d					
-01 100 12d
-01 101	13d					
-01 110	14d		three bits marker			
 							5bits = igual a 3 bits (cada posicao tem os seus zeros) + 2 zeros (zeros iniciais)
 							5 bits = igual a 3 bits + 1zero
 							
@@ -55,35 +31,28 @@ how many zeros are there ? a) 2 b) 2  c)3
 									
 									X Number of bits, N number
 								
-									f(X,N) = 8*i (16,24)
+									f(N) = 8*i (16,24)
+										
+										[0,1,2,3,4,5,6,7]
+										obter num de bits
+										
 													 
-						Para numero de bits = 3
-						pos1 => 00
-						pos2 => 0
-						pos3 => 0 
-						
-						Para numero de bits = 5
-						pos1 => 00000 (5 zeros)
-						pos2 => 0000 (4zeros⁾
-						pos3 = 3 zeros
-						pos4 = 3
-						pos5 = 3
-						pos6 = 3 zero
-						pos 7 to pos 15 = 2zeros)
-						
 						calculate graphic (number of positions on the graph = number of bits)
 						
-						 000 
+						 
+						 +2 ou +3
+						 
+						  
 	
-						
-						
-			 Bits 		Pos1 Pos2 Pos3 Pos4 Pos5 Pos6 Pos7 Pos8 Pos9 Pos10 Pos11 Pos12 Pos13 Pos14 Pos15
+						 					Para cada border, subtrai-se um zero
+															 border of 3bits								border of 3 bits
+			 Bits 		Pos1 Pos2 Pos3 Pos4 Pos5 Pos6 Pos7 Pos8 | Pos9 Pos10 Pos11 Pos12 Pos13 Pos14 Pos15 | Pos 16 Pos17 Pos18
 			 
 			 3bits		3	   2   1	1	0    0    0     0		
 		(3bits +2 bits) 
-			 5bits     5	   4   3    3	2	 2	  2	 	2	 1		1	1		1	1		1	1
-						
-		
+			 5bits      5	   4   3    3	2	 2	  2	 	2	   1		1	1		1	1		1	1
+			(3bits +3)			
+			7 bits 		6      5
 							0...8 = 3bits 
 							16...24 = 5bits
 							32...40 = 7bits

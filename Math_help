@@ -90,10 +90,36 @@ additive inverses a + (−a) = 0.
 
 multiplicative inverses a -1 = 1/a . a* a-1 = 1
 
-MAtrices (A,B are) simetryct 
+MAtrices (A,B are) simetrct 
 
 A = A' = [1 2] 	
 		 [2	3]
 B = B' = [5 6 7] 	
 		 [6	3 2]
 		 {7	2 1]
+		 
+		 5 BIT DIVISION (only zeros)		
+00 000 (3bits)+2 (5 zeros)
+00 001 4 zeros 							
+									
+00 010	3 zeros
+
+00 100 2 zeros
+
+00 101 2zeros
+ 										
+00 110 2 zeros Pos 6)
+
+00 011 3zeros
+  
+00 111 2 zeros
+
+
+01 000	8d
+01 001 9d
+01 010 10d
+01 011	11d					
+01 100 12d
+01 101	13d					
+01 110	14d		three bits marker			
+		 
