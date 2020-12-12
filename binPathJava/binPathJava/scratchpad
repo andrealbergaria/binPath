@@ -195,7 +195,7 @@ relationsship between 4 bits and 3 bits
 			  
 			*/
 		
-	//	int[] another = new int[16];
+	
 		
 		
 		// skip counting zeros, just assign arrays to 1..the others are 0
@@ -468,93 +468,16 @@ b)	1	1	1	1
 		
 		
 	
-	//int endByte=4;
-	//int endByte=0;
-	//for (int startByte=0; startByte < 32; startByte+=4) {
-	//		it+=printSixTeen(res,startByte,endByte);
-	//		endByte+=4;
-	//	}
-	//}
-	int[][] res = new int[32][32];
 	int sizeByte[] = {  0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12 , 13 , 14 , 15 , 16 , 17 , 18 , 19 , 20 , 21 , 22 , 23 , 24 , 25 , 26 , 27 , 28 , 29 , 30 , 31 , 32 , 33 , 34 , 35 , 36 , 37 , 38 , 39 , 40 , 41 , 42 , 43 , 44 , 45 , 46 , 47 , 48 , 49 , 50 , 51 , 52 , 53 , 54 , 55 , 56 , 57 , 58 , 59 , 60 , 61 , 62 , 63 , 64 , 65 , 66 , 67 , 68 , 69 , 70 , 71 , 72 , 73 , 74 , 75 , 76 , 77 , 78 , 79 , 80 , 81 , 82 , 83 , 84 , 85 , 86 , 87 , 88 , 89 , 90 , 91 , 92 , 93 , 94 , 95 , 96 , 97 , 98 , 99 , 100 , 101 , 102 , 103 , 104 , 105 , 106 , 107 , 108 , 109 , 110 , 111 , 112 , 113 , 114 , 115 , 116 , 117 , 118 , 119 , 120 , 121 , 122 , 123 , 124 , 125 , 126 , 127 , 128 , 129 , 130 , 131 , 132 , 133 , 134 , 135 , 136 , 137 , 138 , 139 , 140 , 141 , 142 , 143 , 144 , 145 , 146 , 147 , 148 , 149 , 150 , 151 , 152 , 153 , 154 , 155 , 156 , 157 , 158 , 159 , 160 , 161 , 162 , 163 , 164 , 165 , 166 , 167 , 168 , 169 , 170 , 171 , 172 , 173 , 174 , 175 , 176 , 177 , 178 , 179 , 180 , 181 , 182 , 183 , 184 , 185 , 186 , 187 , 188 , 189 , 190 , 191 , 192 , 193 , 194 , 195 , 196 , 197 , 198 , 199 , 200 , 201 , 202 , 203 , 204 , 205 , 206 , 207 , 208 , 209 , 210 , 211 , 212 , 213 , 214 , 215 , 216 , 217 , 218 , 219 , 220 , 221 , 222 , 223 , 224 , 225 , 226 , 227 , 228 , 229 , 230 , 231 , 232 , 233 , 234 , 235 , 236 , 237 , 238 , 239 , 240 , 241 , 242 , 243 , 244 , 245 , 246 , 247 , 248 , 249 , 250 , 251 , 252 , 253 , 254 , 255 }; 
-	for (int pos = 0 ; pos < 32; pos++) {
-		for (int pos2 = 0; pos2 < 32; pos2++) {
-			res[pos][pos] = sizeByte; 
-		}
-	}
-	
-	/*printSixTEen(res,0,4);
-	printSixTeen(res,4,8);
-	printSixTeen(res,8,12);
-	printSixTeen(res,12,16);
-	printSixTeen(res,16,20);
-	printSixTeen(res,20,24);
-	printSixTeen(res,24,28);
-	printSixTeen(res,24,28);
-	*/
-	
-	
 	
 
      
 	
 	
-		//printArray(arr);
-		//printMultipleArray(res);
 	
 	
-	// Return iterations
-	private static int printSixTeen(int[][] res,int startingByte,int endByte) {
-		
-		int it=1;
-		
-		System.out.println();
-	 for (int i =startingByte; i < endByte; i++) {
-		 	 for (int i3 = 0 ; i3 < 256; i3++) {
-	 	 		res[i][i] = i3;
-	 	 		it++;
-			 }
-		 }
 	 
-	 
-	 
-	 System.out.println("\nStarting byte : "+startingByte+"\n End byte "+endByte);
-	 
-	 return it;
-	 //System.out.println("\n"+printMultipleArray(res)+" ");
-	 
-	}
-	private static <T> void printArray(T[] arr) {
-    	System.out.println();
-    	 for (T element : arr) {
-    	        System.out.print(element+" , ");
-    	    }
-    	
-    	 System.out.println();
-    }
-	
-	private static String printMultipleArray(int[][] arr) {
-		// 	int[][] res = new int[2][4];
-
-		System.out.println();
-		String s="";
-		s+="[ ";
-		for (int idx2 = 0 ; idx2 <  arr.length ; idx2++) {
-			for (int idx =0 ; idx < arr[idx2].length;idx++) {
-				if ( (idx % 10) == 0)
-					s+="\n";
-				s+=" "+arr[idx2][idx]+" , ";
 				
-		}
-				
-			
-			
-		
-		}
-		s+=" ]";
-		return s;
-	}
-	
 	
 		
 		
@@ -562,32 +485,7 @@ b)	1	1	1	1
 	
 	
 	
-	private static void printMissingElements(Vector<int[]> arr) {
-		System.out.println();
-		
-		Vector<Integer> bytesTaken = new Vector<>();
-		
-		for (int[] bArr : arr) {
-			for (int bElem : bArr) {
-				bytesTaken.add(bElem);
-				System.out.println("bElem : "+bElem);
-				
-			}
-		}
-		
-		//System.out.println(bytesTaken);
-		System.out.println();
-		for (int i =0 ; i < 256 ; i++) {
-			
-			if (bytesTaken.contains(i) == false)
-				System.out.print(" , "+i);
-			   if (i % 10  == 0)
-				System.out.println();
-				
-		}
 	
-		
-	}
 
 
 	private static void checkBytes_permutation1() {
@@ -713,9 +611,9 @@ b)	1	1	1	1
     	*/
 		//prefix();
 		
-	//	Vector<Integer> v =  getThreeBitsMarkerM(32);
+	
 		
-       //printThreeBits(32);
+    
 		
 		/*
 		 * 
@@ -1408,21 +1306,41 @@ b)
 			(b,0,b,b)  USED
 			(b,b,0,b) USED
 
+				  
+				    00000001 	1
+  MATRIX C  		00000010	2			MATRIX C invertible
+				    00000100	4		
+				    00001000	8
+				    00010000	16
+				    00100000	32
+				    01000000	64
+				    10000000	128			matrix C) simetrica (c= ctransosta)  
+				    						MATRIX C não é transposta de MATRIX D
+
+tem quantos pontos quanto linhas (linha 1 = point 1 )
+tenho que seeparar em 3 bits... logo  3 bits (1 bit X , 2 bit Y, 3 bit Z) são posiçoes em 3d 
+
+Se colunas da matrix for igual = 2  então é 2d
+Se colunas da matrix for igual a = 3 então é definida por pontos
+
+Se matrix lines = 3 então definida por pontos 3d
+Se matrix lines = 2 entao definidade por pontos 2d
+
 
 			MATRIX W
-				 [ 2 1 3] -> ponto A
-	 		    ] 4 1 0 ] -> ponto B			Wransposta = [2 4  5  simetrica quantos pontos tem [1
-	 		    [2 3 5  ] = ponto C			  	              1 1  0								  	 
-	 		    											  5 0  3]
-	 		    [2   -> Ponto d
-				4]	
-				2]
+				Line Points
+				[ 2 1 3] -> ponto A (2,1,3)							Here points are columns	
+	 		    ] 4 1 0 ] -> ponto B (4,1,0)		Wtransposta =    [2 4  2 ] Ponto G -> (2,4,2)   Pont J -> (2,1,3)  	
+    		    [2 3 5  ] = ponto C (2,3,5)			  	             [1 1  3 ] Ponto H -> (1,1,3)	Pont K -> (4,1,0)								  	 
+ 		 		    Column Ponints									 [3 0  5 ]  Pont I -> (3,0,5)	Point L -> (2,3,5)
+	 		    Ponto d (2,4,2) , 
+	 		    Ponto e (1,1,3),
+	 		     Point f (3,0,5)
+					
 				
-				1
-				1		-> ponto e
-				3
+				Point A = Point J 
+				Point B = Point K
+				Point C = Point L
+				Point D = Point G
 				
-				3
-				0			-> ponto f
-				5
 				

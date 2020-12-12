@@ -89,3 +89,11 @@ additive and multiplicative a + 0 = a and a · 1 = a.
 additive inverses a + (−a) = 0.
 
 multiplicative inverses a -1 = 1/a . a* a-1 = 1
+
+MAtrices (A,B are) simetryct 
+
+A = A' = [1 2] 	
+		 [2	3]
+B = B' = [5 6 7] 	
+		 [6	3 2]
+		 {7	2 1]
