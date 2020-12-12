@@ -74,6 +74,13 @@ x ^= 0b1;
 
 x |= (1 << y); // set the yth bit from the LSB
 
+
+-------------------------------------------https://stackoverflow.com/questions/523724/c-c-check-if-one-bit-is-set-in-i-e-int-variable
+Check if bit N (starting from 0) is set:
+
+temp & (1 << N)
+
+
 ---------------------------------permutations
 Permutation = > factorial de elemeentos
 
@@ -123,3 +130,8 @@ B = B' = [5 6 7]
 01 101	13d					
 01 110	14d		three bits marker			
 		 
+		 
+		 1 byte  first bits must be = 255  2^8
+on  2 bytes first bits must be = 65535 2^16
+on  3 bytes first bits = 16777216 2^24
+  32 bytes frist bits = 2^(32*8)
