@@ -10,49 +10,41 @@ how many zeros are there ? a) 2 b) 2  c)3
 
 
 3 bits DIVIISON
-001
-010
-011
+    000 
+	001
+	010
+	011
+	
 
-4 bits
 
-4 BIT DIVISION (only zero first numbers)
-0000  (0d)
-0001 (1d)
-0110 (6d) 						order of leading zeros and their number
-0010 (2)  -> AGRUPAMENTO Q   => (0,0,0,0)   
-0011 (3)					    (0,0,0) 		1d
-								(0,0) 			2d
-								(0,0) 			3d
-								(0) 			4d
-								(0) 			5d
-0100 (4)						(0) 			6d
-0101 (5)						 
-0111 (7) 						
-								
 
-								(0) 			7d
-																	4 BIT DIVISION	
-											(0,0,0,0,0,0) 0d  			(0,0,0,0) 0d
-5 BIT DIVISION (only zeros)					(0,0,0,0,0) 1d				(0,0,0)   1d
-000001										(0,0,0,0)  3d	   			(0,0)  2d
-											(0,0,0) 4d					(0,0)  3d	
-000010										(0,0,0)  5d					(0)    6d
-000011										(0,0,0 ) 6d					(0) 4d
 
-000100										(0,0,0,) 7d					(0) 5d
-000101										(0,0,) 8d					(0) 6d
-000110 
-000111
+5 BIT DIVISION (only zeros)		
+00 000 (3bits)+2 (5 zeros)
+00 001 4 zeros 							
+									
+00 010	3 zeros
 
-001000	8d
-001001 9d
-001010 10d
-001011	11d					
-001100 12d
-001101	13d					8,9,10,11,12,13,14 = 2 , 3
-001110	14d					7,6, 5, 4 = 1d
-							
+00 100 2 zeros
+
+00 101 2zeros
+ 										
+00 110 2 zeros Pos 6)
+
+00 011 3zeros
+  
+00 111 2 zeros
+
+
+01 000	8d
+01 001 9d
+01 010 10d
+01 011	11d					
+01 100 12d
+01 101	13d					
+01 110	14d		three bits marker			
+							5bits = igual a 3 bits (cada posicao tem os seus zeros) + 2 zeros (zeros iniciais)
+							5 bits = igual a 3 bits + 1zero
 							
 							0..8 = 3 bits    
 							8...16 = 4 bits  (ignorar)
@@ -79,22 +71,34 @@ how many zeros are there ? a) 2 b) 2  c)3
 						pos6 = 3 zero
 						pos 7 to pos 15 = 2zeros)
 						
-						calculate graphic
+						calculate graphic (number of positions on the graph = number of bits)
 						
+						 000 
+	
+						
+						
+			 Bits 		Pos1 Pos2 Pos3 Pos4 Pos5 Pos6 Pos7 Pos8 Pos9 Pos10 Pos11 Pos12 Pos13 Pos14 Pos15
+			 
+			 3bits		3	   2   1	1	0    0    0     0		
+		(3bits +2 bits) 
+			 5bits     5	   4   3    3	2	 2	  2	 	2	 1		1	1		1	1		1	1
+						
+		
 							0...8 = 3bits 
 							16...24 = 5bits
 							32...40 = 7bits
 							
 							
-							
+				00001 3bits + 2 							
+			
 							
 							
 			
 							 
-Para valores menores que (8,16 (0b1111),31 0b11111,63) 
+Para valores menores que (8,16 ,31 ,63) 
 	
 	
-	0 <=  agrupamento_Q < 8
+	0 <=  agrupamento_Q < 8 
 	8 <=   agrupamento_w < 16  (comeca por 1 ignorar)
 	16 <=  agrupamento_j < 24 
 	24 <= agrupma.....< 32  (comeca por 1 ignorar)
