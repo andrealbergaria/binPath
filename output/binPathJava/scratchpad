@@ -49,11 +49,26 @@ how many zeros are there ? a) 2 b) 2  c)3
 															 border of 3bits								border of 3 bits
 			 Bits 		Pos1 Pos2 Pos3 Pos4 Pos5 Pos6 Pos7 Pos8 | Pos9 Pos10 Pos11 Pos12 Pos13 Pos14 Pos15 | Pos 16 Pos17 Pos18
 			 
-			 3bits		3	   2   1	1	0    0    0     0		
+			 3bits		3	   2   1	1	0    0    0     0
 		(3bits +2 bits) 
 			 5bits      5	   4   3    3	2	 2	  2	 	2	   1		1	1		1	1		1	1
 			(3bits +3)			
-			7 bits 		6      5
+			7 bits 		7      6   5    5   4    4    4     4 	
+			
+			9bits      9      8
+			
+						i=0 	F(Pos) = 3(bits) + 2i
+					    i=2
+					    i=3		
+					    
+					    	PosX (5 bits) = PosX ( 3bits) + (5-3)
+					    	PosX (7 bits ) =PosX (3its) + (7-3)
+					    
+					    	
+					    
+					    
+								X= Position of 5bits = pos1+ = bits3+2
+		7bits = 3bits + 4bits							
 							0...8 = 3bits 
 							16...24 = 5bits
 							32...40 = 7bits
