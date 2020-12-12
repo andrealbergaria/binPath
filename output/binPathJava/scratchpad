@@ -1408,6 +1408,21 @@ b)
 			(b,0,b,b)  USED
 			(b,b,0,b) USED
 
-				 
-	 		    
-	 		  
+
+			MATRIX W
+				 [ 2 1 3] -> ponto A
+	 		    ] 4 1 0 ] -> ponto B			Wransposta = [2 4  5  simetrica quantos pontos tem [1
+	 		    [2 3 5  ] = ponto C			  	              1 1  0								  	 
+	 		    											  5 0  3]
+	 		    [2   -> Ponto d
+				4]	
+				2]
+				
+				1
+				1		-> ponto e
+				3
+				
+				3
+				0			-> ponto f
+				5
+				
