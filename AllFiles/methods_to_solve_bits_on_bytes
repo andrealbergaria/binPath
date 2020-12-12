@@ -16,5 +16,19 @@ PRIMEIRA TENTATIVA )
    	[1 0 0 0] [1 0 1 1]
    	
   SEGUNDA TENTATIVA)
+  to scan all bits, for better speed, fix at least one bit
+for example
+
+for 256 bits, set the first bit (one or zero) making it to scan 128 (less the first bit , which we fixed, and can be 0 or 1)
   
+  TERCEIRA TENTATIVA)
+  Algorithm to test all combinations 
+  Start at using 1 bit set, and other bit always shifting right 
+  	left to right (each bit shifted right one time)
+  	Same value (doesnt work) zeros at left
+    => 10 => 010 => 0010 => 00010
+    
+    right to left
+    1000 <= 100 <= 10 <= 1  
+    
   

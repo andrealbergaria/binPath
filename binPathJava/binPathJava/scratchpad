@@ -9,6 +9,10 @@ c) 0100
 how many zeros are there ? a) 2 b) 2  c)3 
 
 
+3 bits DIVIISON
+001
+010
+011
 
 4 bits
 
@@ -35,11 +39,13 @@ how many zeros are there ? a) 2 b) 2  c)3
 											(0,0,0) 4d					(0,0)  3d	
 000010										(0,0,0)  5d					(0)    6d
 000011										(0,0,0 ) 6d					(0) 4d
+
 000100										(0,0,0,) 7d					(0) 5d
 000101										(0,0,) 8d					(0) 6d
 000110 
 000111
-001000	8d				
+
+001000	8d
 001001 9d
 001010 10d
 001011	11d					
@@ -55,12 +61,27 @@ how many zeros are there ? a) 2 b) 2  c)3
 							32....40 = 7 bits
 									f(
 									
-									num_of_bits (like number of 4 BITS or 5 bits) , which number
-									i=1
-									f(X) = 8*i (16,24)
-									i++ 
-			
-							0...8 = 3bits
+									X Number of bits, N number
+								
+									f(X,N) = 8*i (16,24)
+													 
+						Para numero de bits = 3
+						pos1 => 00
+						pos2 => 0
+						pos3 => 0 
+						
+						Para numero de bits = 5
+						pos1 => 00000 (5 zeros)
+						pos2 => 0000 (4zeros⁾
+						pos3 = 3 zeros
+						pos4 = 3
+						pos5 = 3
+						pos6 = 3 zero
+						pos 7 to pos 15 = 2zeros)
+						
+						calculate graphic
+						
+							0...8 = 3bits 
 							16...24 = 5bits
 							32...40 = 7bits
 							
@@ -1325,22 +1346,53 @@ Se colunas da matrix for igual a = 3 então é definida por pontos
 
 Se matrix lines = 3 então definida por pontos 3d
 Se matrix lines = 2 entao definidade por pontos 2d
-
+Mesma coisa para cols
 
 			MATRIX W
 				Line Points
-				[ 2 1 3] -> ponto A (2,1,3)							Here points are columns	
+				[ 2 1 3] -> ponto A (2,1,3)											ROWS			COLUMNS
 	 		    ] 4 1 0 ] -> ponto B (4,1,0)		Wtransposta =    [2 4  2 ] Ponto G -> (2,4,2)   Pont J -> (2,1,3)  	
     		    [2 3 5  ] = ponto C (2,3,5)			  	             [1 1  3 ] Ponto H -> (1,1,3)	Pont K -> (4,1,0)								  	 
  		 		    Column Ponints									 [3 0  5 ]  Pont I -> (3,0,5)	Point L -> (2,3,5)
-	 		    Ponto d (2,4,2) , 
+	 		    Ponto d (2,4,2)  igual a linha1  de Wtrans 
 	 		    Ponto e (1,1,3),
 	 		     Point f (3,0,5)
 					
 				
 				Point A = Point J 
 				Point B = Point K
-				Point C = Point L
+				Point C = Point L  
 				Point D = Point G
 				
-				
+			Para W ser simetrica,   PONTO A (2,1,3) = PONTO G (2,4,2) 
+									PONTO B (4 1 0) = PONTO H (1,1,3)
+									PONTO C = (2,3,5) = Point I	(2,3,5)
+									
+									MATRIX W			MATRIX WTransposta 
+									[ 2  1 3]	[1 4 2/3] =	[ 2 4 2]	[ 1 4 2/3]
+									[ 4  1 0] * [1/4 1 0] 	[ 1 1 3]  * [
+									{2   3 5]	[  1 1 1]	[3 0 5]
+									
+								    MATRIX W * MATRIX TEMP = MATRIX WTrans
+									
+									Para obter simetrica
+									[2 4 2]
+									[1 1 3]	 * X, [2 1 3]	[1 4 2/3]
+									[3 0 5]		  [4 1 0] * [1/4 1 0]
+												  [2 3 5] 	[1  1  1]
+									
+									
+									[2 1 3] * [1 4 2/3]	 
+									{4 1 0]   [1/1 1 0]
+									[2 3 5]    [1 1 1 ]
+									
+									[ 2x 1y 3z] = [2 4 2]			[1 4 2/3 ]
+																	[1/4 1 0 ]
+									x=1 y=4 z=2/3					[1   1 1 ]
+									
+									[4x 1y 0z] = [1 1 3 ]
+									x=1/4, y=1 z=0
+									
+									[2x 3y 5z ] = [2 3 5]
+									x=1 y=1 z=1
+									

@@ -1,12 +1,13 @@
  
- to scan all bits, for better speed, fix at least one bit
-for example
-
-for 256 bits, set the first bit (one or zero) making it to scan 128 (less the first bit , which we fixed, and can be 0 or 1)
+ 
 
 for catersian product
+ SET A = (0,1)
+ SET B = (0,1,10,11)
+ 
+IF A SET HAS T
 
-{ (0,1) ,(0m1) , (0,1) }
+does the set, 
 
 since the alrotihm is fast, there is a way to speed up multiplicaton by 2 (shifting bits) (perhaps changing positions)
 
