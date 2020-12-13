@@ -77,60 +77,65 @@ coluna 1
  0 01
  1 11
 
+SET B -> (0,1)
+agrupamentos com b? 
+
 quantas coluna e linhas, 
 
 cada cell pode ter varios valores	
 1 objecto, um pair , um tuple ternary , ou seja é arranjos 
-1A1																							   
-																				   pos2 = col2  		pos3 = col3 	
-Se houver corresopndencia entre numero da coluna e posicao do numero (por exemplo col numero 2 , => (1,2) , col3 => (1,3,2))
-
-Se adicionar uma coluna, nao necessariamente adiciona um digito
-   col1 col2 col3
-	1	0 	0
-0  (0,1) (0,0) (0,0)
-1	X  Y   Z 
-
-
-3d só é possivel se columns da matrix for > 2
-
-i can only use rows if columns <= 2 
-
-combinate columns ok  (for example 3A2 (gathering columns one by one
-
-) = (1,1)  (1,0) (0,1) (0,0)
-combinate rows not ok   ( 2A2 = (  
-
-so columns are 2bits
-rows are 3bits
-
-
-isto da que matrix
+2A1			2A2				2A3																   
+n=1			
+(1,0)		(  (1,0)	 (1,0,0)	
+			   (1,1)	 (1,0,1)    
+			  			 (1,1,0)
+						 (1,1,1)
+	ou seja , para cada posicao, so preciso de me preocupar com os que tem uns a frente. os outros são dados pela posicao anterior
+	1 1 0
+	1 1 1
+	0 1 0 2 bits (1,0) e (1,1) , zero inicio
+	0 1 1 		  			    
+		  			
+	Para arranjos, os sets que comecam por zero (0,1) (0,0) (0,1,1)  podem nao ser contabilizados porque jã são contados,
+	 nos arranjos anteriores
+	
+	(0,1) = (0,0,1) correcto
+	
+	
+compare 1 ,2 ,3  => K values, são os valores adicionados no inicio de cada combinação de bits
+quando k=3, elimina k=2?
+																		   pos2 = col2  		pos3 = col3 	
 
 
+num de colunas = numero de bits
+
+2 bits -> 2d
+3 bits -> 3d
+
+so columns are 2bits  , if a column added addes a bit to the rows from (0,1) to (0,0,1) col 3 added
 
 
-three bits to two bits
-(0,0,0) = (0,0)
-(0,1,0 =  (0,1)
 
-
-3d to 2d
-
+Se o digito inicial for zero, então metade dos arranjos anteriores ja estao contabilizados
 
 Se adicionarmos ultimas coordeandas , a um ponto que tenho X=0 então as coordenadas continuam as mesmas
 
-cartesian prod 3bits = cartesian prod_2 + ( ( 
+cartesian prod 3bits = cartesian prod_2 + ( 
+						cartesian_prod1 X cartesian_prod_2 ( (1,0) (1,1)
+						
+						cartesian product = obter produto cartesiano anterior (por exemplo producto carteseiano de 2 bits)
+						* producto cartesiano 3 bits ( 
+						
+3 bits -> 2 bits mais uma coluna
 
-3bits-> Cartesian Product (thre bits- combinations of 2 bits)
 
 Add bits to (0,1) for example (0,1,0) or (0,1,1) 
 three bits
-	1   0   
-0   X   X
-1   X   X
+	1   0   1
+0   X   X  
+1   X   X  (1,0,1)
 
-1 (0,1,1)
+0 (1)  (0)    
 
   
 
