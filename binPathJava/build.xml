@@ -1,0 +1,39 @@
+<project name="binPath" default="compile" basedir="/home/andrec/workspace_3_8/binPath" >
+  <description>
+    ant build script
+  </description>
+  
+  
+  <!-- set global properties for this build -->
+  <property name="src" location="binPathJava/binPathJava" />
+  <property name="build" location="binPathJava/classes" />
+  
+  <classpath location="/binPathJava/binPathJava">
+  </classpath>
+  <classpath location="/binPathJava/classes">
+  </classpath>
+  
+  
+  <target name="printCombs">
+     <java classname="printCombs" />
+    </target>
+
+ <target name="binPathImpl">
+     <java classname="binPathImpl" />
+    </target>
+   
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+   
+  </target>
+
+  <target name="compile" description="compile the source" depends="init">
+      <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}" includeantruntime="false" listfiles="true">
+    </javac>
+    
+    
+  </target>
+</project>

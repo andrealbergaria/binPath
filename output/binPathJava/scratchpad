@@ -2,11 +2,6 @@
  
 
 
-a) 0110
-b) 0011
-c) 0100
-
-how many zeros are there ? a) 2 b) 2  c)3 
 
 
 3 bits DIVIISON
@@ -15,9 +10,69 @@ how many zeros are there ? a) 2 b) 2  c)3
 	010
 	011
 	
+	1   0
+0	(0,1 (0,0)	
+1   (1,1) (1,0
+
+
+cartesian_prod_2 ( (0,0) (0,1) (1,0) (1,1)
+
+Pode ser eliminados (1,0)  e (0,1) 
+Se for adicionado ultimos elems (0,0,0) e (0,1,0)
+			
+		added zero at the beggining
+Set C      Set D
+(1,0) = (0,1,0)
+(0,1) = (0,0,1)
+(0,0) = (0,0,0)
+(1,1) = (0,1,1)
+
+2d		3d
+ 
+ qual o resto de tres bits que faltam
+ Zeros at last ?
+  REVERSE OF D
+ 
+ (1,0,0)
+ (1,1,0) 
+ (1,0,1)
+ (1,1,1)
+ 
+ 2D =  3D 
+Trocaa 1 bit por 0 (ou revert SET D) 
+
+col 1-2  = 2bits ( (1,0) (1,1) (1,0) (1,1) }
+col 2-3  = 2bits ( (0,0) (1,0) (0,1) (1,1) )
+
+colummns work....
+
+row 1-2 = 2bits ( (1,0,0) (1,1,0) )
 
 
 
+three bits to two bits
+(0,0,0) = (0,0)
+(0,1,0 =  (0,1)
+
+
+3d to 2d
+
+
+Se adicionarmos ultimas coordeandas , a um ponto que tenho X=0 então as coordenadas continuam as mesmas
+
+cartesian prod 3bits = cartesian prod_2 + ( ( 
+
+3bits-> Cartesian Product (thre bits- combinations of 2 bits)
+
+Add bits to (0,1) for example (0,1,0) or (0,1,1) 
+three bits
+	1   0   
+0   X   X
+1   X   X
+
+1 (0,1,1)
+
+  
 
 							5bits = igual a 3 bits (cada posicao tem os seus zeros) + 2 zeros (zeros iniciais)
 							5 bits = igual a 3 bits + 1zero
@@ -44,18 +99,17 @@ how many zeros are there ? a) 2 b) 2  c)3
 						 +2 ou +3
 						 
 						  
-	
 						 					Para cada border, subtrai-se um zero
 															 border of 3bits								border of 3 bits
-			 Bits 		Pos1 Pos2 Pos3 Pos4 Pos5 Pos6 Pos7 Pos8 | Pos9 Pos10 Pos11 Pos12 Pos13 Pos14 Pos15 | Pos 16 Pos17 Pos18
+			 Bits 		Pos1 Pos2 Pos3 Pos4 Pos5 Pos6 Pos7 Pos8 | Pos9 Pos10 Pos11 Pos12 Pos13 Pos14 Pos15 | Pos 16 Pos17 Pos18 Pos19
 			 
-			 3bits		3	   2   1	1	0    0    0     0
+			 3bits		3	   2   1	1	0    0    0     0											15d		
 		(3bits +2 bits) 
-			 5bits      5	   4   3    3	2	 2	  2	 	2	   1		1	1		1	1		1	1
+			 5bits      5	   4   3    3	2	 2	  2	 	2	   1		1	1		1	1	 1		1
 			(3bits +3)			
-			7 bits 		7      6   5    5   4    4    4     4 	
+			7 bits 		7      6   5    5   4    4    4     4		3       3   3       3   3	 3		3      2     2       2       2							2	2		2	2
 			
-			9bits      9      8
+			
 			
 						i=0 	F(Pos) = 3(bits) + 2i
 					    i=2
@@ -63,10 +117,29 @@ how many zeros are there ? a) 2 b) 2  c)3
 					    
 					    	PosX (5 bits) = PosX ( 3bits) + (5-3)
 					    	PosX (7 bits ) =PosX (3its) + (7-3)
-					    
+				
+				7Bits
+				0 -> 7zeros
+				1 -> 6 zeros
+				2-> 3 -> 5zeros
+				4-> 7 -> 4 zeros (3bits)
+				
+				
+				8   -> 16 => 3 zeros (5bits)    
+				16 -> 32  = 2zero  (7bits)
+				32 -> 64 = 1zero (9bits) ?
+				64-> 128 = 
+				
+				
+				
+				De 8 a 16 é comutativo 
+				
+				
+				
+				Se for para contar uns, então POSX = VALOR(X);	    
 					    	
 					    
-					    
+					    POSITION = valor(position)
 								X= Position of 5bits = pos1+ = bits3+2
 		7bits = 3bits + 4bits							
 							0...8 = 3bits 

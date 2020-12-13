@@ -33,14 +33,29 @@ public class printCombs {
 		    
 		    if (args[2].equals("listed"))
 		        System.out.print("{ ");
-
+		    String resultToPrint = "";
 		    for (int i = 0; i< s ; i++) {
-		    	if (args[2].equals("tuples")) 
-		    		binPathImpl.printTuples(startByte);
-		    	else
-		    		binPathImpl.printBits((byte)startByte,args[1]);
+		    	//if (args[2].equals("tuples")) 
+		    	//	binPathImpl.printTuples(startByte);
+		    	//else
+		    	
+		    	
+		    	if (numberOfBits >= 1 && numberOfBits <= 8) {
+		    		resultToPrint = binPathImpl.printBits((byte)startByte, args[2]);
+		    		System.out.print(resultToPrint);
+		    		
+		    	}
+	    		else if (numberOfBits >= 8 && numberOfBits <=  16 ) {
+		    		resultToPrint = binPathImpl.printShortBits((short)startByte,args[2]);
+		    		System.out.print(resultToPrint);
+	    		}
 
-		    	if (startByte == t && args[2].equals("new"))) {
+	    		else if (numberOfBits >= 16 && numberOfBits < 33) {
+	    			resultToPrint = binPathImpl.printIntBits((int) startByte,args[2]);
+	    			System.out.print(resultToPrint);
+	    		}
+
+		    	if (startByte == t && args[2].equals("new")) {
 		    	    		System.out.println("   (3bits : "+startByte+" ) ");
 		    	    		t+=8;
 		    	    		threeBitsSize++;
@@ -54,7 +69,7 @@ public class printCombs {
 		            startByte++;
 		        }
 		        else if (args[2].equals("new")) {
-		            System.out.println("\n");
+		        	System.out.println();
 		            startByte++;
 		        }
 		        else  {

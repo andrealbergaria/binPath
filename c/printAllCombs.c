@@ -36,6 +36,7 @@ int main(int argc,char *argv[]) {
     for (int i = 0; i< s ; i++) {
 
 
+
     	if (strcmp(argv[3],"new") == 0)
     		printBits(startByte,1);
     	else

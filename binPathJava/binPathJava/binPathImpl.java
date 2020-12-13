@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
-import binPathJava.Permutation;
+
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -26,7 +26,19 @@ import javax.crypto.spec.SecretKeySpec;
 public class binPathImpl {
 
 	 
+	public static void AlgebraError() {
+		double Xnegative = -3;
+		double X2 = Math.pow(Xnegative,2);
+		double X3 = Math.pow(Xnegative,3);
+		
+		if (X2 > 0)
+			System.err.println("\n X2 is bigger than 0");
+		System.out.println("   "+X3);
+		if (X2< X3) {
+			System.err.println("X neagttive less that X2");
+		}
 
+	}
 // NEEDS 8 ints (32bytes/4bytes)
 	public static int[] setOneToAll() {
 		int[] ret = new int[256];
@@ -119,33 +131,40 @@ public class binPathImpl {
         	
         }
         
-        private static void printShortBits(short number) {
+        public static String printShortBits(short number,String modeOfPrint) {
     		String resultWithPadZero = String.format("%8s",Integer.toBinaryString(number).replace(" ", "0"));
-        	    System.out.println(resultWithPadZero+"  (d) "+number);
+    		if (modeOfPrint.equals("new"))
+        	    return resultWithPadZero+"  (d) "+number;
+        	else if(modeOfPrint.equals("listed"))
+        		return  resultWithPadZero;
         	   
-    	   
+    	   return "\n no new or listed";
     	}
 
 
 
-        private static String printIntBits(int number) {
+        public static String printIntBits(int number,String modeOfPrint) {
         		String resultWithPadZero = String.format("%8s",Integer.toBinaryString(number).replace(" ", "0"));
-            	    return (resultWithPadZero+"  (d) "+number);
-            	   
+        		if (modeOfPrint.equals("new"))
+            	    return resultWithPadZero+"  (d) "+number;
+            	else if(modeOfPrint.equals("listed"))
+            		return  resultWithPadZero;
+            	    
+            	  return "\n no new or listed";
         	   
         	}
 
         
         // FROM https://mkyong.com/java/java-how-to-convert-a-byte-to-a-binary-string/
-        public static void printBits(byte b,String modeOfPrint) {
+        public static String printBits(byte b,String modeOfPrint) {
         	String resultWithPadZero = String.format("%8s", Integer.toBinaryString(b))
                     .replace(" ", "0");
         	if (modeOfPrint.equals("new"))
-        	    System.out.print(resultWithPadZero+"  (d) "+(int) b);
+        	    return resultWithPadZero+"  (d) "+ b;
         	else if(modeOfPrint.equals("listed"))
-        		System.out.print(resultWithPadZero);
+        		return  resultWithPadZero;
 
-        	   
+        	   return "\n no new or listed";
         	}
         
         public static void printMissingElems(int min,int max,List Elems) {
@@ -613,14 +632,14 @@ public class binPathImpl {
         public static void main(String[] args) {
         	// 2^6 = 64
     		
-    		int[][][] bytes =  prefix(32);
+    	/*	int[][][] bytes =  prefix(32);
         	
     		byte[] key = new byte[32];
     		createPlainText(new File("files/plaintext"));
     		 SecretKeySpec sk = new SecretKeySpec(key, "AES");
     		 List<Integer> elements = new ArrayList<>();
     		 
-    		 /*ow1 11 11 11 11  255
+    		 ow1 11 11 11 11  255
 			  row2 11 11 11 10  254 
 			  row3 11 11 11 00  252
 			  row4 11 11 10 00 248
@@ -647,7 +666,7 @@ MATRIX C  		00000010	2
 			    00100000	32
 			    01000000	64
 			    10000000	128
-    		 */
+    		 
     		 int binT = 0b11111111;
     		 int binReversed= 0b0000000;
     		 
@@ -672,21 +691,10 @@ MATRIX C  		00000010	2
         	//AESPower(sks, iv);
         	
         }	
+        */
         
-        private static int  revertNum(int num) {
-        	int reversed;
-        	int temp = num;
-        	while (num!=0){
-        		  reversed<<=1;
-        		  reversed|=( num &1);
-        		  num>>=1;
-        		}
-        	String s = printIntBits(reversed);
-        	System.out.print("\nNum : "+temp + " REVERSE "+s);
-        	return reversed;
-        }
         	
-        	/*
+        /*	
         	(0,0,0 )	(0,0,1),(0,1,0)(1,0,0)
        
         rev  (1,1,1)    (1,1,0) (1,0,1)(0,1,1)
@@ -704,7 +712,22 @@ MATRIX C  		00000010	2
        
        	(1,1,1,1,1,1)(1,1,1,1,
        */
+        
        
+    AlgebraError();
+	}
+        private static int  revertNum(int num) {
+        	int reversed=1;
+        	int temp = num;
+        	while (num!=0){
+        		  reversed<<=1;
+        		  reversed|=( num &1);
+        		  num>>=1;
+        		}
+        	String s = printIntBits(reversed,"new");
+        	System.out.print("\nNum : "+temp + " REVERSE "+s);
+        	return reversed;
         }
 }
+
 			

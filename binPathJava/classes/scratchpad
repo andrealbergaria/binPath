@@ -2,6 +2,11 @@
  
 
 
+a) 0110
+b) 0011
+c) 0100
+
+how many zeros are there ? a) 2 b) 2  c)3 
 
 
 3 bits DIVIISON
@@ -10,69 +15,9 @@
 	010
 	011
 	
-	1   0
-0	(0,1 (0,0)	
-1   (1,1) (1,0
-
-
-cartesian_prod_2 ( (0,0) (0,1) (1,0) (1,1)
-
-Pode ser eliminados (1,0)  e (0,1) 
-Se for adicionado ultimos elems (0,0,0) e (0,1,0)
-			
-		added zero at the beggining
-Set C      Set D
-(1,0) = (0,1,0)
-(0,1) = (0,0,1)
-(0,0) = (0,0,0)
-(1,1) = (0,1,1)
-
-2d		3d
- 
- qual o resto de tres bits que faltam
- Zeros at last ?
-  REVERSE OF D
- 
- (1,0,0)
- (1,1,0) 
- (1,0,1)
- (1,1,1)
- 
- 2D =  3D 
-Trocaa 1 bit por 0 (ou revert SET D) 
-
-col 1-2  = 2bits ( (1,0) (1,1) (1,0) (1,1) }
-col 2-3  = 2bits ( (0,0) (1,0) (0,1) (1,1) )
-
-colummns work....
-
-row 1-2 = 2bits ( (1,0,0) (1,1,0) )
 
 
 
-three bits to two bits
-(0,0,0) = (0,0)
-(0,1,0 =  (0,1)
-
-
-3d to 2d
-
-
-Se adicionarmos ultimas coordeandas , a um ponto que tenho X=0 então as coordenadas continuam as mesmas
-
-cartesian prod 3bits = cartesian prod_2 + ( ( 
-
-3bits-> Cartesian Product (thre bits- combinations of 2 bits)
-
-Add bits to (0,1) for example (0,1,0) or (0,1,1) 
-three bits
-	1   0   
-0   X   X
-1   X   X
-
-1 (0,1,1)
-
-  
 
 							5bits = igual a 3 bits (cada posicao tem os seus zeros) + 2 zeros (zeros iniciais)
 							5 bits = igual a 3 bits + 1zero

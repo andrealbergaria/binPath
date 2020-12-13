@@ -7,6 +7,13 @@ public class Test {
 	/**
 	 * @param args
 	 */
+	private static int  revertNum(int num) {
+    	int reversed=1;
+    	
+    	return reversed;
+	}
+    	/*int temp = num;
+	
 	public static void main(String[] args) {
 		
 		byte[] h = new byte[7];
