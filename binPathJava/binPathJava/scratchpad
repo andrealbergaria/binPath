@@ -132,11 +132,14 @@ cartesian prod 3bits = cartesian prod_2 + (
 Add bits to (0,1) for example (0,1,0) or (0,1,1) 
 three bits
 	1   0   1
-0   X   X  
+0   X   X    
 1   X   X  (1,0,1)
 
-0 (1)  (0)    
+    
 
+  Tress bits, faltam (4,5,6,7)
+  00000100,00000101,00000110,00000111
+  
   
 
 							5bits = igual a 3 bits (cada posicao tem os seus zeros) + 2 zeros (zeros iniciais)
