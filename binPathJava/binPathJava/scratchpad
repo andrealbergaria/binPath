@@ -43,10 +43,70 @@ Trocaa 1 bit por 0 (ou revert SET D)
 
 col 1-2  = 2bits ( (1,0) (1,1) (1,0) (1,1) }
 col 2-3  = 2bits ( (0,0) (1,0) (0,1) (1,1) )
-
+col 1-3  =       ( (1,0) (1,0) (1,1) (1,1 ) 
 colummns work....
 
-row 1-2 = 2bits ( (1,0,0) (1,1,0) )
+row 1-2 = ( (1,0,0) (1,1,0) ) = Add one element to the last position
+row 2-3 = ( (1,1,0), (1,0,1))
+row 3-4 = ( (1,0,1) (1,1,1 )
+	
+	Matrix T
+	(1,0)
+	(1,1)
+	(1,0)	- 
+	(1,1)
+
+row 1-2 = ( (1,0) ,(1,1))
+row 2-3 = ( (1,1) ,(1,0))
+row 3-4 = ( (1,0) (1,1)
+
+
+Se tiver 2 colunas,columns on table? coluna 1 , coluna = 0
+
+
+coluna 2  = 1bit table + ( (0,0) (1,0) )
+ 
+	1      0		0
+0	(0,1 (0,0)	
+1   (1,1) (1,0
+
+coluna 1 bit = (01,11)
+
+coluna 1
+ 	1
+ 0 01
+ 1 11
+
+quantas coluna e linhas, 
+
+cada cell pode ter varios valores	
+1 objecto, um pair , um tuple ternary , ou seja é arranjos 
+1A1																							   
+																				   pos2 = col2  		pos3 = col3 	
+Se houver corresopndencia entre numero da coluna e posicao do numero (por exemplo col numero 2 , => (1,2) , col3 => (1,3,2))
+
+Se adicionar uma coluna, nao necessariamente adiciona um digito
+   col1 col2 col3
+	1	0 	0
+0  (0,1) (0,0) (0,0)
+1	X  Y   Z 
+
+
+3d só é possivel se columns da matrix for > 2
+
+i can only use rows if columns <= 2 
+
+combinate columns ok  (for example 3A2 (gathering columns one by one
+
+) = (1,1)  (1,0) (0,1) (0,0)
+combinate rows not ok   ( 2A2 = (  
+
+so columns are 2bits
+rows are 3bits
+
+
+isto da que matrix
+
 
 
 
