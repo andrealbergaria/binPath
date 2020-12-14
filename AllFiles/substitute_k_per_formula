@@ -1,0 +1,16 @@
+A *A * A =(A + A + A)    * K
+									   			ATIMES(3) 		
+									
+									
+									k = numero de vezes que se multiplica 
+									neste caso, k=3.
+									então
+									(A+A+A)		* k * k
+									(k vezes)   * 3 * 3
+									
+									A^3 = 3A * 3 *3
+									27A
+									
+									
+									Para obter A+A+A => multiplica-se A por um escalar
+									

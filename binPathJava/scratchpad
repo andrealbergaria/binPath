@@ -1545,49 +1545,27 @@ Mesma coisa para cols
 									A*B relates to B*C => A RELATES TO C transitivity
 									 
 									
-								   AAA = A^k  
+								    
+									 
 									
-									[1 2 ] + [1 2 ] + [1 2] 
-									[0 1 ]   [0 1]    [0 1]
+								 	A *A * A =(A + A + A)    * K
+									   			ATIMES(3) 		
 									
-									scalar 3 * [1 2] = [3 6]
-											   [0 1]   [0 3]
-											   
+									
 									k = numero de vezes que se multiplica 
+									neste caso, k=3.
+									então
+									(A+A+A)		* k * k
+									(k vezes)   * 3 * 3
 									
-									k=3  => 2^3 = 8
-									
-									3*4 = 3 + 3 + 3 +3
-									
-									3*2 + 3*2
-									
-									a · (b · c) = (a · b) · c.
-									
-									2 (3*2) 
-									
-									possiveis factores
-									2   2alone 
-									3   3alone
-									4   (2*2
-									6	3*2
-									12  taken
+									A^3 = 3A * 3 *3
+									27A
 									
 									
-									factores de 12 = {1,2,3,4,6,,12}
+									Para obter A+A+A => multiplica-se A por um escalar
 									
-									factores de 4 = {1,2,4)
+																		
 									
-									2*2
-									possiveis factores
-									2
-									4
-									
-									algorithm (instead of adding all values, combine them two to two)
-									
-									factores de 24  = {1,2,6,12}
-									2*6 + 2*6
-									2 (2* 6)
-									todos os possvieis combniações (por exemplo 2, 2*6, 6, 2, 2*2 ) 
 									
 									
 									Factor W * Factor T  = factor WTransp
