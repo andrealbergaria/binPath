@@ -31,4 +31,26 @@ for 256 bits, set the first bit (one or zero) making it to scan 128 (less the fi
     right to left
     1000 <= 100 <= 10 <= 1  
     
+  QUARTA TENTATIVA
+  
+  when a bit changes (a new number) , cahnges the position or substituing,
+{1, 1, 0,0 } = 12
+(0,1,0,0 } = 4d
+{0,0,1,0 } = 2d
+
+(3,2) 4d -> 2d
+
+{1, 1, 0 ,0}
+{1, 0, 0 0 }
+
+se substitui, 0 para 1  então usa-se o bitshift left com 1 posicao
+se substitui  1 para 0  entao numero = numero - 2^pos
+
+position has to be between pos-1 , or pos1+1
+
+position to the left
+bitshift by one
+position to the riht
+bitshift by one
+
   

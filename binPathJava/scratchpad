@@ -1,63 +1,57 @@
  /*
  
 
-when a bit changes (a new number) , cahnges the position or substituing,
-{1, 1, 0,0 } = 12
-(0,1,0,0 } = 4d
-{0,0,1,0 } = 2d
-
-(3,2) 4d -> 2d
-
-{1, 1, 0 ,0}
-{1, 0, 0 0 }
-
-se substitui, 0 para 1  então usa-se o bitshift left com 1 posicao
-se substitui  1 para 0  entao numero = numero - 2^pos
-
-position has to be between pos-1 , or pos1+1
-
-position to the left
-bitshift by one
-position to the riht
-bitshift by one
-
-
+Cada conjunto tem o numero de elementos do anterior * 2 , bitshift left
 
 3 bits DIVIISON
     000 
 	001
 	010
 	011
-	
+
+2 bits DIVISION	
 	1   0
 0	(0,1 (0,0)	
-1   (1,1) (1,0
+1   (1,1) (1,0)
+
+							2 		3				
 
 
-cartesian_prod_2 ( (0,0) (0,1) (1,0) (1,1)
+De set 1 (0,1)
+De set E opara set C = (2,3) 2d comeca por um , 3d comeca por um 
+De set C para Set D  = (4,5,6,7) todos os numeros cujo os bits são um
+					   (8,9,10,11,12,13,14,15)
+					   (16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31)
+
+f(x) = 
+
+ 
 
 Pode ser eliminados (1,0)  e (0,1) 
 Se for adicionado ultimos elems (0,0,0) e (0,1,0)
 			
-		added zero at the beggining
-Set C      Set D
-(1,0) = (0,1,0)
-(0,1) = (0,0,1)
-(0,0) = (0,0,0)
-(1,1) = (0,1,1)
+	 	added zero at the beggining
+Set E     Set C  	    Set D   	
+1 1       (1,0) 2  		(0,1,0) 2   
+0 0       (0,1) 1       (0,0,1) 1
+          (0,0) 0    	(0,0,0) 0
+          (1,1) 3    	(0,1,1) 3
+          
+          				(1,0,0) 4
+          				(1,0,1) 5
+          				(1,1,0) 6
+          				(1,1,1) 7
 
 2d		3d
+
+To convert a 2 point to a 3d point just add it zero to teh beggining
  
- qual o resto de tres bits que faltam
- Zeros at last ?
-  REVERSE OF D
  
- (1,0,0) 4d
- (1,0,1) 5d
- (1,1,0) 6d
- (1,1,1) 7d
  
- 2D =  3D 
+ 2D =  3D
+ 
+ 3D - 2D => X=1
+  
 Trocaa 1 bit por 0 (ou revert SET D) 
 
 col 1-2  = 2bits ( (1,0) (1,1) (1,0) (1,1) }
@@ -1271,55 +1265,7 @@ solutions)
 		   
 		   2x = x+x
 		   
-		   consigo converter matrix para mais simples (sendo simetrica)
-		   
-		   a12 + a12  =  2 * (a12) duas casas =  
-		   
-		   X = a12= 3   Y = a22 = 2   a21 = W = 3
-		   
-		   a12 = a21 
-		   
-		   
-		   [ d X Y ]  [ d d1 d2 ] [X Y] [1]
-		   [ X d1 X]  				
-		   { Y X d2]
-		   
-		   X- > (1,2) (2,1) (2,3) (3,2)
-		   Y -> (1,3) (3,1)
-		   
 		  
-		  [d1    ]
-		  [	d2   ]							
-		  [	  d3 ] equals in linear to ? 
-		   
-		   [ 1   ]
-		   [  2  ]		(1,1) = 1   (2,2) = 2 (3,3) = 8 ,,transformar uma matriz simetrica num matriz 1x3 		
-		   [   8 ]
-		   
-		   a22 = a12 =>     a12 + (1,0) 
-		   a33 = a13 => 	a33 -(2,0) 
-		   
-		   [ 1 0 0 ]	
-		   [ 0 2 0 ] + 	POS 22 = POS 12
-		   { 0 0 8]
-		   
-		   Object temp = array[a][b + 1];
-		   array[a][b + 1] = array[a + 1][b];
-			array[a + 1][b] = temp; 
-		   
-		   (2,1) swamp (1,2)				   
-		   (3,3) swamp (1,3)
-		   
-		   
-		   a=2 b=1
-		   
-		   swamp row 2 with row1 with 
-		   one matrix?
-		   [ 1 0 0 ]
-		   [ 0 2 0 ]
-		   
-		   
-		   
 		   
 		   
 		   				   	
@@ -1328,8 +1274,7 @@ solutions)
 		 
 		  		(A + B)T = AT + BT:    
 				(1,2) = ( (1,2) + (		  		
-		  		    arr[i] = (arr[i] + arr[j]) - (arr[j] = arr[i]); 
-		  		    // FROM https://stackoverflow.com/questions/13766209/effective-swapping-of-elements-of-an-array-in-java
+		  		   
 		  		    
 		  		                            
 		The product of two triangular matrices is triangular
@@ -1537,57 +1482,47 @@ Mesma coisa para cols
 																		
 									MATRIZ W  * T = MATRIX WTrans
 									
-									e transitiva
-									W*T = WTrams A*B = C
-									WTrans * W = (C*A) =  
-									 
-									(AB)C = A(BC) asscioativuty
+									TRANSITIVY property?
+									
+									A = W
+									B = T
+									C = WTrans
+									
+									A*B = C 
+									C * A = B?
+									
+									what if scalar is 1  ..that means identity ?
+									
+									reverse
+									AB = BA = I
+									
+									A matrix can only have at most one inverse
+									A(B+C) = AB + AC
+									k(AB) = (kA)B = A(kB)
+									(AB)C = A(BC) 
+									
 									A*B relates to B*C => A RELATES TO C transitivity
 									 
 									
 								    
 									 
 									
-								 	A *A * A =(A + A + A)    * K
-									   			ATIMES(3) 		
-									
-									
-									k = numero de vezes que se multiplica 
-									neste caso, k=3.
-									então
-									(A+A+A)		* k * k
-									(k vezes)   * 3 * 3
-									
-									A^3 = 3A * 3 *3
-									27A
-									
-									
-									Para obter A+A+A => multiplica-se A por um escalar
-									
+								 	
 																		
 									
 									
 									
-									Factor W * Factor T  = factor WTransp
+									Factor W * Factor T  = WTransp
 										
 										m that may be multiplied by some integer to produce n 
-										mk= n 
+										MK=N 
+										M factor, K integer,N multiple
 										
 										or several factors m1*m2*m3 = n ?
 										
-										Factores muitos (m) podem ser obtido, uisando m * k = n
 										
 										
-										 
 										
-										7*3 = 21
-										
-										7*X = 21
-										X = 3
-										
-										divisor q of n => qk = n => 
-										many factors ?
-											primeiro factor numero primo?
 									[2 1 3] * [1 4 2/3]	 
 									{4 1 0]   [1/1 1 0]
 									[2 3 5]    [1 1 1 ]

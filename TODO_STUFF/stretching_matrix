@@ -1,0 +1,46 @@
+ consigo converter matrix para mais simples (sendo simetrica)
+		   
+		   a12 + a12  =  2 * (a12) duas casas =  
+		   
+		   X = a12= 3   Y = a22 = 2   a21 = W = 3
+		   
+		   a12 = a21 
+		   
+		   
+		   [ d X Y ]  [ d d1 d2 ] [X Y] [1]
+		   [ X d1 X]  				
+		   { Y X d2]
+		   
+		   X- > (1,2) (2,1) (2,3) (3,2)
+		   Y -> (1,3) (3,1)
+		   
+		  
+		  [d1    ]
+		  [	d2   ]							
+		  [	  d3 ] equals in linear to ? 
+		   
+		   [ 1   ]
+		   [  2  ]		(1,1) = 1   (2,2) = 2 (3,3) = 8 ,,transformar uma matriz simetrica num matriz 1x3 		
+		   [   8 ]
+		   
+		   a22 = a12 =>     a12 + (1,0) 
+		   a33 = a13 => 	a33 -(2,0) 
+		   
+		   [ 1 0 0 ]	
+		   [ 0 2 0 ] + 	POS 22 = POS 12
+		   { 0 0 8]
+		   
+		   
+		   (2,1) swamp (1,2)				   
+		   (3,3) swamp (1,3)
+		   
+		   
+		   a=2 b=1
+		   
+		   swamp row 2 with row1 with 
+		   one matrix?
+		   [ 1 0 0 ]
+		   [ 0 2 0 ]
+		   
+		   
+		   
