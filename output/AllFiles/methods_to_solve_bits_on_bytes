@@ -1,0 +1,34 @@
+PRIMEIRA TENTATIVA )
+) 
+	Tendo numero ,por exemplo 1011,quais os valores que
+	Pos4 =1 ,Pos3= 0 , Pos2=1 ,Pos1 =1
+	
+	usar a matrix
+   [0 0 0 1]	 If [1 0 0 0 ] AND [1 0 1 1]
+   [0 0 1 0]	 If [0 0 1 0 ] AND [1 0 1 1]
+   [0 1 0 0]
+   [1 0 0 0] 		
+   
+   Pode ser
+   	[0 0 0 1] [1 0 1 1]
+   	[0 0 1 0] [1 0 1 1]
+   	[0 1 0 0] [1 0 1 1]
+   	[1 0 0 0] [1 0 1 1]
+   	
+  SEGUNDA TENTATIVA)
+  to scan all bits, for better speed, fix at least one bit
+for example
+
+for 256 bits, set the first bit (one or zero) making it to scan 128 (less the first bit , which we fixed, and can be 0 or 1)
+  
+  TERCEIRA TENTATIVA)
+  Algorithm to test all combinations 
+  Start at using 1 bit set, and other bit always shifting right 
+  	left to right (each bit shifted right one time)
+  	Same value (doesnt work) zeros at left
+    => 10 => 010 => 0010 => 00010
+    
+    right to left
+    1000 <= 100 <= 10 <= 1  
+    
+  

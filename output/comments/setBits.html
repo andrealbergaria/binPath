@@ -1,0 +1,41 @@
+o set a bit, use:
+
+x |= 0b1; // set LSB bit
+x |= 0b10; // set 2nd bit from LSB
+
+to erase a bit use:
+
+x &= ~0b1; // unset LSB bit (if set)
+x &= ~0b10; // unset 2nd bit from LSB
+
+to toggle a bit use:
+
+x ^= 0b1;
+
+Notice I use 0b?. You can also use any integer, eg:
+
+x |= 4; // sets 3rd bit
+x |= 0x4; // sets 3rd bit
+x |= 0x10; // sets 9th bit
+
+However, it makes it harder to know which bit is being changed.
+
+Using binary allows you to see which exact bits will be set/erased/toggled.
+
+To dynamically set at bit, use:
+
+x |= (1 << y); // set the yth bit from the LSB
+
+(1 << y) shifts the ...001 y places left, so you can move the set bit y places.
+
+You can also set multiple bits at once:
+
+x |= (1 << y) | (1 << z); // set the yth and zth bit from the LSB
+
+Or to unset:
+
+x &= ~((1 << y) | (1 << z)); // unset yth and zth bit
+
+Or to toggle:
+
+x ^= (1 << y) | (1 << z); // toggle yth and zth bit

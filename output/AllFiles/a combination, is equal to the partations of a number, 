@@ -1,0 +1,22 @@
+ 
+ 5Comb1
+ unma combinaçoã é uma partição de n (neste caso 5)
+  (4C1 + 1C1 , 4C3 + 1C1 , )
+ 	4   +  1 , 4+1)
+  
+  4C2 = 6 = 5+1,4+2,3+3
+  
+  Partations of combinations
+        		  (for example partations of 5
+        		  4= 
+        		  5 =4+1,
+        		   3+2
+        		  ,1+1+1+1+1
+        		  1+1+2+1+1,
+        		   	 because combinations are partuition
+        		   	  5C1 = 4C1 + 1C1
+        		   	  5C1 = 2C1 + 2C1 +1C1
+        		   	  5C1 = 2C1 +3C1
+        		   	  
+        		   	  the formula to calculate combinations is
+        		   	  get partitions and then add them 	     		   
