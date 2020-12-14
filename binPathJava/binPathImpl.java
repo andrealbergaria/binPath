@@ -25,7 +25,18 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 public class binPathImpl {
 
-	 
+	// first number to multiply 
+	// second number to multiply (for example 4*3) = first = 4 last = 3
+	 public static boolean isPrime(int first,int last) {
+		 int[] positions = new int[first];
+		 for (int i=0 ; i< last ; i++) {
+			 positions[i] = first;
+			 
+		 }
+		 
+		 
+		 return true;
+	 }
 	public static void AlgebraError() {
 		double Xnegative = -3;
 		double X2 = Math.pow(Xnegative,2);

@@ -149,3 +149,7 @@ times 4 = (2^2 => N = 2) = 2 bit shift : 0000 0100 = 4
 
 times 8 = (2^3 -> N = 3) = 3 bit shift : 0010 0000 = 32
   
+  
+  The number to be multiplied is the "multiplicand", and the number by which it is multiplied is the "multiplier
+									Usually the multiplier is placed first and the multiplicand is placed second
+									
