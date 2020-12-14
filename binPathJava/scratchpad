@@ -1539,6 +1539,9 @@ Mesma coisa para cols
 									
 									Matrices lower or uppper triangle are equal to the partiition
 									
+									
+									math tuples are partitions
+									
 									$2 = 1 + 1$, so $P(2) = 2$.
 
 $3 = 2 + 1 = 1 + 1 + 1$, so $P(3) = 3$.

@@ -53,4 +53,17 @@ bitshift by one
 position to the riht
 bitshift by one
 
+  QUINTA TENTATIVA
   
+  	(0,0,0)
+  	(1,1,1) -> reverse
+  	(1,0,0)(0,1,0)(0,0,1), para obter a proxima combinação reverse os numeros
+       3       5     6
+    (0,1,1)(1,0,1)(1,1,0)
+        			
+      12			10		 9
+    (1,1,0,0) (1,0,1,0) (1,0,0,1) add 1 to 3bits
+      11			13			14
+    (1,0,1,1) (1,1,0,1) (1,1,1,0)
+        			
+        			
