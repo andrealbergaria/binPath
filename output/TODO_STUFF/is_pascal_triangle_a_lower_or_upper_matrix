@@ -1,0 +1,17 @@
+[ 0	 0	1 0	0		]
+  0	 1	0 1 0
+  1  0  2 0 1]
+  
+
+MMtrans= > [0 0 1
+		 [0 1 0 ]
+		 1 0  2 ]
+		 0 1 0 
+		 
+		 each row on pascal triangle has rows =number of elements of that row
+		 	3 row = 3 elemnts
+		 	4 row  = 4 elements
+		 	
+			perhaps a upper triangle matrix is a symettric matrix
+			
+			the pascal triangle has a vertifcal bar, that divides the elements , portanto é simetrico   

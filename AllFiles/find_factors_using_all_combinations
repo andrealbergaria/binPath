@@ -1,29 +1,20 @@
-k=3  => 2^3 = 8
 									
 									3*4 = 3 + 3 + 3 +3
 									
 									3*2 + 3*2
 									
-									a · (b · c) = (a · b) · c.
-									
 									2 (3*2) 
 									
 									possiveis factores
-									2   2alone 
-									3   3alone
-									4   (2*2
-									6	3*2
-									12  taken
+									2    
+									3   
+									4   
+									6	
+									12  
 									
 									
 									factores de 12 = {1,2,3,4,6,,12}
 									
-									factores de 4 = {1,2,4)
-									
-									2*2
-									possiveis factores
-									2
-									4
 									
 									algorithm (instead of adding all values, combine them two to two)
 									
@@ -32,13 +23,29 @@ k=3  => 2^3 = 8
 									2 (2* 6)
 									todos os possvieis combniações (por exemplo 2, 2*6, 6, 2, 2*2 )
 									
-									so not primes are in the form (3*4 => 3+3+3+3)
-									if for example 7, then 7 = 3 + 3 +1 then prime
+									PRIME NUMBERS ->  2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 4
+									if for example 17, then 17 =  
+																
+																7 -> 3 + 3 + 1
+																7 -> 2(3) + 1
+																
+																
+																what is 3 to 7 ..use them with 17
+																
+																5- > 2+3 , 2+2+1,1+1+1+1,
+																
+									 Se esta na forma X(Y) + 1 , então é primo
+									 
+									 5 = 2(2) +1
+									 
+									 11 
 									 
 									 3* 4 = 3+3+3+3
 									 4* 3 = 4+4+4
 									      = 2(4) +4=
 									      = 3(A)
+									      
+									      
 									FACTOR 56
 									 56 = {2,4,7,8,14,28,} 
 									-------------
