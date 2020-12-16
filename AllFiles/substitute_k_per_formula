@@ -1,7 +1,46 @@
 A *A * A =(A + A + A)    * K
-									   			ATIMES(3) 		
-									
-									
+
+Para 3A * 2A * 5A
+	A+A+A * A+A * A+A+A+A+A
+
+----------
+Why sum 3 A's ?  because it is First coeficiente
+A+A+A + A+A+A +....
+-------------------------------
+A+A times 
+
+simplyfing
+
+3A + 3A +...
+-------------
+ 2A
+
+
+
+A+A+A	
+-----   * A  
+A vezes
+
+
+A+A+A					A+A+A
+-----   		+ 	    ------
+coeficiente de A		Coeficiente de A
+----------------------------------
+  			Coeficiente De A 
+	 A+A+A
+2 (-----------
+	Coeficente)
+
+---------------
+ Coeficiente de A
+
+Coeficiente de A =    
+Para obter A+A+A => multiplica-se A por um coeficiente
+
+
+
+
+
 									k = numero de vezes que se multiplica 
 									neste caso, k=3.
 									então
@@ -12,5 +51,13 @@ A *A * A =(A + A + A)    * K
 									27A
 									
 									
-									Para obter A+A+A => multiplica-se A por um escalar
 									
+									k=2
+									
+									4X^2 
+								
+								X^2 + X^2 + X^2 + X^2
+								---------------------------
+										k=4
+								
+								
