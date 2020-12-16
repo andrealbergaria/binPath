@@ -2,11 +2,16 @@
 					ABC SYSTEM
 -----------------------------------------------
 
-                
+                Can represent integer,real numbers, etc...
                  
                  // for each bit , there is a change in the set. position or substituing
                   // solution Assign zero=0 a=01 b=10 e c=11  one=a each symbol is equal to the last plus one 
 				
+				reverse of (z) = o
+             reverse of (a) = b
+             reverse of (b) = a
+             reverse of (c) = z
+             reverse of (o) = z
                                     
              // All shifts will generate number composed of (z,a,b,c)
              
@@ -38,19 +43,23 @@
              				 010000 a,z,z
              				 100000 b,z,z
              
-             reverse of (z) = O
-             reverse of (a) = b
-             reverse of (b) = a
-             
-             For 4 bits, reverse the initial number (zzb) ,
-             To be faster, use shifting
-             hift 2 bits
-             // for xhanging positions of varaibles rather than zeros, one uses the xgh operator (like in asm)
+             				 
+             When added , for example 
+             		azz+1 = aza
+             		zzb +1  = zzc
+             		zzc+1 = zzz
+             		
+        
+        Binary number properties     		
+------------------------------------
+		If bit position zero of a binary (integer) value contains one, 
+		the number is an odd number; if this bit contains zero, then the number is even.
+		
+		Shifting all the bits in a number to the left by one position multiplies the binary value by two.
+		
+             		 
                 
-                // the objective it sum the last statement with +1
-             
-             
-                // the changing in the third position is number+1
+                 
                 
                 
                 01 00 00 => +1   => 01 00 01
@@ -90,6 +99,32 @@
                 -16,-17 = bzz -> acc
                 -20,-21 = acz -> zbz = 
                 
+                bcz = 101100
+                baz = 100100
+                
+                
+                00 10 01 (1+8) = 9  zba
+                00 10 10 (2+8) = 10 zbb
+                00 10 11 (3+8) = 11 zbc
+
+			    01 10 01 = (9+16)
+			    01 10 10 = (10+16) 
+			                    
+                101100 = bcz
+                101101 = (13+32) = 45
+                101110 = (14+32)
+                
+                100000
+                
+                complemento para dois
+                101100
+                100100
+                
+                inverting bits and add one
+                
+                
+                
+                subtraction equals 8
                 
      here)           so from baz to bzc , there are 8 positions
                 string t = counting from the original
