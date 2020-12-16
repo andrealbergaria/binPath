@@ -1170,14 +1170,14 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
 			
 				   
 				    				  
-	MATRIX A	  row1 11 11 11 11  255
-				  row2 11 11 11 10  254 
-				  row3 11 11 11 00  252
-			MSB	  row4 11 11 10 00 248
-				  row5 11 11 00 00 240			MATRIX A INVERTIBLE	
-				  row6 11 10 00 00 224			A triangular matrix is invertible if its diagonal entries are non-zero
-				  row7 11 00 00 00 192			3. A triangular matrix is invertible if and only if all diagonal entries are nonzero.
-				  row8 10 00 00 00 128		
+	MATRIX A	  row1 11111111  255
+				  row2 11111110  254 
+				  row3 11111100  252
+			MSB	  row4 11111000  248
+				  row5 11110000 240			MATRIX A INVERTIBLE	
+				  row6 11100000 224			A triangular matrix is invertible if its diagonal entries are non-zero
+				  row7 11000000 192			3. A triangular matrix is invertible if and only if all diagonal entries are nonzero.
+				  row8 100000000 128		
 				  
   MATRIX B		  row 1 = 00000000 0
 				  row 2 = 00000001 1			MATRIX A E B ARE _UNITRIANGULAR
