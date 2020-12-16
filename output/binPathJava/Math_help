@@ -153,3 +153,18 @@ times 8 = (2^3 -> N = 3) = 3 bit shift : 0010 0000 = 32
   The number to be multiplied is the "multiplicand", and the number by which it is multiplied is the "multiplier
 									Usually the multiplier is placed first and the multiplicand is placed second
 									
+									
+
+ // 256 bits , em bytes são 32
+	   // 32 bytes / 4 bytes (size of int) = 8 ints
+	    //64 bits * 4  = 256 ..
+	    // Function for getting chars
+	    // f(pos) = 8k+pos
+	      
+	    // 8*32 = 256  (one byte, combinations)
+	   // 8* 8192  = 65536 (two bytes,combinations)
+	   // 8* 536870912  = 4294967296 (4bytes , combs)
+
+
+	         									
+									

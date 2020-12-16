@@ -66,4 +66,88 @@ bitshift by one
       11			13			14
     (1,0,1,1) (1,1,0,1) (1,1,1,0)
         			
-        			
+    SEXTA TENTATIVA
+    
+    add eight to several cells at the smae time, or use a mask ,that way it saves cyclse 
+    for example
+    
+    pos1  pos2  pos3
+    +8   +8    +8  
+          			
+    SETIMA TENTATIVA
+    
+                   Permutation of 1 byte 2byte the same value      		
+   							Pos 1			Pos2  		Pos3=Pos2
+   				x	1 2 3 4 5 6 7 8   1 2 3 4 5 6 7 8
+   
+   				y	2 1 3 4 5 6 7 8   1 2 3 4 5 6 7 8
+   
+   				z	2 1 4 3 5 6 7 8   1 2 3 4 5 6 7 8
+   
+   
+   					copiar permutation(x,y) -> pos2(x,y)
+   					copiar pos2(x,y) -> pos3 (x,y)
+   					
+   	OITAVA TENTATIVA
+   	
+   	
+ 0000   0 
+ 0001   1 
+ 0010   2 
+ 0100   4 
+ 1000   8
+ 0111  7 	From 0 to 8, 4bits equals = 3bits
+ 0110  6 
+ 0101  5 
+ 0011  3
+ 
+ REAL VALUES (Start with 1)
+ 1111  15 	 
+ 1110  14
+ 1101  13
+ 1011  11
+ 0111  7		from 9  to 16 bits 4bits
+ 1000  8
+ 1001 9
+ 1010 10
+ 1100 12
+ 
+5 bits)  from 16 to 24 bits 5bits
+
+10000 16
+10001 17
+10010 18
+10011 19
+10100 20
+10101 21
+10110 22
+10111 23	
+11000 24
+11001 25
+11010 26
+11100 27
+11101 28
+11110 29
+11111 30
+ 
+ get all numbers that begin with 0, then invert them to get the real numbers.Then ignore them (they all begin with zero, so they are equal
+ to the 3BITS before
+ 				
+   
+    1 1 1 1
+	1 0 1 1 (Change one bit from 1111) 
+    0 1 1 1 (Change one bit)
+    1 1 0 1
+    1 1 1 0
+    
+    invert all values (Base 1111)
+    
+    0 0 0 0 
+    0 1 1 1
+    1 0 0 0 
+    0 0 1 0
+    0 0 0 1
+    
+   				
+   		
+    
