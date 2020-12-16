@@ -3,204 +3,14 @@
                 
                  
                  // for each bit , there is a change in the set. position or substituing
-                 
-                    
-                   // solution Assign a=01 b=10 e c=11  each variable is equal to the before plus 1 
-                      
-                        acc    011111 1 
-                        cac    110111 2
-                        cca    111101 3
-                        
-                        bcc     101111 4
-                        cbc     110111 5
-                        ccb     111110 6
-                        
-                        cbb     111010 7
-                        bcb     101110 8
-                        bbc     101011 9
-                        
-                        abb     011010 10
-                        bab     100110 11
-                        bba     101001 12
-                        
-                        baa     100101 13
-                        aba     011001 14
-                        aab     010110 15
-                        
-                        caa     110101 16
-                        aca     011101 17
-                        aac     010111 18
-                        
- 
-                 
-          
-                // inversions
-                inverseOf(a) = b (b=a also works)  add value 1 to a , or substact value 1 to b
-                inverseOf(c) = z (z=c works)
-                
-                
-                One
-                o = 11 = c;
-                Zero
-                z =0 
-                
-                z = 0
-                a = z + 1 = 01;
-                b = z + 2 = 10  (b= a+1) 
-                c = z + 3 = 11  (c= b+1)
-                o = c = z+c = 11
-                
-                c=o ???? its why were using only 2 binary digits, for a total of 4 elements, so o can't appear
-                
-                inverse
-                z = 1
-                a = 10
-                b = 01
-                c = z
-                o = 00 = c = z
-               
-                [a,b,c]
-                
-        // In the case , a,b,c use the truth table
-                a=z+1 ==> 01
-                b=a+1 ==> 10
-                c=b+1 ==> 11
-                d=c+1 ==> 100
-               
-                
-        // how do you invert the elements of a set
-                            
-                        
-                        10 01 01 
-                        11 01 01 
-                        //one bit to change the abb (either shift, or add, or subtract, or rotate)
-                        
-                            
-                            
-                  a)    xor A 10 01 01      (baa)  => 1+4+32 = 37
-                          B 11 01 01      (caa) => 1+4+16+32 = 55
-                          ---------
-                            01 00 00          +16 (01 00 00) (left shift de quantos ? 4bits , A << 4 or B << 4)
-                                                                   
-                        in this case, in a , the addition must be performed , because that would evenrtually be a negative number
-                            
-                 b)    xor 11 01 01           (caa) 1+4+16+32 = 55
-                         10 01  01          (baa) 1+4+32 = 37
-                         01 00  00   // +16 
-                                    //xor use to subtract
+                  // solution Assign a=01 b=10 e c=11  each variable is equal to the before plus 1 
 
                                     
-                                    
-                        37+55 = 92
-                        complement(37) = 10 01 01 (37
-                                         01 10 10 (28)
-                                         ---------
-                                    +    11 01 01 => 1+4+16+32 (53)
-                        55-37 = 18 
-                        37-55 = 10 01 01 - 
-                                    
-                        in this case, in a ,a subtraction must be performed , because that would evenrtually be a negative number
+                            
                                     
                                     
-                                    can a xor, give a negative value=?
-                                    
-                                    
-                    xor can be used to add and subtract
-                                    
-                        to add, A xor B, to subtract B xor A
                         
                         
-                        
-                        
-                        
-                        
-                    xor bba = 10 10 01
-                        bbc  = 10 10 11
-                        -----------------
-                        
-                        000010 // +2  (flip de quantos ? 000000 >> 6
-                        
-                        10 10 10 bbb
-                        10 10 11 bbc
-                        
-                        000001 +1 (xor)
-                        
-                                  (bbb)
-                        10 10 01 (bba)
-                        
-                        00 00 10 +2 (xor)
-                        
-                       // several adds, will result in the binary number
-                        
-                       /*  11 11 11 ccc  
-                         11 11 10 ccb
-                         --------
-                         00 00 01 (zza) +1
-                         
-                         11 11 11 ccc
-                         11 11 01 cca
-                         --------
-                        00 00 10 +2 (zzb)
-                        
-                        11 11 11 ccc
-                        11 11 11 ccc
-                        --------
-                        00 00 00  +(zzz) +0
-                        */
-                        
-                         11 11 11 ccc  
-                         11 11 10 ccb
-                         --------
-                         00 00 01 (zza) +1
-                         
-                        
-                        
-                        10 10 10 bbb
-                        10 10 11 bbc
-                        --------
-                        00 00 01 (zza) +1
-                        
-                        
-                        a->b  +3 (aaa,aab) last pos
-                        c->a +2 (ccc,cca) last pos
-                        c->z +1 (ccc,ccz) last pos
-                        
-                        xor must be equal to +1 (1st round)
-                        
-                      a  00 00 
-                      b  00 01  a^b = 00 00 xor 00 01 = 0001 = b^a
-                        
-                      ab=ba
-                      
-                     
-                      
-                                    
-                     a 00 00 
-                     b 00 01 add a+1 (ab=ba)
-                     -------
-                           1
-                           
-                    
-                    2nd round    +2
-                     
-                     a  00 00
-                     c  00 10  add a+2  a^c = 0010 = c^a
-                     
-                      
-                   3rd round
-                    
-                    b 00 01
-                    c 00 10   add a+3   b^c = 0011 = c^b
-                    
-                //its all equal from on now
-             
-             
-             from the above, 
-             z=00
-             a=01
-             b=10
-             c=11
-             
              // to get the bytes from the variables, for instance to make a= ? to use 2 bytes, 
              a) 2bytes-> 1 byte (shift left 2 bits)
              
@@ -464,11 +274,6 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                  for 0='c' and 1='b' ==> 3 pos 
                      
                  
-                for (iterator = 1 ; iterator < 2; iterator++ ) {
-                       zero[iterator-1] = 0;
-                       zero[iterator] = 
-                 
-                 }
                  
 
                  
@@ -586,7 +391,7 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                    
                    
                    
-                   so if i follow the algorithm (0000 00001 0010 0100 1000, 1111 1110 1101 1011,0111)
+                   so if i follow the algorithm (0000 00001 0010 0100 1000, 1111 1110 1101 1011,0111). This only works with 3bits
                    it woudl work
                    
                  
