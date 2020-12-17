@@ -168,5 +168,54 @@ DECIMA TENTATIVA
              
       d)  [1] bit bit bit [1] bit bit bit
               
-              
+
+TENTATIVA NUªMERO 11
+    		First Byte		
+                  	0
+                  	
+                  	1
+                  		SeconByte = FirstByte Copy FirstByte or FirstByte, and then reverse it (01 -> 01)
+                  	
+            		0
+            		
+            		1		can revert binary numbers ( 0->1 , 1->0 , 0-> 1 , or just set the bits with leading ones those belong to second byte)
+            				If leading zeros, then second byte = first byte
+            		0
+            		
+            		1
+            		
+      					Third Byte = SecondByte copy SecondByte OR ThirdByte = Seocndbyte, instead of copyiong reverse it
+      					
+      				0
+      				
+      				1
+      							Already assigned first two combinations of zeros and ones (4 combinations  2 zeros and ones)
+      				0      				
+      				
+      				1
+      				
+      				0 
+      				 			Set equal to the last numbers (starting from line 4) or reverse numbers
+      				1 
+      				
+      				0 
+      				
+      				1	
+      			
+      				Assign first bit to 1 (2bytes-> pos(1),pos(4)  , 3bytes-> pos(1),pos4,pos 6 ,pos 8) need to copy byte to byte and then 
+      				set 1 on leading positions  in even positions 
+        
+                	reversing numbers faster than setting it?
+      
+            
+                algorithm
+                	copy first byte to all table
+                   adicionar ones, to even positions.
+                or set first byte, and do reverses.How many reverses needed for 2bytes for (16 reverses)
                 
+           
+
+   TEATNIVA NUMERO 11
+   multiplicat 6bits = 5bits * 2
+   
+   		    
