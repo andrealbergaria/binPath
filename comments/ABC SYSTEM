@@ -3,6 +3,47 @@
 -----------------------------------------------
 
                 Can represent integer,real numbers, etc...
+                  A = 000
+      			  B = 001
+      			  C = 010
+      			  D = 100
+      			  E = 111
+      			  F = 110
+      			  G = 101
+      			  H = 011
+      			  
+      			  
+      			  
+      			   
+                 A = 00 and 01
+                    b = 10 and 11
+                    
+                    A A A A
+                    B A A A
+                    
+                    A = 0000 and 0001 and 0010 and 0011
+                    B = 0100 and 0101 and 0110 and 0111
+                    C = 1000 and 1001 and 1010 and 1011
+                    D = 1100
+                    
+                   or with one letter for 2 numbers
+                   
+                   A = 0000 and 0001
+                   B = 0010 and 0011
+                   C = 0100 and 0101
+                   D = 0111 and 1000
+                   E = 1001 and 1010
+                   F = 1011 and 1111
+                   
+                A = 0000 rev(A) = 1111
+                B = 0001 rev(b) = 1110
+                C = 0010 rev(c) = 1101 
+                D = 0011 rev(D) = 1100
+                E = 0100 rev(E) = 1011
+                F = 0101 rev(F) = 1010
+                H = 0110 rev(H)=  1001
+                G = 0111 rev(G) = 1000
+                
                  
                  // for each bit , there is a change in the set. position or substituing
                   // solution Assign zero=0 a=01 b=10 e c=11  one=a each symbol is equal to the last plus one 
@@ -12,6 +53,10 @@
              reverse of (b) = a
              reverse of (c) = z
              reverse of (o) = z
+                
+                The numbers can be combined with bits. If the number of bits is odd, then add a zero (letter z) to the number an concat
+           the symbols
+           
                                     
              // All shifts will generate number composed of (z,a,b,c)
              

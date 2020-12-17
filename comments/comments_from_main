@@ -1,56 +1,9 @@
-//  // The algorithm works by first getting a base of 0000, and change one bit at a time (0001,0010,etc) compared to the base;
-// Then it uess a base of 1111 and change one bit at a time (1110,1101,etc...)
-// this can be used in arrays
-// if you have three bytes {0,0,0} (this 0 can be anything),like {"str","str2","str3"}
-// then start by {str, str ,str}
-// and keep changing {str,str,str2}
-// {str,str2,str} , etcetcetc
-// 0 = str
- //  0 = str2
-  // 0 =str3
 
-//1=str
-//1=str2
-// 1=str3
-
-// another view of it, is that 0= 0 and 1=[1,2,3] for example...in this case the 111111 cases needs to invert the zero and the set ([1,2,3]
-
-// link with -lcrypt
-
-/*
- * 
- * 
- * Why assigning one byte to letter doesnt works
- * 
- *  Byte1  Byte2  Byte3 Byte 4  (2^256  a lot of combinations...)
- *  256     256     256  256
- *
- * 4bits 4bits 4bits (2^4 16 possible combinations for letter) 
- * 
- * Concat binary numbers not equal to all possible combinations 
- * 
- * Also , assigining 00 | 00 | 00 |00 to 00000000,00000000,0000000,00000 doesnt work
- * 
  * // All values that compose all numbers are
                 {0,1,2,3,4,8,16,32,48} using 6 bits
             
- */
-/*
                  * 
                  * 
-                 * A00010000lgorithm , only works with number of bits <= 3
-                 *  000
-                 *  001
-                 *  010
-                 *  100
-                 *  111
-                 *  110
-                 *  101
-                 *  011
-                 *  on this phase keep changing bits (like for example 101 or 011 until all acouunted for
-                 * 
-                 * 
-                /*
                  * For 4 bits , needs
                  * 3,5,6,7
                  * 
@@ -69,150 +22,40 @@
                 sequence of numbers not to be filled  a) 3,5,6,7
                 12,10,9 => Numbers reverse from previous sequence a)
                 
-                
-                // 8 -> numero de posicoes
-                // first 4 -> numero de digitos 
-                // Arep(4,8) = 4^8 = 65535
-                
-                
-                
-                // Ascii vaule 'c'  => 67
-                // Ascii value '0' => 48
+               
                 
               
            
                 
-                0101 | 0100 | 1010 | 1010 | 1011 
-                 F      E      K      K     L    
-                 
                     
-                    
-                    quero testar = 256 combinations
-                
-                    256 % 8 = 32 bytes
-                
-                00000000 = 000
-                11111111 = 255
-                    
-                    65536 (2 bytes) = 256 * 256;
-                    2^16 = 65535
-                    
-                     exemplo) reduzir de 2 bytes para 1 byte
+                        exemplo) reduzir de 2 bytes para 1 byte
                                         65536  256
                       
-                   2^8 = 256
-                    32 primeiros bytes são iguais
-                    
+                  	
+                    Arranjos de 8 bytes num byte, com repetição
+                    1P1 + 2P1 + 3P1 + 4P1 
+                     					1 P 1
+                     byteB     byteA 	 byte A 
                     00000000 00000001 | 00000001
-                    00000000 00000010 | 00000010
+    	            00000000 00000010 | 00000010
+	    			00000000 11111111 | 11111111                
                     
-                            257?????
-                       pos1    pos2     
-                    00000001 00000000 
-                    00000010 00000000
+                     1 byte    1byte	1byte
+                    00000001 00000000 | 00000000
                     
-                    os proximos 32 bytes sao iguais aos primerios bytes mas na pos1
-                    
-                    65536-512 (256+256) = 65023
-                    
-                    faltam 65023 combinações
-                    
-                    pos1=pos2
-                    pos1 pos2
-                00000001 00000001
-                    
-                    faltam 64767 combs
-                    
-                    
-                    A = 00 and 01
-                    b = 10 and 11
-                    
-                    A A A A
-                    B A A A
-                    
-                    A = 0000 and 0001 and 0010 and 0011
-                    B = 0100 and 0101 and 0110 and 0111
-                    C = 1000 and 1001 and 1010 and 1011
-                    D = 1100
-                    
-                   or with one letter for 2 numbers
-                   
-                   A = 0000 and 0001
-                   B = 0010 and 0011
-                   C = 0100 and 0101
-                   D = 0111 and 1000
-                   E = 1001 and 1010
-                   F = 1011 and 1111
-                   
-                A = 0000 rev(A) = 1111
-                B = 0001 rev(b) = 1110
-                C = 0010 rev(c) = 1101 
-                D = 0011 rev(D) = 1100
-                E = 0100 rev(E) = 1011
-                F = 0101 rev(F) = 1010
-                H = 0110 rev(H)=  1001
-                G = 0111 rev(G) = 1000
-                
-            1,2,3,4,5,6,7  8,9,10,11,12,13,14,15,16
             
             
-            3 btis          3 bits (leading 1)
-              0   000  0    1 111  (15)   15
-              0   001  1    1 110  (14d)   14
-              0   010  2    1 101 (13d)  13
-              0   100  4    1 011  (11d)   11
-              0   111  7    1 000 (8d)     8 
-              0   110  6    1 001 (9)       9
-              0   101  5    1 010 (10d)  10
-              0   011  3    1 100 (12d) 12
-            
-            
-            10 000 (16)             11 000
-            10 001 (17)             11 001
-            10 010 (18)             11 010
-            10 100 (20)             11 100
-            10 111 (23)             11 111
-            10 110 (22)             11 110
-            10 101 (21)             11 101
-            10 011 (19)             11 011
-            
-            2^5 = 32
-            
-            100 000 (32)           101 000
-            
-            101 000
-            
-            110 000 
-            
-            100 001                101 001
-            100 010                101 010 
-            100 100                 
-            100 111
-            100 110
-            100 101
-            100 011
-            
-            
-            
-       (leading 0 ou 1)
-      
-      A = 000
-      B = 001
-      C = 010
-      D = 100
-      E = 111
-      F = 110
-      G = 101
-      G = 011
+      				{A,B} 
+      				
+      				AA  
+      				AB
+      				BA
+      				BB
+     
       numbers in parentsis leading bits
            A      A  
       
-        [0] 000 (A) [0] 000 (A)
-        [0] 000 (A) [0] 001 (B)
-        [0] 000 (A) [0] 010 (C)
         
-        [0] 000 (A) [1] 000 (A)
-        {0] 000 (A) [1] 000 (A)
                 
                algorithm       algorithm
       a)  [0] Bit bit Bit [0] bit bit bits
@@ -222,87 +65,16 @@
       c)  [1] bit bit bit [0] bit bit bit
              
       d)  [1] bit bit bit [1] bit bit bit
-      
-      4*2^6
-       
-     000
-     001
-     010
-     100
-     111
-     110
-     101
-     011
-      
-       
-       char *b = {'\n',000,'  ',001,' ' ,010,' ',100,' ' ,111,' ',110,' ',101,' ',011}
-       char b2
-       
-            
-              16 cominaçõse = 4*4 
-              2bits * 4pos = 2^4 = 16
-              2bits * 5 pos = 2^5 = 32comb
               
               
-            A = 0 0000   rev(A) = 111111
-            B = 0 0001   rev(B) = 11110
-            C = 0 0010   rev(C)=  11101
-            D=  0 0100    rev(D) = 11011
-            E=  0 1000    rev(E)=  10111
-            .... use 4 bits above
-            F=  1 0000    rev(F) = 01111
-            G = 1 0001
-
-            
             8 bits
             
-            4 bits  4 bits
+          4 bits  4 bits
             
             
-            1      
+                
                    
-                    12 13 14 15 15+14+13+12 = 54 
-                   
-                        f(G) = {0,1,10,11}
-                    100  101 110 111 2^3 = 2*2*2 = 8 comb
-                    
-                     G= 4 , g=5, g=6, G=6
-                    quero converter letra em bits
-                    
-                    
-                    
-                G G   8*8 = 64 combinations
-                
-                f(letter) = 
-                
-                 Get all combinations
-                 
-                 1111 1111  => 2 ^ 8  => 256 numbers 256 combinations
-                 
-                 0000 0000 => 1 combination
-                 0000 0001 => 2 combination 
-                 
-                  P     P           
-                 1110 1111 => PP 1 combination 
-                  O     P
-                 1101 0001   PB   1 combination 
-                  N     B 
-                  
-                  
-            convertByteToAscii(v1,0xf0);
-             convertByteToAscii(v1,0x0f);
-                    v1++;
-                    
-
-        
-                digits = 15
-                pos = 2
-                 
-                 
-                Ar(15,2) =  15 ^ 2 = 225
-                2^8 = 256
-                
-                       
+           
 
         
 
