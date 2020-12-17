@@ -30,47 +30,53 @@
                     
                         exemplo) reduzir de 2 bytes para 1 byte
                                         65536  256
-                      
-                  	
-                    Arranjos de 8 bytes num byte, com repetição
-                    1P1 + 2P1 + 3P1 + 4P1 
-                     					1 P 1
-                     byteB     byteA 	 byte A 
-                    00000000 00000001 | 00000001
-    	            00000000 00000010 | 00000010
-	    			00000000 11111111 | 11111111                
-                    
-                     1 byte    1byte	1byte
-                    00000001 00000000 | 00000000
-                    
-            
-            
-      				{A,B} 
+                  
+                  2byte = 1byte with 2 byte has leading one's
+                  
+                  reverse the binary number wich begins with ones to further count
+                  
+                  			2 byte		1byte
+                  			0 			
+                  			0
+                  			0
+                  			0
+                  			10000000
+                  			10000001
+                  			10000010
+                  			1
+                  			1
+                  			
+                  			For 2 bytes
+            		0
+            		
+            		1		can revert binary numbers ( 0->1 , 1->0 , 0-> 1 , or just set the bits with leading ones those belong to second byte)
+            				If leading zeros, then second byte = first byte
+            		0
+            		
+            		1
+            		
+      					For 3 bytes (so reverting, cant be sequential...not using)
+      					
+      				0
       				
-      				AA  
-      				AB
-      				BA
-      				BB
-     
-      numbers in parentsis leading bits
-           A      A  
-      
+      				0
+      				
+      				1
+      				
+      				1
+      				
+      				0 
+      				 
+      				0 
+      				
+      				1 
+      				
+      				1	
+      			
+      				Assign last byte to next 
         
                 
-               algorithm       algorithm
-      a)  [0] Bit bit Bit [0] bit bit bits
-             
-      b)  [0] bit bit bit [1] bit bit bits
-             
-      c)  [1] bit bit bit [0] bit bit bit
-             
-      d)  [1] bit bit bit [1] bit bit bit
-              
-              
-            8 bits
-            
-          4 bits  4 bits
-            
+      
             
                 
                    
