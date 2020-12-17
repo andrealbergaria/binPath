@@ -95,15 +95,6 @@
              		zzc+1 = zzz
              		
         
-        Binary number properties     		
-------------------------------------
-		If bit position zero of a binary (integer) value contains one, 
-		the number is an odd number; if this bit contains zero, then the number is even.
-		
-		Shifting all the bits in a number to the left by one position multiplies the binary value by two.
-		
-             		 
-                
                  
                 
                 
@@ -131,7 +122,7 @@
                01 00 00 => -1 => zcc
                 a  z   z
                 
-                String t2 = "not calculated, assumed"
+                
                 
                 
                 
@@ -474,6 +465,6 @@ use 1 bit b, shift it 3 times , acc,cac,cca
                    [ 1 0 1] [1 2 3] => [1 7 3]
                    
                    
-                   
+                   Each symbol represents, one entrace in teh truth table 
                    
                    

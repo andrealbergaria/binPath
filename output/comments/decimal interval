@@ -1,6 +1,0 @@
-// from byte1 to byte2 
-  // from byte2 to byte3, etcc...the interval is always the same, and the elements in the interval are also all equal
-  		// 256 -> is the number of elems in each iteration (each interval has 256*intervalSize
-  		// the intervals are all equals 255*intervalsize
-        		//
-        		what about decimal 
