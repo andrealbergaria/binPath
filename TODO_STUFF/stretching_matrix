@@ -11,9 +11,58 @@
 		   [ X d1 X]  				
 		   { Y X d2]
 		   
-		   X- > (1,2) (2,1) (2,3) (3,2)
-		   Y -> (1,3) (3,1)
+		   a matrix é simetric logo A = Atrans
 		   
+		  A11 , A22 ,A33
+		  
+		  A11 = A11
+		  A22 = A12
+		  A33 = A13
+		  
+		  
+		  A22 -> change row from 2 to 1
+		  A33 -> change row from 3 to 1
+		  
+		  subtract row by one
+		  
+		  MATRIX A  - MATRIX B = MATRIX_WITH ROWSUBRACTED
+
+
+			d= B
+			d1 = X
+			d2 = C
+			W = X
+			V = V
+			if
+		   		[ d W V ] 			[ d X V ]
+	MATRIX A	[ W d1 V]  MATRIX B [ W X V ]			 	
+		   		{ W V d2]   		[ W V d2]
+
+		
+		W = d1
+		
+		A12
+		A22
+		A32 = dot product  
+		
+		=> vector [A11]		[ A11 A21 A31 ]
+				  [A21] => 
+				  [A31]
+		
+		=> vector [A12 ]	[A12 A22 A32]
+		   	      [A22 ] 
+				  [A32 ] 
+		
+		TRANSPOSE
+		
+			vecotr [ A13 ] => [A13 A23 A33]
+				   [ A23 ]
+		           [ A33 ]
+
+		  basta cacular as matrizes triangulares. Neste caso , as matrizes são iguais
+		  basta representar uma matriz 
+		  
+		  Atransposed used to check simetry
 		  
 		  [d1    ]
 		  [	d2   ]							
