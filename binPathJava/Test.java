@@ -88,5 +88,12 @@ public class Test {
     		}
     		
 */
+	public static void main(String[] args) {
+		byte a = (byte) 5;
+		//System.out.println(a+"   ABC");
+		String s =binPathImpl.printBits(a, "new", true);
+		System.out.println(s);
+	}
+	
 	}
 

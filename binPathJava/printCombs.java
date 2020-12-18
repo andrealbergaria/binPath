@@ -41,17 +41,17 @@ public class printCombs {
 		    	
 		    	
 		    	if (numberOfBits >= 1 && numberOfBits <= 8) {
-		    		resultToPrint = binPathImpl.printBits((byte)startByte, args[2]);
+		    		resultToPrint = binPathImpl.printBits((byte)startByte, args[2],false);
 		    		System.out.print(resultToPrint);
 		    		
 		    	}
 	    		else if (numberOfBits >= 8 && numberOfBits <=  16 ) {
-		    		resultToPrint = binPathImpl.printShortBits((short)startByte,args[2]);
+		    		resultToPrint = binPathImpl.printShortBits((short)startByte,args[2],true);
 		    		System.out.print(resultToPrint);
 	    		}
 
 	    		else if (numberOfBits >= 16 && numberOfBits < 33) {
-	    			resultToPrint = binPathImpl.printIntBits((int) startByte,args[2]);
+	    			resultToPrint = binPathImpl.printIntBits((int) startByte,args[2],true);
 	    			System.out.print(resultToPrint);
 	    		}
 

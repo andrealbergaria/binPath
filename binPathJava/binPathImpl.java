@@ -108,72 +108,61 @@ public class binPathImpl {
 	
         
        
+       
         
-        private static <T> Vector<Integer> getThreeBitsMarkerM(int num_three_bits) {
-        	Vector<Integer> threeBitsMarker= new Vector<>();
-
-
-        	int num = 0;
-        	
- 
-        	// etapa = 66536
-        	double etapa = Math.pow(2,num_three_bits)  / 65536;
-        	
-        	 num = 7;
-        	threeBitsMarker.add(new Integer(num));
-        	num+=8;
-        	
-        	//int it = 0;
-        	int it2 =1;
-        	int total=0;
-        	
-        	
-        	for (double i=0 ; i < etapa; i++) {
-        		threeBitsMarker.add(new Integer(num));
-        		num+=8;
-        		
-        		it2++;
-        		total++;
-        		System.out.println(i);
-        	}
-        
-        	System.err.println("\nTotal markers : "+total);
-        	return threeBitsMarker;
-        	
-        }
-        
-        public static String printShortBits(short number,String modeOfPrint) {
-    		String resultWithPadZero = String.format("%8s",Integer.toBinaryString(number).replace(" ", "0"));
-    		if (modeOfPrint.equals("new"))
-        	    return resultWithPadZero+"  (d) "+number;
-        	else if(modeOfPrint.equals("listed"))
-        		return  resultWithPadZero;
-        	   
-    	   return "\n no new or listed";
+        public static String printShortBits(short number,String modeOfPrint,boolean printLeadingZeros) {
+    		byte t = (byte) (number & 0xff);
+    		
+    		String firstByte= printBits(t,modeOfPrint,printLeadingZeros);
+    		
+    		t = (byte) ((number >> 8) & 0xFF);
+    		
+    		
+    		String secondByte = printBits(t,modeOfPrint,printLeadingZeros);	
+    	   
+    		return firstByte + " " + secondByte + " (d) "+number;
     	}
 
 
 
-        public static String printIntBits(int number,String modeOfPrint) {
-        		String resultWithPadZero = String.format("%8s",Integer.toBinaryString(number).replace(" ", "0"));
-        		if (modeOfPrint.equals("new"))
-            	    return resultWithPadZero+"  (d) "+number;
-            	else if(modeOfPrint.equals("listed"))
-            		return  resultWithPadZero;
-            	    
-            	  return "\n no new or listed";
+        public static String printIntBits(int number,String modeOfPrint,boolean printLeadingZeros) {
+        	
+        		byte t = (byte) (number & 0xff);
+        		
+        		String firstByte= printBits(t,modeOfPrint,printLeadingZeros);
+        		
+        		t = (byte) ((number >> 8) & 0xFF);
+        		
+        		String secondByte = printBits(t,modeOfPrint,printLeadingZeros);		
+        				
+        		t = (byte) ((number >> 8) & 0xFF);
+        		
+        		String thirdByte = printBits(t,modeOfPrint,printLeadingZeros);
+        		t= (byte) ((number >> 8) & 0xFF);
+        		
+        		String fourthByte  =printBits(t,modeOfPrint,printLeadingZeros);
+        		t= (byte) ((number >> 8) & 0xff);
+        		
+        		return firstByte + " " + secondByte + " "+thirdByte +" "+fourthByte+"  (d) "+number; 
         	   
         	}
 
         
         // FROM https://mkyong.com/java/java-how-to-convert-a-byte-to-a-binary-string/
-        public static String printBits(byte b,String modeOfPrint) {
-        	String resultWithPadZero = String.format("%8s", Integer.toBinaryString(b))
-                    .replace(" ", "0");
-        	if (modeOfPrint.equals("new"))
-        	    return resultWithPadZero+"  (d) "+ b;
-        	else if(modeOfPrint.equals("listed"))
-        		return  resultWithPadZero;
+        public static String printBits(byte b,String modeOfPrint,boolean printLeadingZeros) {
+        	String e="";
+        		if (printLeadingZeros == true) {
+        			e = String.format("%8s",Integer.toBinaryString(b));
+        			e = e.replace(' ','0');
+        		}
+        			
+        		else
+        			e = Integer.toBinaryString(b);
+        		
+        		if (modeOfPrint.equals("new"))
+        			return e+"  (d) "+ b;
+        		else if(modeOfPrint.equals("listed"))
+        			return  e;
 
         	   return "\n no new or listed";
         	}
@@ -601,45 +590,19 @@ public class binPathImpl {
              
         	
         } */
-        private static void printThreeBits(int num_three_bits) {
+        private static String printThreeBits(int number) {
+        	int t  = number;
+        	String r = "";
         	
-        	Vector<Integer> threeBitsMarker= new Vector<>();
+        	for (int i =0 ; i < 8 ; i++) {
+        		byte b = (byte) (t & 0x3);
+        		t--;
+        		r+=Integer.toBinaryString(b) +"  (d) "+b+" \n"; 
+        	}
         	
-        	threeBitsMarker = getThreeBitsMarkerM(num_three_bits);
-        			
-
-        		
-        			
-        	int sizeA = threeBitsMarker.size();
-        	
-        	Integer[] pos = new Integer[sizeA];
-        	
-        	threeBitsMarker.copyInto(pos);
-        	
-        			for (int sizeOfMarker =0 ;  sizeOfMarker <= 7 ; sizeOfMarker++) {
-        				//printArray(pos);
-        				for (int i = 0 ; i < pos.length; i++) {
-        					pos[i]++;
-        					
-        				}
-        			}	
-        		
-        	
-        	
+        	return r;
         }
        
-       private static void fillArray() {
-    	   int[] defaultByte = new int[256];
-    		   
-    	   for (int i=0; i < defaultByte.length;i++) {
-    		   defaultByte[i] = i;
-    	   }
-    	   
-    	   
-    	   
-    	   
-       }
-      
         public static void main(String[] args) {
         	// 2^6 = 64
     		
@@ -735,7 +698,7 @@ MATRIX C  		00000010	2
         		  reversed|=( num &1);
         		  num>>=1;
         		}
-        	String s = printIntBits(reversed,"new");
+        	String s = printIntBits(reversed,"new",true);
         	System.out.print("\nNum : "+temp + " REVERSE "+s);
         	return reversed;
         }
