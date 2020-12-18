@@ -128,7 +128,7 @@ public class binPathImpl {
         public static String printIntBits(int number,String modeOfPrint,boolean printLeadingZeros) {
         	
         		int t = number & 0xff;
-        		
+        		String ret="";
         		String firstByte= printBits(t,modeOfPrint,printLeadingZeros);
         		
         		t = ((number >> 8) & 0xFF);
@@ -143,7 +143,8 @@ public class binPathImpl {
         		String fourthByte  =printBits(t,modeOfPrint,printLeadingZeros);
         		t=  ((number >> 8) & 0xff);
         		
-        		return firstByte + " " + secondByte + " "+thirdByte +" "+fourthByte+"  (d) "+number ; 
+        		ret = firstByte + " " + secondByte + " "+thirdByte +" "+fourthByte+"  (d) "+number ; 
+        		 return ret;  
         	   
         	}
 
@@ -158,6 +159,7 @@ public class binPathImpl {
         			
         		else
         			e = Integer.toBinaryString(b);
+        		
         		return e;
         }
         
@@ -584,19 +586,7 @@ public class binPathImpl {
              
         	
         } */
-        private static String printThreeBits(int number) {
-        	int t  = number;
-        	String r = "";
-        	
-        	for (int i =0 ; i < 8 ; i++) {
-        		byte b = (byte) (t & 0x3);
-        		t--;
-        		r+=Integer.toBinaryString(b) +"  (d) "+b+" \n"; 
-        	}
-        	
-        	return r;
-        }
-       
+        
         public static void main(String[] args) {
         	// 2^6 = 64
     		
@@ -684,18 +674,7 @@ MATRIX C  		00000010	2
        
     AlgebraError();
 	}
-        private static int  revertNum(int num) {
-        	int reversed=1;
-        	int temp = num;
-        	while (num!=0){
-        		  reversed<<=1;
-        		  reversed|=( num &1);
-        		  num>>=1;
-        		}
-        	String s = printIntBits(reversed,"new",true);
-        	System.out.print("\nNum : "+temp + " REVERSE "+s);
-        	return reversed;
-        }
+       
 }
 
 			

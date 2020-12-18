@@ -24,36 +24,36 @@ public class printCombs {
 		   System.out.println("\nUsing "+numberOfBits+"  bits\n");
 		   System.out.println("\nStarted printing at "+startByte);
 		    
-		    int  s = (int) Math.pow(2, numberOfBits);
+		    int  numCombs = (int) Math.pow(2, numberOfBits);
 		    
-		    System.out.println("\nNumber of elems printed "+s);
+		    System.out.println("\nTrying to print "+numCombs);
 		    
 		    int t=7;
-		    int it=0;
+		    
 
 		    ArrayList<Integer> threeBits = new ArrayList<>();
 		    
 		    if (args[2].equals("listed"))
 		        System.out.print("{ ");
 		    String resultToPrint = "";
-		    for (int i = 0; i< s ; i++) {
+		    for (int i = 0; i< numCombs ; i++) {
 		    	//if (args[2].equals("tuples")) 
 		    	//	binPathImpl.printTuples(startByte);
 		    	//else
 		    	
 		    	
 		    	if (numberOfBits >= 1 && numberOfBits <= 8) {
-		    		resultToPrint = binPathImpl.printBits((byte)startByte, args[2],true);
+		    		resultToPrint = binPathImpl.printBits(startByte, args[2],true);
 		    		System.out.print(resultToPrint);
 		    		
 		    	}
 	    		else if (numberOfBits >= 8 && numberOfBits <=  16 ) {
-		    		resultToPrint = binPathImpl.printShortBits((short)startByte,args[2],true);
+		    		resultToPrint = binPathImpl.printShortBits(startByte,args[2],true);
 		    		System.out.print(resultToPrint);
 	    		}
 
 	    		else if (numberOfBits >= 16 && numberOfBits < 33) {
-	    			resultToPrint = binPathImpl.printIntBits((int) startByte,args[2],true);
+	    			resultToPrint = binPathImpl.printIntBits(startByte,args[2],true);
 	    			System.out.print(resultToPrint);
 	    		}
 
@@ -83,16 +83,21 @@ public class printCombs {
 		    if (args[2].equals("listed"))
 		    	System.out.print(" } \n");
 		    
-		    System.out.println("Number of three bits : "+threeBits.size());
+		    System.out.println("\nNumber of three bits : "+threeBits.size());
+		    int elemsPrinted = startByte;
+		    System.out.println("\nElements printed "+elemsPrinted);
 		    
+		    int multiple = threeBits.size();
 		    
-		    for (int i=0; i < threeBits.size() ; i++) {
-		    	 	 
-		    		System.out.print(threeBits.get(i)+",");
+		    for (int i=1; i < threeBits.size() ; i++) {
+		    		// The division equals m, and if the rest of the division of multiple by i (some integer)
+		    	    // then m must be integer , and therefore n is multiple of m
+		    	     if ( multiple % i == 0) 
+		    	 		 System.out.println();
+		    		System.out.print(threeBits.get(i-1)+",");
 		    	
 		    }
 			
 		}
 	
-
 }
