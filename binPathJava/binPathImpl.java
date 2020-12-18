@@ -110,12 +110,12 @@ public class binPathImpl {
        
        
         
-        public static String printShortBits(short number,String modeOfPrint,boolean printLeadingZeros) {
-    		byte t = (byte) (number & 0xff);
+        public static String printShortBits(int number,String modeOfPrint,boolean printLeadingZeros) {
+    		int t = (number & 0xff);
     		
     		String firstByte= printBits(t,modeOfPrint,printLeadingZeros);
     		
-    		t = (byte) ((number >> 8) & 0xFF);
+    		t = ((number >> 8) & 0xFF);
     		
     		
     		String secondByte = printBits(t,modeOfPrint,printLeadingZeros);	
@@ -127,29 +127,29 @@ public class binPathImpl {
 
         public static String printIntBits(int number,String modeOfPrint,boolean printLeadingZeros) {
         	
-        		byte t = (byte) (number & 0xff);
+        		int t = number & 0xff;
         		
         		String firstByte= printBits(t,modeOfPrint,printLeadingZeros);
         		
-        		t = (byte) ((number >> 8) & 0xFF);
+        		t = ((number >> 8) & 0xFF);
         		
         		String secondByte = printBits(t,modeOfPrint,printLeadingZeros);		
         				
-        		t = (byte) ((number >> 8) & 0xFF);
+        		t = ((number >> 8) & 0xFF);
         		
         		String thirdByte = printBits(t,modeOfPrint,printLeadingZeros);
-        		t= (byte) ((number >> 8) & 0xFF);
+        		t= ((number >> 8) & 0xFF);
         		
         		String fourthByte  =printBits(t,modeOfPrint,printLeadingZeros);
-        		t= (byte) ((number >> 8) & 0xff);
+        		t=  ((number >> 8) & 0xff);
         		
-        		return firstByte + " " + secondByte + " "+thirdByte +" "+fourthByte+"  (d) "+number; 
+        		return firstByte + " " + secondByte + " "+thirdByte +" "+fourthByte+"  (d) "+number ; 
         	   
         	}
 
         
         // FROM https://mkyong.com/java/java-how-to-convert-a-byte-to-a-binary-string/
-        public static String printBits(byte b,String modeOfPrint,boolean printLeadingZeros) {
+        public static String printBits(int b,String modeOfPrint,boolean printLeadingZeros) {
         	String e="";
         		if (printLeadingZeros == true) {
         			e = String.format("%8s",Integer.toBinaryString(b));
@@ -158,14 +158,8 @@ public class binPathImpl {
         			
         		else
         			e = Integer.toBinaryString(b);
-        		
-        		if (modeOfPrint.equals("new"))
-        			return e+"  (d) "+ b;
-        		else if(modeOfPrint.equals("listed"))
-        			return  e;
-
-        	   return "\n no new or listed";
-        	}
+        		return e;
+        }
         
         public static void printMissingElems(int min,int max,List Elems) {
         	Integer it;

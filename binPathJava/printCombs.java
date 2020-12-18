@@ -1,12 +1,14 @@
 package binPathJava;
 
+import java.util.ArrayList;
+
 public class printCombs {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[] threeBits =new int [1500];
+		
 		// TODO Auto-generated method stub
 		if (args.length != 3) {
 			 System.err.println(" ARG[1] -> number_of_bits_to_print\n");
@@ -29,7 +31,7 @@ public class printCombs {
 		    int t=7;
 		    int it=0;
 
-		    int threeBitsSize=0;
+		    ArrayList<Integer> threeBits = new ArrayList<>();
 		    
 		    if (args[2].equals("listed"))
 		        System.out.print("{ ");
@@ -41,7 +43,7 @@ public class printCombs {
 		    	
 		    	
 		    	if (numberOfBits >= 1 && numberOfBits <= 8) {
-		    		resultToPrint = binPathImpl.printBits((byte)startByte, args[2],false);
+		    		resultToPrint = binPathImpl.printBits((byte)startByte, args[2],true);
 		    		System.out.print(resultToPrint);
 		    		
 		    	}
@@ -56,11 +58,10 @@ public class printCombs {
 	    		}
 
 		    	if (startByte == t && args[2].equals("new")) {
-		    	    		System.out.println("   (3bits : "+startByte+" ) ");
+		    	    		System.out.print("   (3bits : "+startByte+" ) ");
 		    	    		t+=8;
-		    	    		threeBitsSize++;
-		    	    		threeBits[it] = startByte;
-		    	    		it++;
+		    	    		threeBits.add(startByte);
+		    	    		
 
 		    	}
 
@@ -79,22 +80,15 @@ public class printCombs {
 		        
 
 		    }
-		    System.out.print(" } \n");
-		    System.out.println("\n Number of three bits : "+threeBitsSize);
+		    if (args[2].equals("listed"))
+		    	System.out.print(" } \n");
 		    
-		    while (it > 0) {
-		    	
-		    	if (args[2].equals("listed")) {
-		    		System.out.print(threeBits[it]+",");
-			    	it--;
-		    	}
-		    	else {
-		    		System.out.println(threeBits[it]);
-			    	if (it % 10 == 0)
-			    		System.out.println("\n");
-			    	it--;
-		    	}
-		    		
+		    System.out.println("Number of three bits : "+threeBits.size());
+		    
+		    
+		    for (int i=0; i < threeBits.size() ; i++) {
+		    	 	 
+		    		System.out.print(threeBits.get(i)+",");
 		    	
 		    }
 			
