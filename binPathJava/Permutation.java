@@ -27,16 +27,16 @@ private static  <T> void printArray(T[] input,char delimeter) {
 }
 
 
-   public static <T> List<T[]> permute(int n, T[] elements, char delimiter) {
+   public static <T> List<T[]> permute(int n, T[] elements,char delimiter) {
 	List<T[]> li = new ArrayList<T[]>();
 	
    	int[] indexes = new int[n];
 	
-	for (int i = 0; i < n; i++) {
-	    indexes[i] = 0;
-	}
+//	for (int i = 0; i < n; i++) {
+//	    indexes[i] = 0;
+//	}
 	 
-	//printArray(elements, delimiter);
+	
     int it=0;
 	int i = 0;
 	while (i < n) {
@@ -56,7 +56,7 @@ private static  <T> void printArray(T[] input,char delimeter) {
 	        i++;
 	    }
 	}
-	
+	printArray(elements, delimiter);
 	return li;
    }
 	

@@ -1,0 +1,39 @@
+
+All classes extend Object, so Object is the class, and the subclasses are everything. So protected doesnt matter.
+
+
+The protected modifier specifies that the member can only be accessed
+ within its own package (as with package-private) and, in addition, by a subclass of its class in another package.
+but since , subclasses of object ,  clone is avaialble for all, so 
+
+
+
+
+
+subclass A extends Objecgt
+
+subClass B extends Object
+
+é transitivo?
+
+A -> O
+B -> O
+
+A-> B
+B-> A
+
+Transitivo, comutativo.
+
+can a subclass be subclass of two classes?
+
+class A extends W
+
+class A extends T
+
+class A extends Y
+
+W=T ?
+
+B -> C
+C -> B 
+
