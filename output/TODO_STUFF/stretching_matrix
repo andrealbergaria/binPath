@@ -34,9 +34,9 @@
 			W = X
 			V = V
 			if
-		   		[ d W V ] 			[ d X V ]
-	MATRIX A	[ W d1 V]  MATRIX B [ W X V ]			 	
-		   		{ W V d2]   		[ W V d2]
+		   		[ d W T ] 		
+	MATRIX A	[ W d1 V]  		
+		   		{ T V d2]    	
 
 		
 		W = d1
@@ -45,19 +45,144 @@
 		A22
 		A32 = dot product  
 		
-		=> vector [A11]		[ A11 A21 A31 ]
-				  [A21] => 
-				  [A31]
+		=> d1 [A11]		
+				  
 		
-		=> vector [A12 ]	[A12 A22 A32]
+		[d1 d2 d3]
+		
+		Diagonal
+		pos(1,1),pos(2,2) , pos(3,3)
+		
+		Needed 
+		pos(1,1) pos(1,2) pos(1,3)
+		
+		
+		(X,Y,F) => X elements indiices tuple set elements
+					Y (codomain)  = Set o 
+		
+		=> d2     [ 1  ]	[A12 A22 A32]
 		   	      [A22 ] 
-				  [A32 ] 
-		
-		TRANSPOSE
-		
+				  [ 1 ] 
+		=d3		
 			vecotr [ A13 ] => [A13 A23 A33]
 				   [ A23 ]
 		           [ A33 ]
+		           
+		           [d1 d2 d3]
+		           [
+		           
+		           So matrix b can be frmo A (see the positions of w, and v)
+		           
+   MATRIX B		   [ d1  W  d3 ] 
+		           [ T  d1  V  ]
+		           
+		           	   		[ d W T ] 		
+				MATRIX A	[ W d1 V]  		
+		   					[ T V d2]    	
+		           
+		            A , W -> pos(1,2)
+		            ou seja o tres (pos(3,0)) tem de desaparecer e sbustitiuiro por 2
+		            
+		            pos(3,1) = T
+		            pos(3,2) =V
+		            pos(3,3) =d2
+		            	
+		            	// not ok..just take the original coordenates an d try to invert them
+		            	pos(3,X ) => pos(2,X) (encuratar matrix)
+		            	T -> (2,1)
+		            	V -> (2,2)
+		            	d2 -> (2,3)
+		            	// END OF ERROR
+		            	
+		            	T inverted -> (1,3)
+		            	V inverted -> (2,3)
+		            	W pode ser pos(1,2) ou  pos(2,1)  
+		            	
+		            	d pode ser ( {pos(1,1) ,pos(1,2) , pos(2,1) , (2,2) )
+		            	
+		            	
+		            	(1,1)(1,2)(1,3) (2,1)  (2,2) (2,3)	 
+						 d	   	   T    W 	 	d1	  V	            			
+		            	 
+							     Torig -> (3,1)
+								  possiveis casas para t = (1,1)(1,2)(1,3) (2,1)(2,2)(2,3)
+								  
+								  Aumentar 3 nao, (nao fica na segunda linha) aumentar 1 nao da visto o 3 sair da matrix pretendida
+								  Mulitplicar 3 nao, muultiplcar exclusivamente por 2 o 1 pode ser
+								  Can only subtract the x, y can't be 0 (since that represents no location on the matrix)
+								   
+								  3-1   -> (2,1)
+								  3-2   -> (1,1)
+								    		
+								   
+							
+							  
+							  A cross product of a simetric matrix is zero
+						 	            	  
+			            	  the cross product , indicates simetry MAtrix  aij = aji
+
+		          
+		            	 podem ser todos invetidos, menos as diagonais que tem posicoes X e Y iguais
+		            	 cada linha os pode ser 2 ou 1 ....coluna é 3
+		            	 
+		            	 quantos valores temos ? d+d1+d2+w+t+v = 6..entao podem representar uma matrix mais pequena
+		            	 se inverter linha 2?
+		            	 
+		            	 
+		            	 inverted T (2,1) -> (1,2) 
+		            	 d (1,1) , d1 = (1,3)  
+		            	   Se coordenadas tiverem um 1 ou um 2, entao para encontrar outro elemento , inverte-se
+		            	 
+		            	 
+		            	 
+		            Faltam W,d,d1
+		            W ja ta em na linha 1
+		             ja ta na linha 1
+		            
+		            d1?	
+		            	
+		            	
+		            	 										T (1,3) = d3
+		            	 										
+		           												(1,1) (2,2) (3,3) . Want (2,2) -> (1,2)
+		           																	Want (3,3) -> (1,3), but T taken so where 3d?
+
+		           												   W	V	d3 =(2,2)					
+		           		T -> (1,3) 								(2,1)(2,3)   ->
+		           												
+		           												
+		           													
+		           													função (troca o x pelo y nas posições)
+		           													
+		           													
+		           												
+		           														
+		           												 
+		           		W-> (1,2)
+		           		d -> (1,1)								Se usar por exemplo T , a função matematica é inverte-lo
+		           		
+		           		W -> pos(2,1)   ROW 2 TAKEN
+		           		V -> pos (2,3)
+		           		d1 = pos(2,2) 
+		           		
+		           		T -> (3,1)
+		           		V -> (3,2)		ROW 3 TAKEN
+		           		d2 -> (3,3)
+		           		 
+		           		
+		           		to get matrix , we only need to invert the positions (since matrix is siymetric)
+		           		
+		           Symetric aij = aji 
+		           
+		           A12 =A21 W = W
+		           A31 = 
+		           
+		           positions of W = pos(1,2) , pos(2,1)  
+		           positions of V = pos(1,3), pos(2,3)
+				   positions of T = pos(3,1),pos(1,3)
+					
+		           
+		           3w and 3 vs
 
 		  basta cacular as matrizes triangulares. Neste caso , as matrizes são iguais
 		  basta representar uma matriz 
