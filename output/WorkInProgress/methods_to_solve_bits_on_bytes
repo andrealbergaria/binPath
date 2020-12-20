@@ -24,6 +24,7 @@ for 256 bits, set the first bit (one or zero) making it to scan 128 (less the fi
   TERCEIRA TENTATIVA)
   Algorithm to test all combinations 
   Start at using 1 bit set, and other bit always shifting right 
+  the at end position start  shith left 
   	left to right (each bit shifted right one time)
   	Same value (doesnt work) zeros at left
     => 10 => 010 => 0010 => 00010
@@ -207,25 +208,7 @@ TENTATIVA NUªMERO 11
         
                 	reversing numbers faster than setting it?
       			
-            char arr[8] = 3bits
-            
-            char 4bits[1] = 3bits;
-             	 4bits[0] = 1;
-
-			char 5bits[1] = 4bits;
-				 5bits[0] = 1;            	
-			
-			for 5 bits
-			char rarr[8] ==             	
-                algorithm for 4 bits
-                	copy three bits to first part of numbe (ledaing 0)r.
-                	copy three bits to second part of number (leading 1)
-                algorithm for 5 bits =  4bits , forget leading zeros which are from 4bits)  and add leading 1 , to (4bits)
-                
-                algoruthm for 6 bits = (leading zeros ignored,since they are from 5bits  ,to get the net combination  add a leading 1 to 5bits)
-                   
-                or set first byte, and do reverses.How many reverses needed for 2bytes for (16 reverses)
-                
+                            
            
 
    TEATNIVA NUMERO 11
@@ -233,5 +216,17 @@ TENTATIVA NUªMERO 11
                 Xbits is a subset of X+1bits
    
    
+   TENTATIVA NUMERO 12
+   char arr[8] = 3bits
+            
+            char 4bits[1] = 3bits;
+             	 4bits[0] = 1;
+
+			char 5bits[1] = 4bits;
+				 5bits[0] = 1;            	
+			
+			char 6bits[1] = 5bits
+				 6bits[0] = 1       ......       	
    
-   		    
+   PAra 9 bits
+   		char 9bits = 		    
