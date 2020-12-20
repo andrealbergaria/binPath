@@ -206,11 +206,24 @@ TENTATIVA NUªMERO 11
       				set 1 on leading positions  in even positions 
         
                 	reversing numbers faster than setting it?
-      
+      			
+            char arr[8] = 3bits
             
-                algorithm
-                	copy first byte to all table
-                   adicionar ones, to even positions.
+            char 4bits[1] = 3bits;
+             	 4bits[0] = 1;
+
+			char 5bits[1] = 4bits;
+				 5bits[0] = 1;            	
+			
+			for 5 bits
+			char rarr[8] ==             	
+                algorithm for 4 bits
+                	copy three bits to first part of numbe (ledaing 0)r.
+                	copy three bits to second part of number (leading 1)
+                algorithm for 5 bits =  4bits , forget leading zeros which are from 4bits)  and add leading 1 , to (4bits)
+                
+                algoruthm for 6 bits = (leading zeros ignored,since they are from 5bits  ,to get the net combination  add a leading 1 to 5bits)
+                   
                 or set first byte, and do reverses.How many reverses needed for 2bytes for (16 reverses)
                 
            

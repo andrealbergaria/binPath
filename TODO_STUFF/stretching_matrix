@@ -7,9 +7,36 @@
 		   a12 = a21 
 		   
 		   
-		   [ d X Y ]  [ d d1 d2 ] [X Y] [1]
-		   [ X d1 X]  				
-		   { Y X d2]
+		   Se achar matriz mais pequena, entoa vis
+		    	[ d W T ] 		
+	MATRIX A	[ W d1 V]	[ d d1 d2 ] [X Y] [1]  		
+		   		{ T V d2]    	
+		   
+	MATRIX Atrans = [d W T ]
+				    [W d1 V]
+				    [T V d2]
+		   
+		   			[d w ]
+		   			[w d1] => simetrica
+		   			
+		   			aij= aji  , a11 , a12, a13
+		   						ou 
+		   						a11, a21, a31
+		   						
+		   			MATRX T
+		   			
+		   			Tanto faz ser coluna ou linha...é simetrica d
+		   			[d ] ou [d d1 w]
+		   			[d1]
+		   			[w] 
+		   			
+		   			[d]			
+		   			[w]
+		   			[ð1]
+		   		
+		   			
+		   			HA sempre uma que se repete
+		   			d2=(3,3)
 		   
 		   a matrix é simetric logo A = Atrans
 		   
