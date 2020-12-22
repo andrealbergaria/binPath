@@ -10,6 +10,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
@@ -120,7 +121,7 @@ public class binPathImpl {
     		
     		String secondByte = printBits(t,modeOfPrint,printLeadingZeros);	
     	   
-    		return firstByte + " " + secondByte + " (d) "+number;
+    		return secondByte + " " + firstByte + " (d) "+number;
     	}
 
 
@@ -143,7 +144,7 @@ public class binPathImpl {
         		String fourthByte  =printBits(t,modeOfPrint,printLeadingZeros);
         		t=  ((number >> 8) & 0xff);
         		
-        		ret = firstByte + " " + secondByte + " "+thirdByte +" "+fourthByte+"  (d) "+number ; 
+        		ret = fourthByte + " " + thirdByte + " "  +secondByte + " " + firstByte+"  (d) "+number ; 
         		 return ret;  
         	   
         	}
@@ -442,21 +443,25 @@ public class binPathImpl {
         		
         		
         }
-        
-        private static void printArray(int[] arr) {
+        // first row
+        // second column
+        private static void printArray(int[][] table) {
+        	
         	System.out.println();
-        	for (int elem = 0 ; elem < arr.length; elem++)
-        		System.out.print(" , "+String.valueOf(elem));
-        	System.out.println();
+        	int row_len = table.length;
+        	System.out.println("\nLEN "+row_len	);
+        			for (int j=0 ;j < 256 ; j++) {
+        				
+        				for (int i=0; i < row_len ; i++)
+        					print
+        					System.out.print(String.valueOf(table[j][i])+ " ");
+        			
+        					
+        		
+        	}
         	
         }
-        private static void printArray(byte[] arr) {
-        	System.out.println();
-        	for (int elem = 0 ; elem < arr.length; elem++)
-        		System.out.print(" , "+String.valueOf(elem));
-        	System.out.println();
         
-        }
         /*
          * openssl enc -aes-256-cbc -in plaintext.txt -base64 -md sha1
          * openssl enc AES256 -out cipherText -e -iv 0x0 -K abcabcab -nosalt -p
@@ -586,10 +591,11 @@ public class binPathImpl {
              
         	
         } */
-        
+      
         public static void main(String[] args) {
-        	// 2^6 = 64
-    		
+        	fillBytes(5);
+        
+        
     	/*	int[][][] bytes =  prefix(32);
         	
     		byte[] key = new byte[32];
@@ -667,14 +673,81 @@ MATRIX C  		00000010	2
          
          ALL COMPUTED  (use 3bits) EXCEPT (0,1,1,1,1) 0 at firtst) which is taken by a)
          (0,0,0,0,0) (0,0,0,0,1)(0,0,0,1,1,)(0,0,1,1,1)(0,1,1,1,1)
+
        
        	(1,1,1,1,1,1)(1,1,1,1,
+       	
+       	
+       	[ ref1, ref2 , ref3
+       	 ] array of objecct, store refernecsts
+       	 
+       	 
+       	 since all references  are from object, we can have  array of different elements
+       	 
+       	 
+       	 add element to a array of objects
+       	 
+       	 
        */
         
        
-    AlgebraError();
+  //  AlgebraError();
 	}
-       
-}
+	  public static void test() {
+     	   Byte threeBits[] = {0,1,2,3,4,5,6,7};
+     	   Byte[][] fourBits = new Byte[2][8];
+     	   fourBits[0] = threeBits;
+     	   for (int i=0 ; i < fourBits.length; i++) {
+     		   fourBits[1][0] = 1;
+     	   }
+     			   
+     			   
+     	   	
+        }
+        
+	   
+	  
+	/*
+	 * Quero derefernciar um array, adicionar um byte, e depois referenciar oura vez
+	 * Quero obter uma ref para lista. List a = new ArrayList() ; 
+	 *   
+	 */
+   public static void fillBytes(int numBits) {
+	   
+	   // 4 bytes (where are 3bits
+	   
+	   int[] arr = {0,1,2,3,4,5,6,7};
+	   
+	   int[] firstByte = new int[256];
+	   int[] secondByte = new int[256];
 
+	   int[] thirdByte = new int[256];
+	   int[] fourthByte = new int[256];
+
+	   int table[][] = { fourthByte,thirdByte,secondByte,firstByte };
+	   Vector<Integer> threeBits =new Vector<>(); 
+	   //first index = row
+	   // Numbver of 3 bits
+	   int n=1;
+	   for (int x = 1 ; x <= numBits; x++) {
+		   n = n*2;
+	   }
 			
+	   for(int i=7 ; i < n ; i += 8 ) {
+		      System.arraycopy(arr, 0, firstByte, i, 8);
+		      threeBits.add(i);
+		}
+	   
+	   //System.arraycopy(firstByte,0,secondByte,0,256);
+	   secondByte = firstByte.clone();
+	   thirdByte = firstByte.clone();
+	   fourthByte = firstByte.clone();
+	   
+	   for (int e : threeBits) {
+		   secondByte[]
+	   }
+	   
+	   
+   }
+}
+		

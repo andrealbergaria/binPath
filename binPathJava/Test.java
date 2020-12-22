@@ -1,5 +1,7 @@
 package binPathJava;
 
+import java.util.Vector;
+
 
 
 public class Test {
@@ -88,12 +90,40 @@ public class Test {
     		}
     		
 */
-	public static void main(String[] args) {
-		byte a = (byte) 5;
-		//System.out.println(a+"   ABC");
-		String s =binPathImpl.printBits(a, "new", true);
-		System.out.println(s);
-	}
+	public static <T> void main(String[] args) {
+		Object b =  Byte.valueOf((byte)3);
+		byte b123=1
+				;
+		Byte A = Byte.valueOf(b123);
+		
+		byte T = A.byteValue();
+		
+		Byte B = b123; // Boxing
+		
+		
+		// why not assign b123, to A ? Byte A = b123 
+		
+		
+		// why not Byte A = b123;
+		// d
+		
+		// Assignis the byte 
+		
+		byte APrim = A.byteValue();
+		// Byte A = Byte.valueOf(a); 
+				
+		
+		Byte a = Byte.valueOf(a).byteValue();
+		
+		
+		
+		does it do autoboxing
+		
+		
+		
+		//System.out.println(b instanceof Integer);
+		System.out.println(a instanceof Byte);
 	
 	}
+}
 

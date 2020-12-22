@@ -229,4 +229,10 @@ TENTATIVA NUªMERO 11
 				 6bits[0] = 1       ......       	
    
    PAra 9 bits
-   		char 9bits = 		    
+   		char 9bits[1] = 8bits;
+   			9bits[0] = 1;
+   			
+   			
+   			
+   			
+   					    

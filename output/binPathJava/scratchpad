@@ -1,3 +1,15 @@
+
+A	1
+B	2
+C	3
+D	4
+E	5
+F	6
+
+(A,1) (A,2)(A,3).....
+reverse(1,A)(2,A)
+
+ 
  /*
  
 
@@ -30,17 +42,66 @@ f(x) =
 Pode ser eliminados (1,0)  e (0,1) 
 Se for adicionado ultimos elems (0,0,0) e (0,1,0)
 			
-	 	added zero at the beggining
-Set E     Set C  	    Set D   	
-1 1       (1,0) 2  		(0,1,0) 2   
-0 0       (0,1) 1       (0,0,1) 1
-          (0,0) 0    	(0,0,0) 0
-          (1,1) 3    	(0,1,1) 3
-          
-          				(1,0,0) 4
-          				(1,0,1) 5
-          				(1,1,0) 6
-          				(1,1,1) 7
+2	 	    4             8		16			24
+Set B     Set C  	    Set D   		Set E  		Set F
+0         (0,0) 0  		(0,0,0) 0    (0,0,0,0) 0  (0,0,0,0,0)
+1         (0,1) 1       (0,0,1) 1	 (0,0,0,1) 1  (0,0,0,0,1)
+          (1,0) 2    	(0,1,0) 2    (0,0,1,0) 2  (0,0,0,1,0) => Set D (3bits)
+          (1,1) 3    	(0,1,1) 3    (0,0,1,1) 3  (0,0,0,1,1)
+          							 
+          				(1,0,0) 4	 (0,1,0,0) 4   (0,0,1,0,0)
+          				(1,0,1) 5    (0,1,0,1) 5   (0,0,1,0,1) => Set D (3bits)
+          				(1,1,0) 6    (0,1,1,0) 6   (0,0,1,1,0) 
+          				(1,1,1) 7    (0,1,1,1) 7   (0,0,1,1,1)
+          				
+          							 (1,0,0,0) 8   (0,1,0,0,0)
+          							 (1,0,0,1) 9   (0,1,0,0,1) => Set E (4bits) plus leading 0,which equals 4bits
+          							 (1,0,1,0) 10  (0,1,0,1,0)
+          							 (1,0,1,1) 11  (0,1,0,1,1)
+          							 
+          							 (1,1,0,0) 12 (0,1,1,0,0)
+          							 (1,1,0,1) 13 (0,1,1,0,1) => Set E (4bits) plus leading 0,which equals 4bits
+          							 (1,1,1,0) 14 (0,1,1,1,0)
+          							 (1,1,1,1) 15 (0,1,1,1,1)
+          							 
+          							 			  (1,0,0,0,0) => 5bits.just change one at the beggiging
+          			
+          			List<Integer> setB = new ArrayList<>();
+          			setB.add(0);
+          			setB.add(1);
+          			
+          			List<Integer> setC = new ArrayList<>(setB);
+          			setC.add(
+          			
+          			Set B , para Set c  = copiar 0 (de B)  para C, copiar 1 (de B) para C 
+          			
+          			add leading ones to Set B = (1,0),(1,1)
+          			
+          			Set C para Set D => copiar 0,1,2,3 (de C) para D
+          			add leading ones to them
+          			
+          			com arrays
+          			
+          			Array B = [0,1]
+          			
+					Array C = Todos os elementos de B
+					
+					array C = ArrayB;
+					
+					Array C = ArrayC + leading one.
+					
+					Array D = Todos os elementos de C
+					
+					Array D = Array + leading 1
+					
+					
+					Array D = ArrayC + leading ones to array D
+					
+					Array E = ArrayD + leading ones to array E
+					         							 			  
+          			for (int numBits = 1; numBits < 5; numBits++) {
+          				
+          			}
 
 2d		3d
 
