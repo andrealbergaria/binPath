@@ -743,8 +743,9 @@ MATRIX C  		00000010	2
 	   thirdByte = firstByte.clone();
 	   fourthByte = firstByte.clone();
 	   
-	   for (int e : threeBits) {
-		   secondByte[]
+	   
+	   for (int x = threeBits.get(0); x <= threeBits.get(1) ; x++) {
+		   secondByte[x+1] = 1;
 	   }
 	   
 	   
