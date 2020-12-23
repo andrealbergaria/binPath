@@ -64,4 +64,39 @@
 					       								Se pos(b) for inferior a pos(a)
 					       								valor = 8i
 					       								pos(a) = valor + pos(b)
-						 
+					
+					Se pos(b) inferior a pos(a) então pos(a) = pos(b) + k
+					se pos(b) superior então = pos(a) < pos(b) = pos(b) = pos(a) + k
+					
+					Se pos(b) inferior a pos(a) então pos(a) = pos(b) + k
+					se pos(b) superior então = pos(a) < pos(b) = pos(b) = pos(a) + k
+										 									
+					   					 									
+					       
+					       se 1<valor<256 ,ou seja ser um byte. f(pos) =8*i + pos
+					       1<pos<8
+					       
+					       para 2 bytes, 
+					       se 1<valor<65535 , ou seja dois bytes , 
+					       
+					       Para 1 byte
+					       8*i + pos = valor  f2(pos) = valor (f(pos))
+					       
+					       1byte 	2byte
+					       256		258 =  256+2  
+					       			60 000  = 258+  258 = 256+2 + 256+2 
+					       2		3 = 2 + 1
+					     -------------
+					     Para 1 byte
+					     ---------------
+						pos(a) = 8*i + pos(a)  
+						
+						k=8*i	ou 	k=pos(a)
+					       
+					       pos(a) =k + pos(a)
+					       ou
+					       pos(a) = 8*i + k
+					       
+					       pos(3) = 8*i + (k=3)
+					       
+					       

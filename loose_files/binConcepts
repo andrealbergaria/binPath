@@ -7,39 +7,42 @@
 							           
 					
 					 
-					 
-					       
-					       
-					       se 1<valor<256 ,ou seja ser um byte. f(pos) =8*i + pos
-					       1<pos<8
-					       
-					       para 2 bytes, 
-					       se 1<valor<65535 , ou seja dois bytes , 
-					       
-					       Para 1 byte
-					       8*i + pos = valor
-					       
-					       Seja qualquer valor, decompor em binario, e usar o algorithmo para descobrir qual a sua posicao
-					       
-												       
-					       valor = 7.
-					       
-					       valor - (8*i) = pos
-
-					       depende do valor
-					       
-							para i=2
-							
-							valor - (16) = pos
-							7 - 16 = pos
-					       
-					       qual o i, 
+					
 					                                         
                  
-                  assign 00000000 = [1,2,3]
-                  assign 00000001 = {1,2,3]  (var=1 1 change to set,regarding base)
-                  assign 00000010 = {1,2,3]  (var=2 (correspond to 2 changes to set regarding base)
-                  assign 00000100 = [1,2,3] (var=3 (correspond to 3 changes in set regarding base)
+                  a) 00000000 = [1,2,3]
+                  
+                  b) 00000001 = {1,2,3]  (var=1 1 change to set,regarding base, a)+1)
+                  		{2,1,3},[1,3,2}, {3,2,1} c) + b) 3 elements
+                  
+                  c) 00000010 = [1,2,3]  (var=2 correspond to 2 changes to set regarding base, b)+1)
+                  		
+                  		
+                  		primeira mudança = b)
+                  		
+                  		segunda mudança c)
+                  		{1,2,3} {3,1,2} {2,3,1} 
+                  
+                  d)
+                  	00000011 = [1,2,3] => (number = 3 , correspond to 3 changes regarding base)
+                  		first change = b)
+                  		second change =c)
+                  		third change = already taken
+                  
+                  [1,2,3,4] -> 00000000
+                  
+                  First change
+                  [1,2,3,4] -> 00000001 => {2,1,3,4} , {1,3,2,4},{1,2,4,3} 
+                  
+                  Second change
+                  [1,2,3,4] -> {1,2,3,4} {2,1,4,3} {2,3,1,4) {3,1,2,4}{1,3,4,2}{1,4,2,3}{
+                  
+                  Correpondem aos arranjos simples = 6 combinations
+                  To calculate permutations, set the numbers of elems toa binary number, 
+                  	and increase another binary until it reaches the number of elements. Then apply changes
+                  	n = all the changes used. In this case 3 changes
+                  
+                   
                   
                   what are the changes?
                   
