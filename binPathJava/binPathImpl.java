@@ -445,20 +445,13 @@ public class binPathImpl {
         }
         // first row
         // second column
-        private static void printArray(int[][] table) {
+        private static void printArray(int[] arr) {
         	
-        	System.out.println();
-        	int row_len = table.length;
-        	System.out.println("\nLEN "+row_len	);
-        			for (int j=0 ;j < 256 ; j++) {
-        				
-        				for (int i=0; i < row_len ; i++)
-        					print
-        					System.out.print(String.valueOf(table[j][i])+ " ");
-        			
-        					
+        	System.out.println("----Beginning of Array-----");
+        	for (int it : arr)
+        		printBits(arr[it], "new", true);
         		
-        	}
+        	System.out.println("----End of Array-----");
         	
         }
         
@@ -719,34 +712,37 @@ MATRIX C  		00000010	2
 	   int[] arr = {0,1,2,3,4,5,6,7};
 	   
 	   int[] firstByte = new int[256];
+	   
 	   int[] secondByte = new int[256];
-
 	   int[] thirdByte = new int[256];
-	   int[] fourthByte = new int[256];
+	   int[] fourthByte  = new int[256];
 
-	   int table[][] = { fourthByte,thirdByte,secondByte,firstByte };
 	   Vector<Integer> threeBits =new Vector<>(); 
-	   //first index = row
-	   // Numbver of 3 bits
-	   int n=1;
-	   for (int x = 1 ; x <= numBits; x++) {
-		   n = n*2;
-	   }
-			
-	   for(int i=7 ; i < n ; i += 8 ) {
+	   int allRows= (int) Math.pow(2,numBits);
+	   	
+	   for(int i=7 ; i < allRows; i += 8 ) {
 		      System.arraycopy(arr, 0, firstByte, i, 8);
 		      threeBits.add(i);
 		}
 	   
-	   //System.arraycopy(firstByte,0,secondByte,0,256);
-	   secondByte = firstByte.clone();
-	   thirdByte = firstByte.clone();
-	   fourthByte = firstByte.clone();
+	   // Get all indexes to add ones's
+	   // ThreeBits 2*2 para cada bit (numBits)
+	   //4 bits- > 8 zeros , 8 ones
+	   // positions of ones -> Math.pow(2,numBits) *2 because it is the positions of ones. Zeros start first
 	   
-	   
-	   for (int x = threeBits.get(0); x <= threeBits.get(1) ; x++) {
-		   secondByte[x+1] = 1;
+	   // 4 bits
+	   double positionOfOnes = allRows / 2;
+	   byte pos = (byte) positionOfOnes;
+	   for (int idxBits =3; idxBits < allRows; idxBits++ ) {
+		   firstByte[pos] |= 1;
 	   }
+	    printArray(firstByte);
+	    //condByte = firstByte.clone();
+	    
+	    
+	    
+	    //printBits(firstByte,"new",1);
+	   
 	   
 	   
    }

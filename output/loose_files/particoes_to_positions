@@ -1,0 +1,67 @@
+{[1,2,3] = perumtations with repetations= n^p = 27
+               
+               [1,2,3] is used (pos(0) = 1  , pos(1)= 2 , pos(2) = 3 
+               (because on each position , one increments the before)
+                   
+                   Que tal achar a posicao(X)=  X (ou seja posicao igual a valor).
+                   Se isso acontecer, entao particao de X indica posicao e valor
+                   obter partitions, que tambem tem posicao X igual a valor
+                   f(x) = x
+                   
+					Se posicao for X = pos(3) ..pode decomper numa partition , então pos(2) +(pos1) = pos(3)
+							
+							2+1 = 3												
+																			
+					For example
+					pos1 pos2 pos3 pos4
+					1     +1    +2 +3
+					2     +1	4
+					3
+					ou seja partições , igualam , posições a valores (f(x) = x)
+					
+					pos3 = 1 + 1 + 2 + 3  
+							          1 + 1
+							          2 + 1
+							          
+							          
+						posicao(3) = 4
+						posicao(2) = 2;
+						
+						
+						posicao(3) = 1+1+1+1
+						posicao(3) = 1+1
+						
+						procurar valor na partição pelas posições 
+						
+						quando valor de x (de f(x)) for igual 1 ...podemos decompor todas as posições,
+						 
+						 
+						  Dado um valor, quantas posicões tem
+					 pos(X) -> valor (1+1+1+1+1) => (pos(x) +pos(y)
+					 									pos(z)
+					 									
+					 									
+					 									pos(x) = 1+1
+					 									pos(y) = 3+1
+					 									
+					 									pos(y)=  pos(x)+1+1
+					 									
+					 											Qualquer posição é decomposta em 1's
+					 											portanto k funcionar sempre?
+					 								    pos(i) = k(1's) => k(1+1+1+1)
+					 									pos(i) = k  
+					 
+					 									pos(a) = 1+1+1+2
+					 									pos(a) = 5
+					 									pos(b) = 1+1
+					 									pos(b) = 2
+					 									
+					 									Se pos(b) inferior a pos(a) então pos(a) = pos(b) + k
+					 									
+					 									Para 1 byte
+					       								8*i + pos = valor
+					       								
+					       								Se pos(b) for inferior a pos(a)
+					       								valor = 8i
+					       								pos(a) = valor + pos(b)
+						 
