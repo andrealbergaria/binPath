@@ -35,11 +35,13 @@ for 256 bits, set the first bit (one or zero) making it to scan 128 (less the fi
   QUARTA TENTATIVA
   
   when a bit changes (a new number) , cahnges the position or substituing,
-{1, 1, 0,0 } = 12
-(0,1,0,0 } = 4d
-{0,0,1,0 } = 2d
+(1,1,1,1) = 16d
+(1,0,1,1 ) = 11d
+(1,1,0,1 ) = 13d
+(1,0,1,0 ) =  112d
 
-(3,2) 4d -> 2d
+Thte idea is to get the last combination, (pos(2) = pos(1) + plusl eading ones. Then apply that binary shift
+			to leading one's)
 
 {1, 1, 0 ,0}
 {1, 0, 0 0 }
@@ -56,16 +58,14 @@ bitshift by one
 
   QUINTA TENTATIVA
   
-  	(0,0,0)
-  	(1,1,1) -> reverse
-  	(1,0,0)(0,1,0)(0,0,1), para obter a proxima combinação reverse os numeros
-       3       5     6
-    (0,1,1)(1,0,1)(1,1,0)
+  	(0,0,0) (1,0,0)(0,1,0)(0,0,1), reverse (4 reverses + 3 sets (0,x,x))
+       	7		3       5     6
+    (1,1,1) (0,1,1)(1,0,1)(1,1,0)
         			
-      12			10		 9
-    (1,1,0,0) (1,0,1,0) (1,0,0,1) add 1 to 3bits
-      11			13			14
-    (1,0,1,1) (1,1,0,1) (1,1,1,0)
+     8 reverses +7 sets (need to use (0,x,,x,x))   
+    (0,0,0,0) (1,0,0,0) (1,1,0,0) (1,1,1,0) (0,1,0,0)(0,1,0,1) (0,1,1,0) (0,1,1,1) 
+									-> reverse      
+    (1,1,1,1) (0,1,1,1) (0,0,1,1) (0,0,0,1) (1,0,1,1) (1,0,1,0)(1,0,0,1)(1,0,0,0)
         			
     SEXTA TENTATIVA
     

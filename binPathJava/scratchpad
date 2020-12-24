@@ -1,48 +1,63 @@
+A  1
+B  2
+C  3
+D  4
+E  5
+F  6
 
-A	1
-B	2
-C	3
-D	4
-E	5
-F	6
-
-(A,1) (A,2)(A,3).....
-reverse(1,A)(2,A)
-
- 
- /*
- 
-
-Cada conjunto tem o numero de elementos do anterior * 2 , bitshift left
-
-3 bits DIVIISON
-    000 
-	001
-	010
-	011
+Cada conjunto de bits, tem o numero de elementos do anterior * 2 , bitshift left
 
 2 bits DIVISION	
 	1   0
 0	(0,1 (0,0)	
 1   (1,1) (1,0)
 
-							2 		3				
+		=> (01,11,10,00)				
 
 
-De set 1 (0,1)
+3 bits DIVIISON
+    000 
+	001
+	010 => 2 bits
+	011
+
+	111
+	110 => 3 bits
+	101
+	011
+
+4 bits DIVISION
+	0000 
+	0001
+	0010 => 2 bits
+	0011
+
+	0111
+	0110 => 3 bits
+	0101
+	0011
+
+	1000
+	1001
+	1010
+	1011 => 4 bits
+	1100
+	1101
+	1110
+	1111
+
+
 De set E opara set C = (2,3) 2d comeca por um , 3d comeca por um 
 De set C para Set D  = (4,5,6,7) todos os numeros cujo os bits são um
 					   (8,9,10,11,12,13,14,15)
 					   (16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31)
 
-f(x) = 
+ 
 
  
 
-Pode ser eliminados (1,0)  e (0,1) 
-Se for adicionado ultimos elems (0,0,0) e (0,1,0)
 			
-2	 	    4             8		16			24
+2	 	    4             8				 16			32
 Set B     Set C  	    Set D   		Set E  		Set F
 0         (0,0) 0  		(0,0,0) 0    (0,0,0,0) 0  (0,0,0,0,0)
 1         (0,1) 1       (0,0,1) 1	 (0,0,0,1) 1  (0,0,0,0,1)
@@ -62,50 +77,18 @@ Set B     Set C  	    Set D   		Set E  		Set F
           							 (1,1,0,0) 12 (0,1,1,0,0)
           							 (1,1,0,1) 13 (0,1,1,0,1) => Set E (4bits) plus leading 0,which equals 4bits
           							 (1,1,1,0) 14 (0,1,1,1,0)
-          							 (1,1,1,1) 15 (0,1,1,1,1)
+          							 (1,1,1,1) 15 (0,1,1,1,1) 16combs of leading zeros
           							 
           							 			  (1,0,0,0,0) => 5bits.just change one at the beggiging
           			
-          			List<Integer> setB = new ArrayList<>();
-          			setB.add(0);
-          			setB.add(1);
+          		
           			
-          			List<Integer> setC = new ArrayList<>(setB);
-          			setC.add(
-          			
-          			Set B , para Set c  = copiar 0 (de B)  para C, copiar 1 (de B) para C 
-          			
-          			add leading ones to Set B = (1,0),(1,1)
-          			
-          			Set C para Set D => copiar 0,1,2,3 (de C) para D
-          			add leading ones to them
-          			
-          			com arrays
-          			
-          			Array B = [0,1]
-          			
-					Array C = Todos os elementos de B
-					
-					array C = ArrayB;
-					
-					Array C = ArrayC + leading one.
-					
-					Array D = Todos os elementos de C
-					
-					Array D = Array + leading 1
-					
-					
-					Array D = ArrayC + leading ones to array D
-					
-					Array E = ArrayD + leading ones to array E
-					         							 			  
-          			for (int numBits = 1; numBits < 5; numBits++) {
-          				
-          			}
+          		
+				
 
 2d		3d
 
-To convert a 2 point to a 3d point just add it zero to teh beggining
+To convert a 2 point to a 3d point just add it zero to the beggining
  
  
  
@@ -151,34 +134,13 @@ coluna 1
  0 01
  1 11
 
-SET B -> (0,1)
-agrupamentos com b? 
-
-quantas coluna e linhas, 
-
-cada cell pode ter varios valores	
-1 objecto, um pair , um tuple ternary , ou seja é arranjos 
-2A1			2A2				2A3																   
-n=1			
-(1,0)		(  (1,0)	 (1,0,0)	
-			   (1,1)	 (1,0,1)    
-			  			 (1,1,0)
-						 (1,1,1)
-	ou seja , para cada posicao, so preciso de me preocupar com os que tem uns a frente. os outros são dados pela posicao anterior
-	1 1 0
-	1 1 1
-	0 1 0 2 bits (1,0) e (1,1) , zero inicio
-	0 1 1 		  			    
-		  			
-	Para arranjos, os sets que comecam por zero (0,1) (0,0) (0,1,1)  podem nao ser contabilizados porque jã são contados,
-	 nos arranjos anteriores
-	
-	(0,1) = (0,0,1) correcto
 	
 	
 compare 1 ,2 ,3  => K values, são os valores adicionados no inicio de cada combinação de bits
 quando k=3, elimina k=2?
-																		   pos2 = col2  		pos3 = col3 	
+
+(1,0,0,0) (2,0,0,0)(3,0,0,0)
+(1,1,0,0, (2,0,1,0)(3,0,0,1) 	
 
 
 num de colunas = numero de bits
