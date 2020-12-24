@@ -232,7 +232,27 @@ TENTATIVA NUªMERO 11
    		char 9bits[1] = 8bits;
    			9bits[0] = 1;
    			
-   			
+   			Byte[] temp1  = {1,2,3,4,5,6,7,8};
+		Byte[] temp2  = {10,11,12,13,14,15,16,17};
+		Byte[] temp3  = {11,123,12,123,1,45,23,21};
+		
+		
+		TENTIVA NUMERO 13
+		
+		usar permutacose em cada linha da tabela (byte1(linha1) byte2(linha1) byte3(linha1)
+		Ou seja 256 bits de permutações :)
+		
+		for (int it = 0 ; it < 32; it++) {
+    	key[0] =1;  
+    	key[1] = 2;
+    	key[2] = 3;
+    	key[3] = 4;
+    	key[4] = 5;
+    	key[5] = 6;
+    	key[6] = 7;
+    	key[7] = 8;
+    	lArr = Permutation.permute(8, key, ',');
+		}
    			
    			
    					    

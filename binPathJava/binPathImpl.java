@@ -10,6 +10,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -24,6 +26,8 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import com.sun.xml.internal.ws.commons.xmlutil.Converter;
 public class binPathImpl {
 
 	// first number to multiply 
@@ -455,6 +459,12 @@ public class binPathImpl {
         	
         }
         
+        private static <T> void printArray(T[] arr) {
+        	for (T e : arr) {
+        		System.out.print(e);
+        	}
+        }
+        		
         /*
          * openssl enc -aes-256-cbc -in plaintext.txt -base64 -md sha1
          * openssl enc AES256 -out cipherText -e -iv 0x0 -K abcabcab -nosalt -p
@@ -586,7 +596,9 @@ public class binPathImpl {
         } */
       
         public static void main(String[] args) {
-        	fillBytes(5);
+        	List<Integer> tuples = Arrays.asList(1,2,3);
+        	printTuples(tuples);
+        	//fillBytes(5);
         
         
     	/*	int[][][] bytes =  prefix(32);
@@ -746,5 +758,12 @@ MATRIX C  		00000010	2
 	   
 	   
    }
+   
+   
+   }
+   
+	   
+   }
+   
 }
 		
