@@ -154,7 +154,6 @@ public class binPathImpl {
         	}
 
         
-        // FROM https://mkyong.com/java/java-how-to-convert-a-byte-to-a-binary-string/
         public static String printBits(int b,String modeOfPrint,boolean printLeadingZeros) {
         	String e="";
         		if (printLeadingZeros == true) {
@@ -182,21 +181,7 @@ public class binPathImpl {
         	
         }
         
-        /*public static boolean isBitSet(byte b, int bit) {
-        	if (b & bit)
-        		return true
-        	else
-        		return false;
-        }
-        public static void printTuples(int min,int max) {
-        	
-        	System.out.print("(");
-        	int combs = (int) Math.pow()
-        			
-        	for (int i=; i <= max; i++) 
-        		System.out.print(i+",");
-        	
-        	System.out.print(")");
+        
         	
       /*  	
         	Trocar para 4 numeros, usa o anterior mais umas quantas
@@ -204,26 +189,36 @@ public class binPathImpl {
         			2bit = 2
         			3bit= 3
         			
-        			(0,0,0)	REV
-        			(1,1,1)
+        			  0 	1
+        			(0,0) (0,1)
+        			  3	 	2
+        			(1,1) (1,0)
         			
-        			 	0		4       2       1
-        			(0,0,0) (1,0,0)(0,1,0)(0,0,1), para obter a proxima combinação reverse os numeros
-        			   3       5     6
-        			(0,1,1)(1,0,1)(1,1,0)
+        			reverse of 0 -> 3
+        			reverse of 1 -> 2
         			
-        			 4+8		2+8		  1+8					 
-        			(1,1,0,0) (1,0,1,0) (1,0,0,1)
-        			3+8			5+8			6+8
-        			(1,0,1,1) (1,1,0,1) (1,1,1,0)
+        			 	0		1     2      4
+        			(0,0,0) (0,0,1)(0,1,0)(1,0,0) 
+        		
+        			   7       3     5      6     
+        			(1,1,1) (0,1,1)(1,0,1)(1,1,0)
+        			
+        			 reverse of 7 = 0;
+        			 reverse of 1 = 6
+        			 reverse of 2 = 5
+        			 reverse of 4 = 3
         			
         			
-        			        			faltam 9 e 10
-        			        			(1001 e 1010
-        	(2,3,1)
-        	
-        	(3,1,2)
-        	(
+        			
+        			8+1			8+2			8+3
+        			(1,0,0,1)  (1,0,1,0) (1,0,1,1)
+         			 				 
+        			  8+4		5+8			6+8
+        			(1,1,0,0) (1,1,0,1) (1,1,1,0)
+        			
+        			
+        			        			
+        		
         	
         	
         	

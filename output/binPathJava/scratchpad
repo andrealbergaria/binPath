@@ -142,6 +142,8 @@ quando k=3, elimina k=2?
 (1,0,0,0) (2,0,0,0)(3,0,0,0)
 (1,1,0,0, (2,0,1,0)(3,0,0,1) 	
 
+(1,1,1,0,0,1)
+(1,1,0,1,0)
 
 num de colunas = numero de bits
 
@@ -985,70 +987,26 @@ solutions of a polynomial equation of degree d always form a multiset of cardina
 	
 	Solution degree = 4 , 
 	
-Fundamental theorem of algebra thnik is wrong
+Fundamental theorem of algebra
 
-	n=3, posicieos = 3
-	
-	3^3 possible combs
-	
-	(1,2,3)(3,2,1)(2,1,3)(2,3,2)(3,2,1)(3,1,2) = 6 combs
-	
-	
-	(1,1,2 (1,2,1) (2,1,1)					(1,1,3)(1,3,1)(3,1,1) = 
-	
-	
-	 (1,1,x1)( 1,x1,1)(x1,1,1)(1,1,x2)(1,x2,1)(x2,1,1)
-	 
-	
-	
-	
-	
-	Arranjo simples de n elementos tomados r {\displaystyle r} r a r {\displaystyle r} r
-	 
-	(2,2,1)     (2,1,2)	(1,2,2)(2,2,3)(2,3,2)(3,2,2)
-	
-	pos1, pos2, pos 1 +pos3 , pos 
-	
-	(3,3,2)(2,3,3)(3,2,3)(3,3,1)(1,3,3)(3,1,3)
-	(1,1,1)(2,2,2)(3,3,3)
-	
-	
-	Arranjos com repetição = 
-
-
-   	1,2,255,255} => {1,2,255}  + positions of 255
+   	{1,2,255,255} => {1,2,255}  + positions of 255
 
 {255,255,x,x)}
 {x,255,255,x}
 {x,x,255,255}  
 {x,255,x,255}
 
+
 	
 	
 		
 	
-	x = {1,2}
 	
-a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais 		 
- line2 [x,1,x,x)  	
-       (x,x,1,x)  			   
-       (x,x,x,1)			 	
-      				
-      					 	
-      							(x,y) coordenadas da matriz
-      							num linha X = posicao X
-	a) linha 1 , pos 1			num linhas (1) = posicao(1,1)	
-	a) linha 2 , pos 2			num linhas (4) = ultima posicao (4,4)  
-	a) linha 3,  pos 3
-	a) linha 4,  pos 4         posicao(1,1) = num linhas (neste caso 1)
-							   posicao(1,2) = num linhas 1 , pos 2
-   lin1 {2,x,x,x)  pos1 = linha 1 [2,0,0,0][ 		
-   lin2 (x,2,x,x)  pos2 = linha 2
-   lin3 (x,x,2,x)  pos3	= linha 3	
-   lin4 (x,x,x,2)  pos4 = linha 4	
-   
-				    
-				    
+	
+
+							    
+							    
+							    
 			Matriz =111
 					  111
 				  3d  011	Matriz triangular superior
@@ -1059,9 +1017,9 @@ a)     {1,x,x,x}	linha 2 , Pos2 = Pos2 todas as posições 2 são iguais
    				  7d  111			
 		
 		faltam 2,5
-				  111
+				  000
 				  010 2d
-				  101 5d	 Nao  é simetrica
+				  101 5d	
 				  
 				  1Symmetric matrix is a square matrix which is equal to its transpose
 			
@@ -1255,13 +1213,27 @@ solutions)
 	y the LU decomposition algorithm, an invertible matrix
 	 may be written as the product of a lower triangular matrix L and an upper triangular matrix U if
 		
+		A= byte1; B = byte2 ; C =byte3
+		 (A,B,C)
+MATRIX M (A,C,B)
+		 (B,A,C)
+		 (B,C,A)
+		 (C,A,B)
+		 (C,B,A)
 		
-		(byte1,byte2)
-		(byte1,byte1)
-		(byte2,byte2)
-		(byte2,byte1)
+			relacionar permutações com matriz ; matriz = 3P3
+			{a,b,c} {a,c,b} {b,a,c} {b,c,a} {c,a,b} {c,b,a} 
 		
-		byte2 = Transposta de (byte1) 
+		Properties of matrix M ? ,they will equal the 3P3 ..3P3 what properties
+		
+		
+	A =[ 1 ....255]
+	B =[ 1 ....255]
+	C = [1.....255]
+		
+		
+		
+		 
 			
 			
 
@@ -1455,5 +1427,15 @@ obter valores de posicao...decompor numero em binario, e usar a funcao f(pos) = 
 		
 
 ---------------------------------------------
-									
-									
+							P = { 5, 1, 4, 2, 3 }:
+Here, 5 goes to 1, 1 goes to 2 and so on (according to their indices position):
+5 -> 1
+1 -> 2
+2 -> 4
+4 -> 3
+3 -> 5
+Thus it can be represented as a single cycle: (5, 1, 2, 4, 3).		
+
+
+
+
