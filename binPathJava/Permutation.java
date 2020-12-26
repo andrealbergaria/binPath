@@ -1,6 +1,7 @@
 
 package binPathJava;
 import java.util.ArrayList;
+import org.javatuples.*;
 import java.util.List;
 import java.util.Vector;
 
@@ -8,39 +9,36 @@ import java.util.Vector;
 
 // taken from https://www.baeldung.com/java-array-permutations
 public class Permutation {
-
-private static Integer[] swap(Integer[] input, int a, int b) {
-    int tmp = input[a];
+/*
+ * @þaram input it is the tuple that is going to swamp elements
+ * @returns a tuple with swapped elements
+ */
+private static <E> E[] swap(E input, int a, int b) {
+	// Swamp A with B, and B with A
+    E temp = input[a];
     input[a] = input[b];
-    input[b] = tmp;
+    input[b] = input[a];
+    
+    
+    
     return input;
-}
+}	
+/*
+ * @returns a vector with all permutations of tuple
+ * @param tuple to be permuted
+ */
 
-   public static Vector<Integer[]> permute(int n, Integer[] elements) {
 
-	   	Vector<Integer[]> v = new Vector();
-	 
-	Integer[] ret = new Integer[elements.length];
-   	int[] indexes = new int[n];
-	
-//	for (int i = 0; i < n; i++) {
-//	    indexes[i] = 0;
-//	}
-	 
-   	v.add(elements);
-	
-    int it=0;
-	int i = 0;
-	while (i < n) {
+
+	public static <E> Vector<Tuple> getsThreeElements(E tuple) {
 		
-		it++;
-	    if (indexes[i] < i) {
-	    	
-	    	ret = swap(elements, (i % 2 == 0) ?  0: indexes[i], i);
-	    	v.add(ret);
-	        indexes[i] = 0;
-	        i++;
-	    }
+	}
+
+
+   public static <E> Vector<Tuple> permute(E tuple) {
+	   
+	 
+	
 	}
 	
 	return v;

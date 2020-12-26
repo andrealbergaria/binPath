@@ -1,6 +1,7 @@
 package binPathJava;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -8,12 +9,25 @@ import java.util.List;
 import java.util.Vector;
 
 import binPathJava.Permutation;
-
+import org.javatuples.*;
+/* 
+* TUPLES NUMBER
+* Unit (one element)
+	Pair (two elements)
+	Triplet (three elements)
+	Quartet (four elements)
+	Quintet (five elements)
+	Sextet (six elements)
+	Septet (seven elements)
+	Octet (eight elements)
+	Ennead (nine elements)
+	Decade (ten elements
+*/
 
 
 public class printTuples {
 
-	
+	// from https://stackoverflow.com/questions/1073919/how-to-convert-int-into-listinteger-in-java	
 /*	/ Tuples 3 (from  https://www.mathsisfun.com/combinatorics/combinations-permutations-calculator.html
 	{1,2,3} {1,3,2} {2,1,3} {2,3,1} {3,1,2} {3,2,1
 	// Tuples 4 (same site)
@@ -38,26 +52,17 @@ public class printTuples {
 		printTuples(elements);
 	}
 	
-	public static <T> Vector<Integer[]> getThreeElements(Integer[] elements) {
-		int[] t = new int[elements.length];
-		int g = 0;
-		// algorithm set three elements
-		for (int i=0; i < elements.length;i++) {
-			if (elements[i] >= 1 && elements[i] <= 3) {
-				t[g] = elements[i];
-				g++;
-			}
-		}
 		
-		Vector<Integer[]> retVector = Permutation.permute(elements.length, elements); 
-		return retVector;
-		
-	}
 	
-	// lic static <T> void printTuples(Vector<T> elementsSet) {
-		   Integer[] elements = {1,2,3};
+	public static <T> void printTuples(Vector<T> elements) {
+		if (elements.size() != 3)
+			throw new Exception("not using 3 elemts on tuple");
+	
+		   
+		   Triplet<T,T,T> tup =Triplet.with(elements.get(0),elements.get(1),elements.get(2))  
 			
-		   Vector<Integer[]> tuples_3 = getThreeElements(elements);
+		 
+		   
 		   
 		   Vector<Integer[]> result = new Vector<>(tuples_3);
 		   // contains, 3tuples, and one more element
