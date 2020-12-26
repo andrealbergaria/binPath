@@ -14,6 +14,21 @@ import binPathJava.Permutation;
 public class printTuples {
 
 	
+/*	/ Tuples 3 (from  https://www.mathsisfun.com/combinatorics/combinations-permutations-calculator.html
+	{1,2,3} {1,3,2} {2,1,3} {2,3,1} {3,1,2} {3,2,1
+	// Tuples 4 (same site)
+	1,2,3,4} {1,2,4,3} {1,3,2,4} {1,3,4,2}
+	 {1,4,2,3} {1,4,3,2} {2,1,3,4} {2,1,4,3}
+	  {2,3,1,4} {2,3,4,1} {2,4,1,3} {2,4,3,1}
+	   {3,1,2,4} {3,1,4,2} {3,2,1,4} {3,2,4,1}
+	    {3,4,1,2} {3,4,2,1} {4,1,2,3} {4,1,3,2}
+	     {4,2,1,3} {4,2,3,1} {4,3,1,2} {4,3,2,1}
+
+	Para obter o algorithm de tuples, start with three elements , then add 1,2,3,4 to prefix it. 5 elements 
+	use 4 elements tuples and 1,2,3,4,5 prefixes...then 
+		eleemes -> ((1,2,3,4,5,6,7) 3 three elements
+
+	*/
 	public static <T> void main(String[] args) {
 		if (args.length != 1) {
 			System.err.println("need to specify number of elements...it will start with 1");
