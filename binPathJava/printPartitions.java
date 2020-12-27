@@ -2,6 +2,7 @@ package binPathJava;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import Permutations.*;
  
@@ -40,46 +41,83 @@ public class printPartitions {
 	
 	
 	
+	public static int[] getPossibleValues(int min,int max) {
+		int[] arr = new int[max];
+		int v=0;
+		for (int i=min; i <= max;i++) {
+			arr[v] = i;
+			v++;
+		}
+		return arr;
+	}
+	public static int sumValues(int[] arr) {
+		int sum=0;
+	
+		for (int i=0; i < arr.length ; i++) 
+			sum+=arr[i];
+		
+			return sum;
+	}
+	 
+	/*
+	 * @returns list with tuples that are parts 8from partition math theory
+	 * 
+	 */
+	public static List<AllPermutations> permuteTemp(int[] values,int partitionNumber) {
+		AllPermutations perm = new AllPermutations(values);
+		
+		List<AllPermutations> l = new ArrayList<>();
+    	perm.GetFirst();
+    	System.out.println(perm);
+    	l.add(perm);
+    	 
+    	
+       	
+    	int sum = sumValues(perm.getArray());
+    	
+    	if (sum != partitionNumber)
+      		 System.err.println("the Tuple " + perm + " doest add up to "+partitionNumber);
+    	else
+    		System.err.println("the Tuple " + perm + " is good");
+       	
+    	
+    	while (perm.HasNext()) 
+   	     { 	
+       		 
+       		 perm.GetNext();
+       		 l.add(perm);
+   	         System.out.println(perm);
+   	         sum = sumValues(perm.getArray());
+   	      if (sum != partitionNumber)
+       		 System.err.println("the Tuple " + perm + " doest add up to "+partitionNumber);
+   	      else
+     		System.err.println("the Tuple " + perm + " is good");
+        	
+   	     } 
+   	     
+    	 return l;
+    	 
+	}
 	
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.err.println("\nNeeds number of summands or partiiton number");
 		}
-		 int partitionNumber = Integer.parseInt(args[0]);
-		 int[] possibleValues = new int[partitionNumber];
-         int idx = 0;
-         for (int i=1; i <= possibleValues.length;i++) {
-        	 possibleValues[idx] =i;
-        			 idx++;
+		 int maxSummands = Integer.parseInt(args[0]);
+			 
+         
+         
+         
+         for (int summand=1; summand <= maxSummands ;summand++) {
+        	 	 int[] values = getPossibleValues(1,summand);
+        	 	 permuteTemp(values,maxSummands);
          }
         	 
-                   //Possible values
-		  // 	A= {1,2} B = {1,2} C={1,2}
-         
-         // A= {1,2} B = {1,2} => (1,1)(1,2)(2,1)(2,2)
-         // get Possible 
-         
-         AllPermutations perm = new AllPermutations(possibleValues); 
-         permute(perm);
-         
-         
-         
         	 
-         }
-        		   	
-     public static void permute(AllPermutations perm) {
-    	 perm.GetFirst();
-    	 perm.Output();
-    	 int arr[] = perm.getArray();
-    	 
-    	 while (perm.HasNext()) 
-	     { 
-	         perm.GetNext();
-	         perm.Output();
-	     } 
-	     
-     }
-	     
+         
+         
+      }
+         
 		
 
 }

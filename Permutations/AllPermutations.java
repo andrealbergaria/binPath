@@ -1,11 +1,16 @@
 package Permutations;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 
 
 // taken from https://www.geeksforgeeks.org/iterative-approach-to-print-all-permutations-of-an-array/
 
 //Java implementation of the approach 
-public class AllPermutations  
+public class  AllPermutations  implements Iterable<AllPermutations>
 { 
 
  // The input array for permutation 
@@ -19,6 +24,10 @@ public class AllPermutations
  // i such that Indexes[i] < Indexes[i + 1] 
  private int Increase; 
 
+ private boolean isFirstTime=true;
+ 
+ 
+ 
  // Constructor 
  public AllPermutations(int arr[]) 
  { 
@@ -27,6 +36,41 @@ public class AllPermutations
      this.Indexes = new int[this.Arr.length]; 
  } 
 
+  
+ /*public Iterator<AllPermutations> iterator() {
+	 List<AllPermutations> la = new ArrayList<AllPermutations>();
+	 la.add(this);
+	 	return la.iterator(); 
+}
+ 
+     //no point implementing a whole class for something only used once
+     
+	  
+
+     public boolean hasNext(){
+         //simplify
+         return HasNext();
+     }
+     public AllPermutations next(){
+    	 if (isFirstTime==true) {
+    		 isFirstTime=false;
+    		 return GetFirst();
+    	 }
+    	 else
+    		 if (HasNext() == true)
+    			 return GetNext();
+    		 else
+    			 return null;
+     
+     }
+     
+     public void remove(){
+         throw new UnsupportedOperationException();
+     }     
+     
+     
+ 
+ */
  // Initialize and output 
  // the first permutation 
  public AllPermutations GetFirst() 
@@ -128,21 +172,22 @@ public class AllPermutations
      } 
      return this;
  } 
-public void Output() 
- { 
-     for (int i = 0; i < this.Indexes.length; ++i)  
-     { 
-
-         // Indexes of the input array 
-         // are at the Indexes array 
-         System.out.print(this.Arr[this.Indexes[i]]); 
-         System.out.print(" "); 
-     } 
-     System.out.println(); 
- } 
 
 public int[] getArray() {
 	return Arr;
+}
+
+public String toString() {
+	String ret="";
+    for (int i = 0; i < this.Indexes.length; ++i)  
+    { 
+
+        // Indexes of the input array 
+        // are at the Indexes array 
+        ret+= this.Arr[this.Indexes[i]]; 
+        ret+= " "; 
+    } 
+    return ret; 
 }
 
  // Swap two values in the Indexes array 
