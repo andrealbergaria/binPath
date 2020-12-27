@@ -1,5 +1,6 @@
 package binPathJava;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import java.util.Arrays;
@@ -8,8 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-import binPathJava.Permutation;
-import org.javatuples.*;
+
 /* 
 * TUPLES NUMBER
 * Unit (one element)
@@ -23,6 +23,8 @@ import org.javatuples.*;
 	Ennead (nine elements)
 	Decade (ten elements
 */
+
+
 
 
 public class printTuples {
@@ -43,59 +45,52 @@ public class printTuples {
 		eleemes -> ((1,2,3,4,5,6,7) 3 three elements
 
 	*/
-	public static <T> void main(String[] args) {
-		if (args.length != 1) {
-			System.err.println("need to specify number of elements...it will start with 1");
-			System.exit(-1);
-		}
-		int[] elements = new int[Integer.parseInt(args[0])];
-		printTuples(elements);
+	public static void main(String[] args) {
+		
+		Integer[] base = {1,2,3};
+		List <List<Integer>> TuplesList = new ArrayList<>();
+				// Se forem dois elmeentos
+				//ento
+
 	}
 	
+	/*
+	 * 
+	 * @return a lista com elementso trocados
+*/
+	
+	public static <T> List< List<Integer> > permutateTuples(int numberOfElems) {
+ 
 		
-	
-	public static <T> void printTuples(Vector<T> elements) {
-		if (elements.size() != 3)
-			throw new Exception("not using 3 elemts on tuple");
-	
-		   
-		   Triplet<T,T,T> tup =Triplet.with(elements.get(0),elements.get(1),elements.get(2))  
-			
-		 
-		   
-		   
-		   Vector<Integer[]> result = new Vector<>(tuples_3);
-		   // contains, 3tuples, and one more element
-		   Integer[] arrayTemp;
-			// 
-		   	Iterator<Integer[]> it = tuples_3.iterator();
-		   			// add the element to the array
-		   	// for each tuple, add the elementsSet to it
-					while(it.hasNext()) {
-						Integer[] currentTuple = it.next();
-						
-						ArrayList<Integer[]> newTuple = new ArrayList<>();
-						newTuple.addAll(currentTuple);
-						
-						Iterator<?> it2  = elementsSet.iterator();
-						while (it2.hasNext()) {
-							newTuple
-						}
-					}
-						
+		/*
+		 * row 1 -> 1 2
+		 * 			it1   it2
+		 * row 2 -> (2,1 (1,2)
+		 * row 3 -> (1,2,3)(2,1,3.....
+		 *  nunmberOfEleems > 1 
+		 */
+				
+			for (int i=0 ; i < 2; i++) {
+			}
+			for (int row =2; row < 3;row++) {
+				// Adds element to tuples
+				for (int add=1 ; add < 2; add++) {
 					
 				}
 			}
-		
-		   			 
-				 
-				 
-				 
-			      
-			 }
-			 
+			List <List<Integer>> retValue = new ArrayList<>();
+			List <List<Integer>> li = new ArrayList<>();
 			
-		   // Second change
-		  }
-
+				for (List<Integer> tuplo : retValue) {
+					for (int idx=1; idx < numberOfElems ;idx++) {
+						
+						List <Integer> temporaryList  = new ArrayList<>(tuplo);
+						temporaryList.add(new Integer(idx));
+						retValue.add(temporaryList);
+					
+					}
+				}
+				return new ArrayList<List<Integer>>();	
+	}
+		
 }

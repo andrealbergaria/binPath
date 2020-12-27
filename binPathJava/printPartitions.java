@@ -3,10 +3,11 @@ package binPathJava;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.javatuples.*;
-import org.javatuples.valueintf.IValue0;
+import Permutations.*;
+ 
 
 public class printPartitions {
+	
 
 	/**
 	 * 
@@ -39,14 +40,47 @@ public class printPartitions {
 	
 	
 	
-	public static <T> void printPartitions(int numberOfPartitions,T[] Elems) {
-		int max_size_summands = numberOfPartitions-1; 
-		
-		
-	}
+	
 	public static void main(String[] args) {
+		if (args.length != 1) {
+			System.err.println("\nNeeds number of summands or partiiton number");
+		}
+		 int partitionNumber = Integer.parseInt(args[0]);
+		 int[] possibleValues = new int[partitionNumber];
+         int idx = 0;
+         for (int i=1; i <= possibleValues.length;i++) {
+        	 possibleValues[idx] =i;
+        			 idx++;
+         }
+        	 
+                   //Possible values
+		  // 	A= {1,2} B = {1,2} C={1,2}
+         
+         // A= {1,2} B = {1,2} => (1,1)(1,2)(2,1)(2,2)
+         // get Possible 
+         
+         AllPermutations perm = new AllPermutations(possibleValues); 
+         permute(perm);
+         
+         
+         
+        	 
+         }
+        		   	
+     public static void permute(AllPermutations perm) {
+    	 perm.GetFirst();
+    	 perm.Output();
+    	 int arr[] = perm.getArray();
+    	 
+    	 while (perm.HasNext()) 
+	     { 
+	         perm.GetNext();
+	         perm.Output();
+	     } 
+	     
+     }
+	     
 		
-	}
 
 }
 
