@@ -10,7 +10,7 @@ import java.util.List;
 // taken from https://www.geeksforgeeks.org/iterative-approach-to-print-all-permutations-of-an-array/
 
 //Java implementation of the approach 
-public class  AllPermutations  implements Iterable<AllPermutations>
+public class  AllPermutations 
 { 
 
  // The input array for permutation 
@@ -24,7 +24,6 @@ public class  AllPermutations  implements Iterable<AllPermutations>
  // i such that Indexes[i] < Indexes[i + 1] 
  private int Increase; 
 
- private boolean isFirstTime=true;
  
  
  
@@ -37,40 +36,7 @@ public class  AllPermutations  implements Iterable<AllPermutations>
  } 
 
   
- /*public Iterator<AllPermutations> iterator() {
-	 List<AllPermutations> la = new ArrayList<AllPermutations>();
-	 la.add(this);
-	 	return la.iterator(); 
-}
  
-     //no point implementing a whole class for something only used once
-     
-	  
-
-     public boolean hasNext(){
-         //simplify
-         return HasNext();
-     }
-     public AllPermutations next(){
-    	 if (isFirstTime==true) {
-    		 isFirstTime=false;
-    		 return GetFirst();
-    	 }
-    	 else
-    		 if (HasNext() == true)
-    			 return GetNext();
-    		 else
-    			 return null;
-     
-     }
-     
-     public void remove(){
-         throw new UnsupportedOperationException();
-     }     
-     
-     
- 
- */
  // Initialize and output 
  // the first permutation 
  public AllPermutations GetFirst() 
@@ -178,15 +144,16 @@ public int[] getArray() {
 }
 
 public String toString() {
-	String ret="";
-    for (int i = 0; i < this.Indexes.length; ++i)  
+	String ret="[";
+    for (int i = 0; i < Indexes.length; ++i)  
     { 
-
+    	
         // Indexes of the input array 
         // are at the Indexes array 
-        ret+= this.Arr[this.Indexes[i]]; 
-        ret+= " "; 
+        ret+= Arr[Indexes[i]]; 
+        ret+= ","; 
     } 
+    ret+="]";
     return ret; 
 }
 
