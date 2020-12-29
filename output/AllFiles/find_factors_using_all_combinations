@@ -1,4 +1,11 @@
-									
+Fundamental thoery of arithemetic
+every integer is a prime number, 
+or it can be represetned by a as a product of prime numbers,. This representation is unique
+Since multiplying is a sum, we can use partitions
+
+If the number of factors equals 2 , then we got a prime number
+
+	
 									3*4 = 3 + 3 + 3 +3
 									
 									3*2 + 3*2
@@ -14,7 +21,7 @@
 									
 									
 									factores de 12 = {1,2,3,4,6,,12}
-									
+									contar factores,,,se 2 enao é primo. Basta obter os factores
 									
 									algorithm (instead of adding all values, combine them two to two)
 									
@@ -95,10 +102,10 @@
 								// FACTORS  are from pascal triangle for example 2(5) => 1(5)+1(5)
 								//
 								
-								tenho 
-								{1,5,2,4,8,16}
-								faltam 20,40,80
+								faltam 20,40,80 e 10
 								
+								K integer, X factor
+								X K = MULTIPLE
 								
 							3(5) + 3(5)  +3(5) + 3(5) + 3(5)
 							

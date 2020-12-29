@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import binPathJava.printPartitions;
+
 
 
 
@@ -20,20 +20,21 @@ public class PermutationWithRepeats {
  * @param a, the elements to be permuted
  * @param k number of elements
  */
-    public static List<Integer[]> permute(Integer[] a, int k) {
+    public static List<Integer[]> permute(Integer[] a, int k,boolean print) {
     	// numOfValuesInTuple=num;
     	ArrayList<Integer[]> tuples = new ArrayList<Integer[]>();
         int n = a.length;
-        int idxTuples=0;
+        
         int[] indexes = new int[k];
         int total = (int) Math.pow(n, k);
 
         Integer[] tuple = new Integer[k];
+        
         while (total-- > 0) {
             for (int i = 0; i < k; i++){
                 tuple[i] = a[indexes[i]];
             }
-
+            System.err.println("\n INDEXES -> "+Arrays.toString(indexes));
             /*	WORKS OK
              *  COPY TUPLES TO LIST (OTHER WAY (tuples.add) DIDNT WORK..GOING FOR CYCLE */
          /*   System.out.println("[");
@@ -49,7 +50,8 @@ public class PermutationWithRepeats {
             //printPartitions.listTuple(tupleBackup);
             tuples.add(tupleBackup);
             //printPartitions.ListAllPermutations(tuples);
-            //handle(tuple);
+            if (print == true)
+            		handle(tuple);
             
             for (int i = 0; i < k; i++) {
                 if (indexes[i] >= n - 1) {
@@ -59,6 +61,8 @@ public class PermutationWithRepeats {
                     break;
                 }
             }
+            System.err.println("\n INDEXES2 -> "+Arrays.toString(indexes));
+
         }
     //  
         

@@ -1,4 +1,4 @@
-package binPathJava;
+package Permutations;
 
 import static java.lang.System.*;
 
@@ -48,6 +48,7 @@ public class printPartitions {
 		int v=0;
 		for (int i=1; i <= max;i++) {
 			arr[v] = new Integer(i);
+			
 			v++;
 		}
 		return arr;
@@ -101,6 +102,7 @@ public class printPartitions {
 	}
 	
 	
+	
 	/*
 	 * @returns list with tuples that are parts 8from partition math theory
 	 * 
@@ -112,37 +114,29 @@ public class printPartitions {
 		}
 		
 	//	 int maxSummands = Integer.parseInt(args[0]);
-		int maxSummands= 4;
+		int maxSummands= 6;
 			 
-        Integer[] possibleValuesForTuple = {1,2,3,4};
-         
- 		 List<Integer[]> listObj;
-         
+        Integer[] possibleValuesForTuple; 
+         List<Integer[]> listObj;
+         boolean print = true;
        for (int summand=1; summand <= maxSummands ;summand++) {
     	   
-    	   		// Gets the values from 1...summand
-        	 	 //possibleValuesForTuple = getRange(summand);
-        	 	 // Change elems to object because of method permute uses Objecŧ[]
-        	 	// listRangeTuple(possibleValuesForTuple);
+    	   		// Gets the values from 1...summand works
+        	 	 possibleValuesForTuple = getRange(summand);
         	 	 
-        	 	 listObj = PermutationWithRepeats.permute(possibleValuesForTuple, summand);
-        	 	 //ListAllPermutations(listObj);
-        	 	 //for (Integer[] tuplePermuted : listObj) {
+        	 	 print=false;
+        	 	 listObj = PermutationWithRepeats.permute(possibleValuesForTuple, summand,print);
+
+        	 	 for (Integer[] tuplePermuted : listObj) {
         	 		 // returns list and assign to tuple
-        	 //		 checkPart(tuplePermuted, maxSummands);
-        	 //	 }
-        	 	 for (Integer[] i : listObj ) {
-        	 		 checkPart(i, maxSummands);
+        	 		 checkPart(tuplePermuted, maxSummands);
         	 	 }
-        	 	 
-         }
+
+         
+       }
+       }
         	 
-        	 
-         
-         
-      }
-         
-		
+      
 
 }
 
