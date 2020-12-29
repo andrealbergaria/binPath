@@ -80,11 +80,11 @@ public class printPartitions {
 			tupleString += elem + " , ";
 		}
 		tupleString+="] ";
-			System.out.print(tupleString);
+			
 		
 		//System.out.println("The part number is " +partitionNumber);
 		if (sum == partitionNumber)
-	 		 out.println("\n Tuple "+tupleString+" is part");
+	 		 out.println(tupleString);
 	 	// else
 	 	//	out.println("\n Tuple "+tupleString+" is not part");
 		}

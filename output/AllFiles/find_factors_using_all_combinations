@@ -21,7 +21,12 @@ If the number of factors equals 2 , then we got a prime number
 								
 								
 								
+								
+								K inteiro
+								KX = MULTPLE
+									partition = multiple
 									
+									multiple of 6 = 1,2,3
 									
 									factores de 12 = {1,2,3,4,6,,12}
 								factores de 6 = 2+2+2
@@ -31,6 +36,135 @@ If the number of factors equals 2 , then we got a prime number
 								factores 1 e 2 ?
 								
 									contar factores,,,se 2 enao é primo. Basta obter os factores
+									
+									A *A * A =(A + A + A)    * K
+								K1 inteiro 
+									
+									x(x) + x(x) + x(x)  => reduziu uma multiplicação em soma.....expoente indica o numero de somas necessarias
+    	
+									K1 (x(X) = 8
+									
+									 3 , 3 , 2 -> 8
+									  4 , 2 , 1 , 1 -8
+									 
+									 b is a multiple of a if b = na for some integer n
+									
+									multiple of 6
+									XK = 6
+									
+									X
+									-------- = 6
+									K Times
+									
+									m Integer
+									
+									n is a multiple of m and q
+									m*K1 factor of n
+									q*K2 factor of n
+									
+									factoriaçoã
+									n = m*k1 * q* k2
+
+
+									n multiple  = m*k1*q*k2
+									use partitions, , if all summands are equal and equal partition
+									its factor 
+								
+								to try out 
+									m*k1 => K integer			
+
+									K1 = some integer
+									
+									n=12
+									
+									factores = {1,2,3,4,6,12}
+									
+									12 = 2*3*2
+									
+									12 = 6*2 = 6+6
+									12 = 3*4 = 4+4+4
+									12 = 4*3 = 3+3+3+3
+									12 = 6*2 = 2+2+2+2+2+2
+									
+									needs summands  equals, and use the before, Count the summands,
+									to know which number to multiply, se um elemnto for factor,entao o outro
+									tabem é (visto que a mulitpliação 'comutattiva 
+									
+									all factors, can be decomposed?
+									
+									partition of factors?
+									6+6
+									(5+1) + (5+1)
+									(3+3) + (3+3)
+									(4+2) + (4+2)
+									(2+2+2) +(2+2+2)
+									
+									decompose (4+1+1)
+									1+1+1+1+1+1
+									2+1+1+1+1
+									2+2+1+1
+									3+1+1+1
+									3+2
+									
+									partitions 
+									
+									decompose all the number like 5-> 2+3,
+									start with 6,
+									decompose (5+1) 
+									decompose (4+1+1) (( can only use factors on summing)
+									decompose (4+2)
+									decompose (2+2+2)
+									deocopose (1+1+2+2)
+									decomopse (1+1+1+1+2
+									decopose (1+1+1+1+1+1)
+									
+									decomp
+									
+									
+									
+									o mulitplo , seja qual for a factorizção é sempre pelos factores
+									por exemplo 
+									12 = 3*2*2 = 4*3 = 6*2  
+									12  =(2+2) (2+2)(2+2)
+									
+
+									as somas tem sde ser o mesmo numero
+									
+									
+									 
+									ou seja 1200=2^4 * 3 * 5^ 2
+									 
+									 n=1200
+									 
+									 
+									 
+									difference betwen multiple and factor 
+									multiple = XK=Multiple
+									
+									      x
+									----------------  = 8
+										K
+									
+									x = 8K
+									
+									Para k=1 Inteiro.
+									
+									Integer -> K , 8 -> factor
+									
+									x(X) = (x+x)*K1
+									
+									x(X)+x(X)+x(x)
+									-------------- = 12
+										K times
+									
+									(x+x)k + k(x+x)+k(x+x)
+									--------------------   => 12
+									K TIMES									
+									
+									k(x+x)
+									-------
+									K TIMES
+									x(x) + x(x) + x(x)
 									
 									algorithm (instead of adding all values, combine them two to two)
 									
