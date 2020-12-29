@@ -13,11 +13,7 @@ If the number of factors equals 2 , then we got a prime number
 									2 (3*2) 
 									
 									possiveis factores
-									2    
-									3   
-									4   
-									6	
-									12  
+									2,3,4,6,12  
 								
 								
 								
@@ -173,14 +169,86 @@ If the number of factors equals 2 , then we got a prime number
 									  os factores tem de estar entre 1 e 7
 									  [2,3,4,5,6]
 				
-				factorizar é tambem usar multiplicar visto que 
+				factorizar é tambem  multiplicar os multiplos  visto que 
 				n=km
 				n1=k1m1
 				
-				n2 = n * n1 (km * k1m1)
+				n2 = n * n1 (trocar km * k1m1)
+				
+				n=12
+				n1=4
+				
+				n2 = 48 (12,4 são factores)
+				
+				factores de 4 = {1,2,4}
+				
+				factores de 12 =? { 1,2,3,4,6,12}
+				
+				n3 = 7
+				n3 = n+n+n+n
+				
+				n4 = 8
+				so pode ser [1,2,3,4,5,6,7]
+				multiplo A = 2, mulitiplo b= 4
+				n4 = multiplo de A *mulitplo de B
+								SE nao for prime, tem divisores
+				
+				 
+   				partition 6, Eleemnts added (1,2,3,4,5}
+   				
+   				choosing 2, m2 must be 3.Since commutative, A*B = B*A 2*3 = 3*2,
+   				4? impossibel
+   				5 impossible
+				 
+				 /* algorithm for getting factors */
+				 Get the multiple (value we want to factorize,like 6 in the example)
+				 Start with summands=1 and then keep increasing by one.
+				 Let's call for example the number of summands M2.
+				 
+				 
+				 
+				 for M2=1, and M1 = factor to discover
+				 	
+				 	Multiple Of a Number = (m1+m1+m1) m2 times
+				 	6 = m1 * m2;	
+				 
+				 We want to obtain m1.
+				 6 = NumberOfSummands(M2) * m1
+				 
+				  
+				 			
+	
+		6 = m2  (m1) = 6
+		 
+   	summands M2 = 2
+   	6 = 2 (m1) m1 = 3
+		
+	summands M2 = 4
+		6=4(m1) = 2		 
+				6 = m1 * m2;
+				6 = m1 * m2 * m3
+				6 = m1*m2*m3*m4
+						
+				6 = (m1+m1+m1+m1)
+					------------
+					value of m2
+					
+					
+					m2 = summands
+					m1 = elements
+					
+					need to know m1
+					
+					
+				 So me interessa usar um m o maior, visto qeu outro é é um subset
+					 quais os valores que ms tomam?=
+					 
+				m1 = possiveis valores = {1,2,3,4,5,6}
 				
 				
-													  
+				
+				m2 'os mesmos valores, {1,2,3}
+					 								  
 									tiples po mulitplicados
 svieis combniações (por exemplo 2, 2*6, 6, 2, 2*2 )
 									
