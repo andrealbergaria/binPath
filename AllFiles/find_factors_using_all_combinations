@@ -85,13 +85,21 @@
 								factors of 80d  ={1, 2, 4, 5, 8, 10, 16, 20, 40, 80}
 								
 								= 5 5 5  5 5 5  5 5 5  5 5 5  5 5 5  5
-								1(5) + 1(5)
-								2(5) + 2(5) + 2(5) + 2(5)+2(5) + 2(5)+ 2(5) + 2(5)
+								1(5) + 1(5) + 1(5) +1(5)
+								2(5)         + 2(5)   	+ 2(5) + 2(5)+2(5) + 2(5)+ 2(5) + 2(5)
 								4(5) + 4(5) + 4(5) + 4(5)
 								8(5) + 8(5)
 								16(5)
+								//IMPORTANT
+								//prime number is this posible to use factors?
+								// FACTORS  are from pascal triangle for example 2(5) => 1(5)+1(5)
+								//
 								
-								prime number are from pascal triangle
+								tenho 
+								{1,5,2,4,8,16}
+								faltam 20,40,80
+								
+								
 							3(5) + 3(5)  +3(5) + 3(5) + 3(5)
 							
 							(2+1)(5) * (3+2)
