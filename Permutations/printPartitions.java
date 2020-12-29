@@ -76,7 +76,7 @@ public class printPartitions {
 			tupleString += elem + " , ";
 		}
 		tupleString+="] ";
-		
+		//System.out.println("The part number is " +partitionNumber);
 		if (sum == partitionNumber)
 	 		 out.println("\n Tuple "+tupleString+" is part");
 	 	// else
@@ -113,8 +113,8 @@ public class printPartitions {
 			System.exit(-1);
 		}
 		
-	//	 int maxSummands = Integer.parseInt(args[0]);
-		int maxSummands= 6;
+	int maxSummands = Integer.parseInt(args[0]);
+	//	int maxSummands= 6;
 			 
         Integer[] possibleValuesForTuple; 
          List<Integer[]> listObj;

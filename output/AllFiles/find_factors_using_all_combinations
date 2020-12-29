@@ -18,9 +18,16 @@ If the number of factors equals 2 , then we got a prime number
 									4   
 									6	
 									12  
+								
+								
+								
 									
 									
 									factores de 12 = {1,2,3,4,6,,12}
+								factores de 6 = 2+2+2
+								
+								
+								
 									contar factores,,,se 2 enao é primo. Basta obter os factores
 									
 									algorithm (instead of adding all values, combine them two to two)

@@ -27,7 +27,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import com.sun.xml.internal.ws.commons.xmlutil.Converter;
+
 public class binPathImpl {
 
 	// first number to multiply 
@@ -591,8 +591,7 @@ public class binPathImpl {
         } */
       
         public static void main(String[] args) {
-        	List<Integer> tuples = Arrays.asList(1,2,3);
-        	printTuples(tuples);
+        	
         	//fillBytes(5);
         
         
@@ -755,10 +754,10 @@ MATRIX C  		00000010	2
    }
    
    
-   }
+   
    
 	   
-   }
+   
    
 }
 		

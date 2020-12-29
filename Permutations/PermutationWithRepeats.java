@@ -34,7 +34,7 @@ public class PermutationWithRepeats {
             for (int i = 0; i < k; i++){
                 tuple[i] = a[indexes[i]];
             }
-            System.err.println("\n INDEXES -> "+Arrays.toString(indexes));
+            
             /*	WORKS OK
              *  COPY TUPLES TO LIST (OTHER WAY (tuples.add) DIDNT WORK..GOING FOR CYCLE */
          /*   System.out.println("[");
@@ -61,7 +61,7 @@ public class PermutationWithRepeats {
                     break;
                 }
             }
-            System.err.println("\n INDEXES2 -> "+Arrays.toString(indexes));
+            
 
         }
     //  
