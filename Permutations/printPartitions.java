@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil;
+
 import Permutations.*;
  
 
@@ -63,11 +66,12 @@ public class printPartitions {
 			return sum;
 	}
 	 
-	public static void checkPart(Integer[] tuple,int partitionNumber) {
+	public static void checkPart(Integer[] tuple,int partitionNumber,boolean print) {
 		//System.out.println("\n Partition number "+partitionNumber);
 		int sum;
 		sum = sumValues(tuple);
 		//Print array
+		if (print==true) {
 		String tupleString=new String();
 		
 		tupleString="[ ";
@@ -76,12 +80,16 @@ public class printPartitions {
 			tupleString += elem + " , ";
 		}
 		tupleString+="] ";
+			System.out.print(tupleString);
+		
 		//System.out.println("The part number is " +partitionNumber);
 		if (sum == partitionNumber)
 	 		 out.println("\n Tuple "+tupleString+" is part");
 	 	// else
 	 	//	out.println("\n Tuple "+tupleString+" is not part");
-	 	 
+		}
+		else
+			out.println("Printing not enable on checkPart");
 	}
 	/*
 	 * 
@@ -98,10 +106,72 @@ public class printPartitions {
 		for (Integer elem: tuple) {
 			System.out.print(elem+",");
 		}
-		System.out.print("]");
+		System.out.println("]");
 	}
+	// FROM https://stackoverflow.com/questions/3770289/converting-array-of-primitives-to-array-of-containers-in-java
+	public static Integer[] toObject(int[] array) {
+	    if (array == null) {
+	        return null;
+	    } else if (array.length == 0) {
+	        return null;
+	    }
+	    Integer[] result = new Integer[array.length];
+	    for (int i = 0; i < array.length; i++) {
+	        result[i] = new Integer(array[i]);
+	    }
+	    return result;
+	}
+
 	
+	// FROM https://stackoverflow.com/questions/11492842/converting-an-array-of-wrappers-to-an-array-of-primitives
+	public static int[] toPrimitiveArray(Object[] wrappedArray) {
+
+        int i = 0;
+        int[] arr = new int[wrappedArray.length];
+
+          for ( Object w : wrappedArray){
+
+
+              arr [i] = (Integer) w;
+                      i++;
+          }
+
+           return arr;
+       }
 	
+	// to check if they are equal, sorted them and compared them one by one
+	/*
+	 * @param returns a list of tuples with no repeatitions
+	 * 
+	 */
+	public static ArrayList<Integer[]> compareTuples(ArrayList<Integer[]> allTuples) {
+			
+		// FROM https://www.softwaretestinghelp.com/sort-arrays-in-java/
+		int temp;
+		int[] intArray;
+		ArrayList<Integer[]> listTuplesOrdered = new ArrayList<Integer[]>();
+		for (Integer[] tuple : allTuples) {
+			intArray = toPrimitiveArray(tuple);
+			
+		 for (int i = 0; i <intArray.length; i++) {     
+	          for (int j = i+1; j <intArray.length; j++) {     
+	              if(intArray[i] >intArray[j]) {      //swap elements if not in order
+	                 temp = intArray[i];    
+	                 intArray[i] = intArray[j];    
+	                 intArray[j] = temp;    
+	               }
+	              Integer[] tupleToList = toObject(intArray);
+	              if (!listTuplesOrdered.contains(tupleToList)) {
+	            	  listTuplesOrdered.add(tupleToList);
+	              }
+	            }     
+	        }
+		  
+		}
+		
+		return listTuplesOrdered;		
+
+	}
 	
 	/*
 	 * @returns list with tuples that are parts 8from partition math theory
@@ -115,10 +185,13 @@ public class printPartitions {
 		
 	int maxSummands = Integer.parseInt(args[0]);
 	//	int maxSummands= 6;
-			 
+		
         Integer[] possibleValuesForTuple; 
          List<Integer[]> listObj;
          boolean print = true;
+         ArrayList<Integer[]> allTuples = new ArrayList<Integer[]>();
+         ArrayList<Integer[]> listOrdered = new ArrayList<Integer[]>();
+         
        for (int summand=1; summand <= maxSummands ;summand++) {
     	   
     	   		// Gets the values from 1...summand works
@@ -129,11 +202,17 @@ public class printPartitions {
 
         	 	 for (Integer[] tuplePermuted : listObj) {
         	 		 // returns list and assign to tuple
-        	 		 checkPart(tuplePermuted, maxSummands);
+        	 		 checkPart(tuplePermuted, maxSummands,true);
+        	 		 allTuples.add(tuplePermuted);
         	 	 }
 
          
        }
+       
+       
+       listOrdered = compareTuples(allTuples);
+       
+       ListAllPermutations(listOrdered);
        }
         	 
       
