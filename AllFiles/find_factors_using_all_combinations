@@ -171,14 +171,18 @@ If the number of factors equals 2 , then we got a prime number
 									  2* 5  = 5 * 2
 									  
 									  os factores tem de estar entre 1 e 7
-									  obter maximo summands
-									  neste caso 7.só há uma solução
-									  (1,1,1,1,11,1)
-									  
-									  se elementos da partition  forem igual a todos 1, então prime number
-									  
-									
-									todos os possvieis combniações (por exemplo 2, 2*6, 6, 2, 2*2 )
+									  [2,3,4,5,6]
+				
+				factorizar é tambem usar multiplicar visto que 
+				n=km
+				n1=k1m1
+				
+				n2 = n * n1 (km * k1m1)
+				
+				
+													  
+									tiples po mulitplicados
+svieis combniações (por exemplo 2, 2*6, 6, 2, 2*2 )
 									
 									PRIME NUMBERS ->  2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 4
 									  

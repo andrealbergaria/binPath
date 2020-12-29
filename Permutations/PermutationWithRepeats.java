@@ -70,8 +70,8 @@ public class PermutationWithRepeats {
             //printPartitions.listTuple(tupleBackup);
             tuples.add(tupleBackup);
             //printPartitions.ListAllPermutations(tuples);
-            if (print == true)
-            		handle(tuple);
+          //  if (print == true)
+            //		handle(tuple);
             
             for (int i = 0; i < k; i++) {
                 if (indexes[i] >= n - 1) {

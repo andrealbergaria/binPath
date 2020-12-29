@@ -9,9 +9,11 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil;
 
-import Permutations.*;
+
+
+
+
  
 
 public class printPartitions {
@@ -71,10 +73,11 @@ public class printPartitions {
 			return sum;
 	}
 	 
-	public static void checkPart(Integer[] tuple,int partitionNumber,boolean print) {
+	public static boolean checkPart(Integer[] tuple,int partitionNumber,boolean print) {
 		//System.out.println("\n Partition number "+partitionNumber);
 		int sum;
 		sum = sumValues(tuple);
+		boolean ret=false;
 		//Print array
 		if (print==true) {
 		String tupleString=new String();
@@ -89,12 +92,16 @@ public class printPartitions {
 		
 		//System.out.println("The part number is " +partitionNumber);
 		if (sum == partitionNumber)
-	 		 out.println(tupleString);
+	 		 //out.println(tupleString);
 	 	// else
 	 	//	out.println("\n Tuple "+tupleString+" is not part");
+		ret= true;
 		}
-		else
+		else {
 			out.println("Printing not enable on checkPart");
+			ret= false;
+		}
+		return ret;
 	}
 	/*
 	 * 
@@ -106,13 +113,14 @@ public class printPartitions {
 			listTuple(tuple);
 	}
 	
-	public static void listTuple(Integer[] tuple) {
-		System.out.print("\n[");
+	public static String listTuple(Integer[] tuple) {
+		String str = "\n[";
 		for (Integer elem: tuple) {
-			System.out.print(elem+",");
+			str+=elem+",";
 		}
-		System.out.println("]");
-	}
+		str+=("]");
+		return str;
+					}
 	// FROM https://stackoverflow.com/questions/3770289/converting-array-of-primitives-to-array-of-containers-in-java
 	public static Integer[] toObject(int[] array) {
 	    if (array == null) {
@@ -165,15 +173,19 @@ public class printPartitions {
 	                 intArray[i] = intArray[j];    
 	                 intArray[j] = temp;    
 	               }
+	              
 	              Integer[] tupleToList = toObject(intArray);
+	              listTuple(tupleToList);
+
 	              if (!listTuplesOrdered.contains(tupleToList)) {
 	            	  listTuplesOrdered.add(tupleToList);
+	               
 	              }
 	            }     
 	        }
 		  
 		}
-	       ListAllPermutations(listTuplesOrdered);
+//	       ListAllPermutations(listTuplesOrdered);
 
 		
 
@@ -196,7 +208,7 @@ public class printPartitions {
          List<Integer[]> listObj;
          boolean print = true;
          ArrayList<Integer[]> allTuples = new ArrayList<Integer[]>();
-         ArrayList<Integer[]> listOrdered = new ArrayList<Integer[]>();
+         Integer[] te;
          
        for (int summand=1; summand <= maxSummands ;summand++) {
     	   
@@ -209,7 +221,9 @@ public class printPartitions {
         	 	 for (Integer[] tuplePermuted : listObj) {
         	 		 // returns list and assign to tuple
         	 		 checkPart(tuplePermuted, maxSummands,true);
-        	 		 allTuples.add(tuplePermuted);
+        	 		 te = new Integer[tuplePermuted.length];
+        	 		 System.arraycopy(tuplePermuted, 0, te, 0, tuplePermuted.length);
+        	 		 allTuples.add(te);
         	 	 }
 
          

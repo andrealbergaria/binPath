@@ -26,7 +26,7 @@ public class printPartsReturnTuple extends printPartitions {
     	 		 tuple = PermutationReturnsOneTuple.permute(possibleValuesForTuple, summand,print);
 
 
-    	 	 checkPart(tuple, maxSummands);
+    	 	 checkPart(tuple, maxSummands,false);
     	 	 
 
      }
