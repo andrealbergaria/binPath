@@ -63,7 +63,7 @@ public class printPartitions {
 	}
 	 
 	public static void checkPart(Integer[] tuple,int partitionNumber) {
-		System.out.println("\n Partition number "+partitionNumber);
+		//System.out.println("\n Partition number "+partitionNumber);
 		int sum;
 		sum = sumValues(tuple);
 		//Print array
@@ -114,15 +114,14 @@ public class printPartitions {
 	//	 int maxSummands = Integer.parseInt(args[0]);
 		int maxSummands= 4;
 			 
-         Integer[] tuple;
-        Integer[] possibleValuesForTuple;
+        Integer[] possibleValuesForTuple = {1,2,3,4};
          
  		 List<Integer[]> listObj;
          
        for (int summand=1; summand <= maxSummands ;summand++) {
     	   
     	   		// Gets the values from 1...summand
-        	 	 possibleValuesForTuple = getRange(summand);
+        	 	 //possibleValuesForTuple = getRange(summand);
         	 	 // Change elems to object because of method permute uses Objecŧ[]
         	 	// listRangeTuple(possibleValuesForTuple);
         	 	 
