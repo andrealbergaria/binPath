@@ -18,7 +18,13 @@ import java.util.List;
 
 public class printPartitions {
 	
-	
+	//https://stackoverflow.com/questions/7277757/why-cant-i-import-static-java-lang-system-out-println/7277780
+	 public static<T> void print(T arg) {
+	        System.out.print(arg);
+	    }
+	 public static<T> void println(T arg) {
+	        System.out.println(arg);
+	    }
 	
 	
 

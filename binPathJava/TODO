@@ -88,3 +88,9 @@ invert bits on binary number, what happens do decimal?
 								
 								get divisors of number
 								f one tests the values of q in increasing order, the first divisor that is found is necessarily a prime number,
+							choose 12 instead of 6, check if m1's	
+								m1+m1+m1+m1+m1 = 6 / 5
+				 m1+m1+m1+m1 = 6 / 4 
+				 m1+m1+m1 = multipleOf 6 / 3 (three m1's)
+				 m1+m1 => 6 / 2
+				 m1 => 6 / 1
