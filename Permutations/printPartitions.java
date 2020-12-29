@@ -1,6 +1,8 @@
 package Permutations;
 
-import static java.lang.System.*;
+
+
+import static java.lang.System.out;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +15,9 @@ import Permutations.*;
  
 
 public class printPartitions {
+	
+	
+	
 	
 
 	/**
@@ -144,7 +149,7 @@ public class printPartitions {
 	 * @param returns a list of tuples with no repeatitions
 	 * 
 	 */
-	public static ArrayList<Integer[]> compareTuples(ArrayList<Integer[]> allTuples) {
+	public static void compareTuples(ArrayList<Integer[]> allTuples) {
 			
 		// FROM https://www.softwaretestinghelp.com/sort-arrays-in-java/
 		int temp;
@@ -168,8 +173,9 @@ public class printPartitions {
 	        }
 		  
 		}
+	       ListAllPermutations(listTuplesOrdered);
+
 		
-		return listTuplesOrdered;		
 
 	}
 	
@@ -210,9 +216,8 @@ public class printPartitions {
        }
        
        
-       listOrdered = compareTuples(allTuples);
+       compareTuples(allTuples);
        
-       ListAllPermutations(listOrdered);
        }
         	 
       
