@@ -30,141 +30,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class binPathImpl {
 
-	public class Tuple {
-		
-		
-		
-	}
-	
-// NEEDS 8 ints (32bytes/4bytes)
-	public static int[] setOneToAll() {
-		int[] ret = new int[256];
-		for (int i=0; i < 256 ; i++) {
-			ret[i] = i;
-		}
-		return ret;
-	}
-		// it is 32,64,128....
-	public static void printPositions(int it) {
-	    
-	    int pos = 1;
-	    int temp = pos;
-	    int number = 1;
-	    for (int i = 1 ; i < 9 ; i++) {
-	    pos = temp;
-	    System.out.print("\n public static byte[] pos_"+pos+" = { "+pos+" , ");
-	    for (int i2=1; i2 <= it; i2++) {
-	        pos+=8;
-	        number++;
-	        if (pos > 128 )
-	        	System.out.print(" (byte) ");
-	        else if (pos < -127)
-	        	System.out.print(" (byte) ");
-	        System.out.print(pos+" , ");
-
-	    }
-	    System.out.print(" } Total Len  "+number);
-	    temp++;
-	    }
-	    
-	}
-
-	
-	private void printUsingFunction() {
-	    
-	    
-	    // look at function .. f(pos) = 8*i + pos
-	   
-		int t=0;
-	     for (int pos = 1; pos < 9;pos++) {
-	    	 System.out.println("\nPos "+pos+"\n");
-
-	        for (int it= 0; it <= 32; it++) {
-	            //printf(",%u",t);
-	            t = 8*it+pos;
-	            if (t % 256 == 0) 
-	                System.out.println(t + ", ");
-	         }
-	        t=0;
-	     }
-	    
-	        
-	}
-	
-	
-        
-       
-       
-        
-        public static String printShortBits(int number,String modeOfPrint,boolean printLeadingZeros) {
-    		int t = (number & 0xff);
-    		
-    		String firstByte= printBits(t,modeOfPrint,printLeadingZeros);
-    		
-    		t = ((number >> 8) & 0xFF);
-    		
-    		
-    		String secondByte = printBits(t,modeOfPrint,printLeadingZeros);	
-    	   
-    		return secondByte + " " + firstByte + " (d) "+number;
-    	}
-
-
-
-        public static String printIntBits(int number,String modeOfPrint,boolean printLeadingZeros) {
-        	
-        		int t = number & 0xff;
-        		String ret="";
-        		String firstByte= printBits(t,modeOfPrint,printLeadingZeros);
-        		
-        		t = ((number >> 8) & 0xFF);
-        		
-        		String secondByte = printBits(t,modeOfPrint,printLeadingZeros);		
-        				
-        		t = ((number >> 8) & 0xFF);
-        		
-        		String thirdByte = printBits(t,modeOfPrint,printLeadingZeros);
-        		t= ((number >> 8) & 0xFF);
-        		
-        		String fourthByte  =printBits(t,modeOfPrint,printLeadingZeros);
-        		t=  ((number >> 8) & 0xff);
-        		
-        		ret = fourthByte + " " + thirdByte + " "  +secondByte + " " + firstByte+"  (d) "+number ; 
-        		 return ret;  
-        	   
-        	}
-
-        
-        public static String printBits(int b,String modeOfPrint,boolean printLeadingZeros) {
-        	String e="";
-        		if (printLeadingZeros == true) {
-        			e = String.format("%8s",Integer.toBinaryString(b));
-        			e = e.replace(' ','0');
-        		}
-        			
-        		else
-        			e = Integer.toBinaryString(b);
-        		
-        		return e;
-        }
-        
-        public static void printMissingElems(int min,int max,List Elems) {
-        	Integer it;
-        	System.out.println(" [ ");
-        	for (int i = min ; i < max ; i++) {
-        		it = new Integer(i);
-        		if (!Elems.contains(it)) {
-        			System.out.print(it+",");
-        		}
-        				
-        	}
-        	System.out.println(" ] ");
-        	
-        }
-        
-        
-        	
-      /*  	
+	  /*  	
         	Trocar para 4 numeros, usa o anterior mais umas quantas
 	 		3bits = 1bit = 1
         			2bit = 2
@@ -270,7 +136,7 @@ public class binPathImpl {
         	int[][][] bytesArray;
         	
         	//int[][] fourthByte;
-        	int[] cByte = setOneToAll();
+        	
         	
         		
         		  
@@ -283,7 +149,7 @@ public class binPathImpl {
         		int intervalSize = finalB -begin;
  
         		bytesArray = new int[intervalSize][256][numberOfBytes];
-        		bytesArray[0][0] = cByte;
+        		//bytesArray[0][0] = cByte;
         		
         		
         		// to get the next byte, we duplicate or divide the first byte 
@@ -410,7 +276,7 @@ public class binPathImpl {
         		
         		int numIntervals = 32 / intervalSize;
         		for (int i=0; i < intervalSize; i++) {
-        			interval[i] = cByte;
+        			//interval[i] = cByte;
         		}
         		
         		for (int i=1 ; i < numberOfBytes; i++) {
@@ -425,21 +291,7 @@ public class binPathImpl {
         }
         // first row
         // second column
-        private static void printArray(int[] arr) {
-        	
-        	System.out.println("----Beginning of Array-----");
-        	for (int it : arr)
-        		printBits(arr[it], "new", true);
-        		
-        	System.out.println("----End of Array-----");
-        	
-        }
-        
-        private static <T> void printArray(T[] arr) {
-        	for (T e : arr) {
-        		System.out.print(e);
-        	}
-        }
+      
         		
         /*
          * openssl enc -aes-256-cbc -in plaintext.txt -base64 -md sha1
@@ -450,139 +302,22 @@ public class binPathImpl {
     -e or -d encrypto r decryt
 
          */
-        private static void createPlainText(File f) {
-        	try {
-        		
-        	FileOutputStream fos = new FileOutputStream(f);
-        	byte[] toWrite;
-        	
-        	String t = "";
-        	for (int i=0 ; i < 32 ; i++)
-        		t+="a";
-        		
-        	toWrite  = t.getBytes();
-        	
-        	
-        	fos.write(toWrite);
-        	System.out.println("\n wrote "+toWrite.length+" to "+f.getName());
-        	
-        	}
-        	catch(IOException e) {
-        		e.printStackTrace();
-        		System.out.println("\nCOUDLNT CREATE PLAIN TEXT");
-        	}
-        	
-        }
+       
         
-        private static void AEShelp(File f) {
-        	try {
-       	 byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-       	 IvParameterSpec ivspec = new IvParameterSpec(iv);
-         
-         FileInputStream fis = new FileInputStream(f);
-         
-         int fileSize = (int) f.length();
-         
-         if (fileSize % 32 != 0) {
-        	System.err.println("\n File size is not a mulitple of 32");
-         	System.exit(-1);
-         }
-         byte[] cipherText = new byte[fileSize];
-         
-         int numBytesRead = 0;
-         
-         numBytesRead = fis.read(cipherText);
-         
-         if (numBytesRead  <= 0) {
-        	 System.err.println("Read returned error or zero");
-        	 System.exit(-1);
-         }
-         
-         else
-        	 System.out.println("Read "+numBytesRead);
-         		if (cipherText.length != 32) {
-         			System.err.println("\n Ciphertext not size of block");
-         			System.exit(-1);
-         		}
-         		if(numBytesRead != 32 ) {
-         			System.err.println("\n Didnt read the number of bytes from ciphertext");
-         			System.exit(-1);
-         		}
-         		
-         		
-         }
-         catch(FileNotFoundException e) {
-         		e.printStackTrace();
-        }
-        	catch(IOException e) {
-        		e.printStackTrace();
-        	}
-        }
-        
-      /*  private static void AESDecrypt(byte[] cipherText,SecretKeySpec s, IvParameterSpec iv) {
-        	try  {
-        		
-        		if (key.length != 32) {
-        			System.err.println("\nKey is not in a block size");
-        			System.exit(-1);
-        		}
-        	
-        	 
-        	 
-            
-             
-             
-             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-	         cipher.init(Cipher.DECRYPT_MODE, s,iv);
-	         
-	         
-	         byte[] decrypted =cipher.doFinal(cipherText);
-	          printArray(decrypted);
-	          
-	         cipher.
-        	}
-        	catch(InvalidAlgorithmParameterException e) {
-        		e.printStackTrace();
-        	} catch (InvalidKeyException e) {
-				 
-				e.printStackTrace();
-			} catch (NoSuchAlgorithmException e) {
-				 
-				e.printStackTrace();
-			} catch (NoSuchPaddingException e) {
-				 
-				e.printStackTrace();
-			} catch (IllegalBlockSizeException e) {
-				 
-				e.printStackTrace();
-			} catch (BadPaddingException e) {
-				 
-				e.printStackTrace();
-			} catch (FileNotFoundException e) {
-
-				e.printStackTrace();
-			} catch (IOException e) {
-				 
-				e.printStackTrace();
-			}
-			
-	          
-             
-        	
-        } */
+     
       
         public static void main(String[] args) {
         	
         	//fillBytes(5);
         
         
-    	/*	int[][][] bytes =  prefix(32);
-        	
-    		byte[] key = new byte[32];
-    		createPlainText(new File("files/plaintext"));
-    		 SecretKeySpec sk = new SecretKeySpec(key, "AES");
-    		 List<Integer> elements = new ArrayList<>();
-    		 
+    		 //byte[] key = new byte[32];
+    		 //createPlainText(new File("files/plaintext"));
+    		 //SecretKeySpec sk = new SecretKeySpec(key, "AES");
+    		for (int i=0; i < 65535; i++) 
+    		System.out.print(util.printShortBits(i,"new",true));
+    	//	}
+    /*		 
     		 ow1 11 11 11 11  255
 			  row2 11 11 11 10  254 
 			  row3 11 11 11 00  252
@@ -632,7 +367,7 @@ MATRIX C  		00000010	2
     		 printMissingElems(0, 256, elements);
     		 
         //	SecretKeySpec sks = new SecretKeySpec(,"AES");
-        	//AESPower(sks, iv);
+        	
         	
         }	
         */
@@ -671,31 +406,38 @@ MATRIX C  		00000010	2
        */
         
        
-  //  AlgebraError();
+  
 	}
-	  public static void test() {
-     	   Byte threeBits[] = {0,1,2,3,4,5,6,7};
-     	   Byte[][] fourBits = new Byte[2][8];
-     	   fourBits[0] = threeBits;
-     	   for (int i=0 ; i < fourBits.length; i++) {
-     		   fourBits[1][0] = 1;
-     	   }
-     			   
-     			   
-     	   	
-        }
+	  
         
 	   
-	  
 	/*
-	 * Quero derefernciar um array, adicionar um byte, e depois referenciar oura vez
-	 * Quero obter uma ref para lista. List a = new ArrayList() ; 
+	 * First copy several 256 values in byte one. for 2 bytes its 256^2 
 	 *   
 	 */
-   public static void fillBytes(int numBitsP) {
+   public static void fillBytes() {
+	   // Fill first byte (first combination)
+	   Byte[] twoBytes = new Byte[2];
+	   Integer[] values = new Integer[256];
 	   
-	   // 4 bytes (where are 3bits
+	   for (int i = 0 ; i < 256;i++){
+		   values[i] = i;
+	   }
 	   
+	   // First Byte done
+	   for (int i=0 ; i < 65535 ; i+=256)  
+	   System.arraycopy(values, 0,twoBytes,i, values.length);
+	   
+	   // Second Byte
+
+	   for (int i=0,v=0 ; v < 65535 ; i++,v++) {
+		   if (i==256)
+			   i=0;
+		   
+	   }
+	   
+	   
+	   for (int i=0; i < 65535; )	   
 	   int[] arr = {0,1,2,3,4,5,6,7};
 	   
 	   int[] firstByte = new int[256];
@@ -705,7 +447,7 @@ MATRIX C  		00000010	2
 	   int[] fourthByte  = new int[256];
 
 	   Vector<Integer> threeBits =new Vector<>(); 
-	   int allRows= (int) Math.pow(2,numBitsP);
+	   int allRows= (int) Math.pow(2,numBitsParam);
 	   	
 	   // So sets, 0b000 to 0b111 , in each interval of first byte
 	   
@@ -714,23 +456,12 @@ MATRIX C  		00000010	2
 		      threeBits.add(i);
 		}
 	   
-	   // Get all indexes to add ones's
-	   // ThreeBits 2*2 para cada bit (numBits)
-	   //4 bits- > 8 zeros , 8 ones
-	   // positions of ones -> Math.pow(2,numBits) *2 because it is the positions of ones. Zeros start first
-	   
-	   // 4 bits
-	   int positionOfOnes = allRows / 2;
-	   byte pos = (byte) positionOfOnes;
-	   for (int idx =pos; idx < allRows; idx++ ) {
-		   firstByte[idx] |= 1;
-	   }
-	    printArray(firstByte);
-	    //condByte = firstByte.clone();
+	 
+	 
 /*1bit  4 (2bits)  8(3bits)   	 16	(4bits)		32 (5bits)
 Set A   Set B     Set C  	    Set D   		Set E  		Set F
-1	    (0,0)     (0,0,0) 0  		(0,0,0,0) 0    (0,0,0,0,0) 0  (0,0,0,0,0,0)
-0		 (0,1)     (0,0,1) 1       (0,0,0,1) 1	 (0,0,0,0,1) 1  (0,0,0,0,0,1)
+(0) 	(0,0)     (0,0,0) 0  		(0,0,0,0) 0    (0,0,0,0,0) 0  (0,0,0,0,0,0)
+(1)		(0,1)     (0,0,1) 1       (0,0,0,1) 1	 (0,0,0,0,1) 1  (0,0,0,0,0,1)
 	    (1,0) 2    	(0,1,0) 2    (0,0,1,0) 2  (0,0,0,1,0) => Set D (3bits)
 	    (1,1) 3    	(0,1,1) 3    (0,0,1,1) 3  (0,0,0,1,1)
 	    							 
@@ -751,42 +482,51 @@ Set A   Set B     Set C  	    Set D   		Set E  		Set F
 	    							 
 	    							 			  (1,0,0,0,0) => 5bits.just change one at the beggiging
 	    			
-	    		
-	    			8 means it has 8 elements (Set c)
-	    */
+	    			lastComb plus one's,
+	    			size(a) = 2^1 (1 elem * 2) 1,0
+	    			Start leading ones at
+	    			size(b) = size(a)  2,3 (2 elems * 2)
+	    			size(c) = size(b) , then add one's starting at size b ,4,5,6,7 (2 elemes* 2)
+	    			size(d) = size(c) ,then add one's starting at size c ,8,9,10,11,12,13,14,15 (4* 2 elemes
+	    			
+	    			*/
+	    //Get sets and send to 
+	   // {0,1} ADD {0,1}
+	   // {0,1,2,3} ADD {2,3}
+	   // {0,1,2,3,4,5,6,7} ADD {4,5,6,7}
+	  //  {0,1,2,3,4,5,6,7,8,9,...}
 	 // Calcular o reverse para cada numero comecado por 0 ou adicionar um um ao inicio
 	    // so os qe comecam por zero contam...ou adiciona um um ou reverse os bits
 	    // dividir por dois por exemplo Set C, para adicionar zeros.
-	    // acresentar zeros a todos os elementos set anteriores, e ao msemo tempo reverse 
-	    ArrayList<Integer> listOfSets = new ArrayList<Integer>();
-	    ArrayList<Integer> setA = new ArrayList<Integer>();
+	    // acresentar zeros a todos os elementos set anteriores, e ao msemo tempo reverse
 	    
-	    setA.add(1);
-	    setA.add(0);
+	    // começo na base e adiciono-lhe uns no final	    
 	    
 	    
-	    // Acrescentar 0, ao inicio de set A, e ao mesmo tempo reverte-lo
-	    for (int numBits = 1 ; numBits <= 4; numBits++) {
-	    	Double NumbersWithZero = (Double) Math.pow(2,numBits-1);// -1 equal to divide by 2 (faster)
-	    	for (int it = 0; it < NumbersWithZero;it++) {
-	    			setB.add(e)
-	    		
-	    	}
+	    ArrayList<Integer> curSet = new ArrayList<Integer>();
+	    ArrayList<Integer> lastComb = new ArrayList<Integer>();
+	    
+	    ArrayList<ArrayList<Integer>> listAllSets = new ArrayList<ArrayList<Integer>>(); 
+	    // Add how many zeros?
+	    // Create Zero,zero
+	    // CReate zero for before combination ,and reverse it
+	    listAllSets.add(lastComb);
+	    
+	    
+	    for (int BitsStart = 1 ; BitsStart <= 3 ; BitsStart++) {
+	    	
+		  		
+	    	
+	    	
 	    }
-	    
-	    
-	    
-	    //printBits(firstByte,"new",1);
+	    // Acrescentar 0, ao inicio de set A, e ao mesmo tempo reverte-lo (ou adicionar 1)
 	   
 	   
 	   
+   
    }
-   
-   
-   
-   
-	   
-   
-   
+	
+		
+	
 }
 		

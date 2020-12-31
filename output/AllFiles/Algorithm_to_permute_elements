@@ -83,4 +83,5 @@ vt.add(new Triplet(1,2,3));
 		
 		Tuple's row  has the same value, but order numbers changed, using partiitons
 		
-		
+		ALGORITHM 4)
+		Use as base 0 and 1 , and add 0 to the beggining (and then inverting the same number and put it on variable)  or add one to the beggining
