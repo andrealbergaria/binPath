@@ -30,31 +30,12 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class binPathImpl {
 
-	// first number to multiply 
-	// second number to multiply (for example 4*3) = first = 4 last = 3
-	 public static boolean isPrime(int first,int last) {
-		 int[] positions = new int[first];
-		 for (int i=0 ; i< last ; i++) {
-			 positions[i] = first;
-			 
-		 }
-		 
-		 
-		 return true;
-	 }
-	public static void AlgebraError() {
-		double Xnegative = -3;
-		double X2 = Math.pow(Xnegative,2);
-		double X3 = Math.pow(Xnegative,3);
+	public class Tuple {
 		
-		if (X2 > 0)
-			System.err.println("\n X2 is bigger than 0");
-		System.out.println("   "+X3);
-		if (X2< X3) {
-			System.err.println("X neagttive less that X2");
-		}
-
+		
+		
 	}
+	
 // NEEDS 8 ints (32bytes/4bytes)
 	public static int[] setOneToAll() {
 		int[] ret = new int[256];
@@ -711,7 +692,7 @@ MATRIX C  		00000010	2
 	 * Quero obter uma ref para lista. List a = new ArrayList() ; 
 	 *   
 	 */
-   public static void fillBytes(int numBits) {
+   public static void fillBytes(int numBitsP) {
 	   
 	   // 4 bytes (where are 3bits
 	   
@@ -724,8 +705,10 @@ MATRIX C  		00000010	2
 	   int[] fourthByte  = new int[256];
 
 	   Vector<Integer> threeBits =new Vector<>(); 
-	   int allRows= (int) Math.pow(2,numBits);
+	   int allRows= (int) Math.pow(2,numBitsP);
 	   	
+	   // So sets, 0b000 to 0b111 , in each interval of first byte
+	   
 	   for(int i=7 ; i < allRows; i += 8 ) {
 		      System.arraycopy(arr, 0, firstByte, i, 8);
 		      threeBits.add(i);
@@ -737,13 +720,59 @@ MATRIX C  		00000010	2
 	   // positions of ones -> Math.pow(2,numBits) *2 because it is the positions of ones. Zeros start first
 	   
 	   // 4 bits
-	   double positionOfOnes = allRows / 2;
+	   int positionOfOnes = allRows / 2;
 	   byte pos = (byte) positionOfOnes;
-	   for (int idxBits =3; idxBits < allRows; idxBits++ ) {
-		   firstByte[pos] |= 1;
+	   for (int idx =pos; idx < allRows; idx++ ) {
+		   firstByte[idx] |= 1;
 	   }
 	    printArray(firstByte);
 	    //condByte = firstByte.clone();
+/*1bit  4 (2bits)  8(3bits)   	 16	(4bits)		32 (5bits)
+Set A   Set B     Set C  	    Set D   		Set E  		Set F
+1	    (0,0)     (0,0,0) 0  		(0,0,0,0) 0    (0,0,0,0,0) 0  (0,0,0,0,0,0)
+0		 (0,1)     (0,0,1) 1       (0,0,0,1) 1	 (0,0,0,0,1) 1  (0,0,0,0,0,1)
+	    (1,0) 2    	(0,1,0) 2    (0,0,1,0) 2  (0,0,0,1,0) => Set D (3bits)
+	    (1,1) 3    	(0,1,1) 3    (0,0,1,1) 3  (0,0,0,1,1)
+	    							 
+	    		  (1,0,0) 4	      (0,1,0,0) 4   (0,0,1,0,0)
+	    		  (1,0,1) 5       (0,1,0,1) 5   (0,0,1,0,1) => Set D (3bits)
+	    		  (1,1,0) 6       (0,1,1,0) 6   (0,0,1,1,0) 
+	    		  (1,1,1) 7       (0,1,1,1) 7   (0,0,1,1,1)
+	    				
+	    							 (1,0,0,0) 8   (0,1,0,0,0)
+	    							 (1,0,0,1) 9   (0,1,0,0,1) => Set E (4bits) plus leading 0,which equals 4bits
+	    							 (1,0,1,0) 10  (0,1,0,1,0)
+	    							 (1,0,1,1) 11  (0,1,0,1,1)
+	    							 
+	    							 (1,1,0,0) 12 (0,1,1,0,0)
+	    							 (1,1,0,1) 13 (0,1,1,0,1) => Set E (4bits) plus leading 0,which equals 4bits
+	    							 (1,1,1,0) 14 (0,1,1,1,0)
+	    							 (1,1,1,1) 15 (0,1,1,1,1) 16combs of leading zeros
+	    							 
+	    							 			  (1,0,0,0,0) => 5bits.just change one at the beggiging
+	    			
+	    		
+	    			8 means it has 8 elements (Set c)
+	    */
+	 // Calcular o reverse para cada numero comecado por 0 ou adicionar um um ao inicio
+	    // so os qe comecam por zero contam...ou adiciona um um ou reverse os bits
+	    // dividir por dois por exemplo Set C, para adicionar zeros.
+	    // acresentar zeros a todos os elementos set anteriores, e ao msemo tempo reverse 
+	    ArrayList<Integer> listOfSets = new ArrayList<Integer>();
+	    ArrayList<Integer> setA = new ArrayList<Integer>();
+	    
+	    setA.add(1);
+	    setA.add(0);
+	    
+	    
+	    // Acrescentar 0, ao inicio de set A, e ao mesmo tempo reverte-lo
+	    for (int numBits = 1 ; numBits <= 4; numBits++) {
+	    	Double NumbersWithZero = (Double) Math.pow(2,numBits-1);// -1 equal to divide by 2 (faster)
+	    	for (int it = 0; it < NumbersWithZero;it++) {
+	    			setB.add(e)
+	    		
+	    	}
+	    }
 	    
 	    
 	    

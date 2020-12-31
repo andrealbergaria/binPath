@@ -14,9 +14,19 @@ public class Test {
 			System.out.println(ref[i]);
 	     }
 	}
+	
 	public static void main(String[] args) {
 		Object[] ref = new Object[3];
-		test(ref);
+		//test(ref);
+		byte a = 8;
+		byte b = 0b1000;
+		
+		//if (a==b)
+			//System.out.println("tru");
+		
+		Integer i= new Integer(Integer.reverse(7));
+		System.out.println(i);
+		
 	}
 		//SuperIntergace si = new Super();
 		//SubInterface s = 

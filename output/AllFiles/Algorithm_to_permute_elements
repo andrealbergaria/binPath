@@ -78,11 +78,7 @@ vt.add(new Triplet(1,2,3));
 		(d,b,c,a)
 		Visto que a soma, é comutativa, isto é possivel
 		
-		(1, 4, 3 , 2)
-		 a  b   c d
-		(1,1+1,3,2)
-		  a  b d a d           
-		(1,1+1,2+1,2)
+		Partition of 8
 		
 		
 		Tuple's row  has the same value, but order numbers changed, using partiitons
