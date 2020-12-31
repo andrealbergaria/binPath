@@ -308,7 +308,7 @@ public class binPathImpl {
       
         public static void main(String[] args) {
         	
-        	//fillBytes(5);
+        	fillBytes();
         
         
     		 //byte[] key = new byte[32];
@@ -417,47 +417,32 @@ MATRIX C  		00000010	2
 	 */
    public static void fillBytes() {
 	   // Fill first byte (first combination)
-	   Byte[] twoBytes = new Byte[2];
+	   Integer[] twoByte = new Integer[65535];
+	   Integer[] oneByte = new Integer[65535];
 	   Integer[] values = new Integer[256];
 	   
 	   for (int i = 0 ; i < 256;i++){
 		   values[i] = i;
 	   }
 	   
-	   // First Byte done
-	   for (int i=0 ; i < 65535 ; i+=256)  
-	   System.arraycopy(values, 0,twoBytes,i, values.length);
-	   
-	   // Second Byte
-
-	   for (int i=0,v=0 ; v < 65535 ; i++,v++) {
-		   if (i==256)
-			   i=0;
+	   // First and second byte done
+	   int v=256;
+	   int repeatedElem = 0;
+	   for (int i=0 ; i < 65535 ; i+=256) { 
 		   
+		   System.err.println(i);
+		   System.arraycopy(values, 0,twoByte,i, values.length);
+		   Arrays.fill(oneByte,i,v,repeatedElem);
+		   v+=256;
+		   repeatedElem++;
 	   }
 	   
+	   // For third and fourth byte
+	   //for (int i=65535; i < 65535; i+=256)]
 	   
-	   for (int i=0; i < 65535; )	   
-	   int[] arr = {0,1,2,3,4,5,6,7};
+   }
 	   
-	   int[] firstByte = new int[256];
 	   
-	   int[] secondByte = new int[256];
-	   int[] thirdByte = new int[256];
-	   int[] fourthByte  = new int[256];
-
-	   Vector<Integer> threeBits =new Vector<>(); 
-	   int allRows= (int) Math.pow(2,numBitsParam);
-	   	
-	   // So sets, 0b000 to 0b111 , in each interval of first byte
-	   
-	   for(int i=7 ; i < allRows; i += 8 ) {
-		      System.arraycopy(arr, 0, firstByte, i, 8);
-		      threeBits.add(i);
-		}
-	   
-	 
-	 
 /*1bit  4 (2bits)  8(3bits)   	 16	(4bits)		32 (5bits)
 Set A   Set B     Set C  	    Set D   		Set E  		Set F
 (0) 	(0,0)     (0,0,0) 0  		(0,0,0,0) 0    (0,0,0,0,0) 0  (0,0,0,0,0,0)
@@ -501,30 +486,6 @@ Set A   Set B     Set C  	    Set D   		Set E  		Set F
 	    // acresentar zeros a todos os elementos set anteriores, e ao msemo tempo reverse
 	    
 	    // começo na base e adiciono-lhe uns no final	    
-	    
-	    
-	    ArrayList<Integer> curSet = new ArrayList<Integer>();
-	    ArrayList<Integer> lastComb = new ArrayList<Integer>();
-	    
-	    ArrayList<ArrayList<Integer>> listAllSets = new ArrayList<ArrayList<Integer>>(); 
-	    // Add how many zeros?
-	    // Create Zero,zero
-	    // CReate zero for before combination ,and reverse it
-	    listAllSets.add(lastComb);
-	    
-	    
-	    for (int BitsStart = 1 ; BitsStart <= 3 ; BitsStart++) {
-	    	
-		  		
-	    	
-	    	
-	    }
-	    // Acrescentar 0, ao inicio de set A, e ao mesmo tempo reverte-lo (ou adicionar 1)
-	   
-	   
-	   
-   
-   }
 	
 		
 	
