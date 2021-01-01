@@ -237,12 +237,30 @@ public class binPathImpl {
 			row sum is equal
 			
 			use  numbers,, like (0,1,1,0) = 6 , 
-			 we submited 6, and know that number can be omitted
-			 (1,1,0,1) => 13d,
-			 		[ x+3 -1 ] [ 6  y]
-			 		[ 4   5  ] [z-3 5]
+			 
+			 			check which number have 6 as factor
+			 			
+			 			(1,1,0,0) = 12
+			 			factor(12) = {1,2,3,4,6,12}
+			 			 6d				12d			6d
+			 			[0 1 1 0 ] = [1,1,0,0] - [0 1 1 0]
+			 			
+			 			   6D			3d			2d
+			 			 [0 1 1 0] = [0,0,1,1] * [0 0 1 0 ]
+			 			 
+			 			 sum of 6 = 2+2+2		[ 1 0] [1 0] [1 0]
+			 			 		  = 3+2+1
+			 			 		  = 2+2+2
+			 			 		  = 3+3
+			 			 		  
+			 			 		  [ 1 2 3 ]  = [ 2 1 3 ] =  [1 3 2]
+			 			 		  
+			 			 		   Se a permutação tiver valores iguais então temos matrices
+			 			 		  
+			 			 		  
+			 			
 			 		
-			 		using numbers, we can get an equivalent matrix 
+			 		using numbers (with bits), we can get an equivalent matrix 
 			 		
 			 		if the matrix, solves an equation, what is the other matrix that does that?
 			 		
