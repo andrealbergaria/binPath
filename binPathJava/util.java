@@ -46,6 +46,16 @@ public class util {
 	    
 	}
 
+	
+	  public static <T> void printArray(T[] arr) {
+		  System.out.println("---begin array---");
+	     	for (T e : arr) {
+	     		System.out.print(e + ",");
+	     	}
+	     	System.out.println("---end array ---");
+	     }
+	
+	
 	 public static String printShortBits(int number,String modeOfPrint,boolean printLeadingZeros) {
  		int t = (number & 0xff);
  		
@@ -116,31 +126,33 @@ public class util {
      	System.out.println(" ] ");
      	
      }
-     
-     public static void printArray(byte[] arr) {
+     // mode -> it is print with newline or not
+ /*    public static void printArray(Byte[] arr,String mode) {
      	System.out.println("----Beginning of Array-----");
-     	for (int it : arr)
+     	for (int it : arr) {
      		printBits(arr[it],true);
+     		if (mode.equals("new"))
+     			System.out.println();
+     	}
      		
      	System.out.println("----End of Array-----");
      
      }
      
-     private static void printArray(int[] arr) {
+     public static void printArray(Integer[] arr,String mode) {
      	
      	System.out.println("----Beginning of Array-----");
-     	for (int it : arr)
+     	for (int it : arr) {
      		printBits(arr[it],  true);
+     		if (mode.equals("new"))
+     			System.out.println();
+     	}
      		
      	System.out.println("----End of Array-----");
      	
      }
      
-     private static <T> void printArray(T[] arr) {
-     	for (T e : arr) {
-     		System.out.print(e);
-     	}
-     }
+   */
      public static void printUsingFunction() {
  	    
  	    

@@ -1,6 +1,9 @@
 package Test;
 
 import java.util.List;
+import binPathJava.*;
+
+
 import java.util.Vector;
 
 import binPathJava.SubInterface;
@@ -27,7 +30,15 @@ public class Test {
 		Integer i= new Integer(Integer.reverse(7));
 		System.out.println(i);
 		
+		Object[] arr= new Object[5];
+		arr[0] = "ABC";
+		arr[1] = 123;
+		arr[2] =  new Integer(1);
+		util.printArray(arr);
+		
 	}
+	
+	
 		//SuperIntergace si = new Super();
 		//SubInterface s = 
 		// que class tenho de por aqui? posso meter uma superclass?

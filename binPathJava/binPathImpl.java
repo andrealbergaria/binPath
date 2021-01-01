@@ -162,82 +162,118 @@ public class binPathImpl {
         		// 1 byte tem 256 combs (2^8)
         		// 2 bytes tem 2^16 vombs (65535) (2^8 * 2^8)
         		
-        			/*
-        		 starting position -> end position
+        		/*
         		 
         		 --Para 1 b----
 
         		 
-        	2bits
-        	[b,0]
-        	[0,b] 1bit
+        	----2bits----
+        	[b,0]	 X
+        	[0,b] 
         		 
-        	2combs 
+        	 
         		 
-        	3bits
+        	----3bits----
         	
-        	[b,0,0]	USED
-        	[0,b,0] 2bits
-        	[0,0,b] 1bits
-        	[b,b,b]USED
-        	[0,b,b] 2bits 
-        	[b,b,0]USED 
-        	[b,0,b]USED
+        	[b,0,0]	X
+        	[0,b,0] 
+        	[0,0,b] 
+        	[0,b,b]
+        	[b,b,b] X  
+        	[b,b,0] X 
+        	[b,0,b] X
         	
-        	4 combs
+        	If 3 bits are key tested (using full combs),4 bits that do not have a leading zero will be good   
         	
-        		  1combs
+        	---4bits---
+         1combs = number of bs=1)
         		  
-        	[b,0,0,0}		USED
-        	[0,b,0,0]	 3 bits -> zero em primeiro 
-        	[0,0,b,0]	 2 bits
-        	[0,0,0,b]    1bits
+        	[b,0,0,0}		X
+        	[0,b,0,0]	 
+        	[0,0,b,0]	
+        	[0,0,0,b]   
         		 
         		
-				3combs
-			[0,0,b,b]	2 bits
-			[0,b,0,b}   3bits
-			{b,0,0,b]   USED
-			[0,b,b,0]    3 bits
-			{b,0,b,0]	USED
-			[b,b,0,0] 	USED
+				3combs (number of bs = 2)
+			[0,0,b,b]	
+			[0,b,0,b}   
+			{b,0,0,b]   X
+			[0,b,b,0]   
+			{b,0,b,0]	X
+			[b,b,0,0] 	X
 			
-				3combs
-			(0,b,b,b)	3bits
-			(b,b,b,0)  USED
-			(b,0,b,b)  USED
-			(b,b,0,b) USED
+			3combs (number of bs = 3)
+			(0,b,b,b)	
+			(b,b,b,0)  X 
+			(b,0,b,b)  X
+			(b,b,0,b)  X
+		
+			X are numbers not leading zeros
 
-			3+3+4+2+1 = 13 combs
+			4 bits = Total combs = 16 combs. . Leading zero = 7 combs -> Useful combs 16-7 = 9
+			3 bits => Total combs = 8 combs    Leading zero = 3 combs -> Useful combs 8-3 = 5
+
+			For example, if i want to send (0,b,b,0), and sent (0,b,0,0)
+			(0,1,1,0) (0,1,0,0)
 			
-			
-			---1b----
-			 (1,0,0,0)(0,1,0,0)(0,0,1,0)(0,0,0,1)
+			  a) (0,1,0,0) is gone =boolean =true;
+			  b) (0,0,1,0) i sent as well 
 			 
+ 	 			MATRIX B							MATRIX AES          MATRIX A
+			 [0 1 0 0 ]							[1,0,0,1]           	[1 0 1 0]
+			 [0 0 1 0 ] ->transform with AES => [0,0,1,0		<=AES	[0,1,1,0]
+			 obter matriz igual a outra
+			 
+			 matrices that after processed , must be compared to the original matrices, to remove equals.
+			 
+			 for example ,if we have a MATRIX AES
+			 is there any other matrix, that processes it?
+			 MATRIX A = MATRIX B
+			 (general case of eleminating elems)
+			 (in the former case, we ignored leading zeros)
+			 
+			 rearranjing elems. The row sum , must be equal.
+			 
+			row sum is equal
 			
-			
-				 -Para 2b's-----
-        		 	 5			3		6				
-        		2b = (0,1,0,1)(0,0,1,1)(0,1,1,0)  
-        			10			12		9			Para obter os 2b, basta fazer o revert dos numeros que comecam com 0 ou 1
-        			(1,0,1,0)(1,1,0,0)(1,0,0,1)		
+			use  numbers,, like (0,1,1,0) = 6 , 
+			 we submited 6, and know that number can be omitted
+			 (1,1,0,1) => 13d,
+			 		[ x+3 -1 ] [ 6  y]
+			 		[ 4   5  ] [z-3 5]
+			 		
+			 		using numbers, we can get an equivalent matrix 
+			 		
+			 		if the matrix, solves an equation, what is the other matrix that does that?
+			 		
+			 		if there are several solutions, then there are other matrices
+			 		
+			 
+			 Como representar numeros iguais ? 
+			 
+			 
+			 
+			 Posso concluir alguma coisa da chave? (por exemplo (0,1,1,0) não é chave)
+			 
+			 If they arent the key, 
+			 
+			 			 como se processa a chave
+			 			 
+from wikipedia
 
-        		
-        		 ---------------------------
-        		 
-        		 ....Para 3 b's.....
-        		 11			 13		 14		  7 
-        		 (1,0,1,1)(1,1,0,1)(1,1,1,0)(0,1,1,1) reverse de 1b
-
-
-
-        		 
-        		 
-        	
-        		 
-        		 	 
-        		 	 
-        		 
+			 			  16 bytes
+			 		[ b1 b2 b3 b4 ]
+			 		[ b5 b6 b7 b8 ]
+			 		[b9 b10 b11 12]
+			 		[b13 b14 b15 b16]
+			 		
+			 		
+			 		
+			 			 
+			 			 
+			-----
+			b= 1 (can't be 0) 
+			-----
         		 
         		 
         		
@@ -256,42 +292,11 @@ public class binPathImpl {
         		2		2			8
         		3		3			9
         		
-        		po1 = always 2^8 * 3
         		
-        		2nd byte different , 2bytes first is firstbyte
         		
-        										
-        		
-        		1 btyte sempre igual => 2^8
-        		2 byte=  => 257 -->265
-        		 
-        		*/
-        		
-        		// from byte1 to byte2 
-        		// from byte2 to byte3, etcc...the interval is always the same, and the elements in the interval are also all equal
-        		// 256 -> is the number of elems in each iteration (each interval has 256*intervalSize
-        		// the intervals are all equals 255*intervalsize
-        		// 
-        		int[][] interval = new int[intervalSize][256];
-        		
-        		int numIntervals = 32 / intervalSize;
-        		for (int i=0; i < intervalSize; i++) {
-        			//interval[i] = cByte;
-        		}
-        		
-        		for (int i=1 ; i < numberOfBytes; i++) {
-        			bytesArray[i] = interval;
-        		}
-        		return bytesArray;
-        		// Number of interval which is equal number of bytes  (1----8 ----16---24) = 4
-        		
-        		// copy interval to other array
         		
         		
         }
-        // first row
-        // second column
-      
         		
         /*
          * openssl enc -aes-256-cbc -in plaintext.txt -base64 -md sha1
@@ -304,7 +309,15 @@ public class binPathImpl {
          */
        
         
-     
+        public static void getEquals() {
+        	int[] arr  = new int[65536];
+        	for (int i=0; i < 65536;i++) {
+        		
+        	}
+        }
+    	
+    	Posso poupar combinações, se usar matrices?
+    	quais os valores iguais?
       
         public static void main(String[] args) {
         	
@@ -314,8 +327,8 @@ public class binPathImpl {
     		 //byte[] key = new byte[32];
     		 //createPlainText(new File("files/plaintext"));
     		 //SecretKeySpec sk = new SecretKeySpec(key, "AES");
-    		for (int i=0; i < 65535; i++) 
-    		System.out.print(util.printShortBits(i,"new",true));
+    		//for (int i=0; i < 65535; i++) 
+    	//	System.out.print(util.printShortBits(i,"new",true));
     	//	}
     /*		 
     		 ow1 11 11 11 11  255
@@ -346,51 +359,10 @@ MATRIX C  		00000010	2
 			    01000000	64
 			    10000000	128
     		 
-    		 int binT = 0b11111111;
-    		 int binReversed= 0b0000000;
     		 
-    		 for (int x=0; x < 8; x++) {
-    			 elements.add(binT);
-    			 elements.add(binReversed);
-    			 binT <<= 1;
-    			 binReversed = revertNum(binT);
-    			 
-    		 }
-    		 binT = 0b1;
-    		 for (int s = 0 ; s < 8 ; s++) {
-    			 elements.add(binT);
-    			 binReversed = revertNum(binT);
-    			 elements.add(binReversed);
-    			 binT *= 2 ;
-    		 }
-    		 
-    		 printMissingElems(0, 256, elements);
-    		 
-        //	SecretKeySpec sks = new SecretKeySpec(,"AES");
-        	
-        	
+    	
         }	
-        */
-        
-        	
-        /*	
-        	(0,0,0 )	(0,0,1),(0,1,0)(1,0,0)
-       
-        rev  (1,1,1)    (1,1,0) (1,0,1)(0,1,1)
-        			 zero at begin exclude
-         
-         a) (1,1,1,1)  (1,1,1,0)(1,1,0,1)(1,0,1,1)
-         
-    rev  (0,0,0,0)	(0, 0,0,1)(0,0,1,0)(0,1,0,0) USED  (zero at first)
-         
-         (1,1,1,1,1) (1,1,1,1,0)(1,1,1,0,0)(1,1,0,0,0)(1,0,0,0,0)
-         
-         
-         ALL COMPUTED  (use 3bits) EXCEPT (0,1,1,1,1) 0 at firtst) which is taken by a)
-         (0,0,0,0,0) (0,0,0,0,1)(0,0,0,1,1,)(0,0,1,1,1)(0,1,1,1,1)
 
-       
-       	(1,1,1,1,1,1)(1,1,1,1,
        	
        	
        	[ ref1, ref2 , ref3
@@ -412,35 +384,6 @@ MATRIX C  		00000010	2
         
 	   
 	/*
-	 * First copy several 256 values in byte one. for 2 bytes its 256^2 
-	 *   
-	 */
-   public static void fillBytes() {
-	   // Fill first byte (first combination)
-	   Integer[] twoByte = new Integer[65535];
-	   Integer[] oneByte = new Integer[65535];
-	   Integer[] values = new Integer[256];
-	   
-	   for (int i = 0 ; i < 256;i++){
-		   values[i] = i;
-	   }
-	   
-	   // First and second byte done
-	   int v=256;
-	   int repeatedElem = 0;
-	   for (int i=0 ; i < 65535 ; i+=256) { 
-		   
-		   System.err.println(i);
-		   System.arraycopy(values, 0,twoByte,i, values.length);
-		   Arrays.fill(oneByte,i,v,repeatedElem);
-		   v+=256;
-		   repeatedElem++;
-	   }
-	   
-	   // For third and fourth byte
-	   //for (int i=65535; i < 65535; i+=256)]
-	   
-   }
 	   
 	   
 /*1bit  4 (2bits)  8(3bits)   	 16	(4bits)		32 (5bits)
