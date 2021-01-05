@@ -49,7 +49,7 @@ Set B     Set C  	    Set D   		Set E  		Set F
 	public static ArrayList<Integer> AllValues;
 	
 	
- public static void receiveAndSend()
+ 
 
 public static void setTuplesInt() {
 	
@@ -63,7 +63,7 @@ public static void setTuplesInt() {
 		
 	}
 	
-
+}
 /*public static void setTuples() throws Exception {
 	
 		

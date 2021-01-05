@@ -5,15 +5,21 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 
@@ -28,31 +34,17 @@ import javax.crypto.spec.SecretKeySpec;
 	 
 
 	 public class AES {
-		 public static void tryCipher(byte[] key) throws InvalidKeyException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
-			   SecretKeySpec sks = new SecretKeySpec(key,"AES");
-			   byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-			   byte[] cipherText = readCipherText(new File("files/plainText"));
-
-			   Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-		       cipher.init(Cipher.DECRYPT_MODE, sks,new IvParameterSpec(iv));
-		       
-		       byte[] decrypted =cipher.doFinal(cipherText);
-		       util.printArray(decrypted);
-		        
-			   }
-		 
 		 public static byte[] readCipherText(File f) {
 	        	int len = (int) f.length();
 	        	byte[] cipherText = new byte[len];
 	        	try {
-	       	 byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	       	 IvParameterSpec ivspec = new IvParameterSpec(iv);
+	       	 
 	         
 	         FileInputStream fis = new FileInputStream(f);
 	         
 	         int fileSize = (int) f.length();
 	         
-	         if (fileSize % 32 != 0) {
+	         if (256 % fileSize != 0) {
 	        	System.err.println("\n File size is not a mulitple of 32");
 	         	System.exit(-1);
 	         }
@@ -68,11 +60,11 @@ import javax.crypto.spec.SecretKeySpec;
 	         
 	         else
 	        	 System.out.println("Read "+numBytesRead);
-	         		if (cipherText.length != 32) {
+	         		if (256 % cipherText.length != 0) {
 	         			System.err.println("\n Ciphertext not size of block");
 	         			System.exit(-1);
 	         		}
-	         		if(numBytesRead != 32 ) {
+	         		if(numBytesRead % 2 != 0 ) {
 	         			System.err.println("\n Didnt read the number of bytes from ciphertext");
 	         			System.exit(-1);
 	         		}
@@ -87,7 +79,8 @@ import javax.crypto.spec.SecretKeySpec;
 	        	}
 	        	return cipherText;
 	        }
-		 public static void createPlainText(File f) {
+		 // not needed use cat > plaintext <<EOF
+		/* public static void createPlainText(File f) {
 	        	try {
 	        		
 	        	FileOutputStream fos = new FileOutputStream(f);
@@ -111,67 +104,98 @@ import javax.crypto.spec.SecretKeySpec;
 	        	
 	        }
 	        
-	 /*
-         public static byte[] cipherText = new byte[32]; 
-       
-         public static String encrypt(String strToEncrypt, String secret) 
-	    {
-            try {
-                byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-                IvParameterSpec ivspec = new IvParameterSpec(iv);
-	    
-	          
-              
-                KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-                keyGenerator.init(256);
-                SecretKey key = keyGenerator.generateKey();
+	 */
+          public static void paste() throws NoSuchAlgorithmException {
+        	 
+        	  KeyGenerator kg = KeyGenerator.getInstance("AES");
+     		 kg.init(256);
+     		 SecretKey sk = kg.generateKey();
+     		 System.err.println("\nSecretKey (Getalgorithm) : "+sk.getAlgorithm());
+     		System.err.println("\nSecretKey (get format) : "+sk.getFormat());
+     		System.err.println("\nSecretKey (toString()) : "+sk.toString());
+     		System.err.println("\nSecretKey (getClass()) : "+sk.getClass());
+     		System.err.println("\nSecretKey :(getEncoded) : "+new String(sk.getEncoded()));
+     		System.err.println("\nSecretKey (sk.getEncoded().length) : "+sk.getEncoded().length);
+     		 
+     		 
+     		if (sk.getEncoded().length != 32)
+   			 System.err.println("\nSecret Key is not 256bits");
+   		 else
+   			 System.err.println("\nSecret Key is 256 bits");
+     		 
+          }
+         public static void encrypt(String strToEncrypt,File outputFile,SecretKey key )  {
+        	 try {
+        	     
+        		 //paste();
+        		  
+        		 
+        		 byte[] iv = new byte[16];
+        		 int keySize = key.getEncoded().length;
+        		 if (keySize != 32 && keySize != 16) {
+            		System.out.println("\nKey is neither 32 or 16");
+            	}
+            	else 
+            		System.out.println("\nKey is "+keySize);
+            	
+            	
+                byte[] toEnc = strToEncrypt.getBytes("UTF-8");
+                
+ 			   Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+ 		       cipher.init(Cipher.ENCRYPT_MODE, key,new IvParameterSpec(iv));
+ 		       System.out.println("\nEncrypting to "+(new String(toEnc)));
+ 		      
+ 		       
+ 		      byte[] out= cipher.doFinal(toEnc);
+ 		     
+ 		     System.out.println("\nByte buffer has "+out.length);
+ 		     
 
-              Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-	          cipher.init(Cipher.ENCRYPT_MODE, key,ivspec);
 	          
-	          byte[] out= cipher.doFinal(strToEncrypt.getBytes());
-	            //return Base64.getEncoder().encodeToString(cipher.doFinal(strToEncrypt.getBytes("UTF-8")));
-	            
-	            try (FileOutputStream stream = new FileOutputStream("encrypted")) {
-                        stream.write(out);
-                    }
+ 		    FileOutputStream stream = new FileOutputStream(outputFile);
+ 		     stream.write(out);
+ 		     stream.close();
+              System.out.println("\nFinished encryption");
+           }
 
 	            
-	            //decrypt(out,key);
-	        } 
-	        catch (Exception e) 
-	        {
-	            System.out.println("Error while encrypting: " + e.toString());
-	        }
+	          
+	       
+	            catch (NoSuchAlgorithmException e) {
+	            	e.printStackTrace();
+	            }
+	            
+	            catch (NoSuchPaddingException e) {
+	            	e.printStackTrace();
+	            }
+	            
+	            
+	            catch (InvalidKeyException e) {
+	            	e.printStackTrace();
+	            }
+	            
+	            
+	            catch (InvalidAlgorithmParameterException e) {
+	            	e.printStackTrace();
+	            }
+	            
+	            catch (IllegalBlockSizeException e) {
+	            	e.printStackTrace();
+	            }
+	            catch (BadPaddingException e) {
+	            	e.printStackTrace();
+	            }
+	            catch (FileNotFoundException e) {
+	            	e.printStackTrace();
+	            }
+	            catch (IOException e)  {
+	            	e.printStackTrace();
+	            } 
 	    
-	        return null;
+	        
 	    }
          
-	    public static String decrypt(SecretKey key) {
-	    
-	    try {
-	            
-	            
-	           
-	            
-	      //      byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            //    IvParameterSpec ivspec = new IvParameterSpec(iv);
-         
-	       //     Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
-             //   cipher.init(Cipher.DECRYPT_MODE, key, ivspec);
-	          //  byte[] decrypt =cipher.doFinal(cipherText);
-	            //return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
-	        } 
-	        catch (Exception e) 
-	        {
-	            System.out.println("Error while decrypting: " + e.toString());
-	        }
-	        return null;
-	    }
-	    */	
-	    public static void main(String[] args) {
-	    //    encrypt("abcefghijklmnopq","abcefghijklmnopq");
-	    }
+	   
 }
 
 

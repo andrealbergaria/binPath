@@ -55,7 +55,14 @@ public class util {
 	     	System.out.println("---end array ---");
 	     }
 	
-	
+	public static void printArray(byte[] arr) {
+		  System.out.println("---begin array---");
+	     	for (byte b : arr) {
+	     		System.out.print(b + ",");
+	     	}
+	     	System.out.println("---end array ---");
+		
+	}
 	 public static String printShortBits(int number,String modeOfPrint,boolean printLeadingZeros) {
  		int t = (number & 0xff);
  		

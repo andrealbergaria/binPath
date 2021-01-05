@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -155,6 +156,7 @@ public class binPathImpl {
         		// to get the next byte, we duplicate or divide the first byte 
         		
         		byte table;
+				return bytesArray;
         		
         		// Para cada um no inicio, adiciona-se o numero na posicao
         		
@@ -317,38 +319,121 @@ from wikipedia
         }
         		
         /*
-         * openssl enc -aes-256-cbc -in plaintext.txt -base64 -md sha1
-         * openssl enc AES256 -out cipherText -e -iv 0x0 -K abcabcab -nosalt -p
+         * openssl enc -aes-256-cbc -e iv 0x0 -nosalt -in files/plaintext.txt -out files/ciphertext -iv 0 
+         * -nosalt -p
 -p, -P
     Additionally to any encryption tasks, this prints the key, initialization vector and salt value (if used). If -P is used just these values are printed, no encryption will take place.
     -K key
     -e or -d encrypto r decryt
 
          */
-       
-        
-        public static void getEquals() {
-        	int[] arr  = new int[65536];
-        	for (int i=0; i < 65536;i++) {
-        		
-        	}
         }
-    	
-    	Posso poupar combinações, se usar matrices?
-    	quais os valores iguais?
-      
-        public static void main(String[] args) {
+        
+        
+        public static void encryptAux(SecretKeySpec sks)  {
         	
-        	fillBytes();
+        	System.out.println("\nEncryption with KEY -> "+new String(sks.toString()));
+        	String cipherTextLocation = "/home/andrec/workspace_3_8/binPath/files/ciphertext";
+        	File cipherTextFile = new File(cipherTextLocation);
+        	
+        	
+        	AES.encrypt("abc", cipherTextFile,sks);
+        	
+        	
+        	
+        }
+    //	Posso poupar combinações, se usar matrices?
+  //  	quais os valores iguais?
+      public static byte[] readCipherText(File f) {
+    	  byte[] cipherText = AES.readCipherText(f);
+    	  
+    	  return cipherText;
+    	  
+      }
+        public static void main(String[] args) { 
+        	try {
+        		String keyString = "";
+        		for (int i=0; i < 8;i++) {
+        			keyString+="abcd";
+        		}
+        	byte[] key;
+        	key = keyString.getBytes("UTF-8");
+        	String cipherTextLocation = "/home/andrec/workspace_3_8/binPath/files/ciphertext";
+        	File cipherTextFile = new File(cipherTextLocation);
+        	
+        	  SecretKeySpec sks = new SecretKeySpec(key, "AES");
+			
+	  		 byte[] cipherText = readCipherText(cipherTextFile);
+      		
+             
+
+      		  
+        	//encryptAux(sks);
+	  	//	 util.printArray(cipherText);
+			decryptAux(sks,cipherText);
+
+        	}
+			 catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	       }
+          public static void decryptAux(SecretKeySpec key,byte[] cipherText) {
+        	  try {
+        	
+        		   
+        		  
+        		  System.out.println("\n----DECRYPT------\nUsing "+key.getAlgorithm()+" "+key.getFormat());
+        	 System.out.println("\nDecrypting with KEY -> "+new String(key.toString()));
+ 
+        	 byte[] iv = new byte[16];
+        	 IvParameterSpec ivspec  = new IvParameterSpec(iv);
+        	 Cipher cipher;
+			
+				cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+			 cipher.init(Cipher.DECRYPT_MODE, key, ivspec);
+             
+	            byte[] decrypt =cipher.doFinal(cipherText);
+			System.out.println("\nDecrypt finished\nString decrypted => "+new String(decrypt)
+			);
+			
+			
+			
+			
+			
+			
+			
+          } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidKeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidAlgorithmParameterException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+          }
+    		 // If cycle breaks then stop
+    	//	for (int i=1; i <= 65536; i++) 
+    		//	System.out.print(util.printShortBits(i,"new",true));
+    		// 2^16 * 2 ^16
+    		// didnt find key, get combs 
+    		//double sizeOfIt = Math.pow(2,16);
+    		//for (int i=65536; i < 65536*8; i++) 
+    			//System.out.print(util.printShortBits(i,"new",true));
         
         
-    		 //byte[] key = new byte[32];
-    		 //createPlainText(new File("files/plaintext"));
-    		 //SecretKeySpec sk = new SecretKeySpec(key, "AES");
-    		//for (int i=0; i < 65535; i++) 
-    	//	System.out.print(util.printShortBits(i,"new",true));
-    	//	}
-    /*		 
+
+        
+        
+    /*		 // didnt find key get combs
     		 ow1 11 11 11 11  255
 			  row2 11 11 11 10  254 
 			  row3 11 11 11 00  252
@@ -397,7 +482,7 @@ MATRIX C  		00000010	2
         
        
   
-	}
+	
 	  
         
 	   
@@ -441,6 +526,7 @@ Set A   Set B     Set C  	    Set D   		Set E  		Set F
 	   // {0,1,2,3} ADD {2,3}
 	   // {0,1,2,3,4,5,6,7} ADD {4,5,6,7}
 	  //  {0,1,2,3,4,5,6,7,8,9,...}
+        // 1 , 2 , 4 , 8, 16?
 	 // Calcular o reverse para cada numero comecado por 0 ou adicionar um um ao inicio
 	    // so os qe comecam por zero contam...ou adiciona um um ou reverse os bits
 	    // dividir por dois por exemplo Set C, para adicionar zeros.
