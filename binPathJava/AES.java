@@ -125,9 +125,6 @@ import javax.crypto.spec.SecretKeySpec;
      		 
           }
          public static void encrypt(String strToEncrypt,File outputFile,SecretKey key )  {
-        	 try {
-        	     
-        		 //paste();
         		  
         		 
         		 byte[] iv = new byte[16];
@@ -156,10 +153,27 @@ import javax.crypto.spec.SecretKeySpec;
  		     stream.write(out);
  		     stream.close();
               System.out.println("\nFinished encryption");
-           }
-
-	            
-	          
+           
+         }
+        	 
+	        public static void checkKeys(byte[] cipherText,SecretKeySpec sks) {    
+	        try {
+	        byte[] iv = new byte[16];
+	  		Cipher cipher;
+	  		IvParameterSpec ivspec;
+	  		cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+	  		System.out.println("\n----DECRYPTING------\n");
+	  		 	
+	  			
+	  			 
+	        ivspec  = new IvParameterSpec(iv);
+	        	 
+	        cipher.init(Cipher.DECRYPT_MODE, sks, ivspec);
+	        byte[] decrypt =cipher.doFinal(cipherText);
+	        	 	System.out.println("\nDecrypt finished\nString decrypted => "+new String(decrypt));
+	        	 	
+        	}
+	  		 
 	       
 	            catch (NoSuchAlgorithmException e) {
 	            	e.printStackTrace();
@@ -185,17 +199,13 @@ import javax.crypto.spec.SecretKeySpec;
 	            catch (BadPaddingException e) {
 	            	e.printStackTrace();
 	            }
-	            catch (FileNotFoundException e) {
-	            	e.printStackTrace();
-	            }
-	            catch (IOException e)  {
-	            	e.printStackTrace();
-	            } 
+	            
 	    
 	        
 	    }
+	 }
          
 	   
-}
+
 
 

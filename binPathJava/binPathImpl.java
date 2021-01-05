@@ -1,22 +1,11 @@
 package binPathJava;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Vector;
-
+import binPathJava.util;
 
 
 import javax.crypto.BadPaddingException;
@@ -332,8 +321,9 @@ from wikipedia
         
         public static void encryptAux(SecretKeySpec sks)  {
         	
-        	System.out.println("\nEncryption with KEY -> "+new String(sks.toString()));
+        	 
         	String cipherTextLocation = "/home/andrec/workspace_3_8/binPath/files/ciphertext";
+        	System.out.println("\nEncryption "+cipherTextLocation);
         	File cipherTextFile = new File(cipherTextLocation);
         	
         	
@@ -350,14 +340,31 @@ from wikipedia
     	  return cipherText;
     	  
       }
+    //https://javadeveloperzone.com/java-basic/java-convert-int-to-byte-array/
+      private static byte[] intToBytes(int data) {
+    	  byte[] temp = new byte[32];
+    	  temp[0] = (byte)((data >> 24) & 0xff);
+    	  temp[1] = (byte)((data >> 16) & 0xff);
+    	  temp[2] = (byte)((data >> 8) & 0xff);
+    	  temp[3] = (byte)((data >> 0) & 0xff); 
+    	        
+    	    return temp;
+    	} 
         public static void main(String[] args) { 
+        	
         	try {
+        		
+        		// Sets the original key
+        		
         		String keyString = "";
         		for (int i=0; i < 8;i++) {
         			keyString+="abcd";
         		}
         	byte[] key;
         	key = keyString.getBytes("UTF-8");
+        	
+        	// Reads cipher text into buffer
+        	
         	String cipherTextLocation = "/home/andrec/workspace_3_8/binPath/files/ciphertext";
         	File cipherTextFile = new File(cipherTextLocation);
         	
@@ -366,61 +373,75 @@ from wikipedia
 	  		 byte[] cipherText = readCipherText(cipherTextFile);
       		
              
+	  		 	
+	  		// Prepare encryption and decryption
 
-      		  
         	//encryptAux(sks);
-	  	//	 util.printArray(cipherText);
-			decryptAux(sks,cipherText);
-
+	  		byte[] iv = new byte[16];
+	  		Cipher cipher;
+	  		IvParameterSpec ivspec;
+	  		cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+	  		System.out.println("\n----DECRYPTING------\n");
+	  		 
+	  		for (int i=0 ; i < 5 ;i++) {
+	  			 
+	  			 sks = null;
+	  			 ivspec = null;
+	  			 
+	  			 if (i % 5000 == 0) {
+	  				 System.out.println("\nI " +i);
+	  				 System.gc();
+	  			 }
+	  			 
+	  			 byte[] t = intToBytes(i);
+	  			 
+	  			 util.printArray(t);
+	  			 sks = new SecretKeySpec(t,"AES");
+	  			 
+	        	 ivspec  = new IvParameterSpec(iv);
+	        	 
+	        	 cipher.init(Cipher.DECRYPT_MODE, sks, ivspec);
+	        	 	byte[] decrypt =cipher.doFinal(cipherText);
+	        	 	System.out.println("\nDecrypt finished\nString decrypted => "+new String(decrypt));
+	        	 	
+        	}
+	  		 
+	  		 
         	}
 			 catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-	       }
-          public static void decryptAux(SecretKeySpec key,byte[] cipherText) {
-        	  try {
-        	
-        		   
-        		  
-        		  System.out.println("\n----DECRYPT------\nUsing "+key.getAlgorithm()+" "+key.getFormat());
-        	 System.out.println("\nDecrypting with KEY -> "+new String(key.toString()));
- 
-        	 byte[] iv = new byte[16];
-        	 IvParameterSpec ivspec  = new IvParameterSpec(iv);
-        	 Cipher cipher;
-			
-				cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
-			 cipher.init(Cipher.DECRYPT_MODE, key, ivspec);
-             
-	            byte[] decrypt =cipher.doFinal(cipherText);
-			System.out.println("\nDecrypt finished\nString decrypted => "+new String(decrypt)
-			);
-			
-			
-			
-			
-			
-			
-			
-          } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
+			} catch (InvalidKeyException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (InvalidKeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidAlgorithmParameterException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalBlockSizeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BadPaddingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-          }
-    		 // If cycle breaks then stop
+			} catch (InvalidAlgorithmParameterException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalBlockSizeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (BadPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	       
+        }
+        @Override
+        // finalize method is called on object once  
+        // before garbage collecting it
+        // https://www.geeksforgeeks.org/garbage-collection-java/
+        protected void finalize() throws Throwable 
+        { 
+            System.out.println("Garbage collector called"); 
+             
+        } 
+          
     	//	for (int i=1; i <= 65536; i++) 
     		//	System.out.print(util.printShortBits(i,"new",true));
     		// 2^16 * 2 ^16
