@@ -1,10 +1,18 @@
 package binPathJava;
 
+import java.awt.print.Printable;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.Random;
+
 import binPathJava.util;
 
 
@@ -119,314 +127,145 @@ public class binPathImpl {
      
       
        
-       
-        private static int[][][] prefix(int numberOfBytes) {
-        	
-        	int[] firstByte;
-        	int[][][] bytesArray;
-        	
-        	//int[][] fourthByte;
-        	
-        	
-        		
-        		  
-        		
-       		
-        		
-        		int begin = 0;
-        		int finalB = (int) Math.pow(2,8);
-        	
-        		int intervalSize = finalB -begin;
- 
-        		bytesArray = new int[intervalSize][256][numberOfBytes];
-        		//bytesArray[0][0] = cByte;
-        		
-        		
-        		// to get the next byte, we duplicate or divide the first byte 
-        		
-        		byte table;
-				return bytesArray;
-        		
-        		// Para cada um no inicio, adiciona-se o numero na posicao
-        		
-        		
-        		// 1 byte tem 256 combs (2^8)
-        		// 2 bytes tem 2^16 vombs (65535) (2^8 * 2^8)
-        		
-        		/*
-        		 
-        		 --Para 1 b----
-
-        		 
-        	----2bits----
-        	[b,0]	 X
-        	[0,b] 
-        		 
-        	 
-        		 
-        	----3bits----
-        	
-        	[b,0,0]	X
-        	[0,b,0] 
-        	[0,0,b] 
-        	[0,b,b]
-        	[b,b,b] X  
-        	[b,b,0] X 
-        	[b,0,b] X
-        	
-        	If 3 bits are key tested (using full combs),4 bits that do not have a leading zero will be good   
-        	
-        	---4bits---
-         1combs = number of bs=1)
-        		  
-        	[b,0,0,0}		X
-        	[0,b,0,0]	 
-        	[0,0,b,0]	
-        	[0,0,0,b]   
-        		 
-        		
-				3combs (number of bs = 2)
-			[0,0,b,b]	
-			[0,b,0,b}   
-			{b,0,0,b]   X
-			[0,b,b,0]   
-			{b,0,b,0]	X
-			[b,b,0,0] 	X
-			
-			3combs (number of bs = 3)
-			(0,b,b,b)	
-			(b,b,b,0)  X 
-			(b,0,b,b)  X
-			(b,b,0,b)  X
-		
-			X are numbers not leading zeros
-
-			4 bits = Total combs = 16 combs. . Leading zero = 7 combs -> Useful combs 16-7 = 9
-			3 bits => Total combs = 8 combs    Leading zero = 3 combs -> Useful combs 8-3 = 5
-
-			For example, if i want to send (0,b,b,0), and sent (0,b,0,0)
-			(0,1,1,0) (0,1,0,0)
-			
-			  a) (0,1,0,0) is gone =boolean =true;
-			  b) (0,0,1,0) i sent as well 
-			 
- 	 			MATRIX B							MATRIX AES          MATRIX A
-			 [0 1 0 0 ]							[1,0,0,1]           	[1 0 1 0]
-			 [0 0 1 0 ] ->transform with AES => [0,0,1,0		<=AES	[0,1,1,0]
-			 obter matriz igual a outra
-			 
-			 matrices that after processed , must be compared to the original matrices, to remove equals.
-			 
-			 for example ,if we have a MATRIX AES
-			 is there any other matrix, that processes it?
-			 MATRIX A = MATRIX B
-			 (general case of eleminating elems)
-			 (in the former case, we ignored leading zeros)
-			 
-			 rearranjing elems. The row sum , must be equal.
-			 
-			row sum is equal
-			
-			use  numbers,, like (0,1,1,0) = 6 , 
-			 
-			 			check which number have 6 as factor
-			 			
-			 			(1,1,0,0) = 12
-			 			factor(12) = {1,2,3,4,6,12}
-			 			 6d				12d			6d
-			 			[0 1 1 0 ] = [1,1,0,0] - [0 1 1 0]
-			 			
-			 			   6D			3d			2d
-			 			 [0 1 1 0] = [0,0,1,1] * [0 0 1 0 ]
-			 			 
-			 			 sum of 6 = 2+2+2		[ 1 0] [1 0] [1 0]
-			 			 		  = 3+2+1
-			 			 		  = 2+2+2
-			 			 		  = 3+3
-			 			 		  
-			 			 		  [ 1 2 3 ]  = [ 2 1 3 ] =  [1 3 2]
-			 			 		  
-			 			 		   Se a permutação tiver valores iguais então temos matrices
-			 			 		  
-			 			 		  
-			 			
-			 		
-			 		using numbers (with bits), we can get an equivalent matrix 
-			 		
-			 		if the matrix, solves an equation, what is the other matrix that does that?
-			 		
-			 		if there are several solutions, then there are other matrices
-			 		
-			 
-			 Como representar numeros iguais ? 
-			 
-			 
-			 
-			 Posso concluir alguma coisa da chave? (por exemplo (0,1,1,0) não é chave)
-			 
-			 If they arent the key, 
-			 
-			 			 como se processa a chave
-			 			 
-from wikipedia
-
-			 			  16 bytes
-			 		[ b1 b2 b3 b4 ]
-			 		[ b5 b6 b7 b8 ]
-			 		[b9 b10 b11 12]
-			 		[b13 b14 b15 b16]
-			 		
-			 		
-			 		
-			 			 
-			 			 
-			-----
-			b= 1 (can't be 0) 
-			-----
-        		 
-        		 
-        		
-        	/*	------| ------|-----|			
-        	 * 
-        	 
-        		1		1			1		
-        		2		2			2
-        		3		3			3
-        		
-        		1		4			4
-        		2		5			5
-        		3		6			6
-        		
-        		1		1			7
-        		2		2			8
-        		3		3			9
-        		
-        		
-        		
-        		
-        		
-        }
-        		
-        /*
-         * openssl enc -aes-256-cbc -e iv 0x0 -nosalt -in files/plaintext.txt -out files/ciphertext -iv 0 
-         * -nosalt -p
--p, -P
-    Additionally to any encryption tasks, this prints the key, initialization vector and salt value (if used). If -P is used just these values are printed, no encryption will take place.
-    -K key
-    -e or -d encrypto r decryt
-
-         */
-        }
+      
         
         
-        public static void encryptAux(SecretKeySpec sks)  {
-        	
-        	 
-        	String cipherTextLocation = "/home/andrec/workspace_3_8/binPath/files/ciphertext";
-        	System.out.println("\nEncryption "+cipherTextLocation);
-        	File cipherTextFile = new File(cipherTextLocation);
-        	
-        	
-        	AES.encrypt("abc", cipherTextFile,sks);
+        
         	
         	
         	
-        }
-    //	Posso poupar combinações, se usar matrices?
-  //  	quais os valores iguais?
-      public static byte[] readCipherText(File f) {
-    	  byte[] cipherText = AES.readCipherText(f);
-    	  
-    	  return cipherText;
-    	  
-      }
+        
+      
+      
     //https://javadeveloperzone.com/java-basic/java-convert-int-to-byte-array/
-      private static byte[] intToBytes(int data) {
-    	  byte[] temp = new byte[32];
-    	  temp[0] = (byte)((data >> 24) & 0xff);
-    	  temp[1] = (byte)((data >> 16) & 0xff);
-    	  temp[2] = (byte)((data >> 8) & 0xff);
-    	  temp[3] = (byte)((data >> 0) & 0xff); 
-    	        
-    	    return temp;
-    	} 
+      private static byte[] intToByteArray (  int i )  {
+    	  ByteArrayOutputStream bos=null;
+    	  try {
+    	    bos = new ByteArrayOutputStream();
+    	    DataOutputStream dos = new DataOutputStream(bos);
+    	    dos.writeInt(i);
+    	    dos.flush();
+    	  }
+    	  catch(Exception e) {
+    		  e.printStackTrace();
+    	  }
+    	  finally {
+    		  return bos.toByteArray();  
+    	  }
+    	  
+    	    
+    	}
+      
+      
         public static void main(String[] args) { 
         	
         	try {
         		
-        		// Sets the original key
+        		File cipherFile  = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext");
+            	
         		
-        		String keyString = "";
-        		for (int i=0; i < 8;i++) {
-        			keyString+="abcd";
-        		}
-        	byte[] key;
-        	key = keyString.getBytes("UTF-8");
-        	
-        	// Reads cipher text into buffer
-        	
-        	String cipherTextLocation = "/home/andrec/workspace_3_8/binPath/files/ciphertext";
-        	File cipherTextFile = new File(cipherTextLocation);
-        	
-        	  SecretKeySpec sks = new SecretKeySpec(key, "AES");
-			
-	  		 byte[] cipherText = readCipherText(cipherTextFile);
+            	
+            
+      		byte[] cipherText = AES.readCipherText(cipherFile);
       		
-             
+      			
+      			
+	  			
+            	
+      		 byte[] iv = new byte[16];
+	  		IvParameterSpec ivspec = new IvParameterSpec(iv);
 	  		 	
-	  		// Prepare encryption and decryption
-
-        	//encryptAux(sks);
-	  		byte[] iv = new byte[16];
-	  		Cipher cipher;
-	  		IvParameterSpec ivspec;
-	  		cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
-	  		System.out.println("\n----DECRYPTING------\n");
-	  		 
-	  		for (int i=0 ; i < 5 ;i++) {
+      		
+ 	  		Cipher cipher;
+ 	  		cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+ 	  		
+ 	  		System.out.println("\n----DECRYPTING------\n");
+ 	  		
+         	// Used on real encryption
+ 	  		String trueKey = "1234abcdabcdabcdabcdabcdabcdabcd";
+	     	
+ 	  		// Test key
+         	String testKey = "1234asddaasdabcdabcdabcdabcdabcd";
+       		
+	     	System.out.println("True Key  : "+trueKey);
+	     	System.out.println("Test Key  : "+testKey);
+	     	
+	   			 if (testKey.equals(trueKey)) {
+	   				 System.out.println("\n(main) Test key not equal to True key");
+	   			 }
+	   			// Se a chave 
+	     	byte[] key = testKey.getBytes();
+      		
+	     	SecretKeySpec sk1 = new SecretKeySpec(key,"AES");
+	    	AES.encrypt("abcd1241",cipherFile ,sk1);
+	    	
+	  		byte[] randomKey = new byte[32];
+	  		byte[] rawKey = new byte[32];
+	  		
+	  		Random rand = new Random();
+	  		
+	  		rand.nextBytes(randomKey);
+	  		
+	  		int it=0;
+            for (int i= 2; i < 5 ;i++) {
 	  			 
-	  			 sks = null;
-	  			 ivspec = null;
 	  			 
-	  			 if (i % 5000 == 0) {
-	  				 System.out.println("\nI " +i);
+	  			 if (i % 5000 == 0 && i != 0) {
+	  				 System.out.println("\nReached i : " +i);
 	  				 System.gc();
 	  			 }
-	  			 
-	  			 byte[] t = intToBytes(i);
-	  			 
-	  			 util.printArray(t);
-	  			 sks = new SecretKeySpec(t,"AES");
-	  			 
-	        	 ivspec  = new IvParameterSpec(iv);
+	  	         
+	  			
+            	rawKey[it] = (byte) i;
+            	it++;
+            	System.out.println("\nRight key ");
+            	System.out.println(trueKey);
+            	//System.out.println("\nTrying key ");
+            //	util.printArray(rawKey,true);
+            	
+            	//SecretKeySpec sks = new SecretKeySpec(rawKey,"AES");
+            	SecretKeySpec sks = new SecretKeySpec(randomKey,"AES");
+            	
+            	System.out.println("\nTrying key ");
+                	util.printArray("trying random_key",randomKey,true);
+            	
+	      		cipher.init(Cipher.DECRYPT_MODE, sks, ivspec);
+	      		
+        	 	byte[] decrypt =cipher.doFinal(cipherText);
+        	 	System.out.println("\nDecrypt finished\nString decrypted => "+new String(decrypt));
+        	 
+    	  		rand.nextBytes(rawKey);
+
+        	 	
+            }	
+	 	  	
+	  			
+	  			// cipherFile -> cypherText1
+     	  		// cipherFile2 -> cipherText2
+ 			 //AES.checkKeys(cipherText, sk1);
+ 			
+ 			
+ 			
+ 			/*
+ 			 * 
+ 			 * Other arbitrary decryption
+ 			 * SecretKeySpec sk2 = getKey(key2);
+ 			   encryptAux("123",cipherFile2,sk2);
+ 			 * AES.checkKeys(cipherText2, sk2);
+ 			 */
+ 			
+ 	  		
+ 			
+	  			
+	  	//		System.out.println("\nOtherKeySpec-----");
+	  	
+	  			   
 	        	 
-	        	 cipher.init(Cipher.DECRYPT_MODE, sks, ivspec);
-	        	 	byte[] decrypt =cipher.doFinal(cipherText);
-	        	 	System.out.println("\nDecrypt finished\nString decrypted => "+new String(decrypt));
-	        	 	
-        	}
+        	
 	  		 
 	  		 
         	}
-			 catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvalidKeyException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvalidAlgorithmParameterException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalBlockSizeException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (BadPaddingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NoSuchPaddingException e) {
+			 catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

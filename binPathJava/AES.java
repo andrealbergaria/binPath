@@ -37,6 +37,7 @@ import javax.crypto.spec.SecretKeySpec;
 		 public static byte[] readCipherText(File f) {
 	        	int len = (int) f.length();
 	        	byte[] cipherText = new byte[len];
+	        	
 	        	try {
 	       	 
 	         
@@ -45,7 +46,7 @@ import javax.crypto.spec.SecretKeySpec;
 	         int fileSize = (int) f.length();
 	         
 	         if (256 % fileSize != 0) {
-	        	System.err.println("\n File size is not a mulitple of 32");
+	        	System.err.println("\n File size is not a mulitple of 256");
 	         	System.exit(-1);
 	         }
 	         
@@ -59,7 +60,7 @@ import javax.crypto.spec.SecretKeySpec;
 	         }
 	         
 	         else
-	        	 System.out.println("Read "+numBytesRead);
+	        	 System.out.println("(readCypherText) Read "+numBytesRead+" from "+f.getAbsolutePath()+" fileSize "+f.length());
 	         		if (256 % cipherText.length != 0) {
 	         			System.err.println("\n Ciphertext not size of block");
 	         			System.exit(-1);
@@ -80,89 +81,99 @@ import javax.crypto.spec.SecretKeySpec;
 	        	return cipherText;
 	        }
 		 // not needed use cat > plaintext <<EOF
-		/* public static void createPlainText(File f) {
-	        	try {
-	        		
-	        	FileOutputStream fos = new FileOutputStream(f);
-	        	byte[] toWrite;
-	        	
-	        	String t = "";
-	        	for (int i=0 ; i < 32 ; i++)
-	        		t+="a";
-	        		
-	        	toWrite  = t.getBytes();
-	        	
-	        	
-	        	fos.write(toWrite);
-	        	System.out.println("\n wrote "+toWrite.length+" to "+f.getName());
-	        	
-	        	}
-	        	catch(IOException e) {
-	        		e.printStackTrace();
-	        		System.out.println("\nCOUDLNT CREATE PLAIN TEXT");
-	        	}
-	        	
-	        }
-	        
-	 */
-          public static void paste() throws NoSuchAlgorithmException {
-        	 
-        	  KeyGenerator kg = KeyGenerator.getInstance("AES");
-     		 kg.init(256);
-     		 SecretKey sk = kg.generateKey();
-     		 System.err.println("\nSecretKey (Getalgorithm) : "+sk.getAlgorithm());
-     		System.err.println("\nSecretKey (get format) : "+sk.getFormat());
-     		System.err.println("\nSecretKey (toString()) : "+sk.toString());
-     		System.err.println("\nSecretKey (getClass()) : "+sk.getClass());
-     		System.err.println("\nSecretKey :(getEncoded) : "+new String(sk.getEncoded()));
-     		System.err.println("\nSecretKey (sk.getEncoded().length) : "+sk.getEncoded().length);
-     		 
-     		 
-     		if (sk.getEncoded().length != 32)
-   			 System.err.println("\nSecret Key is not 256bits");
-   		 else
-   			 System.err.println("\nSecret Key is 256 bits");
-     		 
-          }
+		
+         
          public static void encrypt(String strToEncrypt,File outputFile,SecretKey key )  {
-        		  
+        	 
+        		try {  
         		 
+        			System.out.println("\n-------------ENCRYPTING -------------");
+        			System.out.println("(AES.encrypt) Key is ");
+        			util.printArray("Key used in encryption",key.getEncoded(),true);
+        			
         		 byte[] iv = new byte[16];
         		 int keySize = key.getEncoded().length;
         		 if (keySize != 32 && keySize != 16) {
             		System.out.println("\nKey is neither 32 or 16");
             	}
             	else 
-            		System.out.println("\nKey is "+keySize);
+            		System.out.println("\nKeySize is "+keySize);
             	
             	
                 byte[] toEnc = strToEncrypt.getBytes("UTF-8");
-                
- 			   Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
- 		       cipher.init(Cipher.ENCRYPT_MODE, key,new IvParameterSpec(iv));
- 		       System.out.println("\nEncrypting to "+(new String(toEnc)));
- 		      
+				
+ 			   Cipher cipher;
+ 			  cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+ 			 cipher.init(Cipher.ENCRYPT_MODE, key,new IvParameterSpec(iv));
+			
+ 			   System.out.println("\n(AES.encrypt) Encrypting the string \""+(new String(toEnc))+"\" to "+outputFile.getAbsolutePath());
+  		      
  		       
- 		      byte[] out= cipher.doFinal(toEnc);
- 		     
- 		     System.out.println("\nByte buffer has "+out.length);
- 		     
+  		      byte[] out = cipher.doFinal(toEnc);
+ 			  if (out.length != outputFile.length())
+ 				  System.out.println("\n(AES.encrypt) Wrong buffer byte[] on encrypting");
+ 			  else
+ 				 System.out.println("\n(AES.encrypt) Buffer ok");
+  		     
 
-	          
- 		    FileOutputStream stream = new FileOutputStream(outputFile);
- 		     stream.write(out);
- 		     stream.close();
-              System.out.println("\nFinished encryption");
-           
+ 	          
+  		    FileOutputStream stream = new FileOutputStream(outputFile);
+  			stream.write(out);
+  			stream.flush();
+  			stream.close();
+ 				
+ 				
+               System.out.println("\n(AES.encrypt) Finished encryption");	
+        		}
+        		 catch (UnsupportedEncodingException e) {
+ 					// TODO Auto-generated catch block
+ 					e.printStackTrace();
+ 				}
+                 
+			 catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+ 		    catch (InvalidKeyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidAlgorithmParameterException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+ 		    
+              
+        		  
+              catch (FileNotFoundException e) {
+  				// TODO Auto-generated catch block
+  				e.printStackTrace();
+  			}
+   		     catch (IOException e) {
+  				// TODO Auto-generated catch block
+  				e.printStackTrace();
+  			}
+   		     	
+  			   catch (IllegalBlockSizeException | BadPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    
          }
-        	 
-	        public static void checkKeys(byte[] cipherText,SecretKeySpec sks) {    
+        	// 
+	     public static String checkKeys(byte[] cipherText,SecretKeySpec sks) {
+	    	 String ret=null;
 	        try {
+	        	
+	        	
 	        byte[] iv = new byte[16];
 	  		Cipher cipher;
 	  		IvParameterSpec ivspec;
 	  		cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
-	  		System.out.println("\n----DECRYPTING------\n");
+	  		
+	  		System.out.println("\n----Validating key  ------");
 	  		 	
 	  			
 	  			 
@@ -170,12 +181,16 @@ import javax.crypto.spec.SecretKeySpec;
 	        	 
 	        cipher.init(Cipher.DECRYPT_MODE, sks, ivspec);
 	        byte[] decrypt =cipher.doFinal(cipherText);
-	        	 	System.out.println("\nDecrypt finished\nString decrypted => "+new String(decrypt));
+	        ret = new String(decrypt);
+	        System.out.println("----Stuff decrypted -----");
+	        System.out.println("---(" +ret+ ")----");
+	        	 	System.out.println("\n-----Checking valid keys done -----");
+	        	 	
+
+	        	 	
 	        	 	
         	}
-	  		 
-	       
-	            catch (NoSuchAlgorithmException e) {
+	  		     catch (NoSuchAlgorithmException e) {
 	            	e.printStackTrace();
 	            }
 	            
@@ -199,7 +214,9 @@ import javax.crypto.spec.SecretKeySpec;
 	            catch (BadPaddingException e) {
 	            	e.printStackTrace();
 	            }
-	            
+	            finally {
+	            	return ret;
+	            }
 	    
 	        
 	    }

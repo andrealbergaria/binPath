@@ -397,3 +397,27 @@ void aes256_decrypt_ecb(aes256_context *ctx, uint8_t *buf)
     }
     aes_addRoundKey( buf, ctx->key);
 } /* aes256_decrypt */
+
+int main() {
+	char *buf = (char *)malloc(16);
+	aes256_context *aesCon = (aes256_context *) malloc(sizeof(aes256_context));
+	for (int i=0; i < 31 ; i++) {
+		aesCon->key[i] = 0;
+		aesCon->enckey[i]=0;
+		aesCon->deckey[i]=0;
+
+	}
+
+	for (int i=0; i < 16; i+=4) {
+		strncpy(buf+i,"abcd",4);
+	}
+	//for (int i = 0; i < 32; i++)
+	//	aesCon.key += 0xff;
+	buf[15] = '\0';
+
+	aes256_init(aesCon, aesCon->key);
+	aes256_encrypt_ecb( aesCon,buf);
+	printf("\nEncrypted : \"%s\"",buf);
+	aes256_decrypt_ecb(aesCon,buf);
+	printf("\nDecrypted : \"%s\" ",buf);
+}

@@ -2,6 +2,7 @@ package binPathJava;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class util {
 
@@ -46,7 +47,7 @@ public class util {
 	    
 	}
 
-	
+
 	  public static <T> void printArray(T[] arr) {
 		  System.out.println("---begin array---");
 	     	for (T e : arr) {
@@ -54,13 +55,31 @@ public class util {
 	     	}
 	     	System.out.println("---end array ---");
 	     }
-	
-	public static void printArray(byte[] arr) {
-		  System.out.println("---begin array---");
+	// showChars, instead of ascii number return character
+	  // print values == true => print values instead of characters
+	  
+	public static void printArray(String arrayName,byte[] arr,boolean printValues) {
+		
+		  System.out.println("---begin array ("+arrayName+")---");
+		  System.out.println("Array length : "+arr.length);
+		  char c; 
 	     	for (byte b : arr) {
-	     		System.out.print(b + ",");
+	     		
+	     		if (printValues) {
+	     				if (b == 0)
+	     					c = '0';
+	     				else
+	     				c = (char) b;
+	     				System.out.print(c + ",");
+	     		}
+	     		else {
+	     			if (b==0)
+	     				System.out.print("0"+",");
+	     			else
+	     				System.out.print(b + ",");
+	     		}
 	     	}
-	     	System.out.println("---end array ---");
+	     	System.out.println("\n---end array ---");
 		
 	}
 	 public static String printShortBits(int number,String modeOfPrint,boolean printLeadingZeros) {
