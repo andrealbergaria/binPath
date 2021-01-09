@@ -20,27 +20,101 @@ public class Test {
 	
 	public static void main(String[] args) {
 		Object[] ref = new Object[3];
+		Integer[] int1 = new Integer[2];
+		int[] int2 = new int[4];
+		int[] t;
+		/*Integer[] t1;
+		does int1, initializes the components to null?
+		how does int2 initializes the components?
+		*/
 		//test(ref);
-		byte a = 8;
 		byte b = 0b1000;
+		// No 
+		Integer[] testInt1 ;
+		Integer testIntPrim;
 		
-		//if (a==b)
-			//System.out.println("tru");
+		Integer[] testInt2 = new Integer[2];
+		int[] arr;
+		int[] arr2 = new int[5];
+		int[][] arr3  = new int[2][3];
+		int[] n = null;
+// error good		arr2[2] = null;
+
 		
-		Integer i= new Integer(Integer.reverse(7));
-		System.out.println(i);
+		class CustomArray {
+			int a;
+			int method() {
+				return 1;
+			}
+		}
+		CustomArray ca = new CustomArray();
+		int[][] arr4 = new int[3][];
+		/*
+		 * 
+		 * nao pode ter references , visto que é uma array de ints, 
+			arr4[2] = new int[3];
+		 *
+		 * 
+		 */ 
+				
+				
 		
-		Object[] arr= new Object[5];
-		arr[0] = "ABC";
-		arr[1] = 123;
-		arr[2] =  new Integer(1);
-		util.printArray(arr);
 		
+
+		// matrix[d] é uma array de references e nao de ints
+		int[][] matrix = new int[3][4];
+		System.out.println("\nMatrix len "+matrix.length);
+		for (int d = 0; d < matrix.length; d++) {
+		    matrix[d] = new int[3];
+		    System.out.println("\nMatrix["+d+"] -> "+matrix[d]);
+		}
+		
+		matrix[0]  =new int[3];
+		matrix[1]  = new int[3];
+		matrix[2]  = null;
+		
+		// instead of making matrix[0] a refernece, use it with values
+		//matrix[0] é uma referencia ?
+	//	matrix[0][0] é um valor?
+		
+		//matrix[0] = 1 ; matrix[0][1]= 2
+				// 3*4 => size of matrix array
+		// 
+			
+		
+				//matrix[0][0] = ?
+			//	so the arrays is composed of references
+		
+	for (int i = 0; i < 3 ; i++) {
+		for (int i2= 0 ; i2 < 4; i2++) {
+			System.out.println("\nMATRIX -> "+matrix[i][i2]);
+		}
+	}
+		/*
+		System.out.println("\nTESTINT1 "+testInt1); // correct doesnt allow (no default init)
+		System.out.println("\nSSS "+testIntPrim); // correct doesnt allow (no default init)
+		System.out.println("\nARR int[] "+arr);  // correct doesnt allow (no default init)
+		*/
+		System.out.println("\nTESTINT2 "+testInt2);  // print reference
+		System.out.println("\nTESTINT2 IDX  "+testInt2[0]); // prints null
+		
+		
+		System.out.println("\nARR2 int[] "+arr2[1]); // 0
+		System.out.println("\n N == NULL "+n);
+		
+		System.out.println("\nArr[0] " + arr2[0]);
+		//do component arrays, have a default value
+		// howcome they have a default value, since they are local variables
+		
+		Object[] aArrays= new Object[5];
+		aArrays[0] = "ABC";
+		aArrays[1] = 123;
+		aArrays[2] =  new Integer(1);
+		
+//		and each component of the array is initialized to its default value 
 	}
 	
-	public static tryAES() {
-		
-	}
+	
 	
 		//SuperIntergace si = new Super();
 		//SubInterface s = 

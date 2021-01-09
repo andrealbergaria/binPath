@@ -399,25 +399,62 @@ void aes256_decrypt_ecb(aes256_context *ctx, uint8_t *buf)
 } /* aes256_decrypt */
 
 int main() {
-	char *buf = (char *)malloc(16);
-	aes256_context *aesCon = (aes256_context *) malloc(sizeof(aes256_context));
+	char *buf = (char *)malloc(50);
+	aes256_context aesCon;
+
 	for (int i=0; i < 31 ; i++) {
-		aesCon->key[i] = 0;
-		aesCon->enckey[i]=0;
-		aesCon->deckey[i]=0;
-
+		aesCon.key[i] = 97;
+		aesCon.enckey[i]=aesCon.key[i];
+		aesCon.deckey[i]=aesCon.key[i];
 	}
 
-	for (int i=0; i < 16; i+=4) {
-		strncpy(buf+i,"abcd",4);
-	}
+	//for (int i=0; i < 16; i+=4) {
+	//	strncpy(buf+i,"abcd",4);
+//	}
 	//for (int i = 0; i < 32; i++)
 	//	aesCon.key += 0xff;
-	buf[15] = '\0';
+	//buf[15] = '\0';
 
-	aes256_init(aesCon, aesCon->key);
-	aes256_encrypt_ecb( aesCon,buf);
-	printf("\nEncrypted : \"%s\"",buf);
+	//aes256_init(aesCon, aesCon->key);
+	decrypt_file(&aesCon);
+	//printf("\nDecrypted : \"%s\" ",buf);
+
+	free(buf);
+
+}
+int decrypt_file(aes256_context *aesCon) {
+	char *buf = (char * )malloc(300);
+	printf("\nDecrypting....\nKey : %s ",aesCon->key);
+	FILE *f = fopen("/home/andrec/workspace_3_8/binPath/files/ciphertext_java","rb");
+	int retValue = -1;
+	retValue = fread(buf ,1,16 ,f);
+	if (retValue == 0) {
+		perror("(decrypt_file) Couldnt read ciphertext_java");
+		exit(-1);
+	}
+	else
+		printf("\nRet value ok");
+
+
 	aes256_decrypt_ecb(aesCon,buf);
-	printf("\nDecrypted : \"%s\" ",buf);
+	printf("\nDecrypted file %s \n" ,buf);
+	free(buf);
+
+}
+int encrypt_file(char *buf,aes256_context *aesCon) {
+
+		printf("\nEncrypting : \"%s\"",buf);
+		FILE *writeBuffer =  fopen( "/home/andrec/workspace_3_8/binPath/files/ciphertext_c","wb" );
+		int retValue =  -1;
+
+		aes256_encrypt_ecb(aesCon,buf);
+
+		retValue = fwrite(buf,1,16,writeBuffer);
+
+		printf("\nRetValue of fwrite %i",retValue);
+
+		if (fclose(writeBuffer) != 0) {
+			perror("\nSomething went wrong on closing the fd");
+		}
+		free(buf);
 }

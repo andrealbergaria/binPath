@@ -1,11 +1,6 @@
 package binPathJava;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -83,13 +78,13 @@ import javax.crypto.spec.SecretKeySpec;
 		 // not needed use cat > plaintext <<EOF
 		
          
-         public static void encrypt(String strToEncrypt,File outputFile,SecretKey key )  {
+         public static void encrypt(String strToEncrypt,File outputFile,SecretKey key ) {
         	 
         		try {  
         		 
         			System.out.println("\n-------------ENCRYPTING -------------");
-        			System.out.println("(AES.encrypt) Key is ");
-        			util.printArray("Key used in encryption",key.getEncoded(),true);
+        			
+        			util.printArray("KEY USED IN ENCRYPTION",key.getEncoded(),false);
         			
         		 byte[] iv = new byte[16];
         		 int keySize = key.getEncoded().length;
@@ -109,22 +104,32 @@ import javax.crypto.spec.SecretKeySpec;
  			   System.out.println("\n(AES.encrypt) Encrypting the string \""+(new String(toEnc))+"\" to "+outputFile.getAbsolutePath());
   		      
  		       
-  		      byte[] out = cipher.doFinal(toEnc);
- 			  if (out.length != outputFile.length())
- 				  System.out.println("\n(AES.encrypt) Wrong buffer byte[] on encrypting");
- 			  else
- 				 System.out.println("\n(AES.encrypt) Buffer ok");
-  		     
-
- 	          
-  		    FileOutputStream stream = new FileOutputStream(outputFile);
-  			stream.write(out);
-  			stream.flush();
-  			stream.close();
+  		      
+  		      if (outputFile.delete() == false) {
+  		    	  System.err.println("\n(AES.encrypt) Couldnt delete output file on encrypting");
+  		    	  throw new IOException("COULDNT DELETE FILE");
+  		    	  
+  		    	  
+  		      }
+  		      
+ 	          outputFile.createNewFile();
+ 	         
+ 	          byte[] out = cipher.doFinal(toEnc);
+			  
+ 	          FileOutputStream stream = new FileOutputStream(outputFile);
+ 	          stream.write(out);
+ 	          stream.flush();
+ 	          stream.close();
  				
+ 	         if (out.length != outputFile.length())
+				  System.out.println("\n(AES.encrypt) Buffer not equal to file read (size mismatch) ");
+			  else
+				 System.out.println("\n(AES.encrypt) Buffer ok");
+ 		     
  				
-               System.out.println("\n(AES.encrypt) Finished encryption");	
+               System.out.println("\n(AES.encrypt) Finished encryption ("+outputFile.getAbsolutePath()+")");	
         		}
+        		
         		 catch (UnsupportedEncodingException e) {
  					// TODO Auto-generated catch block
  					e.printStackTrace();
@@ -163,11 +168,12 @@ import javax.crypto.spec.SecretKeySpec;
 		    
          }
         	// 
-	     public static String checkKeys(byte[] cipherText,SecretKeySpec sks) {
+	     public static String checkKeys(File cipherFile,SecretKeySpec sks) {
 	    	 String ret=null;
 	        try {
 	        	
-	        	
+	        FileInputStream fis;
+	        byte [] cipherText;
 	        byte[] iv = new byte[16];
 	  		Cipher cipher;
 	  		IvParameterSpec ivspec;
@@ -175,8 +181,11 @@ import javax.crypto.spec.SecretKeySpec;
 	  		
 	  		System.out.println("\n----Validating key  ------");
 	  		 	
-	  			
+	  		fis = new FileInputStream(cipherFile);
+	  		
+	  		//fis.read(cipherText);
 	  			 
+	  		fis.close();
 	        ivspec  = new IvParameterSpec(iv);
 	        	 
 	        cipher.init(Cipher.DECRYPT_MODE, sks, ivspec);

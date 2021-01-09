@@ -161,26 +161,18 @@ public class binPathImpl {
         	
         	try {
         		
-        		File cipherFile  = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext");
-            	
-        		
+        		File cipherFile  = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext_java");
+            	byte[] keyFromClang = new byte[32];
+        		for (int i=0; i < 32 ; i++) 
+        			keyFromClang[i] = 97;
             	
             
       		byte[] cipherText = AES.readCipherText(cipherFile);
       		
       			
-      			
+
 	  			
-            	
-      		 byte[] iv = new byte[16];
-	  		IvParameterSpec ivspec = new IvParameterSpec(iv);
-	  		 	
-      		
- 	  		Cipher cipher;
- 	  		cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
- 	  		
- 	  		System.out.println("\n----DECRYPTING------\n");
- 	  		
+      		 util.printArray("Key of encrypted file", keyFromClang,false);
          	// Used on real encryption
  	  		String trueKey = "1234abcdabcdabcdabcdabcdabcdabcd";
 	     	
@@ -188,83 +180,41 @@ public class binPathImpl {
          	String testKey = "1234asddaasdabcdabcdabcdabcdabcd";
        		
 	     	System.out.println("True Key  : "+trueKey);
-	     	System.out.println("Test Key  : "+testKey);
+	     	System.out.println("\nLen true key : "+trueKey.length());
 	     	
-	   			 if (testKey.equals(trueKey)) {
-	   				 System.out.println("\n(main) Test key not equal to True key");
-	   			 }
-	   			// Se a chave 
-	     	byte[] key = testKey.getBytes();
+	     	System.out.println("\nLen key from c : "+keyFromClang.length);
+	     	
+
+	     	
       		
-	     	SecretKeySpec sk1 = new SecretKeySpec(key,"AES");
-	    	AES.encrypt("abcd1241",cipherFile ,sk1);
+	     //	SecretKeySpec sk1 = new SecretKeySpec(key,"AES");
+	    	//AES.encrypt("abcd1241",cipherFile ,sk1);
 	    	
-	  		byte[] randomKey = new byte[32];
-	  		byte[] rawKey = new byte[32];
+	  	//	byte[] randomKey = new byte[32];
+	  	//	byte[] rawKey = new byte[32];
 	  		
-	  		Random rand = new Random();
+	  //		Random rand = new Random();
 	  		
-	  		rand.nextBytes(randomKey);
-	  		
-	  		int it=0;
-            for (int i= 2; i < 5 ;i++) {
-	  			 
-	  			 
-	  			 if (i % 5000 == 0 && i != 0) {
-	  				 System.out.println("\nReached i : " +i);
-	  				 System.gc();
-	  			 }
-	  	         
+	  		//rand.nextBytes(randomKey);
+	  		SecretKeySpec sks = new SecretKeySpec(keyFromClang,"AES");
+	  		AES.encrypt("12345",cipherFile , sks);
+	  		AES.checkKeys(cipherFile,sks);
 	  			
-            	rawKey[it] = (byte) i;
-            	it++;
-            	System.out.println("\nRight key ");
-            	System.out.println(trueKey);
-            	//System.out.println("\nTrying key ");
-            //	util.printArray(rawKey,true);
+           /* 	System.out.println("\nTrying key ");
+            	byte[] secretKey  = sks.getEncoded();
             	
-            	//SecretKeySpec sks = new SecretKeySpec(rawKey,"AES");
-            	SecretKeySpec sks = new SecretKeySpec(randomKey,"AES");
-            	
-            	System.out.println("\nTrying key ");
-                	util.printArray("trying random_key",randomKey,true);
-            	
-	      		cipher.init(Cipher.DECRYPT_MODE, sks, ivspec);
+            	util.printArray("AES secretKey",secretKey,false);
+
 	      		
-        	 	byte[] decrypt =cipher.doFinal(cipherText);
-        	 	System.out.println("\nDecrypt finished\nString decrypted => "+new String(decrypt));
-        	 
-    	  		rand.nextBytes(rawKey);
+	      		AES.checkKeys(cipherText, sks);
+        	 */	
+    	  		//rand.nextBytes(rawKey);
 
         	 	
-            }	
+            	
 	 	  	
 	  			
-	  			// cipherFile -> cypherText1
-     	  		// cipherFile2 -> cipherText2
- 			 //AES.checkKeys(cipherText, sk1);
- 			
- 			
- 			
- 			/*
- 			 * 
- 			 * Other arbitrary decryption
- 			 * SecretKeySpec sk2 = getKey(key2);
- 			   encryptAux("123",cipherFile2,sk2);
- 			 * AES.checkKeys(cipherText2, sk2);
- 			 */
- 			
- 	  		
- 			
-	  			
-	  	//		System.out.println("\nOtherKeySpec-----");
-	  	
-	  			   
-	        	 
-        	
-	  		 
-	  		 
-        	}
+	  		}
 			 catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
