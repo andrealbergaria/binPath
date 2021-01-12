@@ -37,10 +37,11 @@ int main(int argc,char *argv[]) {
 
 
 
+
     	if (strcmp(argv[3],"new") == 0)
-    		printBits(startByte,1);
+    		printBits(startByte,1,0);
     	else
-    		printBits(startByte,0);
+    		printBits(startByte,0,0);
 
     	if (startByte == 7 && strcmp(argv[3],"new")==0) {
     	    		printf("   (3bits : %i )",startByte);

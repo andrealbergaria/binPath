@@ -19,6 +19,8 @@
 *   OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #ifndef uint8_t
 #define uint8_t  unsigned char
 #endif
@@ -38,10 +40,15 @@ extern "C" {
     void aes256_done(aes256_context *);
     void aes256_encrypt_ecb(aes256_context *, uint8_t * /* plaintext */);
     void aes256_decrypt_ecb(aes256_context *, uint8_t * /* cipertext */);
+    // me
+    void printKey(unsigned char *callingFunction,unsigned char *key,int lenOfKey);
+    int encrypt_file(char *buf,aes256_context aesCon,char *file);
+    int decrypt_file(aes256_context aesCon,char *file);
+
+
+
 
 #ifdef __cplusplus
 }
 #endif
 
-// from me
-void decrypt(uint8_t *txt,aes256_context ctx);

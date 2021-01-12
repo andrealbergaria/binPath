@@ -16,7 +16,7 @@
 
 
 void printAllCombinations(int numOfBits, int startByte);
-void printBits(unsigned char number,u_char printDecimals);
+void printBits(unsigned char number,u_char printDecimals,u_char noLeadingZeros);
 void printShortBits(unsigned short number); 
 void printIntBits(unsigned int number);
 

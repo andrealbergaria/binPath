@@ -1,5 +1,6 @@
 package Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import binPathJava.*;
 
@@ -7,18 +8,62 @@ import binPathJava.*;
 import java.util.Vector;
 
 import binPathJava.SubInterface;
-
+import java.lang.reflect.Field;
+import java.nio.ByteBuffer;
 
 public class Test {
 	 
-	public static void test(Object[] ref) {
-		for (int i=0; i < ref.length; i++) {
-			System.out.println("abc");
-			System.out.println(ref[i]);
-	     }
-	}
+	public static void test() throws IllegalArgumentException, IllegalAccessException {
+		
+		// Stored on heap
+		Integer localVar = new Integer(2);
+		
+		localVar++;
+		/*
+		 * 
+		 * Every array has an associated Class object, shared with all other arrays with the same component type.
+		 * 
+		 *  all arrays whose components are of type int are instances of the same array type, which is int[].
+		 *   
+		 */
+		byte[] bytes = ByteBuffer.allocate(32).putInt(10000).array();
+		util.printArray("test", bytes, false);
+		
+		byte b = (byte)250;
+	        System.out.println("...B "+b);
+ 		
+		
+		System.out.println("--- TEST");
+		
+		//for (int a : arr) {
+		//	System.out.println(a);
+	 // Quero inicializar um array, que inicialize uma variavel local
+			
+			
+	   //  Since int[] are objects, howcome there are no fields?
+	     	
+	    ClassOnArray[] arr = new ClassOnArray[3];
+	    
+	    arr[0] = new ClassOnArray();
+	    arr[0].REF = localVar;
+	    arr[0].changeInt();
+	    
+	    
+	    for (ClassOnArray inst : arr)
+	    	System.out.println(inst);
+	    
+	    
+		 System.out.println("--- TEST---END");
+		}	
+	
 	
 	public static void main(String[] args) {
+		try {
+			test();
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Object[] ref = new Object[3];
 		Integer[] int1 = new Integer[2];
 		int[] int2 = new int[4];
@@ -41,7 +86,7 @@ public class Test {
 // error good		arr2[2] = null;
 
 		
-		class CustomArray {
+		/*class CustomArray {
 			int a;
 			int method() {
 				return 1;
@@ -49,6 +94,7 @@ public class Test {
 		}
 		CustomArray ca = new CustomArray();
 		int[][] arr4 = new int[3][];
+		*/
 		/*
 		 * 
 		 * nao pode ter references , visto que é uma array de ints, 
@@ -56,6 +102,7 @@ public class Test {
 		 *
 		 * 
 		 */ 
+		//differences betwee references of Integer and String..isnt the same refernces?
 				
 				
 		
@@ -63,10 +110,10 @@ public class Test {
 
 		// matrix[d] é uma array de references e nao de ints
 		int[][] matrix = new int[3][4];
-		System.out.println("\nMatrix len "+matrix.length);
+		//System.out.println("\nMatrix len "+matrix.length);
 		for (int d = 0; d < matrix.length; d++) {
 		    matrix[d] = new int[3];
-		    System.out.println("\nMatrix["+d+"] -> "+matrix[d]);
+		  //  System.out.println("\nMatrix["+d+"] -> "+matrix[d]);
 		}
 		
 		matrix[0]  =new int[3];
@@ -76,25 +123,27 @@ public class Test {
 		// instead of making matrix[0] a refernece, use it with values
 		//matrix[0] é uma referencia ?
 	//	matrix[0][0] é um valor?
-		
+		/*
 		//matrix[0] = 1 ; matrix[0][1]= 2
+//					      matrix[0][2] = 3;
+						  matrix[0][3] = 1;
 				// 3*4 => size of matrix array
 		// 
-			
+			*/
 		
 				//matrix[0][0] = ?
 			//	so the arrays is composed of references
 		
 	for (int i = 0; i < 3 ; i++) {
 		for (int i2= 0 ; i2 < 4; i2++) {
-			System.out.println("\nMATRIX -> "+matrix[i][i2]);
+			//System.out.println("\nMATRIX -> "+matrix[i][i2]);
 		}
 	}
 		/*
 		System.out.println("\nTESTINT1 "+testInt1); // correct doesnt allow (no default init)
 		System.out.println("\nSSS "+testIntPrim); // correct doesnt allow (no default init)
 		System.out.println("\nARR int[] "+arr);  // correct doesnt allow (no default init)
-		*/
+		
 		System.out.println("\nTESTINT2 "+testInt2);  // print reference
 		System.out.println("\nTESTINT2 IDX  "+testInt2[0]); // prints null
 		
@@ -111,7 +160,9 @@ public class Test {
 		aArrays[1] = 123;
 		aArrays[2] =  new Integer(1);
 		
-//		and each component of the array is initialized to its default value 
+//		and each component of the array is initialized to its default value
+ * */ 
+ 
 	}
 	
 	
@@ -131,5 +182,5 @@ public class Test {
 					//	sub_obj herda o interface, por isso por por subclass ou superclass na refenrecia de tipo
 				//		Por exemplo SubInterface si = new SuperObject();
 						// sub_obj pode ter outros metodo contudo
-}
+	}
 

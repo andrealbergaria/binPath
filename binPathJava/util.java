@@ -1,11 +1,45 @@
 package binPathJava;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class util {
 
+	public static File cipherFileJava  = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext_java");
+	public static File cipherFileC  = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext_c");
+	public static File decryptedStuffFile = new File ("/home/andrec/workspace_3_8/binPath/files/decrypted");
+	
+	//https://stackoverflow.com/questions/12944377/how-to-convert-byte-to-byte-and-the-other-way-around
+	public static Byte[] toObjects(byte[] bytesPrim) {
+
+	    Byte[] bytes = new Byte[bytesPrim.length];
+	    int i = 0;
+	    for (byte b : bytesPrim) bytes[i++] = b; //Autoboxing
+	    return bytes;
+
+	}
+	
+	public static byte[] toPrimitives(Byte[] oBytes)
+	{
+
+	    byte[] bytes = new byte[oBytes.length];
+	    for(int i = 0; i < oBytes.length; i++){
+	        bytes[i] = oBytes[i];
+	    }
+	    return bytes;
+
+	}
+
+	
 	public static Integer[] fillByteInt() {
 		Integer[] comb = new Integer[256];
 		for (int i=0; i < 256; i++) {
@@ -55,16 +89,53 @@ public class util {
 	     	}
 	     	System.out.println("---end array ---");
 	     }
-	// showChars, instead of ascii number return character
+	
+
+	  public static void writePlaintexts(ArrayList<Byte[]> al,int minKey,int maxKey) {
+		  try {
+			  byte[] list;
+			  if (al.size()<=0)
+				  System.out.println("\n[util.writePlainText] No plaintext between ("+minKey+") ("+maxKey+")");
+			  for (Byte[] bArr : al) {
+				  list = toPrimitives(bArr);
+				  System.out.print("\n[util.writePlainTexts] ");
+				  System.out.println(Arrays.toString(list));
+			  }
+			  String fileName = decryptedStuffFile.getAbsolutePath();
+			  for (Byte[] a : al) {
+				  byte[] toWrite =  toPrimitives(a);
+				  Files.write( Paths.get(fileName),toWrite,StandardOpenOption.APPEND,StandardOpenOption.CREATE);
+			  }
+		  System.out.println("\n[util.writePlaintexts] finished");
+	      
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  }
+
+      public static boolean isAscii(byte[] input) {
+      	
+          for (byte b: input) {
+          	if ( b > 0x7f | b <=0x20)
+          		return false;
+          }
+          return true;
+      }
+
+      	 	
+
+		// showChars, instead of ascii number return character
 	  // print values == true => print values instead of characters
 	  
 	public static void printArray(String arrayName,byte[] arr,boolean printValues) {
 		
 		  System.out.println("---begin array ("+arrayName+")---");
 		  System.out.println("Array length : "+arr.length);
+		  int it=0;
 		  char c; 
 	     	for (byte b : arr) {
-	     		
+	     		System.out.print("("+it+")");
 	     		if (printValues) {
 	     				if (b == 0)
 	     					c = '0';
@@ -78,6 +149,7 @@ public class util {
 	     			else
 	     				System.out.print(b + ",");
 	     		}
+	     		it++;
 	     	}
 	     	System.out.println("\n---end array ---");
 		

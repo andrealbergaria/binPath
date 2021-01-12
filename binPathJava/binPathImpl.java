@@ -4,12 +4,14 @@ import java.awt.print.Printable;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -24,9 +26,20 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.*;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.net.*;
 
 
 public class binPathImpl {
+	
+
 
 	  /*  	
         	Trocar para 4 numeros, usa o anterior mais umas quantas
@@ -137,103 +150,48 @@ public class binPathImpl {
         
       
       
-    //https://javadeveloperzone.com/java-basic/java-convert-int-to-byte-array/
-      private static byte[] intToByteArray (  int i )  {
-    	  ByteArrayOutputStream bos=null;
-    	  try {
-    	    bos = new ByteArrayOutputStream();
-    	    DataOutputStream dos = new DataOutputStream(bos);
-    	    dos.writeInt(i);
-    	    dos.flush();
-    	  }
-    	  catch(Exception e) {
-    		  e.printStackTrace();
-    	  }
-    	  finally {
-    		  return bos.toByteArray();  
-    	  }
-    	  
-    	    
-    	}
-      
       
         public static void main(String[] args) { 
         	
-        	try {
         		
-        		File cipherFile  = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext_java");
-            	byte[] keyFromClang = new byte[32];
-        		for (int i=0; i < 32 ; i++) 
-        			keyFromClang[i] = 97;
-            	
+        		
             
-      		byte[] cipherText = AES.readCipherText(cipherFile);
+      			File cipherFile = util.cipherFileJava;
       		
       			
 
-	  			
-      		 util.printArray("Key of encrypted file", keyFromClang,false);
-         	// Used on real encryption
- 	  		String trueKey = "1234abcdabcdabcdabcdabcdabcdabcd";
+      		byte[] cipherText = AES.readCipherText(cipherFile,true);  			
+      	 	byte[] keyFromClang = new byte[32];
 	     	
- 	  		// Test key
-         	String testKey = "1234asddaasdabcdabcdabcdabcdabcd";
-       		
-	     	System.out.println("True Key  : "+trueKey);
-	     	System.out.println("\nLen true key : "+trueKey.length());
+	     	/*for (int i=0; i< keyFromClang.length;i++) {
+	     		keyFromClang[i] = 97;
+	     		
+	     	}*/
+	     		
 	     	
-	     	System.out.println("\nLen key from c : "+keyFromClang.length);
+	     	
 	     	
 
-	     	
-      		
-	     //	SecretKeySpec sk1 = new SecretKeySpec(key,"AES");
-	    	//AES.encrypt("abcd1241",cipherFile ,sk1);
-	    	
-	  	//	byte[] randomKey = new byte[32];
-	  	//	byte[] rawKey = new byte[32];
-	  		
-	  //		Random rand = new Random();
-	  		
-	  		//rand.nextBytes(randomKey);
-	  		SecretKeySpec sks = new SecretKeySpec(keyFromClang,"AES");
-	  		AES.encrypt("12345",cipherFile , sks);
-	  		AES.checkKeys(cipherFile,sks);
-	  			
-           /* 	System.out.println("\nTrying key ");
-            	byte[] secretKey  = sks.getEncoded();
-            	
-            	util.printArray("AES secretKey",secretKey,false);
+	     	ByteBuffer key = ByteBuffer.allocate(32);
+	     	key.clear();
+	     	key.putInt(200000);
+	     	byte[] bytesTest = key.array();
 
-	      		
-	      		AES.checkKeys(cipherText, sks);
-        	 */	
-    	  		//rand.nextBytes(rawKey);
-
-        	 	
-            	
+	     	SecretKeySpec tempKey = new SecretKeySpec(bytesTest, "AES");
+        	AES.encrypt("123one", cipherFile,tempKey,true);
+        	
+			
+			
+			AES.cycleKey(0,65536,cipherText);
+	        AES.cycleKey(65536,131072,cipherText);
+			AES.cycleKey(131072,262144,cipherText);
+                    	
 	 	  	
-	  			
-	  		}
-			 catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	  		
+	  		
 	       
-        }
-        @Override
-        // finalize method is called on object once  
-        // before garbage collecting it
-        // https://www.geeksforgeeks.org/garbage-collection-java/
-        protected void finalize() throws Throwable 
-        { 
-            System.out.println("Garbage collector called"); 
-             
-        } 
-          
-    	//	for (int i=1; i <= 65536; i++) 
-    		//	System.out.print(util.printShortBits(i,"new",true));
-    		// 2^16 * 2 ^16
+        
+       	// 2^16 * 2 ^16
     		// didnt find key, get combs 
     		//double sizeOfIt = Math.pow(2,16);
     		//for (int i=65536; i < 65536*8; i++) 
@@ -346,5 +304,6 @@ Set A   Set B     Set C  	    Set D   		Set E  		Set F
 	
 		
 	
+}
 }
 		
