@@ -158,12 +158,15 @@ public class binPathImpl {
         		
         		
             
-      			File cipherFile = util.cipherFileJava;
+      			File cipherFile1 = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext1");
+      			// Trying several keys at the same time
+      			File cipherFile2 = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext2");
       		
       			
 
-      		byte[] cipherText = AES.readCipherText(cipherFile,true);  			
-      	 	byte[] keyFromClang = new byte[32];
+      		byte[] cipherText1 = AES.readCipherText(cipherFile1,true);
+      		byte[] cipherText2 = AES.readCipherText(cipherFile2,true);
+      	 	//byte[] keyFromClang = new byte[32];
 	     	
 	     	/*for (int i=0; i< keyFromClang.length;i++) {
 	     		keyFromClang[i] = 97;
@@ -178,28 +181,24 @@ public class binPathImpl {
 	     	byte[] bytesTest = key.array();
 
 	     	SecretKeySpec tempKey = new SecretKeySpec(bytesTest, "AES");
-        	AES.encrypt("123one", cipherFile,tempKey,true);
+        	AES.encrypt("123one", cipherFile1,tempKey,true);
         	
-			int minKey=0;
+        	key.clear();
+        	key.putInt(4);
+        	bytesTest = key.array();
+        	SecretKeySpec secondKey = new SecretKeySpec(bytesTest, "AES");
+        	AES.encrypt("123two",cipherFile2,secondKey,true);
+			
+        	
+        	int minKey=0;
 			int maxKey=5;
 			
 			
 			
 			//int interval = Integer.MAX_VALUE / maxKey;
 			for (int i=minKey; i < maxKey ; i++) {
-				 
-			//	Instant begin = Instant.now();
-				
-				
-					AES.cycleKey(minKey,maxKey,cipherText);
-				
-			//	Instant end =  Instant.now();
-				
-		         
-		      //   long timeElapsed = Duration.between(begin, end).getSeconds();
-		         
-				//System.out.println("\nTime elapsed from ("+minKey+","+maxKey+") "+timeElapsed+" (secs)");
-		        		 
+					AES.cycleKey(minKey,maxKey,cipherText1);
+					AES.cycleKey(minKey,maxKey,cipherText2);
 			}		
 			//	minKey=maxKey;
 			//	maxKey=maxKey*2;
@@ -207,17 +206,10 @@ public class binPathImpl {
 		//	AES.cycleKey(0,65536,cipherText);
 	        //AES.cycleKey(65536,131072,cipherText);
 			
-	  		
+	  		*/
 	       
         
-       	// 2^16 * 2 ^16
-    		// didnt find key, get combs 
-    		//double sizeOfIt = Math.pow(2,16);
-    		//for (int i=65536; i < 65536*8; i++) 
-    			//System.out.print(util.printShortBits(i,"new",true));
-        
-        
-
+       	
         
         
     /*		 // didnt find key get combs
