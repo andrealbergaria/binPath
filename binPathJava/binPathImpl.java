@@ -11,6 +11,8 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -169,25 +171,42 @@ public class binPathImpl {
 	     	}*/
 	     		
 	     	
-	     	
-	     	
 
 	     	ByteBuffer key = ByteBuffer.allocate(32);
 	     	key.clear();
-	     	key.putInt(200000);
+	     	key.putInt(3);
 	     	byte[] bytesTest = key.array();
 
 	     	SecretKeySpec tempKey = new SecretKeySpec(bytesTest, "AES");
         	AES.encrypt("123one", cipherFile,tempKey,true);
         	
+			int minKey=0;
+			int maxKey=5;
 			
 			
-			AES.cycleKey(0,65536,cipherText);
-	        AES.cycleKey(65536,131072,cipherText);
-			AES.cycleKey(131072,262144,cipherText);
-                    	
-	 	  	
-	  		
+			
+			//int interval = Integer.MAX_VALUE / maxKey;
+			for (int i=minKey; i < maxKey ; i++) {
+				 
+			//	Instant begin = Instant.now();
+				
+				
+					AES.cycleKey(minKey,maxKey,cipherText);
+				
+			//	Instant end =  Instant.now();
+				
+		         
+		      //   long timeElapsed = Duration.between(begin, end).getSeconds();
+		         
+				//System.out.println("\nTime elapsed from ("+minKey+","+maxKey+") "+timeElapsed+" (secs)");
+		        		 
+			}		
+			//	minKey=maxKey;
+			//	maxKey=maxKey*2;
+		//	}
+		//	AES.cycleKey(0,65536,cipherText);
+	        //AES.cycleKey(65536,131072,cipherText);
+			
 	  		
 	       
         

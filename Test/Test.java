@@ -8,6 +8,8 @@ import binPathJava.*;
 import java.util.Vector;
 
 import binPathJava.SubInterface;
+
+import java.io.BufferedReader;
 import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 
@@ -162,7 +164,7 @@ public class Test {
 		
 //		and each component of the array is initialized to its default value
  * */ 
- 
+ //BufferedReader br = new BufferedReader(new BufferedReader(System.in)));
 	}
 	
 	
@@ -182,5 +184,11 @@ public class Test {
 					//	sub_obj herda o interface, por isso por por subclass ou superclass na refenrecia de tipo
 				//		Por exemplo SubInterface si = new SuperObject();
 						// sub_obj pode ter outros metodo contudo
+	
+//	variable initilizaed but not used (contrast with not initialized , should that be allow? a variable not used)
+//	 ok...so i coded two constructors, "ArrayList<String> temp" and "ArrayList<Byte[]>" ..doesnt seem to compile
+	
+	//pass by reference ?? copy the reference to another memory, but still uses reference
+	//bufferedreader accepts input ..possibly by other bufferedreader? (reader class)
 	}
 

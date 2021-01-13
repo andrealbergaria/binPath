@@ -2,27 +2,17 @@ package binPathJava;
 
 import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 
@@ -75,6 +65,7 @@ import javax.crypto.spec.SecretKeySpec;
 	         			System.exit(-1);
 	         		}
 	         }
+	         		fis.close();
 	         		return cipherText;
 	         }
 	         catch(FileNotFoundException e) {
@@ -146,45 +137,45 @@ import javax.crypto.spec.SecretKeySpec;
         		}
         		
         		 catch (UnsupportedEncodingException e) {
- 					// TODO Auto-generated catch block
+
  					e.printStackTrace();
  				}
                  
 			 catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			} catch (NoSuchPaddingException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
  		    catch (InvalidKeyException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} catch (InvalidAlgorithmParameterException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
  		    
               
         		  
               catch (FileNotFoundException e) {
-  				// TODO Auto-generated catch block
+ 
   				e.printStackTrace();
   			}
    		     catch (IOException e) {
-  				// TODO Auto-generated catch block
+
   				e.printStackTrace();
   			}
    		     	
   			   catch (IllegalBlockSizeException | BadPaddingException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 		    
          }
          
         		
-         public static byte[] checkKeys(byte[] cipherText,SecretKeySpec sks,boolean debug) {
+         public static Byte[] checkKeys(byte[] cipherText,SecretKeySpec sks,boolean debug) {
         	 
 	    	 try {
 	        	if (debug==true)
@@ -201,14 +192,13 @@ import javax.crypto.spec.SecretKeySpec;
 		     
 		      
 	        byte[] decrypt =cipher.doFinal(cipherText);
-	        
-
-	        	 return decrypt;	
+	        Byte[] r = util.toObjects(decrypt);
+	        	 return r;	
 	        	 	
         	}
 	        catch(BadPaddingException e) {
+	        	System.out.println("\nBad padding");
 	        	
-	        	;
 	        }
 	  		catch (IllegalBlockSizeException e) {
 	  			
@@ -239,41 +229,47 @@ import javax.crypto.spec.SecretKeySpec;
 	        
 	    }
          
-         public static void cycleKey(int minKey,int maxKey,byte[] cipherText) {
-        	 ArrayList<Byte[]> al = new ArrayList<>();
-        	 Byte[] wrap;
- 			ByteBuffer buf = ByteBuffer.allocate(32);
- 			byte[] plainTextDeciphered;
+         public static void cycleKey(int minKey,int maxKey,byte[] cipherText) throws IOException {
+        	 ArrayList<Byte[]> plainTexts = new ArrayList<>();
+        	 Byte[] plainTextArray;
+   			ByteBuffer buf = ByteBuffer.allocate(32);
+ 			
  			byte[] temporaryKeyBuffer;
-
-         for (int key=minKey; key < maxKey ; key++) {
+ 			
+ 			
+// 			 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+// 		            .withZone(ZoneId.systemDefault());
+ 		     
+	     for (int key=minKey; key < maxKey ; key++) {
      		if (key % 5000 == 0) {
+     			
      			System.out.println("\nMinKey : "+minKey+" MaxKey: "+maxKey);
      			System.out.println("\nRunning ("+key+")");
+                log temporaryLog = new log(minKey,maxKey,plainTexts); 
+		        temporaryLog.writeLogToFile(log.triedCombinations);
+     			
      		}
-     		
      		buf.clear();
  			buf.putInt(key);
      		temporaryKeyBuffer = buf.array();
  			SecretKeySpec tryKey = new SecretKeySpec(temporaryKeyBuffer, "AES");
- 			
- 			
- 			
- 			plainTextDeciphered = AES.checkKeys(cipherText,tryKey,false);
- 			if (plainTextDeciphered!=null) {
- 				if (util.isAscii(plainTextDeciphered)) {
- 					wrap = util.toObjects(plainTextDeciphered);
- 					al.add(wrap);
+ 			// last boolean is to return strnig instead of byte[]
+ 			 plainTextArray = AES.checkKeys(cipherText,tryKey,false);
+ 			//plainTextDeciphered byte[]
+ 			if (plainTextArray!=null) {
+ 				if (util.isAscii(plainTextArray)==true) {
+ 					
+ 					plainTexts.add(plainTextArray);
+ 					// output to file, and search for good key
  					System.out.println("Good key "+key);
- 					System.out.println("\nPlainText : "+new String(plainTextDeciphered));
+
+ 					
  					
  				}
  			}
+         
          }
          
-         util.writePlaintexts(al,minKey,maxKey);
- 
+         	 
          }
          }
-	 
-     

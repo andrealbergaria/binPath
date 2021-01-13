@@ -1,12 +1,23 @@
 package binPathJava;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,22 +50,6 @@ public class util {
 
 	}
 
-	
-	public static Integer[] fillByteInt() {
-		Integer[] comb = new Integer[256];
-		for (int i=0; i < 256; i++) {
-			comb[i] = i;
-		}
-		return comb;
-	}
-	
-	public static List fillByteList() {
-		List<Integer> l = new ArrayList<Integer>();
-		for (int i=0; i < 256; i++) {
-			l.add(i);
-		}
-		return l;
-	}
 	
 	
 	public static void printPositions(int it) {
@@ -90,7 +85,9 @@ public class util {
 	     	System.out.println("---end array ---");
 	     }
 	
-
+	  // Reads a section of the log file
+	  
+	 
 	  public static void writePlaintexts(ArrayList<Byte[]> al,int minKey,int maxKey) {
 		  try {
 			  byte[] list;
@@ -99,14 +96,27 @@ public class util {
 			  for (Byte[] bArr : al) {
 				  list = toPrimitives(bArr);
 				  System.out.print("\n[util.writePlainTexts] ");
-				  System.out.println(Arrays.toString(list));
+				  printArray("Plaintext_decrypted ",list,true);
 			  }
-			  String fileName = decryptedStuffFile.getAbsolutePath();
+			  
+			  FileWriter fw = new FileWriter(util.decryptedStuffFile,true);
+			  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			  dtf.withZone(ZoneId.systemDefault());
+	 		     
+				fw.write("date : "+dtf.format(Instant.now())+"\n");
+	 			
+			  fw.write("minKey : "+minKey+"\n");
+			  
+			  fw.write("--plaintext : \n");
 			  for (Byte[] a : al) {
+				   
 				  byte[] toWrite =  toPrimitives(a);
-				  Files.write( Paths.get(fileName),toWrite,StandardOpenOption.APPEND,StandardOpenOption.CREATE);
+				  fw.write(new String (toWrite)+"\n");  
 			  }
+			  fw.write("--end\n");
+				  fw.write(maxKey+"\n");
 		  System.out.println("\n[util.writePlaintexts] finished");
+		  fw.close();
 	      
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -114,12 +124,13 @@ public class util {
 		}
 	  }
 
-      public static boolean isAscii(byte[] input) {
-      	
-          for (byte b: input) {
-          	if ( b > 0x7f | b <=0x20)
-          		return false;
-          }
+      public static boolean isAscii(Byte[] input) {
+    	 
+      			for (byte b: input) {
+      				if ( b > 0x7f | b <=0x20)
+      					return false;
+      			}
+
           return true;
       }
 
@@ -135,7 +146,7 @@ public class util {
 		  int it=0;
 		  char c; 
 	     	for (byte b : arr) {
-	     		System.out.print("("+it+")");
+	     		
 	     		if (printValues) {
 	     				if (b == 0)
 	     					c = '0';
