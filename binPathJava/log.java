@@ -43,7 +43,7 @@ public class log {
 	
 	public log(int min,int max) {
 		 dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		 dateFormat.withZone(ZoneId.systemDefault());
+		 //dateFormat.withZone(ZoneId.systemDefault());
 		 
 		allLogs = new ArrayList<>();
 		

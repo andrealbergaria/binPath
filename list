@@ -1,0 +1,249 @@
+-rwxrwxrwx  1 root   root      1132 Jan 14 00:12 backup.sh*
+-rw-------  1 root   root      3531 Jan 14 00:16 .backup.sh.kate-swp
+-rw-r--r--  1 andrec andrec 5961178 Jan  4 05:05 bcprov-jdk15on-168.jar
+-rwxrwx--x  1 andrec andrec    1113 Nov 24 00:58 .binConcepts.kate-swp*
+-rwxrwx--x  1 andrec andrec    1046 Dec 12 21:56 build.xml*
+-rwxrwx--x  1 andrec andrec     357 Jan 13 18:25 .classpath*
+-rwxrwx--x  1 andrec andrec    1919 Dec 17 18:39 compareAllFiles.sh*
+-rwxrwx--x  1 andrec andrec    8220 Nov 24 00:58 .cproject*
+-rwxr--r--  1 andrec andrec     190 Dec 17 18:50 findAll.sh*
+-rw-r--r--  1 andrec andrec     321 Jan 13 18:28 .gitignore
+-rwxrwxrwx  1 andrec andrec    4448 Nov 24 00:58 keystore.sh*
+-rwxrwx--x  1 andrec andrec   34485 Nov 24 00:58 license*
+-rw-r--r--  1 root   root         0 Jan 14 00:30 list
+-rwxrwx--x  1 andrec andrec     366 Nov 24 00:58 .project*
+-rwxrwx--x  1 andrec andrec     369 Nov 24 00:58 README.md*
+-rwxr-xr-x  1 andrec andrec     179 Jan  4 06:16 run.bash*
+-rw-r--r--  1 andrec andrec     135 Jan  4 03:12 textKey.sh
+-rw-r--r--  1 andrec andrec 1823870 Dec 31 21:38 twoBytes
+-rwxrwxrwx  1 andrec andrec     229 Dec 13 03:49 upload.sh*
+
+AllFiles:
+total 196
+drwxrwx--x  2 andrec andrec  4096 Jan  8 22:02 ./
+drwxr-xr-x 16 andrec andrec  4096 Jan 14 00:17 ../
+-rw-r--r--  1 andrec andrec   299 Dec 17 20:08 3bits_algorithm
+-rwxrwxrwx  1 andrec andrec 18127 Dec 17 21:48 ABC SYSTEM*
+-rwxrwxrwx  1 andrec andrec   557 Dec 15 02:45 a combination, is equal to the partations of a number, *
+-rw-r--r--  1 andrec andrec   307 Dec 31 00:13 algebra_error
+-rw-r--r--  1 andrec andrec  2480 Dec 31 00:58 Algorithm_to_permute_elements
+-rwxrwxrwx  1 andrec andrec   517 Nov 24 00:58 bits_printed*
+-rwxrwxrwx  1 andrec andrec  1373 Dec  6 02:51 calculate b's to get combinations*
+-rwxrwxrwx  1 andrec andrec   393 Dec  6 00:39 cant subtract on tree or table specially pascal triangle*
+-rw-r--r--  1 andrec andrec   749 Dec 17 20:01 cartesian_product_equals_permutations
+-rw-r--r--  1 andrec andrec    75 Dec 29 03:41 check:_if_a_set_is_equal_to_other_with_different_order
+-rwxrwxrwx  1 andrec andrec  1631 Dec 16 00:30 check_if_strings_are_set_substrings_if_subset_in_set*
+-rw-r--r--  1 andrec andrec   733 Jan  8 22:01 divisors_prime_numbers
+-rw-r--r--  1 andrec andrec   551 Dec 31 22:37 do_we_need_fors
+-rwxrwxrwx  1 andrec andrec  5818 Dec 29 23:10 find_factors_using_all_combinations*
+-rwxrwxrwx  1 andrec andrec   333 Dec  7 17:13 get_matrix_value_through_magnitude_of_vector*
+-rw-r--r--  1 andrec andrec   613 Dec 24 02:43 ignoring_permutations_that_start_with_0
+-rwxrwxrwx  1 andrec andrec   199 Dec 16 04:05 impossible_thing_x^2_indicates_always_positive_but_if_number_is_negative_then_error*
+-rwxrwxrwx  1 andrec andrec   576 Dec 10 01:48 linear_map_equal_rectangle_area*
+-rwxrwxrwx  1 andrec andrec   127 Dec 10 01:33 linear_maps_are_sums_of_rectangles*
+-rw-r--r--  1 andrec andrec   794 Dec 24 03:22 matrix_with_diagonal_ones_assumes_y_values
+-rw-r--r--  1 andrec andrec   118 Dec 23 02:57 method(v-1,i)
+-rw-r--r--  1 andrec andrec   227 Dec 19 01:32 multiple_how_does_it_work
+-rw-r--r--  1 andrec andrec   536 Dec 24 02:42 new_formula_to_permutations
+-rwxrwxrwx  1 andrec andrec   118 Dec  6 01:03 nova_Tabela_combinacose*
+-rw-r--r--  1 andrec andrec   530 Dec 24 02:28 number_of_permutations_equals_n+2^k
+-rwxrwxrwx  1 andrec andrec   581 Dec 10 02:07 other_way_to_multiply_matrices*
+-rw-r--r--  1 andrec andrec  5974 Dec 29 02:02 partitions_function
+-rw-r--r--  1 andrec andrec    97 Dec 29 03:24 Permutations_are_partition_of_anumber
+-rwxrwxrwx  1 andrec andrec   996 Dec 16 18:42 permutations_less_calculations*
+-rwxrwxrwx  1 andrec andrec   750 Dec 16 04:03 reducing_polynomials_mutliplication_turns_into_addition*
+-rwxrwxrwx  1 andrec andrec   106 Dec  7 16:46 sqr_root_has_infinite_values*
+-rwxrwxrwx  1 andrec andrec  1516 Dec  6 03:01 subconjuntos_pertencem_todos_ao_mesmo_conjunto_considerando-1.no inicio do numero*
+-rwxrwxrwx  1 andrec andrec   624 Dec 16 01:02 subsets_permtuiation_equal_to_set_permutation*
+-rwxrwxrwx  1 andrec andrec   418 Dec 14 23:06 sum_difference_infinite*
+-rwxrwxrwx  1 andrec andrec    39 Dec 16 17:49 the_exchange_of_positions_is_transitive*
+-rwxrwxrwx  1 andrec andrec   348 Dec  7 17:10 the values on positions, if they are added , their value is also added*
+-rwxrwxrwx  1 andrec andrec   666 Dec 17 00:25 turing_machine_binary_system*
+-rwxrwxrwx  1 andrec andrec   246 Dec  8 00:19 upper and lower matrices , are reverse of each other*
+-rwxrwxrwx  1 andrec andrec   102 Dec  8 00:41 use_binary_in_calculations*
+-rwxrwxrwx  1 andrec andrec   238 Dec 12 04:12 use_bit_to_see_whom_hes_bigger_tan*
+-rwxrwxrwx  1 andrec andrec  1957 Dec 16 04:24 variables_to_binary_numbers_assign_binary_values_to_variable*
+
+binPathJava:
+total 128
+drwxrwx--x  2 andrec andrec  4096 Jan 13 23:48 ./
+drwxr-xr-x 16 andrec andrec  4096 Jan 14 00:17 ../
+-rwxrwxrwx  1 andrec andrec  9563 Jan 14 00:08 AES.java*
+-rwxrwxrwx  1 andrec andrec  7094 Jan 13 23:22 binPathImpl.java*
+-rwxrwxrwx  1 andrec andrec  3142 Dec  7 01:05 Done*
+-rw-r--r--  1 andrec andrec   172 Jan 14 00:07 Entry.java
+-rw-r--r--  1 andrec andrec   149 Jan 13 20:39 KeyOutOfRangeException.java
+-rw-r--r--  1 andrec andrec  5606 Jan 14 00:02 log.java
+-rwxrwxrwx  1 andrec andrec  4626 Dec 29 21:40 Math_help*
+-rw-r--r--  1 andrec andrec  2616 Dec 19 20:37 MatrixCombs.java
+-rwxrwxrwx  1 andrec andrec 10531 Dec 16 02:21 Polynomial.java*
+-rwxrwxrwx  1 andrec andrec  2905 Jan  4 05:30 printCombs.java*
+-rw-r--r--  1 andrec andrec  2879 Jan  4 05:27 printTuples.java
+-rwxrwxrwx  1 andrec andrec 31721 Jan  7 00:36 scratchpad*
+-rwxrwxrwx  1 andrec andrec  2167 Dec 29 22:20 TODO*
+-rw-r--r--  1 andrec andrec   992 Dec 30 19:37 Tuple.java
+-rw-r--r--  1 andrec andrec  6250 Jan 13 22:35 util.java
+
+c:
+total 292
+drwxrwx--x  2 andrec andrec  4096 Jan 11 05:02 ./
+drwxr-xr-x 16 andrec andrec  4096 Jan 14 00:17 ../
+-rwxr-xr-x  1 andrec andrec 21388 Jan 11 02:44 a*
+-rwxr-xr-x  1 andrec andrec 23644 Jan 11 05:02 aes*
+-rw-r--r--  1 andrec andrec  1914 Jan 11 05:03 aes256.c
+-rwxrwxrwx  1 andrec andrec  1741 Jan 11 02:57 aes256.h*
+-rwxrwxrwx  1 andrec andrec 13596 Jan 11 04:54 aes256_lib.c*
+-rw-r--r--  1 andrec andrec 13352 Jan 11 04:54 aes256_lib.o
+-rw-r--r--  1 andrec andrec  7900 Jan 11 05:02 aes256.o
+-rwxr-xr-x  1 andrec andrec 12664 Jan  6 23:01 a.out*
+-rwxr-xr-x  1 andrec andrec 20156 Jan 11 05:02 binPath*
+-rwxrwxrwx  1 andrec andrec  4503 Nov 24 00:58 binPath.c*
+-rwxrwxrwx  1 andrec andrec  4900 Nov 24 00:58 binPath.o*
+-rwxrwxrwx  1 andrec andrec  4420 Nov 24 00:58 deletedThings.c*
+-rwxrwxrwx  1 andrec andrec  1942 Nov 24 00:58 demoOnEncAndDec.c*
+-rwxrwxrwx  1 andrec andrec 41368 Jan 11 05:02 libbinpath.a*
+-rwxrwxrwx  1 andrec andrec  1078 Jan 11 03:04 Makefile*
+-rwxrwxrwx  1 andrec andrec  1647 Nov 24 00:58 perm.c*
+-rwxr-xr-x  1 andrec andrec     4 Jan 11 00:55 plaintext*
+-rwxr-xr-x  1 andrec andrec 20852 Jan 11 02:14 printAllCombs*
+-rwxrwxrwx  1 andrec andrec  1856 Jan 11 02:14 printAllCombs.c*
+-rw-r--r--  1 andrec andrec  7384 Jan 11 02:14 printAllCombs.o
+-rwxrwxrwx  1 andrec andrec 11341 Dec 11 03:52 util.c*
+-rwxrwxrwx  1 andrec andrec   851 Jan 11 02:13 util.h*
+-rw-r--r--  1 andrec andrec 14584 Jan 11 02:14 util.o
+
+classes:
+total 7768
+drwxr-xr-x 14 andrec andrec    4096 Jan 13 20:06 ./
+drwxr-xr-x 16 andrec andrec    4096 Jan 14 00:17 ../
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 20:05 AllFiles/
+-rwxrwxrwx  1 andrec andrec    1108 Dec 24 02:51 backup.sh*
+-rw-r--r--  1 andrec andrec 5961178 Jan  4 05:05 bcprov-jdk15on-168.jar
+-rwxrwx--x  1 andrec andrec    1113 Nov 24 00:58 .binConcepts.kate-swp*
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 23:48 binPathJava/
+-rwxrwx--x  1 andrec andrec    1046 Dec 12 21:56 build.xml*
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 20:05 c/
+-rwxrwx--x  1 andrec andrec     357 Jan 13 18:25 .classpath*
+-rwxrwx--x  1 andrec andrec    1919 Dec 17 18:39 compareAllFiles.sh*
+-rwxrwx--x  1 andrec andrec    8220 Nov 24 00:58 .cproject*
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 23:21 files/
+-rwxr--r--  1 andrec andrec     190 Dec 17 18:50 findAll.sh*
+drwxr-xr-x  8 andrec andrec    4096 Jan 13 20:06 .git/
+-rw-r--r--  1 andrec andrec     321 Jan 13 18:28 .gitignore
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 20:05 images/
+-rwxrwxrwx  1 andrec andrec    4448 Nov 24 00:58 keystore.sh*
+-rwxrwx--x  1 andrec andrec   34485 Nov 24 00:58 license*
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 20:05 loose_files/
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 20:06 Permutations/
+-rwxrwx--x  1 andrec andrec     366 Nov 24 00:58 .project*
+-rwxrwx--x  1 andrec andrec     369 Nov 24 00:58 README.md*
+-rwxr-xr-x  1 andrec andrec     179 Jan  4 06:16 run.bash*
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 20:05 .settings/
+-rw-r--r--  1 andrec andrec     135 Jan  4 03:12 textKey.sh
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 20:05 TODO_STUFF/
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 20:06 tryTree/
+-rw-r--r--  1 andrec andrec 1823870 Dec 31 21:38 twoBytes
+-rwxrwxrwx  1 andrec andrec     229 Dec 13 03:49 upload.sh*
+drwxr-xr-x  2 andrec andrec    4096 Jan 13 20:05 WorkInProgress/
+
+.externalToolBuilders:
+total 12
+drwxrwx--x  2 andrec andrec 4096 Nov 24 00:58 ./
+drwxr-xr-x 16 andrec andrec 4096 Jan 14 00:17 ../
+-rwxrwxrwx  1 andrec andrec  714 Nov 24 00:58 binPath Java Builder.launch*
+
+files:
+total 16
+drwxr-xr-x  2 andrec andrec 4096 Jan 13 23:17 ./
+drwxr-xr-x 16 andrec andrec 4096 Jan 14 00:17 ../
+-rw-r--r--  1 andrec andrec  485 Jan 13 23:19 log
+-rwxrwxrwx  1 andrec andrec    4 Jan  4 03:12 plaintext*
+
+.git:
+total 72
+drwxrwx--x   8 andrec andrec  4096 Jan 14 00:08 ./
+drwxr-xr-x  16 andrec andrec  4096 Jan 14 00:17 ../
+drwxrwxrwx   2 andrec andrec  4096 Nov 24 00:58 branches/
+-rwxrwxrwx   1 andrec andrec    17 Jan 14 00:08 COMMIT_EDITMSG*
+-rwxrwxrwx   1 andrec andrec   300 Nov 24 00:58 config*
+-rwxrwxrwx   1 andrec andrec    73 Nov 24 00:58 description*
+-rwxrwxrwx   1 andrec andrec    85 Nov 24 00:58 FETCH_HEAD*
+-rwxrwxrwx   1 andrec andrec    23 Nov 24 00:58 HEAD*
+drwxrwxrwx   2 andrec andrec  4096 Nov 24 00:58 hooks/
+-rw-r--r--   1 root   root   12966 Jan 14 00:08 index
+drwxrwxrwx   2 andrec andrec  4096 Nov 24 00:58 info/
+drwxrwxrwx   3 andrec andrec  4096 Nov 24 00:58 logs/
+drwxrwxrwx 260 andrec andrec  4096 Dec  1 02:08 objects/
+-rwxrwxrwx   1 andrec andrec    41 Nov 24 00:58 ORIG_HEAD*
+drwxrwxrwx   5 andrec andrec  4096 Nov 24 00:58 refs/
+
+images:
+total 824
+drwxrwx--x  2 andrec andrec   4096 Dec 15 03:13 ./
+drwxr-xr-x 16 andrec andrec   4096 Jan 14 00:17 ../
+-rwxrwxrwx  1 andrec andrec 772505 Dec  1 01:26 how_aes_work.png*
+-rwxrwxrwx  1 andrec andrec  22069 Nov 24 00:58 numberOfIts.png*
+-rwxrwxrwx  1 andrec andrec  12080 Dec 15 03:13 pascal_triangle.svg*
+-rwxrwxrwx  1 andrec andrec  22069 Nov 24 00:58 permutations_speed.png*
+
+loose_files:
+total 44
+drwxrwx--x  2 andrec andrec  4096 Dec 23 01:15 ./
+drwxr-xr-x 16 andrec andrec  4096 Jan 14 00:17 ../
+-rwxrwxrwx  1 andrec andrec 20462 Dec 29 23:27 binConcepts*
+-rwxrwxrwx  1 andrec andrec  4448 Nov 24 00:58 keystore.sh*
+-rw-r--r--  1 andrec andrec  3148 Dec 23 01:15 particoes_to_positions
+-rwxrwxrwx  1 andrec andrec  3263 Dec 20 01:20 table_one_byte*
+
+Permutations:
+total 48
+drwxr-xr-x  2 andrec andrec 4096 Dec 29 02:29 ./
+drwxr-xr-x 16 andrec andrec 4096 Jan 14 00:17 ../
+-rw-r--r--  1 andrec andrec 1602 Dec 28 05:26 AllPermutations.class
+-rwxrwxrwx  1 andrec andrec 3980 Dec 27 05:37 AllPermutations.java*
+-rw-r--r--  1 andrec andrec 1454 Dec 28 05:26 Permutation1.class
+-rwxrwxrwx  1 andrec andrec 2330 Dec 27 02:04 Permutation1.java*
+-rw-r--r--  1 andrec andrec 1585 Dec 29 02:42 PermutationReturnsOneTuple.java
+-rw-r--r--  1 andrec andrec 1169 Dec 28 05:26 PermutationWithRepeats.class
+-rw-r--r--  1 andrec andrec 2863 Dec 29 16:58 PermutationWithRepeats.java
+-rw-r--r--  1 andrec andrec 5966 Dec 29 21:12 printPartitions.java
+-rw-r--r--  1 andrec andrec  854 Dec 29 17:01 printPartsReturnTuple.java
+
+.settings:
+total 36
+drwxrwx--x  2 andrec andrec  4096 Dec 26 01:03 ./
+drwxr-xr-x 16 andrec andrec  4096 Jan 14 00:17 ../
+-rwxrwxrwx  1 andrec andrec 10328 Nov 24 00:58 org.eclipse.cdt.codan.core.prefs*
+-rwxrwxrwx  1 andrec andrec  1128 Nov 24 00:58 org.eclipse.cdt.managedbuilder.core.prefs*
+-rwxrwxrwx  1 andrec andrec  1274 Dec 26 01:03 org.eclipse.jdt.core.prefs*
+-rw-r--r--  1 andrec andrec   107 Dec 26 01:03 org.eclipse.jdt.launching.prefs
+-rw-r--r--  1 andrec andrec   104 Dec 26 01:03 org.eclipse.ltk.core.refactoring.prefs
+
+TODO_STUFF:
+total 36
+drwxrwx--x  2 andrec andrec 4096 Dec 19 02:11 ./
+drwxr-xr-x 16 andrec andrec 4096 Jan 14 00:17 ../
+-rwxrwxrwx  1 andrec andrec   61 Dec 15 00:05 Are combinations sets*
+-rwxrwxrwx  1 andrec andrec   71 Dec 15 00:33 are_lower_upper_matrices_equals_to_partitions*
+-rwxrwxrwx  1 andrec andrec   68 Dec 15 00:04 Are_partitions_sets*
+-rwxrwxrwx  1 andrec andrec   26 Dec 15 00:05 Are_tuples_partitions_*
+-rw-r--r--  1 andrec andrec    0 Dec 19 02:11 permutation_for_java
+-rw-r--r--  1 andrec andrec  112 Dec 17 21:26 reduce_65535_to_256_bits
+-rw-r--r--  1 andrec andrec    0 Dec 17 21:42 reorder_elemns_of_set
+-rwxrwxrwx  1 andrec andrec 6180 Dec 20 00:18 stretching_matrix*
+
+tryTree:
+total 24
+drwxr-xr-x  2 andrec andrec 4096 Jan 13 18:19 ./
+drwxr-xr-x 16 andrec andrec 4096 Jan 14 00:17 ../
+-rwxrwxrwx  1 andrec andrec 2101 Jan 13 18:24 BinaryTree_from_stack.java*
+-rwxrwxrwx  1 andrec andrec 4339 Jan 13 18:20 BinaryTree.java*
+-rwxrwxrwx  1 andrec andrec 3297 Nov 24 00:58 tree.c*
+
+WorkInProgress:
+total 32
+drwxrwx--x  2 andrec andrec 4096 Jan  8 22:02 ./
+drwxr-xr-x 16 andrec andrec 4096 Jan 14 00:17 ../
+-rw-r--r--  1 andrec andrec  366 Jan  7 01:52 Are_polynomial_irreducibles_
+-rw-r--r--  1 andrec andrec 6102 Jan 10 21:04 ecnrypting_and_decrpytinh_in_progree
+-rwxrwxrwx  1 andrec andrec 8644 Dec 31 01:02 methods_to_solve_bits_on_bytes*

@@ -50,7 +50,11 @@ public class util {
 	}
 
 	
-	
+	public static DateTimeFormatter returnFormatter() {
+		  DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSSSS");
+		  return dateFormat;
+		  
+	}
 	public static void printPositions(int it) {
 	    
 	    int pos = 1;

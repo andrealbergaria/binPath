@@ -1,29 +1,30 @@
 #!/bin/bash
-sudo rm -rf /mnt/pen_2G/binPath 
-sudo rm -rf /mnt/pen_500g/binPath
-sudo rm -rf /mnt/pen_61G/binPath
-sudo rm -rf /mnt/jessie_40G/binPath
-sudo rm -rf /mnt/windows_xp_60G/binPath
-sudo rm -rf /root/binPath
-sudo rm -rf /root/utf8
-sudo rm -rf /root/javaDoIt
+BPATH="/home/andrec/workspace_3_8/binPath";
+EXCLUDED_FILES=(upload.sh tryTree/ TODO_STUFF README.md build.xml compareAllFiles.sh findAll.sh keystore.sh classes .settings/ images/ .git/ files/ .externalToolBuilders/ bcprov-jdk15on-168.jar textKey.sh run.bash twoByte backup.sh .project)
 
-sudo mkdir -p /mnt/pen_2G/binPath
-sudo mkdir -p /mnt/pen_500g/binPath
-sudo mkdir -p /mnt/pen_61G/binPath
-sudo mkdir -p /mnt/jessie_40G/binPath
-sudo mkdir -p /mnt/windows_xp_60G/binPath
-sudo mkdir -p /root/binPath
-sudo mkdir -p /root/utf8
-sudo mkdir -p /root/javaDoIt
+DESTINATION=("/mnt/pen_2G" "/mnt/pen_500G" "/mnt/pen_61G" "/mnt/windows_xp_60G" "/root")
+
+PARAMS=""
+
+for DIR in "${DESTINATION[@]}"
+do  
+    sudo rm -rf "$DIR/binPath"
+    
+done
 
 
-sudo cp -v -r /home/andrec/workspace_3_8/binPath/*  /mnt/pen_2G/binPath
-sudo cp -v -r /home/andrec/workspace_3_8/binPath/*  /mnt/pen_500g/binPath
-sudo cp -v -r /home/andrec/workspace_3_8/binPath/*  /mnt/pen_61G/binPath
-sudo cp -v -r /home/andrec/workspace_3_8/binPath/*  /mnt/jessie_40G/binPath
-sudo cp -v -r /home/andrec/workspace_3_8/binPath/  /mnt/windows_xp_60G/binPath
-sudo cp -v -r /home/andrec/workspace_3_8/binPath/  /root/binPath
-sudo cp -v -r /home/andrec/workspace_3_8/utf8/*     /root/utf8
-sudo cp -v -r /home/andrec/workspace_3_8/javaDoIt/*     /root/javaDoIt
+for FILE in "${EXCLUDED_FILES[@]}"
+do
+     
+    PARAMS=$PARAMS" --exclude=${FILE}"
+  
+done
+
+for DEST in "${DESTINATION[@]}"
+do
+
+    rsync -av $PARAMS $BPATH $DEST
+    
+done
+
 

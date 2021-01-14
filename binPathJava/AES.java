@@ -10,6 +10,8 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -34,9 +36,32 @@ import javax.crypto.spec.SecretKeySpec;
 
 	 public class AES {
 		 
+		 LocalDateTime nowDate;
 		 ArrayList<Entry> entries = new ArrayList<>();
+		 static File logFile = new File("/home/andrec/workspace_3_8/binPath/files/log");
 		 
-		 public void writeLogSimple(File f,Entry e) {
+		 public void writePrelude() {
+				try {
+					
+					DateTimeFormatter df = util.returnFormatter();
+					LocalDateTime ldt = LocalDateTime.now();
+					String dateString = ldt.format(df);
+					
+				FileWriter fw = new FileWriter(logFile,true);
+				fw.write(dateString+"\n");
+				fw.close();
+				System.out.println("[writePrelude] completed");
+				  
+				
+				  }
+				catch(IOException e) {
+					e.printStackTrace();
+				}
+				  
+			}
+			
+		 
+		 public static void writeLogSimple(Entry e) {
 				/*
 				 * Format of file 
 				 * min max
@@ -46,7 +71,7 @@ import javax.crypto.spec.SecretKeySpec;
 				 */
 				try {
 				  System.out.println("\n[writeLogSimple] Running writeLog");
-				  FileWriter fw = new FileWriter(f,true);
+				  FileWriter fw = new FileWriter(logFile,true);
 				  fw.write(e.minKey+" "+e.maxKey+" "+"\n");
 				  if (e.keys.size() > 0) {
 				    for (int i : e.keys)
@@ -80,6 +105,9 @@ import javax.crypto.spec.SecretKeySpec;
 			  Charset cs = Charset.defaultCharset(); 
 			  Path path = FileSystems.getDefault().getPath(logFiles); 
 			  BufferedReader br = Files.newBufferedReader(path,cs);
+
+			  String dateStr = br.readLine();
+			  	  
 			  
 			  String line=br.readLine();
 			  while(line != null) {
@@ -324,16 +352,18 @@ import javax.crypto.spec.SecretKeySpec;
    			ByteBuffer buf = ByteBuffer.allocate(32);
  			byte[] temporaryKeyBuffer;
  			
- 			log lo = new log(0,0);
- 		     
-	     for (int key=minKey; key < maxKey ; key++) {
-	    	 
-	    	 
+ 			
+ 			Entry e = new Entry(minKey,maxKey);
+ 		 for (int key=minKey; key < maxKey ; key++) {
 	    	 if (debug==true)
 	    		 System.out.println("\nTrying key : "+key);
-     		if (key % 5000 == 0) {
-     			log l= new log(key,maxKey);
-     			l.writeLog(log.logFile);
+     		
+	    	 
+	    	if (key % 5000 == 0) {
+     			
+     			e.maxKey = maxKey;
+     			e.minKey = minKey;
+     			writeLogSimple(e);
      		}
      		buf.clear();
      		// key to be tested
@@ -348,7 +378,7 @@ import javax.crypto.spec.SecretKeySpec;
  			 
  			if (decrypted != null) {
  				if (util.isAscii(decrypted)==true) {
- 					lo.keysToPlain.put(key,new String(decrypted));
+ 					e.keys.add(key);
  					System.out.println("Got key ("+key+")");
  					System.out.println("Plaintext : "+new String(decrypted));
  				}
