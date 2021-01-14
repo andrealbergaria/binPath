@@ -3,6 +3,7 @@ package binPathJava;
 import java.awt.print.Printable;
 import java.io.File;
 import java.nio.ByteBuffer;
+import java.time.Instant;
 
 
 import javax.crypto.spec.SecretKeySpec;
@@ -148,7 +149,7 @@ public class binPathImpl {
 	     	byte[] bytesTest = key.array();
 
 	     	SecretKeySpec tempKey = new SecretKeySpec(bytesTest, "AES");
-        	byte[] cipherText1 = AES.encrypt("123one", tempKey,true);
+        	byte[] cipherText1 = AES.encrypt("123one", tempKey,false);
         	
         	//AES.writeCipherTextToFile(cipherText1, cipherFile1,true);
         	
@@ -156,7 +157,7 @@ public class binPathImpl {
         	key.putInt(4);
         	bytesTest = key.array();
         	SecretKeySpec secondKey = new SecretKeySpec(bytesTest, "AES");
-        	byte[] cipherText2 = AES.encrypt("123two",secondKey,true);
+        	byte[] cipherText2 = AES.encrypt("123two",secondKey,false);
 			
         	//AES.writeCipherTextToFile(cipherText2, cipherFile2,true);
         	
@@ -165,22 +166,38 @@ public class binPathImpl {
         	 
         	
         	int minKey=0;
-			int maxKey=5;
+			int maxKey=65536;
 			
 			
+			AES.writePrelude(true);
 			
+			Entry ret = null;
+			int i=0;
 			//int interval = Integer.MAX_VALUE / maxKey;
-			for (int i=minKey; i < maxKey ; i++) {
+			Instant begin = Instant.now();
+			int maSize = Integer.MAX_VALUE;
+			int test = 2147483647+10;
+			System.out.println("INT MAX :"+Integer.MAX_VALUE);
+			System.out.println("\nTEST "+test);
+			/*for (; i < 65536 && ret == null; i++) {
 				
-					AES.cycleKey(minKey,maxKey,cipherText1,true);
+					ret= AES.cycleKey(minKey,maxKey,cipherText1,false);
+						
+					minKey=maxKey;
+					maxKey = maxKey*2;
+			}P/	
+			if (i >= 2 || ret==null) {
+				System.out.println("\nCouldnt find key");
+			}
+			
+			if (ret!=null) {
+				System.out.println("\nThe key is "+ret.key);
+				System.out.println("\nThe plaintext is "+ret.plainText);
+				AES.writeLogSimple(ret,true,true);
+			}
 				
-			}	
-		
 			
 			
-			//	minKey=maxKey;
-			//	maxKey=maxKey*2;
-		//	}
 		//	AES.cycleKey(0,65536,cipherText);
 	        //AES.cycleKey(65536,131072,cipherText);
 			

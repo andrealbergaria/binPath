@@ -14,6 +14,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -37,10 +38,9 @@ import javax.crypto.spec.SecretKeySpec;
 	 public class AES {
 		 
 		 LocalDateTime nowDate;
-		 ArrayList<Entry> entries = new ArrayList<>();
 		 static File logFile = new File("/home/andrec/workspace_3_8/binPath/files/log");
 		 
-		 public void writePrelude() {
+		 public static void writePrelude(boolean debug) {
 				try {
 					
 					DateTimeFormatter df = util.returnFormatter();
@@ -50,7 +50,8 @@ import javax.crypto.spec.SecretKeySpec;
 				FileWriter fw = new FileWriter(logFile,true);
 				fw.write(dateString+"\n");
 				fw.close();
-				System.out.println("[writePrelude] completed");
+				if (debug)
+					System.out.println("[writePrelude] completed");
 				  
 				
 				  }
@@ -61,7 +62,7 @@ import javax.crypto.spec.SecretKeySpec;
 			}
 			
 		 
-		 public static void writeLogSimple(Entry e) {
+		 public static void writeLogSimple(Entry e,boolean debug,boolean append) {
 				/*
 				 * Format of file 
 				 * min max
@@ -70,15 +71,17 @@ import javax.crypto.spec.SecretKeySpec;
 				 * 
 				 */
 				try {
-				  System.out.println("\n[writeLogSimple] Running writeLog");
-				  FileWriter fw = new FileWriter(logFile,true);
+					if (debug ) {
+				  System.out.println("\n[writeLogSimple] Writing entry ");
+				  System.out.println(e);
+					}
+				  FileWriter fw = new FileWriter(logFile,append);
 				  fw.write(e.minKey+" "+e.maxKey+" "+"\n");
-				  if (e.keys.size() > 0) {
-				    for (int i : e.keys)
-					  fw.write(i+" ");
+				  if (e.hasKey()) {
+					  fw.write("---KEY ---("+e.key+")");
+				  	  fw.write("---PlainText ---("+e.plainText+")");
 				  }
-				  else 
-					  fw.write("---NULL---\n");
+				  
 				  fw.close();
 				}
 				catch(IOException ex) {
@@ -106,35 +109,27 @@ import javax.crypto.spec.SecretKeySpec;
 			  Path path = FileSystems.getDefault().getPath(logFiles); 
 			  BufferedReader br = Files.newBufferedReader(path,cs);
 
-			  String dateStr = br.readLine();
+			  
 			  	  
 			  
 			  String line=br.readLine();
 			  while(line != null) {
-				  
-				  String line2 = br.readLine();
 				  String[] minAndMaxKeys = line.split(" ");
-				  String[] KeysString = line2.split(" ");
-				  Entry e = new Entry();
-				  e.minKey =  Integer.parseInt(minAndMaxKeys[0]);
-				  e.maxKey = Integer.parseInt(minAndMaxKeys[1]);  
+				  int minKey = Integer.parseInt(minAndMaxKeys[0]);
+				  int maxKey = Integer.parseInt(minAndMaxKeys[1]);
+				  Entry e = new Entry(minKey,maxKey);
+			}
 				  
-				  if (!line2.contains("---NULL---")) {
-				  // KeysString -> "key1 key2 key3"
-				  for (String t : KeysString) {
-					  Integer i = Integer.parseInt(t);
-					 e.keys.add(i);
-				  }
-				  }
-				  	entries.add(e);
-			  }
+				
+			  
+			  br.close();
 				 System.out.println("[readLogSimple] finished");
 
 			  }
 			  catch(IOException e) {
 				  e.printStackTrace();
-			  }
-		  }
+			 }
+		 }
 		 
 		 public static byte[] readCipherText(File f,boolean debug) {
 	        	int len = (int) f.length();
@@ -343,9 +338,9 @@ import javax.crypto.spec.SecretKeySpec;
 	        
 	    }
          
-     
-         
-         public static void cycleKey(int minKey,int maxKey,byte[] cipherText,boolean debug) {
+         // Returns the key, if key was found (boolean)
+         // Assuming that if a key was found..no more search
+         public static Entry cycleKey(int minKey,int maxKey,byte[] cipherText,boolean debug) {
         	 
         	 
         	 
@@ -353,21 +348,25 @@ import javax.crypto.spec.SecretKeySpec;
  			byte[] temporaryKeyBuffer;
  			
  			
- 			Entry e = new Entry(minKey,maxKey);
+ 			Entry e = new Entry();
+ 			
+ 			
  		 for (int key=minKey; key < maxKey ; key++) {
+ 			 
 	    	 if (debug==true)
 	    		 System.out.println("\nTrying key : "+key);
      		
 	    	 
-	    	if (key % 5000 == 0) {
+	    	if (key % 4096== 0) {
      			
      			e.maxKey = maxKey;
-     			e.minKey = minKey;
-     			writeLogSimple(e);
+     			e.minKey = key;
+     			writeLogSimple(e,true,true);
      		}
      		buf.clear();
      		// key to be tested
  			buf.putInt(key);
+ 			
      		temporaryKeyBuffer = buf.array();
  			SecretKeySpec tryKey = new SecretKeySpec(temporaryKeyBuffer, "AES");
 
@@ -378,15 +377,18 @@ import javax.crypto.spec.SecretKeySpec;
  			 
  			if (decrypted != null) {
  				if (util.isAscii(decrypted)==true) {
- 					e.keys.add(key);
- 					System.out.println("Got key ("+key+")");
- 					System.out.println("Plaintext : "+new String(decrypted));
+ 					e.key = key;
+ 					e.plainText = new String(decrypted);
+ 					return e;
  				}
  			}
-         
+ 			 }
+ 		 
+ 			 return null;
+ 		 
          }
          
          	 
-         }
+         
          
 	 }

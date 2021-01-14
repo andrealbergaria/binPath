@@ -1,0 +1,61 @@
+1) not know the plaintext
+2) get iv
+3) block size
+4) chosen plain text , attacker can encrypt plaintext
+to get key
+each plaintext encrypted on non ECB mode , is encrpyted differently,
+because IV, and CBC mode
+
+cbc mode :
+
+IV   P1	    P2 		 P3
+
+	C1 		C2		C3
+		  usesC1	usesC2
+		  
+		  quero decifrar C2, 
+	if P1 known, then possible,
+	else
+		known P2 can we get, C2 or C3? no
+		on chosen plain text (for example P2), we need the first block (because of CBC)
+		else impossible	,
+		even knowing the key (like public crypto) we need to know P1
+		
+		wkipedia
+		produce distinct ciphertexts even if the same plaintext is encrypted (already taken care for CBC , useful for CCB)
+		it will produce ciphetexts different already based on mode (like cbc)
+	idx1   idx2	
+		A  A  
+		
+		C1 C2
+		
+		C1=C2 ??
+ 		
+		if index < idx1 (don't need iv), all depends on pos1,
+		If P1 = P2, all subsquent plaintexts can be decrypted
+		if P1 is unknown, then impossible
+		
+		IV another key?
+		
+		chosen plaintext ,P2 and C2 and C1 , possible to test the key.
+		in CBC mode
+				C2 depends on C1
+		P1 = C1 = P2 = C2
+		
+		
+		having P1 -> C1,
+		P2 -> C2 , 
+		C1=C2 , if P1=P2
+		
+		"ABC" -> "QWE" first 
+		"ABC" -> "QWE" second
+		"PLAINTEXT" encrypt -> "CIPHER"
+		"PLAINTEXT" encrpyt -< "CIPHER" ?
+		
+		"ABC" -> "ENC"
+		"ABC" -> "ENC" (without iv)
+		
+		P1 = "ABC" and C1="ENC".  C2 = (C1 XOR P2)
+									C2 = (C1 XOR P1)
+									
+		C1 = "ENC"	C2 = "ENC" XOR "ABC" .So no need of iv	

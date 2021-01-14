@@ -1,12 +1,15 @@
 package binPathJava;
 
-import java.util.ArrayList;
 
 public class Entry {
 
 	public int minKey;
 	public int maxKey;
-	public ArrayList<Integer> keys = new ArrayList<>();
+	Integer key;
+	String plainText;
+	
+
+	
 	
 	public Entry(int m,int n) {
 		this.minKey = m;
@@ -14,5 +17,13 @@ public class Entry {
 	}
 	public Entry() {
 		
+	}
+	public String toString() {
+		String r= "[Entry toString] ";
+		r += "Min : "+minKey+" Max : "+maxKey + " Key : "+key+" PlainText "+plainText;
+		return r;
+	}
+	public boolean hasKey() {
+		return (key == null) ? false : true;
 	}
 }
