@@ -1,5 +1,4 @@
-package binPathJava;
-
+package tryTree;
 // https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
 // non-recursive java program for inorder traversal 
 import java.util.Stack; 

@@ -1,3 +1,4 @@
+package tryTree;
 // get 254 bits from tree
 
 // https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/

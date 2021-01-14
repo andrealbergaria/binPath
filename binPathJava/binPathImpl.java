@@ -1,42 +1,11 @@
 package binPathJava;
 
 import java.awt.print.Printable;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-
-import binPathJava.util;
 
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.nio.*;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.net.*;
 
 
 public class binPathImpl {
@@ -164,9 +133,7 @@ public class binPathImpl {
       		
       			
 
-      		byte[] cipherText1 = AES.readCipherText(cipherFile1,true);
-      		byte[] cipherText2 = AES.readCipherText(cipherFile2,true);
-      	 	//byte[] keyFromClang = new byte[32];
+      		//byte[] keyFromClang = new byte[32];
 	     	
 	     	/*for (int i=0; i< keyFromClang.length;i++) {
 	     		keyFromClang[i] = 97;
@@ -181,14 +148,21 @@ public class binPathImpl {
 	     	byte[] bytesTest = key.array();
 
 	     	SecretKeySpec tempKey = new SecretKeySpec(bytesTest, "AES");
-        	AES.encrypt("123one", cipherFile1,tempKey,true);
+        	byte[] cipherText1 = AES.encrypt("123one", tempKey,true);
+        	
+        	//AES.writeCipherTextToFile(cipherText1, cipherFile1,true);
         	
         	key.clear();
         	key.putInt(4);
         	bytesTest = key.array();
         	SecretKeySpec secondKey = new SecretKeySpec(bytesTest, "AES");
-        	AES.encrypt("123two",cipherFile2,secondKey,true);
+        	byte[] cipherText2 = AES.encrypt("123two",secondKey,true);
 			
+        	//AES.writeCipherTextToFile(cipherText2, cipherFile2,true);
+        	
+        //	byte[] cipherText1 = AES.readCipherText(cipherFile1,true);
+      	//	byte[] cipherText2 = AES.readCipherText(cipherFile2,true);
+        	 
         	
         	int minKey=0;
 			int maxKey=5;
@@ -197,16 +171,20 @@ public class binPathImpl {
 			
 			//int interval = Integer.MAX_VALUE / maxKey;
 			for (int i=minKey; i < maxKey ; i++) {
-					AES.cycleKey(minKey,maxKey,cipherText1);
-					AES.cycleKey(minKey,maxKey,cipherText2);
-			}		
+				
+					AES.cycleKey(minKey,maxKey,cipherText1,true);
+				
+			}	
+		
+			
+			
 			//	minKey=maxKey;
 			//	maxKey=maxKey*2;
 		//	}
 		//	AES.cycleKey(0,65536,cipherText);
 	        //AES.cycleKey(65536,131072,cipherText);
 			
-	  		*/
+	  	
 	       
         
        	

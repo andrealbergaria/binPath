@@ -27,7 +27,6 @@ public class util {
 
 	public static File cipherFileJava  = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext_java");
 	public static File cipherFileC  = new File("/home/andrec/workspace_3_8/binPath/files/ciphertext_c");
-	public static File decryptedStuffFile = new File ("/home/andrec/workspace_3_8/binPath/files/decrypted");
 	
 	//https://stackoverflow.com/questions/12944377/how-to-convert-byte-to-byte-and-the-other-way-around
 	public static Byte[] toObjects(byte[] bytesPrim) {
@@ -85,46 +84,12 @@ public class util {
 	     	System.out.println("---end array ---");
 	     }
 	
-	  // Reads a section of the log file
+
 	  
 	 
-	  public static void writePlaintexts(ArrayList<Byte[]> al,int minKey,int maxKey) {
-		  try {
-			  byte[] list;
-			  if (al.size()<=0)
-				  System.out.println("\n[util.writePlainText] No plaintext between ("+minKey+") ("+maxKey+")");
-			  for (Byte[] bArr : al) {
-				  list = toPrimitives(bArr);
-				  System.out.print("\n[util.writePlainTexts] ");
-				  printArray("Plaintext_decrypted ",list,true);
-			  }
-			  
-			  FileWriter fw = new FileWriter(util.decryptedStuffFile,true);
-			  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-			  dtf.withZone(ZoneId.systemDefault());
-	 		     
-				fw.write("date : "+dtf.format(Instant.now())+"\n");
-	 			
-			  fw.write("minKey : "+minKey+"\n");
-			  
-			  fw.write("--plaintext : \n");
-			  for (Byte[] a : al) {
-				   
-				  byte[] toWrite =  toPrimitives(a);
-				  fw.write(new String (toWrite)+"\n");  
-			  }
-			  fw.write("--end\n");
-				  fw.write(maxKey+"\n");
-		  System.out.println("\n[util.writePlaintexts] finished");
-		  fw.close();
-	      
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	  }
+	 
 
-      public static boolean isAscii(Byte[] input) {
+      public static boolean isAscii(byte[] input) {
     	 
       			for (byte b: input) {
       				if ( b > 0x7f | b <=0x20)

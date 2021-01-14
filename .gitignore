@@ -13,6 +13,6 @@ backup.sh
 keystore.sh
 compareAllFiles.sh
 WorkInProgress
-.externalToolBuilders/
+.externalToolBuilders
 classes
 

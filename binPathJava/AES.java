@@ -2,10 +2,16 @@ package binPathJava;
 
 import java.io.*;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -27,13 +33,92 @@ import javax.crypto.spec.SecretKeySpec;
 	 
 
 	 public class AES {
+		 
+		 ArrayList<Entry> entries = new ArrayList<>();
+		 
+		 public void writeLogSimple(File f,Entry e) {
+				/*
+				 * Format of file 
+				 * min max
+				 * key1 key2 key3
+				 * 
+				 * 
+				 */
+				try {
+				  System.out.println("\n[writeLogSimple] Running writeLog");
+				  FileWriter fw = new FileWriter(f,true);
+				  fw.write(e.minKey+" "+e.maxKey+" "+"\n");
+				  if (e.keys.size() > 0) {
+				    for (int i : e.keys)
+					  fw.write(i+" ");
+				  }
+				  else 
+					  fw.write("---NULL---\n");
+				  fw.close();
+				}
+				catch(IOException ex) {
+					ex.printStackTrace();
+					
+					
+					
+					
+				}
+				
+			}
+		 
+		 
+		 public void readLogSimple(String logFiles) {
+			  /*
+			   * 
+			   * format of file
+			   * min max
+			   * key1 key2 key3
+			   * 
+			   */
+			 System.out.println("[readLogSimple] started");
+			  try {
+			  Charset cs = Charset.defaultCharset(); 
+			  Path path = FileSystems.getDefault().getPath(logFiles); 
+			  BufferedReader br = Files.newBufferedReader(path,cs);
+			  
+			  String line=br.readLine();
+			  while(line != null) {
+				  
+				  String line2 = br.readLine();
+				  String[] minAndMaxKeys = line.split(" ");
+				  String[] KeysString = line2.split(" ");
+				  Entry e = new Entry();
+				  e.minKey =  Integer.parseInt(minAndMaxKeys[0]);
+				  e.maxKey = Integer.parseInt(minAndMaxKeys[1]);  
+				  
+				  if (!line2.contains("---NULL---")) {
+				  // KeysString -> "key1 key2 key3"
+				  for (String t : KeysString) {
+					  Integer i = Integer.parseInt(t);
+					 e.keys.add(i);
+				  }
+				  }
+				  	entries.add(e);
+			  }
+				 System.out.println("[readLogSimple] finished");
+
+			  }
+			  catch(IOException e) {
+				  e.printStackTrace();
+			  }
+		  }
+		 
 		 public static byte[] readCipherText(File f,boolean debug) {
 	        	int len = (int) f.length();
 	        	byte[] cipherText = new byte[len];
 	        	
 	        	try {
 	       	 
-	         
+	         if (!f.exists()) {
+	        	 System.out.println("\nCan't read ciphertext "+f.getAbsolutePath()+", since file doesnt exists");
+	        	 
+	         	return null;
+	         }
 	         FileInputStream fis = new FileInputStream(f);
 	         
 	         int fileSize = (int) f.length();
@@ -77,14 +162,39 @@ import javax.crypto.spec.SecretKeySpec;
 	        	return cipherText;
 	        }
 		 // not needed use cat > plaintext <<EOF
+		public static void writeCipherTextToFile(byte[] cipherText,File outputFile,boolean debug) {
+			try {
+				
+					
+			
+			 FileOutputStream stream = new FileOutputStream(outputFile,false);
+	          stream.write(cipherText);
+	          stream.flush();
+	          stream.close();
+				if (debug==true) {
+					if (cipherText.length != outputFile.length())
+						System.out.println("\n[writeCipherTextToFile] Buffer not equal to file read (size mismatch) ");
+					else
+						System.out.println("\n[writeCipherTextToFile] Buffer ok");
+				}
+					System.out.println("[writeCipherTextToFile] wrote bytes("+cipherText.length+") to file ("+outputFile.length()+")");
+			}
+			catch(FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		
-         
-         public static void encrypt(String strToEncrypt,File outputFile,SecretKey key ,boolean debug) {
+		
+         public static byte[] encrypt(String strToEncrypt,SecretKey key ,boolean debug) {
         	 
         		try {  
         		 if (debug==true) {
         			System.out.println("\n-------------ENCRYPTING -------------");
-        			System.out.println("\nEncrypting the string \""+strToEncrypt+"\" ("+strToEncrypt.length()+"bytes) to "+outputFile.getAbsolutePath());
+        			System.out.println("\nEncrypting the string \""+strToEncrypt+"\"");
         			
         			util.printArray("KEY USED IN ENCRYPTION",key.getEncoded(),false);
         		 }
@@ -107,34 +217,14 @@ import javax.crypto.spec.SecretKeySpec;
 			
  			   
   		  
-  		      
-  		      if (outputFile.delete() == false) {
-  		    	  if (debug==true)
-  		    	  System.err.println("\n(AES.encrypt) Couldnt delete output file on encrypting");
-  		    	  throw new IOException("COULDNT DELETE FILE");
-  		    	  
-  		    	  
-  		      }
-  		      
- 	          outputFile.createNewFile();
- 	         
  	          byte[] out = cipher.doFinal(toEnc);
 			  
- 	          FileOutputStream stream = new FileOutputStream(outputFile);
- 	          stream.write(out);
- 	          stream.flush();
- 	          stream.close();
- 				if (debug==true) {
- 	         if (out.length != outputFile.length())
-				  System.out.println("\n(AES.encrypt) Buffer not equal to file read (size mismatch) ");
-			  else
-				 System.out.println("\n(AES.encrypt) Buffer ok");
+ 	         
  				
- 				
- 				
-               System.out.println("\n(AES.encrypt) Finished encryption ("+outputFile.getAbsolutePath()+")");
+               System.out.println("\n(AES.encrypt) Finished encryption ");
+               return out;
  				}
-        		}
+        		
         		
         		 catch (UnsupportedEncodingException e) {
 
@@ -158,10 +248,6 @@ import javax.crypto.spec.SecretKeySpec;
  		    
               
         		  
-              catch (FileNotFoundException e) {
- 
-  				e.printStackTrace();
-  			}
    		     catch (IOException e) {
 
   				e.printStackTrace();
@@ -171,15 +257,15 @@ import javax.crypto.spec.SecretKeySpec;
 
 				e.printStackTrace();
 			}
-		    
+		    return null;
          }
          
         		
-         public static Byte[] checkKeys(byte[] cipherText,SecretKeySpec sks,boolean debug) {
+         public static byte[] decrypt(byte[] cipherText,SecretKeySpec sks,boolean debug) {
         	 
 	    	 try {
 	        	if (debug==true)
-	        	System.out.println("\n(checkKeys) Decrypting...");
+	        	System.out.println("\n([decrypt] Decrypting...");
 	        
 	        byte[] iv = new byte[16];
 	  		Cipher cipher;
@@ -192,12 +278,12 @@ import javax.crypto.spec.SecretKeySpec;
 		     
 		      
 	        byte[] decrypt =cipher.doFinal(cipherText);
-	        Byte[] r = util.toObjects(decrypt);
-	        	 return r;	
+	        	 return decrypt;	
 	        	 	
         	}
 	        catch(BadPaddingException e) {
-	        	System.out.println("\nBad padding");
+	        	if (debug==true)
+	        	System.out.println("\n[decrypt] Bad padding");
 	        	
 	        }
 	  		catch (IllegalBlockSizeException e) {
@@ -229,42 +315,42 @@ import javax.crypto.spec.SecretKeySpec;
 	        
 	    }
          
-         public static void cycleKey(int minKey,int maxKey,byte[] cipherText) throws IOException {
-        	 ArrayList<Byte[]> plainTexts = new ArrayList<>();
-        	 Byte[] plainTextArray;
+     
+         
+         public static void cycleKey(int minKey,int maxKey,byte[] cipherText,boolean debug) {
+        	 
+        	 
+        	 
    			ByteBuffer buf = ByteBuffer.allocate(32);
- 			
  			byte[] temporaryKeyBuffer;
  			
- 			
-// 			 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-// 		            .withZone(ZoneId.systemDefault());
+ 			log lo = new log(0,0);
  		     
 	     for (int key=minKey; key < maxKey ; key++) {
+	    	 
+	    	 
+	    	 if (debug==true)
+	    		 System.out.println("\nTrying key : "+key);
      		if (key % 5000 == 0) {
-     			
-     			System.out.println("\nMinKey : "+minKey+" MaxKey: "+maxKey);
-     			System.out.println("\nRunning ("+key+")");
-                log temporaryLog = new log(minKey,maxKey,plainTexts); 
-		        temporaryLog.writeLogToFile(log.triedCombinations);
-     			
+     			log l= new log(key,maxKey);
+     			l.writeLog(log.logFile);
      		}
      		buf.clear();
+     		// key to be tested
  			buf.putInt(key);
      		temporaryKeyBuffer = buf.array();
  			SecretKeySpec tryKey = new SecretKeySpec(temporaryKeyBuffer, "AES");
- 			// last boolean is to return strnig instead of byte[]
- 			 plainTextArray = AES.checkKeys(cipherText,tryKey,false);
- 			//plainTextDeciphered byte[]
- 			if (plainTextArray!=null) {
- 				if (util.isAscii(plainTextArray)==true) {
- 					
- 					plainTexts.add(plainTextArray);
- 					// output to file, and search for good key
- 					System.out.println("Good key "+key);
 
- 					
- 					
+ 			// returns Byte[] corresponding to plainText decrypting
+ 			 byte[] decrypted = AES.decrypt(cipherText,tryKey,false);
+ 			
+ 			 // use tee program (linux) to print stdout and file
+ 			 
+ 			if (decrypted != null) {
+ 				if (util.isAscii(decrypted)==true) {
+ 					lo.keysToPlain.put(key,new String(decrypted));
+ 					System.out.println("Got key ("+key+")");
+ 					System.out.println("Plaintext : "+new String(decrypted));
  				}
  			}
          
@@ -272,4 +358,5 @@ import javax.crypto.spec.SecretKeySpec;
          
          	 
          }
-         }
+         
+	 }
