@@ -55,7 +55,7 @@ base step: h( 0, x )= f( x ), and
 induction step: h( y+1, x ) = g( y, h(y, x),x )
 
 
-Example: PredicatesA function that takes on only values 0 and 1 can 
+Example: Predicates A function that takes on only values 0 and 1 can 
 be thought of as a predicate,  where 0 means false, and 1 means true
 
 

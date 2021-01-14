@@ -43,19 +43,32 @@ IV   P1	    P2 		 P3
 		P1 = C1 = P2 = C2
 		
 		
-		having P1 -> C1,
-		P2 -> C2 , 
-		C1=C2 , if P1=P2
+	---check IV------
+	P1 C1
+   C1 XOR P2 => C2
+   C1 ="ENC" XOR "ABC" => C2
+   no need to use IV, since the cipher texts are different	 
+	-------------------------
 		
-		"ABC" -> "QWE" first 
-		"ABC" -> "QWE" second
-		"PLAINTEXT" encrypt -> "CIPHER"
-		"PLAINTEXT" encrpyt -< "CIPHER" ?
+chosen-plaintext
 		
-		"ABC" -> "ENC"
-		"ABC" -> "ENC" (without iv)
-		
-		P1 = "ABC" and C1="ENC".  C2 = (C1 XOR P2)
-									C2 = (C1 XOR P1)
-									
-		C1 = "ENC"	C2 = "ENC" XOR "ABC" .So no need of iv	
+	have P2 and C2 (suppopsing CBC mode),
+	C2,and C3 known 
+	
+	C3  =C2 XOR P3
+	
+	
+positions 	1 2 3 4 5 
+		  P1 P2 P3 P4 P5
+ 
+cipher    C1 C2 C3 C4 C5
+
+
+i wonder if i can reduce, Plaintext1 -> Pos1, plaintext are 16bytes, 
+
+Pos1 Pos2 Pos3 Pos4 Pos5 Pos6 Pos7 Pos8
+
+
+since the cipher text is equal on block to plaintext
+so, use Pos1 255, keep adding unitl reached 16 bytes
+	

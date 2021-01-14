@@ -94,3 +94,6 @@ invert bits on binary number, what happens do decimal?
 				 m1+m1+m1 = multipleOf 6 / 3 (three m1's)
 				 m1+m1 => 6 / 2
 				 m1 => 6 / 1
+				 
+				 
+				 check general recursive functions
