@@ -51,11 +51,14 @@ public class util {
 	
 	public static void writeFile(String filename,ArrayList < ArrayList<String> > plainTexts) {
 		try {
-		FileWriter fw = new FileWriter(filename);
+			System.out.println("[util.writeFile] Running method");
+		FileWriter fw = new FileWriter(filename,false);
 		for (ArrayList<String> block1 : plainTexts) {
 			for (String str : block1)
 				fw.write(str);
 		}
+		
+		System.out.println("[util.writeFile] Wrote plainTexts files");
 		fw.close();
 		}
 		catch(IOException e) {
@@ -107,16 +110,31 @@ public class util {
 	 
 	 
 
-      public static boolean isAscii(byte[] input) {
+      public static boolean isAscii(byte[] input,boolean debug) {
+    	 if (input.length > 0) {
+    	
+
+    	 if (debug)
+    		 System.out.println("[util.isAscii] running ");
+    	 	util.printArray("inputAScii", input,true);
     	 
       			for (byte b: input) {
       				if ( b > 0x7f | b <=0x20)
       					return false;
       			}
-
+          if (debug) {
+        	  System.out.println("[util.isAscii] Input : "+new String(input)+" has ascii");
+          }
+          
           return true;
+    	  
+    	  }
+    	  else 
+    		  if (debug)
+    			  System.out.println("[util.isAscii] No byte array containg plaintexts to check for ascii");
+     		
+      return false;
       }
-
       	 	
 
 		// showChars, instead of ascii number return character

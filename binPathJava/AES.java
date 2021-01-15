@@ -41,41 +41,62 @@ import javax.crypto.spec.SecretKeySpec;
 		 static String curDir = new String("/home/andrec/workspace_3_8/binPath");
 		 static File logFile = new File("/home/andrec/workspace_3_8/binPath/files/log");
 		 
-		 public static ArrayList<String> decryptPlaintextBlock(int minKey,int maxKey) {
+		 public static ArrayList<String> decryptPlaintextBlock(long minKey,long maxKey,boolean debug) {
 			 
 				ByteBuffer key = ByteBuffer.allocate(16);
 				ArrayList<String> plainTextList = new ArrayList<>();
 
-			 for (int i=minKey; i< maxKey;i++) {
-				  	key.putInt(i);
+			 for (long i=minKey; i< maxKey;i++) {
+				 	key.clear();
+				  	key.putLong(i);
+				  	if (debug)
+				  		System.out.println("\nTrying key "+i );
 			     	byte[] bytesTest = key.array();
-			     	if (util.isAscii(bytesTest)) {
+			     	if (util.isAscii(bytesTest,true)) {
 			     		System.out.println("\nFound plaintext : \n");
-			     		util.printArray("PlainText",bytesTest,true);
-			     		plainTextList.add(new String(bytesTest));
+			     		boolean b = plainTextList.add(new String(bytesTest));
+			     		if (b) {
+			     			
+				     		util.printArray("PlainText",bytesTest,true);
+			     		}
 			     	}
 			 }
-			 return plainTextList;
+			 if (!plainTextList.isEmpty())
+				 return plainTextList;
+			 else
+				 return null;
 		 }
+		 
+		 public static void main(String[] args) {
+			readPlainTextBlock();
+		 }
+		 
 		 public static void readPlainTextBlock() {
 			 
-				 int minKey=0;
-				 int maxKey = 65536;
+				 long minKey=0;
+				 long maxKey = 65536;
 				 ArrayList< ArrayList<String> > allPlaintexts = new ArrayList<>();
 				 ArrayList<String> cur = new ArrayList<>();
-				 for (int it = 0; it < 2 ; it++) {
-					 System.out.println("Min "+minKey+" Max "+maxKey);
-					 cur = decryptPlaintextBlock(minKey,maxKey);
-					 minKey=maxKey;
-					 maxKey= maxKey*4;
-					 allPlaintexts.add(cur);
-				 }
 				 
-			for (ArrayList<String> block1: allPlaintexts) {
-				for (String str : block1)
-					System.out.println(str);
-			}
-			
+				 
+				 // it = 9 got int
+				 for (int it = 0; it < 1 ; it++) {
+					 System.out.println("Min "+minKey+" Max "+maxKey);
+					 cur = decryptPlaintextBlock(minKey,maxKey,false);
+					 
+					  if (cur != null) {
+						 System.out.println("\ngot some plaintexts on ["+minKey+","+maxKey+"]");
+						 allPlaintexts.add(cur);
+					 }
+					 
+					 minKey=maxKey;
+					 maxKey= maxKey*2;
+					 
+				 }
+				 if (!allPlaintexts.isEmpty())
+				 	 util.writeFile(curDir+"/files/plaintexts", allPlaintexts);
+				 else
+					 System.out.println("\nNo plaintext collected");
 			
 		 }
 		 
@@ -416,7 +437,7 @@ import javax.crypto.spec.SecretKeySpec;
  			 // use tee program (linux) to print stdout and file
  			 
  			if (decrypted != null) {
- 				if (util.isAscii(decrypted)==true) {
+ 				if (util.isAscii(decrypted,true)==true) {
  					e.key = key;
  					e.plainText = new String(decrypted);
  					return e;
