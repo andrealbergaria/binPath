@@ -38,27 +38,26 @@ import javax.crypto.spec.SecretKeySpec;
 	 public class AES {
 		 
 		 LocalDateTime nowDate;
+		 public static File logFile = new File("/home/andrec/workspace_3_8/binPath/files/log");
 		 static String curDir = new String("/home/andrec/workspace_3_8/binPath");
-		 static File logFile = new File("/home/andrec/workspace_3_8/binPath/files/log");
-		 
-		 public static ArrayList<String> decryptPlaintextBlock(long minKey,long maxKey,boolean debug) {
+		 public static String plaintextsPath= "/home/andrec/workspace_3_8/binPath/files/plaintexts";
+		 public static ArrayList< ArrayList<Byte[]> > allPlaintexts = new ArrayList<>();
+		 // returns plaintext on [min,max] 
+		 public static ArrayList<Byte[]> decryptPlainTextBlock(long minKey,long maxKey,boolean debug) {
 			 
-				ByteBuffer key = ByteBuffer.allocate(16);
-				ArrayList<String> plainTextList = new ArrayList<>();
-
-			 for (long i=minKey; i< maxKey;i++) {
-				 	key.clear();
-				  	key.putLong(i);
-				  	if (debug)
-				  		System.out.println("\nTrying key "+i );
-			     	byte[] bytesTest = key.array();
-			     	if (util.isAscii(bytesTest,true)) {
-			     		System.out.println("\nFound plaintext : \n");
-			     		boolean b = plainTextList.add(new String(bytesTest));
-			     		if (b) {
-			     			
-				     		util.printArray("PlainText",bytesTest,true);
-			     		}
+			 
+			 
+				//key is equal to characters
+				ArrayList<Byte[]> plainTextList = new ArrayList<>();
+				 Byte[] keyAsBytes;
+			 
+				 for (long i=minKey; i< maxKey;i++) {
+					keyAsBytes = util.longToBytes(i);
+					
+				  	
+			     	if (util.isAscii(keyAsBytes,false)) {
+			     		plainTextList.add(keyAsBytes);
+			     		
 			     	}
 			 }
 			 if (!plainTextList.isEmpty())
@@ -68,35 +67,47 @@ import javax.crypto.spec.SecretKeySpec;
 		 }
 		 
 		 public static void main(String[] args) {
-			readPlainTextBlock();
+			getPlainTextBlock();
 		 }
 		 
-		 public static void readPlainTextBlock() {
+		 public static void getPlainTextBlock()  {
 			 
 				 long minKey=0;
 				 long maxKey = 65536;
-				 ArrayList< ArrayList<String> > allPlaintexts = new ArrayList<>();
-				 ArrayList<String> cur = new ArrayList<>();
 				 
+				 ArrayList<Byte[]> cur = new ArrayList<>();
 				 
-				 // it = 9 got int
-				 for (int it = 0; it < 1 ; it++) {
-					 System.out.println("Min "+minKey+" Max "+maxKey);
-					 cur = decryptPlaintextBlock(minKey,maxKey,false);
+
+				 // it 9 int value
+				 
+				 for (int it = 0; it < 5000; it++) {
+					 long begin = System.nanoTime();
+					// if ( (maxKey-minKey) != 65536)
+					//	 System.err.println("\nABC");
+					 System.out.println("Min "+minKey+" Max "+maxKey+ " it " +it);
+					 //cur = decryptPlainTextBlock(minKey,maxKey,false);
 					 
-					  if (cur != null) {
-						 System.out.println("\ngot some plaintexts on ["+minKey+","+maxKey+"]");
+					   long nanoSecs = System.nanoTime() - begin;
+					   long secs = nanoSecs / 1000000000;
+					   long mill = nanoSecs / 1000000;
+					   // System.out.println("Time elapsed (secs : "+secs+") (mill : "+mill+") nanoSec("+nanoSecs+")");
+
+					 if (cur != null) {
 						 allPlaintexts.add(cur);
 					 }
-					 
+					  
 					 minKey=maxKey;
-					 maxKey= maxKey*2;
+					 maxKey= maxKey+65536;
 					 
 				 }
-				 if (!allPlaintexts.isEmpty())
-				 	 util.writeFile(curDir+"/files/plaintexts", allPlaintexts);
+						
+				 
+				  if (allPlaintexts != null && !allPlaintexts.isEmpty()) {
+					  // write file lot faster than print it and use bash commands
+					  util.writeFile();
+				  }
 				 else
-					 System.out.println("\nNo plaintext collected");
+					 System.out.println("\n[getPlainTextBlock] No plaintext collected");
 			
 		 }
 		 
@@ -331,11 +342,7 @@ import javax.crypto.spec.SecretKeySpec;
 			}
  		    
               
-        		  
-   		     catch (IOException e) {
-
-  				e.printStackTrace();
-  			}
+        	
    		     	
   			   catch (IllegalBlockSizeException | BadPaddingException e) {
 

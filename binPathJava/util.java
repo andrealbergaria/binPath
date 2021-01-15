@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -48,14 +49,38 @@ public class util {
 	    return bytes;
 
 	}
-	
-	public static void writeFile(String filename,ArrayList < ArrayList<String> > plainTexts) {
+	// longToBytes, and bytesTolong from
+	// https://stackoverflow.com/questions/4485128/how-do-i-convert-long-to-byte-and-back-in-java
+	public static Byte[] longToBytes(long l) {
+	   Byte[] result = new Byte[8];
+	    for (int i = 7; i >= 0; i--) {
+	        result[i] = (byte)(l & 0xFF);
+	        l >>= 8;
+	    }
+	    return result;
+	}
+
+	public static long bytesToLong(final byte[] b) {
+	    long result = 0;
+	    for (int i = 0; i < 8; i++) {
+	        result <<= 8;
+	        result |= (b[i] & 0xFF);
+	    }
+	    return result;
+	}
+	// linux, use tee to write plaintexts to file
+	public static void writeFile() {
 		try {
-			System.out.println("[util.writeFile] Running method");
-		FileWriter fw = new FileWriter(filename,false);
-		for (ArrayList<String> block1 : plainTexts) {
-			for (String str : block1)
-				fw.write(str);
+			
+			
+			FileWriter fw = new FileWriter(AES.plaintextsPath,false);
+			
+		for (ArrayList<Byte[]> block1 : AES.allPlaintexts) {
+			for (Byte[] bc : block1) {
+				String str = getPlaintext(bc);
+				fw.write(str+"\n");
+				
+			}
 		}
 		
 		System.out.println("[util.writeFile] Wrote plainTexts files");
@@ -66,6 +91,19 @@ public class util {
 		}
 	}
 
+public static void printAllPlaintexts() {
+	int index = 0;
+	
+	
+	for (ArrayList<Byte[]> p1 : AES.allPlaintexts) {
+		System.out.println();
+		for (Byte[] p2 : p1) {
+			System.out.println(Arrays.toString(p2));
+			index++;
+		}
+		System.out.println();
+	}
+}
 	
 	public static DateTimeFormatter returnFormatter() {
 		  DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSSSS");
@@ -97,58 +135,77 @@ public class util {
 	}
 
 
-	  public static <T> void printArray(T[] arr) {
-		  System.out.println("---begin array---");
-	     	for (T e : arr) {
-	     		System.out.print(e + ",");
-	     	}
-	     	System.out.println("---end array ---");
-	     }
-	
-
-	  
 	 
-	 
-
-      public static boolean isAscii(byte[] input,boolean debug) {
-    	 if (input.length > 0) {
-    	
-
-    	 if (debug)
-    		 System.out.println("[util.isAscii] running ");
-    	 	util.printArray("inputAScii", input,true);
+	 // l  represents the long (key to be checked for ascii)
+      public static boolean isAscii(byte[] keyToBeTested,boolean debug) {
     	 
-      			for (byte b: input) {
-      				if ( b > 0x7f | b <=0x20)
-      					return false;
-      			}
-          if (debug) {
-        	  System.out.println("[util.isAscii] Input : "+new String(input)+" has ascii");
-          }
-          
-          return true;
+    	
     	  
+    	  if (debug) {
+    		  
+    		  printArray("isAscii",keyToBeTested,true);
     	  }
-    	  else 
-    		  if (debug)
-    			  System.out.println("[util.isAscii] No byte array containg plaintexts to check for ascii");
-     		
-      return false;
+    		 
+      			for (byte b: keyToBeTested) {
+      				
+      				if ( b > 0x7f | b <=0x20) {
+      					if (b!=0)
+      						return false;
+      				}
+      			}
+          return true;
+    	 
+      }
+      
+      
+      
+      public static String getPlaintext(Byte[] bArr) {
+    	  
+    	  byte[] bClass = util.toPrimitives(bArr);
+    	  
+    	  char [] temp = new char[bArr.length];
+    	  
+    	  for (int i=0; i < bArr.length; i++) {
+    		  if (bArr[i] > 0)
+    			  temp[i] = (char) bClass[i];
+    		  else
+    			  temp[i] = '0';
+    	  }
+    	  String s= new String(temp);
+    	  
+    	  return s;
+    	  
       }
       	 	
-
-		// showChars, instead of ascii number return character
-	  // print values == true => print values instead of characters
-	  
-	public static void printArray(String arrayName,byte[] arr,boolean printValues) {
-		
+public static boolean isAscii(Byte[] keyToBeTested,boolean debug) {
+    	 
+    	
+    	  
+    	  if (debug) {
+    		  
+    		  printArray("isAscii",keyToBeTested,true);
+    	  }
+    		 
+      			for (byte b: keyToBeTested) {
+      				
+      				if ( b > 0x7f | b <=0x20) {
+      					if (b!=0)
+      						return false;
+      				}
+      			}
+          return true;
+    	 
+      }
+      
+      public static void printArray(String arrayName,Byte[] arr,boolean printChars) {
+  		
 		  System.out.println("---begin array ("+arrayName+")---");
 		  System.out.println("Array length : "+arr.length);
-		  int it=0;
+		  
 		  char c; 
 	     	for (byte b : arr) {
 	     		
-	     		if (printValues) {
+	     		if (printChars) {
 	     				if (b == 0)
 	     					c = '0';
 	     				else
@@ -161,7 +218,36 @@ public class util {
 	     			else
 	     				System.out.print(b + ",");
 	     		}
-	     		it++;
+	     	
+	     	}
+	     	System.out.println("\n---end array ---");
+		
+	}
+		// showChars, instead of ascii number return character
+	  // print values == true => print values instead of characters
+	  
+	public static void printArray(String arrayName,byte[] arr,boolean printChars) {
+		
+		  System.out.println("---begin array ("+arrayName+")---");
+		  System.out.println("Array length : "+arr.length);
+		  
+		  char c; 
+	     	for (byte b : arr) {
+	     		
+	     		if (printChars) {
+	     				if (b == 0)
+	     					c = '0';
+	     				else
+	     				c = (char) b;
+	     				System.out.print(c + ",");
+	     		}
+	     		else {
+	     			if (b==0)
+	     				System.out.print("0"+",");
+	     			else
+	     				System.out.print(b + ",");
+	     		}
+	     	
 	     	}
 	     	System.out.println("\n---end array ---");
 		
