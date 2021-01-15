@@ -143,7 +143,7 @@ public class binPathImpl {
 	     		
 	     	
 
-	     	ByteBuffer key = ByteBuffer.allocate(32);
+	     /*	ByteBuffer key = ByteBuffer.allocate(32);
 	     	key.clear();
 	     	key.putInt(3);
 	     	byte[] bytesTest = key.array();
@@ -151,14 +151,14 @@ public class binPathImpl {
 	     	SecretKeySpec tempKey = new SecretKeySpec(bytesTest, "AES");
         	byte[] cipherText1 = AES.encrypt("123one", tempKey,false);
         	
-        	//AES.writeCipherTextToFile(cipherText1, cipherFile1,true);
+        	AES.writeCipherTextToFile(cipherText1, cipherFile1,true);
         	
         	key.clear();
         	key.putInt(4);
         	bytesTest = key.array();
         	SecretKeySpec secondKey = new SecretKeySpec(bytesTest, "AES");
         	byte[] cipherText2 = AES.encrypt("123two",secondKey,false);
-			
+			*/
         	//AES.writeCipherTextToFile(cipherText2, cipherFile2,true);
         	
         //	byte[] cipherText1 = AES.readCipherText(cipherFile1,true);
@@ -169,9 +169,9 @@ public class binPathImpl {
 			int maxKey=65536;
 			
 			
-			AES.writePrelude(true);
+			//AES.writePrelude(true);
 			
-			Entry ret = null;
+		/*	Entry ret = null;
 			int i=0;
 			//int interval = Integer.MAX_VALUE / maxKey;
 			Instant begin = Instant.now();
@@ -196,7 +196,7 @@ public class binPathImpl {
 				AES.writeLogSimple(ret,true,true);
 			}
 				
-			
+			*/
 			
 		//	AES.cycleKey(0,65536,cipherText);
 	        //AES.cycleKey(65536,131072,cipherText);

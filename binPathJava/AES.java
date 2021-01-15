@@ -38,7 +38,47 @@ import javax.crypto.spec.SecretKeySpec;
 	 public class AES {
 		 
 		 LocalDateTime nowDate;
+		 static String curDir = new String("/home/andrec/workspace_3_8/binPath");
 		 static File logFile = new File("/home/andrec/workspace_3_8/binPath/files/log");
+		 
+		 public static ArrayList<String> decryptPlaintextBlock(int minKey,int maxKey) {
+			 
+				ByteBuffer key = ByteBuffer.allocate(16);
+				ArrayList<String> plainTextList = new ArrayList<>();
+
+			 for (int i=minKey; i< maxKey;i++) {
+				  	key.putInt(i);
+			     	byte[] bytesTest = key.array();
+			     	if (util.isAscii(bytesTest)) {
+			     		System.out.println("\nFound plaintext : \n");
+			     		util.printArray("PlainText",bytesTest,true);
+			     		plainTextList.add(new String(bytesTest));
+			     	}
+			 }
+			 return plainTextList;
+		 }
+		 public static void readPlainTextBlock() {
+			 
+				 int minKey=0;
+				 int maxKey = 65536;
+				 ArrayList< ArrayList<String> > allPlaintexts = new ArrayList<>();
+				 ArrayList<String> cur = new ArrayList<>();
+				 for (int it = 0; it < 2 ; it++) {
+					 System.out.println("Min "+minKey+" Max "+maxKey);
+					 cur = decryptPlaintextBlock(minKey,maxKey);
+					 minKey=maxKey;
+					 maxKey= maxKey*4;
+					 allPlaintexts.add(cur);
+				 }
+				 
+			for (ArrayList<String> block1: allPlaintexts) {
+				for (String str : block1)
+					System.out.println(str);
+			}
+			
+			
+		 }
+		 
 		 
 		 public static void writePrelude(boolean debug) {
 				try {

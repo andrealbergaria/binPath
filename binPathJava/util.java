@@ -48,6 +48,20 @@ public class util {
 	    return bytes;
 
 	}
+	
+	public static void writeFile(String filename,ArrayList < ArrayList<String> > plainTexts) {
+		try {
+		FileWriter fw = new FileWriter(filename);
+		for (ArrayList<String> block1 : plainTexts) {
+			for (String str : block1)
+				fw.write(str);
+		}
+		fw.close();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	
 	public static DateTimeFormatter returnFormatter() {
