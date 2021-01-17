@@ -1,6 +1,7 @@
 package binPathJava;
 
 import java.io.*;
+import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
@@ -41,29 +42,29 @@ import javax.crypto.spec.SecretKeySpec;
 		 public static File logFile = new File("/home/andrec/workspace_3_8/binPath/files/log");
 		 static String curDir = new String("/home/andrec/workspace_3_8/binPath");
 		 public static String plaintextsPath= "/home/andrec/workspace_3_8/binPath/files/plaintexts";
-		 public static ArrayList< ArrayList<Byte[]> > allPlaintexts = new ArrayList<>();
+		 public static ArrayList allPlainTexts = new ArrayList();
 		 // returns plaintext on [min,max] 
-		 public static ArrayList<Byte[]> decryptPlainTextBlock(long minKey,long maxKey,boolean debug) {
+		 public static void decryptPlainTextBlock(BigInteger minKey,BigInteger maxKey,boolean debug) {
 			 
 			 
 			 
 				//key is equal to characters
-				ArrayList<Byte[]> plainTextList = new ArrayList<>();
-				 Byte[] keyAsBytes;
-			 
-				 for (long i=minKey; i< maxKey;i++) {
-					keyAsBytes = util.longToBytes(i);
+				
+				 byte[] keyAsBytes;
+				 
+				 while (minKey.compareTo(maxKey) < 0) {
 					
-				  	
+					keyAsBytes = minKey.toByteArray();
+					
 			     	if (util.isAscii(keyAsBytes,false)) {
-			     		plainTextList.add(keyAsBytes);
+			     		
+			     		allPlainTexts.add(keyAsBytes);
 			     		
 			     	}
-			 }
-			 if (!plainTextList.isEmpty())
-				 return plainTextList;
-			 else
-				 return null;
+					minKey.add(BigInteger.ONE);
+				 }
+			 
+			
 		 }
 		 
 		 public static void main(String[] args) {
@@ -72,37 +73,39 @@ import javax.crypto.spec.SecretKeySpec;
 		 
 		 public static void getPlainTextBlock()  {
 			 
-				 long minKey=0;
-				 long maxKey = 65536;
+				 //long minKey=0;
+				 //long maxKey = 65536;
+
 				 
-				 ArrayList<Byte[]> cur = new ArrayList<>();
 				 
 
-				 // it 9 int value
+				 String minKeyBigInteger = "0000000000000000";
+				 String maxKeyBigInteger = "0000000000065535";
 				 
-				 for (int it = 0; it < 5000; it++) {
-					 long begin = System.nanoTime();
-					// if ( (maxKey-minKey) != 65536)
-					//	 System.err.println("\nABC");
-					 System.out.println("Min "+minKey+" Max "+maxKey+ " it " +it);
-					 //cur = decryptPlainTextBlock(minKey,maxKey,false);
+				 BigInteger minKey = new BigInteger(minKeyBigInteger);
+				 BigInteger maxKey = new BigInteger(maxKeyBigInteger);
+				 
+				 
+				 long begin = System.nanoTime();
+				 for (int it=0; it < 4; it++) {
 					 
-					   long nanoSecs = System.nanoTime() - begin;
-					   long secs = nanoSecs / 1000000000;
-					   long mill = nanoSecs / 1000000;
-					   // System.out.println("Time elapsed (secs : "+secs+") (mill : "+mill+") nanoSec("+nanoSecs+")");
-
-					 if (cur != null) {
-						 allPlaintexts.add(cur);
-					 }
+					 System.out.println("Min "+minKey.toString(16));
+					 System.out.println("Max "+maxKey.toString(16)+ " it " +it);
+				
+					 decryptPlainTextBlock(minKey,maxKey,false);
+					 
 					  
 					 minKey=maxKey;
-					 maxKey= maxKey+65536;
+					 maxKey.add(new BigInteger("65536"));
 					 
 				 }
-						
+					
+				  long nanoSecs = System.nanoTime() - begin;
+				   long secs = nanoSecs / 1000000000;
+				   long mill = nanoSecs / 1000000;
+				 System.out.println("\nTime elapsed . Secs ("+secs+") mill ("+mill+") nano ("+nanoSecs+")");
 				 
-				  if (allPlaintexts != null && !allPlaintexts.isEmpty()) {
+				  if (allPlainTexts != null && !allPlainTexts.isEmpty()) {
 					  // write file lot faster than print it and use bash commands
 					  util.writeFile();
 				  }

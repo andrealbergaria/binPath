@@ -74,17 +74,19 @@ public class util {
 			
 			
 			FileWriter fw = new FileWriter(AES.plaintextsPath,false);
-			
-		for (ArrayList<Byte[]> block1 : AES.allPlaintexts) {
-			for (Byte[] bc : block1) {
+			// List of all plaintexts as byte[]
+			ArrayList temp  =AES.allPlaintexts;
+		for (int i=0; i < temp.size() ; i++) {
+			byte[] bc = (byte[]) temp.get(i);
 				String str = getPlaintext(bc);
 				fw.write(str+"\n");
-				
 			}
-		}
+			
+		
 		
 		System.out.println("[util.writeFile] Wrote plainTexts files");
 		fw.close();
+		
 		}
 		catch(IOException e) {
 			e.printStackTrace();
@@ -94,16 +96,19 @@ public class util {
 public static void printAllPlaintexts() {
 	int index = 0;
 	
-	
-	for (ArrayList<Byte[]> p1 : AES.allPlaintexts) {
+	byte[] b;
+	for (int i=0; i < AES.allPlaintexts.size(); i++) {
 		System.out.println();
-		for (Byte[] p2 : p1) {
-			System.out.println(Arrays.toString(p2));
-			index++;
-		}
-		System.out.println();
+		// type of b (byte[])
+		b = (byte[]) AES.allPlaintexts.get(i);
+		System.out.println(Arrays.toString(b));
+		index++;
 	}
-}
+	System.out.println("\nNumber of plaintexts printed "+index);
+		
+	
+	}
+
 	
 	public static DateTimeFormatter returnFormatter() {
 		  DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSSSS");
@@ -138,39 +143,34 @@ public static void printAllPlaintexts() {
 	 
 	 // l  represents the long (key to be checked for ascii)
       public static boolean isAscii(byte[] keyToBeTested,boolean debug) {
-    	 
-    	
-    	  
-    	  if (debug) {
-    		  
+    	   
+    	  if (debug) 
     		  printArray("isAscii",keyToBeTested,true);
-    	  }
     		 
-      			for (byte b: keyToBeTested) {
-      				
-      				if ( b > 0x7f | b <=0x20) {
+      		 for (byte b: keyToBeTested) {
+      			 if ( b > 0x7f | b <=0x20) {
       					if (b!=0)
       						return false;
       				}
-      			}
+      		 }
+      		
           return true;
     	 
       }
       
       
       
-      public static String getPlaintext(Byte[] bArr) {
-    	  
-    	  byte[] bClass = util.toPrimitives(bArr);
+      public static String getPlaintext(byte[] bArr) {
     	  
     	  char [] temp = new char[bArr.length];
     	  
     	  for (int i=0; i < bArr.length; i++) {
-    		  if (bArr[i] > 0)
-    			  temp[i] = (char) bClass[i];
+    		  if (bArr[i] != 0)
+    			  temp[i] = (char) bArr[i];
     		  else
     			  temp[i] = '0';
     	  }
+    	  
     	  String s= new String(temp);
     	  
     	  return s;

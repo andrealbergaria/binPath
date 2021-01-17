@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83414155-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  <title>How does the default hashCode() work?</title>
+  <meta name="description" content="In which scratching the surface of hashCode() leads to a speleologytrip through the JVM source reaching object layout, biased locking, andsurprising performa...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://srvaroa.github.io/jvm/java/openjdk/biased-locking/2017/01/30/hashCode.html">
+  <link rel="alternate" type="application/rss+xml" title="Galo Navarro" href="https://srvaroa.github.io/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Galo Navarro</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <ul>
+          <li><a href="https://twitter.com/srvaroa" title="Twitter">
+              <span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span></a>
+          </li>
+          <li><a href="https://github.com/srvaroa" title="GitHub">
+              <span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span></a>
+          </li>
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How does the default hashCode() work?</h1>
+    <p class="post-meta"><time datetime="2017-01-30T08:29:02+00:00" itemprop="datePublished">Jan 30, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><em>In which scratching the surface of <code class="language-plaintext highlighter-rouge">hashCode()</code> leads to a speleology
+trip through the JVM source reaching object layout, biased locking, and
+surprising performance implications of relying on the default
+<code class="language-plaintext highlighter-rouge">hashCode()</code>.</em></p>
+
+<p><em>Abundant thanks to <a href="https://twitter.com/giltene">Gil Tene</a> and <a href="https://twitter.com/duarte_nunes">Duarte
+Nunes</a> reviewing drafts of this
+article and their very valuable insights, suggestions and edits.  Any
+remaining errors are my own.</em></p>
+
+<h2 id="a-trivial-mystery">A trivial mystery</h2>
+
+<p>Last week at work I submitted a trivial change to a class, an
+implementation of <code class="language-plaintext highlighter-rouge">toString()</code> so logs would be meaningful.  To my
+surprise, the change caused a ~5% coverage drop in the class.  I knew
+that all new code was covered by existing unit tests so, what could be
+wrong?  Comparing coverage reports a sharper colleague noticed that the
+implementation of <code class="language-plaintext highlighter-rouge">hashCode()</code> was covered before the change but not
+after.  Of course, that made sense: the default <code class="language-plaintext highlighter-rouge">toString()</code> calls
+<code class="language-plaintext highlighter-rouge">hashCode()</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public String toString() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+}
+</code></pre></div></div>
+
+<p>After overriding <code class="language-plaintext highlighter-rouge">toString()</code>, our custom <code class="language-plaintext highlighter-rouge">hashCode()</code> was no longer
+being called.  We were missing a test.</p>
+
+<p>Everyone knew the default <code class="language-plaintext highlighter-rouge">toString()</code> but..</p>
+
+<h2 id="what-is-the-default-implementation-of-hashcode">What is the default implementation of <code class="language-plaintext highlighter-rouge">hashCode()</code>?</h2>
+
+<p>The value returned by the default implementation of <code class="language-plaintext highlighter-rouge">hashCode()</code> is
+called <strong>identity hash code</strong> so I will use this term from now on to
+distinguish it from the hash provided by overriden implementations of
+<code class="language-plaintext highlighter-rouge">hashCode()</code>.  FYI: even if a class overrides <code class="language-plaintext highlighter-rouge">hashCode()</code>, you can
+always get the identity hash code of an object <code class="language-plaintext highlighter-rouge">o</code> by calling
+<code class="language-plaintext highlighter-rouge">System.identityHashCode(o)</code>.</p>
+
+<p>Common wisdom is that the identity hash code uses the integer
+representation of the memory address.  That’s also what the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#hashCode--">J2SE
+JavaDocs for Object.hashCode()</a>
+imply:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>... is typically implemented by converting the internal address of
+the object into an integer, but this implementation technique is not
+required by the Java™ programming language.
+</code></pre></div></div>
+
+<p>Still, this seems problematic as the method contract requires that:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Whenever it is invoked on the same object more than once during an
+execution of a Java application, the hashCode method must consistently
+return the same integer.
+</code></pre></div></div>
+
+<p>Given that the JVM will relocate objects (e.g. during garbage collection
+cycles due to promotion or compaction), after we calculate an object’s
+identity hash we must be able to retain it in a way that survives object
+relocation.</p>
+
+<p>A possibility could be to take the current memory position of the object
+on the first call to <code class="language-plaintext highlighter-rouge">hashCode()</code>, and save it somewhere along with the
+object, like the object’s header.  That way, if the object is moved to a
+different memory location, it would carry the original hash with it.  A
+caveat of this method is that it won’t prevent two objects from having
+the same identity hash, but that’s allowed by the
+<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#hashCode--">spec</a>.</p>
+
+<p>The best confirmation would be to to look at the source.  Unfortunately,
+the default <code class="language-plaintext highlighter-rouge">java.lang.Object::hashCode()</code> <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/jdk/file/a71d26266469/src/share/classes/java/lang/Object.java#l100">is a native
+function</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public native int hashCode();
+</code></pre></div></div>
+
+<p>Helmets on.</p>
+
+<h2 id="will-the-real-hashcode-please-stand-up">Will the real <code class="language-plaintext highlighter-rouge">hashCode()</code> please stand up</h2>
+
+<p>Note that the identity <code class="language-plaintext highlighter-rouge">hashCode()</code> implementation <strong>is dependant on the
+JVM</strong>.  Since I will only look at OpenJDK sources, you should assume
+this specific implementation whenever I talk about the JVM.  All links
+refer to <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509">changeset 5820:87ee5ee27509</a>
+of the <a href="http://hg.openjdk.java.net/jdk8/jdk8/hotspot">Hotspot tree</a>,
+I assume that most of it will also be applicable to Oracle’s JVM, but
+things could (in fact, are) different in others (more about this later.)</p>
+
+<p>OpenJDK defines entry points for <code class="language-plaintext highlighter-rouge">hashCode()</code> at
+<code class="language-plaintext highlighter-rouge">src/share/vm/prims/jvm.h</code> and <code class="language-plaintext highlighter-rouge">src/share/vm/prims/jvm.cpp</code>.  The latter
+has:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>508 JVM_ENTRY(jint, JVM_IHashCode(JNIEnv* env, jobject handle))
+509   JVMWrapper("JVM_IHashCode");
+510   // as implemented in the classic virtual machine; return 0 if object is NULL
+511   return handle == NULL ? 0 : ObjectSynchronizer::FastHashCode (THREAD, JNIHandles::resolve_non_null(handle)) ;
+512 JVM_END
+</code></pre></div></div>
+
+<p><a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/synchronizer.cpp#l601">ObjectSynchronizer::FastHashCode()</a>
+is also called from <code class="language-plaintext highlighter-rouge">identity_hash_value_for</code>, which is used from a few
+other call sites (e.g.: <code class="language-plaintext highlighter-rouge">System.identityHashCode()</code>)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>708 intptr_t ObjectSynchronizer::identity_hash_value_for(Handle obj) {
+709   return FastHashCode (Thread::current(), obj()) ;
+710 }
+</code></pre></div></div>
+
+<p>One might naively expect
+<a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/synchronizer.cpp#l601">ObjectSynchronizer::FastHashCode()</a>
+to do something like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (obj.hash() == 0) {
+    obj.set_hash(generate_new_hash());
+}
+return obj.hash();
+</code></pre></div></div>
+
+<p>But it turns out to be a hundred line function that seems to be far more
+complicated.  At least we can spot a couple of if-not-exists-generate
+blocks like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>685   mark = monitor-&gt;header();
+...
+687   hash = mark-&gt;hash();
+688   if (hash == 0) {
+689     hash = get_next_hash(Self, obj);
+...
+701   }
+...
+703   return hash;
+</code></pre></div></div>
+
+<p>Which seems to confirm our hypothesis.  Let’s ignore that <code class="language-plaintext highlighter-rouge">monitor</code> for
+now, and be satisfied that it gives us the object header.  It is kept at
+<code class="language-plaintext highlighter-rouge">mark</code>, a pointer to an instance of
+<a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/oops/markOop.hpp">markOop</a>,
+which represents the <a href="http://openjdk.java.net/groups/hotspot/docs/HotSpotGlossary.html#markWord">mark
+word</a>
+that belongs in the low bits of the object header.  So, tries to get a
+hash inside the mark word.  If it’s not there, it’s generated using
+<code class="language-plaintext highlighter-rouge">get_next_hash</code>, saved, and returned.</p>
+
+<h2 id="the-actual-identity-hash-generation">The actual identity hash generation</h2>
+
+<p>As we saw, this happens at
+<a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/synchronizer.cpp#l555">get_next_hash</a>.
+This function offers six methods based on the value of some <code class="language-plaintext highlighter-rouge">hashCode</code>
+variable.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0. A randomly generated number.
+1. A function of memory address of the object.
+2. A hardcoded 1 (used for sensitivity testing.)
+3. A sequence.
+4. The memory address of the object, cast to int.
+5. Thread state combined with xorshift (https://en.wikipedia.org/wiki/Xorshift)
+</code></pre></div></div>
+
+<p>So what’s the default method?  OpenJDK 8 seems to default on
+5 according to <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/globals.hpp#l1127">globals.hpp</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1127   product(intx, hashCode, 5,                                                \
+1128           "(Unstable) select hashCode generation algorithm")                \
+</code></pre></div></div>
+
+<p>OpenJDK 9 <a href="http://hg.openjdk.java.net/jdk9/jdk9/hotspot/file/fc7e94cb7485/src/share/vm/runtime/globals.hpp#l1198">keeps the same
+default</a>.  Looking at previous versions, both <a href="http://hg.openjdk.java.net/jdk7u/jdk7u/hotspot/file/5b9a416a5632/src/share/vm/runtime/globals.hpp#l1100">OpenJDK 7</a> and <a href="http://hg.openjdk.java.net/jdk6/jdk6/hotspot/file/5cec449cc409/src/share/vm/runtime/globals.hpp#l1128">OpenJDK
+6</a>
+use the first method, a <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/os.cpp#l814">random number generator</a>.</p>
+
+<p>So, unless I’m looking at the wrong place <strong>the default hashCode
+implementation in OpenJDK has nothing to do with the memory address</strong>,
+at least since version 6.</p>
+
+<h2 id="object-headers-and-synchronization">Object headers and synchronization</h2>
+
+<p>Let’s go back a couple of points that we left unexamined.  First,
+<a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/synchronizer.cpp#l601">ObjectSynchronizer::FastHashCode()</a>
+seems overly complex, needing over 100 lines to perform what we though
+was a trivial get-or-generate operation.  Second, who is this <code class="language-plaintext highlighter-rouge">monitor</code>
+and why does it have our object’s header?</p>
+
+<p>The structure of the mark word is a good place to start making progress.
+In OpenJDK, it looks <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/oops/markOop.hpp#l37">like
+this</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>30 // The markOop describes the header of an object.
+31 //
+32 // Note that the mark is not a real oop but just a word.
+33 // It is placed in the oop hierarchy for historical reasons.
+34 //
+35 // Bit-format of an object header (most significant first, big endian layout below):
+36 //
+37 //  32 bits:
+38 //  --------
+39 //             hash:25 ------------&gt;| age:4    biased_lock:1 lock:2 (normal object)
+40 //             JavaThread*:23 epoch:2 age:4    biased_lock:1 lock:2 (biased object)
+41 //             size:32 ------------------------------------------&gt;| (CMS free block)
+42 //             PromotedObject*:29 ----------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)
+43 //
+44 //  64 bits:
+45 //  --------
+46 //  unused:25 hash:31 --&gt;| unused:1   age:4    biased_lock:1 lock:2 (normal object)
+47 //  JavaThread*:54 epoch:2 unused:1   age:4    biased_lock:1 lock:2 (biased object)
+48 //  PromotedObject*:61 ---------------------&gt;| promo_bits:3 -----&gt;| (CMS promoted object)
+49 //  size:64 -----------------------------------------------------&gt;| (CMS free block)
+50 //
+51 //  unused:25 hash:31 --&gt;| cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; normal object)
+52 //  JavaThread*:54 epoch:2 cms_free:1 age:4    biased_lock:1 lock:2 (COOPs &amp;&amp; biased object)
+53 //  narrowOop:32 unused:24 cms_free:1 unused:4 promo_bits:3 -----&gt;| (COOPs &amp;&amp; CMS promoted object)
+54 //  unused:21 size:35 --&gt;| cms_free:1 unused:7 ------------------&gt;| (COOPs &amp;&amp; CMS free block)
+</code></pre></div></div>
+
+<p>The format is slightly different on 32 and 64 bits.  The latter has two
+variants depending on whether <a href="https://wiki.openjdk.java.net/display/HotSpot/CompressedOops">Compressed Object
+Pointers</a>
+are enabled.  Both Oracle and OpenJDK 8 <strong>do</strong> by default.</p>
+
+<p>Object headers may thus relate to a free block or an actual object, in
+which case there are multiple possible states.  In the simplest,
+(“normal object”) the identity hash is stored directly in the low
+addresses of the header.</p>
+
+<p>But in other states, we find a pointer to a <code class="language-plaintext highlighter-rouge">JavaThread</code> or a
+<code class="language-plaintext highlighter-rouge">PromotedObject</code>.  The plot thickens:  if we put the identity hash in a
+“normal object”, will someone take it away?  Where?  If the object is
+biased, where can we get/set the hash?  What is a biased object?</p>
+
+<p>Let’s try to answer those questions.</p>
+
+<h2 id="biased-locking">Biased locking</h2>
+
+<p>Biased objects appear as a result of <a href="https://blogs.oracle.com/dave/entry/biased_locking_in_hotspot">Biased
+Locking</a>.
+A (<a href="https://www.google.com/patents/US7814488">patented</a>!) feature
+enabled by default from HotSpot 6 that tries to alleviate the cost of
+locking objects.  Such operations are expensive because their
+implementation often relies on atomic CPU instructions
+(<a href="https://en.wikipedia.org/wiki/Compare-and-swap">CAS</a>) in order to
+safely handle lock/unlock requests on the object from different threads.
+It was observed that in most applications, the majority of objects are
+only ever locked by one thread so paying the cost of the atomic
+operation was often a waste.  To avoid it, JVMs with biased locking
+allow threads to try and “bias” an object towards themselves.  While an
+object is biased, the lucky thread can lock/unlock the object without
+atomic instructions.  As long as there are no threads contending for the
+same object, we’ll gain performance.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">biased_lock</code> bit in the header indicates whether an object is
+biased by the thread pointed at by <code class="language-plaintext highlighter-rouge">JavaThread*</code>.  The <code class="language-plaintext highlighter-rouge">lock</code> bits
+indicate whether the object is locked.</p>
+
+<p>Precisely because OpenJDK’s implementation of biased locking requires
+writing a pointer in the mark word, it also needs to relocate the real
+mark word (which contains the identity hash.)</p>
+
+<p>This could explain the additional complexity in <code class="language-plaintext highlighter-rouge">FastHashCode</code>.  The
+header not only holds the identity hash code, but also locking state
+(like the pointer to the lock’s owner thread).  So we need to consider
+all cases and find where the identity hash resides.</p>
+
+<p>Let’s go read <code class="language-plaintext highlighter-rouge">FastHashCode</code>.  The first thing we find is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>601 intptr_t ObjectSynchronizer::FastHashCode (Thread * Self, oop obj) {
+602   if (UseBiasedLocking) {
+610     if (obj-&gt;mark()-&gt;has_bias_pattern()) {
+          ...
+617       BiasedLocking::revoke_and_rebias(hobj, false, JavaThread::current());
+          ...
+619       assert(!obj-&gt;mark()-&gt;has_bias_pattern(), "biases should be revoked by now");
+620     }
+621   }
+</code></pre></div></div>
+
+<p>Wait.  It just <strong>revoked existing biases, and disabled biased locking on
+the object</strong> (the <code class="language-plaintext highlighter-rouge">false</code> means “don’t attempt rebias”).  A few lines
+down, this is indeed an invariant:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>637   // object should remain ineligible for biased locking
+638   assert (!mark-&gt;has_bias_pattern(), "invariant") ;
+</code></pre></div></div>
+
+<p>If I’m reading correctly, this means that <strong>simply asking for the
+identity hash code of an object will disable biased locking</strong>, which in
+turn forces any attempt to lock the object to use expensive atomic
+instructions.  Even if there is only one thread.</p>
+
+<p>Oh boy.</p>
+
+<h2 id="why-does-keeping-biased-locking-state-conflict-with-keeping-the-identity-hash-code">Why does keeping biased locking state conflict with keeping the identity hash code?</h2>
+
+<p>To answer this question we must understand which are the possible
+locations of the mark word (that contains the identity hash) depending
+on the lock state of the object.  The transitions are illustrated in
+this diagram from the <a href="https://wiki.openjdk.java.net/display/HotSpot/Synchronization">HotSpot
+Wiki</a>:</p>
+
+<p align="center"><a href="https://wiki.openjdk.java.net/display/HotSpot/Synchronization" alt="Hotspot lock state diagram"><img src="/assets/hotspot_object_states.gif" /></a></p>
+
+<p>My (fallible) reasoning is the following.</p>
+
+<p>For the 4 states at the top of the diagram, the OpenJDK will be able to
+use “thin” lock representations.  In the simplest case (no locks) this
+means having the identity hash and other data directly in the object’s
+space for the mark word:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>46 //  unused:25 hash:31 --&gt;| unused:1   age:4    biased_lock:1 lock:2 (normal object)
+</code></pre></div></div>
+
+<p>in more complex cases, it needs that space to keep a pointer to the
+“lock record”.  The mark word will thus be “displaced” and put somewhere
+else.</p>
+
+<p>While we have only one thread trying to lock the object, that pointer
+will actually refer to a memory location in the thread’s own stack.
+Which is twice good: it’s fast (no contention or coordination to access
+that memory location), and it suffices for the thread to identify that
+it owns the lock (because the memory location points to its own stack.)</p>
+
+<p>But this won’t work in all cases.  If we have contended objects (e.g.
+objects used on synchronized statements that many threads traverse) we
+will need a more complex structure that fits not only a copy of the
+object’s header (again, “displaced”), but also a <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/objectMonitor.hpp#l126">list of
+waiters</a>.
+A similar need for a list of waiters appears if a thread executes
+<code class="language-plaintext highlighter-rouge">object.wait()</code>.</p>
+
+<p>This richer data structure is the
+<a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/objectMonitor.hpp">ObjectMonitor</a>,
+which is referred to as a the “heavyweight” monitor in the diagram.  The
+value left in the object’s header doesn’t point to a “displaced mark
+word” anymore, but to an actual object (the monitor).  Accessing the
+identity hash code will now require “inflating the monitor”: chasing a
+pointer to an object and reading/mutating whichever field contains the
+displaced mark word.  Which is more expensive and requires coordination.</p>
+
+<p><code class="language-plaintext highlighter-rouge">FastHashCode</code> does have work to do.</p>
+
+<p>Lines <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/synchronizer.cpp#l640">L640</a>
+to <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/synchronizer.cpp#l680">L680</a>
+deal with finding the header and checking for a cached identity hash.  I
+believe these are a fast path that probe for cases that don’t need to
+inflate the monitor.</p>
+
+<p>From <a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/87ee5ee27509/src/share/vm/runtime/synchronizer.cpp#l682">L682</a>
+it needs to bite the bullet:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>682   // Inflate the monitor to set hash code
+683   monitor = ObjectSynchronizer::inflate(Self, obj);
+
+684   // Load displaced header and check it has hash code
+685   mark = monitor-&gt;header();
+...
+687   hash = mark-&gt;hash();
+</code></pre></div></div>
+
+<p>At this point, if the id. hash is there (<code class="language-plaintext highlighter-rouge">hash != 0</code>), the JVM can
+return.  Otherwise we’ll get one from <code class="language-plaintext highlighter-rouge">get_next_hash</code> and safely store
+it in the displaced header kept by the <code class="language-plaintext highlighter-rouge">ObjectMonitor</code>.</p>
+
+<p>This seems to offer a reasonable explanation to why calling <code class="language-plaintext highlighter-rouge">hashCode()</code>
+on an object of a class that doesn’t override the default implementation
+makes the object ineligible for biased locking:</p>
+
+<ul>
+  <li>In order to keep the identity hash of an object consistent after
+relocation we need to store the hash in the object’s header.</li>
+  <li>Threads asking for the identity hash may not even care about locking
+the object, but in practise they will be sharing data structures used
+by the locking mechanism.  This is a complex beast in itself that
+might be not only mutating, but also <strong>moving</strong> (displacing) the
+header contents.</li>
+  <li>Biased locking helped perform lock/unlock operations without atomic
+operations, and this was effective as long as only one thread locked
+the object because we could keep the lock state in the mark word.  I’m
+not 100% sure here, but I understand that since other threads may ask
+for the identity hash, <strong>even if there is a single thread interested in
+the lock</strong>, the header word will be contended and require atomic
+operations to be handled correctly.  Which defeats the whole point of
+biased locking.</li>
+</ul>
+
+<h2 id="recap">Recap</h2>
+
+<ul>
+  <li>The default <code class="language-plaintext highlighter-rouge">hashCode()</code> implementation (identity hash code) <strong>has
+nothing to do with the object’s memory address</strong>, at least in OpenJDK.
+In versions 6 and 7 it is a randomly generated number.  In 8 and, for
+now, 9, it is a number based on the thread state.
+<a href="https://stackoverflow.com/questions/1961146/memory-address-of-variables-in-java/20680667#20680667">Here</a>
+is a test that yields the same conclusion.
+    <ul>
+      <li>Proving that “implementation-dependent” warns are not aesthetic:
+<a href="https://www.azul.com/products/zing/virtual-machine/">Azul’s Zing</a>
+<strong>does</strong> generate the identity hash from the object’s memory
+address.</li>
+    </ul>
+  </li>
+  <li>In HotSpot, the result of the identity hash generation is generated
+once, and cached in the <strong>mark word</strong> of the object’s header.
+    <ul>
+      <li>Zing uses a different solution to keep it consistent despite object
+relocations, in which they delay storing the id. hash until the
+object relocates.  At that point, it’s stored in a “pre-header”</li>
+    </ul>
+  </li>
+  <li>In HotSpot, calling the default <code class="language-plaintext highlighter-rouge">hashCode()</code>, or
+<code class="language-plaintext highlighter-rouge">System.identityHashCode()</code> will make the object ineligible for biased
+locking.
+    <ul>
+      <li>This implies that <strong>if you are synchronizing on objects that have no
+contention, you’d better override the default <code class="language-plaintext highlighter-rouge">hashCode()</code>
+implementation</strong> or you’ll miss out on JVM optimizations.</li>
+    </ul>
+  </li>
+  <li><a href="https://blogs.oracle.com/dave/entry/biased_locking_in_hotspot">It is
+possible</a>
+to disable biased locking in HotSpot, on a per-object basis.
+    <ul>
+      <li>This can be very useful.  I’ve seen applications very heavy on
+contended producer/consumer queues where biased locking was causing
+more trouble than benefit, so we disabled the feature completely.
+Turns out, we could’ve done this only on specific objects/classes
+simply by calling System.identityHashCode() on them.</li>
+    </ul>
+  </li>
+  <li><del>I have found no HotSpot flag that allows changing the default
+generator, so experimenting with other options might need to compile
+from source</del>.
+    <ul>
+      <li>Admittedly, I didn’t look much. <a href="https://twitter.com/jmichaelras">Michael Rasmussen</a>
+<a href="https://twitter.com/jmichaelras/status/827441456059187200">kindly pointed out</a> that
+<strong>-XX:hashCode=2</strong> can be used to change the default.  Thanks!</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="benchmarks">Benchmarks</h2>
+
+<p>I wrote a simple <a href="http://openjdk.java.net/projects/code-tools/jmh/">JMH</a>
+harness to verify those conclusions.</p>
+
+<p>The benchmark (<a href="https://gist.github.com/srvaroa/aa1f6c273ea6ae215bbf43e481f7689e">source</a>)
+does something equivalent to this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>object.hashCode();
+while(true) {
+    synchronized(object) {
+        counter++;
+    }
+}
+</code></pre></div></div>
+
+<p>One configuration (<code class="language-plaintext highlighter-rouge">withIdHash</code>) synchronizes on an object that uses the
+identity hash, so we expect that biased locking will be disabled as soon
+as <code class="language-plaintext highlighter-rouge">hashCode()</code> is invoked.  A second configuration (<code class="language-plaintext highlighter-rouge">withoutIdHash</code>)
+implements a custom hash code so biased locking should not be disabled.
+Each configuration is ran first with one thread, then with two threads
+(these have the suffix “Contended”.)</p>
+
+<p>By the way, we must enable <code class="language-plaintext highlighter-rouge">-XX:BiasedLockingStartupDelay=0</code> as
+otherwise the JVM will take 4s to trigger the optimisation distorting
+the results.</p>
+
+<p>The first execution:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Benchmark                                       Mode  Cnt       Score      Error   Units
+BiasedLockingBenchmark.withIdHash              thrpt  100   35168,021 ±  230,252  ops/ms
+BiasedLockingBenchmark.withoutIdHash           thrpt  100  173742,468 ± 4364,491  ops/ms
+BiasedLockingBenchmark.withIdHashContended     thrpt  100   22478,109 ± 1650,649  ops/ms
+BiasedLockingBenchmark.withoutIdHashContended  thrpt  100   20061,973 ±  786,021  ops/ms
+</code></pre></div></div>
+
+<p>We can see that the using a custom hash code makes the lock/unlock loop
+work 4x faster than the one using the identity hash code (which disables
+biased locking.)  When two threads contend for the lock, biased locking
+is disabled anyway so there is no significative difference between both
+hash methods.</p>
+
+<p>A second run disables biased locking (<code class="language-plaintext highlighter-rouge">-XX:-UseBiasedLocking</code>) in all
+configurations.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Benchmark                                       Mode  Cnt      Score      Error   Units
+BiasedLockingBenchmark.withIdHash              thrpt  100  37374,774 ±  204,795  ops/ms
+BiasedLockingBenchmark.withoutIdHash           thrpt  100  36961,826 ±  214,083  ops/ms
+BiasedLockingBenchmark.withIdHashContended     thrpt  100  18349,906 ± 1246,372  ops/ms
+BiasedLockingBenchmark.withoutIdHashContended  thrpt  100  18262,290 ± 1371,588  ops/ms
+</code></pre></div></div>
+
+<p>The hash method no longer has any impact and <code class="language-plaintext highlighter-rouge">withoutIdHash</code> loses its
+advantage.</p>
+
+<p>(All benchmarks were ran on a 2,7 GHz Intel Core i5.)</p>
+
+<h2 id="references">References</h2>
+
+<p>Whatever is not wild speculation and my weak reasoning trying to make
+sense of the JVM sources, comes from stitching together various sources
+about layout, biased locking, etc.  The main ones are below:</p>
+
+<ul>
+  <li><a href="https://blogs.oracle.com/dave/entry/biased_locking_in_hotspot">https://blogs.oracle.com/dave/entry/biased_locking_in_hotspot</a></li>
+  <li><a href="http://fuseyism.com/openjdk/cvmi/java2vm.xhtml">http://fuseyism.com/openjdk/cvmi/java2vm.xhtml</a></li>
+  <li><a href="http://www.dcs.gla.ac.uk/~jsinger/pdfs/sicsa_openjdk/OpenJDKArchitecture.pdf">http://www.dcs.gla.ac.uk/~jsinger/pdfs/sicsa_openjdk/OpenJDKArchitecture.pdf</a></li>
+  <li><a href="https://www.infoq.com/articles/Introduction-to-HotSpot">https://www.infoq.com/articles/Introduction-to-HotSpot</a></li>
+  <li><a href="http://blog.takipi.com/5-things-you-didnt-know-about-synchronization-in-java-and-scala/#comment-1006598967">http://blog.takipi.com/5-things-you-didnt-know-about-synchronization-in-java-and-scala/#comment-1006598967</a></li>
+  <li><a href="http://www.azulsystems.com/blog/cliff/2010-01-09-biased-locking">http://www.azulsystems.com/blog/cliff/2010-01-09-biased-locking</a></li>
+  <li><a href="https://dzone.com/articles/why-should-you-care-about-equals-and-hashcode">https://dzone.com/articles/why-should-you-care-about-equals-and-hashcode</a></li>
+  <li><a href="https://wiki.openjdk.java.net/display/HotSpot/Synchronization">https://wiki.openjdk.java.net/display/HotSpot/Synchronization</a></li>
+  <li><a href="https://mechanical-sympathy.blogspot.com.es/2011/11/biased-locking-osr-and-benchmarking-fun.html">https://mechanical-sympathy.blogspot.com.es/2011/11/biased-locking-osr-and-benchmarking-fun.html</a>:</li>
+</ul>
+
+  </div>
+
+</article>
+
+<p style='font-size:90%; font-style:italic; text-align:center; margin-top:50px;'>
+To get notifications for new posts, subscribe to the
+<a href="/feed.xml">RSS feed</a>
+or follow me on <a href="https://twitter.com/srvaroa">Twitter</a>.
+Here is the log of <a href="/">older posts</a>.
+</p>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      &copy; 2020 Galo Navarro
+    </div>
+    <div class="footer-col-wrapper">
+      This site is built with <a href="http://www.vim.org/">Vim</a> and
+      <a href="https://jekyllrb.com/">Jekyll</a>.
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
