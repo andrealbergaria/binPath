@@ -11,5 +11,7 @@ git add .
 git commit -m "$1"
 echo -e "\nCommited git repo with msg "$1
 git push https://github.com/andrealbergaria/binPath
+git push https://github.com/andrealbergaria/javaDoIt
+
 
 . backup.sh
