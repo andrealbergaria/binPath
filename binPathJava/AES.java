@@ -53,6 +53,8 @@ import javax.crypto.spec.SecretKeySpec;
 				 byte[] keyAsBytes;
 				 
 				 while (minKey.compareTo(maxKey) < 0) {
+					System.out.println("I : "+minKey);
+					System.out.println("I2 : "+maxKey);
 					
 					keyAsBytes = minKey.toByteArray();
 					
@@ -61,7 +63,7 @@ import javax.crypto.spec.SecretKeySpec;
 			     		allPlainTexts.add(keyAsBytes);
 			     		
 			     	}
-					minKey.add(BigInteger.ONE);
+					minKey = minKey.add(BigInteger.ONE);
 				 }
 			 
 			
