@@ -75,7 +75,7 @@ public class util {
 			
 			FileWriter fw = new FileWriter(AES.plaintextsPath,false);
 			// List of all plaintexts as byte[]
-			ArrayList temp  =AES.allPlaintexts;
+			ArrayList temp  =AES.allPlainTexts;
 		for (int i=0; i < temp.size() ; i++) {
 			byte[] bc = (byte[]) temp.get(i);
 				String str = getPlaintext(bc);
@@ -97,10 +97,10 @@ public static void printAllPlaintexts() {
 	int index = 0;
 	
 	byte[] b;
-	for (int i=0; i < AES.allPlaintexts.size(); i++) {
+	for (int i=0; i < AES.allPlainTexts.size(); i++) {
 		System.out.println();
 		// type of b (byte[])
-		b = (byte[]) AES.allPlaintexts.get(i);
+		b = (byte[]) AES.allPlainTexts.get(i);
 		System.out.println(Arrays.toString(b));
 		index++;
 	}
