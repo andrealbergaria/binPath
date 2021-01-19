@@ -18,3 +18,21 @@ its infinite
 
 
 7*8 = 56 ..is 56 multiple of 7 andf 8?
+
+common multiple ...
+2*6 = 12
+3*6 = 18
+
+can a common multiple exists?? or has one exact factorization
+so all mulitple are different 
+
+12 = 2*6
+12 = 3*4
+12= 3*2*2
+this i realted to partition so...i ve done that
+each number has a unique set of partitions
+so 12 =2*6,
+   12 = 3*4
+   
+   those are All partitions , so since partitions are unique there can't be a common multiple 
+ 
