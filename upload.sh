@@ -12,5 +12,4 @@ git commit -m "$1"
 git push https://github.com/andrealbergaria/binPath
 
 
-
 . /home/andrec/workspace_3_8/backup.sh
