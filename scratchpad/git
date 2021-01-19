@@ -1,0 +1,171 @@
+So technically, git stores password and username on   /.git-credentials. 
+
+
+i have set on /etc/gitconfig, the userHttpPath = true. so it should discriminate, between two different urls
+// set credentials on a global matter
+
+#how can the below be true?? like for instance the dots...
+#git config credential.https://example.com.username myusername
+
+#If the protocol, hostname, and
+#       username (if we already have one) match,
+
+# if they match, how can git different between repos (need to use userHttpPath)
+
+# ~/.git-credentials has
+# https://andrealbergaria:900c@github.com/andrealbergaria
+# cant upload
+# if failed, will remove it from ~git-credentials
+
+commit 2 more recent
+
+commit 1 <- commit 2 -< HEAD
+
+if i want to rebase then commit2 <- Commit1 <- HEAD
+
+then past commits dont get deleted
+
+if i move the HEAD, does it afftect history
+
+do i have a HEAD in both the repo and local?
+
+git garbage collection
+
+so , supposing HEAD -> /src
+and remote HEAD -> /src
+
+so if i checout local, ( HEAD-> new Branch)
+
+
+Which means if you clone that repository, by default that branch will be checked out. 2
+
+Refs come in two flavors: regular and symbolic. Regular refs are pointers to commits (or other things, but that's another thread,symbolics are like HEAD
+
+so remote is branch A , and local branch B
+
+In your local repo, HEAD is used to tell which branch to move when we make a new commit. For a remote repo, HEAD is instead used to tell new clones which branch to use as their local HEAD. Mostly this is master, but it doesn't have to be.
+
+
+is it possible to move HEAD
+
+is it possible to checkout on remote
+well, if local is the one that checks out then why do i need remote branches
+
+
+git checkout will also
+       update HEAD to set the specified branch as the current branch.
+       this is only local, 
+       so HEAD local
+
+        Specifically, git commit creates a new commit d,
+       whose parent is commit c, and then updates branch master to refer to
+       new commit d.
+       
+       so 
+       
+ cat .git/HEAD
+ref: refs/heads/master
+
+ git checkout HEAD^0 
+ 
+ if not detached HEAD,always branch
+ is there any way , to the detached HEAD referes to old commits
+ 
+ https://www.git-tower.com/learn/git/faq/detached-head-when-checkout-commit/
+  these changes do NOT belong to any branch. so what can i do with detached head
+ so if not belonging to any branch, where do i put files
+ unless i use commit, but which branch will it use 
+ so
+ detached HEAD , commit1 <- commit2
+ if <- commit2 <- branch, there has to a be a branch right
+ or else, just use detached head for everythign ...its impoosible
+ 
+ i can use detacvhed HEAD, everywhere, wheter its on a branch or not
+ this implies that i can mess with every branch , using HEAD detach
+ so commits are referenced on branches..how can head detach decide which branch
+ 
+ 
+ 
+
+ 
+ so technmiaclly, if i use HEAD detach, i can alter the sequence of commits of any branch
+ 
+ inserting a HEAD detach, how does it know where to insert the commit on the list, like parent and child
+ commit1<-commit2<-commit3
+ detach
+ commit1<-detached-<commit2<-commit3
+ 
+ does it put forward or before the commit
+ 
+ 
+ what list is that anyway, since it just points to a commit
+ 
+ can i commit head detach
+ where does the head deatch, stores info ?? on the commit list? since its not on a branch
+ 
+ so how does the list transverse backwards and forward
+ 
+ tihs has implications, what if i want to insert a commit before some commit or after that commit, how 
+ can i reference it in a list ? rebuild list
+ 
+ 
+ <AAC> what if i want to be the parent of the commit
+ 
+ 
+ commit1 - commit2 - commit3
+ 
+ Since commits, alter history, how can git uses history, like, if i want to reference a commit of 
+ so i wanto to access commit3 from commit2... ( a simply list of commits, how would it do ?? since it 
+ only goes forward)
+ 
+ 
+ so. If i have : commit3 <- commit2 <- commit1 . If i want to access commit1 , how would i do it ?? since thet list only goes forward
+ 
+ i think that's why branches are used
+ 
+ what if i got HEAD= commit 2...for example and want to access commit1
+ 
+ git rev-parse <commit>^1 // print parent of commit
+ 
+ 
+ 
+So for every branch, there is a HEAD (either 
+how can it be the same file name (.git/HEAD)
+
+
+cat "/home/andrec/.git-credentials"
+https://andrealbergaria:TOKEN_HEREc@github.com/andrealbergaria/binPath
+https://andrealbergaria:TOKEN_HERE@github.com/andrealbergaria/javaDoIt
+https://andrealbergaria:TOKEN_HERE@github.com/andrealbergaria/binPathShort
+
+
+
+Password for 'https://andrealbergaria@github.com/andrealbergaria/javaDoIt.git': 
+
+
+These lines can be re-ordered; they are executed from top to bottom.
+this is impossible, the commits have a determined sequence. , this is git rebase -i <hash of commit"
+
+from https://stackoverflow.com/questions/15127078/git-pull-is-not-possible-unmerged-files
+
+Say the remote is origin and the branch is master, and say you already have master checked out, might try the following:
+
+git fetch origin
+git reset --hard origin/master
+
+This basically just takes the current branch and points it to the HEAD of the remote branch.
+
+can a HEAD have a refernce to a remote branch?
+
+so on remote
+commit1 <- commit2 <- HEAD
+
+on local
+commit_local1 < commit_local2 <- HEAD
+
+it will just point to a remote HEAD?
+not on our repo? and also how can i access my local commits?
+
+i only have one branch on /hom/andrec/worskpace_3_8/binPatShort..butgit says
+error: Pulling is not possible because you have unmerged files.
+why should i use merge?? git only has one branch
