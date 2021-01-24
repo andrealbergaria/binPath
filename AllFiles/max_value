@@ -70,4 +70,9 @@ so podem existir 2147483647 ints
 
 numero is part of the interval , and specifies the max numbers....
 limita a variavel , e determina quantos int existem
+
+ [a...b], a always belong to B 
   
+  
+  value indicate how many bytes , can a variable have
+  b fits on variable, 
